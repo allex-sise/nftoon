@@ -1,11 +1,15 @@
 <template>
     <div id="demo">
         <vue-metamask 
-            userMessage="msg" 
             @onComplete="onComplete"
         >
         </vue-metamask>
-        <button @click="(mintNft())">MINT NFT</button>
+        <label>TokenId</label>
+        <input type="number" v-model="token.id"/>
+        <button @click="(mintNft())">MINT EMINEM NFT</button>
+        <div v-if="token.id">
+            <p>Minting tokenId: {{token.id}}</p>
+        </div>
     </div>
 </template>
 
@@ -22,9 +26,11 @@
         },
         data(){
             return {
-                msg: "This is demo net work",
-                decentralizedBankContract: null,
                 userData: null,
+                decentralizedBankContract: null,
+                token:{
+                    id: null,
+                }
             }
         },
         async mounted(){
@@ -33,7 +39,6 @@
         methods:{
             onComplete(responseData){
                 this.userData = responseData;
-                // console.log('data:', responseData);
             },
             async loadBlockchainData(){
                 const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/X3ZvuZL6NkgWOL2Rws8iN7-GO_8qTNSC";
@@ -43,15 +48,10 @@
                     contract.abi,
                     contractAddress
                 );
-                // const userCount = await this.decentralizedBankContract.methods.userCount().call();
-                // for (let i = 1; i <= userCount; i++) {
-                //     const user = await this.decentralizedBankContract.methods.users(i).call();
-                //     console.log('user: ',user);
-                // }
             },
             async mintNft(){
                 console.log('addr: ',this.userData.metaMaskAddress);
-                await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, 'https://nftcool.free.beeceptor.com/eminem6.json', 12).send({
+                await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, 'https://nftcool.free.beeceptor.com/eminem6.json', this.token.id).send({
                     from: this.userData.metaMaskAddress,
                 }).on("transactionHash");
             }
