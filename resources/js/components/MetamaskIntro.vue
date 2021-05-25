@@ -10,6 +10,9 @@
         <div v-if="token.id">
             <p>Minting tokenId: {{token.id}}</p>
         </div>
+        <div v-if="userData">
+            <label>Wallet address:</label>{{userData.metaMaskAddress}}
+        </div>
     </div>
 </template>
 
