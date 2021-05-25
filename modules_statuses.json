@@ -1,0 +1,12 @@
+{
+    "AmazonS3": false,
+    "KnowledgeBase": true,
+    "MailSystem": true,
+    "Newsletter": true,
+    "Pages": true,
+    "Refund": true,
+    "Systemsetting": true,
+    "Tax": true,
+    "Ticket": true,
+    "HumanResource": true
+}

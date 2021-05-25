@@ -1,0 +1,5 @@
+.banner-area2::before, .banner-area3::before, .banner-area4::before, .login_resister_area .single_resister_sildbar::before {
+    background-image: -moz-linear-gradient(90deg, #2a049c 0%, #f6f6f6 100%)!important;
+    background-image: -webkit-linear-gradient(90deg, #2a049c 0%, #f6f6f6 100%)!important;
+    background-image: -ms-linear-gradient(90deg, #2a049c 0%, #f6f6f6 100%)!important;
+}
