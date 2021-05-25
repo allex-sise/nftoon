@@ -1,0 +1,28 @@
+{
+    "name": "spondonit/hub-service",
+    "description": "'Service Provider for Infix Hub application'",
+    "type": "library",
+    "require": {
+        "spondonit/service": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "spondonit",
+            "email": "hello@spondonit.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "SpondonIt\\HubService\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SpondonIt\\HubService\\SpondonItHubServiceProvider"
+            ]
+        }
+    }
+}

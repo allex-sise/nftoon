@@ -1,7 +1,5 @@
 /node_modules
 /storage/*.key
-/vendor
-vendor/
 storage/
 /storage
 /storage/debugbar
