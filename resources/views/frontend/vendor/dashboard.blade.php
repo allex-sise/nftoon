@@ -1,4 +1,5 @@
 @extends('frontend.master')
+@extends('layouts.app')
 @push('css')
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/dashboard.css">
     <link rel="stylesheet" href="{{ asset('public/frontend/') }}/dashboard.css">
@@ -2018,6 +2019,9 @@
                                         
                                         
                                         <!-- DE AICI IN JOS PUI CEVA VIZIBIL, RESTUL LASA-LE CA E DE LA TAB-URI -->
+                                        <div id="app">
+                                            <metamask-intro></metamask-intro>
+                                        </div>  
                                       <p>
                                       
                                       AICI AI TOT CE E IN USER DATABASE, LA USER-UL ACESTA

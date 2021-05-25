@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="{{ mix('js/app.js') }}"></script>
     <link rel="stylesheet" href="{{asset('public/css/common_style.css')}}">
 </head>
 
