@@ -9,19 +9,13 @@ function thembnailUpload() {
             img.src = window.URL.createObjectURL(file);
 
             img.onload = function() {
-                var width = img.naturalWidth,
-                    height = img.naturalHeight;
+      
                 window.URL.revokeObjectURL(img.src);
 
-                if (width == 80 && height == 80) {
+             
                     document.getElementById("thumbneils_title").style.color = "green";
                     document.getElementById("thumbneils_title").innerHTML = file.name;
-                } else {
-                    document.getElementById("thumbneils_title").style.color = "red";
-                    document.getElementById("thumbneils_title").innerHTML =
-                        "Invalid image dimension";
-                    document.getElementById("thembnails_upload").value = null;
-                }
+              
             };
         } else {
             document.getElementById("thumbneils_title").style.color = "red";
@@ -32,21 +26,6 @@ function thembnailUpload() {
     }
 }
 
-function previewUpload() {
-    // console.log('up');
-
-    var file = document.getElementById("preview_upload").files[0];
-    if (file) {
-        if (file.type.indexOf('zip') > -1) {
-            document.getElementById("preview_file").style.color = "green";
-            document.getElementById("preview_file").innerHTML = file.name;
-        } else {
-            document.getElementById("preview_file").style.color = "red";
-            document.getElementById("preview_file").innerHTML = "Invalid file type";
-            document.getElementById("preview_upload").value = null;
-        }
-    }
-}
 
 function mainFileUpload() {
     // console.log('up');

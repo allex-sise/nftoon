@@ -133,6 +133,7 @@ class CheckoutController extends Controller
         try {
             //$_paid_pack = PaidPackagePayment::where('user_id', Auth::user()->id);
             //$_paid_package = $_paid_pack->first();
+            
             $paid_payment = PaidPayment::where('user_id', Auth::user()->id)->first();
             $user = User::findOrFail(Auth::user()->id);
             if (empty($paid_payment)) {

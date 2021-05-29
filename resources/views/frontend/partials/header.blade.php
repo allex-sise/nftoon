@@ -194,12 +194,6 @@ h3.h3clss{
                                             <li><a href="{{ route('categoryItem',@$item->slug) }}">{{ @$item->title}}</a>
                                             <li><a href="#">TOATE</a></li>
                                             <li><a href="#">CREATORI</a></li>
-                                       
-                                            <ul class="submenu">
-                                                @foreach (@$item->subCategory as $sub_cat)
-                                                    <li><a href="{{ url('category/sub/'.@$item->slug.'/'.@$sub_cat->slug) }}">DROPS</a></li>
-                                                @endforeach
-                                            </ul>
                                        </li>
                                     @endforeach
                                 </ul>

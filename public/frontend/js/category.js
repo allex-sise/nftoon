@@ -12,7 +12,7 @@ function GetOutPutString(data){
                         <div class="goods-thumb">
                             <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">
                             
-                            <img src="${url}/${e.thumbnail}" alt="">
+                            <img src="${url}/${e.icon}" alt="">
                             </a>
                         </div>
                         <div class="good-info">
@@ -94,7 +94,7 @@ function GetOutPutString(data){
                                      <div class="col-xl-6 col-md-6">
                                          <div class="content_left">
                                              <a  class="profile_mini_thumb">
-                                                 <img src="${url+'/'+e.thumbnail}" width="200px" alt="">
+                                                 <img src="${url+'/'+e.icon}" width="200px" alt="">
                                              </a>
                                              <div class="content_title">
                                                  <p>${e.title}
@@ -148,7 +148,7 @@ function GetOutPutString(data){
                     <div class="goods-thumb">
                         <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">
                         
-                        <img src="${url}/${e.thumbnail}" alt="">
+                        <img src="${url}/${e.icon}" alt="">
                         </a>
                     </div>
                     <div class="good-info">

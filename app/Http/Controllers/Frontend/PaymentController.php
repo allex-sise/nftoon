@@ -132,9 +132,12 @@ class PaymentController extends Controller
     function ItemPayment(Request $request){
         $input = $request->input();
         $balnc  = Auth::user()->balance;
+        $a = Cart::subtotal();
+        $b = preg_replace("/(\,)/", "", $a);
+        $carttotalstrip = floatval($b);
         DB::beginTransaction();
          try {
-            if ($input['amount'] >= Cart::subtotal()) {            
+            if ($input['amount'] >= $carttotalstrip) {            
                 \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));  
                 $stripe_id = uniqid();                 
                 // Charge to customer
@@ -163,7 +166,7 @@ class PaymentController extends Controller
                         Toastr::success('Payment success!');
                         return redirect()->back();
                 }else{
-                    Toastr::error('Please payment minimum  your item price $'.Cart::subtotal());
+                    Toastr::error('Please payment minimum  your item price $'.$carttotalstrip);
                     return redirect()->back();
                 }             
              } catch (\Exception $e) {
@@ -174,14 +177,16 @@ class PaymentController extends Controller
     }
 
     function payment_main_balance(Request $r){
-
-         if( empty(Cart::subtotal())){
+        $a = Cart::subtotal();
+        $b = preg_replace("/(\,)/", "", $a);
+        $carttotalstrip = floatval($b);
+         if( empty($carttotalstrip)){
             Toastr::error('Something went wrong, Plesae try again !');
              return redirect('cart');
          }
          
          try {
-            $item_price = Cart::subtotal();
+            $item_price = $carttotalstrip;
             $my_blance = Balance::where('user_id',Auth::user()->id)->first(); 
 
             if( $my_blance->amount >= $item_price){   
@@ -280,10 +285,13 @@ class PaymentController extends Controller
     function ItemPaymentPaypal(Request $request){
         $input = $request->input();
          $balnc  = Auth::user()->balance;
+         $a = Cart::subtotal();
+        $b = preg_replace("/(\,)/", "", $a);
+        $carttotalstrip = floatval($b);
          DB::beginTransaction(); 
          try { 
 
-            if ($input['amount'] >= Cart::subtotal()) {  
+            if ($input['amount'] >= $carttotalstrip) {  
 
                 $paid_payment = PaidPayment::updateOrCreate(['user_id' => Auth::user()->id]); 
                 $paid_payment->amount = $input['amount'];
@@ -296,7 +304,7 @@ class PaymentController extends Controller
                 Toastr::success('Payment success!');
                 return redirect()->back();
             }else{
-                Toastr::error('Please payment minimum  your item price $'.Cart::subtotal());
+                Toastr::error('Please payment minimum  your item price $'.$carttotalstrip);
                 return redirect()->back();
             }  
 
@@ -309,7 +317,9 @@ class PaymentController extends Controller
 
       function payment_store()
     {
-               
+        $a = Cart::subtotal();
+        $b = preg_replace("/(\,)/", "", $a);
+        $carttotalstrip = floatval($b);
         DB::beginTransaction();
         try { 
 
@@ -339,7 +349,7 @@ class PaymentController extends Controller
                         $order->state_id = $user->profile->state_id;
                         $order->city_id = $user->profile->city_id;
                         $order->zipcode = $user->profile->zipcode;
-                        $order->total =(float)Cart::subtotal();
+                        $order->total = $carttotalstrip;
                         $order->save();
                         $total_tax=0.00;
 

@@ -7,6 +7,26 @@
 @php
    $infix_general_settings = app('infix_general_settings');
 @endphp
+<style>
+.banner-area4 .banner-area-inner .banner-info h2 {
+    font-size: 36px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 0;
+    text-align: left;
+    position: relative;
+    bottom: -156px;
+    left: 120px;
+}
+.checkout_area .check-out-btn button {
+    border: 0;
+    cursor: pointer;
+    background-image: none;
+    background-color: #000;
+}
+</style>
 @section('content')
 <!-- banner-area start -->
 <div class="banner-area4">
@@ -123,7 +143,7 @@
                     <div class="col-xl-4 col-lg-4">
                         <div class="your_order">
                             <div class="order_header">
-                                <h4>@lang('lang.your_order')</h4>
+                                <h4>Ordinul Tau</h4>
                                 
                             </div>
                            
@@ -143,7 +163,7 @@
                                          @endphp
                                             <li>
                                                 <span>{{ @$item->name }}</span>
-                                                <span>{{@$infix_general_settings->currency_symbol}}{{ @$item->price  }}</span>
+                                                <span>{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
                                             </li>
                                         @endforeach
                                     @endif
@@ -152,7 +172,7 @@
                             <div class="products_list_bottom">
                                 <span>@lang('lang.total')</span>
                                 <span class="prise_tag">
-                                    ${{Cart::subtotal() }}
+                                    {{Cart::subtotal() }} {{@$infix_general_settings->currency_symbol}}
                                 </span>
                             </div>
                         </div>

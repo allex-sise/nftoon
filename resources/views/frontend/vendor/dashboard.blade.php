@@ -1623,7 +1623,8 @@
                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <div class="tab-pane fade {{ @$data['download'] == url()->current() ?'show active':'' }} " id="Downloads" role="tabpanel"
                                         aria-labelledby="Downloads-tab">
-                                        <div class="download_iteams_common download_iteams_common2  gray-bg">
+                                        
+                                        <div class="latest-goods-area">
                                                 @if(session()->has('success'))
                                                 <div class="alert alert-success">
                                                     {{ session()->get('success') }}
@@ -1650,129 +1651,16 @@
                                                 @php
                                                    $obj = json_decode($item->item, true);
                                                 @endphp 
-                                                    <div
-                                                        class="single_download_iteams d-flex justify-content-between align-items-center">
+                                                    <!-- <div class="single_download_iteams d-flex justify-content-between align-items-center">
                                                         <div class="single_inner_one d-flex align-items-center">
                                                             <div class="thumb">
                                                                 <img src="{{asset(@$obj['icon'])}}" alt="">
                                                             </div>
                                                             <div class="download_headr">
                                                                 <h5><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->Item->title),@$item->Item->id]) }}">{{ $item->Item->title }}</a></h5>
-                                                                <p class="installation"><a href="#">@lang('lang.regular_license_with')</a></p>
-                                                                        @php
-                                                                        if ($obj['support_time']==1) {
-                                                                            $expire_date=\Carbon\Carbon::parse($item->created_at)->addMonths(6);
-                                                                        } else {
-                                                                            $expire_date=\Carbon\Carbon::parse($item->created_at)->addMonths(12);
-                                                                        }
-
-                                                                        $created = new \Carbon\Carbon($expire_date);
-                                                                        $now = \Carbon\Carbon::now();
-                                                                        // $difference = ($created->diff($now)->days < 1) ? 'today':  $created->diffForHumans($now);
-                                                                        $difference = ($created->diff($now)->days < 1) ? 'today': DateFormat($created);
-                                                                        
-                                                                    @endphp
-                                                                <div class="checkit">
-                                                                    <span class="chebox-style-custom">
-                                                                        <input class="styled-checkbox item_update_notify" 
-                                                                    id="styled-checkbox-2008{{$item->id}}" {{isset($item->ItemNotify->notify)? $item->ItemNotify->notify == 1 ? 'checked' :'' : ''}} type="checkbox"
-                                                                            value="1" onclick="NotifyUpdate({{$item->Item->id}})">
-                                                                        <label for="styled-checkbox-2008{{$item->id}}"></label>
-                                                                    </span>
-                                                                    <span class="Notified"> @lang('lang.get_notified')</span>
-
-                                                                            
-                                                                        {{-- timer --}}
-                                                                    {{-- <p class="installation"> <span>{{@$obj['support_time']}}</span> of support remaining.</p> --}}
-                                                                    <p class="installation"> <span>{{ $difference}}</span> @lang('lang.support_will_expair') .</p>
-                                                                    
-                                                                        {{-- timer --}}
-                                                                        {{-- {{@Itemreviews($item->Item->id,$item->order_id)->rating}} --}}
-
-                                                                </div>
+                                                             
                                                                 {{-- {{@Auth::user()->reviews->count()}} --}}
-                                                                {{-- @if (@Auth::user()->reviews->count() > 0) --}}
-                                                                @if (@Itemreviews($item->Item->id,$item->order_id)->rating)
-                                                                {{-- rating --}}
-                                                                <div class="review_rating">
-                                                                    @if(@Itemreviews($item->Item->id,$item->order_id)->rating == .5)
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 1)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 1.5)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 2)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 2.5)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 3)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 3.5)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 4)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 4.5)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-half-o"></i>
-                                                                    @elseif(@Itemreviews($item->Item->id,$item->order_id)->rating == 5)
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    @endif
-                                                                </div>
-                                                                @else
-                                                                {{-- {{@$item->Item->rate}} --}}
-                                                                <a  class="rating" >
-                                                                        <input type="radio" {{@Itemreviews($item->Item->id,$item->order_id)->rating == 5.00 ? 'checked':'' }}  id="star5" name="rating" value="5" href="#test-form2" class="rating lol"  /><label  class = "full" for="star5" id="star5" title="Awesome - 5 stars"  onclick="Rates(5, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 4.5 ? 'checked':'' }}  id="star4half" name="rating" value="4.5" href="#test-form2" class="rating lol"  /><label  class="half" for="star4half" title="Pretty good - 4.5 stars"  onclick="Rates(4.5, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 4.00 ? 'checked':'' }} id="star4" name="rating" value="4" href="#test-form2" class="rating lol" /><label  class = "full" for="star4" title="Pretty good - 4 stars"  onclick="Rates(4, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 3.5 ?'checked':'' }} id="star3half" name="rating" value="3.5" href="#test-form2" class="rating lol" /><label  class="half" for="star3half" title="Meh - 3.5 stars"  onclick="Rates(3.5, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 3.00 ? 'checked':'' }} id="star3" name="rating" value="3" href="#test-form2" class="rating lol" /><label  class = "full" for="star3" title="Meh - 3 stars"  onclick="Rates(3, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 2.5 ?'checked':'' }} id="star2half" name="rating" value="2.5" href="#test-form2" class="rating lol" /><label  class="half" for="star2half" title="Kinda bad - 2.5 stars"  onclick="Rates(2.5, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 2.00 ? 'checked':'' }} id="star2" name="rating" value="2" href="#test-form2" class="rating lol" /><label  class = "full" for="star2" title="Kinda bad - 2 stars"  onclick="Rates(2, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 1.5 ?'checked':'' }} id="star1half" name="rating" value="1.5" href="#test-form2" class="rating lol" /><label  class="half" for="star1half" title="Meh - 1.5 stars"  onclick="Rates(1.5, {{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio"  {{@Itemreviews($item->Item->id,$item->order_id)->rating == 1.00 ? 'checked':'' }} id="star1" name="rating" value="1" href="#test-form2" class="rating lol" /><label  class = "full" for="star1" title="Bad  - 1 star"  onclick="Rates(1,{{$PickId }},{{$item->order_id}})" ></label>
-                                                                        <input type="radio" {{@Itemreviews($item->Item->id,$item->order_id)->rating == .5 ? 'checked':'' }} id="starhalf" name="rating" value=".5" href="#test-form2" class="rating lol" /><label  class="half" for="starhalf" title="So bad  - 0.5 stars"  onclick="Rates(.5,{{$PickId }},{{$item->order_id}})" ></label>
-                                                                    
-                                                                </a>
-                                                                @endif
+                                                             
                                                             </div>
                                                         </div>
                                                         <div class="download_inner-btn d-flex"  >
@@ -1793,7 +1681,34 @@
 
                                                             
                                                         
+                                                    </div> -->
+
+                                                    <div class="col-xl-4 col-md-4 grid-item cat1 cat1">
+                                                        <div class="single-goods">
+                                                            <div class="goods-thumb">
+                                                     
+                                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->Item->title),@$item->Item->id]) }}">
+                                                                
+                                                                <img src="{{asset(@$obj['icon'])}}" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="good-info">
+                                                                <div class="good-title">
+                                                                    <h3><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->Item->title),@$item->Item->id]) }}">{{ $item->Item->title }}</a></h3>
+                                                                    <p>@<a href="">Username</a></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="good-info good-info2">
+                                                                <div class="good-title good-title2">
+                                                                <div class="download_2">
+                                                                <a href="{{ route('user.ItemDownloadAll',$item->id) }}" class="boxed-btn" id="dropdownMenuLink" style="background-image: none; padding: 0px;"> <i class="ti-download"></i>  @lang('lang.download')  </a>
+                                                            
+                                                            </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+
                                             @endforeach
                                             @endforeach                                               
                                             

@@ -21,7 +21,7 @@ function GetOutPutString(data) {
                                  e.id
                                }">
                                    <img height="340" src="${
-                                     e.thumbnail
+                                     e.icon
                                    }" alt="">
                                </a>
                            </div>
@@ -148,7 +148,7 @@ function GetOutPutString(data) {
                                             <div class="content_left">
                                                 <a  class="profile_mini_thumb">
                                                     <img src="${
-                                                      url + "/" + e.thumbnail
+                                                      url + "/" + e.icon
                                                     }" width="200px" alt="">
                                                 </a>
                                                 <div class="content_title">
@@ -159,7 +159,7 @@ function GetOutPutString(data) {
                                                        url +
                                                        "/user/profile/" +
                                                        e.username
-                                                     }">${e.username}</a> in <a href="${url+'/category/sub/'+e.category+'/'+e.sub_category}">${e.sub_category}</a></p>
+                                                     }">${e.username}</a> </p>
                                                     </span>
                                                     <input type="number" id="totalCartItem" value="0" hidden>
                                                     </p>
@@ -217,8 +217,8 @@ function GetOutPutString(data) {
                                  "/" +
                                  e.id
                                }">
-                                   <img height="200" src="${
-                                     e.thumbnail
+                                   <img height="auto" src="${
+                                     e.icon
                                    }" alt="">
                                </a>
                            </div>
@@ -236,15 +236,20 @@ function GetOutPutString(data) {
                                    }">${e.title.substring(0, 20)} ....</a></h3>
                                    <p>By <a href="${
                                      url + "/user/profile/" + e.username
-                                   }">${e.username}</a> in <a href="${url+'/category/sub/'+e.category+'/'+e.sub_category}">${e.sub_category}</a></p>
+                                   }">${e.username}</a> </p>
                                </div>
-                               <div class="goods-prise">
-                               ${currency_symbol}${e.Reg_total}
-                                    <br> <a href="#test-form${
-                                      e.id
-                                    }" data-toggle="modal" data-target="#myModal${e.id}"  id="AddToCart" > <i class="ti-shopping-cart"></i> </a>
-                               </div>
+                             
                            </div>
+                           <div class="good-info good-info2">
+                            <div class="good-title good-title2">
+                                <h3 class="h3clss">Current Price</h3>
+                                <h3>${e.Reg_total} ${currency_symbol}</h3>
+                            </div>
+                            <div class="good-title good-title2">
+                              <h3 class="h3clss">Items Sold</h3>
+                              <h3>12</h3>
+                            </div>
+                        </div>
                        </div>
                    </div>
                    <div id="myModal${
@@ -338,8 +343,8 @@ function GetOutPutString(data) {
                                             <div class="content_left">
                                                 <a  class="profile_mini_thumb">
                                                     <img src="${
-                                                      url + "/" + e.thumbnail
-                                                    }" width="200px" alt="">
+                                                      url + "/" + e.icon
+                                                    }" width="auto" alt="">
                                                 </a>
                                                 <div class="content_title">
                                                     <p>${e.title}
@@ -349,7 +354,7 @@ function GetOutPutString(data) {
                                                        url +
                                                        "/user/profile/" +
                                                        e.username
-                                                     }">${e.username}</a> in <a href="${url+'/category/sub/'+e.category+'/'+e.sub_category}">${e.sub_category}</a></p>
+                                                     }">${e.username}</a></p>
                                                     </span>
                                                     <input type="number" id="totalCartItem" value="0" hidden>
                                                     </p>
@@ -411,7 +416,7 @@ ZoomIn = (id) => {
 
             var html = `<div class="features_item_show" onmouseout="ZoomOut()">
             <div class="feature_thumb">
-            <img src="${url}/${data.thumbnail}" width="100%" onmouseout="ZoomOut()" alt="">
+            <img src="${url}/${data.icon}" width="100%" onmouseout="ZoomOut()" alt="">
             </div>
             <div class="product_name_details d-flex justify-content-between align-items-center">
                 <div class="product_name">

@@ -101,42 +101,6 @@
                                                     <div class="row mt-25">
                                                         <div class="col-lg-12">
                                                             <div class="input-effect">
-                                                                <input class="primary-input form-control{{ $errors->has('ex_fee') ? ' is-invalid' : '' }}"
-                                                                       type="number" name="ex_fee" autocomplete="off"
-                                                                       value="{{isset($data['edit'])? $data['edit']->ex_fee:old('ex_fee')}}">
-
-                                                                     <input type="hidden" name="id"
-                                                                       value="{{isset($data['edit'])? $data['edit']->id: ''}}">
-                                                                <label>@lang('lang.extend_buyer_Fee') </label>
-                                                                <span class="focus-border"></span>
-                                                                @if ($errors->has('ex_fee'))
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $errors->first('ex_fee') }}</strong>
-                                                                    </span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-25">
-                                                        <div class="col-lg-12">
-                                                            <div class="input-effect">
-                                                                <input class="primary-input form-control{{ $errors->has('co_fee') ? ' is-invalid' : '' }}"
-                                                                       type="number" name="co_fee" autocomplete="off"
-                                                                       value="{{isset($data['edit'])? $data['edit']->co_fee:old('co_fee')}}">
-
-                                                                <label>@lang('lang.commercial_buyer_Fee') </label>
-                                                                <span class="focus-border"></span>
-                                                                @if ($errors->has('co_fee'))
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $errors->first('co_fee') }}</strong>
-                                                                    </span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-25">
-                                                        <div class="col-lg-12">
-                                                            <div class="input-effect">
                                                                 <input class="primary-input form-control{{ $errors->has('support_fee') ? ' is-invalid' : '' }}"
                                                                        type="text" name="support_fee" autocomplete="off"
                                                                        value="{{isset($data['edit'])? $data['edit']->support_fee:old('support_fee')}}">
@@ -217,8 +181,6 @@
                                 <tr>
                                     <th>@lang('lang.category')</th>
                                     <th>@lang('lang.regular_buyer_Fee')</th>
-                                    <th>@lang('lang.extend_buyer_Fee')</th>
-                                    <th>@lang('lang.commercial_buyer_Fee')</th>
                                     <th>@lang('lang.extend_support_Fee')</th>
                                     <th>@lang('lang.action')</th>
                                 </tr>
@@ -228,8 +190,6 @@
                                     <tr>
                                         <td valign="top">{{@$item->category !=""? @$item->category->title:""}}</td>
                                         <td valign="top">{{@$item->re_fee}}</td>
-                                        <td valign="top">{{@$item->ex_fee}}</td>
-                                        <td valign="top">{{@$item->co_fee}}</td>
                                         <td valign="top">{{@$item->support_fee}} (%)</td>
                                         <td valign="top">
                                             <div class="dropdown">
