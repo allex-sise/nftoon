@@ -62,13 +62,15 @@
                 },
                 info:null,
                 file:'',
+                pinata_api_key:null,
+                pinata_secret_api_key:null
             }
         },
         async mounted(){
             await this.loadBlockchainData();
-            //todo:
-            console.log(process.env.PAYSTACK_PUBLIC_KEY,"ENV!!!") 
-
+            this.pinata_api_key=process.env.MIX_PUSHER_PINATA_API_KEY;
+            this.pinata_secret_api_key=process.env.MIX_PUSHER_PINATA_SECRET_API_KEY;
+            console.log(this.pinata_api_key);
         },
         methods:{
             onComplete(responseData){
@@ -104,8 +106,8 @@
 
                 const configUploadJson = {
                     headers: {
-                        pinata_api_key: "9cf291362d7a0ec582b7",
-                        pinata_secret_api_key: "2377730bb261436938a27fd01b753ac51a790aa8ae995ca7e0cb73262583fd74"
+                        pinata_api_key: this.pinata_api_key,
+                        pinata_secret_api_key: this.pinata_secret_api_key
                     },
                 };
 
@@ -129,8 +131,8 @@
                     maxContentLength:'Infinity',
                     headers: {
                         'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-                        pinata_api_key: "9cf291362d7a0ec582b7",
-                        pinata_secret_api_key: "2377730bb261436938a27fd01b753ac51a790aa8ae995ca7e0cb73262583fd74"
+                        pinata_api_key: this.pinata_api_key,
+                        pinata_secret_api_key: this.pinata_secret_api_key
                     }
                 };
 
