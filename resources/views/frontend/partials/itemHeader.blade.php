@@ -1,5 +1,6 @@
 @php
 $img = explode(",",@$data['item']->item_image->image);
+$img2 = @$data['item']->icon;
 @endphp
 <div class="banner-area3 gray-bg">
     <div class="banner-area-inner">
@@ -13,11 +14,9 @@ $img = explode(",",@$data['item']->item_image->image);
                             <div class="overlay_inner">
                                
                                 <button class="boxed-btn-white"  onclick="ImgShow()">@lang('lang.screenshoot')</button>
-                                @foreach ($img as $key => $item)
-                                @if ($key != 0)
-                                <a class="popup-image hit" href="{{ asset(@$item)}}"></a>
-                                @endif
-                                @endforeach 
+              
+                                <a class="popup-image hit" href="{{ asset(@$img2)}}"></a>
+                             
                             </div>
                             </div>
                         </div>

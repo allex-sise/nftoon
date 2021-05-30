@@ -11,7 +11,6 @@ use App\ItemCategory;
 use App\SubAttribute;
 use File;
 use App\ItemAttribute;
-use App\ItemSubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -25,7 +24,6 @@ class ProductUploadController extends Controller
     public function product_upload(){
         $attribute=Attribute::all();
         $data['category'] = ItemCategory::where('up_permission',1)->get();
-        $data['subCategory'] = ItemSubCategory::where('active_status',1)->get();
         $data['attribute'] = Attribute::all();
         $data['sub_attribute'] = SubAttribute::latest()->get();
 
@@ -67,15 +65,11 @@ class ProductUploadController extends Controller
             'title' => 'required|string|max:100',
             'description' => 'required|string',
             'thumdnail'=>'required',
-            'theme_preview' => 'required|',
             'category_id' => 'required|',
             'demo_url' => 'required|url',
             'Re_item' => 'required|',
             'Re_buyer' => 'required|',
             'Reg_total_price' => 'required|',
-            'E_item' => 'required|',
-            'E_buyer' => 'required|',
-            'Ex_total_price' => 'required|',
             'user_msg' => 'sometimes|nullable|string',
             'upload_or_link' => 'required',
             'tags' => 'required|string',
@@ -103,7 +97,6 @@ class ProductUploadController extends Controller
             $item->feature2 = $r->feature2;
             $item->description = $r->description;    
             $item->category_id = $r->category_id;
-            $item->sub_category_id = $r->sub_category_id;
             $item->resolution = $r->resolution;
             $item->widget = $r->widget;
             $item->tags = $r->tags;
@@ -120,14 +113,6 @@ class ProductUploadController extends Controller
             $item->Re_item = $r->Re_item;
             $item->Re_buyer = $r->Re_buyer;
             $item->Reg_total = $r->Reg_total_price;
-
-            $item->E_item = $r->E_item;
-            $item->E_buyer = $r->E_buyer;
-            $item->Ex_total = $r->Ex_total_price;
-
-            $item->C_item = $r->C_item;
-            $item->C_buyer = $r->C_buyer;
-            $item->C_total = $r->Co_total_price;
 
             $item->user_msg = $r->user_msg;
             $item->layout = $r->layout;
@@ -147,91 +132,13 @@ class ProductUploadController extends Controller
                 Toastr::error('Thumbnail File missing', 'Failed');
                 return redirect()->back()->withInput();
             }
-            if($r->file('theme_preview') ==""){
-                Toastr::error('Theme Preview File missing', 'Failed');
-                return redirect()->back()->withInput();
-            }
+          
             if($r->upload_or_link==1 && $r->file('main_file') ==""){
                 Toastr::error('Main File missing', 'Failed');
                 return redirect()->back()->withInput();
             }
             //end laravel file validation 
 
-
-
-            $zip = new \ZipArchive();
-            $file = $r->file('theme_preview');
-            $zip->open($file->path());
-
-            $filesInside = [];
-            for ($i = 0; $i < $zip->count(); $i++) {            
-                $file_name=$zip->getNameIndex($i);
-                $exten= substr($file_name, strpos($file_name, ".") + 1);
-                if ($exten=='jpg' ||$exten=='jpeg' ||$exten=='png') {
-                    array_push($filesInside, $zip->getNameIndex($i));
-                }
-            }
-        
-
-       
-            $theme_preview = "";
-            if ($r->file('theme_preview') != "") {
-                $file = $r->file('theme_preview');
-                $theme_preview = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('public/uploads/SessionFile/', $theme_preview);
-                $theme_preview =  'public/uploads/SessionFile/' . $theme_preview;
-
-                $session_file=new SessionFile();
-                $session_file->user_id=Auth::user()->id;
-                $session_file->file_name=$theme_preview;
-                $session_file->save();
-            } 
-            $theme_preview =$theme_preview;
-            $dest= 'public/uploads/product/themePreview';
-
-            
-            if ($r->theme_preview && file_exists($theme_preview)) {
-            
-                $product_id=Item::max('id')+1;
-                $product_image_path = 'public/uploads/product/themePreview/'.$product_id.'/';                            
-                $Image =  time().'-';                         
-                if (!file_exists($product_image_path)){
-                    mkdir($product_image_path, 0777, true);
-                }
-
-                $zip_extract = new ZipArchive;
-                $res = $zip_extract->open($theme_preview);
-                if ($res === TRUE) {
-                    $zip_extract->extractTo($product_image_path);
-                    $zip_extract->close();
-                } else {
-                    return false;
-                }
-
-                // return $theme_preview;
-                // return $r;
-
-
-                $filesInFolder = \File::files($product_image_path);  
-                $image_list=[]; 
-                for ($i = 0; $i < $zip->count(); $i++) {
-                
-                    $file_name=$zip->getNameIndex($i);
-                    $file_exten=explode('.',$file_name);
-                    if (@$file_exten[1]=='jpeg' || @$file_exten[1]=='png'|| @$file_exten[1]=='jpg' ) {
-                        $image_list[]=$product_image_path.$file_name ;
-                    }
-                }
-
-                $preview_image_list= implode(',',$image_list);
-                $item->screen_shot = $preview_image_list;
-                $item->theme_preview = $preview_image_list;
-                $item->save();
-        
-                
-            }else{
-                return false;
-            }
                 
             $thumbnail = "";
             if ($r->file('thumdnail') != "") {
@@ -337,8 +244,7 @@ class ProductUploadController extends Controller
                     // 'feature1' => 'required|string|max:45',
                     // 'feature2' => 'string|max:45',
                     'description' => 'required|string',
-                    'thumdnail'=>'sometimes|nullable|required|dimensions:max_width=80,max_height=80',
-                    'theme_preview' => 'sometimes|nullable|required|',
+                    'thumdnail'=>'sometimes|nullable|required|',
                     'main_file' => 'sometimes|nullable|required|',
                     'file' => 'sometimes|nullable|required|',
                     'category_id' => 'required|',
@@ -346,9 +252,6 @@ class ProductUploadController extends Controller
                     'Re_item' => 'required|',
                     'Re_buyer' => 'required|',
                     'Reg_total_price' => 'required|',
-                    'E_item' => 'required|',
-                    'E_buyer' => 'required|',
-                    'Ex_total_price' => 'required|',
                     'user_msg' => 'sometimes|nullable|string',
                     'tags' => 'required|string',
                     'upload_or_link' => 'required',
@@ -367,7 +270,6 @@ class ProductUploadController extends Controller
             $item->feature1 = $r->feature1;
             $item->feature2 = $r->feature2;
             $item->description = $r->description;    
-            $item->sub_category_id = $r->sub_category_id;
             $item->category_id = $r->category_id;
             $item->resolution = $r->resolution;
             $item->widget = $r->widget;
@@ -382,80 +284,13 @@ class ProductUploadController extends Controller
             $item->Re_item = $r->Re_item;
             $item->Re_buyer = $r->Re_buyer;
             $item->Reg_total = $r->Reg_total_price;
-            $item->E_item = $r->E_item;
-            $item->E_buyer = $r->E_buyer;
-            $item->Ex_total = $r->Ex_total_price;
             $item->user_msg = $r->user_msg;
             $item->layout = $r->layout;
             $item->columns = $r->columns;
             $item->demo_url = $r->demo_url;
             $item->active_status = 1;
         
-            //  return $item;
-            if ($r->file('theme_preview') == "") {
-                $item->thumbnail=$item_data->thumbnail;
-            }
-            if ($r->file('theme_preview')) {
-                $zip = new \ZipArchive();
-                $file = $r->file('theme_preview');
-                $zip->open($file->path());
-        
-                $filesInside = [];
-                for ($i = 0; $i < $zip->count(); $i++) {
-                    $file_name=$zip->getNameIndex($i);
-                    $exten= substr($file_name, strpos($file_name, ".") + 1);
-                    if ($exten=='jpg' ||$exten=='jpeg' ||$exten=='png') {
-                        array_push($filesInside, $zip->getNameIndex($i));
-                    }
-                }
-            
-                $theme_preview = "";
-                if ($r->file('theme_preview') != "") {
-                    $file = $r->file('theme_preview');
-                    $theme_preview = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                    $file->move('public/uploads/SessionFile/', $theme_preview);
-                    $theme_preview =  'public/uploads/SessionFile/' . $theme_preview;
-                }
-            
-                $theme_preview =$theme_preview;
-                $dest= 'public/uploads/product/themePreview';
-        
-        
-                if ($r->theme_preview && file_exists($theme_preview)) {
-                    $product_image_path = 'public/uploads/product/themePreview/'.$r->id.'/';                            
-                    $Image =  time().'-';                         
-                    if (!file_exists($product_image_path)){
-                        mkdir($product_image_path, 0777, true);
-                    }
-                   
-                    $zip_extract = new ZipArchive;
-                    $res = $zip_extract->open($theme_preview);
-                    if ($res === TRUE) {
-                        $zip_extract->extractTo($product_image_path);
-                        $zip_extract->close();
-                    } else {
-                        return false;
-                    }
-                    $filesInFolder = \File::files($product_image_path);  
-                    $image_list=[]; 
-                    for ($i = 0; $i < $zip->count(); $i++) {
-                        $file_name=$zip->getNameIndex($i);
-                        $file_exten=explode('.',$file_name);
-                        if ($file_exten[1]=='jpeg' ||$file_exten[1]=='png'||$file_exten[1]=='jpg' ) {
-                            $image_list[]=$product_image_path.$file_name ;
-                        }
-                    }
-                $preview_image_list= implode(',',$image_list);
-                $item->screen_shot = $preview_image_list;
-                $item->theme_preview = $preview_image_list;
-                $item->save();
-            }else{
-                return false;
-           }
-        }else{
-            //    $item->screen_shot = $item_data->screen_shot;
-               $item->theme_preview = $item_data->theme_preview;
-        }
+           
                 $thumbnail =$item_data->icon;
                 if ($r->file('thumdnail') != "") {
                     $file = $r->file('thumdnail');

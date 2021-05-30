@@ -7,6 +7,9 @@
    $infix_general_settings = app('infix_general_settings');
    $system_logo = app('infix_background_settings');
    $system_logo = $system_logo[0];
+   $a = Cart::subtotal();
+$b = preg_replace("/(\,)/", "", $a);
+$carttotalstrip = floatval($b);
 @endphp
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment.css">
    <!-- banner-area start -->
@@ -43,6 +46,7 @@
                                     <p> {{ @$data['user']->profile->state->name }} , {{ @$data['user']->profile->country->name }} </p>
                                 </div>
                             </div>
+                        
                             <div class="select_payment_method">
                                 <div class="input_box_tittle">
                                         <h4>@lang('lang.payment_method')</h4>
@@ -76,14 +80,14 @@
                                                     <div class="col-lg-6 mt-40 text-center" id="main_balance_on">
                                                                 <h5>@lang('lang.my') @lang('lang.account')</h2>
                                                                 <p class="mb-0">@lang('lang.my') @lang('lang.balance') : <b>{{@$infix_general_settings->currency_symbol}}{{ @Auth::user()->balance->amount}}</b></p>
-                                                                 <small>@lang('lang.your') @lang('lang.item') @lang('lang.price') : {{@$infix_general_settings->currency_symbol}}{{Cart::subtotal() }}</small><br>
-                                                                 @if ( @Auth::user()->balance->amount > Cart::subtotal())  
+                                                                 <small>@lang('lang.your') @lang('lang.item') @lang('lang.price') : {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }}</small><br>
+                                                                 @if ( @Auth::user()->balance->amount > $carttotalstrip )  
                                                                      <small> <font color="green">@lang('lang.you_can_buy_now') </font> <font color="black"><i class="ti-face-smile"></i></font></small>
                                                                      <div class="main_balance mt-5">
                                                                             <form action="{{ route('user.payment_main_balance') }}" method="POST">
                                                                                 @csrf
                                                                                 <div class="input-group">
-                                                                                   <input class="form-control" id="_package_price_payment" readonly type="text" name='amount' value="{{Cart::subtotal() }}" placeholder=""/>
+                                                                                   <input class="form-control" id="_package_price_payment" readonly type="text" name='amount' value="{{ $carttotalstrip }}" placeholder=""/>
                                                                                 </div>
                                                                                 <div class="col-lg-12 mt-4">
                                                                                     <div class="login_button text-center">
@@ -125,7 +129,7 @@
                                                                                 data-locale="auto"
                                                                                 data-currency="usd">
                                                                         </script>
-                                                                        <input hidden value="{{ convert_to_usd(Cart::subtotal()) }}"  readonly="readonly" type="text" id="amount" name="amount">
+                                                                        <input hidden value="{{ $carttotalstrip }}"  readonly="readonly" type="text" id="amount" name="amount">
                                                                         <div class="mt-5 text-center">
                                                                             <button href="#" class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button>
                                                                         </div>
@@ -156,35 +160,6 @@
                                                                 </div>
                                                             </div>
                                                         @endif
-                                                        @if( in_array('Razorpay',$payment_methods))
-                                                            <!-- single_deposite_item  -->
-                                                            <div class="single_deposite_item">
-                                                                <div class="deposite_header text-center">
-                                                                    {{__('Razorpay')}}
-                                                                </div>
-                                                                <div class="deposite_button text-center"> 
-                                                                
-                                                                    <form action="{{ route('user.payment.razer')}}" method="POST">
-                                                                        @csrf                                                        
-                                                                        <script src="https://checkout.razorpay.com/v1/checkout.js"
-                                                                            data-key="{{ env('RAZOR_KEY') }}"
-                                                                            data-amount={{ convert_to_inr(Cart::subtotal())*100 }}
-                                                                            data-buttontext=""
-                                                                            data-name="{{str_replace('_', ' ',config('app.name') ) }}"
-                                                                            data-description="Cart Payment"
-                                                                            data-image="{{ asset(@$system_logo->image) }}"
-                                                                            data-prefill.name= {{ @Auth::user()->username }}
-                                                                            data-prefill.email= {{ @Auth::user()->email }}
-                                                                            data-theme.color="#ff7529">
-                                                                        </script>
-                                                                        <div class="mt-5 text-center">
-                                                                            <button href="#" class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button>
-                                                                        </div>
-                                                                    </form> 
-                                                                </div>
-                                                            </div>
-                                                        @endif 
-                                                        
                                                         <!-- single_deposite_item  -->
                                                         <div class="single_deposite_item">
                                                             <div class="deposite_header text-center">
@@ -215,16 +190,16 @@
                                                                             </div>
                                                                             <div class="col-xl-6 col-md-6">
                                                                                 <label for="name" class="mb-2">@lang('lang.your') @lang('lang.item') @lang('lang.price') </label>
-                                                                                <input type="text"  name="amount" class="bank_deposit_input"  placeholder="Name of account owner" value="{{Cart::subtotal() }}" readonly>
+                                                                                <input type="text"  name="amount" class="bank_deposit_input"  placeholder="Name of account owner" value="{{ $carttotalstrip }}" readonly>
                                                                             </div> 
                                                                         </div>
-                                                                        @if ( @Auth::user()->balance->amount > Cart::subtotal()) 
+                                                                        @if ( @Auth::user()->balance->amount > $carttotalstrip) 
                                                                         <div class="row">
                                                                             <div class="col-lg-12">                                                                                
                                                                                 {{-- <div class="checkit">
                                                                                     <span class="chebox-style-custom">
                                                                                         <input class="styled-checkbox" id="styled-checkbox-28" onchange="showPayOption('con_balance_pay')" type="checkbox" name="item_comment" value="">
-                                                                                        <label for="styled-checkbox-28"> @lang('lang.use') {{@$infix_general_settings->currency_symbol}}{{Cart::subtotal() }} @lang('lang.from_my_infix_balance_for_this_purchase') </label>
+                                                                                        <label for="styled-checkbox-28"> @lang('lang.use') {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }} @lang('lang.from_my_infix_balance_for_this_purchase') </label>
                                                                                     </span>
                                                                                     <span class="item_comment invalid-feedback" id="item_comment"></span>
                                                                                 </div> --}}
@@ -236,7 +211,7 @@
                                                                     <div class="modal-footer d-flex justify-content-between">
                                                                         <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button>
                                                                         
-                                                                        @if ( @Auth::user()->balance->amount > Cart::subtotal()) 
+                                                                        @if ( @Auth::user()->balance->amount > $carttotalstrip) 
                                                                             <button  class="button boxed-btn"   type="submit">
                                                                                 @lang('lang.pay') 
                                                                             </button>
@@ -289,7 +264,7 @@
                                 <div class="products_list_bottom">
                                     <span>@lang('lang.total')</span>
                                     <span class="prise_tag">
-                                            {{@$infix_general_settings->currency_symbol}}{{Cart::subtotal() }}
+                                            {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }}
                                     </span>
                                 
                                 </div>

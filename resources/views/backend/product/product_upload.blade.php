@@ -215,41 +215,7 @@
                             
                            
                             {{-- <p>@lang('lang.thumdnail_message')</p> --}}
-                            <div class="row mt-25">
-                                <div class="col-lg-12">
-                                    <div class="row no-gutters input-right-icon">
-                                        <div class="col">
-                                            <div class="input-effect">
-                                                <input class="primary-input {{ $errors->has('theme_preview') ? ' is-invalid' : '' }}" type="text"
-                                                      id="placeholderPhoto"
-                                                       placeholder="Preview "
-                                                       readonly="">
-                                                <span class="focus-border"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="primary-btn-small-input"
-                                                    type="button">
-                                                <label class="primary-btn small fix-gr-bg"
-                                                       for="preview_upload">@lang('lang.browse')</label>
-                                                <input type="file" class="d-none" name="theme_preview"
-                                                onchange="previewUpload()" id="preview_upload">
-                                            </button>
-                                            
-                                        </div>
-                                    </div>
-                                    @if ($errors->has('theme_preview'))
-                                        <span class="invalid-feedback dm_display_block" role="alert" >
-                                            <strong>{{ $errors->first('theme_preview') }}</strong>
-                                        </span>
-                                    @endif
-                                    <p id="preview_file"></p>
-                                </div>
-                            </div>  
-                            <p>Fisier ZIP ale imaginilor (png/jpg) Prima imagine apare în pagina articolului și în rezultatele căutării și să fie denumită 01_.jpg. Puteți include fisiere suplimentare. Imaginile trebuie să fie JPG sau PNG.
-                                <br>
-                                <strong>[@lang('lang.mark_all_images')]</strong> 
-                            </p>     
+                      
 
                             
                             <div class="row mt-25" id="main_file_upload_section" style="display:block" >
@@ -324,17 +290,11 @@
                                         <option data-display="@lang('lang.category') *"
                                                 value="">@lang('lang.category') *
                                         </option>
-                                        @foreach($data['subCategory'] as $item)
+                                        @foreach($data['category'] as $item)
                                             <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('category') ==( @$item->id ? 'selected':'')}}>{{@$item->title}}</option>
                                         @endforeach
                                     </select>
                                     <span class="focus-border"></span>
-                                    @if ($errors->has('sub_category_id'))
-                                        <span class="invalid-feedback invalid-select"
-                                              role="alert">
-                                            <strong>{{ $errors->first('sub_category_id') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                             </div>
                             <br>
@@ -412,8 +372,6 @@
                     $category_details=App\ManageQuery::SelectedCategoryDetails(Session::get('categorySlect')->id);
                     // DB::table('item_categories')->where('id',Session::get('categorySlect')->id)->first();
                     $regular_recommended_price[]=explode("-",$category_details->recommended_price);
-                    $extended_recommended_price[]=explode("-",$category_details->recommended_price_extended);
-                    $recommended_price_commercial[]=explode("-",$category_details->recommended_price_commercial);
 
                     $item_fee=App\ManageQuery::FreeItemOfCategory(Session::get('categorySlect')->id);
                     // DB::table('item_fees')->where('category_id',Session::get('categorySlect')->id)->first();
@@ -491,60 +449,7 @@
                                         {{GeneralSetting()->currency_symbol}}{{ @$regular_recommended_price[0][0]  }} - {{GeneralSetting()->currency_symbol}}{{@$regular_recommended_price[0][1]}}</p> 
                             </div> -->
                     </div>
-                    <!-- <div class="upload_inner d-flex align-items-center mb-10">
-                            <span class="lisence-name">@lang('lang.extended_license')</span>
-                            <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
-                            <div class="input_field">
-                                <label for="">@lang('lang.ITEM_PRISE')</label>
-                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="E_item" name="E_item" onkeyup="Extended(this.value)" value="{{ old('E_item') }}">
-                            </div>
-                            <span class="dm_middle_span">+</span>
-                            <div class="input_field">
-                                <label for="">@lang('lang.BUYER_FEE')</label>
-                                <input  type="text" class="primary-input form-control w-50" step="any"   id="E_buyer" name="E_buyer" hidden value="{{ @$item_fee->ex_fee}}" value="{{ old('E_buyer') }}">
-                                <input  type="text" class="primary-input form-control w-50"    disabled placeholder="{{GeneralSetting()->currency_symbol}}{{ @$item_fee->ex_fee}}" onkeyup="Extended(this.value)">
-                            </div>
-                            <span class="dm_middle_span">=</span>
-                            <div class="input_field last-one">
-                                <label for="">@lang('lang.purchase_price')</label>
-                                <input  type="text" class="primary-input form-control w-50"     disabled id="E_total"  placeholder="{{GeneralSetting()->currency_symbol}}100">
-                                <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Ex_total" placeholder="{{GeneralSetting()->currency_symbol}}100"  value="{{ old('Ex_total') }}">
-                                <input type="hidden" name="Ex_total_price" id="ex_price" value="{{ old('Ex_total') }}">
-                            </div>
-                            <div class="recomander">
-                                <p>@lang('lang.recommended') <br>
-                                        @lang('lang.purchase_price') <br>
-                                        {{GeneralSetting()->currency_symbol}}{{ @$extended_recommended_price[0][0]  }} - {{GeneralSetting()->currency_symbol}}{{@$extended_recommended_price[0][1]}}</p> 
-                            
-                            </div>
-                    </div>
-                    <div class="upload_inner d-flex align-items-center mb-10">
-                            <span class="lisence-name">@lang('lang.commercial') @lang('lang.License')</span>
-                            <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
-                            <div class="input_field">
-                                <label for="">@lang('lang.ITEM_PRISE')</label>
-                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="C_item" name="C_item" onkeyup="Commercial(this.value)" value="{{ old('C_item') }}">
-                            </div>
-                            <span class="dm_middle_span">+</span>
-                            <div class="input_field">
-                                <label for="">@lang('lang.BUYER_FEE')</label>
-                                <input  type="text" class="primary-input form-control w-50" step="any"   id="C_buyer" name="C_buyer" hidden value="{{ @$item_fee->ex_fee}}" value="{{ old('C_buyer') }}">
-                                <input  type="text" class="primary-input form-control w-50"    disabled placeholder="{{GeneralSetting()->currency_symbol}}{{ @$item_fee->ex_fee}}" onkeyup="Commercial(this.value)">
-                            </div>
-                            <span class="dm_middle_span">=</span>
-                            <div class="input_field last-one">
-                                <label for="">@lang('lang.purchase_price')</label>
-                                <input  type="text" class="primary-input form-control w-50"     disabled id="C_total"  placeholder="{{GeneralSetting()->currency_symbol}}100">
-                                <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Co_total" placeholder="{{GeneralSetting()->currency_symbol}}100"  value="{{ old('Co_total') }}">
-                                <input type="hidden" name="Co_total_price" id="co_price" value="{{ old('Co_total') }}">
-                            </div>
-                            <div class="recomander">
-                                <p>@lang('lang.recommended') <br>
-                                        @lang('lang.purchase_price') <br>
-                                        {{GeneralSetting()->currency_symbol}}{{ @$recommended_price_commercial[0][0]  }} - {{GeneralSetting()->currency_symbol}}{{@$recommended_price_commercial[0][1]}}</p> 
-                            
-                            </div>
-                    </div> -->
+               
                 </div>
                 <!-- <p>@lang('lang.price_message') </p> -->
             </div>
@@ -591,39 +496,6 @@
     $("#Reg_total").val(total);
     $("#Re_total").attr("placeholder", "$" + total);
     $("#Re_total").attr("value", total);
-}
-
-function Extended(item) {
-    var E_item = $("#E_item").val();
-    var buyer = $("#E_buyer").val();
-
-    if (E_item.length > 0) {
-        var item = E_item;
-    } else {
-        var item = 0;
-    }
-    var total = parseInt(item) + parseInt(buyer);
-    $("#E_total").attr("placeholder", "$" + total);
-    $("#E_total").attr("value", total);
-    //    $('#ex_price').attr("value",total);
-    $("#ex_price").val(total);
-    $("#Ex_total").val(total);
-}
-function Commercial(item) {
-    var E_item = $("#C_item").val();
-    var buyer = $("#C_buyer").val();
-
-    if (E_item.length > 0) {
-        var item = E_item;
-    } else {
-        var item = 0;
-    }
-    var total = parseInt(item) + parseInt(buyer);
-    $("#C_total").attr("placeholder", "$" + total);
-    $("#C_total").attr("value", total);
-    //    $('#ex_price').attr("value",total);
-    $("#co_price").val(total);
-    $("#Co_total").val(total);
 }
 
 $('.decimal').keyup(function(){

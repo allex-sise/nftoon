@@ -8,10 +8,15 @@
 @php
    $infix_general_settings = app('infix_general_settings');
 @endphp
+<style>
+.btnspecialz{
+    background-image: none!important; background-color: #000!important; border-radius: 50px;
+}
+</style>
 <input type="hidden" id="currency_symbol" value="{{GeneralSetting()->currency_symbol}}">
 @section('content')
       <!-- banner-area start -->
-      <div class="banner-area4">
+        <div class="banner-area4">
             <div class="banner-area-inner">
                 <div class="container">
                     <div class="row">
@@ -53,22 +58,12 @@
                                                     <h3>{{ $item->name }}</h3>
                                                     <p>
                                                         <span>@lang('lang.item_by') <a href="{{ route('user.profile',$item->options['username'])}}">{{ @$item->options['username'] }}</a></span> 
-                                                        <span>@lang('lang.License'): <a>
-                                                            @if (@$item->options['license_type']== 1)
-                                                                @lang('lang.Regular')
-                                                            @elseif(@$item->options['license_type']== 2)
-                                                                @lang('lang.extended')
-                                                            @else
-                                                                @lang('lang.commercial')
-                                                            @endif
-                                                            @lang('lang.License')</a></span>
-                                                            <br>
-                                                         <span>@lang('lang.support'): <a class="support_time{{@$item->id}}">{{ @$item->options['support_time'] == 1? '06':'12'}} @lang('lang.months') @lang('lang.support')</a></span>
+                                                        
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div class="card_des_prise d-flex align-items-center justify-content-center">
-                                                 <span class="totalP{{$item->id}}">{{@$infix_general_settings->currency_symbol}}{{ number_format(@$item->price,2) }}</span>
+                                                 <span class="totalP{{$item->id}}">{{ number_format(@$item->price,2) }} {{@$infix_general_settings->currency_symbol}}</span>
                                                     <a  onclick="deleItem(`{{$item->id}}`)"><i class="ti-close"></i></a>
                                                     <a id="delete-form-{{ $item->id }}" href="{{ route('CartDelete',@$item->rowId)}}" class="dm_display_none"></a>
                                                 </div>
@@ -90,13 +85,6 @@
                                           <h4>@lang('lang.your_shopping_cart_is_empty') {{ @count($data['cart_item']) }}</h4>
                                         @endif
                                     </div>
-                                    <div class="cart_button_area d-flex justify-content-between align-items-center">
-                                    <a href="{{ url('/')}}" class="boxed-btn-gray">@lang('lang.continue_shopping')</a>
-                                        @if (@count(Cart::content()) > 0 )
-                                            <a href="#" onclick="deleItemAll()" class="boxed-btn">@lang('lang.empty_cart')</a>
-                                            <a id="delete-form-lol" href="{{ route('CartDeleteAll')}}" class="dm_display_none"></a>
-                                        @endif
-                                    </div>
                                 </div>
                             </div>
                             @if (@count(Cart::content()) > 0 )
@@ -104,18 +92,11 @@
                             <div class="col-xl-4 col-lg-4">
                                     
                                 <div class="total_cart_area">
-                                        <div class="order_input_field">
-                                            <form action="" id="couponForm">
-                                                <input type="text" placeholder="@lang('lang.enter_coupon_code')" id="coupon_code" name="coupon_code">
-                                                @if (@count(Cart::content()) > 0 )
-                                                        <button id="CouponCode" type="submit">@lang('lang.apply')</button>
-                                                @endif
-                                            </form>
-                                        </div>
+                                     
                                         
-                                    <span>@lang('lang.your_cart_total_is') </span>
+                                    <span>Totalul este </span>
                                     <h2 id="copon_applied" class="text-success"></h2>
-                                        <h1 class="totalPrice">{{@$infix_general_settings->currency_symbol}}{{Cart::subtotal() }}</h1>
+                                        <h1 class="totalPrice">{{Cart::subtotal() }} {{@$infix_general_settings->currency_symbol}}</h1>
                                         @if ($total_tax>0)
                                             <h3>Tax= {{@$infix_general_settings->currency_symbol}}{{$total_tax}}</h3>
                                         @endif
@@ -130,9 +111,9 @@
                                                     !empty($is_address->city_id) && 
                                                     !empty($is_address->zipcode) &&
                                                     !empty($is_address->address) )
-                                                    <a href="{{ route('customer.payment')}}" class="boxed-btn">@lang('lang.secure_checkout')</a>
+                                                    <a href="{{ route('customer.payment')}}" class="boxed-btn btnspecialz">@lang('lang.secure_checkout')</a>
                                                     @else
-                                                        <a href="{{ route('customer.cheackout')}}" class="boxed-btn">@lang('lang.secure_checkout')</a>
+                                                        <a href="{{ route('customer.cheackout')}}" class="boxed-btn btnspecialz">@lang('lang.secure_checkout')</a>
                                                     @endif
                                     @if ($total_tax>0)
                                         <p>@lang('lang.price_displayed_excludes_sales_tax')</p>
