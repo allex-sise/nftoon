@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Auth;
 use File;
 use App\Item;
+use App\Drops;
+use App\DropNFTs;
 use App\Review;
 use ZipArchive;
 use App\Comment;
@@ -406,6 +408,23 @@ class ProductController extends Controller
           }
          
      }
+
+     public function showNFT($id)
+     {
+         try{
+            $data['item'] = Item::find($id);  
+            if (is_null($data['item'])) {
+               return redirect()->back();
+            }
+             return view('backend.product.showNFT', compact('data'));
+         }catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+             Toastr::error($msg, 'Failed');
+             return redirect()->back(); 
+         }
+     }
+
+
      public function product_upload(){
         $data['category'] = ItemCategory::where('up_permission',1)->get();
         $data['subCategory'] = ItemSubCategory::where('active_status',1)->get();

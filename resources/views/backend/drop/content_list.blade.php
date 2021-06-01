@@ -4,10 +4,10 @@
 <section class="sms-breadcrumb mb-40 white-box">
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <h1>@lang('lang.list') NFT-uri</h1>
+            <h1>@lang('lang.Product') @lang('lang.list')</h1>
             <div class="bc-pages">
                 <a href="{{url('admin/dashboard')}}">@lang('lang.dashboard')</a>
-                <a href="#" class="active">@lang('lang.list') NFT-uri</a>
+                <a href="#" class="active">@lang('lang.Product') @lang('lang.list')</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-4 no-gutters">
                         <div class="main-title sm_mb_20 lm_mb_35">
-                            <h3 class="mb-0"> @lang('lang.list') NFT-uri</h3>
+                            <h3 class="mb-0">@lang('lang.Product') @lang('lang.list') </h3>
                         </div>
                     </div>
                 </div>
@@ -77,15 +77,15 @@
                                                 @lang('lang.select')
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="{{ route('admin.showNFT',@$item->id)}}">BLOCKCHAIN</a>
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.product_viewSingle',[str_replace(' ', '-',@$item->title),@$item->id])}}">@lang('lang.view')</a>
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.contentEdit',@$item->id)}}">@lang('lang.edit')</a> 
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.ProductDownload',@$item->id) }}">@lang('lang.download')</a> 
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#deleteClassModal{{@$item->id}}"  href="">@lang('lang.delete')</a>                                                 
+                                                <a class="dropdown-item"  data-toggle="modal" data-target="#FreeProduct{{@$item->id}}" >@lang('lang.make') @lang('lang.free')</a>                                                 
                                                 @if ($item->status == 1)
-                                                   <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href="">   Dezactiveaza  </a>
+                                                   <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href="">   @lang('lang.deactive')  </a>
                                                 @else   
-                                                   <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href=""> Activeaza</a>
+                                                   <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href=""> @lang('lang.active')</a>
                                                 @endif
                                                    
                                             </div>

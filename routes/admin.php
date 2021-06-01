@@ -72,6 +72,16 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::get('registration-bonus-delete/{id}', 'UserController@deleteregistrationBonus')->name('deleteregistrationBonus')->middleware('userRolePermission:2');
         // Product
 
+        /* ******************** START DROPS ROUTES ********************* */
+        Route::get('add-drop', 'DropsController@adDrop')->name('adDrop')->middleware('userRolePermission:5');
+        Route::post('add-drop-store', 'DropsController@adDropStore')->name('adDropStore')->middleware('userRolePermission:5');
+        Route::get('add-drop-edit/{id}', 'DropsController@editDrop')->name('editDrop')->middleware('userRolePermission:5');
+        Route::get('add-drop-show/{id}', 'DropsController@showDrop')->name('showDrop')->middleware('userRolePermission:5');
+        Route::post('add-drop-store-update', 'DropsController@updateDrop')->name('updateDrop')->middleware('userRolePermission:5');
+        Route::post('add-drop-nftstore', 'DropsController@storeNFTdrop')->name('storeNFTdrop')->middleware('userRolePermission:5');
+        Route::get('add-drop-delete/{id}', 'DropsController@deleteDrop')->name('deleteDrop')->middleware('userRolePermission:5');
+        /* ********************* END DROPS ROUTES ********************* */
+
         /* ******************** START CATEGORY ROUTES ********************* */
         Route::get('add-category', 'ProductController@adCategory')->name('adCategory')->middleware('userRolePermission:5');
         Route::post('add-category-store', 'ProductController@adCategoryStore')->name('adCategoryStore')->middleware('userRolePermission:5');
@@ -136,7 +146,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
 
         /* ******************** START ITEM ROUTES ********************* */
         Route::get('product', 'ProductController@content')->name('content')->middleware('userRolePermission:5');
-
+        Route::get('showNFT/{id}', 'ProductController@showNFT')->name('showNFT')->middleware('userRolePermission:5');
         Route::get('product-upload', 'ProductUploadController@product_upload')->name('product_upload');
         Route::post('product-upload', 'ProductUploadController@product_upload_store')->name('product_upload_store');
         // Route::post('product-update', 'ProductUploadController@product_upload_update')->name('product_upload_update');

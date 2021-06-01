@@ -191,8 +191,8 @@ h3.h3clss{
                             <nav>
                                 <ul id="navigation">
                                     @foreach (app('item_categories') as $item)
-                                            <li><a href="{{ route('categoryItem',@$item->slug) }}">{{ @$item->title}}</a>
-                                            <li><a href="#">TOATE</a></li>
+                                            <li><a href="{{ route('dropsAll') }}">DROPS</a>
+                                            <li><a href="{{ route('categoryAll') }}">TOATE</a></li>
                                             <li><a href="#">CREATORI</a></li>
                                        </li>
                                     @endforeach

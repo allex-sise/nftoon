@@ -20,6 +20,7 @@ use App\PaidPayment;
 use App\ItemCategory;
 use App\LicenseFeature;
 use App\PaymentPackage;
+use App\Drops;
 use App\ItemSubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -59,6 +60,7 @@ class HomeController extends Controller
                 
                     $data['category'] =  ItemCategory::where('active_status', 1)->where('show_menu',1)->get();
                     $data['item'] =  Item::where('active_status', 1)->where('status', 1)->take(2)->get();
+                    $data['drop'] =  Drops::where('status', 1)->get();
 
                     $free_items_count = DB::table('users')
                          ->join('items', function($join) {

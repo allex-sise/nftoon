@@ -233,7 +233,16 @@
             </li>
 
             @endif
-                
+            @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+            
+            <li>
+                <a href="{{route('admin.adDrop')}}" class="">
+                    <span class="flaticon-analytics"></span>
+                    Drops
+                </a>
+            </li>
+
+            @endif
             {{-- @php
                 $data=  App\AssignModulePermission::where('module_id',10)->first();
             @endphp --}}
