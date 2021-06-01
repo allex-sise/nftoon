@@ -17,20 +17,21 @@
             <input type="text" v-model="tokenData.description"/>Desc:{{tokenData.description}}<br/>
             <input type="text" v-model="tokenData.background_color"/>{{tokenData.background_color}}<br/>
             <input type="text" v-model="tokenData.external_url"/>{{tokenData.external_url}}<br/>
-            <input type="text" v-model="tokenData.image"/>ImgUrl:"{{tokenData.image}}<br/>
+            <p>ImgUrl:{{tokenData.image}}</p>
             <input type="text" v-model="tokenData.name"/>Name:{{tokenData.name}}<br/>
             <input type="text" v-model="tokenData.animation_url"/>{{tokenData.animation_url}}<br/>
-            <button type="button" v-on:click="saveFile()">saveFile</button>
-            <p>Info:{{info}}</p>
+            <p>Info:{{ipfsMetadataUrl}}</p>
+            <p>PhpVal: {{phpVariable}}</p>
         </form>
         <div class="container">
             <div class="large-12 medium-12 small-12 cell">
             <label>File
                 <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
             </label>
-                <button v-on:click="pinFileToIPFS()">Submit File</button>
+                <button v-on:click="saveFile()">Submit IPFS</button>
             </div>
         </div>
+        <button v-on:click="uploadFileWithUrl()">TEST</button>
     </div>
 </template>
 
@@ -44,6 +45,9 @@
     export default {
         components: {
             VueMetamask,
+        },
+        props:{
+            phpVariable:null
         },
         data(){
             return {
@@ -60,8 +64,9 @@
                     name:"namePin",
                     animation_url:null
                 },
-                info:null,
-                file:'',
+                ipfsMetadataUrl:null,
+                ipfsImageUrl: null,
+                file:null,
                 pinata_api_key:null,
                 pinata_secret_api_key:null
             }
@@ -75,6 +80,9 @@
         methods:{
             onComplete(responseData){
                 this.userData = responseData;
+            },
+            tmp(){
+                document.getElementById("demo").innerHTML = "Hello World";
             },
             async loadBlockchainData(){
                 const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/X3ZvuZL6NkgWOL2Rws8iN7-GO_8qTNSC";
@@ -91,10 +99,17 @@
                     from: this.userData.metaMaskAddress,
                 }).on("transactionHash");
             },
-            saveFile() {
-                this.pinJSONToIPFS();
+            async saveFile() {
+                let isSuccess = await this.pinFileToIPFS();
+
+                if(isSuccess == false){
+                    return;
+                }
+
+                this.tokenData.image = 'https://dweb.link/ipfs/' + this.ipfsImageUrl;
+                await this.pinJSONToIPFS();
             },
-            pinJSONToIPFS(){
+            async pinJSONToIPFS(){
                 const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
 
                 const body = {
@@ -111,17 +126,31 @@
                     },
                 };
 
-                axios.post(url, body, configUploadJson)
-                    .then(response => (this.info = response.data.IpfsHash))
+                await axios.post(url, body, configUploadJson)
+                    .then(response => (this.ipfsMetadataUrl = 'https://dweb.link/ipfs/' + response.data.IpfsHash))
                     .catch(function (error) {
-                        //handle error here
                         console.log(error);
+                        return false;
                     });
+
+                return true;
             },
             handleFileUpload(){
                 this.file = this.$refs.file.files[0];
             },
-            pinFileToIPFS(){
+            async getFileData(){
+                let response = await fetch('http://localhost/minted/public/uploads/60897636aa887_1619621430.png');
+                return await response.blob();
+                // let metadata = {
+                //     type: 'image/jpeg'
+                // };
+                // return new File([data], "test.jpg",metadata);
+
+            },
+            async pinFileToIPFS(){
+                if(this.file == null){
+                    return false;
+                }
                 const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
                 let data = new FormData();
@@ -136,12 +165,37 @@
                     }
                 };
 
-                axios.post(url, data, configUploadFile)
-                    .then(response => (this.info = response.data.IpfsHash))
+                await axios.post(url, data, configUploadFile)
+                    .then(response => (this.ipfsImageUrl = response.data.IpfsHash))
                     .catch(function (error) {
-                        //handle error here
                         console.log(error);
+                        return false;
                     });
+                return true;
+            },
+            async uploadFileWithUrl(){
+                //todo https://stackoverflow.com/questions/37241882/how-to-append-an-image-from-url-to-a-formdata-javascript
+                const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
+                
+                let data = new FormData();
+                data.append('file', await this.getFileData());
+
+                let configUploadFile = {
+                    maxContentLength:'Infinity',
+                    headers: {
+                        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+                        pinata_api_key: this.pinata_api_key,
+                        pinata_secret_api_key: this.pinata_secret_api_key
+                    }
+                };
+
+                await axios.post(url, data, configUploadFile)
+                    .then(response => (this.ipfsImageUrl = response.data.IpfsHash))
+                    .catch(function (error) {
+                        console.log(error);
+                        return false;
+                    });
+                return true;
             }
         }
     }
