@@ -4,7 +4,7 @@
             @onComplete="onComplete"
         >
         </vue-metamask>
-        <p v-if="loading" color=red>LOADING...</p>
+        <p v-if="loading" :style="{color: '#ff0000'}">LOADING...</p>
 
         <div v-if="userData">
             <label>Wallet address:</label>{{userData.metaMaskAddress}}
@@ -171,7 +171,11 @@
                 return true;
             },
             async uploadFileWithUrl(){
-                //todo https://stackoverflow.com/questions/37241882/how-to-append-an-image-from-url-to-a-formdata-javascript
+                //todo: temporary:
+                this.ipfsImageUrl='QmUvS2AbXi4dchK9giDR2JtBwB8JPysjoAY1b7cnoCBRju';
+                return true;
+
+
                 const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
                 
                 let data = new FormData();
