@@ -160,7 +160,7 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
                         </div>
                         <div class="good-info good-infodrop" style="padding-top:0px;">
                             <div class="good-title good-titledrop">
-                                <a class="black-btn specialbuton" href="#"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
+                                <a class="black-btn specialbuton" href="{{ route('singleDrop',@$drop->slug) }}"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
                             </div>
                         </div>
                     </div>

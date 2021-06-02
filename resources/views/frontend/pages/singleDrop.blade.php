@@ -50,22 +50,20 @@
                         <div class="catagori-menu ">
                             <nav>
                                 <ul class="Common_cat_menu_list" >
-                                    @if (!@$data['sub_cat'])
+                           
                                     <li>
                                         <div class="catagori-submenu-area mb-40">
                                             <div class="catagori-submenu-inner">
                                                 <span href="javascript:;" class="submenu-close"> <i class="ti-close"></i> </span>
                                                 <div class="catagori-content">
                                                     <ul>
-                                                        @foreach ($data['sub_category'] as $item)                                                            
-                                                        <li><a href="{{ route('categoryItem',[@$data['category']->slug,@$item->slug]) }}">{{ @$item->title }} <span> ({{ @$item->CountItem( @$data['category']->id,@$item->id) }})</span></a></li>
-                                                        @endforeach
+                                      
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>                                        
-                                    @endif
+                          
                                     
 
                                 </ul>
@@ -129,5 +127,5 @@
     <!-- latest-goods-end -->
 @endsection
 @push('js')
-<script src="{{ asset('public/frontend/js/') }}/category.js"></script>
+<script src="{{ asset('public/frontend/js/') }}/drop.js"></script>
 @endpush
