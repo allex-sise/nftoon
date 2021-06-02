@@ -1,5 +1,4 @@
 @extends('frontend.master')
-@extends('layouts.app')
 @push('css')
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/dashboard.css">
     <link rel="stylesheet" href="{{ asset('public/frontend/') }}/dashboard.css">
@@ -1938,10 +1937,10 @@
                                         @endphp
                                         <p id="demo">Click the button to change the text in this paragraph.</p>
                                         <!-- DE AICI IN JOS PUI CEVA VIZIBIL, RESTUL LASA-LE CA E DE LA TAB-URI -->
-                                        <div id="app">
-                                        <metamask-intro php-variable="{{ @Auth::user()->role_id }}"></metamask-intro>
+                                        <!-- <div id="app">
+                                        <metamask-intro php-variable="{{ @Auth::user()->role_id }}"></metamask-intro> -->
                                             <!-- <metamask-intro php-variable="{{ $variabila }}"></metamask-intro> -->
-                                        </div>  
+                                        <!-- </div>   -->
                                       <p>
                                       
                                       AICI AI TOT CE E IN USER DATABASE, LA USER-UL ACESTA

@@ -4,34 +4,22 @@
             @onComplete="onComplete"
         >
         </vue-metamask>
-        <label>TokenId</label>
-        <input type="number" v-model="token.id"/>
-        <button @click="(mintNft())">MINT EMINEM NFT</button>
-        <div v-if="token.id">
-            <p>Minting tokenId: {{token.id}}</p>
-        </div>
+        <p v-if="loading" color=red>LOADING...</p>
+
         <div v-if="userData">
             <label>Wallet address:</label>{{userData.metaMaskAddress}}
         </div>
-        <form>
-            <input type="text" v-model="tokenData.description"/>Desc:{{tokenData.description}}<br/>
-            <input type="text" v-model="tokenData.background_color"/>{{tokenData.background_color}}<br/>
-            <input type="text" v-model="tokenData.external_url"/>{{tokenData.external_url}}<br/>
-            <p>ImgUrl:{{tokenData.image}}</p>
-            <input type="text" v-model="tokenData.name"/>Name:{{tokenData.name}}<br/>
-            <input type="text" v-model="tokenData.animation_url"/>{{tokenData.animation_url}}<br/>
-            <p>Info:{{ipfsMetadataUrl}}</p>
-            <p>PhpVal: {{phpVariable}}</p>
-        </form>
-        <div class="container">
-            <div class="large-12 medium-12 small-12 cell">
-            <label>File
-                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
-            </label>
-                <button v-on:click="saveFile()">Submit IPFS</button>
-            </div>
+        <button v-on:click="saveFile()">Submit IPFS</button>
+        <!-- <button v-on:click="uploadFileWithUrl()">TEST</button> -->
+        {{ipfsMetadataUrl}}
+        <p/>
+        <label>TokenId</label>
+        <input type="number" v-model="token.id"/>
+        <button @click="(mintNft())">MINT NFT</button>
+        <div v-if="token.id">
+            <p>Minting tokenId: {{token.id}}</p>
         </div>
-        <button v-on:click="uploadFileWithUrl()">TEST</button>
+        <p>Mint response: {{mintResponse}}</p>
     </div>
 </template>
 
@@ -47,7 +35,10 @@
             VueMetamask,
         },
         props:{
-            phpVariable:null
+            description:null,
+            externalUrl:null,
+            name:null,
+            image:null
         },
         data(){
             return {
@@ -57,18 +48,20 @@
                     id: null,
                 },
                 tokenData:{
-                    description: "pinataTest",
+                    description: this.description,
                     background_color: "ffffff",
-                    external_url: "https://minted.ro/",
-                    image: "www.mint.ro",
-                    name:"namePin",
+                    external_url: this.externalUrl,
+                    image: null,
+                    name:this.name,
                     animation_url:null
                 },
                 ipfsMetadataUrl:null,
-                ipfsImageUrl: null,
+                ipfsImageUrl: this.image,
                 file:null,
                 pinata_api_key:null,
-                pinata_secret_api_key:null
+                pinata_secret_api_key:null,
+                loading: false,
+                mintResponse: null
             }
         },
         async mounted(){
@@ -94,13 +87,15 @@
                 );
             },
             async mintNft(){
-                console.log('addr: ',this.userData.metaMaskAddress);
-                await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, 'https://nftcool.free.beeceptor.com/eminem6.json', this.token.id).send({
+                if(this.token.id == null) return;
+                await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, this.ipfsMetadataUrl, this.token.id).send({
                     from: this.userData.metaMaskAddress,
-                }).on("transactionHash");
+                }).on("transactionHash")
             },
             async saveFile() {
-                let isSuccess = await this.pinFileToIPFS();
+                // let isSuccess = await this.pinFileToIPFS();
+                this.loading=true;
+                let isSuccess = await this.uploadFileWithUrl();
 
                 if(isSuccess == false){
                     return;
@@ -108,6 +103,7 @@
 
                 this.tokenData.image = 'https://dweb.link/ipfs/' + this.ipfsImageUrl;
                 await this.pinJSONToIPFS();
+                this.loading=false;
             },
             async pinJSONToIPFS(){
                 const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
@@ -139,7 +135,8 @@
                 this.file = this.$refs.file.files[0];
             },
             async getFileData(){
-                let response = await fetch('http://localhost/minted/public/uploads/60897636aa887_1619621430.png');
+                // let response = await fetch('http://'+this.ipfsImageUrl);
+                let response = await fetch('http://localhost/minted/public/uploads/product/thumbnail/thum-f0378bd7760ae93c7971b96ae2db8bb1.jpeg');
                 return await response.blob();
                 // let metadata = {
                 //     type: 'image/jpeg'
@@ -179,6 +176,7 @@
                 
                 let data = new FormData();
                 data.append('file', await this.getFileData());
+                data.append('name','imageMain');
 
                 let configUploadFile = {
                     maxContentLength:'Infinity',

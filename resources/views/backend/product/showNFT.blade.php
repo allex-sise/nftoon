@@ -1,9 +1,14 @@
 @extends('backend.master')
 @section('mainContent')
 @php
-    $titlu = $data['item']->title;
-    $img =  $_SERVER['HTTP_HOST'].'/mintedfinal/'.$data['item']->icon;
+    $description = $data['item']->description;
+    $externalUrl = $data['item']->demo_url;
+    $name = $data['item']->title;
+    $image =  $_SERVER['HTTP_HOST'].'/minted/'.$data['item']->icon;
 @endphp
+    <!-- todo: above has minted hardcoded, upload will fail -->
+
+<script defer src="{{ mix('js/app.js') }}"></script>
 
 <section class="sms-breadcrumb mb-40 white-box">
     <div class="container-fluid">
@@ -90,12 +95,17 @@
                             <h3 class="mb-0">Adauga NFT-ul pe blockchain  </h3>
                         </div>
                     </div>
-                </div>
-                 <!-- aici faci tu treaba ta ce vrei tu -->
+                </div> 
+
                 <div class="row" style="padding: 15px;">
                     <div class="col-lg-12 no-gutters bg-white" style="padding: 0px 15px 15px 15px;">
                         <div class="main-title sm_mb_20 lm_mb_35">
-                           <p> aici de aciacavja {{ $titlu }} </p>
+                        
+                           <!-- Vue -->
+                            <div id="app">
+                                <metamask-intro description="{{$description}}" external-url="{{$externalUrl}}" name="{{$name}}" image="{{$image}}"></metamask-intro>
+                            </div> 
+
                         </div>
                     </div>
                 </div>
@@ -111,8 +121,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                     <div class="main-title sm_mb_20 lm_mb_35">
-                           <p> aici de aciacavja </p>
-                           <p> {{ $img }}</p>
                         </div>
                        
                     </div>
