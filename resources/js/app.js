@@ -21,6 +21,9 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('metamask-intro', require('./components/MetamaskIntro.vue').default);
+// Vue.component('withdraw-list', require('./components/WithdrawList.vue').default);
+// Vue.component('withdraw-item', require('./components/WithdrawItem.vue').default);
+Vue.component('withdraw-results', require('./components/WithdrawResults.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
