@@ -9,17 +9,18 @@
         <div v-if="userData">
             <label>Wallet address:</label>{{userData.metaMaskAddress}}
         </div>
-        <button v-on:click="saveFile()">Submit IPFS</button>
-        <!-- <button v-on:click="uploadFileWithUrl()">TEST</button> -->
-        {{ipfsMetadataUrl}}
+        {{file.ipfsMetadataUrl}}
         <p/>
         <label>TokenId</label>
         <input type="number" v-model="token.id"/>
-        <button @click="(mintNft())">MINT NFT</button>
+        <button @click="(onMintNft())">MINT NFT</button>
         <div v-if="token.id">
             <p>Minting tokenId: {{token.id}}</p>
         </div>
-        <p>Mint response: {{mintResponse}}</p>
+        <p><button @click="(onGetNftMetadata())">GET METADATA</button></p>
+        <p>{{token.metadata}}</p>
+        <p>{{token.metadataFields}}</p>
+        <img :src=this.tokenData.image />
     </div>
 </template>
 
@@ -29,6 +30,7 @@
     // import {loadBlockchainData} from '../api/loadBlockchain';
     import {createAlchemyWeb3} from "@alch/alchemy-web3";
     import contract from "../assets/Master.json"
+    import axios from 'axios'
 
     export default {
         components: {
@@ -46,6 +48,9 @@
                 decentralizedBankContract: null,
                 token:{
                     id: null,
+                    mintResponse: null,
+                    metadata: null,
+                    metadataFields: null
                 },
                 tokenData:{
                     description: this.description,
@@ -55,27 +60,24 @@
                     name:this.name,
                     animation_url:null
                 },
-                ipfsMetadataUrl:null,
-                ipfsImageUrl: this.image,
-                file:null,
+                file:{
+                    ipfsMetadataUrl:null,
+                    ipfsImageHash: null,
+                },
                 pinata_api_key:null,
                 pinata_secret_api_key:null,
                 loading: false,
-                mintResponse: null
+                
             }
         },
         async mounted(){
             await this.loadBlockchainData();
             this.pinata_api_key=process.env.MIX_PUSHER_PINATA_API_KEY;
             this.pinata_secret_api_key=process.env.MIX_PUSHER_PINATA_SECRET_API_KEY;
-            console.log(this.pinata_api_key);
         },
         methods:{
             onComplete(responseData){
                 this.userData = responseData;
-            },
-            tmp(){
-                document.getElementById("demo").innerHTML = "Hello World";
             },
             async loadBlockchainData(){
                 const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/X3ZvuZL6NkgWOL2Rws8iN7-GO_8qTNSC";
@@ -86,24 +88,62 @@
                     contractAddress
                 );
             },
+            onMintNft(){
+                this.uploadAndMint();
+            },
+            onGetNftMetadata(){
+                this.getNftMetadata();
+            },
+            async uploadAndMint(){
+                await this.saveFile();
+                await this.mintNft();
+            },
             async mintNft(){
-                if(this.token.id == null) return;
-                await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, this.ipfsMetadataUrl, this.token.id).send({
+                if(!this.nftHasNecessaryData()) return;
+                this.token.mintResponse = await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, this.file.ipfsMetadataUrl, this.token.id).send({
                     from: this.userData.metaMaskAddress,
                 }).on("transactionHash")
             },
-            async saveFile() {
-                // let isSuccess = await this.pinFileToIPFS();
-                this.loading=true;
-                let isSuccess = await this.uploadFileWithUrl();
+            nftHasNecessaryData(){
+                if(this.token.id == null || 
+                this.tokenData.background_color== null ||
+                this.tokenData.external_url== null ||
+                this.tokenData.image== null ||
+                this.tokenData.name== null){
+                    return false;
+                }
+                return true;
+            },
+            async getNftMetadata(){
+                if(this.token.id == null) return;
+                this.token.metadata = null;
+                this.token.metadataFields = null;
 
-                if(isSuccess == false){
+                await this.decentralizedBankContract.methods.tokenURI(this.token.id).call()
+                    .then(response => 
+                    this.token.metadata=response);
+
+                //https://stackoverflow.com/questions/28001722/how-to-catch-uncaught-exception-in-promise
+                if(this.token.metadata != null){
+                    await axios.get(this.token.metadata).then(response => (this.token.metadataFields = response.data));
+                }
+            },
+            async saveFile() {
+                this.loading=true;
+
+                let isSuccess = await this.uploadFileWithUrl();
+                if(isSuccess == false || this.file.ipfsImageHash == null){
+                    this.loading=false;
                     return;
                 }
 
-                this.tokenData.image = 'https://dweb.link/ipfs/' + this.ipfsImageUrl;
+                this.tokenData.image = this.createIpfsUrl(this.file.ipfsImageHash);
                 await this.pinJSONToIPFS();
+
                 this.loading=false;
+            },
+            createIpfsUrl(imageHash){
+                return 'https://dweb.link/ipfs/' + imageHash;
             },
             async pinJSONToIPFS(){
                 const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
@@ -122,65 +162,36 @@
                     },
                 };
 
+                let ipfsMetadataUrl = null;
+
                 await axios.post(url, body, configUploadJson)
-                    .then(response => (this.ipfsMetadataUrl = 'https://dweb.link/ipfs/' + response.data.IpfsHash))
+                    .then(response => (ipfsMetadataUrl = response.data.IpfsHash))
                     .catch(function (error) {
                         console.log(error);
                         return false;
                     });
 
+                if(ipfsMetadataUrl == null){
+                    return false
+                }
+                this.file.ipfsMetadataUrl = 'https://dweb.link/ipfs/' + ipfsMetadataUrl
                 return true;
-            },
-            handleFileUpload(){
-                this.file = this.$refs.file.files[0];
             },
             async getFileData(){
-                // let response = await fetch('http://'+this.ipfsImageUrl);
-                let response = await fetch('http://localhost/minted/public/uploads/product/thumbnail/thum-f0378bd7760ae93c7971b96ae2db8bb1.jpeg');
+                let response = await fetch(this.image);
                 return await response.blob();
-                // let metadata = {
-                //     type: 'image/jpeg'
-                // };
-                // return new File([data], "test.jpg",metadata);
 
-            },
-            async pinFileToIPFS(){
-                if(this.file == null){
-                    return false;
-                }
-                const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-
-                let data = new FormData();
-                data.append('file', this.file);
-
-                let configUploadFile = {
-                    maxContentLength:'Infinity',
-                    headers: {
-                        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-                        pinata_api_key: this.pinata_api_key,
-                        pinata_secret_api_key: this.pinata_secret_api_key
-                    }
-                };
-
-                await axios.post(url, data, configUploadFile)
-                    .then(response => (this.ipfsImageUrl = response.data.IpfsHash))
-                    .catch(function (error) {
-                        console.log(error);
-                        return false;
-                    });
-                return true;
             },
             async uploadFileWithUrl(){
                 //todo: temporary:
-                this.ipfsImageUrl='QmUvS2AbXi4dchK9giDR2JtBwB8JPysjoAY1b7cnoCBRju';
-                return true;
+                // this.ipfsImageHash='QmUvS2AbXi4dchK9giDR2JtBwB8JPysjoAY1b7cnoCBRju';
+                // return true;
 
 
                 const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
                 
                 let data = new FormData();
-                data.append('file', await this.getFileData());
-                data.append('name','imageMain');
+                data.append('file', await this.getFileData(), 'nft_'+this.token.id);
 
                 let configUploadFile = {
                     maxContentLength:'Infinity',
@@ -191,12 +202,18 @@
                     }
                 };
 
+                let ipfsImageHash = null;
                 await axios.post(url, data, configUploadFile)
-                    .then(response => (this.ipfsImageUrl = response.data.IpfsHash))
+                    .then(response => (ipfsImageHash = response.data.IpfsHash))
                     .catch(function (error) {
                         console.log(error);
                         return false;
                     });
+
+                if(ipfsImageHash == null){
+                    return false;
+                }
+                this.file.ipfsImageHash = ipfsImageHash;
                 return true;
             }
         }

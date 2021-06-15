@@ -103,7 +103,7 @@
                         
                            <!-- Vue -->
                             <div id="app">
-                                <metamask-intro description="{{$description}}" external-url="{{$externalUrl}}" name="{{$name}}" image="{{$image}}"></metamask-intro>
+                                <metamask-intro description="{{$description}}" external-url="{{$externalUrl}}" name="{{$name}}" image="{{asset(@$data['item']->icon)}}"></metamask-intro>
                             </div> 
 
                         </div>
