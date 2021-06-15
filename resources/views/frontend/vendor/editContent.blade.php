@@ -5,13 +5,25 @@
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/editContent.css">
 @endpush
 @section('content')
+<style>
+.banner-area4 .banner-area-inner .banner-info h2 {
+    font-size: 36px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 0;
+    text-align: left;
+    margin-top: 340px;
+}
+</style>
 <input type="text" hidden  class="id" value="{{ Auth::user()->id}}">
     <!-- banner-area start -->
     <div class="banner-area4">
             <div class="banner-area-inner">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-6">
+                    <div class="col-xl-10 offset-xl-1 col-12">
                             <div class="banner-info knowledge_title">
                                 <h2>@lang('lang.update') @lang('lang.product')</h2>
                             </div>
@@ -152,31 +164,8 @@
                                                         <p>
                                                             @lang('lang.thumdnail_message')
                                                         </p>
-                                                        <!-- DM_uploader  -->
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="DM_uploader d-flex align-items-center justify-content-between mb_20px">
-                                                                    @php
-                                                                       $theme_preview_array=explode(",", $data['edit']->theme_preview); 
-                                                                    @endphp
-                                                                    <h5 id="preview_file" >{{ @count($theme_preview_array) }} @lang('lang.images_found')</h5>
-                                                                    <a href="javascript:void(0)" class="boxed-btn boxed_button">@lang('lang.browse_file')
-                                                                                    <input type="file" onchange="previewUpload()" value="{{ @$data['edit']->theme_preview }}" id="preview_upload" name="theme_preview" >
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                               
-                                                    @if ($errors->has('theme_preview'))
-                                                        <span class="invalid-feedback invalid-select"
-                                                            role="alert">
-                                                            <strong>{{ $errors->first('theme_preview') }}</strong>
-                                                        </span>
-                                                    @endif
-                                                    <p>@lang('lang.theme_preview_message')
-                                                        <br>
-                                                        <strong>[@lang('lang.mark_all_images')]</strong> 
-                                                    </p>
+                                                  
+                                                
                                                     <!-- DM_uploader  -->
                                                 <div id="main_file_upload_section" style="display: {{ @$data['edit']->is_upload == 1 ?'block':'none'}}" >
                                                     <div class="row d-none">
@@ -233,7 +222,7 @@
                                                             </span>
                                                         @endif
                                                     </div> 
-                                                    <p>@lang('lang.ZIP_containing_an_installable') {{@Session::get('categorySlect')->title}} @lang('lang.theme')</p>
+                                                 
                                                     {{-- <p>@lang('lang.file_message') </p> --}}
                                                     {{-- @foreach ($data['category'] as $item)
                                                     @if ($item->file_permission == 1 && @$data['edit']->category_id == $item->id)
@@ -260,13 +249,10 @@
                                                     <h3>@lang('lang.categories_and_attributes')</h3>
                                                             <select class="wide"  name="sub_category_id" id="sub_category_id">
 
-                                                                @if (!@$data['edit']->sub_category_id)
-                                                                <option data-display="@lang('lang.category')*">@lang('lang.category')*</option>
-                                                                @endif
-
-                                                                @foreach ($data['edit']->category->subCategory as $value)
-                                                                     <option value="{{ $value->id }}" {{@$data['edit']->sub_category_id == $value->id ? 'selected':''}} class="pl"> -{{ $value->title }}</option>
-                                                                @endforeach
+                                                            @foreach($data['category'] as $item)
+                                                                <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('category') ==( @$item->id ? 'selected':'')}}>{{@$item->title}}</option>
+                                                            @endforeach
+                                                  
                                                             </select>
   
                                                             <div class="disable_key">
@@ -302,8 +288,8 @@
                                             </div>
                                             <div class="upload_description gray-bg padding-bottom prise-item">
                                                 <div class="upload_hding">
-                                                    <h3>@lang('lang.message_to_the_reviewer')</h3>
-                                                    <p>@lang('lang.upload_heading')</p>
+                                                    <h3>Pret</h3>
+                                                    <!-- <p>@lang('lang.upload_heading')</p> -->
                                                 </div>
                                                          @php
                                                             $regular = App\ManageQuery::BuyerFees(1);
@@ -328,7 +314,7 @@
                                                                 </div>
                                                                 <span>+</span>
                                                                 <div class="input_field">
-                                                                    <label for="">@lang('lang.BUYER_FEE')</label>
+                                                                    <label for="">Comison Minted</label>
                                                                     <input type="text" id="Re_buyer" name="Re_buyer" hidden value="{{ @$data['edit']->Re_buyer}}" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
                                                                     <input type="text"  disabled placeholder="{{ @GeneralSetting()->currency_symbol}} {{ @$data['edit']->Re_buyer}}" onkeyup="regular(this.value)">
                                                                 </div>
@@ -343,78 +329,13 @@
                                                                     <input type="text" name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{ @GeneralSetting()->currency_symbol}} {{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" id="Re_total" >
                                                                     <input type="text" disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}">
                                                                 </div>
-                                                                <div class="recomander">
-                                                                    <p>@lang('lang.recommended') <br>
-                                                                        @lang('lang.purchase_price') <br>
-                                                                       {{ @GeneralSetting()->currency_symbol}}{{ @$regular_recommended_price[0][0]  }} - {{ @GeneralSetting()->currency_symbol}}{{@$regular_recommended_price[0][1]}}</p> 
-                                                           </div>
                                                         </div>
                                                         @php
                                                             $extended = App\ManageQuery::BuyerFees(2);
                                                         @endphp
-                                                        <div class="upload_inner d-flex align-items-center mb-10">
-                                                                <span class="lisence-name">@lang('lang.extended_license')</span>
-                                                                <span>{{ @GeneralSetting()->currency_symbol}}</span>
-                                                                <div class="input_field">
-                                                                    <label for="">@lang('lang.ITEM_PRISE')</label>
-                                                                    <input type="text" id="E_item" name="E_item" onkeyup="Extended(this.value)" value="{{isset($data['edit'])? $data['edit']->E_item:old('E_item')}}">
-                                                                </div>
-                                                                <span>+</span>
-                                                                <div class="input_field">
-                                                                    <label for="">@lang('lang.BUYER_FEE')</label>
-                                                                   <input type="text" id="E_buyer" name="E_buyer" hidden value="{{ @$data['edit']->E_buyer}}" value="{{isset($data['edit'])? $data['edit']->E_buyer:old('E_buyer')}}">
-                                                                   <input type="text"   disabled placeholder="{{ @GeneralSetting()->currency_symbol}} {{ @$data['edit']->E_buyer}}" onkeyup="Extended(this.value)">
-                                                                </div>
-                                                                <span>=</span>
-                                                                <div class="input_field last-one">
-                                                                    <label for="">@lang('lang.purchase_price')</label>
-                                                                    <input type="text" id="E_total" value="{{isset($data['edit'])? $data['edit']->Ex_total:old('Ex_total')}}" disabled placeholder="{{ @GeneralSetting()->currency_symbol}} {{isset($data['edit'])? $data['edit']->Ex_total:old('Ex_total')}}">
-                                                                    <input type="text" hidden id="Ex_total" disabled placeholder="{{ @GeneralSetting()->currency_symbol}} 100" name="Ex_total" value="{{isset($data['edit'])? $data['edit']->Ex_total:old('Ex_total')}}">
-                                                                    <input type="hidden" name="Ex_total_price" id="ex_price" value="{{isset($data['edit'])? $data['edit']->Ex_total:old('Ex_total')}}">
-                                                                </div>
-                                                                <div class="recomander">
-                                                                    <p>@lang('lang.recommended') <br>
-                                                                        @lang('lang.purchase_price') <br>
-                                                                        {{ @GeneralSetting()->currency_symbol}}{{ @$extended_recommended_price[0][0]  }} - {{ @GeneralSetting()->currency_symbol}}{{@$extended_recommended_price[0][1]}}</p> 
-                                                          
-                                                            </div>
-                                                        </div>
-                                                        <div class="upload_inner d-flex align-items-center mb-10">
-                                                            <span class="lisence-name"> @lang('lang.commercial') @lang('lang.License')</span>
-                                                            <span>{{ @GeneralSetting()->currency_symbol}}</span>
-                                                            <div class="input_field">
-                                                                <label for="">@lang('lang.ITEM_PRISE')</label>
-                                                                <input  type="text" step="any"   id="C_item" name="C_item" onkeyup="Commercial(this.value)" value="{{isset($data['edit'])? $data['edit']->C_item:old('C_item')}}">
-                                                            </div>
-                                                            <span>+</span>
-                                                            <div class="input_field">
-                                                                <label for="">@lang('lang.BUYER_FEE')</label>
-                                                                <input  type="text" step="any"   id="C_buyer" name="C_buyer" hidden value="{{ @$item_fee->co_fee}}" value="{{isset($data['edit'])? $data['edit']->C_buyer:old('C_buyer')}}">
-                                                                <input  type="text"    disabled placeholder="{{ @GeneralSetting()->currency_symbol}}{{ @$item_fee->co_fee}}" onkeyup="Commercial(this.value)">
-                                                            </div>
-                                                            <span>=</span>
-                                                            <div class="input_field last-one">
-                                                                <label for="">@lang('lang.purchase_price')</label>
-                                                                <input  type="text"     disabled id="C_total"  placeholder="{{ @GeneralSetting()->currency_symbol}} {{isset($data['edit'])? $data['edit']->C_total:old('C_total')}}">
-                                                                <input  type="text"  disabled hidden id="Co_total" placeholder="{{ @GeneralSetting()->currency_symbol}}"  value=" {{isset($data['edit'])? $data['edit']->C_total:old('C_total')}}">
-                                                                <input type="hidden" name="C_total_price" id="c_price" value="{{isset($data['edit'])? $data['edit']->C_total:old('C_total')}}">
-                                                            </div>
-                                                            <div class="recomander">
-                                                                <p>@lang('lang.recommended') <br>
-                                                                        @lang('lang.purchase_price') <br>
-                                                                        {{ @GeneralSetting()->currency_symbol}}{{ @$recommended_price_commercial[0][0]  }} - {{ @GeneralSetting()->currency_symbol}}{{@$recommended_price_commercial[0][1]}}</p> 
-                                                            
-                                                            </div>
-                                                    </div>
-                                                        <p>@lang('lang.price_message') </p>
+                                                     
                                                 </div>
-                                            <div class="upload_description gray-bg padding-bottom">
-                                                <h3>@lang('lang.message_to_the_reviewer')</h3>
-                                                    <textarea class="autherMsg" name="user_msg" id="autherMsg" cols="30" rows="10" 
-                                                    placeholder="Messages">{{@$data['edit']->user_msg}}</textarea>
-                                              
-                                                    <p>@lang('lang.submit_message') {{ @GeneralSetting()->system_name }}</p>
-                                                </div>
+                                          
                                             </div>
                                             @if (@$item_preview!=null)
                                             <p class="text-danger text-center">@lang('lang.your_previous_update_is_pending')</p>

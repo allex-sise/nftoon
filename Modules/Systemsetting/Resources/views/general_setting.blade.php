@@ -340,7 +340,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-meta">
+                                <!-- <div class="single-meta">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="name">
@@ -380,7 +380,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="single-meta">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
@@ -401,7 +401,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-meta">
+                                <!-- <div class="single-meta">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="name">
@@ -420,7 +420,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 @if (moduleStatusCheck('AmazonS3') == true)
                                     
                                     <div class="single-meta">

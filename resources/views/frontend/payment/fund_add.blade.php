@@ -4,13 +4,24 @@
 <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
 @endpush
 @section('content')
-
+<style>
+.banner-area4 .banner-area-inner .banner-info h2 {
+    font-size: 36px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 0;
+    text-align: left;
+    margin-top: 340px;
+}
+</style>
       <!-- banner-area start -->
     <div class="banner-area4">
         <div class="banner-area-inner">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-10 offset-xl-1 col-12">
                         <div class="banner-info">
                             <h2>@lang('lang.fund_deposit')</h2>
                         </div>
@@ -149,8 +160,7 @@
                                                 
                                             @else
                                                 <div class="check-out-btn ">
-                                                    <button type="submit" id="deposit_" class="boxed-btn mt-1">@lang('lang.save')
-                                                        @lang('lang.info')</button>
+                                                    <button type="submit" id="deposit_" class="boxed-btn mt-1">Adauga Fonduri</button>
                                                 </div>
                                             @endif
                                     </div>
@@ -159,8 +169,7 @@
                                     <input type="hidden" name="stripeToken" id="stripeToken" value="" /> --}} 
                                     @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
                                         <div class="check-out-btn">
-                                            <button type="submit" id="deposit_" class="boxed-btn">@lang('lang.save')
-                                                @lang('lang.info')</button>
+                                            <button type="submit" id="deposit_" class="boxed-btn">Salveaza Informatia si Adauga Fonduri</button>
                                         </div>
                                     @endif
                                 </form>

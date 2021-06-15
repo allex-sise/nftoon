@@ -717,7 +717,7 @@
                                                                     </div>
                                                                     <div class="check-out-btn">
                                                                         <button type="submit" class="boxed-btn">@lang('lang.save')
-                                                                            @lang('lang.changes')</button>
+                                                                            Modificarile</button>
                                                                     </div>
                                                                 </form>
                                                                 {{-- personal  --}}
@@ -762,7 +762,7 @@
                                                                                 @endif
                                                                             </div>
                                                                             <div class="check-out-btn col-12 text-center mb-4">
-                                                                                <button type="submit" class="boxed-btn">@lang('lang.changes')
+                                                                                <button type="submit" class="boxed-btn">Schimba
                                                                                     @lang('lang.password')</button>
                                                                             </div>
                                                                         </div>
@@ -890,7 +890,7 @@
                                                                     </div>
                                                                     <div class="check-out-btn">
                                                                         <button type="submit" class="boxed-btn">@lang('lang.save')
-                                                                            @lang('lang.changes')</button>
+                                                                            Modificarile</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -962,7 +962,7 @@
                                                                                 </span>
                                                                                 @endif
                                                                                 <button  type="submit" class="boxed-btn">@lang('lang.save')
-                                                                                    @lang('lang.changes')</button>
+                                                                                   Modificarile</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -22,11 +22,11 @@
                             </div>
                                     <div class="profile_name">
                                     <h5>{{  @$data['user']->username }}</h5>
-                                        <p>{{ @$data['user']->profile->country->name , ','}} @lang('lang.member_since') {{ DateFormat(@$data['user']->created_at)}} </p>
+                                        <p>{{ @$data['user']->profile->country->name , ','}}<br /> @lang('lang.member_since') {{ DateFormat(@$data['user']->created_at)}} </p>
                                         <div class="view-follow">
                                              
                                             <a href="{{ route('user.portfolio',@$data['user']->username) }}" class="boxed-btn">@lang('lang.view') @lang('lang.portfolio')</a>
-                                            @if (@$data['user']->id != Auth::id())
+                                            <!-- @if (@$data['user']->id != Auth::id())
                                                 @if (@Auth::check())
                                                     @if (CheckFollow(Auth::user()->id,$data['user']->id))
                                                         <a href="#" class="boxed-btn" id="UnfollowUser">@lang('lang.unfollow')</a>
@@ -36,7 +36,7 @@
                                                 @else
                                                 <a href="{{ url('customer/login') }}" class="boxed-btn">@lang('lang.follow')</a>
                                                 @endif
-                                            @endif
+                                            @endif -->
                                         </div>
                                     </div>
                                 </div>
@@ -44,135 +44,7 @@
                                     $item =App\ManageQuery::CountItemSell($data['user']->id); 
                                 @endphp
                                 <div class="rating d-flex">
-                                    <div class="rating-star">
-                                        
-                                     @php
-                                        $review_total=count(@$data['item_review']);
-                                        $total_star=0;
-                                    @endphp
-                                    @if (@$review_total > 0)
-                                     
-                                    @foreach ( @$data['item_review'] as $review)
-                                    @php
-                                        $total_star = @$total_star+@$review->rating;
-                                    @endphp
-                                    @php
-                                        $countable_star=$total_star/$review_total;
-                                        $row_countable_star= floor($countable_star * 100) / 100;
-                                        if ($row_countable_star>0 && $row_countable_star<=.5) {
-                                            $countable_star=.5;
-                                        }  
-                                        if ($row_countable_star>.5 && $row_countable_star<=1) {
-                                            $countable_star=1;
-                                        } 
-                                         if ($row_countable_star>1 && $row_countable_star<=1.5) {
-                                            $countable_star=1.5;
-                                            
-                                        }  
-                                        if ($row_countable_star>1.5 && $row_countable_star<=2) {
-                                            $countable_star=2;
-                                            
-                                        } 
-                                        if ($row_countable_star>2 && $row_countable_star<=2.5) {
-                                            $countable_star=2.5;
-                                            
-                                        } 
-                                        if ($row_countable_star>2.5 && $row_countable_star<=3) {
-                                            $countable_star=3;
-                                            
-                                        }
-                                         if ($row_countable_star>3 && $row_countable_star<=3.5) {
-                                            $countable_star=3.5;
-                                            
-                                        } 
-                                        if ($row_countable_star>3.5 && $row_countable_star<=4) {
-                                            $countable_star=4;
-                                            
-                                        } 
-                                        if($row_countable_star>4 && $row_countable_star<=4.5) {
-                                            $countable_star=4.5;
-                                            
-                                        }
-                                        if($row_countable_star>4.5 && $row_countable_star<=5) {
-                                            $countable_star=5;
-                                            
-                                        }
-                                    @endphp
-                                   
-                                    
-                                         @endforeach
-                                         <p>{{@$countable_star}} @lang('lang.Ratings')</p>
-                                        @if(@$countable_star == .5)
-                                        <i class="fa fa-star-half-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 1)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 1.5)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 2)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 2.5)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 3)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 3.5)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 4)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        @elseif(@$countable_star == 4.5)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        @elseif(@$countable_star == 5)
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        @endif
-                                        @if (@$review_total > 0)
-                                            @else
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            @endif
-                                        @endif
-                                    </div>
+                                 
                                     <div class="sate-total">
                                         <p>@lang('lang.total') @lang('lang.sales')</p>
                                         <h3>{{ @$item}}</h3>
@@ -202,14 +74,14 @@
                                         <a class="nav-link {{ @$data['portfolio'] == url()->current() ?'active':'' }}" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                             aria-controls="profile" aria-selected="false">@lang('lang.portfolio')</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link {{ @$data['followers'] == url()->current() ?'active':'' }}" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                                             aria-controls="contact" aria-selected="false">@lang('lang.followers')</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['followings'] == url()->current() ?'active':'' }}" id="Followings-tab" data-toggle="tab" href="#Followings"
                                             role="tab" aria-controls="contact" aria-selected="false">@lang('lang.followings')</a>
-                                    </li>
+                                    </li> -->
                                     
                                 </ul>
                             </nav>

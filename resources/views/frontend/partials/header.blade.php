@@ -173,6 +173,22 @@ h3.h3clss{
     color: #000!important;
     border: 1px solid #000!important;
 }
+.checkout_area .check-out-btn button {
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+}
+.single_deposite_item .deposite_header {
+    background: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 0;
+    border-radius: 5px 5px 0 0;
+    transition: .3s;
+}
 </style>
 <header>
    

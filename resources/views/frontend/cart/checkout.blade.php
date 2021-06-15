@@ -8,6 +8,12 @@
    $infix_general_settings = app('infix_general_settings');
 @endphp
 <style>
+.checkout_area .check-out-btn button {
+    border: 0;
+    cursor: pointer;
+    background-image: none;
+    background-color: #000;
+}
 .banner-area4 .banner-area-inner .banner-info h2 {
     font-size: 36px;
     font-family: "Quicksand", sans-serif;
@@ -16,15 +22,7 @@
     line-height: 48px;
     margin-bottom: 0;
     text-align: left;
-    position: relative;
-    bottom: -156px;
-    left: 120px;
-}
-.checkout_area .check-out-btn button {
-    border: 0;
-    cursor: pointer;
-    background-image: none;
-    background-color: #000;
+    margin-top: 340px;
 }
 </style>
 @section('content')
@@ -33,7 +31,7 @@
     <div class="banner-area-inner">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-10 offset-xl-1 col-12">
                     <div class="banner-info">
                         <h2>@lang('lang.Checkout')</h2>
                     </div>

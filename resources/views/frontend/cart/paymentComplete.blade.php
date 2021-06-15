@@ -27,7 +27,7 @@
                                     <a href="{{ route('author.download',@Auth::user()->id) }}">@lang('lang.download') @lang('lang.page')</a> 
                                     @endif
                                     @if (Auth::user()->role_id == 5)
-                                    <a href="{{ url('downloads/'.@Auth::user()->username) }}">@lang('lang.download') @lang('lang.page')</a> 
+                                    <a href="{{ url('downloads/'.@Auth::user()->username) }}">@lang('lang.page') @lang('lang.download') </a> 
                                     {{-- <a href="{{ route('customer.profile',@Auth::user()->username) }}">Download page</a>  --}}
                                     @endif
 
@@ -51,8 +51,7 @@
                     <div class="payment_confirm_prise_wrap gray-bg">
                         <div class="payment_confirm_prise_header d-flex justify-content-between align-items-center">
                             <h4>@lang('lang.your_order')</h4>
-                           {{--  <span> <a href="javascript:;">Install for $50</a>
-                            </span> --}}
+                       
                         </div>
 
                         @foreach ($data['order'] as $value)
@@ -72,33 +71,28 @@
                                             <div class="payment_info">
                                                     <h5> <a href="{{ route('singleProduct',[str_replace(' ', '-',$item->Item->title),$item->Item->id]) }}">{{ @$item->Item->title }}</a> </h5>
                                                     <p>@lang('lang.item_by') <a href="#">{{@$obj['username']}}</a> </p>
-                                                    <p>@lang('lang.license'): <a href="#"> 
-                                                        {{-- {{ @$obj['license_type'] == 1?'Regular':'Extended'}} --}}
-                                                        @if (@$obj['license_type']== 1)
-                                                                @lang('lang.Regular')
-                                                            @elseif(@$obj['license_type']== 2)
-                                                                @lang('lang.extended')
-                                                            @else
-                                                                @lang('lang.commercial')
-                                                            @endif
-                                                            @lang('lang.License')</a></span>
-                                                    </a> </p>
-                                                    <p>@lang('lang.Support'): <a href="#"> {{ @$obj['support_time'] == 1?'6 Months':'12 Mohths'}} @lang('lang.license')</a> </p>
+                                                   
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-md-5">
                                         <div class="payment_btn_prise d-flex align-items-center">
-                                            @if (Auth::user()->role_id == 4)
+                                            <!-- @if (Auth::user()->role_id == 4)
                                                 <a class="boxed-btn" href="{{ route('user.ItemDownloadAll',@$item->order_id) }}">@lang('lang.download')</a> 
                                             @endif
                                             @if (Auth::user()->role_id == 5)
                                                 <a class="boxed-btn" href="{{ route('user.ItemDownloadAll',@$item->order_id) }}">@lang('lang.download')</a> 
+                                            @endif -->
+                                            @if (Auth::user()->role_id == 4)
+                                                <a class="boxed-btn" href="{{ url('downloads/'.@Auth::user()->username) }}">Vezi la tine in profil</a> 
+                                            @endif
+                                            @if (Auth::user()->role_id == 5)
+                                                <a class="boxed-btn" href="{{ url('downloads/'.@Auth::user()->username) }}">Vezi la tine in profil</a> 
                                             @endif
                                              {{-- <a href="{{ @$item->Item->category->productSetting->url }}" target="_blank" class="boxed-btn-white">{{ isset($item->Item->category->productSetting) ?  $item->Item->category->productSetting->title .' '. GeneralSetting()->currency_symbol .''. $item->Item->category->productSetting->amount :''}}</a> --}}
                                             <div class="net_prise">
                                                 <span>@lang('lang.price')</span>
-                                                <h3>{{@$infix_general_settings->currency_symbol}}{{ @$item->subtotal }}</h3>
+                                                <h3>{{ @$item->subtotal }} {{@$infix_general_settings->currency_symbol}}</h3>
                                             </div>
                                         </div>
                                     </div>

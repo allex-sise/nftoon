@@ -12,6 +12,16 @@
 .btnspecialz{
     background-image: none!important; background-color: #000!important; border-radius: 50px;
 }
+.banner-area4 .banner-area-inner .banner-info h2 {
+    font-size: 36px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 0;
+    text-align: left;
+    margin-top: 340px;
+}
 </style>
 <input type="hidden" id="currency_symbol" value="{{GeneralSetting()->currency_symbol}}">
 @section('content')
@@ -20,9 +30,9 @@
             <div class="banner-area-inner">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-12">
+                        <div class="col-xl-10 offset-xl-1 col-12">
                             <div class="banner-info">
-                                <h2>@lang('lang.shopping_cart')</h2>
+                                <h2>Comanda Ta</h2>
                             </div>
                         </div>
                     </div>

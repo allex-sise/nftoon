@@ -209,7 +209,7 @@
                             </div>
 
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-6 d-flex relation-button mb-40">
                                 <p class="text-uppercase mb-0">@lang('lang.auto_approval')</p> 
                                 <div class="d-flex radio-btn-flex ml-30">
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                        
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-lg-6 mb-40 d-flex relation-button">
                                 <p class="text-uppercase mb-0">@lang('lang.google_analytics')</p>
@@ -252,7 +252,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-40 d-flex relation-button">
+                            <!-- <div class="col-lg-6 mb-40 d-flex relation-button">
                                 <p class="text-uppercase mb-0">@lang('lang.public_vendor_registration')</p>
                                 <div class="d-flex radio-btn-flex ml-30">
                                     <div class="mr-20">
@@ -264,7 +264,7 @@
                                         <label for="public_vendor_disable">@lang('lang.disable')</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         @if (moduleStatusCheck('AmazonS3') == true)
                             

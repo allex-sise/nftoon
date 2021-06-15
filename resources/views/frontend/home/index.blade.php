@@ -135,7 +135,7 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
             <div class="col-xl-12">
                 <div class="features-wrap latest-goods-area" id="">
                 @foreach ($data['drop'] as $drop)
-                <div class="col-xl-8 col-md-8 grid-item cat1 cat1 float-left pull-left mg20px">
+                <div class="col-xl-8 col-md-8 offset-lg-2 grid-item cat1 cat1 float-left pull-left mg20px">
                     <div class="single-goods">
                         <div class="col-xl-7 float-left">
                             <div class="goods-thumb">
@@ -145,20 +145,20 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
                             </div>
                         </div>
                         <div class="col-xl-5 float-left">
-                        <div class="good-info">
+                        <div class="good-info p-0">
                             <div class="good-title good-titledrop">
                                 <h3><a href="http://localhost/mintedfinal/item/the-bitcoin-angel-(open-edition)-#1569/4157/1">{{ $drop->name }}</a></h3>
-                                <p> {{ $drop->description }}</p>
+                                <p style="line-height: 16px; padding-top: 20px;"> {{ $drop->description }}</p>
                             </div>
                         </div>
-                        <div class="good-info good-infodrop" style="padding-top:0px;">
+                        <div class="good-info good-infodrop" style="padding-left: 0px; padding-top: 20px;">
                             <div class="good-title good-titledrop">
                                 <h3 class="h3clss">Drop-ul expira pe:</h3>
                                 <!-- <div>Registration closes in <span id="time">05:00</span> minutes!</div> -->
                                 <div data-countdown="{{ $drop->expdate }}" style="font-size: 25px;"></div>
                             </div>
                         </div>
-                        <div class="good-info good-infodrop" style="padding-top:0px;">
+                        <div class="good-info good-infodrop" style="padding-top:0px; padding-left: 0px;">
                             <div class="good-title good-titledrop">
                                 <a class="black-btn specialbuton" href="{{ route('singleDrop',@$drop->slug) }}"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
                             </div>
@@ -171,7 +171,7 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
             </div>
             <div class="col-lg-12">
                 <div class="view-features text-center mt-80">
-                   <a href="{{ route('feature_item')}}"  class="black-btn">Vezi toate Drop-urile</a>
+                   <a href="{{ route('dropsAll')}}"  class="black-btn">Vezi toate Drop-urile</a>
                 </div>
             </div>
         </div>

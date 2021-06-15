@@ -7,6 +7,18 @@
 <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
 <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
 @endpush
+<style>
+.banner-area4 .banner-area-inner .banner-info h2 {
+    font-size: 36px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 0;
+    text-align: left;
+    margin-top: 340px;
+}
+</style>
 @section('content')
 
       <!-- banner-area start -->
@@ -14,7 +26,7 @@
         <div class="banner-area-inner">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-10 offset-xl-1 col-12">
                         <div class="banner-info">
                             <h2>@lang('lang.fund_deposit')</h2>
                         </div>
@@ -49,73 +61,13 @@
                                         </script>
                                         <input hidden value="{{ Session::get('deposit_amount') }}"  readonly="readonly" type="text" id="amount" name="amount">
                                         <div class="mt-5 text-center mb-5">
-                                            <button href="#" class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button>
+                                            <button href="#" class="boxed-btn" type="submit">Plateste</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         @endif
 
-                        @if( in_array('PayPal',$data))
-                            <!-- single_deposite_item  -->
-                            <div class="single_deposite_item">
-                                <div class="deposite_header text-center">
-                                    {{__('Paypal')}}
-                                </div>
-                                <div class="deposite_button text-center">
-                                    <form action="{{ route('paypal_deposit')}}" method="POST">
-                                        @csrf
-                                        <input hidden value="{{ convert_for_paypal(Session::get('deposit_amount')) }}"  readonly="readonly" type="text" id="amount" name="amount">
-                                        <div class="mt-5 text-center mb-5">
-                                            {{-- <button href="#" class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button> --}}
-                                            <input type="submit" name="submit" style="border: aliceblue;"  class="boxed-btn" value="@lang('lang.make') @lang('lang.payment')">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        @endif
-
-                        @if( in_array('Razorpay',$data)) 
-                            <!-- single_deposite_item  -->
-                            <div class="single_deposite_item">
-                                <div class="deposite_header text-center">
-                                    Razorpay
-                                </div>
-                                <div class="deposite_button text-center"> 
-                                    <form action="{{ route('user.deposit_payment.razer')}}" method="POST">
-                                        @csrf                                                       
-                                        <script src="https://checkout.razorpay.com/v1/checkout.js"
-                                                data-key="{{ env('RAZOR_KEY') }}"
-                                                data-amount={{ (int)Session::get('deposit_amount')*100 }}
-                                                data-buttontext=""
-                                                data-name="{{str_replace('_', ' ',config('app.name') ) }}"
-                                                data-description="Cart Payment"
-                                                data-image="{{ asset(GeneralSetting()->logo) }}"
-                                                data-prefill.name= {{ @Auth::user()->username }}
-                                                data-prefill.email= {{ @Auth::user()->email }}
-                                                data-theme.color="#531191">
-                                        </script>
-                                        <div class="mt-5 text-center mb-5">
-                                                <button href="#" class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        @endif
-
-                        @if( in_array('Bank',$data)) 
-                            <!-- single_deposite_item  -->
-                            <div class="single_deposite_item">
-                                <div class="deposite_header text-center">
-                                    Bank
-                                </div>
-                                <div class="deposite_button text-center">
-                                    <div class="mt-5 text-center mb-5">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="boxed-btn">Make Payment</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                     </div>
                     <div  class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">

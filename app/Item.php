@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $fillable =[
-        'title','feature1','feature2','description','thumdnail','theme_preview','main_file','file','category_id','resolution','widget','compatible_browsers','compatible_with','framework','software_version','Re_item',
-        'Re_buyer','Reg_total','E_item','E_buyer','Ex_total','user_msg','active_status'
+        'title','feature1','feature2','description','thumdnail','main_file','file','category_id','resolution','widget','compatible_browsers','compatible_with','framework','software_version','Re_item',
+        'Re_buyer','Reg_total','user_msg','active_status'
     ];
 
     public function subCategory()

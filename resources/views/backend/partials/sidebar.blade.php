@@ -40,30 +40,17 @@
                     @lang('lang.management') Useri 
                 </a>
                 <ul class="collapse list-unstyled" id="subMenuUser">
-                    @if(Auth::user()->role_id == 1 || in_array(2, $permitted_modules))
-                    <li>
-                      <a href="{{ route('admin.department') }}" class="action-url">@lang('lang.department')</a>
-                    </li>
-                    @endif
+                   
                     @if(Auth::user()->role_id == 1 || in_array(2, $permitted_modules))
                     <li>
                       <a href="{{ route('admin.user_list') }}" class="action-url">@lang('lang.list') @lang('lang.users') </a>
                     </li>
                     @endif
 
-                    @if(Auth::user()->role_id == 1 || in_array(2, $permitted_modules))
-                    <li>
-                      <a href="{{ route('admin.vendor') }}" class="action-url">@lang('lang.list') @lang('lang.authors') </a>
-                    </li>
-                    @endif
+                 
                     @if(Auth::user()->role_id == 1 || in_array(2, $permitted_modules))
                     <li>
                         <a href="{{ route('admin.customer') }}" class="action-url">@lang('lang.list') @lang('lang.customers')  </a>
-                    </li>
-                    @endif
-                    @if(Auth::user()->role_id == 1 || in_array(2, $permitted_modules))
-                    <li>
-                        <a href="{{ route('admin.agent') }}" class="action-url">@lang('lang.list') Agenti  </a>
                     </li>
                     @endif
 
@@ -105,27 +92,7 @@
 
             @endif
 
-            @if(Auth::user()->role_id == 1 || in_array(4, $permitted_modules))
-            <li>
-                <a href="#bankPayment" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <span class="flaticon-analytics"></span>
-                    @lang('lang.bank_payment')
-                </a>
-                <ul class="collapse list-unstyled" id="bankPayment">
-                    @if(Auth::user()->role_id == 1 || in_array(4, $permitted_modules))
-                    <li>
-                        <a href="{{ route('admin.depositRequest') }}">@lang('lang.bank_deposit_request') </a>
-                    </li>
-                    @endif
-                    @if(Auth::user()->role_id == 1 || in_array(4, $permitted_modules))
-                    <li>
-                        <a href="{{ route('admin.depositApproved') }}">@lang('lang.approved_request') </a>
-                    </li>
-                    @endif
-                </ul>
-            </li>
-
-            @endif
+         
             {{-- @php
                 $data=  App\AssignModulePermission::where('module_id',4)->first();
             @endphp
@@ -162,7 +129,11 @@
                     NFT-uri
                 </a>
                 <ul class="collapse list-unstyled" id="subMenuItem">
-                
+                    @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+                    <li>
+                        <a href="{{ route('admin.content') }}">Toate NFT-urile</a>
+                    </li>
+                    @endif  
                     @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
                     <li>
                       <a href="{{route('admin.product_upload')}}">Adauga NFT</a>
@@ -191,23 +162,13 @@
                     {{-- @php
                         $module_link=  App\AssignModulePermission::where('module_id',6)->first();
                     @endphp --}}
-                    @if(Auth::user()->role_id == 1 || in_array(6, $permitted_modules))
-                    <li>
-                        <a href="{{ route('admin.item_preview') }}">Previzualizare NFT-uri</a>
-                    </li>
-
-                    @endif
+                 
                     {{-- @php
                         $module_link=  App\AssignModulePermission::where('module_id',7)->first();
                     @endphp --}}
                     @if(Auth::user()->role_id == 1 || in_array(7, $permitted_modules))
                     <li>
                         <a href="{{ route('admin.content_pending') }}">NFT-uri in Asteptare</a>
-                    </li>
-                    @endif
-                    @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
-                    <li>
-                        <a href="{{ route('admin.content') }}">Toate NFT-urile</a>
                     </li>
                     @endif
                     @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
@@ -250,12 +211,12 @@
             <li>
                 <a href="#ItemFee" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <span class="flaticon-analytics"></span>
-                    @lang('lang.buyer') @lang('lang.fee')
+                    Comisioane
                 </a>
                 <ul class="collapse list-unstyled" id="ItemFee">
                     @if(Auth::user()->role_id == 1 || in_array(10, $permitted_modules))
                     <li>
-                       <a href="{{ route('admin.item_fee') }}">@lang('lang.buyer') @lang('lang.fee')</a>
+                       <a href="{{ route('admin.item_fee') }}">Comisioane Minted</a>
                     </li>
                     @endif
                     {{-- @if(Auth::user()->role_id == 1 || @$data->permission == 1)
@@ -472,20 +433,7 @@
             {{-- @php
                 $data=  App\AssignModulePermission::where('module_id',14)->first();
             @endphp --}}
-            @if(Auth::user()->role_id == 1 ||in_array(14, $permitted_modules))
-            @if(Module::has('Tax'))
-                <li>
-                    <a href="#Tax" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <span class="flaticon-analytics"></span>
-                        {{-- @lang('lang.system_settings') --}}
-                       Taxe
-                    </a>
-                    <ul class="collapse list-unstyled" id="Tax">
-                        <li> <a href="{{ route('admin.tax_list') }}">@lang('lang.list') taxe </a> </li>
-                    </ul>
-                </li>
-            @endif
-            @endif
+         
 
             {{-- @if(Auth::user()->role_id == 1)
             @if(Module::has('Refund'))
@@ -512,7 +460,7 @@
                     <ul class="collapse list-unstyled" id="payment">
                         <li> <a href="{{ route('admin.CreditCard') }}">@lang('lang.save') @lang('lang.credit') @lang('lang.card')</a> </li>
                         <li> <a href="{{ route('admin.paymentMethod') }}">@lang('lang.author_balance')</a> </li>
-                        <li> <a href="{{ route('admin.payableUser') }}">@lang('lang.payment') @lang('lang.author')</a> </li>
+                        <!-- <li> <a href="{{ route('admin.payableUser') }}">@lang('lang.payment') @lang('lang.author')</a> </li> -->
 
                     </ul>
                 </li> 
@@ -587,8 +535,8 @@
                     @lang('lang.reports')
                 </a>
                 <ul class="collapse list-unstyled" id="revenue">
-                    <li> <a href="{{ route('admin.revenue') }}">@lang('lang.admin') @lang('lang.revenue')</a> </li>
-                    <li> <a href="{{ route('admin.authorRevenue') }}">@lang('lang.author') @lang('lang.revenue')</a> </li>
+                    <li> <a href="{{ route('admin.revenue') }}">Venituri Minted</a> </li>
+                    <!-- <li> <a href="{{ route('admin.authorRevenue') }}">@lang('lang.author') @lang('lang.revenue')</a> </li> -->
                 </ul>
             </li>
             @endif
@@ -617,7 +565,7 @@
                     
                     {{-- <li> <a href="{{ route('footer-setting') }}">Footer Settings </a> </li> --}}
                     {{-- <li> <a href="{{ route('purchase-key-setting') }}">Purchase Key</a> </li> --}}
-                    <li> <a href="{{ route('theme-setting') }}">@lang('lang.dashboard_themes')</a> </li>
+                    <!-- <li> <a href="{{ route('theme-setting') }}">@lang('lang.dashboard_themes')</a> </li> -->
                     {{-- <li> <a href="{{ route('backup-settings') }}">@lang('lang.backup')</a> </li> --}}
                     <li> <a href="{{ route('googleAnalytics') }}">@lang('lang.third_party_API')</a> </li>
                     {{-- <li> <a href="{{ route('aboutSystem') }}">@lang('lang.about') & @lang('lang.update')</a> </li> --}}
@@ -640,14 +588,14 @@
                     <ul class="collapse list-unstyled" id="Pages">
                         <li> <a href="{{ route('HomePage') }}">@lang('lang.home_page')</a> </li>
                         <li> <a href="{{ route('ProfileSetting') }}">@lang('lang.profile_setting')</a> </li>
-                        <li> <a href="{{ route('couponText') }}">@lang('lang.coupon')</a> </li>
+                        <!-- <li> <a href="{{ route('couponText') }}">@lang('lang.coupon')</a> </li>
                         <li> <a href="{{ route('LicensePage') }}">@lang('lang.License')</a> </li>
-                        <li> <a href="{{ route('TicketPage') }}">@lang('lang.ticket')</a> </li>
+                        <li> <a href="{{ route('TicketPage') }}">@lang('lang.ticket')</a> </li> -->
                         <li> <a href="{{ route('privacy-policy') }}">@lang('lang.privacy_policy')</a> </li>
                         <li> <a href="{{ route('terms-conditions') }}">@lang('lang.terms_conditions') </a> </li>
-                        <li> <a href="{{ route('market-apis') }}">@lang('lang.market_apis') </a> </li>
+                         <!-- <li> <a href="{{ route('market-apis') }}">@lang('lang.market_apis') </a> </li>
                         <li> <a href="{{ route('item-support') }}">@lang('lang.item_support')</a> </li>
-                        <li> <a href="{{ route('become-author') }}">@lang('lang.become_author')</a> </li>
+                        <li> <a href="{{ route('become-author') }}">@lang('lang.become_author')</a> </li> -->
                         <li> <a href="{{ route('about-company') }}">@lang('lang.about_company')</a> </li>
                         <li> <a href="{{ route('faqs') }}">@lang('lang.faq')</a> </li>
                     </ul>

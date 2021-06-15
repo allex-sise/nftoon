@@ -523,7 +523,6 @@ public function itemUpdate(Request $r){
         'feature2' => 'required|string|max:100',
         'description' => 'required|string',
         'thumdnail'=>'sometimes|nullable|required|dimensions:max_width=80,max_height=80',
-        'theme_preview' => 'sometimes|nullable|required|',
         'main_file' => 'sometimes|nullable|required|',
         'file' => 'sometimes|nullable|required|',
         'category_id' => 'required|',
@@ -531,9 +530,6 @@ public function itemUpdate(Request $r){
         'Re_item' => 'required|',
         'Re_buyer' => 'required|',
         'Reg_total_price' => 'required|',
-        'E_item' => 'required|',
-        'E_buyer' => 'required|',
-        'Ex_total_price' => 'required|',
         'tags' => 'required|string',
     ]);
 
@@ -550,7 +546,6 @@ public function itemUpdate(Request $r){
         $item->feature1 = $r->feature1;
         $item->feature2 = $r->feature2;
         $item->description = $r->description;    
-        $item->sub_category_id = $r->sub_category_id;
         $item->category_id = $r->category_id;
         //$item->resolution = $r->resolution;
         //$item->widget = $r->widget;
@@ -562,88 +557,13 @@ public function itemUpdate(Request $r){
         $item->Re_item = $r->Re_item;
         $item->Re_buyer = $r->Re_buyer;
         $item->Reg_total = $r->Reg_total_price;
-        $item->E_item = $r->E_item;
-        $item->E_buyer = $r->E_buyer;
-        $item->Ex_total = $r->Ex_total_price;
         // $item->user_msg = $r->user_msg;
         //$item->layout = $r->layout;
         //$item->columns = $r->columns;
         $item->demo_url = $r->demo_url;
         $item->active_status = 1;
         //  return $r;
-        if ($r->file('theme_preview')) {
-        $zip = new \ZipArchive();
-        $file = $r->file('theme_preview');
-        $zip->open($file->path());
-
-        $filesInside = [];
-                
-        for ($i = 0; $i < $zip->count(); $i++) {
-            
-            $file_name=$zip->getNameIndex($i);
-            $exten= substr($file_name, strpos($file_name, ".") + 1);
-            if ($exten=='jpg' ||$exten=='jpeg' ||$exten=='png') {
-                array_push($filesInside, $zip->getNameIndex($i));
-            }
-        }
-
-
-
-        $theme_preview = "";
-        if ($r->file('theme_preview') != "") {
-            $file = $r->file('theme_preview');
-            $theme_preview = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-            $file->move('public/uploads/SessionFile/', $theme_preview);
-            $theme_preview =  'public/uploads/SessionFile/' . $theme_preview;
-        }
-        $theme_preview =$theme_preview;
-        $dest= 'public/uploads/product/themePreview';
-
-
-        if ($r->theme_preview && file_exists($theme_preview)) {
-
-            // $product_id=Item::max('id')+1;
-            $product_image_path = 'public/uploads/product/themePreview/'.$r->id.'/';                            
-            $Image =  time().'-';                         
-            if (!file_exists($product_image_path)){
-                mkdir($product_image_path, 0777, true);
-            }
-
-            // \Zipper::make($theme_preview)->extractTo($product_image_path);
-            $zip_extract = new ZipArchive;
-            $res = $zip_extract->open($theme_preview);
-            if ($res === TRUE) {
-                $zip_extract->extractTo($product_image_path);
-                $zip_extract->close();
-            } else {
-                return false;
-            }
-
-            $filesInFolder = \File::files($product_image_path);  
-            $image_list=[]; 
-            for ($i = 0; $i < $zip->count(); $i++) {
-            
-                $file_name=$zip->getNameIndex($i);
-                $file_exten=explode('.',$file_name);
-                    if ($file_exten[1]=='jpeg' ||$file_exten[1]=='png'||$file_exten[1]=='jpg' ) {
-                        $image_list[]=$product_image_path.$file_name ;
-                    }
-                
-            }
-
-        $preview_image_list= implode(',',$image_list);
-        //    $item->screen_shot = $preview_image_list;
-        $item->theme_preview = $preview_image_list;
-        $item->save();
-        
-        }else{
-            return false;
-        }
-
-    }else{
-    //    $item->screen_shot = $item_data->screen_shot;
-    $item->theme_preview = $item_data->theme_preview;
-    }
+     
     $thumbnail =$item_data->icon;
     if ($r->file('thumdnail') != "") {
         $file = $r->file('thumdnail');
@@ -687,7 +607,7 @@ public function itemUpdate(Request $r){
     $item->save();
 
 
-        Toastr::success('Product updated successfully','Success');
+        Toastr::success('NFT updatat cu succes!','Success');
 
         $data =SessionFile::where('user_id',Auth::user()->id)->get();
             foreach ($data as $key => $value) {

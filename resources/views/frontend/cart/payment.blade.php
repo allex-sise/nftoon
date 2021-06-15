@@ -12,14 +12,33 @@ $b = preg_replace("/(\,)/", "", $a);
 $carttotalstrip = floatval($b);
 @endphp
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment.css">
+<style>
+.banner-area4 .banner-area-inner .banner-info h2 {
+    font-size: 36px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 0;
+    text-align: left;
+    margin-top: 340px;
+}
+.btnspecial{
+    background-image: none;
+    background-color: #000!important;
+}   
+.single_deposite_item:hover .deposite_header {
+    background-image: none;
+}
+</style>
    <!-- banner-area start -->
    <div class="banner-area4">
         <div class="banner-area-inner">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-10 offset-xl-1 col-12">
                         <div class="banner-info">
-                            <h2>@lang('lang.payment')</h2>
+                            <h2>Detalii @lang('lang.payment')</h2>
                         </div>
                     </div>
                 </div>
@@ -131,7 +150,7 @@ $carttotalstrip = floatval($b);
                                                                         </script>
                                                                         <input hidden value="{{ $carttotalstrip }}"  readonly="readonly" type="text" id="amount" name="amount">
                                                                         <div class="mt-5 text-center">
-                                                                            <button href="#" class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button>
+                                                                            <button href="#" class="boxed-btn btnspecial" type="submit">Plateste</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -151,7 +170,7 @@ $carttotalstrip = floatval($b);
                                                                         @csrf
                                                                         <input  value="{{convert_for_paypal(Cart::subtotal()) }}"  readonly="readonly" type="hidden" id="amount" name="amount">
                                                                         <div class="mt-5 text-center">
-                                                                            <input type="submit" name="submit" style="border: aliceblue;"  class="boxed-btn" value="@lang('lang.make') @lang('lang.payment')">
+                                                                            <input type="submit" name="submit" style="border: aliceblue;"  class="boxed-btn" value="Plateste">
                                                                             {{-- <button href="#" class="boxed-btn" type="submit" name="submit">@lang('lang.make') @lang('lang.payment')</button> --}}
                                                                         </div>
                                                                     </form>
@@ -163,11 +182,11 @@ $carttotalstrip = floatval($b);
                                                         <!-- single_deposite_item  -->
                                                         <div class="single_deposite_item">
                                                             <div class="deposite_header text-center">
-                                                                {{__('InfixHub Credit')}}
+                                                                Minted Credit
                                                             </div>
                                                             <div class="deposite_button text-center">
                                                                 <div class="mt-5 text-center mb-5">
-                                                                    <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="boxed-btn">Make Payment</a>
+                                                                    <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="boxed-btn btnspecial">Plateste</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -177,7 +196,7 @@ $carttotalstrip = floatval($b);
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">My Account</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Contul meu</h5>
                                                                 </div>
                                                                 {{-- <form action="{{ route('user.payment_main_balance') }}" id="infix_payment_form1" method="POST" name="payment_main_balance"    onsubmit="return validateFormForPayment()" > --}}
                                                                 <form action="{{ route('user.payment_main_balance') }}" id="infix_payment_form1" method="POST" name="payment_main_balance" >
@@ -185,11 +204,11 @@ $carttotalstrip = floatval($b);
                                                                     <div class="modal-body">
                                                                         <div class="row">
                                                                             <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">@lang('lang.my') @lang('lang.balance')</label>
+                                                                                <label for="name" class="mb-2">Ai in contul tau minted:</label>
                                                                                 <input type="text" class="bank_deposit_input"  placeholder="Bank Name" name="bank_name" value="{{ @Auth::user()->balance->amount}}" readonly>
                                                                             </div>
                                                                             <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">@lang('lang.your') @lang('lang.item') @lang('lang.price') </label>
+                                                                                <label for="name" class="mb-2">Pretul pe care trebuie sa il platesti: </label>
                                                                                 <input type="text"  name="amount" class="bank_deposit_input"  placeholder="Name of account owner" value="{{ $carttotalstrip }}" readonly>
                                                                             </div> 
                                                                         </div>
@@ -212,11 +231,11 @@ $carttotalstrip = floatval($b);
                                                                         <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button>
                                                                         
                                                                         @if ( @Auth::user()->balance->amount > $carttotalstrip) 
-                                                                            <button  class="button boxed-btn"   type="submit">
+                                                                            <button  class="button boxed-btn btnspecial"   type="submit">
                                                                                 @lang('lang.pay') 
                                                                             </button>
                                                                         @else
-                                                                            <a class="button boxed-btn" href="{{ route('user.deposit',@Auth::user()->username)}}">{{__('Fund Deposit')}}</a>
+                                                                            <a class="button boxed-btn btnspecial" href="{{ route('user.deposit',@Auth::user()->username)}}">{{__('Fund Deposit')}}</a>
                                                                         @endif
                                                                     </div>
                                                                 </form>
@@ -255,7 +274,7 @@ $carttotalstrip = floatval($b);
                                                 @endphp
                                                 <li>
                                                     <span>{{ @$item->name }}</span>
-                                                    <span>{{@$infix_general_settings->currency_symbol}}{{ @$item->price  }}</span>
+                                                    <span>{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
                                                 </li>
                                             @endforeach
                                         @endif
@@ -264,7 +283,7 @@ $carttotalstrip = floatval($b);
                                 <div class="products_list_bottom">
                                     <span>@lang('lang.total')</span>
                                     <span class="prise_tag">
-                                            {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }}
+                                             {{ $carttotalstrip }} {{@$infix_general_settings->currency_symbol}}
                                     </span>
                                 
                                 </div>
@@ -277,7 +296,7 @@ $carttotalstrip = floatval($b);
                             </div>
                             <div class="mt-5 text-center">
                                
-                                {{-- <button href="#" class="boxed-btn" type="submit">@lang('lang.purchase')</button> --}}
+                                {{-- <button href="#" class="boxed-btn btnspecial" type="submit">@lang('lang.purchase')</button> --}}
                             </div>
                         </form>
                         </div>
