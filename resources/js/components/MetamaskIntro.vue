@@ -20,7 +20,6 @@
         <p><button @click="(onGetNftMetadata())">GET METADATA</button></p>
         <p>{{token.metadata}}</p>
         <p>{{token.metadataFields}}</p>
-        <img :src=this.tokenData.image />
     </div>
 </template>
 
@@ -44,8 +43,9 @@
         },
         data(){
             return {
+                contractAddress: null,
                 userData: null,
-                decentralizedBankContract: null,
+                decentralizedContract: null,
                 token:{
                     id: null,
                     mintResponse: null,
@@ -71,9 +71,10 @@
             }
         },
         async mounted(){
+            this.pinata_api_key = process.env.MIX_PUSHER_PINATA_API_KEY;
+            this.pinata_secret_api_key = process.env.MIX_PUSHER_PINATA_SECRET_API_KEY;
+            this.contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
             await this.loadBlockchainData();
-            this.pinata_api_key=process.env.MIX_PUSHER_PINATA_API_KEY;
-            this.pinata_secret_api_key=process.env.MIX_PUSHER_PINATA_SECRET_API_KEY;
         },
         methods:{
             onComplete(responseData){
@@ -82,10 +83,9 @@
             async loadBlockchainData(){
                 const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/X3ZvuZL6NkgWOL2Rws8iN7-GO_8qTNSC";
                 const alchWeb3 = createAlchemyWeb3(API_KEY);
-                const contractAddress = "0xad79cDe5874817BcA90a3FEcd736A422f725d766";
-                this.decentralizedBankContract = new alchWeb3.eth.Contract(
+                this.decentralizedContract = new alchWeb3.eth.Contract(
                     contract.abi,
-                    contractAddress
+                    this.contractAddress
                 );
             },
             onMintNft(){
@@ -100,7 +100,7 @@
             },
             async mintNft(){
                 if(!this.nftHasNecessaryData()) return;
-                this.token.mintResponse = await this.decentralizedBankContract.methods.mint(this.userData.metaMaskAddress, this.file.ipfsMetadataUrl, this.token.id).send({
+                this.token.mintResponse = await this.decentralizedContract.methods.mint(this.userData.metaMaskAddress, this.file.ipfsMetadataUrl, this.token.id).send({
                     from: this.userData.metaMaskAddress,
                 }).on("transactionHash")
             },
@@ -119,7 +119,7 @@
                 this.token.metadata = null;
                 this.token.metadataFields = null;
 
-                await this.decentralizedBankContract.methods.tokenURI(this.token.id).call()
+                await this.decentralizedContract.methods.tokenURI(this.token.id).call()
                     .then(response => 
                     this.token.metadata=response);
 
