@@ -6,14 +6,17 @@
 @endpush
 @php 
     $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->first();
+    $headerbnr = $data['category']->dropicon;
 @endphp 
 @section('content')
 <style>
 .banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
-    background-image: url("{{ asset('public/frontend/imaginibanner/hmm.png') }}")!important;
-    background-size: contain;
+    background-image: url("{{asset(@$headerbnr)}}")!important;
+    background-size: cover;
     background-repeat: no-repeat;
     margin-top: 85px;
+    height: 700px;
+    background-position: center;
 }
 .banner-area2{
     height: 700px;
@@ -21,6 +24,22 @@
 .section-padding1 {
     padding-top: 20px;
     padding-bottom: 120px;
+}
+.mg120{
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+.rowspecial{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding-top: 250px;
+    height: 700px;
+    background: rgba(0,0,0,0.5);
+}
+.mgt50{
+    margin-top: 50px;
 }
     </style>
 <input type="text" id="_categor_id" hidden value="{{ $data['category']->id}}">
@@ -32,16 +51,32 @@
   <!-- banner-area start -->
     <div class="banner-area2" >
         <div class="container">
-            <div class="row">
+            <div class="row rowspecial">
                 <div class="col-xl-8 offset-xl-2">
-                    <!-- <div class="banner-info text-center mb-30">
-                        <h2>{{ @$data['sub_cat']? @$data['sub_cat']->title :@$data['category']->title}}</h2>
-                    </div> -->
+                     <div class="banner-info text-center mb-30">
+                        <h2>{{ @$data['category']->name}}</h2>
+                        <div class="col-xl-10 offset-xl-2 mgt50">
+                            <div class="col-md-4 float-left">
+                                <h3 class="h3clss">Drop-ul incepe in:</h3>
+                                <div data-countdown="{{ $data['category']->startdate }}" style="font-size: 25px; color:#FFF;"></div>
+                            </div>
+                            <div class="col-md-4 float-left">
+                                <h3 class="h3clss">Drop-ul se termina in:</h3>
+                                <div data-countdown="{{ $data['category']->expdate }}" style="font-size: 25px; color:#FFF;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- banner-area end -->
+    <div class="white-box mg120">
+            <div class="container">
+                <h3 class="h3clss">{{ @$data['category']->description}}</h3>
+            </div>
+
+        </div>
     <!-- categori-menu-area-start -->
     <div class="categori-menu-area d-lg-block Common_cat_menu">
             <div class="container-fluid ">
@@ -73,7 +108,9 @@
                 </div>
             </div>
         </div>
+      
     <!-- categori-menu-area-end -->
+  
     <!-- latest-goods-start -->
     <div class="latest-goods-area gray-bg section-padding1 mt-40">
         <div class="container">
@@ -128,4 +165,13 @@
 @endsection
 @push('js')
 <script src="{{ asset('public/frontend/js/') }}/drop.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+$('[data-countdown]').each(function() {
+  var $this = $(this), finalDate = $(this).data('countdown');
+  $this.countdown(finalDate, function(event) {
+    $this.html(event.strftime('%D zile <br /> %H:%M:%S'));
+  });
+});
+</script>
 @endpush

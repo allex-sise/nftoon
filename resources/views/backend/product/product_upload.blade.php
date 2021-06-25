@@ -37,7 +37,7 @@
                             <div class="main-title">
                                 <h3 class="mb-30">
 
-                                    @lang('lang.select') @lang('lang.category') 
+                                    Alege Creator
                                 </h3>
                             </div>
                                 <form action="{{route('admin.selectCategory')}}" method="POST"
@@ -47,23 +47,24 @@
 
                                             <div class="white-box">
                                                 <div class="add-visitor">
+                                                 
                                                     <div class="row mb-25">
                                                         <div class="col-lg-12">
                                                             <div class="input-effect">
-                                                                <select class="niceSelect w-100 bb form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}"
-                                                                        name="category">
-                                                                    <option data-display="@lang('lang.category') *"
-                                                                            value="">@lang('lang.category') *
+                                                                <select class="niceSelect w-100 bb form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}"
+                                                                        name="user_id">
+                                                                    <option data-display="Creator *"
+                                                                            value="">Creator *
                                                                     </option>
-                                                                    @foreach($data['category'] as $item)
-                                                                        <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('category') ==( @$item->id ? 'selected':'')}}>{{@$item->title}}</option>
+                                                                    @foreach($data['user'] as $item)
+                                                                        <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('user') ==( @$item->id ? 'selected':'')}}>{{@$item->full_name}} - {{@$item->username}}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <span class="focus-border"></span>
-                                                                @if ($errors->has('category_id'))
+                                                                @if ($errors->has('user_id'))
                                                                     <span class="invalid-feedback invalid-select"
                                                                           role="alert">
-                                                                        <strong>{{ $errors->first('category_id') }}</strong>
+                                                                        <strong>{{ $errors->first('user_id') }}</strong>
                                                                     </span>
                                                                 @endif
                                                             </div>
@@ -97,7 +98,7 @@
                         <div class="add-visitor">
                             <form action="{{url('admin/product-upload')}}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" value="{{@Session::get('categorySlect')->id}}" name="category_id">
+                                <input type="hidden" value="{{@Session::get('categorySlect')->id}}" name="user_id">
                                 <div class="row mt-20">
                                     <div class="col-lg-12 mb-30">
                                         <div class="input-effect">
@@ -179,6 +180,28 @@
                                             <strong>{{ $errors->first('description') }}</strong>
                                         </span>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="row mb-25">
+                                <div class="col-lg-12">
+                                    <div class="input-effect">
+                                        <select class="niceSelect w-100 bb form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}"
+                                                name="category_id">
+                                            <option data-display="@lang('lang.category') *"
+                                                    value="">@lang('lang.category') *
+                                            </option>
+                                            @foreach($data['category'] as $item)
+                                                <option value={{@$item->id}}>{{@$item->title}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="focus-border"></span>
+                                        @if ($errors->has('category_id'))
+                                            <span class="invalid-feedback invalid-select"
+                                                    role="alert">
+                                                <strong>{{ $errors->first('category_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-25">
@@ -283,20 +306,7 @@
                                 }
                             </script>    
                             <p>@lang('lang.main_file_message')</p>
-                              <div class="col-lg-12 mb-30">
-                                <div class="input-effect">
-                                    <select class="niceSelect w-100 bb form-control{{ $errors->has('sub_category_id') ? ' is-invalid' : '' }}"
-                                            name="sub_category_id">
-                                        <option data-display="@lang('lang.category') *"
-                                                value="">@lang('lang.category') *
-                                        </option>
-                                        @foreach($data['category'] as $item)
-                                            <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('category') ==( @$item->id ? 'selected':'')}}>{{@$item->title}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="focus-border"></span>
-                                </div>
-                            </div>
+                             
                             <br>
                                 <style>
                                     .select_Staff_width{
@@ -338,10 +348,26 @@
                         
                     @endforeach
                     <div class="row mt-20">
+                        <div class="col-lg-12 mb-30">
+                            <div class="input-effect">
+                                <select class="niceSelect w-100 bb form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}"
+                                        name="user_id">
+                                    <option data-display="Creator *"
+                                            value="">Creator *
+                                    </option>
+                                    @foreach($data['user'] as $item)
+                                        <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('user') ==( @$item->id ? 'selected':'')}}>{{@$item->full_name}} - {{@$item->username}}</option>
+                                    @endforeach
+                                </select>
+                                <span class="focus-border"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-20">
                         <div class="col-lg-12">
                             <div class="input-effect">
                                 <input class="primary-input form-control{{ $errors->has('demo_url') ? ' is-invalid' : '' }}" type="text" name="demo_url"
-                                       autocomplete="off" value="{{isset($data['edit'])? $data['edit']->demo_url :old('demo_url')}}">
+                                       autocomplete="off" value="https://www.minted.ro">
 
                                 <input type="hidden" name="id" value="{{isset($data['edit'])? $data['edit']->id: ''}}">
                                 <label>@lang('lang.demo_url') <span>*</span></label>
@@ -371,7 +397,7 @@
                     @php
                     $category_details=App\ManageQuery::SelectedCategoryDetails(Session::get('categorySlect')->id);
                     // DB::table('item_categories')->where('id',Session::get('categorySlect')->id)->first();
-                    $regular_recommended_price[]=explode("-",$category_details->recommended_price);
+                 //   $regular_recommended_price[]=explode("-",$category_details->recommended_price);
 
                     $item_fee=App\ManageQuery::FreeItemOfCategory(Session::get('categorySlect')->id);
                     // DB::table('item_fees')->where('category_id',Session::get('categorySlect')->id)->first();
@@ -412,13 +438,6 @@
                                 <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{ old('Reg_total') }}">
                             </div>
                     </td>
-                    <td>
-                        <div class="recomander">
-                            <p>@lang('lang.recommended') <br>
-                                    @lang('lang.purchase_price') <br>
-                                    {{GeneralSetting()->currency_symbol}}{{ @$regular_recommended_price[0][0]  }} - {{GeneralSetting()->currency_symbol}}{{@$regular_recommended_price[0][1]}}</p> 
-                        </div>
-                    </td>
                 </tr>
             </table> --}}
             <div class="table-responsive">
@@ -433,9 +452,18 @@
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
-                                <label for="">@lang('lang.BUYER_FEE')</label>
-                                <input  type="text" class="primary-input form-control w-50" step="any"  id="Re_buyer" name="Re_buyer" hidden value="{{ @$item_fee->re_fee}}" value="{{ old('Re_buyer') }}">
-                                <input type="text" class="primary-input form-control w-50"  disabled placeholder="{{GeneralSetting()->currency_symbol}}{{ @$item_fee->re_fee}}" onkeyup="regular(this.value)">
+                                <label for="">Comision Agent</label>
+                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{ old('comisionagent') }}">
+                            </div>
+                            <span class="dm_middle_span">+</span>
+                            <div class="input_field">
+                                <label for="">Comision Minted</label>
+                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{ old('comisionminted') }}">
+                            </div>
+                            <span class="dm_middle_span">+</span>
+                            <div class="input_field">
+                                <label for="">Comision 2.5%</label>
+                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{ old('comision25') }}">
                             </div>
                             <span class="dm_middle_span">=</span>
                             <div class="input_field last-one">
@@ -451,6 +479,9 @@
                     </div>
                
                 </div>
+            
+
+</div>
                 <!-- <p>@lang('lang.price_message') </p> -->
             </div>
 
@@ -492,10 +523,27 @@
     } else {
         var item = 0;
     }
-    var total = parseInt(item) + parseInt(Re_buyer);
+    
+
+    var tt = parseInt(item);
+    var comisionagent = (5 / 100) * tt;
+    $("#comisionagent").val(comisionagent);
+    $("#comisionagent").attr("placeholder", "$" + comisionagent);
+    $("#comisionagent").attr("value", comisionagent);
+    var comisionminted = (25 / 100) * tt;
+    $("#comisionminted").val(comisionminted);
+    $("#comisionminted").attr("placeholder", "$" + comisionminted);
+    $("#comisionminted").attr("value", comisionminted);
+    var comision25 = (2.5 / 100) * tt;
+    $("#comision25").val(comision25);
+    $("#comision25").attr("placeholder", "$" + comision25);
+    $("#comision25").attr("value", comision25);
+    
+    var total = parseInt(item) + comisionminted + comisionagent + comision25;
     $("#Reg_total").val(total);
     $("#Re_total").attr("placeholder", "$" + total);
     $("#Re_total").attr("value", total);
+
 }
 
 $('.decimal').keyup(function(){

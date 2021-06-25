@@ -103,7 +103,7 @@ class CheckoutController extends Controller
                     $tax_added=0;
                 }
                 Cart::update($rowId,['id' => bin2hex(random_bytes(4)), 'name' => $my_cart->name, 'qty' => 1, 'price' => $my_cart->price+$tax, 'weight' => 0, 'options' => 
-                ['support_charge' => $my_cart->options['support_charge'],'license_type'=>$my_cart->options['license_type'],'support_time'=>$my_cart->options['support_time'],'buyer_fee'=>$my_cart->options['buyer_fee'],'item_id'=>$my_cart->options['item_id'],
+                ['support_charge' => $my_cart->options['support_charge'],'license_type'=>$my_cart->options['license_type'],'support_time'=>$my_cart->options['support_time'],'buyer_fee'=>$my_cart->options['buyer_fee'],'comisionagent'=>$my_cart->options['comisionagent'],'comisionminted'=>$my_cart->options['comisionminted'],'item_id'=>$my_cart->options['item_id'],
                 'description'=>$my_cart->options['description'],'user_id'=>$my_cart->options['user_id'],'username'=>$my_cart->options['username'],'icon'=>$my_cart->options['icon'], 'image'=>$my_cart->options['image'],'Extd_percent'=>$my_cart->options['Extd_percent'],'tax_added'=>$tax_added,'tax'=>$tax]]);
                }
                
@@ -170,6 +170,7 @@ class CheckoutController extends Controller
                             $item_order->user_id = Auth::user()->id;
                             $item_order->order_id = $order->id;
                             $item_order->item_id = $value->options['item_id'];
+                     //       $item_order->subtotal = $value->options['Re_item'];
                             $item_order->subtotal = $value->price;
                             $item_order->country_id = $user->profile->country_id;
                             if (isset($value->options['coupon_price'])) {
@@ -205,18 +206,47 @@ class CheckoutController extends Controller
                             $purchaseCode->customer_id = $value->options['user_id'];
                             $purchaseCode->purchase_code = $purchase_code;
                             $purchaseCode->save();
+                            $referrar = User::where('id', $item_order->author_id)->get();
+                     //       $referrer = $referrar->referrer_id;
+                            $referrer = $referrar->referrer->id;
 
                             if ($value->options['buyer_fee'] != 0) {
                                 $statement = new Statement();
-                                $statement->author_id = $value->options['user_id'];
+                                $statement->author_id = 1;
                                 $statement->item_id = $value->options['item_id'];
                                 $statement->order_id = $order->id;
-                                $statement->type = 'e';
-                                $statement->title = 'Author fee';
-                                $statement->details = 'Author fee for sale';
+                                $statement->type = 'i';
+                                $statement->title = 'Comision 2.5';
+                                $statement->details = 'Comision 2.5 pentru minted';
                                 $statement->price = $value->options['buyer_fee'];
-                                $statement->save();
+                                $statement->save(); 
                             }
+
+                            if ($value->options['comisionagent'] != 0) {
+                                $statement = new Statement();
+                                $statement->author_id = $referrer;
+                                $statement->item_id = $value->options['item_id'];
+                                $statement->order_id = $order->id;
+                                $statement->type = 'i';
+                                $statement->title = 'Comision Agent';
+                                $statement->details = 'Comision 5 agent';
+                                $statement->price = $value->options['comisionagent'];
+                                $statement->save(); 
+                            }
+
+                            if ($value->options['comisionminted'] != 0) {
+                                $statement = new Statement();
+                                $statement->author_id = 1;
+                                $statement->item_id = $value->options['item_id'];
+                                $statement->order_id = $order->id;
+                                $statement->type = 'i';
+                                $statement->title = 'Comision Minted';
+                                $statement->details = 'Comision 25 Minted';
+                                $statement->price = $value->options['comisionminted'];
+                                $statement->save(); 
+                            }
+
+
                             if (isset($value->options['coupon_price'])) {
                                 $statement = new Statement();
                                 $statement->author_id = $value->options['user_id'];
@@ -236,7 +266,7 @@ class CheckoutController extends Controller
                             $statement1->type = 'i';
                             $statement1->title = 'sale';
                             $statement1->details = $details->title;
-                            $statement1->price = $value->price;
+                            $statement1->price = $value->options['Re_item'];
                             $statement1->save();
 
                             $itemUp = Item::find($value->options['item_id']);
@@ -244,19 +274,53 @@ class CheckoutController extends Controller
                             $itemUp->save();
 
                             $balnc  = $author->balance;
-                            $income = ($value->price - $value->options['buyer_fee']) - (($label->rate / 100) * ($value->price - $value->options['buyer_fee']));
+                            $income = $value->options['Re_item'];
                             $balnc->amount = $author->balance->amount + $income;
                             
                             $balnc->save();
+                            //balancesheet principal bani cont creator
                             $balance_sheet = new BalanceSheet();
                             $balance_sheet->author_id = $author->id;
                             $balance_sheet->item_id = $value->options['item_id'];
                             $balance_sheet->order_id = $item_order->id;
                             $balance_sheet->price = $value->price;
                             $balance_sheet->discount = $discount;
-                            $balance_sheet->fee = $value->options['buyer_fee'];
+                            $balance_sheet->fee = 0.00;
                             $balance_sheet->income = $income;
                             $balance_sheet->save();
+
+                            //balancesheet comision2.5 minted
+                            $balance_sheet2 = new BalanceSheet();
+                            $balance_sheet2->author_id = 1;
+                            $balance_sheet2->item_id = $value->options['item_id'];
+                            $balance_sheet2->order_id = $item_order->id;
+                            $balance_sheet2->price = $value->price;
+                            $balance_sheet2->discount = $discount;
+                            $balance_sheet2->fee = 0.00;
+                            $balance_sheet2->income = $value->options['buyer_fee'];
+                            $balance_sheet2->save();
+
+                            //balancesheet comisionagent
+                            $balance_sheet3 = new BalanceSheet();
+                            $balance_sheet3->author_id = $referrer;
+                            $balance_sheet3->item_id = $value->options['item_id'];
+                            $balance_sheet3->order_id = $item_order->id;
+                            $balance_sheet3->price = $value->price;
+                            $balance_sheet3->discount = $discount;
+                            $balance_sheet3->fee = 0.00;
+                            $balance_sheet3->income = $value->options['comisionagent'];
+                            $balance_sheet3->save();
+
+                            //balance sheet comisionminted 25
+                            $balance_sheet4 = new BalanceSheet();
+                            $balance_sheet4->author_id = 1;
+                            $balance_sheet4->item_id = $value->options['item_id'];
+                            $balance_sheet4->order_id = $item_order->id;
+                            $balance_sheet4->price = $value->price;
+                            $balance_sheet4->discount = $discount;
+                            $balance_sheet4->fee = 0.00;
+                            $balance_sheet4->income = $value->options['comisionminted'];
+                            $balance_sheet4->save();
 
                         }
                         // $buy_package->

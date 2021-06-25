@@ -97,6 +97,20 @@
                                 <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
+                                            <input type="text" class="primary-input date form-control{{ $errors->has('startdate') ? ' is-invalid' : '' }}" id="startdate" name="startdate" >
+                                            <label>Data Inceperii </label>
+                                            <span class="focus-border"></span>
+                                                    @if ($errors->has('startdate'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('startdate') }}</strong>
+                                                    </span>
+                                                    @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-25">
+                                    <div class="col-lg-12">
+                                        <div class="input-effect">
                                             <input type="text" class="primary-input date form-control{{ $errors->has('expdate') ? ' is-invalid' : '' }}" id="date" name="expdate" >
                                             <label>Data Expirarii </label>
                                             <span class="focus-border"></span>
@@ -199,6 +213,7 @@
                                 <tr>
                                     <th>Titlu</th>
                                     <th>Descriere</th>
+                                    <th>Data Inceperii</th>
                                     <th>Data Expirarii</th>
                                     <th>Imagine</th>
                                     <th>Status</th>
@@ -211,6 +226,7 @@
                                 <tr>
                                     <td valign="top"><a href="{{url('admin/add-drop-show/'.@$item->id)}}">{{@$item->name}}</a></td>
                                     <td valign="top">{{@$item->description}}</td>
+                                    <td valign="top">{{@$item->startdate}}</td>
                                     <td valign="top">{{@$item->expdate}}</td>
                                     <td valign="top"><img src="{{asset(@$item->dropicon)}}" class="content_list_wh_40" ></td>
                                     <td valign="top">
@@ -279,6 +295,12 @@
 	"use strict";
     $(function () {
         $('#date').datetimepicker({
+            keepOpen: true,
+            format: 'DD/MM/YYYY HH:mm',
+        });
+    })
+    $(function () {
+        $('#startdate').datetimepicker({
             keepOpen: true,
             format: 'DD/MM/YYYY HH:mm',
         });

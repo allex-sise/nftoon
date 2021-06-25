@@ -6,6 +6,7 @@ use App\User;
 use App\Balance;
 use App\Deposit;
 use App\ErrorLog;
+use App\BalanceSheet;
 use App\InfixFund;
 use App\BankDeposit;
 use App\Mail\FundMail;
@@ -353,4 +354,20 @@ class FundController extends Controller
             return redirect()->back();
         }
     }
+
+    public function showFunds() {
+
+    try {
+        $funds=BalanceSheet::where('author_id', Auth::user()->id)->get();
+
+        // return $funds;
+        return view('backend.fund.showFunds', compact('funds'));
+    } catch (\Throwable $e) {
+        $msg=str_replace("'", " ", $e->getMessage()) ;
+        Toastr::error($msg, 'Failed');
+        return redirect()->back();
+    }
+    
+}
+
 }

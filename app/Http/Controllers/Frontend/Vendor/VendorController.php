@@ -261,6 +261,23 @@ class VendorController extends Controller
     }
 
 
+    function referrals($id)
+    {
+        try {
+         
+         
+                $data['user'] = User::where('username', $username)->first();
+                @$data['affiliate'] = route('author.referrals', $data['user']->username);
+            return $this->vendor($data);
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
+
+
     function statement($id)
     {
         try {

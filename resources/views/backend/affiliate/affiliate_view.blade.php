@@ -26,7 +26,7 @@ return $name[3];
             <h1>@lang('lang.affiliate')</h1>
             <div class="bc-pages">
                 <a href="{{url('admin/dashboard')}}">@lang('lang.dashboard')</a>
-                <a href="">@lang('lang.affiliate') @lang('lang.view')</a>
+                <a href="">@lang('lang.view') @lang('lang.affiliate') </a>
             </div>
         </div>
     </div>
@@ -37,12 +37,12 @@ return $name[3];
          <div class="col-lg-3">
             <!-- Start Student Meta Information -->
             <div class="main-title">
-                <h3 class="mb-20">@lang('lang.affiliate') @lang('lang.details')</h3>
+                <h3 class="mb-20">@lang('lang.details') @lang('lang.affiliate') </h3>
             </div>
             <div class="student-meta-box">
                 <div class="student-meta-top"></div>
-                @if(!empty(@$data->profile->image))
-                <img class="student-meta-img img-100" src="{{asset(@$data->profile->image)}}"  alt="">
+                @if(!empty(@$data['user']->profile->image))
+                <img class="student-meta-img img-100" src="{{asset(@$data['user']->profile->image)}}"  alt="">
                 @else
                 <img class="student-meta-img img-100" src="{{asset('public/uploads/vendor/vendor.jpg')}}"  alt="">
                 @endif
@@ -50,11 +50,11 @@ return $name[3];
                     <div class="single-meta mt-10">
                         <div class="d-flex justify-content-between">
                             <div class="name">
-                                    @lang('lang.affiliate') @lang('lang.name')
+                                     @lang('lang.name') @lang('lang.affiliate')
                             </div>
                             <div class="value">
 
-                                @if(isset($data)){{@$data->full_name}}@endif
+                                @if(isset($data['user'])){{@$data['user']->full_name}}@endif
 
                             </div>
                         </div>
@@ -65,7 +65,7 @@ return $name[3];
                                     @lang('lang.role') 
                             </div>
                             <div class="value">
-                               @if(isset($data)){{@$data->role->name}}@endif
+                               @if(isset($data['user'])){{@$data['user']->role->name}}@endif
                            </div>
                        </div>
                    </div>
@@ -75,8 +75,8 @@ return $name[3];
                                  @lang('lang.date_of_joining')
                             </div>
                             <div class="value">
-                                @if(isset($data))
-                                {{date('jS M, Y', strtotime(@$data->created_at))}}
+                                @if(isset($data['user']))
+                                {{date('jS M, Y', strtotime(@$data['user']->created_at))}}
                                 @endif
                             </div>
                         </div>
@@ -91,7 +91,7 @@ return $name[3];
             <div class="col-lg-9 staff-details">                  
 
                         <div class="white-box">
-                            <h4 class="stu-sub-head">@lang('lang.affiliate') @lang('lang.info') </h4>
+                            <h4 class="stu-sub-head"> @lang('lang.info') @lang('lang.affiliate')</h4>
                             <div class="single-info">
                                     <div class="row">
                                         <div class="col-lg-2 col-md-6">
@@ -101,7 +101,7 @@ return $name[3];
                                         </div>    
                                         <div class="col-lg-4 col-md-7">
                                             <div class="">
-                                                @if(isset($data)){{@$data->email}}@endif
+                                                @if(isset($data['user'])){{@$data['user']->email}}@endif
                                             </div>
                                         </div>
 
@@ -113,7 +113,7 @@ return $name[3];
     
                                         <div class="col-lg-4 col-md-6">
                                             <div class="">
-                                                @if(isset($data)){{@$data->profile->company_name}}@endif
+                                                @if(isset($data['user'])){{@$data['user']->profile->company_name}}@endif
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@ return $name[3];
                                         </div>
                                         <div class="col-lg-4 col-md-6">
                                             <div class="">
-                                                @if(isset($data)){{@$data->profile->country->name}}@endif
+                                                @if(isset($data['user'])){{@$data['user']->profile->country->name}}@endif
                                             </div>
                                         </div>
 
@@ -138,7 +138,7 @@ return $name[3];
                                         </div>
                                         <div class="col-lg-4 col-md-6">
                                             <div class="">
-                                                @if(isset($data)){{@$data->profile->state->name}}@endif
+                                                @if(isset($data['user'])){{@$data['user']->profile->state->name}}@endif
                                             </div>
                                         </div>
                                     </div>
@@ -152,8 +152,8 @@ return $name[3];
                                         </div>
                                         <div class="col-lg-4 col-md-6">
                                             <div class="">
-                                                @if(isset($data))
-                                                  @if (@$data->status == 1)
+                                                @if(isset($data['user']))
+                                                  @if (@$data['user']->status == 1)
                                                             @lang('lang.active')
                                                             @else   
                                                             @lang('lang.pending')
@@ -163,7 +163,33 @@ return $name[3];
                                         </div>
                                     </div>
                                 </div>
-
+                            </div>
+                            <br />
+                            <div class="white-box">
+                             
+                                <div class="my_coupon">
+                            <div class="my_coupens_headeing mb-30">
+                                <h3>Total Afiliati <b>({{ count($data['user']->referrals)  ?? '0' }})</b></h3>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <th>@lang('lang.username') @lang('lang.affiliate')</th>
+                                    <th>@lang('lang.added_time')</th>
+                                    <th>@lang('status')</th>
+                                </tr>
+                                @foreach (@$data['affiliate'] as $item)
+                                    <tr>
+                                        <td>{{ @$item->username }}</td>
+                                        <td>{{DateFormat(@$item->created_at)}}</td>
+                                        <td>{{ @$item->status == 1 ?'Active':'Pending' }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                           
+                            <div class="Pagination">
+                                {{ $data['affiliate']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
+                            </div>
+                        </div>
                         </div>
                     </div>
        </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Item;
+use App\User;
 use ZipArchive;
 use App\Attribute;
 use App\ItemImage;
@@ -24,6 +25,7 @@ class ProductUploadController extends Controller
     public function product_upload(){
         $attribute=Attribute::all();
         $data['category'] = ItemCategory::where('up_permission',1)->get();
+        $data['user'] = User::get();
         $data['attribute'] = Attribute::all();
         $data['sub_attribute'] = SubAttribute::latest()->get();
 
@@ -32,7 +34,7 @@ class ProductUploadController extends Controller
      }
      public function selectCategory(Request $r){
         try {
-            $category = ItemCategory::find($r->category);
+            $category = User::find($r->user_id);
             Session::put('categorySlect', $category);
             return redirect()->route('admin.product_upload');
         } catch (\Exception $e) {
@@ -91,7 +93,7 @@ class ProductUploadController extends Controller
         try {
         
             $item = new Item();
-            $item->user_id = Auth::user()->id;
+            $item->user_id = $r->user_id;
             $item->title = $r->title;
             $item->feature1 = $r->feature1;
             $item->feature2 = $r->feature2;
@@ -100,6 +102,7 @@ class ProductUploadController extends Controller
             $item->resolution = $r->resolution;
             $item->widget = $r->widget;
             $item->tags = $r->tags;
+            
 
             
 
@@ -112,6 +115,8 @@ class ProductUploadController extends Controller
 
             $item->Re_item = $r->Re_item;
             $item->Re_buyer = $r->Re_buyer;
+            $item->C_item = $r->C_item;
+            $item->C_buyer = $r->C_buyer;
             $item->Reg_total = $r->Reg_total_price;
 
             $item->user_msg = $r->user_msg;
@@ -119,6 +124,7 @@ class ProductUploadController extends Controller
             $item->columns = $r->columns;
             $item->demo_url = $r->demo_url;
             $item->active_status = 1;
+            $item->ogowner = $r->user_id;
             $item->status = 1;
             $item->is_upload = $r->upload_or_link;
             if ($r->upload_or_link==0) {

@@ -431,17 +431,45 @@ class PaymentController extends Controller
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
                             }
-                        
+                            $referrar = User::where('id', $value->options['user_id'])->get();
+                            foreach($referrar as $referrsr){
+                                $referrer = $referrsr->refferer_id;
+                            }
+                            // $referrer = $referrar->referrer_id;
                             
                             if ($value->options['buyer_fee'] != 0) {
                                 $statement = new Statement();
-                                $statement->author_id = $value->options['user_id'];
+                                $statement->author_id = 1;
                                 $statement->item_id = $value->options['item_id'];
                                 $statement->order_id = $order->id;
-                                $statement->type = 'e';
-                                $statement->title = 'Author fee';
-                                $statement->details = 'Author fee for sale';
+                                $statement->type = 'i';
+                                $statement->title = 'Comision 25';
+                                $statement->details = 'Comision 25 pentru minted';
                                 $statement->price = $value->options['buyer_fee'];
+                                $statement->save(); 
+                            }
+
+                            if ($value->options['comisionagent'] != 0) {
+                                $statement = new Statement();
+                                $statement->author_id = $referrer;
+                                $statement->item_id = $value->options['item_id'];
+                                $statement->order_id = $order->id;
+                                $statement->type = 'i';
+                                $statement->title = 'Comision Agent';
+                                $statement->details = 'Comision 5 agent';
+                                $statement->price = $value->options['comisionagent'];
+                                $statement->save(); 
+                            }
+
+                            if ($value->options['comisionminted'] != 0) {
+                                $statement = new Statement();
+                                $statement->author_id = 1;
+                                $statement->item_id = $value->options['item_id'];
+                                $statement->order_id = $order->id;
+                                $statement->type = 'i';
+                                $statement->title = 'Comision Minted';
+                                $statement->details = 'Comision 25 Minted';
+                                $statement->price = $value->options['comisionminted'];
                                 $statement->save(); 
                             }
                             
@@ -468,7 +496,7 @@ class PaymentController extends Controller
                                 $statement1->type = 'i';
                                 $statement1->title = 'sale';
                                 $statement1->details = $details->title;
-                                $statement1->price =$countable_price;
+                                $statement1->price = $countable_price;
                                 $statement1->save();  
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -487,7 +515,9 @@ class PaymentController extends Controller
 
                             try{
                                 $balnc  = $author->balance;
-                                $income = ($countable_price - $value->options['buyer_fee']) - ((@$label->rate / 100) * ($countable_price - $value->options['buyer_fee']));
+                                $income = ($countable_price - 0) - ((@$label->rate / 100) * ($countable_price - 0));
+                                
+
                                 $balnc->amount = $author->balance->amount + $income;
                                 $balnc->save();
                             }catch(\Exception $e){
@@ -503,13 +533,61 @@ class PaymentController extends Controller
                                 $balance_sheet->order_id = $order->id;
                                 $balance_sheet->price =$countable_price;
                                 $balance_sheet->discount = $discount;
-                                $balance_sheet->fee = $value->options['buyer_fee'];
+                                $balance_sheet->fee = 0.00;
                                 $balance_sheet->income = $income;
                                 $balance_sheet->save();
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
                             }
+                            
+                            //comision agent
+                            try{
+                                $balance_sheetcomisionagent = new BalanceSheet();
+                                $balance_sheetcomisionagent->author_id = $referrer;
+                                $balance_sheetcomisionagent->item_id =(int)$value->options['item_id'];
+                                $balance_sheetcomisionagent->order_id = $order->id;
+                                $balance_sheetcomisionagent->price =$countable_price;
+                                $balance_sheetcomisionagent->discount = $discount;
+                                $balance_sheetcomisionagent->fee = 0.00;
+                                $balance_sheetcomisionagent->income = $value->options['comisionagent'];
+                                $balance_sheetcomisionagent->save();
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+                            //comision 25minted
+                            try{
+                                $balance_sheetcomisionminted = new BalanceSheet();
+                                $balance_sheetcomisionminted->author_id = 1;
+                                $balance_sheetcomisionminted->item_id =(int)$value->options['item_id'];
+                                $balance_sheetcomisionminted->order_id = $order->id;
+                                $balance_sheetcomisionminted->price =$countable_price;
+                                $balance_sheetcomisionminted->discount = $discount;
+                                $balance_sheetcomisionminted->fee = 0.00;
+                                $balance_sheetcomisionminted->income = $value->options['comisionminted'];
+                                $balance_sheetcomisionminted->save();
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+
+                             //comision 2.5minted
+                            try{
+                                $balance_sheetcomisionminted = new BalanceSheet();
+                                $balance_sheetcomisionminted->author_id = 1;
+                                $balance_sheetcomisionminted->item_id =(int)$value->options['item_id'];
+                                $balance_sheetcomisionminted->order_id = $order->id;
+                                $balance_sheetcomisionminted->price =$countable_price;
+                                $balance_sheetcomisionminted->discount = $discount;
+                                $balance_sheetcomisionminted->fee = 0.00;
+                                $balance_sheetcomisionminted->income = $value->options['buyer_fee'];
+                                $balance_sheetcomisionminted->save();
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+
 
                         }
                         //end checking item value 

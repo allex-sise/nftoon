@@ -153,9 +153,9 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
                         </div>
                         <div class="good-info good-infodrop" style="padding-left: 0px; padding-top: 20px;">
                             <div class="good-title good-titledrop">
-                                <h3 class="h3clss">Drop-ul expira pe:</h3>
+                                <h3 class="h3clss">Drop-ul incepe in:</h3>
                                 <!-- <div>Registration closes in <span id="time">05:00</span> minutes!</div> -->
-                                <div data-countdown="{{ $drop->expdate }}" style="font-size: 25px;"></div>
+                                <div data-countdown="{{ $drop->startdate }}" style="font-size: 25px;"></div>
                             </div>
                         </div>
                         <div class="good-info good-infodrop" style="padding-top:0px; padding-left: 0px;">

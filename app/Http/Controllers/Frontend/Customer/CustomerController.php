@@ -57,6 +57,21 @@ class CustomerController extends Controller
             return redirect()->back();
         }
     }
+    function referrals($username)
+    {
+        try {
+         
+                $data['user'] = User::where('username', $username)->first();
+                @$data['affiliate'] = route('customer.referrals', $data['user']->username);
+        
+            return $this->vendor($data);
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
     function affiliate()
     {
         try {
@@ -191,6 +206,11 @@ class CustomerController extends Controller
                 $refunds[]=$refund->item_id;
             }
             $data['country'] = SpnCountry::all();
+            if (Auth::check()) {
+                $data['user'] = User::where('id', Auth::user()->id)->first();
+                $data['referrals'] = $data['user']->referrals()->paginate(8);
+            }
+
             $data['order'] = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(6);
             $data['refund_order'] = Refund::where('user_id',Auth::user()->id)->where('status',1)->get();
             $data['refunds']=$refunds;

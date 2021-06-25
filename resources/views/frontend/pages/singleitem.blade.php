@@ -494,8 +494,8 @@ $comment_content='';
                         </div>
                         <a href="{{ route('user.portfolio',@$data['item']->user->username)}}">
                         <div class="theme-info">
-                           <h1>{{ @$data['item']->user->username}}</h1>
-                           <h3>@username</h3>
+                           <h1>{{ @$data['item']->user->full_name}}</h1>
+                           <h3>@ {{ @$data['item']->user->username}}</h3>
                            </a>
                         </div>
                      </div>
@@ -513,7 +513,7 @@ $comment_content='';
                         </div>
                         <div class="theme-info">
                           
-                           <h6>descriere user, detaliile din contul lui vor fi aici</h6>
+                           <h6> {!! @$data['item']->user->profile->about !!} </h6>
                         </div>
                      </div>
                   </div>

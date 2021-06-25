@@ -324,7 +324,8 @@ class UserController extends Controller
     function affiliateView($username)
     {
         try {
-            $data = User::where('username', $username)->first();
+            $data['user'] = User::where('username', $username)->first();
+            $data['affiliate'] = $data['user']->referrals()->paginate(8);
             return view('backend.affiliate.affiliate_view', compact('data'));
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;

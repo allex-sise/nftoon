@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Auth;
 use File;
 use App\Item;
+use App\User;
 use App\Drops;
 use App\DropNFTs;
 use App\Review;
@@ -427,6 +428,7 @@ class ProductController extends Controller
 
      public function product_upload(){
         $data['category'] = ItemCategory::where('up_permission',1)->get();
+        $data['user'] = User::all();
         $data['subCategory'] = ItemSubCategory::where('active_status',1)->get();
         $data['attribute'] = Attribute::all();
         $data['sub_attribute'] = SubAttribute::latest()->get();
@@ -436,7 +438,7 @@ class ProductController extends Controller
      }
      public function selectCategory(Request $r){
         try {
-            $category = ItemCategory::find($r->category);
+            $category = User::find($r->user_id);
             Session::put('categorySlect', $category);
             return redirect()->route('admin.product_upload');
         } catch (\Exception $e) {

@@ -9,6 +9,19 @@
    $infix_general_settings =app('infix_general_settings');
 @endphp
 @section('content')
+<style>
+#aff_link{
+    width: 60%;
+    border-radius: 0px;
+    float: left;
+    margin-right: 10px;
+}
+.butonsp{
+    height: 50px;
+    border-radius: 0px;
+    width: 15%;
+}
+</style>
       @include('frontend.partials.vendor_banner')
      <!-- details-tablist-start -->
      <input type="text" hidden value="{{url('/')}}" id="url">
@@ -63,6 +76,12 @@
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['download'] == url()->current() ?'active':'' }}" id="Downloads-tab" data-toggle="tab" href="#Downloads"
                                             role="tab" aria-controls="contact" aria-selected="false">@lang('lang.Downloads')</a>
+                                    </li>
+                                    @endif
+                                    @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ @$data['referrals'] == url()->current() ?'active':'' }}" id="referrals-tab" data-toggle="tab" href="#referrals"
+                                            role="tab" aria-controls="contact" aria-selected="false">Referrals</a>
                                     </li>
                                     @endif
                                     <!-- @if (@Auth::user()->role_id == 4)
@@ -213,6 +232,89 @@
                                     </div>
                                     @endif
                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
+                                    <div class="tab-pane fade {{ @$data['profile'] == url()->current() ?'show active':'' }}  " id="home" role="tabpanel"
+                                        aria-labelledby="home-tab">
+                                        <div class="profile_profile">
+                                            <div class="row">
+                                                <div class="col-xl-8 col-md-6">
+                                                    <div class="big_logo gray-bg">
+                                                        <div class="logo_thumb mb-0">
+                                                            <img src="{{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }}" alt="">
+                                                        </div>
+                                                        <p>{!! @$data['user']->profile->about !!} </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-md-6">
+                                                    <div class="badge_mark">
+                                                            @php
+                                                                $level=App\ManageQuery::UserLabel($data['user']->balance->amount); 
+                                                                // DB::table('labels')->where('amount','<=',@$data['user']->balance->amount)->orderBy('id','desc')->first();
+                                                                $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays(@$data['user']->created_at);
+                                                                $badge=App\ManageQuery::UserBadge($date); 
+                                                            @endphp
+                                                        <div class="first_badge gray-bg">
+                                                            <img height="auto" width="40" src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="Author level  {{ @$level->id}} : sold {{@GeneralSetting()->currency_symbol}} {{@round($data['user']->balance->amount > 50 ? $data['user']->balance->amount: 0) }}+ on {{GeneralSetting()->system_name}} " alt="">
+                                                            <img height="auto" width="40" src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{@$badge->time }} years of membarship on {{GeneralSetting()->system_name}} " alt="">
+                                                        </div>
+                                                        
+                                                        <div class="social_profile gray-bg">
+                                                            <h5>@lang('lang.social_profiles')</h5>
+                                                            @if (@$data['socila_icons']->behance != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->behance}}"><i class="fa fa-behance"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->deviantart != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->deviantart}}"><i class="fa fa-deviantart"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->digg != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->digg}}"><i class="fa fa-digg"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->dribbble != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->dribbble}}"><i class="fa fa-dribbble"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->facebook != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->facebook}}"><i class="fa fa-facebook"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->flickr != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->flickr}}"><i class="fa fa-flickr"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->github != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->github}}"><i class="fa fa-github"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->google_plus != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->google_plus}}"><i class="fa fa-google-plus"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->lastfm != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->lastfm}}"><i class="fa fa-lastfm"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->linkedin != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->linkedin}}"><i class="fa fa-linkedin"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->reddit != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->reddit}}"><i class="fa fa-reddit"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->soundcloud != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->soundcloud}}"><i class="fa fa-soundcloud"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->thumblr != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->thumblr}}"><i class="fa fa-thumblr"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->twitter != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->twitter}}"><i class="fa fa-twitter"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->vimeo != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->vimeo}}"><i class="fa fa-vimeo"></i></a>
+                                                            @endif
+                                                            @if (@$data['socila_icons']->youtube != "")
+                                                                <a target="_blank" href="{{$data['socila_icons']->youtube}}"><i class="fa fa-youtube"></i></a>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif   
+                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <div class="tab-pane fade {{ @$data['profile'] == url()->current() ?'show active':'' }}  " id="home" role="tabpanel"
                                         aria-labelledby="home-tab">
                                         <div class="profile_profile">
@@ -1720,6 +1822,68 @@
                                         </div>
                                     </div>
                                     @endif
+
+                                    @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
+                                  
+                                    <div class="tab-pane fade {{ @$data['referrals'] == url()->current() ?'show active':'' }} " id="referrals" role="tabpanel" aria-labelledby="referrals-tab">
+                                        @if(session()->has('success'))
+                                                <div class="alert alert-success">
+                                                    {{ session()->get('success') }}
+                                                </div>
+                                            @endif
+                                            <div class="main-details-area mt-3">
+                                                    <div class="container">
+                                                        <div class="row mt-5">
+                                                                <div class="col-xl-10 offset-xl-1 affiliate_item">
+                                                                    <h3>Link pentru referral <button id="aff_generate" class="boxed-btn">@lang('lang.click')</button></h3> 
+                                                                    <div id="hideme">
+                                                                        <p> Copiaza si trimite acest link prietenilor tai pentru a deveni afiliati cu tine pe Minted.ro</p>
+                                                                        <input  class="list-group-item" id="aff_link" value="{{ Auth::user()->referral_link }}"  />
+                                                                        <button class="butonsp" onclick="myFunction()">Copy text</button>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <!-- main-details-area-start -->
+                                                <div class="main-details-area mt-3">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-xl-10 offset-xl-1 col-lg-12">
+                                                                    <div class="my_coupon">
+                                                                        <div class="my_coupens_headeing mb-30">
+                                                                            <h3>@lang('lang.all') @lang('lang.affiliate') <b>({{ count(Auth::user()->referrals)  ?? '0' }})</b></h3>
+                                                                        </div>
+                                                                        <table class="table">
+                                                                            <tr>
+                                                                                <th>@lang('lang.affiliate') @lang('lang.name')</th>
+                                                                                <th>@lang('lang.added_time')</th>
+                                                                                <th>@lang('status')</th>
+                                                                            </tr>
+                                                                            @foreach (@$data['referrals'] as $item)
+                                                                                <tr>
+                                                                                    <td>{{ @$item->username }}</td>
+                                                                                    <td>{{DateFormat(@$item->created_at)}}</td>
+                                                                                    <td>{{ @$item->status == 1 ?'Active':'Pending' }}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                        </table>
+                                                                    
+                                                                        <div class="Pagination">
+                                                                            {{ $data['referrals']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- main-details-area-end -->
+                          
+                                    @endif
+
+
                                     @if (@Auth::user()->role_id == 4)
                                     <div class="tab-pane fade {{ @$data['reviews'] == url()->current() ?'show active':'' }} " id="Reviews" role="tabpanel"
                                         aria-labelledby="Reviews-tab">
@@ -2737,7 +2901,30 @@
             @endforeach
         @endif
     </script>
- 
+ <script>
+     $(document).ready(function() {
+
+$("#hideme").css("display","none");
+$("#aff_generate").on("click", function(){
+$("#hideme").toggle();
+})
+})
+
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("aff_link");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
+</script>
 
     
 @endpush

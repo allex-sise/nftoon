@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="banner-info">
-                            <h2>@lang('lang.affiliate') @lang('lang.list')</h2>
+                            <h2>Lista Afiliati</h2>
                         </div>
                     </div>
                 </div>
@@ -25,8 +25,8 @@
         <div class="container">
             <div class="row mt-5">
                     <div class="col-xl-10 offset-xl-1 affiliate_item">
-                        <h3>@lang('lang.affiliate') @lang('lang.link') <button id="aff_generate" class="boxed-btn">@lang('lang.click')</button></h3> 
-                        <input  class="list-group-item" id="aff_link" value="{{ Auth::user()->referral_link }}"  />
+                        <h3>Link Afiliere <button id="aff_generate" class="boxed-btn">@lang('lang.click')</button></h3> 
+                        <input class="list-group-item" id="aff_link" value="{{ Auth::user()->referral_link }}"  />
                     </div>
             </div>
         </div>

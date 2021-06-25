@@ -179,6 +179,8 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::post('add-fund', 'FundController@addFundStore')->name('addFundStore')->middleware('userRolePermission:3');
         Route::post('update-fund', 'FundController@addFundUpdate')->name('addFundUpdate')->middleware('userRolePermission:3');
         Route::get('fund-history/{id}', 'FundController@fundHistory')->name('fundHistory')->middleware('userRolePermission:3');
+        Route::get('showFunds/', 'FundController@showFunds')->name('showFunds')->middleware('userRolePermission:3');
+
         Route::get('fund-list', 'FundController@fundList')->name('fundList')->middleware('userRolePermission:3');
         Route::get('fund-delete/{id}', 'FundController@fundrDeleted')->name('fundrDeleted')->middleware('userRolePermission:3');
 

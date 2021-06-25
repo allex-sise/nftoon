@@ -150,7 +150,7 @@ class ManageQuery extends Model
     }
     public static function FreeItemOfCategory($id){
 
-        return DB::table('item_fees')->where('category_id',$id)->first();
+        return DB::table('item_fees')->where('category_id',1)->first();
     }
     public static function UserFirstItem(){
 

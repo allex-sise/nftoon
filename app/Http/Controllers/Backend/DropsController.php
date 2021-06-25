@@ -61,6 +61,7 @@ class DropsController extends Controller
             $store->name = $request->title;
             $store->slug = strtolower(str_replace(' ', '_',$request->title));
             $store->description = $request->description;
+            $store->startdate = Carbon::createFromFormat('m/d/Y H:i', $request->startdate)->format('Y-m-d H:i');
             $store->expdate = Carbon::createFromFormat('m/d/Y H:i', $request->expdate)->format('Y-m-d H:i');
           
             $store->status = $request->status;
@@ -157,6 +158,7 @@ class DropsController extends Controller
                 $store->name = $request->title;
                 $store->slug = strtolower(str_replace(' ', '_',$request->title));
                 $store->description = $request->description;
+                $store->startdate = Carbon::createFromFormat('m/d/Y H:i', $request->startdate)->format('Y-m-d H:i');
                 $store->expdate = Carbon::createFromFormat('m/d/Y H:i', $request->expdate)->format('Y-m-d H:i');
                 $store->status = $request->status;
                 $thumbnail =$store->dropicon;

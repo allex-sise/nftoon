@@ -74,12 +74,15 @@
             <li>
                 <a href="#subMenuFund" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <span class="flaticon-analytics"></span>
-                    @lang('lang.offline_payment')
+                    Fonduri
                 </a>
                 <ul class="collapse list-unstyled" id="subMenuFund">
                     @if(Auth::user()->role_id == 1 || in_array(3, $permitted_modules))
                     <li>
                       <a href="{{ route('admin.addFund') }}">@lang('lang.add_fund')</a>
+                    </li>
+                    <li>
+                      <a href="{{ route('admin.showFunds') }}">Fondurile Mele</a>
                     </li>
                     @endif
                     @if(Auth::user()->role_id == 1 || in_array(3, $permitted_modules))

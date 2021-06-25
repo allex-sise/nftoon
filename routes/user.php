@@ -65,6 +65,7 @@ Route::group(['middleware' => ['XSS']], function () {
 
     /* ******************** START CUSTOMER ROUTES ********************* */
     Route::get('profile/{username}', 'CustomerController@profile')->name('profile');
+    Route::get('referrals/{username}', 'CustomerController@referrals')->name('referrals');
     Route::get('downloads/{username}', 'CustomerController@downloads')->name('downloads');
   
     Route::get('setting/{username}', 'CustomerController@setting')->name('setting');
