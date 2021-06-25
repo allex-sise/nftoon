@@ -275,10 +275,7 @@ $carttotalstrip = floatval($b);
                                                 <li>
                                                     <span>{{ @$item->name }}</span>
                                                     <span>{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
-                                                @php 
-                                                dd( @$item->Re_item);
-                                                @endphp
-                                                                                
+                                                             
                                                 </li>
                                             @endforeach
                                         @endif

@@ -189,7 +189,7 @@ if(!empty(@$setting->currency_symbol)){ @$currency = @$setting->currency_symbol;
         </div>
       </a>
     </div> 
-    <div class="col-lg-3 col-md-6 mt-30-md">
+    <div class="col-lg-4 col-md-6 mt-30-md">
       <a href="#" class="d-block">
         <div class="white-box single-summery">
           <div class="d-flex justify-content-between">

@@ -211,7 +211,7 @@
                 $data=  App\AssignModulePermission::where('module_id',10)->first();
             @endphp --}}
             @if(Auth::user()->role_id == 1 || in_array(10, $permitted_modules))
-            <li>
+            <!-- <li>
                 <a href="#ItemFee" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <span class="flaticon-analytics"></span>
                     Comisioane
@@ -235,7 +235,7 @@
                    
                    
                 </ul>
-            </li>
+            </li> -->
 
             @endif
             {{-- @php
@@ -455,7 +455,7 @@
                 $data=  App\AssignModulePermission::where('module_id',15)->first();
             @endphp --}}
             @if(Auth::user()->role_id == 1 || in_array(15, $permitted_modules))
-                <li>
+                <!-- <li>
                     <a href="#payment" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="flaticon-analytics"></span>
                         @lang('lang.payment')
@@ -463,10 +463,10 @@
                     <ul class="collapse list-unstyled" id="payment">
                         <li> <a href="{{ route('admin.CreditCard') }}">@lang('lang.save') @lang('lang.credit') @lang('lang.card')</a> </li>
                         <li> <a href="{{ route('admin.paymentMethod') }}">@lang('lang.author_balance')</a> </li>
-                        <!-- <li> <a href="{{ route('admin.payableUser') }}">@lang('lang.payment') @lang('lang.author')</a> </li> -->
+                        <li> <a href="{{ route('admin.payableUser') }}">@lang('lang.payment') @lang('lang.author')</a> </li>
 
                     </ul>
-                </li> 
+                </li>  -->
             @endif
             {{-- @php
                 $data=  App\AssignModulePermission::where('module_id',16)->first();
@@ -560,9 +560,9 @@
                     
 
                     {{--  <li> <a href="{{ route('email-setting') }}">@lang('lang.email_settings') </a> </li> --}}
-                    <li> <a href="{{ route('role-permission') }}">@lang('lang.role_permission') </a> </li>
+                    {{--  <li> <a href="{{ route('role-permission') }}">@lang('lang.role_permission') </a> </li> --}
                     {{--  <li> <a href="{{ route('admin.mail_template') }}">Email template </a> </li> --}}
-                    <li> <a href="{{ route('payment-method-setting') }}">@lang('lang.payment_method_settings')</a> </li>
+                    {{-- <li> <a href="{{ route('payment-method-setting') }}">@lang('lang.payment_method_settings')</a> </li> --}
                     {{--  <li> <a href="{{ route('language-setting') }}">@lang('lang.language_settings') </a> </li> --}}
                     <li> <a href="{{ route('seo-setting') }}">@lang('lang.SEO_settings') </a> </li>
                     
@@ -600,7 +600,7 @@
                         <li> <a href="{{ route('item-support') }}">@lang('lang.item_support')</a> </li>
                         <li> <a href="{{ route('become-author') }}">@lang('lang.become_author')</a> </li> -->
                         <li> <a href="{{ route('about-company') }}">@lang('lang.about_company')</a> </li>
-                        <li> <a href="{{ route('faqs') }}">@lang('lang.faq')</a> </li>
+                        <!-- <li> <a href="{{ route('faqs') }}">@lang('lang.faq')</a> </li> -->
                     </ul>
                 </li>
             @endif
@@ -609,7 +609,7 @@
                 $data=  App\AssignModulePermission::where('module_id',22)->first();
             @endphp --}}
         @if(Auth::user()->role_id == 1 || in_array(22, $permitted_modules))
-            <li>
+            <!-- <li>
                 <a href="#frontSetting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <span class="flaticon-analytics"></span>
                     @lang('lang.front_settings')
@@ -622,7 +622,7 @@
                     
                     <li> <a href="{{ route('FooterCustomLink') }}">@lang('lang.footer_custom_link')</a> </li>
                 </ul>
-            </li>
+            </li> -->
 
         @endif
 

@@ -363,9 +363,15 @@ class PaymentController extends Controller
                        
                         $product_tax=$value->options['tax'];
                         $total_tax+=$product_tax;
-                        $countable_price=$value->price- $product_tax;
+                        $countable_price= $value->price- $product_tax;
 
                         $author = User::find($value->options['user_id']);
+                        $minted = User::find(1);
+
+                        $agent = User::find($author->referrer->id);
+                    
+                    
+                      
                         $author_total_income=BalanceSheet::where('author_id',$value->options['user_id'])->sum('income');
                         if (@$value->options['item_id']) {
                             $label = Label::where('amount', '<=', $author_total_income)->orderBy('id', 'desc')->first();
@@ -431,10 +437,7 @@ class PaymentController extends Controller
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
                             }
-                            $referrar = User::where('id', $value->options['user_id'])->get();
-                            foreach($referrar as $referrsr){
-                                $referrer = $referrsr->refferer_id;
-                            }
+                      
                             // $referrer = $referrar->referrer_id;
                             
                             if ($value->options['buyer_fee'] != 0) {
@@ -451,7 +454,7 @@ class PaymentController extends Controller
 
                             if ($value->options['comisionagent'] != 0) {
                                 $statement = new Statement();
-                                $statement->author_id = $referrer;
+                                $statement->author_id = $agent->id;
                                 $statement->item_id = $value->options['item_id'];
                                 $statement->order_id = $order->id;
                                 $statement->type = 'i';
@@ -496,7 +499,7 @@ class PaymentController extends Controller
                                 $statement1->type = 'i';
                                 $statement1->title = 'sale';
                                 $statement1->details = $details->title;
-                                $statement1->price = $countable_price;
+                                $statement1->price = $value->options['incasarecreator'];
                                 $statement1->save();  
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -515,10 +518,34 @@ class PaymentController extends Controller
 
                             try{
                                 $balnc  = $author->balance;
-                                $income = ($countable_price - 0) - ((@$label->rate / 100) * ($countable_price - 0));
+                                $income = $value->options['incasarecreator'];
                                 
 
                                 $balnc->amount = $author->balance->amount + $income;
+                                $balnc->save();
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+
+                            try{
+                                $balnc  = $minted->balance;
+                                $income = $value->options['comisionminted'] + $value->options['buyer_fee'];
+                                
+
+                                $balnc->amount = $minted->balance->amount + $income;
+                                $balnc->save();
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+
+                            try{
+                                $balnc  = $agent->balance;
+                                $income = $value->options['comisionagent'];
+                                
+
+                                $balnc->amount = $agent->balance->amount + $income;
                                 $balnc->save();
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -544,7 +571,7 @@ class PaymentController extends Controller
                             //comision agent
                             try{
                                 $balance_sheetcomisionagent = new BalanceSheet();
-                                $balance_sheetcomisionagent->author_id = $referrer;
+                                $balance_sheetcomisionagent->author_id = $agent->id;
                                 $balance_sheetcomisionagent->item_id =(int)$value->options['item_id'];
                                 $balance_sheetcomisionagent->order_id = $order->id;
                                 $balance_sheetcomisionagent->price =$countable_price;

@@ -27,7 +27,7 @@ function GetOutPutString(data){
                            <h3>${e.Reg_total} ${currencySys}</h3>
                        </div>
                        <div class="good-title good-title2">
-                         <h3 class="h3clss">Items Sold</h3>
+                         <h3 class="h3clss">Expira in</h3>
                          <h3>12</h3>
                        </div>
                    </div>
@@ -163,7 +163,7 @@ function GetOutPutString(data){
                        <h3>${e.Reg_total} ${currencySys}</h3>
                    </div>
                    <div class="good-title good-title2">
-                     <h3 class="h3clss">Items Sold</h3>
+                     <h3 class="h3clss">Expira in</h3>
                      <h3>12</h3>
                    </div>
                </div>

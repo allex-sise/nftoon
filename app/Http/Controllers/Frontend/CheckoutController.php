@@ -103,7 +103,7 @@ class CheckoutController extends Controller
                     $tax_added=0;
                 }
                 Cart::update($rowId,['id' => bin2hex(random_bytes(4)), 'name' => $my_cart->name, 'qty' => 1, 'price' => $my_cart->price+$tax, 'weight' => 0, 'options' => 
-                ['support_charge' => $my_cart->options['support_charge'],'license_type'=>$my_cart->options['license_type'],'support_time'=>$my_cart->options['support_time'],'buyer_fee'=>$my_cart->options['buyer_fee'],'comisionagent'=>$my_cart->options['comisionagent'],'comisionminted'=>$my_cart->options['comisionminted'],'item_id'=>$my_cart->options['item_id'],
+                ['support_charge' => $my_cart->options['support_charge'],'license_type'=>$my_cart->options['license_type'],'support_time'=>$my_cart->options['support_time'],'buyer_fee'=>$my_cart->options['buyer_fee'],'incasarecreator'=>$my_cart->options['incasarecreator'],'comisionagent'=>$my_cart->options['comisionagent'],'comisionminted'=>$my_cart->options['comisionminted'],'item_id'=>$my_cart->options['item_id'],
                 'description'=>$my_cart->options['description'],'user_id'=>$my_cart->options['user_id'],'username'=>$my_cart->options['username'],'icon'=>$my_cart->options['icon'], 'image'=>$my_cart->options['image'],'Extd_percent'=>$my_cart->options['Extd_percent'],'tax_added'=>$tax_added,'tax'=>$tax]]);
                }
                
@@ -206,9 +206,12 @@ class CheckoutController extends Controller
                             $purchaseCode->customer_id = $value->options['user_id'];
                             $purchaseCode->purchase_code = $purchase_code;
                             $purchaseCode->save();
-                            $referrar = User::where('id', $item_order->author_id)->get();
-                     //       $referrer = $referrar->referrer_id;
-                            $referrer = $referrar->referrer->id;
+
+                            $author = User::find($value->options['user_id']);
+                            $minted = User::find(1);
+    
+                            $agent = User::find($author->referrer->id);
+                    
 
                             if ($value->options['buyer_fee'] != 0) {
                                 $statement = new Statement();
@@ -224,7 +227,7 @@ class CheckoutController extends Controller
 
                             if ($value->options['comisionagent'] != 0) {
                                 $statement = new Statement();
-                                $statement->author_id = $referrer;
+                                $statement->author_id = $agent;
                                 $statement->item_id = $value->options['item_id'];
                                 $statement->order_id = $order->id;
                                 $statement->type = 'i';
@@ -266,7 +269,7 @@ class CheckoutController extends Controller
                             $statement1->type = 'i';
                             $statement1->title = 'sale';
                             $statement1->details = $details->title;
-                            $statement1->price = $value->options['Re_item'];
+                            $statement1->price = 1000;
                             $statement1->save();
 
                             $itemUp = Item::find($value->options['item_id']);
@@ -274,7 +277,7 @@ class CheckoutController extends Controller
                             $itemUp->save();
 
                             $balnc  = $author->balance;
-                            $income = $value->options['Re_item'];
+                            $income = $value->options['incasarecreator'];
                             $balnc->amount = $author->balance->amount + $income;
                             
                             $balnc->save();
@@ -302,7 +305,7 @@ class CheckoutController extends Controller
 
                             //balancesheet comisionagent
                             $balance_sheet3 = new BalanceSheet();
-                            $balance_sheet3->author_id = $referrer;
+                            $balance_sheet3->author_id = $agent;
                             $balance_sheet3->item_id = $value->options['item_id'];
                             $balance_sheet3->order_id = $item_order->id;
                             $balance_sheet3->price = $value->price;

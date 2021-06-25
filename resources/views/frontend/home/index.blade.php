@@ -139,7 +139,7 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
                     <div class="single-goods">
                         <div class="col-xl-7 float-left">
                             <div class="goods-thumb">
-                                <a href="http://localhost/mintedfinal/item/the-bitcoin-angel-(open-edition)-#1569/4157/1">
+                                <a href="{{ route('singleDrop',@$drop->slug) }}">
                                     <img height="340" src="{{asset(@$drop->dropicon)}}" alt="">
                                 </a>
                             </div>
@@ -147,7 +147,7 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
                         <div class="col-xl-5 float-left">
                         <div class="good-info p-0">
                             <div class="good-title good-titledrop">
-                                <h3><a href="http://localhost/mintedfinal/item/the-bitcoin-angel-(open-edition)-#1569/4157/1">{{ $drop->name }}</a></h3>
+                                <h3><a href="{{ route('singleDrop',@$drop->slug) }}">{{ $drop->name }}</a></h3>
                                 <p style="line-height: 16px; padding-top: 20px;"> {{ $drop->description }}</p>
                             </div>
                         </div>

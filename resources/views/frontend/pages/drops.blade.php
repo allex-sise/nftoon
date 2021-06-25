@@ -70,10 +70,10 @@ Minted from drops are sold directly by the creator. You can buy them here before
                 <div class="col-xl-10 col-md-10 grid-item cat1 cat1 float-left pull-left mg30 mg20px">
                     <div class="single-goods">
                         <div class="col-xl-9 float-left">
-                        <h3><a href="http://localhost/mintedfinal/item/the-bitcoin-angel-(open-edition)-#1569/4157/1">{{ $drop->name }}</a></h3> 
+                        <h3><a href="{{ route('singleDrop',@$drop->slug) }}">{{ $drop->name }}</a></h3> 
 
                             <div class="goods-thumb">
-                                <a href="http://localhost/mintedfinal/item/the-bitcoin-angel-(open-edition)-#1569/4157/1">
+                                <a href="{{ route('singleDrop',@$drop->slug) }}">
                                     <img height="540" src="{{asset(@$drop->dropicon)}}" alt="">
                                 </a>
                             </div>
@@ -97,7 +97,7 @@ Minted from drops are sold directly by the creator. You can buy them here before
                         </div>
                         <div class="good-info good-infodrop" style="padding-top:0px;">
                             <div class="good-title good-titledrop">
-                                <a class="black-btn specialbuton" href="#"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
+                                <a class="black-btn specialbuton" href="{{ route('singleDrop',@$drop->slug) }}"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
                             </div>
                         </div>
                     </div>

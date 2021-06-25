@@ -75,11 +75,8 @@ return $name[array_key_last($name)];
                         <div class="col-lg-3 mb-30">
                             <div class="input-effect">
                                 <select class="niceSelect w-100 bb form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" id="role_id">
-                                    <option data-display="Role *" value="">@lang('lang.select')</option>
-                                    @foreach($roles as $key=>$value)
-                                    <option value="{{$value->id}}" {{ isset($edit) ? $edit->role_id == $value->id? 'selected': '' : old('role_id') == ($value->id? 'selected': '')}} >{{$value->name}}</option>
-                                    {{-- <option value="{{$value->id}}" {{ isset($edit) ? $edit->role_id == $value->id ? 'selected':(old("role_id") ==  $value->id? "selected":"" ) : "" }}>{{$value->name}}</option> --}}
-                                    @endforeach
+                             
+                                    <option value="5">Client</option>
                                 </select>
                                 <span class="focus-border"></span>
                                 @if ($errors->has('role_id'))
