@@ -287,6 +287,7 @@ function GetOutPutString(data){
 
     $(document).ready(function(){ */
         var _categor_id =$("#_categor_id").val();
+        var _drop_id =$("#_drop_id").val();
         var _subcategor_id =$("#_subcategor_id").val();          
         var key = $("#_key").val();
         var searCat = $("#searCat").val();
@@ -307,25 +308,44 @@ function GetOutPutString(data){
         var max_price = '';
         var page = 1;
         var lastpg = 1;
+        const dropsPerPageToDisplay = 8;
         
+        function LoadNextPage(){
+            page = page +1 ;            
+            AllDataPaginate(newest,bestsell,all,bestrated,trending,high,low,NoSell,LowSell,MediumSell,HighSell,TopSell);
+        }
+
         $.ajax({
-            url: url+'/category?newest='+newest+'&all='+all+'&star='+star+'&bestrated='+bestrated+'&bestsell='+bestsell+'&trending='+trending+'&high='+high+'&low='+low+'&_categor_id='+_categor_id+'&_subcategor_id='+_subcategor_id+'&key='+key+'&page='+page,
+            // url: url+'/category?newest='+newest+'&all='+all+'&star='+star+'&bestrated='+bestrated+'&bestsell='+bestsell+'&trending='+trending+'&high='+high+'&low='+low+'&_categor_id='+_categor_id+'&_subcategor_id='+_subcategor_id+'&key='+key+'&page='+page,
+            //todo: This call returns all items and does not filter by dropId, probably as the filter is not implemented
+            // i filter once more but should fix the filter
+            url: url+'/category?_drop_id='+_drop_id,
             method: 'GET',
             success:function(data){
                 console.log(data);
                 
                 page = 1;
                 lastpg = data.last_page;                
-                data=data.data;   
-                     
+                
+                let filteredDrops=[];
+                for (let val of data.data) {
+                    if(val.drop_id == _categor_id){
+                        filteredDrops.push(val);
+                    }
+                }        
+                data=filteredDrops;    
+                
                 if (Object.keys(data).length > 0) {   
                     GetOutPutString(data);
-              }
-              else{
-                $(".databox").append(`<div class="col-xl-12 col-md-12 grid-item no_item">
-                   <h2 class="text-center"> No Item </h2>
-                </div>`)
-              } 
+                    if (Object.keys(data).length < dropsPerPageToDisplay){
+                        LoadNextPage();
+                    }
+                }
+                else{
+                    $(".databox").append(`<div class="col-xl-12 col-md-12 grid-item no_item">
+                    <h2 class="text-center"> No Item </h2>
+                    </div>`)
+                } 
                 if(page < lastpg){
                     $(".bt").append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                     <div class="load-more text-center mt-10">
@@ -333,7 +353,7 @@ function GetOutPutString(data){
                     </div>
                 </div>`);
                 }
-            }
+                }
         
         });
        
@@ -341,8 +361,7 @@ function GetOutPutString(data){
         //pagination controller
         $(document).on("click","#loadMore",function() {
             //$(this).fadeOut();
-            page = page +1 ;            
-            AllDataPaginate(newest,bestsell,all,bestrated,trending,high,low,NoSell,LowSell,MediumSell,HighSell,TopSell);
+            LoadNextPage();
         });
 
 
@@ -737,18 +756,18 @@ function GetOutPutString(data){
                             GetOutPutString(data);
                         
                   }
-                  else{
-                    $(".databox").append(`<div class="col-xl-12 col-md-12 grid-item no_item">
-                       <h2 class="text-center"> No Item </h2>
-                    </div>`)
-                  } 
-                    if(page < lastpg){
-                        $(".bt").append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
-                        <div class="load-more text-center mt-10">
-                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
-                        </div>
-                    </div>`);
-                    }
+                //   else{
+                //     $(".databox").append(`<div class="col-xl-12 col-md-12 grid-item no_item">
+                //        <h2 class="text-center"> No Item </h2>
+                //     </div>`)
+                //   } 
+                if(page < lastpg){
+                    $(".bt").append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
+                    <div class="load-more text-center mt-10">
+                        <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                    </div>
+                </div>`);
+                }
                     
                 }
 

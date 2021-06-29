@@ -48,6 +48,7 @@
 <input type="text" id="_attribute" hidden value="{{ @$data['attribute']}}">
 <input type="text" id="_key" hidden value="{{ @$data['key']}}">
 <input type="text" id="searCat" hidden value="{{ @$data['searCat']}}">
+<input type="text" id="_drop_id" hidden value="{{ $data['category']->id }}">
   <!-- banner-area start -->
     <div class="banner-area2" >
         <div class="container">
@@ -115,7 +116,7 @@
     <div class="latest-goods-area gray-bg section-padding1 mt-40">
         <div class="container">
             <div class="row align-items-end">
-                <div class="col-xl-12  portfolio-menu">                   
+                <!-- <div class="col-xl-12  portfolio-menu">                   
 
                      @if(@$data['category'])
                      <font><button class="active">{{@$data['category']->title }}</button></font>
@@ -135,10 +136,10 @@
                      @endif
                      @if(@$data['category'])
                      <font><button onclick="window.location.href = '{{URL('/')}}';" class="active">@lang('lang.clear_filter')</button></font>
-                 @endif
+                    @endif
                      <font class="filter_cat_sale"></font>
                      <font class="filter_cat_rate"></font>
-                </div>
+                </div> -->
 
                 <div class="col-xl-6">
                     <div class="section-title mb-40">
