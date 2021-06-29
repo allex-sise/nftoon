@@ -127,6 +127,31 @@ class CheckoutController extends Controller
             return redirect()->back();
         }
     }
+
+    function updateStatement(Int $authorId, Int $itemId, Int $orderId, String $type, String $title, String $details, float $price){
+        $statement = new Statement();
+        $statement->author_id = $authorId;
+        $statement->item_id = $itemId;
+        $statement->order_id = $orderId;
+        $statement->type = $type;
+        $statement->title = $title;
+        $statement->details = $details;
+        $statement->price = $price;
+        $statement->save(); 
+    }
+
+    function updateBalanceSheet(Int $authorId, Int $itemId, Int $orderId, float $price, float $discountPrice, float $fee, float $incomePrice){
+        $balance_sheet = new BalanceSheet();
+        $balance_sheet->author_id = $authorId;
+        $balance_sheet->item_id = $itemId;
+        $balance_sheet->order_id = $orderId;
+        $balance_sheet->price = $price;
+        $balance_sheet->discount = $discountPrice;
+        $balance_sheet->fee = $fee;
+        $balance_sheet->income = $incomePrice;
+        $balance_sheet->save();
+    }
+
     function payment_store(Request $r)
     {
         DB::beginTransaction();
@@ -214,63 +239,23 @@ class CheckoutController extends Controller
                     
 
                             if ($value->options['buyer_fee'] != 0) {
-                                $statement = new Statement();
-                                $statement->author_id = 1;
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'i';
-                                $statement->title = 'Comision 2.5';
-                                $statement->details = 'Comision 2.5 pentru minted';
-                                $statement->price = $value->options['buyer_fee'];
-                                $statement->save(); 
+                                Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision 2.5','Comision 2.5',$value->options['buyer_fee']);
                             }
 
                             if ($value->options['comisionagent'] != 0) {
-                                $statement = new Statement();
-                                $statement->author_id = $agent;
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'i';
-                                $statement->title = 'Comision Agent';
-                                $statement->details = 'Comision 5 agent';
-                                $statement->price = $value->options['comisionagent'];
-                                $statement->save(); 
+                                Self::updateStatement($agent,$value->options['item_id'],$order->id,'i','Comision Agent','Comision Agent',$value->options['comisionagent']);
                             }
 
                             if ($value->options['comisionminted'] != 0) {
-                                $statement = new Statement();
-                                $statement->author_id = 1;
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'i';
-                                $statement->title = 'Comision Minted';
-                                $statement->details = 'Comision 25 Minted';
-                                $statement->price = $value->options['comisionminted'];
-                                $statement->save(); 
+                                Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision Minted','Comision Minted',$value->options['comisionminted']);
                             }
-
 
                             if (isset($value->options['coupon_price'])) {
-                                $statement = new Statement();
-                                $statement->author_id = $value->options['user_id'];
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'e';
-                                $statement->title = 'Couopon';
-                                $statement->details = 'Coupon discount';
-                                $statement->price = $value->options['coupon_price'];
-                                $statement->save();
+                                Self::updateStatement($value->options['user_id'],$order->id,$value->options['item_id'],'e','Coupon discount','Coupon discount',$value->options['coupon_price']);
                             }
+
                             $details = Item::find($item_order->item_id);
-                            $statement1 = new Statement();
-                            $statement1->order_id = $order->id;
-                            $statement1->author_id = $value->options['user_id'];
-                            $statement1->item_id = $value->options['item_id'];
-                            $statement1->type = 'i';
-                            $statement1->title = 'sale';
-                            $statement1->details = $details->title;
-                            $statement1->price = 1000;
-                            $statement1->save();
+                            Self::updateStatement($value->options['user_id'],$value->options['item_id'],$order->id,'i','Sale','Sale',1000);
 
                             $itemUp = Item::find($value->options['item_id']);
                             $itemUp->sell = $itemUp->sell + 1;
@@ -282,49 +267,17 @@ class CheckoutController extends Controller
                             
                             $balnc->save();
                             //balancesheet principal bani cont creator
-                            $balance_sheet = new BalanceSheet();
-                            $balance_sheet->author_id = $author->id;
-                            $balance_sheet->item_id = $value->options['item_id'];
-                            $balance_sheet->order_id = $item_order->id;
-                            $balance_sheet->price = $value->price;
-                            $balance_sheet->discount = $discount;
-                            $balance_sheet->fee = 0.00;
-                            $balance_sheet->income = $income;
-                            $balance_sheet->save();
+                            //function updateBalanceSheet(Int $authorId, Int $itemId, Int $orderId, Int $price, Int $discountPrice, Int $fee, Int $incomePrice){
+                            Self::updateBalanceSheet($author->id,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$income);
 
                             //balancesheet comision2.5 minted
-                            $balance_sheet2 = new BalanceSheet();
-                            $balance_sheet2->author_id = 1;
-                            $balance_sheet2->item_id = $value->options['item_id'];
-                            $balance_sheet2->order_id = $item_order->id;
-                            $balance_sheet2->price = $value->price;
-                            $balance_sheet2->discount = $discount;
-                            $balance_sheet2->fee = 0.00;
-                            $balance_sheet2->income = $value->options['buyer_fee'];
-                            $balance_sheet2->save();
+                            Self::updateBalanceSheet(1,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['buyer_fee']);
 
                             //balancesheet comisionagent
-                            $balance_sheet3 = new BalanceSheet();
-                            $balance_sheet3->author_id = $agent;
-                            $balance_sheet3->item_id = $value->options['item_id'];
-                            $balance_sheet3->order_id = $item_order->id;
-                            $balance_sheet3->price = $value->price;
-                            $balance_sheet3->discount = $discount;
-                            $balance_sheet3->fee = 0.00;
-                            $balance_sheet3->income = $value->options['comisionagent'];
-                            $balance_sheet3->save();
+                            Self::updateBalanceSheet($agent,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['comisionagent']);
 
                             //balance sheet comisionminted 25
-                            $balance_sheet4 = new BalanceSheet();
-                            $balance_sheet4->author_id = 1;
-                            $balance_sheet4->item_id = $value->options['item_id'];
-                            $balance_sheet4->order_id = $item_order->id;
-                            $balance_sheet4->price = $value->price;
-                            $balance_sheet4->discount = $discount;
-                            $balance_sheet4->fee = 0.00;
-                            $balance_sheet4->income = $value->options['comisionminted'];
-                            $balance_sheet4->save();
-
+                            Self::updateBalanceSheet(1,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['comisionminted']);
                         }
                         // $buy_package->
                         $data['message'] = Auth::user()->username.' bought this  <strong>'. @$item_order->Item->title. '</strong> product';

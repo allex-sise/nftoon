@@ -315,8 +315,32 @@ class PaymentController extends Controller
          }  
     }
 
-      function payment_store()
-    {
+    function updateStatement(Int $authorId, Int $itemId, Int $orderId, String $type, String $title, String $details, float $price){
+        $statement = new Statement();
+        $statement->author_id = $authorId;
+        $statement->item_id = $itemId;
+        $statement->order_id = $orderId;
+        $statement->type = $type;
+        $statement->title = $title;
+        $statement->details = $details;
+        $statement->price = $price;
+        $statement->save(); 
+        return $statement;
+    }
+
+    function updateBalanceSheet(Int $authorId, Int $itemId, Int $orderId, float $price, float $discountPrice, float $fee, float $incomePrice){
+        $balance_sheet = new BalanceSheet();
+        $balance_sheet->author_id = $authorId;
+        $balance_sheet->item_id = $itemId;
+        $balance_sheet->order_id = $orderId;
+        $balance_sheet->price = $price;
+        $balance_sheet->discount = $discountPrice;
+        $balance_sheet->fee = $fee;
+        $balance_sheet->income = $incomePrice;
+        $balance_sheet->save();
+    }
+
+      function payment_store(){
         $a = Cart::subtotal();
         $b = preg_replace("/(\,)/", "", $a);
         $carttotalstrip = floatval($b);
@@ -441,66 +465,25 @@ class PaymentController extends Controller
                             // $referrer = $referrar->referrer_id;
                             
                             if ($value->options['buyer_fee'] != 0) {
-                                $statement = new Statement();
-                                $statement->author_id = 1;
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'i';
-                                $statement->title = 'Comision 25';
-                                $statement->details = 'Comision 25 pentru minted';
-                                $statement->price = $value->options['buyer_fee'];
-                                $statement->save(); 
+                                Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision 2.5','Comision 2.5',$value->options['buyer_fee']);
                             }
 
                             if ($value->options['comisionagent'] != 0) {
-                                $statement = new Statement();
-                                $statement->author_id = $agent->id;
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'i';
-                                $statement->title = 'Comision Agent';
-                                $statement->details = 'Comision 5 agent';
-                                $statement->price = $value->options['comisionagent'];
-                                $statement->save(); 
+                                Self::updateStatement($agent->id,$value->options['item_id'],$order->id,'i','Comision Agent','Comision Agent',$value->options['comisionagent']);
                             }
 
                             if ($value->options['comisionminted'] != 0) {
-                                $statement = new Statement();
-                                $statement->author_id = 1;
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'i';
-                                $statement->title = 'Comision Minted';
-                                $statement->details = 'Comision 25 Minted';
-                                $statement->price = $value->options['comisionminted'];
-                                $statement->save(); 
+                                Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision Minted','Comision Minted',$value->options['comisionminted']);
                             }
                             
                             if (isset($value->options['coupon_price'])) {
-                                $statement = new Statement();
-                                $statement->author_id = $value->options['user_id'];
-                                $statement->item_id = $value->options['item_id'];
-                                $statement->order_id = $order->id;
-                                $statement->type = 'e';
-                                $statement->title = 'Couopon';
-                                $statement->details = 'Coupon discount';
-                                $statement->price = $value->options['coupon_price'];
-                                $statement->save();
-                                $data['statement'][]=$statement;
+                                $data['statement'][]=Self::updateStatement($value->options['user_id'],$value->options['item_id'],$order->id,'e','Couopon','Coupon discount',$value->options['coupon_price']);
                             }
                             
 
                             try{
                                 $details = Item::find($item_order->item_id);
-                                $statement1 = new Statement();
-                                $statement1->order_id = $order->id;
-                                $statement1->author_id = $value->options['user_id'];
-                                $statement1->item_id = $value->options['item_id'];
-                                $statement1->type = 'i';
-                                $statement1->title = 'sale';
-                                $statement1->details = $details->title;
-                                $statement1->price = $value->options['incasarecreator'];
-                                $statement1->save();  
+                                Self::updateStatement($value->options['user_id'],$value->options['item_id'],$order->id,'i','Sale',$details->title,$value->options['incasarecreator']); 
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
@@ -554,15 +537,7 @@ class PaymentController extends Controller
 
 
                             try{
-                                $balance_sheet = new BalanceSheet();
-                                $balance_sheet->author_id = $author->id;
-                                $balance_sheet->item_id =(int)$value->options['item_id'];
-                                $balance_sheet->order_id = $order->id;
-                                $balance_sheet->price =$countable_price;
-                                $balance_sheet->discount = $discount;
-                                $balance_sheet->fee = 0.00;
-                                $balance_sheet->income = $income;
-                                $balance_sheet->save();
+                                Self::updateBalanceSheet($author->id,$value->options['item_id'],$order->id,$countable_price,$discount,0.00,$income);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
@@ -570,30 +545,14 @@ class PaymentController extends Controller
                             
                             //comision agent
                             try{
-                                $balance_sheetcomisionagent = new BalanceSheet();
-                                $balance_sheetcomisionagent->author_id = $agent->id;
-                                $balance_sheetcomisionagent->item_id =(int)$value->options['item_id'];
-                                $balance_sheetcomisionagent->order_id = $order->id;
-                                $balance_sheetcomisionagent->price =$countable_price;
-                                $balance_sheetcomisionagent->discount = $discount;
-                                $balance_sheetcomisionagent->fee = 0.00;
-                                $balance_sheetcomisionagent->income = $value->options['comisionagent'];
-                                $balance_sheetcomisionagent->save();
+                                Self::updateBalanceSheet($agent->id,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['comisionagent']);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
                             }
-                            //comision 25minted
+                            //comision 2.5minted
                             try{
-                                $balance_sheetcomisionminted = new BalanceSheet();
-                                $balance_sheetcomisionminted->author_id = 1;
-                                $balance_sheetcomisionminted->item_id =(int)$value->options['item_id'];
-                                $balance_sheetcomisionminted->order_id = $order->id;
-                                $balance_sheetcomisionminted->price =$countable_price;
-                                $balance_sheetcomisionminted->discount = $discount;
-                                $balance_sheetcomisionminted->fee = 0.00;
-                                $balance_sheetcomisionminted->income = $value->options['comisionminted'];
-                                $balance_sheetcomisionminted->save();
+                                Self::updateBalanceSheet(1,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['comisionminted']);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
@@ -601,15 +560,7 @@ class PaymentController extends Controller
 
                              //comision 2.5minted
                             try{
-                                $balance_sheetcomisionminted = new BalanceSheet();
-                                $balance_sheetcomisionminted->author_id = 1;
-                                $balance_sheetcomisionminted->item_id =(int)$value->options['item_id'];
-                                $balance_sheetcomisionminted->order_id = $order->id;
-                                $balance_sheetcomisionminted->price =$countable_price;
-                                $balance_sheetcomisionminted->discount = $discount;
-                                $balance_sheetcomisionminted->fee = 0.00;
-                                $balance_sheetcomisionminted->income = $value->options['buyer_fee'];
-                                $balance_sheetcomisionminted->save();
+                                Self::updateBalanceSheet(1,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['buyer_fee']);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
