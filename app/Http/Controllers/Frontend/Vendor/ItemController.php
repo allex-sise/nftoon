@@ -218,8 +218,6 @@ class ItemController extends Controller
             $item->description = $r->description;    
             $item->sub_category_id = $r->sub_category_id;
             $item->category_id = $r->category_id;
-            $item->resolution = $r->resolution;
-            $item->widget = $r->widget;
             $item->tags = $r->tags;
 
             
@@ -246,8 +244,6 @@ class ItemController extends Controller
             }
            
             $item->user_msg = $r->user_msg;
-            $item->layout = $r->layout;
-            $item->columns = $r->columns;
             $item->demo_url = $r->demo_url;
             $item->active_status = 1;
             $item->status = $approve;
@@ -455,6 +451,128 @@ class ItemController extends Controller
         }
     }
 
+    function itemSale($id){
+        try {
+             $item_preview=ItemPreview::where('item_id',$id)->where('status',1)->first();
+            // return $item_preview;
+            $data['edit']=Item::find($id);
+            $data['attributes']= $data['edit']->attribute;
+            if ($data['edit']->user_id!=Auth::user()->id) {
+                Toastr::error('You are not authorized for view this page', 'Failed');
+                return redirect()->back();
+            }
+            $data['category'] = ItemCategory::where('up_permission',1)->get();
+            $data['subCategory'] = ItemSubCategory::where('active_status',1)->get();
+            $data['attribute'] = Attribute::all();
+            $data['sub_attribute'] = SubAttribute::latest()->get();
+            $category = ItemCategory::where('up_permission',1)->get();
+            $attribute = Attribute::all();
+
+
+            return view('frontend.vendor.itemSale', compact('data','category','item_preview'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
+    function itemSaleUpdate(Request $r){
+            
+        // return $r;
+           
+    
+            
+         
+            $r->validate([
+              
+                'Re_item' => 'required|',
+                'Re_buyer' => 'required|',
+                'Reg_total_price' => 'required|',
+            ]);
+    
+            
+            
+        DB::beginTransaction();
+        try {
+    
+            $item = Item::find($r->id);
+    
+           
+         $settings = InfixGeneralSetting::first();
+         
+            if (Auth::user()->role_id==4) {
+            
+                    $item = Item::find($r->id);
+                    $success_message="Product Updated successfully";
+                } else {
+                    $item =new ItemPreview();
+                    $item->item_id = $r->id;
+                    $success_message="Thank you for your submission, allow to check 12 to 48 hours";
+                }
+            
+            
+    
+        
+    
+        // $item =new ItemPreview();
+        $item->user_id = Auth::user()->id;
+        
+        // $item->title = $r->title;
+        // $item->feature1 = $r->feature1;
+        // $item->feature2 = $r->feature2;
+        // $item->description = $r->description;    
+        // $item->sub_category_id = $r->sub_category_id;
+        // $item->category_id = $r->category_id;
+        // $item->tags = $r->tags;
+        // $item->is_upload = $r->upload_or_link;
+        // if ($r->upload_or_link==0) {
+        //     $item->purchase_link = $r->purchase_link;
+            
+        // }
+    
+        // $item->compatible_browsers = implode(",", $r->compatible_browsers);
+        // $item->compatible_with = implode(",", $r->compatible_with);
+        // $item->framework = implode(",", $r->framework);
+        // $item->software_version = implode(",", $r->software_version);
+    
+        $item->Re_item = $r->Re_item;
+        $item->Re_buyer = $r->Re_buyer;
+        $item->C_item = $r->C_item;
+        $item->C_buyer = $r->C_buyer;
+        $item->Reg_total = $r->Reg_total_price;
+    
+       
+        // $item->user_msg = $r->user_msg;
+        // $item->demo_url = $r->demo_url;
+        $item->active_status = 1;
+        $item->status = 1;
+       
+        $item->save();
+       
+        Toastr::success($success_message,'Success');
+    
+        $data =SessionFile::where('user_id',Auth::user()->id)->get();
+            foreach ($data as $key => $value) {
+                if ($value->file_name) {
+                    File::delete($value->file_name);
+                }
+                $value->delete();
+            }
+    
+            
+    
+            DB::commit(); 
+            return redirect()->back();
+            } catch (\Exception $e) {
+                // dd($e);
+                $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+            }
+       
+      }
+
   function itemUpdate(Request $r){
             
     // return $r;
@@ -541,8 +659,6 @@ class ItemController extends Controller
     $item->description = $r->description;    
     $item->sub_category_id = $r->sub_category_id;
     $item->category_id = $r->category_id;
-    $item->resolution = $r->resolution;
-    $item->widget = $r->widget;
     $item->tags = $r->tags;
     $item->is_upload = $r->upload_or_link;
     if ($r->upload_or_link==0) {
@@ -572,8 +688,6 @@ class ItemController extends Controller
     // return $r;
     $item->C_buyer = $r->C_buyer;
     $item->user_msg = $r->user_msg;
-    $item->layout = $r->layout;
-    $item->columns = $r->columns;
     $item->demo_url = $r->demo_url;
     $item->active_status = 1;
 

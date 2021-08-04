@@ -99,7 +99,8 @@
                             <form action="{{url('admin/product-upload')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" value="{{@Session::get('categorySlect')->id}}" name="user_id">
-                                <div class="row mt-20">
+                                <input type="hidden" value="1" name="upload_or_link">
+                                <!-- <div class="row mt-20">
                                     <div class="col-lg-12 mb-30">
                                         <div class="input-effect">
                                             <select class="niceSelect w-100 bb form-control{{ $errors->has('upload_or_link') ? ' is-invalid' : '' }}"
@@ -117,7 +118,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             <div class="row">
                                 <div class="col-lg-12 ">
                                     <div class="input-effect">
@@ -208,10 +209,25 @@
                                 <div class="col-lg-12">
                                     <div class="row no-gutters input-right-icon">
                                         <div class="col">
+                                        <fieldset class="question">
+                                            <input class="image_question" type="checkbox" name="videoimage" value="img" />
+                                            <span class="item-text">Imagine</span>
+
+                                            <input class="video_question" type="checkbox" name="videoimage" value="video" />
+                                            <span class="item-text">Video</span>
+                                        </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-25 imagine">
+                                <div class="col-lg-12">
+                                    <div class="row no-gutters input-right-icon">
+                                        <div class="col">
                                             <div class="input-effect">
                                                 <input class="primary-input {{ $errors->has('thumdnail') ? ' is-invalid' : '' }}" type="text"
                                                       id="placeholder_thembnails"
-                                                       placeholder="@lang('lang.thumbnails') "
+                                                       placeholder="Incarca o IMAGINE"
                                                        readonly="">
                                                 <span class="focus-border"></span>
                                             </div>
@@ -221,7 +237,7 @@
                                             <button class="primary-btn-small-input"
                                                     type="button">
                                                 <label class="primary-btn small fix-gr-bg"
-                                                       for="thembnails_upload">@lang('lang.browse')</label>
+                                                       for="thembnails_upload">@lang('lang.browse') pentru imagine</label>
                                                 <input type="file" class="d-none" onchange="thembnailUpload()" id="thembnails_upload" name="thumdnail">
                                             </button>
                                             
@@ -241,7 +257,7 @@
                       
 
                             
-                            <div class="row mt-25" id="main_file_upload_section" style="display:block" >
+                            <div class="row mt-25 video" id="main_file_upload_section" style="display:block" >
                             
                                 <div class="col-lg-12">
                                     <div class="row no-gutters input-right-icon">
@@ -249,7 +265,7 @@
                                             <div class="input-effect">
                                                 <input class="primary-input {{ $errors->has('main_file') ? ' is-invalid' : '' }}" type="text"
                                                       id="placeholderPhoto"
-                                                       placeholder="@lang('lang.main_files') "
+                                                       placeholder="Incarca un VIDEO"
                                                        readonly="">
                                                 <span class="focus-border"></span>
                                             </div>
@@ -258,7 +274,7 @@
                                             <button class="primary-btn-small-input"
                                                     type="button">
                                                 <label class="primary-btn small fix-gr-bg"
-                                                       for="mail_file_upload">@lang('lang.browse')</label>
+                                                       for="mail_file_upload">@lang('lang.browse') pentru video</label>
                                                 <input type="file" class="d-none" onchange="mainFileUpload()" name="main_file" id="mail_file_upload">
                                             </button>
                                             
@@ -305,7 +321,7 @@
                             
                                 }
                             </script>    
-                            <p>@lang('lang.main_file_message')</p>
+                        
                              
                             <br>
                                 <style>
@@ -452,22 +468,22 @@
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
-                                <label for="">Comision Agent</label>
+                                <label for="">Comision Refferal</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{ old('comisionagent') }}">
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
-                                <label for="">Comision Minted</label>
+                                <label for="">Comision Agentie</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{ old('comisionminted') }}">
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
-                                <label for="">Comision 2.5%</label>
+                                <label for="">Comision Minted</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{ old('comision25') }}">
                             </div>
                             <span class="dm_middle_span">=</span>
                             <div class="input_field last-one">
-                                <label for="">@lang('lang.purchase_price')</label>
+                                <label for="">PRET VANZARE</label>
                                 <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{ old('Reg_total') }}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
                                 <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{ old('Reg_total') }}">
                             </div>
@@ -512,7 +528,24 @@
 </section>
 @endsection
 @section('script')
-  
+<script>
+$(".imagine").hide();
+$(".video").hide();
+$(".image_question").click(function() {
+    if($(this).is(":checked")) {
+        $(".imagine").show();
+    } else {
+        $(".imagine").hide();
+    }
+});
+$(".video_question").click(function() {
+    if($(this).is(":checked")) {
+        $(".video").show();
+    } else {
+        $(".video").hide();
+    }
+});
+</script>
 <script>
     function regular(item) {
     var Re_item = $("#Re_item").val();

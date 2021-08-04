@@ -22,5 +22,9 @@ class ItemOrder extends Model
     public function ItemNotify(){
     	return $this->belongsTo('App\ItemUpdateNotify', 'item_id', 'item_id');
     }
+
+    public function cumparator(){
+        return $this->hasOne('App\User','id','user_id');
+    }
    
 }

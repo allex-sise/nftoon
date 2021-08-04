@@ -137,10 +137,10 @@ h3.h3clss{
     border: 1px solid #000!important;
 }
 
-.searchsubmit{
-    position: absolute!important;
-    right: 100px!important;
-    top: 2px!important;
+.searchsubmit {
+    position: relative!important;
+    right: 42px!important;
+    top: 0px!important;
     padding-left: 12px!important;
     padding-right: 8px!important;
 }
@@ -288,12 +288,12 @@ h3.h3clss{
                                                 @if (Auth::user()->role_id == 4)
                                                     <li><a href="{{ route('author.profile',@Auth::user()->username)}}">@lang('lang.profile')</a></li>
                                                     <li><a href="{{ route('author.setting',@Auth::user()->username) }}">@lang('lang.settings')</a></li>
-                                                    <li><a href="{{ route('author.download',@Auth::user()->username) }}">@lang('lang.Downloads')</a></li>
+                                                    <li><a href="{{ route('author.download',@Auth::user()->username) }}">Colectia Ta</a></li>
                                                     <li><a href="{{ route('user.deposit',@Auth::user()->username)}}">@lang('lang.fund_deposit')</a></li>
                                                 @endif
                                                 @if (Auth::user()->role_id == 5)
                                                     <li><a href="{{ route('customer.profile',@Auth::user()->username) }}">@lang('lang.profile')</a></li>
-                                                    <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">@lang('lang.Downloads')</a></li>
+                                                    <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">Colectia Ta</a></li>
                                                     <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}#referrals">Referrals</a></li>
                                                     <li><a href="{{ route('user.deposit',@Auth::user()->username)}}">@lang('lang.fund_deposit')</a></li>
                                                     @if (GeneralSetting()->public_vendor==1)
@@ -320,7 +320,7 @@ h3.h3clss{
                                                     @if (Auth::user()->role_id == 4)
                                                     <li><a href="{{ route('author.dashboard',@Auth::user()->username)}}">@lang('lang.dashboard')</a></li>
                                                     <li><a href="{{ route('author.portfolio',@Auth::user()->username)}}">@lang('lang.portfolio')</a></li>
-                                                    <li><a href="{{ route('author.content')}}">@lang('lang.upload')</a></li>
+                                                    <!-- <li><a href="{{ route('author.content')}}">@lang('lang.upload')</a></li> -->
                                                     <li><a href="{{ route('author.earning',@Auth::user()->username)}}">@lang('lang.earnings')</a></li>
                                                     <li><a href="{{ route('author.statement',@Auth::user()->username)}}">@lang('lang.statement')</a></li>
                                                     <li><a href="{{ route('author.payout',@Auth::user()->username)}}">@lang('lang.payouts')</a></li>
@@ -396,7 +396,7 @@ h3.h3clss{
                                             @if (Auth::user()->role_id == 5)
                                             <li><a href="{{ route('customer.profile',@Auth::user()->username) }}">@lang('lang.profile')</a></li>
                                     
-                                            <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">@lang('lang.Downloads')</a></li>
+                                            <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">Colectia Ta</a></li>
                                             @if (GeneralSetting()->public_vendor==1)
                                                 
                                                 <li><a href="{{ route('user.BecomeAuthor') }}">@lang('lang.become_a_author')</a></li>
@@ -404,7 +404,7 @@ h3.h3clss{
                                             @endif
                                             @if (Auth::user()->role_id == 4)
                                             <li><a href="{{ route('author.profile',@Auth::user()->username)}}">@lang('lang.profile')</a></li>
-                                            <li><a href="{{ route('author.download',@Auth::user()->username) }}">@lang('lang.Downloads')</a></li>                                            
+                                            <li><a href="{{ route('author.download',@Auth::user()->username) }}">Colectia Ta</a></li>                                            
                                             @endif
                                             @if (Auth::check() && @Auth::user()->role_id==1 || @Auth::user()->role_id==2)
                                                 <li> <a href="{{route('admin.dashboard')}} ">@lang('lang.dashboard')</a> </li>   
@@ -429,8 +429,8 @@ h3.h3clss{
                                             @if (Auth::user()->role_id == 4)
                                             <li><a href="{{ route('author.setting',@Auth::user()->username) }}">@lang('lang.settings')</a></li>
                                             <li><a href="{{ route('author.dashboard',@Auth::user()->username)}}/">@lang('lang.dashboard')</a></li>
-                                            <li><a href="{{ route('author.coupon_list',@Auth::user()->username)}}">@lang('lang.coupon')</a></li>
-                                            <li><a href="{{ route('author.content')}}">@lang('lang.upload')</a></li>
+                                            <!-- <li><a href="{{ route('author.coupon_list',@Auth::user()->username)}}">@lang('lang.coupon')</a></li>
+                                            <li><a href="{{ route('author.content')}}">@lang('lang.upload')</a></li> -->
                                             <li><a href="{{ route('author.earning',@Auth::user()->username)}}">@lang('lang.earnings')</a></li>
                                             <li><a href="{{ route('author.statement',@Auth::user()->username)}}">@lang('lang.statement')</a></li>
                                             <li><a href="{{ route('author.payout',@Auth::user()->username)}}">@lang('lang.payouts')</a></li>

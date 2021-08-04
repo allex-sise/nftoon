@@ -117,7 +117,7 @@ class DropsController extends Controller
             $data['drop'] = Drops::all();
             $data['edit'] = Drops::find($id);
             $nftdrop = DropNFTs::where('drop_id', $id)->get();
-            $nfts = Item::all();
+            $nfts = Item::where('in_drop', NULL)->get();
             return view('backend.drop.showDrop', compact('data', 'nfts', 'nftdrop'));
         }catch (\Exception $e) {
            $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -135,6 +135,9 @@ class DropsController extends Controller
             $store->drop_id = $request->drop_id;
             
             $result = $store->save();
+            $itemstore = Item::find($request->nft_id);
+            $itemstore->in_drop = $request->drop_id;
+            $itemstore->save();
         
         
         if ($result) {
@@ -194,18 +197,13 @@ class DropsController extends Controller
         $tables= str_replace('Infix category question,','',$tables);
         // dd($tables);
         try {
-            if ($tables == null|| $tables == ' ') {
-
-                $delete_query=Drops::find($id);
+      
+                $delete_query = DropNFTs::find($id);
                 $delete_query->delete();
 
                     Toastr::success('Succsesfully Deleted!','Success');
                 return redirect()->back();
-            } else {
-                $msg = 'This data already used in '. $tables.' tables, Please remove those data first';
-                Toastr::error($msg, 'Failed');
-                return redirect()->back();
-            }
+        
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');

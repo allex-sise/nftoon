@@ -549,19 +549,13 @@ public function itemUpdate(Request $r){
         $item->feature2 = $r->feature2;
         $item->description = $r->description;    
         $item->category_id = $r->category_id;
-        //$item->resolution = $r->resolution;
-        //$item->widget = $r->widget;
+       
         $item->tags = $r->tags;
-        //$item->compatible_browsers = implode(",", $r->compatible_browsers);
-        //$item->compatible_with = implode(",", $r->compatible_with);
-        //$item->framework = implode(",", $r->framework);
-        //$item->software_version = implode(",", $r->software_version);
+       
         $item->Re_item = $r->Re_item;
         $item->Re_buyer = $r->Re_buyer;
         $item->Reg_total = $r->Reg_total_price;
-        // $item->user_msg = $r->user_msg;
-        //$item->layout = $r->layout;
-        //$item->columns = $r->columns;
+      
         $item->demo_url = $r->demo_url;
         $item->active_status = 1;
         //  return $r;
@@ -648,23 +642,6 @@ public function itemUpdate(Request $r){
 }
 
 
-
-
-      function fileValidation($file){
-        try {
-            if (File::extension(@$file) == 'zip' || File::extension(@$file) == 'ZIP') {
-                return $file;
-            }      
-            else {
-                Toastr::error('File type must be : zip','Error');
-                return redirect()->back();
-            }
-        } catch (\Exception $e) {
-            $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back();
-        }
-      }
 
       function itemDelete($id){
         try {

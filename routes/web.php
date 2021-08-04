@@ -20,6 +20,7 @@ Route::group(['middleware' => ['XSS']], function () {
    Route::get('/help/faq', 'Frontend\HomeController@faqPage')->name('faqPage');
    Route::get('/help/knowledge-base', 'Frontend\HomeController@knowledgeBase')->name('knowledgeBase');
    Route::get('/privacy-policy', 'Frontend\HomeController@privacyPolicy')->name('privacyPolicy');
+   Route::get('/{$username}', 'Frontend\HomeController@portofoliuPrincipal')->name('portofoliuPrincipal');
    Route::get('/terms-conditions', 'Frontend\HomeController@termsConditions')->name('termsConditions');
    Route::get('/about_company', 'Frontend\HomeController@aboutCompany')->name('about_company');
    Route::get('/support-ticket', 'Frontend\HomeController@SupportTicket')->name('SupportTicket');
@@ -92,6 +93,8 @@ Route::group(['middleware' => ['XSS']], function () {
       });
       Route::get('customer/register', 'Auth\RegisterController@CustomerRegistrationForm')->name('customer.registration');
       Route::post('customer/register', 'Auth\RegisterController@customerRegistration')->name('customer_registration');
+      Route::get('artist/register', 'Auth\RegisterController@CustomerRegistrationForm')->name('customer.registration');
+      Route::post('artist/register', 'Auth\RegisterController@customerRegistration')->name('customer_registration');
 
       Route::get('customer/login', function () {
          return view('auth.sign_in');

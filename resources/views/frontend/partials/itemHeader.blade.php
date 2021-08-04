@@ -8,6 +8,7 @@ $img2 = @$data['item']->icon;
             <div class="row">
                 <div class="col-xl-6 offset-xl-3">
                     <div class="banner-info mb-30">
+                        @if( (@$data['item']->file == 'img'))
                         <div class="over_view_thumb imaginebanner">
                                 {{-- <img height="400"  src="{{ file_exists(@$data['item']->thumbnail) ? asset(@$data['item']->thumbnail) : asset('public/uploads/product/thumbnail/thumbnail-demo.png') }} " alt=""> --}}
                             <div class="overlay_with_btn">
@@ -20,6 +21,13 @@ $img2 = @$data['item']->icon;
                             </div>
                             </div>
                         </div>
+                        @elseif( (@$data['item']->file == 'video'))
+                        <video width="100%" height="100%" autoplay muted>
+                            <source src="{{ file_exists(@$data['item']->main_file) ? asset(@$data['item']->main_file) : asset('public/uploads/product/thumbnail/thumbnail-demo.png') }}" type="video/mp4">
+                            
+                            Your browser does not support the video tag.
+                        </video>
+                        @endif
                         <h1 style="color: #000; text-align: center; padding: 20px;">{{  @$data['item']->title }} </h1>
                     </div>
                 </div>

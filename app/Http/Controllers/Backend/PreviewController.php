@@ -55,13 +55,7 @@ class PreviewController extends Controller
                $item->description = $data->description;
                $item->sub_category_id = $data->sub_category_id;
                $item->category_id = $data->category_id;
-               $item->resolution = $data->resolution;
-               $item->widget = $data->widget;
                $item->tags = $data->tags;
-               $item->compatible_browsers = $data->compatible_browsers;
-               $item->compatible_with = $data->compatible_with;
-               $item->framework = $data->framework;
-               $item->software_version = $data->software_version;
                $item->Re_item = $data->Re_item;
                $item->Re_buyer = $data->Re_buyer;
                $item->Reg_total = $data->Reg_total;
@@ -74,8 +68,6 @@ class PreviewController extends Controller
                $item->C_total = $data->C_total;
 
                $item->user_msg = $data->user_msg;
-               $item->layout = $data->layout;
-               $item->columns = $data->columns;
                $item->demo_url = $data->demo_url;
                $item->is_upload = $data->is_upload;
                if ($data->upload_or_link==0) {
@@ -107,120 +99,7 @@ class PreviewController extends Controller
                $img->image = $data->theme_preview;    
                $img->save();
 
-            //    if ($data->thumdnail) {            
-            //        if (file_exists($data->thumdnail)) {
-            //            $end=explode('/',$data->thumdnail);
-            //            $file = end($end);
-            //            $destFil ='public/uploads/product/thumbnail/'.$file;
-            //            File::move($data->thumdnail,$destFil);
-            //            $item->thumbnail = $destFil;
-            //            $item->save();
-            //         }
-            //     }
-           
-                //    if ($data->theme_preview) {                          
-                //        //$theme_preview;
-                //        $dest= 'public/uploads/product/themePreview/';
-                //        $theme_preview = $data->theme_preview;
-                //        $zip = new ZipArchive();           
-                //        if (file_exists($theme_preview)) {
-                       
-                //        $zip->open($theme_preview, ZipArchive::CREATE);
-                //        $preview=[];
-                //        $file_count = $zip->numFiles;
-                //        if ( $zip == true )
-                //        { 
-                            
-                //               if (file_exists($data->theme_preview)) {
-                //                   $end=explode('/',$theme_preview);
-                //                   $file = end($end);
-                //               }
-                //                $destFile='public/uploads/product/themePreview/zip/'.time().'-'.$file;
-                //                if (!file_exists($dest.'/zip/')){
-                //                    mkdir($dest.'/zip/', 0777, true);
-                //                    File::move($theme_preview,$destFile);
-                //                }else{
-                //                 File::move($theme_preview,$destFile);
-                                
-                //                }
-           
-                //            for ( $i=0; $i < $zip->numFiles; $i++ )
-                //            {
-                //                $entry = $zip->getNameIndex($i);           
-                //                if ( substr( $entry, -1 ) == '/' ) continue; // skip directories 
-                //                $pattern = '/(^._|.DS_Store|__MACOSX)/';
-                //                $matched = preg_match($pattern, $entry, $matches);
-                //                if ($matched) { 
-                //                    //echo $entry; print_r($matches);
-                //                    continue;
-                //                }
-                //                $base = basename(uniqid() . '-'.$entry);   
-                //                $fp = $zip->getStream( $entry );        
-                //                if (preg_match('/(\.jpg|\.png|)$/i', $entry)) {
-                //                   $ofp = fopen( $dest.'/'.$base, 'w' );
-                //                   array_push($preview,'public/uploads/product/themePreview/'.$base);
-                //                if ( ! $fp )
-                //                    throw new \Exception('Unable to extract the file.');
-                               
-                //                while ( ! feof( $fp ) )
-                //                    fwrite( $ofp, fread($fp, 8192) );
-                                   
-                //                fclose($fp);
-                //                fclose($ofp);
-                //                }
-                //            }
-                //            $item->theme_preview = $destFile;
-                //            $item->save();
-                //            $zip->close();
-           
-                           
-                //            }
-                //            else{
-                //                return false;
-                //            }
-                //                $img = $item->item_image;
-                //                $img->item_id = $item->id;
-                //                $img->image = implode(",",$preview);
-                //                foreach (explode(',',$item->item_image->image) as $key => $value) {
-                //                    File::delete('public/uploads/product/themePreview/'.$value);
-                //                }
-                //                $img->save();           
-                //        }
-                //    }
-           
-                   
-            //   if ($data->main_file) {                                             
-            //            if (file_exists($data->main_file)) {
-            //                $main_file = $data->main_file;
-            //                $end=explode('/',$main_file);
-            //                $file = end($end);
-            //                 $destFile= 'public/uploads/product/main_file/zip/'.time().'-'.$file;
-            //                 $dest = 'public/uploads/product/main_file/zip/';
-            //                 if (!file_exists($dest)){
-            //                     mkdir($dest, 0777, true);
-            //                     File::move($main_file,$destFile);
-            //                 }else{
-            //                     File::move($main_file,$destFile);
-            //                 }
-            //                 $item->main_file = $destFile;
-            //                 $item->save();
-            //     }
-            //     }
-            //    if (file_exists($data->file)) {
-            //        $main_file = $data->file;
-            //        $end=explode('/',$main_file);
-            //        $file = end($end);           
-            //         $destFile= 'public/uploads/product/file/zip/'.time().'-'.$file;
-            //         $dest = 'public/uploads/product/file/zip/';
-            //         if (!file_exists($dest)){
-            //             mkdir($dest, 0777, true);
-            //             File::move($main_file,$destFile);
-            //         }else{
-            //             File::move($main_file,$destFile);
-            //         }
-            //         $item->file = $destFile;
-            //         $item->save();
-            //   }       
+            
            
                 $msg = 'Succsesfully approved file!';
             }

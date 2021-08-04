@@ -133,8 +133,8 @@ $carttotalstrip = floatval($b);
                                                 <div class="col-xl-12">
                                                     <div class="deposite_payment_wrapper customer_payment_wrapper">
                                                         
-                                                        @if( in_array('Stripe',$payment_methods))
-                                                            <!-- single_deposite_item  -->
+                                                    <!--    @if( in_array('Stripe',$payment_methods))
+                                                            
                                                             <div class="single_deposite_item">
                                                                 <div class="deposite_header text-center">{{__('Stripe')}}</div>
                                                                 <div class="deposite_button text-center"> 
@@ -155,7 +155,7 @@ $carttotalstrip = floatval($b);
                                                                     </form>
                                                                 </div>
                                                             </div>
-                                                        @endif
+                                                        @endif -->
 
                                                         {{-- {{dd(convert_for_paypal(Cart::subtotal()))}} --}}
                                                         @if( in_array('PayPal',$payment_methods))

@@ -60,7 +60,7 @@ class HomeController extends Controller
                 
                     $data['category'] =  ItemCategory::where('active_status', 1)->where('show_menu',1)->get();
                     $data['item'] =  Item::where('active_status', 1)->where('status', 1)->take(2)->get();
-                    $data['drop'] =  Drops::where('status', 1)->get();
+                    $data['drop'] =  Drops::where('status', 1)->latest()->take(3)->get();
 
                     $free_items_count = DB::table('users')
                          ->join('items', function($join) {
@@ -253,6 +253,20 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
+    function portofoliuPrincipal($username)
+    {
+        try {
+            $data['user'] = User::where('username', $username)->first();
+            $data['portfolio'] = route('/', $data['user']->username);
+            return $this->vendor($data);
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+    
+
     function followers($username)
     {
         try {

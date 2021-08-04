@@ -80,11 +80,7 @@ class ProductUploadController extends Controller
             $r->validate([
                 'purchase_link' => 'required|url',
             ]);
-        } else {
-            $r->validate([
-                'main_file' => 'required',
-            ]);
-        }
+        } 
         
         
     
@@ -99,18 +95,12 @@ class ProductUploadController extends Controller
             $item->feature2 = $r->feature2;
             $item->description = $r->description;    
             $item->category_id = $r->category_id;
-            $item->resolution = $r->resolution;
-            $item->widget = $r->widget;
+            $item->file = $r->videoimage;
+      
             $item->tags = $r->tags;
             
 
             
-
-            // $item->compatible_browsers = implode(",", $r->compatible_browsers);
-            // $item->compatible_with = implode(",", $r->compatible_with);
-            // $item->framework = implode(",", $r->framework);
-            // $item->software_version = implode(",", $r->software_version);
-
 
 
             $item->Re_item = $r->Re_item;
@@ -120,8 +110,6 @@ class ProductUploadController extends Controller
             $item->Reg_total = $r->Reg_total_price;
 
             $item->user_msg = $r->user_msg;
-            $item->layout = $r->layout;
-            $item->columns = $r->columns;
             $item->demo_url = $r->demo_url;
             $item->active_status = 1;
             $item->ogowner = $r->user_id;
@@ -138,11 +126,7 @@ class ProductUploadController extends Controller
                 Toastr::error('Thumbnail File missing', 'Failed');
                 return redirect()->back()->withInput();
             }
-          
-            if($r->upload_or_link==1 && $r->file('main_file') ==""){
-                Toastr::error('Main File missing', 'Failed');
-                return redirect()->back()->withInput();
-            }
+         
             //end laravel file validation 
 
                 
@@ -277,8 +261,6 @@ class ProductUploadController extends Controller
             $item->feature2 = $r->feature2;
             $item->description = $r->description;    
             $item->category_id = $r->category_id;
-            $item->resolution = $r->resolution;
-            $item->widget = $r->widget;
             $item->tags = $r->tags;
             $item->is_upload = $r->upload_or_link;
             if ($r->upload_or_link==0) {
@@ -291,8 +273,6 @@ class ProductUploadController extends Controller
             $item->Re_buyer = $r->Re_buyer;
             $item->Reg_total = $r->Reg_total_price;
             $item->user_msg = $r->user_msg;
-            $item->layout = $r->layout;
-            $item->columns = $r->columns;
             $item->demo_url = $r->demo_url;
             $item->active_status = 1;
         

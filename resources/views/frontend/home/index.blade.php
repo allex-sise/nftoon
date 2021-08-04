@@ -135,30 +135,30 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
             <div class="col-xl-12">
                 <div class="features-wrap latest-goods-area" id="">
                 @foreach ($data['drop'] as $drop)
-                <div class="col-xl-8 col-md-8 offset-lg-2 grid-item cat1 cat1 float-left pull-left mg20px">
+                <div class="col-xl-12 col-md-12 offset-lg-0 grid-item cat1 cat1 float-left pull-left mg20px">
                     <div class="single-goods">
                         <div class="col-xl-7 float-left">
-                            <div class="goods-thumb">
+                            <div class="goods-thumb" style="height: 600px;">
                                 <a href="{{ route('singleDrop',@$drop->slug) }}">
-                                    <img height="340" src="{{asset(@$drop->dropicon)}}" alt="">
+                                    <img height="640" src="{{asset(@$drop->dropicon)}}" alt="" style="max-height: 600px;">
                                 </a>
                             </div>
                         </div>
                         <div class="col-xl-5 float-left">
-                        <div class="good-info p-0">
+                        <div class="good-info" style="padding-top: 120px;">
                             <div class="good-title good-titledrop">
                                 <h3><a href="{{ route('singleDrop',@$drop->slug) }}">{{ $drop->name }}</a></h3>
                                 <p style="line-height: 16px; padding-top: 20px;"> {{ $drop->description }}</p>
                             </div>
                         </div>
-                        <div class="good-info good-infodrop" style="padding-left: 0px; padding-top: 20px;">
+                        <div class="good-info good-infodrop" style="padding-top: 20px;">
                             <div class="good-title good-titledrop">
                                 <h3 class="h3clss">Drop-ul incepe in:</h3>
                                 <!-- <div>Registration closes in <span id="time">05:00</span> minutes!</div> -->
                                 <div data-countdown="{{ $drop->startdate }}" style="font-size: 25px;"></div>
                             </div>
                         </div>
-                        <div class="good-info good-infodrop" style="padding-top:0px; padding-left: 0px;">
+                        <div class="good-info good-infodrop" style="padding-top:0px;">
                             <div class="good-title good-titledrop">
                                 <a class="black-btn specialbuton" href="{{ route('singleDrop',@$drop->slug) }}"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
                             </div>

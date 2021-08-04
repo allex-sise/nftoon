@@ -56,6 +56,8 @@ Route::group(['middleware' => ['XSS']], function () {
         Route::post('files-delete','ItemController@filesDelete')->name('filesDelete');
         Route::post('item-store','ItemController@itemStore')->name('itemStore');
         Route::get('item-edit/{id}','ItemController@itemEdit')->name('itemEdit');
+        Route::get('item-sale/{id}','ItemController@itemSale')->name('itemSale');
+        Route::post('item-saleupdate','ItemController@itemSaleUpdate')->name('itemSaleUpdate');
         Route::post('item-update','ItemController@itemUpdate')->name('itemUpdate');
         Route::get('item-delete/{id}','ItemController@itemDelete')->name('itemDelete');
         // end Product

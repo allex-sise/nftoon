@@ -230,59 +230,7 @@
                                                                                 <option value="2">Category*</option>
                                                                                 <option value="4">Category*</option>
                                                                             </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="High Resolution*">High Resolution*</option>
-                                                                                <option value="1">High Resolution*</option>
-                                                                                <option value="2">High Resolution*</option>
-                                                                                <option value="4">High Resolution*</option>
-                                                                            </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Widget Ready*">Widget Ready*</option>
-                                                                                <option value="1">Widget Ready*</option>
-                                                                                <option value="2">Widget Ready*</option>
-                                                                                <option value="4">Widget Ready*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Compatible Browsers*">Compatible Browsers*</option>
-                                                                                <option value="1">Compatible Browsers*</option>
-                                                                                <option value="2">Compatible Browsers*</option>
-                                                                                <option value="4">Compatible Browsers*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Compatible With*">Compatible With*</option>
-                                                                                <option value="1">Compatible With*</option>
-                                                                                <option value="2">Compatible With*</option>
-                                                                                <option value="4">Compatible With*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Framework*">Framework*</option>
-                                                                                <option value="1">Framework*</option>
-                                                                                <option value="2">Framework*</option>
-                                                                                <option value="4">Framework*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Software Version*">Software Version*</option>
-                                                                                <option value="1">Software Version*</option>
-                                                                                <option value="2">Framework*</option>
-                                                                                <option value="4">Framework*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="ThemeForest Files Included*">Software Version*</option>
-                                                                                <option value="1">Software Version*</option>
-                                                                                <option value="2">Framework*</option>
-                                                                                <option value="4">Framework*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Columns*">Columns*</option>
-                                                                                <option value="1">Software Version*</option>
-                                                                                <option value="2">Framework*</option>
-                                                                                <option value="4">Framework*</option>
-                                                                        </select>
-                                                                        <select class="wide dm_display_none" >
-                                                                                <option data-display="Layout*">Layout*</option>
-                                                                                <option value="1">Software Version*</option>
-                                                                                <option value="2">Framework*</option>
-                                                                        </select>
+                                                                    
                                                                         <input type="text" placeholder="Demo URL*">
                                                                     </form>
                                                                 </div>

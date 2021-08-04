@@ -25,7 +25,7 @@
                     <div class="row align-items-center justify-content-center">
                     <div class="col-xl-10 offset-xl-1 col-12">
                             <div class="banner-info knowledge_title">
-                                <h2>@lang('lang.update') @lang('lang.product')</h2>
+                                <h2>@lang('lang.update') @lang('lang.product') - {{isset($data['edit'])? $data['edit']->title:old('title')}}</h2>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                                                     
                             @if(@$data['edit']->id)
                             <div class="col-xl-10 offset-xl-1">
-                                @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                                @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 4)
                                     <form action="{{ route('admin.itemUpdate')}}" id="file_update" method="POST" enctype="multipart/form-data">
                                 @else
                                     @if (@$item_preview != null)
@@ -61,6 +61,7 @@
                                 <div class="single_upload_area">
                                         <input type="text" hidden name="category_id" value="{{@$data['edit']->category_id}}">
                                         <input type="text" hidden name="id" value="{{@$data['edit']->id}}">
+                                        <input type="text" hidden value="1" name="upload_or_link">
                                         <div class="d-flex justify-content-center" id="page_loader" style="display: none">
                                             <div class="loader" style="display: none">
                                                 <span></span>
@@ -71,7 +72,7 @@
                                         </div>
                                         <div class="upload_description gray-bg">
 
-                                            <select class="wide " id="select_category" name="upload_or_link" onchange="checkIsLink(this)">
+                                            <!-- <select class="wide " id="select_category" name="upload_or_link" onchange="checkIsLink(this)">
                                                 <option data-display="@lang('lang.product_upload_or_link')">@lang('lang.product_upload_or_link')</option>
                                                 
                                                     <option value="" >@lang('lang.select')</option>
@@ -85,7 +86,7 @@
                                                 <strong>{{ $errors->first('upload_or_link') }}</strong>
                                             </span>
                                          @endif
-                                       {{-- @dd($data['edit']->is_upload) --}}
+                                       {{-- @dd($data['edit']->is_upload) --}} -->
 
                                                 <h3>@lang('lang.name_and_desription')</h3>
                                                 

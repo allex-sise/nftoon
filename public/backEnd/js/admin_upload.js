@@ -3,7 +3,7 @@
 function thembnailUpload() {
     var file = document.getElementById("thembnails_upload").files[0];
     if (file) {
-        if (file.type == "image/jpeg" || file.type == "image/png") {
+        if (file.type == "image/jpeg" || file.type == "image/png" || file.type == "video/x-flv" || file.type == "video/mp4" || file.type == "application/x-mpegURL" || file.type == "video/MP2T" || file.type == "video/3gpp" || file.type == "video/quicktime" || file.type == "video/x-msvideo" || file.type == "video/x-ms-wmv") {
             var img = new Image();
 
             img.src = window.URL.createObjectURL(file);
@@ -32,7 +32,7 @@ function mainFileUpload() {
 
     var file = document.getElementById("mail_file_upload").files[0];
     if (file) {
-        if (file.type.indexOf('zip') > -1) {
+        if (file.type == "image/jpeg" || file.type == "image/png" || file.type == "image/jpg" || file.type == "video/x-flv" || file.type == "video/mp4" || file.type == "application/x-mpegURL" || file.type == "video/MP2T" || file.type == "video/3gpp" || file.type == "video/quicktime" || file.type == "video/x-msvideo" || file.type == "video/x-ms-wmv") {
             document.getElementById("main_file_title").style.color = "green";
             document.getElementById("main_file_title").innerHTML = file.name;
         } else {

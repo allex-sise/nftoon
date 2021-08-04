@@ -6,13 +6,16 @@ var currencySys = $('.currencyIn').val();
 function GetOutPutString(data){
         data.forEach(function(e,index){                    
                     
-                  if (e.C_total!=null) {
-                    $(".databox").append(` <div class="col-xl-3 col-md-6 grid-item cat1 cat1">
+                  if (e.file == 'video') {
+                    $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
                     <div class="single-goods">
                         <div class="goods-thumb">
                             <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">
-                            
-                            <img src="${url}/${e.icon}" alt="">
+                            <video width="100%" height="100%" autoplay muted>
+                               <source src="${e.main_file}" type="video/mp4">
+                               
+                               Your browser does not support the video tag.
+                           </video>
                             </a>
                         </div>
                         <div class="good-info">
@@ -94,7 +97,11 @@ function GetOutPutString(data){
                                      <div class="col-xl-6 col-md-6">
                                          <div class="content_left">
                                              <a  class="profile_mini_thumb">
-                                                 <img src="${url+'/'+e.icon}" width="200px" alt="">
+                                                <video width="100%" height="100%" autoplay muted>
+                                                    <source src="${e.main_file}" type="video/mp4">
+                                                    
+                                                    Your browser does not support the video tag.
+                                                </video>
                                              </a>
                                              <div class="content_title">
                                                  <p>${e.title}
@@ -143,7 +150,7 @@ function GetOutPutString(data){
                 
                 `)
                   } else {
-                    $(".databox").append(` <div class="col-xl-3 col-md-6 grid-item cat1 cat1">
+                    $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
                     <div class="single-goods">
                     <div class="goods-thumb">
                         <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">

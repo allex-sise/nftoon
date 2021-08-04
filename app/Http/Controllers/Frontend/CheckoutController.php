@@ -204,7 +204,7 @@ class CheckoutController extends Controller
                                 $discount = 0;
                             }
                             $item_order->discount = $discount;
-                            $item_order->author_id = $value->options['user_id'];
+                            $item_order->author_id = Auth::user()->id;
                             $item_order->item = json_encode($value->options);
                             $item_order->save();
 

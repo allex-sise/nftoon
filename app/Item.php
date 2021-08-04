@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $fillable =[
-        'title','feature1','feature2','description','thumdnail','main_file','file','category_id','resolution','widget','compatible_browsers','compatible_with','framework','software_version','Re_item',
+        'title','feature1','feature2','description','thumdnail','main_file','file','category_id','Re_item',
         'Re_buyer','Reg_total','user_msg','active_status'
     ];
 
@@ -41,6 +41,9 @@ class Item extends Model
 
     public function user(){
         return $this->belongsTo('App\User');
+    }
+    public function og(){
+        return $this->hasOne('App\User','id','ogowner');
     }
     public function freeItem(){
         return $this->hasOne('App\FreeItem','item_id');

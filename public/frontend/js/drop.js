@@ -7,7 +7,7 @@ function GetOutPutString(data){
         data.forEach(function(e,index){                    
                     
                   if (e.C_total!=null) {
-                    $(".databox").append(` <div class="col-xl-3 col-md-6 grid-item cat1 cat1">
+                    $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
                     <div class="single-goods">
                         <div class="goods-thumb">
                             <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">
@@ -143,7 +143,7 @@ function GetOutPutString(data){
                 
                 `)
                   } else {
-                    $(".databox").append(` <div class="col-xl-3 col-md-6 grid-item cat1 cat1">
+                    $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
                     <div class="single-goods">
                     <div class="goods-thumb">
                         <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">

@@ -57,14 +57,23 @@
                      <div class="banner-info text-center mb-30">
                         <h2>{{ @$data['category']->name}}</h2>
                         <div class="col-xl-10 offset-xl-2 mgt50">
+                            @php
+                            use Carbon\Carbon;
+                            @endphp
+                            @if ( $data['category']->startdate ==  Carbon::now())
                             <div class="col-md-4 float-left">
                                 <h3 class="h3clss">Drop-ul incepe in:</h3>
                                 <div data-countdown="{{ $data['category']->startdate }}" style="font-size: 25px; color:#FFF;"></div>
                             </div>
+                            @endif
+                            @if ( $data['category']->expdate >=  Carbon::now())
                             <div class="col-md-4 float-left">
                                 <h3 class="h3clss">Drop-ul se termina in:</h3>
                                 <div data-countdown="{{ $data['category']->expdate }}" style="font-size: 25px; color:#FFF;"></div>
                             </div>
+                            @else
+                            <h3 class="h3clss">Drop-ul sa incheiat</h3>
+                            @endif
                         </div>
                     </div>
                 </div>

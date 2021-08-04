@@ -45,7 +45,7 @@ class UpdateRepository
         $v = Storage::exists('.version') ? Storage::get('.version') : null;
 
         $url = config('app.verifier').'/api/cc?a=download&u='. $_SERVER['HTTP_HOST'] .'&ac='.$ac.'&i='.config('app.item').'&e='.$e.'&c='.$c.'&v='.$v;
-        
+
      
         $zipFile = $build;
 

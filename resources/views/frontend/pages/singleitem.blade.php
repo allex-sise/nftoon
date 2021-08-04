@@ -61,10 +61,6 @@ $comment_content='';
    border-radius: 50px;
     padding: 9px;
     height: 55px;
-    -webkit-box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
-    -moz-box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.25)!important;
-    box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
-    background: #FFF;
     margin-bottom: 10px;
 }
 .profile-name{
@@ -145,16 +141,23 @@ $comment_content='';
     border-radius: 50px;
     padding: 9px;
     height: 55px;
-    -webkit-box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
-    -moz-box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.25)!important;
-    box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
-    background: #F2F2F2;
+    -webkit-box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 55%)!important;
+    -moz-box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.55)!important;
+    box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 55%)!important;
+    background: rgba(0,0,0,0, 0.03);
     margin-bottom: 10px;
 }
 .svgclass{
    margin-top: 10px;
     float: right;
     margin-right: 20px;
+}
+.span2s{
+   position: absolute;
+    left: 0px;
+    top: 9px;
+    width: 200px;
+    color: #e1e1e1;
 }
 .svgclassicon{
    margin-top: 8px;
@@ -466,7 +469,33 @@ $comment_content='';
                            <span>{{ @$data['item']->sell }}</span>
                         </div>
                      </div>
-                     
+                     <br />
+                     <div class="single-info-inner userbg2">
+                        <div class="single-info-title single-info-column">
+                           <p> <img style="width: 30px; border-radius: 50%;" src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                           <span class="spansvg">Listat de <a href="{{ route('user.portfolio',@$data['item']->og->username)}}"><span>@</span>{{ @$data['item']->og->username }} </a>
+                           <span class="span2s">{{ @$data['item']->created_at}}</span>
+                           </p>
+                        </div>
+                        <div class="single-info-content single-info-column coloanaspeciala">
+                           <p>{{ @$data['item']->Reg_total}} lei</p>
+                        </div>
+                     </div>
+
+                     @foreach ($data['history'] as $his)
+                     <div class="single-info-inner userbg2">
+                        <div class="single-info-title single-info-column">
+                           <p> <img style="width: 30px; border-radius: 50%;" src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                           <span class="spansvg">Cumparat de <a href="{{ route('user.portfolio',$his->cumparator->username)}}"><span>@</span>{{ $his->cumparator->username}} </a>
+                           <span class="span2s">{{ $his->created_at}}</span>
+                           </p>
+                        </div>
+                        <div class="single-info-content single-info-column coloanaspeciala">
+                           <p>{{ $his->subtotal}} lei</p>
+                        </div>
+                     </div>
+                     @endforeach
+
                      @php
                      // @$totalRate =DB::table('reviews')->where('item_id', @$data['item']->id)->get();
                      // @$rate5 =DB::table('reviews')->where('item_id', @$data['item']->id)->whereBetween('rating',[4.5,5])->get();

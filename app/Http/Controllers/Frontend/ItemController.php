@@ -29,6 +29,7 @@ class ItemController extends Controller
             // return $data['comment'];
             $data['review'] = Review::where('item_id',$id)->orderBy('id','desc')->get();
             $data['item'] = Item::find($id);
+            $data['history']= ItemOrder::where('item_id',$id)->orderBy('order_id','asc')->get();
             $data['attributes'] = $data['item']->attribute;
             $item_support=DB::table('item_supports')->first();
             $totalRate =DB::table('reviews')->where('item_id', $data['item']->id)->get();

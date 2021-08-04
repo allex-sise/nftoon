@@ -427,6 +427,7 @@ class VendorController extends Controller
             $data['item'] = Item::where('user_id', $data['user']->id)->where('active_status', 1)->where('status', 1)->latest()->paginate(5);
             $data['hidden_item'] = Item::where('user_id', $data['user']->id)->where('status', '!=',1)->where('status', '!=',3)->where('active_status', 1)->paginate(5);
             $data['order'] = Order::where('user_id', Auth::user()->id)->paginate(6);
+            $data['itemspecial'] =  Item::where('user_id', $data['user']->id)->where('status', 1)->latest()->paginate(5);
             $data['monthly_income'] = ItemOrder::where('author_id', Auth::user()->id)->whereMonth('created_at', Carbon::now()->month)->get();
             $data['total_income'] = ItemOrder::
             leftjoin('refunds','refunds.order_item_id','=','item_orders.id')

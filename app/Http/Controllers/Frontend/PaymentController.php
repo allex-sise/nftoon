@@ -593,8 +593,19 @@ class PaymentController extends Controller
                 $paid_payment->delete();
             } 
             DB::commit();
+            $clientauthor = User::findOrFail(Auth::user()->id);
+            $clientauthorid = $clientauthor->id;
+            foreach (Cart::content() as $key => $value) {
+                $changeauthor = Item::find($value->options['item_id']);
+                $changeauthor->user_id = $clientauthorid;
+                $changeauthor->active_status = 0;
+                $changeauthor->save();
+            }
+           
             Cart::destroy();
             Toastr::success('Thank you for purchase');
+            
+
             return redirect()->route('customer.payment_complete');
         } catch (\Exception $e) {
             DB::rollback();

@@ -9,8 +9,8 @@ function GetOutPutString(data) {
     data.forEach(function(e, index) {
         console.log(e);
 
-        if (e.C_total!=null) {
-            $(".databox").append(` <div class="col-xl-3 col-md-6 grid-item cat1 cat1">
+        if (e.file == 'video') {
+            $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
                        <div class="single-goods">
                            <div class="goods-thumb">
                                <a href="${
@@ -20,9 +20,11 @@ function GetOutPutString(data) {
                                  "/" +
                                  e.id
                                }">
-                                   <img height="340" src="${
-                                     e.icon
-                                   }" alt="">
+                               <video width="100%" height="100%" autoplay muted>
+                               <source src="${e.main_file}" type="video/mp4">
+                               
+                               Your browser does not support the video tag.
+                           </video>
                                </a>
                            </div>
                            <div class="good-info">
@@ -147,9 +149,11 @@ function GetOutPutString(data) {
                                         <div class="col-xl-6 col-md-6">
                                             <div class="content_left">
                                                 <a  class="profile_mini_thumb">
-                                                    <img src="${
-                                                      url + "/" + e.icon
-                                                    }" width="200px" alt="">
+                                                <video width="100%" height="100%" autoplay muted>
+                                                <source src="${e.main_file}" type="video/mp4">
+                                                
+                                                Your browser does not support the video tag.
+                                            </video>
                                                 </a>
                                                 <div class="content_title">
                                                     <p>${e.title}
@@ -207,198 +211,198 @@ function GetOutPutString(data) {
                    
                    `);
         } else {
-            $(".databox").append(` <div class="col-xl-3 col-md-6 grid-item cat1 cat1">
-                       <div class="single-goods">
-                           <div class="goods-thumb">
-                               <a href="${
-                                 url +
-                                 "/item/" +
-                                 e.title.split(" ").join("-").toLowerCase() +
-                                 "/" +
-                                 e.id
-                               }">
-                                   <img height="auto" src="${
-                                     e.icon
-                                   }" alt="">
-                               </a>
-                           </div>
-                           <div class="good-info">
-                               <div class="good-title">
-                                   <h3><a href="${
-                                     url +
-                                     "/item/" +
-                                     e.title
-                                       .split(" ")
-                                       .join("-")
-                                       .toLowerCase() +
-                                     "/" +
-                                     e.id
-                                   }">${e.title.substring(0, 20)} ....</a></h3>
-                                   <p>By <a href="${
-                                     url + "/user/profile/" + e.username
-                                   }">${e.username}</a> </p>
+          $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
+          <div class="single-goods">
+              <div class="goods-thumb">
+                  <a href="${
+                    url +
+                    "/item/" +
+                    e.title.split(" ").join("-").toLowerCase() +
+                    "/" +
+                    e.id
+                  }">
+                      <img height="auto" src="${
+                        e.icon
+                      }" alt="">
+                  </a>
+              </div>
+              <div class="good-info">
+                  <div class="good-title">
+                      <h3><a href="${
+                        url +
+                        "/item/" +
+                        e.title
+                          .split(" ")
+                          .join("-")
+                          .toLowerCase() +
+                        "/" +
+                        e.id
+                      }">${e.title.substring(0, 20)} ....</a></h3>
+                      <p>By <a href="${
+                        url + "/user/profile/" + e.username
+                      }">${e.username}</a> </p>
+                  </div>
+                
+              </div>
+              <div class="good-info good-info2">
+               <div class="good-title good-title2">
+                   <h3 class="h3clss">Current Price</h3>
+                   <h3>${e.Reg_total} ${currency_symbol}</h3>
+               </div>
+               <div class="good-title good-title2">
+                 <h3 class="h3clss">Expira in</h3>
+                 <h3>12</h3>
+               </div>
+           </div>
+          </div>
+      </div>
+      <div id="myModal${
+        e.id
+      }" class="modal fade dm-item-modal" role="dialog">
+           <div class="modal-dialog modal-lg">
+               
+               <!-- Modal content-->
+               <div class="modal-content">
+               <div class="modal-header align-items-center">
+               <h2 class="modal-title">Customize Your Selection</h2>
+                   <button type="button" class="close" data-dismiss="modal"> <i class="ti-close"></i> </button>
+                   
+               </div>
+
+           
+
+               <div class="modal-body">
+           <form action="${
+             url + "/item/cart/quick"
+           }" method="post">
+
+                   <input type="hidden"  name="_token" value="${token}">
+                   <input type="number" hidden id="id" name="id" value="${
+                     e.id
+                   }">
+                   <input type="text" hidden  name="item_name" value="${
+                     e.title
+                   }">
+                   <input type="text" hidden  name="item_name" value="${
+                     e.title
+                   }">
+                   <input type="text" hidden  name="user_id" value="${
+                     e.user_id
+                   }">
+                   <input type="text" hidden  name="username" value="${
+                     e.username
+                   }">
+                   <input type="hidden"  id="item_price${
+                     e.id
+                   }" name="item_price" value="${e.Reg_total}">
+                   <input type="text" hidden id="" name="BuyerFee" value="0">
+                   <input type="text" hidden id="" name="Extd_percent" value="0">
+                   
+                   <input type="hidden"  id="license_input${
+                     e.id
+                   }" name="license_type" value="1">
+                   <input type="hidden"  id="support_input${
+                     e.id
+                   }" name="support_time" value="1">
+                       <div class="row ">
+                           <div class="col-xl-6">
+                               <div class="single_select ">
+                                   <h4>Select License</h4>
+                                   <div class="select_box">
+                                           <select class="wide SelectLicense form-control" onChange="calculateHomeItem(${
+                                             e.id
+                                           })" id="SelectLicense${e.id}" >
+                                               <option id="reg_val" value="${
+                                                 e.Reg_total
+                                               }" selected data-display="Regular">Regular</option>
+                                               <option id="Ex_val" value="${
+                                                 e.Ex_total
+                                               }">Extended</option>
+                                           </select>
+                                           
+                                   </div>
                                </div>
-                             
                            </div>
-                           <div class="good-info good-info2">
-                            <div class="good-title good-title2">
-                                <h3 class="h3clss">Current Price</h3>
-                                <h3>${e.Reg_total} ${currency_symbol}</h3>
-                            </div>
-                            <div class="good-title good-title2">
-                              <h3 class="h3clss">Expira in</h3>
-                              <h3>12</h3>
-                            </div>
-                        </div>
+                           <div class="col-xl-6">
+                                   <div class="single_select">
+                                       <h4>Select Support Duration</h4>
+                                       <div class="select_box">
+                                               <select class="wide Selectsupport form-control" onChange="calculateHomeItem(${
+                                                 e.id
+                                               })" id="Selectsupport${e.id}" >
+                                                       <option value="0" id="six" selected data-display="6 months support">6 Months Support</option>
+                                                       <option value="${
+                                                         e.support_fee
+                                                       }" id="twelve">12 Months Support</option>
+                                               </select>
+                                       </div>
+                                   </div>
+                               </div>
+                           
+                       </div>
+                    <div class="main_content mt-20">
+
+                       <div class="row gray-bg-2 no-gutters">
+                           <div class="col-xl-6 col-md-6">
+                               <div class="content_left">
+                                   <a  class="profile_mini_thumb">
+                                       <img src="${
+                                         url + "/" + e.icon
+                                       }" width="auto" alt="">
+                                   </a>
+                                   <div class="content_title">
+                                       <p>${e.title}
+                                       <br>
+                                       <span class="user_author"> 
+                                        <p>By <a href="${
+                                          url +
+                                          "/user/profile/" +
+                                          e.username
+                                        }">${e.username}</a></p>
+                                       </span>
+                                       <input type="number" id="totalCartItem" value="0" hidden>
+                                       </p>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xl-6 col-md-6">
+                               <div class="content_left">
+                                   <h3> ${currency_symbol}<span id="total_price${e.id}">${e.Reg_total}</span></h3>
+                                   <div class="content_title">
+                                       <p class="support_text${
+                                         e.id
+                                       }">
+                                               <span>License:</span>
+                                               <a href="#" id="license_text${
+                                                 e.id
+                                               }">Regular</a>
+                                       </p>
+                                       <p class="support_text">
+                                               <span>Support :</span> 
+                                               <small id="support_tym${
+                                                 e.id
+                                               }">6 Months Support</small>
+                                   </p>
+                                   </div>
+                               </div>
+                           </div>
+
+                       </div>
+                     
+
+                       <div class=" container col-md-4 center-block">
+                            <button id="AddCart" class="boxed-btn boxed-btn float-right" type="submit">Add To Cart</button>
                        </div>
                    </div>
-                   <div id="myModal${
-                     e.id
-                   }" class="modal fade dm-item-modal" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                            
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                            <div class="modal-header align-items-center">
-                            <h2 class="modal-title">Customize Your Selection</h2>
-                                <button type="button" class="close" data-dismiss="modal"> <i class="ti-close"></i> </button>
-                                
-                            </div>
-
-                        
-
-                            <div class="modal-body">
-                        <form action="${
-                          url + "/item/cart/quick"
-                        }" method="post">
-
-                                <input type="hidden"  name="_token" value="${token}">
-                                <input type="number" hidden id="id" name="id" value="${
-                                  e.id
-                                }">
-                                <input type="text" hidden  name="item_name" value="${
-                                  e.title
-                                }">
-                                <input type="text" hidden  name="item_name" value="${
-                                  e.title
-                                }">
-                                <input type="text" hidden  name="user_id" value="${
-                                  e.user_id
-                                }">
-                                <input type="text" hidden  name="username" value="${
-                                  e.username
-                                }">
-                                <input type="hidden"  id="item_price${
-                                  e.id
-                                }" name="item_price" value="${e.Reg_total}">
-                                <input type="text" hidden id="" name="BuyerFee" value="0">
-                                <input type="text" hidden id="" name="Extd_percent" value="0">
-                                
-                                <input type="hidden"  id="license_input${
-                                  e.id
-                                }" name="license_type" value="1">
-                                <input type="hidden"  id="support_input${
-                                  e.id
-                                }" name="support_time" value="1">
-                                    <div class="row ">
-                                        <div class="col-xl-6">
-                                            <div class="single_select ">
-                                                <h4>Select License</h4>
-                                                <div class="select_box">
-                                                        <select class="wide SelectLicense form-control" onChange="calculateHomeItem(${
-                                                          e.id
-                                                        })" id="SelectLicense${e.id}" >
-                                                            <option id="reg_val" value="${
-                                                              e.Reg_total
-                                                            }" selected data-display="Regular">Regular</option>
-                                                            <option id="Ex_val" value="${
-                                                              e.Ex_total
-                                                            }">Extended</option>
-                                                        </select>
-                                                        
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                                <div class="single_select">
-                                                    <h4>Select Support Duration</h4>
-                                                    <div class="select_box">
-                                                            <select class="wide Selectsupport form-control" onChange="calculateHomeItem(${
-                                                              e.id
-                                                            })" id="Selectsupport${e.id}" >
-                                                                    <option value="0" id="six" selected data-display="6 months support">6 Months Support</option>
-                                                                    <option value="${
-                                                                      e.support_fee
-                                                                    }" id="twelve">12 Months Support</option>
-                                                            </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-                                    </div>
-                                 <div class="main_content mt-20">
-
-                                    <div class="row gray-bg-2 no-gutters">
-                                        <div class="col-xl-6 col-md-6">
-                                            <div class="content_left">
-                                                <a  class="profile_mini_thumb">
-                                                    <img src="${
-                                                      url + "/" + e.icon
-                                                    }" width="auto" alt="">
-                                                </a>
-                                                <div class="content_title">
-                                                    <p>${e.title}
-                                                    <br>
-                                                    <span class="user_author"> 
-                                                     <p>By <a href="${
-                                                       url +
-                                                       "/user/profile/" +
-                                                       e.username
-                                                     }">${e.username}</a></p>
-                                                    </span>
-                                                    <input type="number" id="totalCartItem" value="0" hidden>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-6">
-                                            <div class="content_left">
-                                                <h3> ${currency_symbol}<span id="total_price${e.id}">${e.Reg_total}</span></h3>
-                                                <div class="content_title">
-                                                    <p class="support_text${
-                                                      e.id
-                                                    }">
-                                                            <span>License:</span>
-                                                            <a href="#" id="license_text${
-                                                              e.id
-                                                            }">Regular</a>
-                                                    </p>
-                                                    <p class="support_text">
-                                                            <span>Support :</span> 
-                                                            <small id="support_tym${
-                                                              e.id
-                                                            }">6 Months Support</small>
-                                                </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                  
-
-                                    <div class=" container col-md-4 center-block">
-                                         <button id="AddCart" class="boxed-btn boxed-btn float-right" type="submit">Add To Cart</button>
-                                    </div>
-                                </div>
-                            </div>
+               </div>
 
 
-                               
-                            </form>
-                            </div>
+                  
+               </form>
+               </div>
 
-                        </div>
-                    </div>
+           </div>
+       </div>
                    
                    `);
         }

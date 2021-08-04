@@ -33,12 +33,7 @@
                         <div class="details-tablist ">
                             <nav>
                                 <ul class="nav" id="myTab" role="tablist">
-                                    @if (@Auth::user()->role_id == 4)
-                                    <li class="nav-item">
-                                       <a class="nav-link {{ @$data['dashboard'] == url()->current() ?'active':'' }} " id="Dashboard-tab" data-toggle="tab" href="#Dashboard"
-                                            role="tab" aria-controls="Dashboard" aria-selected="false">@lang('lang.dashboard')</a>
-                                    </li>
-                                    @endif
+                                  
                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['profile'] == url()->current() ?'active':'' }}" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -75,7 +70,7 @@
                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['download'] == url()->current() ?'active':'' }}" id="Downloads-tab" data-toggle="tab" href="#Downloads"
-                                            role="tab" aria-controls="contact" aria-selected="false">@lang('lang.Downloads')</a>
+                                            role="tab" aria-controls="contact" aria-selected="false">Colectia Ta</a>
                                     </li>
                                     @endif
                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
@@ -139,98 +134,7 @@
                         <div class="col-xl-12 p-sm-0">
                             <div class="main-tab-content">
                                 <div class="tab-content" id="myTabContent">
-                                    {{-- @if (Auth::user()->role_id == 4) --}}
-                                    @if (Auth::user()->role_id ==4)
-                                        
-                                    {{-- @endif --}}
-                                    <div class="tab-pane  {{ @$data['dashboard'] == url()->current() ?'show active':'' }} " id="Dashboard" role="tabpanel"
-                                        aria-labelledby="Dashboard-tab">
-                                        <div class="dash_board">
-                                            <div class="row">
-                                                <div class="col-xl-8">
-                                                    <div class="dashboard_iner gray-bg">
-                                                        <div class="bash_bord_header">
-                                                            <h3>@lang('lang.welcome_for_author')
-                                                                <br>
-                                                                @lang('lang.with_Infix_Digital_Marketplace').</h3>
-                                                            <p>@lang('lang.welcome_message_for_vendor').</p>
-                                                        </div>
-                                                       
-                                                        @php
-                                                        
-                                                            $item=App\ManageQuery::UserFirstItem();
-                                                            // DB::table('items')->where('user_id',Auth::user()->id)->first();
-                                                        @endphp
-                                                        @if ($item)
-                                                        @if (@Auth::check() && @Auth::user()->role_id == 4)
-                                                        <div class="row">
-                                                                
-                                                                <div class="col-xl-12">
-                                                                    <div class="single-dashbord">
-                                                                        <h3>@lang('lang.your') @lang('lang.profile')</h3>
-                                                                        <p>@lang('lang.we_do_not_sell').</p>
-                                                                        <a href="{{ route('author.profile', $data['user']->id)}}" class="boxed-btn">@lang('lang.view') @lang('lang.my')
-                                                                            @lang('lang.profile') </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                        @else
-                                                            @if (@Auth::check() && @Auth::user()->role_id == 4)
-                                                            <div class="row">
-                                                                    <div class="col-xl-6">
-                                                                        <div class="single-dashbord">
-                                                                            <h3>@lang('lang.Upload_Your_First_Item') </h3>
-                                                                            <p>@lang('lang.we_do_not_sell').</p>
-                                                                            <a href="{{ route('author.content')}}" class="boxed-btn">@lang('lang.upload') @lang('lang.my') @lang('lang.first')
-                                                                                @lang('lang.item')</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xl-6">
-                                                                        <div class="single-dashbord">
-                                                                            <h3>@lang('lang.your') @lang('lang.profile')</h3>
-                                                                        <p>@lang('lang.we_do_not_sell').</p>
-                                                                            <a href="{{ route('author.profile', $data['user']->id)}}" class="boxed-btn">@lang('lang.view') @lang('lang.my')
-                                                                                @lang('lang.profile') </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            @endif
-                                                        @endif
-                                                        
-                                                        <div class="Requirements">
-                                                            <h4>@lang('lang.tax') @lang('lang.requirements')</h4>
-                                                            <p>@lang('lang.we_do_not_sell').</p>
-                                                        </div>
-                                                        <p class="dash_para">@lang('lang.profile_update_message').
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4">
-                                                    <div class="upload_side_bar white-2 gray-bg">
-                                                        <form action="{{ route('author.contentSelect')}}" method="POST" id="select_content">
-                                                            @csrf
-                                                        <div class="upload_inner">
-                                                            <h3>@lang('lang.uplaod') @lang('lang.item')</h3>
-                                                            @php
-                                                                $categoryItem=App\ManageQuery::CategoryUpPermission();
-                                                                // DB::table('item_categories')->where('up_permission', 1)->orderBy('id','desc')->get();
-                                                            @endphp
-                                                                <select class="wide" id="select_category" name="category">
-                                                                    <option data-display="Select Category">Select Category</option>
-                                                                @foreach ($categoryItem as $cat_gr)
-                                                                    <option value="{{ $cat_gr->id }}" {{ @Session::get('categorySlect')->id == $cat_gr->id ?'selected':''}}>{{ $cat_gr->title }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <button class="boxed-btn" type="submit">@lang('lang.select') @lang('lang.category')</button>
-                                                        </div>
-                                                    </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
+                                   
                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <div class="tab-pane fade {{ @$data['profile'] == url()->current() ?'show active':'' }}  " id="home" role="tabpanel"
                                         aria-labelledby="home-tab">
@@ -724,7 +628,7 @@
                                         <div class="row">
                                             <div class="col-xl-4 col-lg-4">
                                                 <div class="my_custom_navs gray-bg">
-                                                    <h5>@lang('lang.personal') @lang('lang.details')</h5>
+                                                    <h5>@lang('lang.details') @lang('lang.personal')e </h5>
                                                     <div class="nav flex-column" id="v-pills-tab" role="tablist"
                                                         aria-orientation="vertical">
                                                         {{-- {{ Request::fullUrl()}} v-pills-home social_updated--}}
@@ -1022,7 +926,7 @@
                                                                                         <i class="ti-plus d-none"></i>
                                                                                     </div>
                                                                                 </div>
-                                                                                <p>@lang('lang.image_upload_requirement_100')</p>
+                                                                              
                                                                                 @if ($errors->has('profile_pic'))
                                                                                 <span class="invalid-feedback invalid-select error"
                                                                                         role="alert">
@@ -1056,7 +960,7 @@
                                                                                         <i class="ti-plus d-none"></i>
                                                                                     </div>
                                                                                 </div>
-                                                                                <p>@lang('lang.image_upload_400')</p>
+                                                                                
                                                                                 @if ($errors->has('backgroud_pic'))
                                                                                 <span class="invalid-feedback invalid-select error"
                                                                                         role="alert">
@@ -1229,115 +1133,15 @@
                                                                 </div>
                                                                 @endif
                                                                     @if (!empty($email_setting))
-                                                                    <input type="submit" value="@lang('lang.update') @lang('lang.change')" class="boxed-btn border-0"> 
+                                                                    <input type="submit" value="@lang('lang.update') Modificarile" class="boxed-btn border-0"> 
                                                                     @else
-                                                                    <input type="submit" value="@lang('lang.save') @lang('lang.change')" class="boxed-btn border-0">          
+                                                                    <input type="submit" value="@lang('lang.save') Modificarile" class="boxed-btn border-0">          
                                                                     @endif
                                                                 
                                                             </div>
                                                                 </form>
                                                         </div>
-                                                        @if(@Auth::user()->role_id == 5)
-                                                        <div class="tab-pane fade {{ str_contains(Request::fullUrl(),'card_updated')?'show active':'' }}" id="v-pills-settings"
-                                                            role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                            <div class="credit_card_visa gray-bg">
-                                                                <h4 class="d-flex justify-content-between align-items-center">@lang('lang.saved') @lang('lang.credit') @lang('lang.card')
-                                                                    <div class="credit_button">
-                                                                        @if (isset($data['user']->payment_method->card_number))
-                                                                            <a href="{{ route('customer.payment_delete') }}" class="boxed-btn Red_Button_1">@lang('lang.delete')
-                                                                                    @lang('lang.card')</a>
-                                                                        @endif
-                                                                    </div>
-                                                                </h4>
-                                                                <div
-                                                                    class="credit_haeading d-flex justify-content-between">
-                                                                    <img src="{{ asset('public/frontend/img/') }}/payment/visa.png" alt="">
-                                                                    {{-- <div class="row"> --}}
-                                                                        <div class="col-lg-12">
-                                                                            <div class="credit_number">
-                                                                                <p><span class="card-name ">@lang('lang.card') @lang('lang.number')</span> <span>: 
-                                                                                        {{isset($data['user']->payment_method->card_number)? '•••• •••• •••• '. str_pad(substr(@$data['user']->payment_method->card_number, -4), strlen(@$data['user']->payment_method->card_number))  :''}}</span> </p>
-                                                                                <p><span class="card-name">@lang('lang.card') @lang('lang.holder') @lang('lang.name')
-                                                                                    </span><span>: {{isset($data['user']->payment_method->name)? @$data['user']->payment_method->name : '' }}</span> </p>
-                                                                                <p><span class="card-name">@lang('lang.expire') @lang('lang.date')
-                                                                                    </span><span>: {{isset($data['user']->payment_method->exp_mm)? @$data['user']->payment_method->exp_mm:''}} {{isset($data['user']->payment_method->exp_yy)? '/ '. @$data['user']->payment_method->exp_yy:''}}</span> </p>
-                                                                                <p><span class="card-name">@lang('lang.card') CVV</span>
-                                                                                    <span>: {{isset($data['user']->payment_method->cvc)? @$data['user']->payment_method->cvc:''}}</span> </p>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                    {{-- </div> --}}
-                                                                    
-                                                                    
-                                                                </div>
-                                                                <div class="credit_inner">
-                                                                    <h4>@lang('lang.add')/@lang('lang.edit') @lang('lang.credit') @lang('lang.card')</h4>
-                                                                    <form action=" {{ route('customer.payment_add')}} " class="single_account-form" method="POST" id="customer_save_card">
-                                                                        @csrf
-                                                                        <div class="row">
-                                                                            <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">@lang('lang.card_umber') <span>*</span></label>
-                                                                                <input type="text"  placeholder="Card number" name="card_number" value="{{isset($data['user']->payment_method->card_number)? @$data['user']->payment_method->card_number:old('card_number')}}" >
-                                                                                @if ($errors->has('card_number'))
-                                                                                    <span class="invalid-feedback" role="alert">
-                                                                                        <strong>{{ $errors->first('card_number') }}</strong>
-                                                                                    </span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">@lang('lang.card_holder_name') <span>*</span></label>
-                                                                                <input type="text"  name="name" placeholder="Card holder name" value="{{isset($data['user']->payment_method->name)? @$data['user']->payment_method->name : old('name')}}">
-                                                                                @if ($errors->has('name'))
-                                                                                    <span class="invalid-feedback" role="alert">
-                                                                                        <strong>{{ $errors->first('name') }}</strong>
-                                                                                    </span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">@lang('lang.expire_date') <span>*</span></label>
-                                                                                <div class="row" > 
-                                                                                <div class="col-xl-6">
-                                                                                        <input type="text" class="exp_mm" name="exp_mm" pattern="\d*" x-autocompletetype="cc-exp" placeholder="MM" required maxlength="2" size="2" value="{{isset($data['user']->payment_method->exp_mm)? @$data['user']->payment_method->exp_mm:old('exp_mm')}}">
-                                                                                        @if ($errors->has('exp_mm'))
-                                                                                            <span class="invalid-feedback" role="alert">
-                                                                                                <strong>{{ $errors->first('exp_mm') }}</strong>
-                                                                                            </span>
-                                                                                        @endif
-                                                                                </div>
-                                                                                <div class="col-xl-6">
-                                                                                        <input type="text" class="exp_yy" name="exp_yy" pattern="\d*" x-autocompletetype="cc-exp" placeholder="YYYY" required maxlength="4" size="4" value="{{isset($data['user']->payment_method->exp_yy)? @$data['user']->payment_method->exp_yy:old('exp_yy')}}">
-                                                                                        @if ($errors->has('exp_yy'))
-                                                                                            <span class="invalid-feedback" role="alert">
-                                                                                                <strong>{{ $errors->first('exp_yy') }}</strong>
-                                                                                            </span>
-                                                                                        @endif
-                                                                                </div>
-                                                                            </div>
-                                                                                    
-                                                                            </div>
-                                                                            <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">@lang('lang.CVC_number') <span>*</span></label>
-                                                                                <input type="text"  name="cvc" placeholder="Card CVC number" value="{{isset($data['user']->payment_method->cvc)? @$data['user']->payment_method->cvc:old('cvc')}}">
-                                                                                @if ($errors->has('cvc'))
-                                                                                <span class="invalid-feedback" role="alert">
-                                                                                    <strong>{{ $errors->first('cvc') }}</strong>
-                                                                                </span>
-                                                                            @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="check-out-btn text-left mt-10">
-                                                                            @if (isset($data['user']->payment_method->card_number))
-                                                                            <button type="submit" class="boxed-btn">@lang('lang.update') @lang('lang.credit') @lang('lang.card')</button>
-                                                                            @else
-                                                                            <button type="submit" class="boxed-btn">@lang('lang.add') @lang('lang.credit') @lang('lang.card')</button>
-                                                                            @endif
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @endif
-                                                        
+                                                       
                                                         <div class="tab-pane fade {{ str_contains(Request::fullUrl(),'social_updated')?'show active':'' }}" id="v-pills-Description"
                                                             role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                                             <div class="social_networks gray-bg">
@@ -1514,7 +1318,7 @@
                                                                         {{-- <a href="#" class="boxed-btn">SAVE
                                                                             CHANGES</a> --}}
                                                                             <button type="submit" class="boxed-btn"> @lang('lang.save')
-                                                                            @lang('lang.changes')</button>
+                                                                            Modificarile</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -1732,9 +1536,8 @@
                                                 </div>
                                             @endif
                                         @if (count(@$data['order'])>0)
-                                        @foreach (@$data['order'] as $value)
-                                            @foreach (@$value->itemOrder as $item)   
-                                            
+                                        @foreach (@$data['itemspecial'] as $item)
+                                       
                                             @if (Auth::user()->role_id==5)
                                                 @php
                                                     if (in_array($item->item_id, @$data['refunds']))
@@ -1750,60 +1553,29 @@
                                                 $PickId =  $item->item_id;
                                             @endphp                                                  
                                                 @php
-                                                   $obj = json_decode($item->item, true);
+                                                   $obj = json_decode($item, true);
                                                 @endphp 
-                                                    <!-- <div class="single_download_iteams d-flex justify-content-between align-items-center">
-                                                        <div class="single_inner_one d-flex align-items-center">
-                                                            <div class="thumb">
-                                                                <img src="{{asset(@$obj['icon'])}}" alt="">
-                                                            </div>
-                                                            <div class="download_headr">
-                                                                <h5><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->Item->title),@$item->Item->id]) }}">{{ $item->Item->title }}</a></h5>
-                                                             
-                                                                {{-- {{@Auth::user()->reviews->count()}} --}}
-                                                             
-                                                            </div>
-                                                        </div>
-                                                        <div class="download_inner-btn d-flex"  >
-                                                            <div class="download_2">
-                                                                <a href="#" class="boxed-btn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('lang.download') <i class="ti-angle-down"></i> </a>
-                                                            
-                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                    <a class="dropdown-item" href="{{ route('user.ItemDownloadAll',$item->id) }}">@lang('lang.all_files_documentation')</a>
-                                                                    {{-- <a class="dropdown-item" href="{{ route('user.ProductDownload',$item->id) }}">@lang('lang.installable_file_only')</a> --}}
-                                                                    <a class="dropdown-item" href="{{ route('user.LicenceDownload',$item->id) }}">@lang('lang.license_certificate_purchase_code')</a>
-                                                                </div>
-                                                            </div>
-                                                            @if (@$item->Item->category->productSetting->title)
-                                                            <a href="{{ @$item->Item->category->productSetting->title }}" target="_blank" class="boxed-btn-white">{{ isset($item->Item->category->productSetting) ?  $item->Item->category->productSetting->title .' '. GeneralSetting()->currency_symbol .''. $item->Item->category->productSetting->amount :''}}</a>
-                                                            @endif             
-
-                                                                </div>
-
-                                                            
-                                                        
-                                                    </div> -->
-
-                                                    <div class="col-xl-4 col-md-4 grid-item cat1 cat1">
+                                                
+                                                    <div class="col-xl-4 col-md-4 grid-item cat1 cat1 float-left">
                                                         <div class="single-goods">
                                                             <div class="goods-thumb">
                                                      
-                                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->Item->title),@$item->Item->id]) }}">
+                                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id]) }}">
                                                                 
                                                                 <img src="{{asset(@$obj['icon'])}}" alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="good-info">
                                                                 <div class="good-title">
-                                                                    <h3><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->Item->title),@$item->Item->id]) }}">{{ $item->Item->title }}</a></h3>
+                                                                    <h3><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id]) }}">{{ $item->title }}</a></h3>
                                                                     <p>@<a href="">Username</a></p>
                                                                 </div>
                                                             </div>
                                                             <div class="good-info good-info2">
                                                                 <div class="good-title good-title2">
                                                                 <div class="download_2">
-                                                                <a href="{{ route('user.ItemDownloadAll',$item->id) }}" class="boxed-btn" id="dropdownMenuLink" style="background-image: none; padding: 0px;"> <i class="ti-download"></i>  @lang('lang.download')  </a>
-                                                            
+                                                                <a href="{{ route('user.ItemDownloadAll',$item->id) }}" class="boxed-btn" id="dropdownMenuLink" style="background-image: none; padding: 0px;"> <i class="ti-money"></i>  Pune la vanzare  </a>
+                                                             <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class=" ti-pencil-alt "></i></a>
                                                             </div>
                                                                 </div>
                                                             </div>
@@ -1811,10 +1583,10 @@
                                                     </div>
 
                                             @endforeach
-                                            @endforeach                                               
+                                                                                     
                                             
                                             <div class="Pagination">
-                                                    {{ @$data['order']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
+                                                    {{ @$data['itemspecial']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
                                             </div>
                                         @else
                                         <h1>@lang('lang.no') @lang('lang.item')</h1>
@@ -1855,12 +1627,14 @@
                                                                         <div class="my_coupens_headeing mb-30">
                                                                             <h3>@lang('lang.all') @lang('lang.affiliate') <b>({{ count(Auth::user()->referrals)  ?? '0' }})</b></h3>
                                                                         </div>
+                                                                        @if (@$data['referrals'])
                                                                         <table class="table">
                                                                             <tr>
                                                                                 <th>@lang('lang.affiliate') @lang('lang.name')</th>
                                                                                 <th>@lang('lang.added_time')</th>
                                                                                 <th>@lang('status')</th>
                                                                             </tr>
+                                                                          
                                                                             @foreach (@$data['referrals'] as $item)
                                                                                 <tr>
                                                                                     <td>{{ @$item->username }}</td>
@@ -1868,11 +1642,13 @@
                                                                                     <td>{{ @$item->status == 1 ?'Active':'Pending' }}</td>
                                                                                 </tr>
                                                                             @endforeach
+                                                                            
                                                                         </table>
                                                                     
                                                                         <div class="Pagination">
                                                                             {{ $data['referrals']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
                                                                         </div>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
