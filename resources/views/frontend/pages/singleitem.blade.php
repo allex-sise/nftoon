@@ -393,8 +393,9 @@ $comment_content='';
                                     <ul id="license_list">
                                        <li>
                                           <div class="row">
+                                          <!-- aici sunt preturile afisate -->
                                              <div class="col-lg-6"> 
-                                                <strong class="" style="font-size: 20px;">3.02
+                                                <strong class="" style="font-size: 20px;"><input type="text" id="pretInEth" readonly>
                                                    <span id="regular_license_price">ETH</span>
                                                 </strong> <br />
                                                 <strong class="" style="color: #666; font-size: 13px;">{{ @$data['item']->Reg_total}} 
@@ -655,4 +656,35 @@ $comment_content='';
 @push('js')
 <script src="{{ asset('public/frontend/js/') }}/item_preview.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/dm_price_cal.js"></script>
+<!-- <script>
+// aici scriu cod JS
+console.log('MERGE');
+import axios;
+const criptoUrl = `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`;
+// const ronValue = axios.get(url)
+//                     .then(response => (console.log(response)))
+//                     .catch(function (error) {
+//                         //handle error here
+//                         console.log(error);
+//                     }); 
+axios.get(criptoUrl).then((response) => {
+                     console.log(response.data);
+                  });
+</script> -->
+<script>
+    $(document).ready(function () {
+        const pretInRon = {{ @$data['item']->Reg_total}} ;
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`,
+            success: function (data) {
+                  $("#pretInEth").attr("value", pretInRon/data.RON);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+});
+</script>
 @endpush

@@ -197,7 +197,7 @@ class DropsController extends Controller
         $tables= str_replace('Infix category question,','',$tables);
         // dd($tables);
         try {
-      
+      //toDo, nu merge Call to a member function delete() on null
                 $delete_query = DropNFTs::find($id);
                 $delete_query->delete();
 
