@@ -7,7 +7,50 @@
         return $name[3];
     }
 @endphp
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+.select2-container .select2-choice {
+    background-color: #fff;
+    background-image: none;
+    border-radius: 0px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #aaa;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 40px;
+    line-height: 26px;
+    padding: 0px;
+    color: #444;
+    text-decoration: none;
+}
+.select2-container .select2-choice span {
+    margin-right: 26px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+    margin-top: 7px;
+    font-size: 19px;
+}
+.select2-search input, .select2-search-choice-close, .select2-container .select2-choice abbr, .select2-container .select2-choice div b {
+    background-image: url(select2x2.png) !important;
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2x2.png")!important;
+    background-repeat: no-repeat !important;
+    background-size: 60px 40px !important;
+    margin-top: 7px!important;
+}
+.select2-container .select2-choice div{
+    background: #FFF;
+    background-image: none;
+}
+</style>
 <section class="sms-breadcrumb mb-40 white-box">
     <div class="container-fluid">
         <div class="row justify-content-between">
@@ -107,16 +150,13 @@
                             <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
-                                            <select class="niceSelect w-100 bb form-control" name="nft_id">
-                                                <option data-display="NFT-uri *"
-                                                        value="">NFT-uri *
-                                                </option>
+                                            <select class="select2 w-100 bb" name="nft_id">
+                                            <option></option>
                                                 @foreach($nfts as $nft)
-                                                    <option value={{@$nft->id}}>{{@$nft->title}}</option>
+                                                    <option value="{{@$nft->id}}">{{@$nft->title}}</option>
                                                 @endforeach                                            
                                             </select>
                                             <span class="focus-border"></span>
-                                          
                                         </div>
                                     </div>
                                 </div>
@@ -197,3 +237,14 @@
     </div>
 </section>
 @endsection
+<script src="{{ asset('/')}}public/backEnd/js/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        placeholder: "Alege un NFT",
+        allowClear: true
+    });
+});
+    </script>

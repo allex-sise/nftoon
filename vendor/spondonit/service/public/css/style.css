@@ -47,7 +47,7 @@ Author E-mail: naimlasker@gmail.com
 /*---------------------------------------------------- */
 
 
-/* line 1, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 1,  */
 
 body.admin {
     line-height: 24px;
@@ -63,7 +63,7 @@ body.admin {
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-    /* line 1, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+    /* line 1,  */
     body.admin {
         font-size: 11px;
         line-height: 22px;
@@ -78,7 +78,7 @@ body.admin {
 }
 
 
-/* line 25, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 25,  */
 
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
@@ -86,7 +86,7 @@ input:-webkit-autofill {
 }
 
 
-/* line 30, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 30,  */
 
 h1,
 h2,
@@ -100,49 +100,49 @@ h6 {
 }
 
 
-/* line 40, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 40,  */
 
 h1 {
     font-size: 22px;
 }
 
 
-/* line 43, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 43,  */
 
 h2 {
     font-size: 20px;
 }
 
 
-/* line 46, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 46,  */
 
 h3 {
     font-size: 18px;
 }
 
 
-/* line 49, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 49,  */
 
 h4 {
     font-size: 16px;
 }
 
 
-/* line 52, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 52,  */
 
 h5 {
     font-size: 14px;
 }
 
 
-/* line 55, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 55,  */
 
 h6 {
     font-size: 12px;
 }
 
 
-/* line 59, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 59,  */
 
 .list {
     list-style: none;
@@ -151,7 +151,7 @@ h6 {
 }
 
 
-/* line 65, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 65,  */
 
 a {
     text-decoration: none;
@@ -162,7 +162,7 @@ a {
 }
 
 
-/* line 68, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 68,  */
 
 a:hover,
 a:focus {
@@ -171,7 +171,7 @@ a:focus {
 }
 
 
-/* line 75, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 75,  */
 
 textarea {
     overflow: hidden;
@@ -215,7 +215,7 @@ textarea::-webkit-input-placeholder {
 }
 
 
-/* line 87, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 87,  */
 
 button:focus {
     outline: none;
@@ -223,441 +223,441 @@ button:focus {
 }
 
 
-/* line 93, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 93,  */
 
 .transparent-color {
     background: transparent !important;
 }
 
 
-/* line 98, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 98,  */
 
 .primary-color {
     color: #415094;
 }
 
 
-/* line 101, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 101,  */
 
 .primary-color2 {
     color: #7c32ff;
 }
 
 
-/* line 104, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 104,  */
 
 .black-color {
     color: #000000;
 }
 
 
-/* line 107, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 107,  */
 
 .text-color {
     color: #828bb2;
 }
 
 
-/* line 111, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 111,  */
 
 .exam-bg {
     background: rgba(130, 139, 178, 0.3);
 }
 
 
-/* line 116, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 116,  */
 
 .fw-400 {
     font-weight: 400;
 }
 
 
-/* line 119, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 119,  */
 
 .fw-500 {
     font-weight: 500;
 }
 
 
-/* line 122, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 122,  */
 
 .fw-600 {
     font-weight: 600;
 }
 
 
-/* line 127, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 127,  */
 
 .fs-12 {
     font-size: 12px;
 }
 
 
-/* line 132, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 132,  */
 
 .mb-10 {
     margin-bottom: 10px;
 }
 
 
-/* line 135, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 135,  */
 
 .mb-15 {
     margin-bottom: 15px;
 }
 
 
-/* line 138, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 138,  */
 
 .mb-20 {
     margin-bottom: 20px;
 }
 
 
-/* line 141, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 141,  */
 
 .mb-25 {
     margin-bottom: 25px;
 }
 
 
-/* line 144, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 144,  */
 
 .mb-30 {
     margin-bottom: 30px;
 }
 
 
-/* line 147, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 147,  */
 
 .mb-35 {
     margin-bottom: 35px;
 }
 
 
-/* line 150, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 150,  */
 
 .mb-40 {
     margin-bottom: 40px;
 }
 
 
-/* line 153, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 153,  */
 
 .mb-45 {
     margin-bottom: 45px;
 }
 
 
-/* line 156, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 156,  */
 
 .mb-50 {
     margin-bottom: 50px;
 }
 
 
-/* line 161, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 161,  */
 
 .ml-10 {
     margin-left: 10px;
 }
 
 
-/* line 164, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 164,  */
 
 .ml-15 {
     margin-left: 15px;
 }
 
 
-/* line 167, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 167,  */
 
 .ml-20 {
     margin-left: 20px;
 }
 
 
-/* line 170, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 170,  */
 
 .ml-25 {
     margin-left: 25px;
 }
 
 
-/* line 173, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 173,  */
 
 .ml-30 {
     margin-left: 30px;
 }
 
 
-/* line 176, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 176,  */
 
 .ml-35 {
     margin-left: 35px;
 }
 
 
-/* line 179, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 179,  */
 
 .ml-40 {
     margin-left: 40px;
 }
 
 
-/* line 182, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 182,  */
 
 .ml-45 {
     margin-left: 45px;
 }
 
 
-/* line 185, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 185,  */
 
 .ml-50 {
     margin-left: 50px;
 }
 
 
-/* line 190, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 190,  */
 
 .mr-10 {
     margin-right: 10px;
 }
 
 
-/* line 193, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 193,  */
 
 .mr-15 {
     margin-right: 15px;
 }
 
 
-/* line 196, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 196,  */
 
 .mr-20 {
     margin-right: 20px;
 }
 
 
-/* line 199, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 199,  */
 
 .mr-25 {
     margin-right: 25px;
 }
 
 
-/* line 202, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 202,  */
 
 .mr-30 {
     margin-right: 30px;
 }
 
 
-/* line 205, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 205,  */
 
 .mr-35 {
     margin-right: 35px;
 }
 
 
-/* line 208, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 208,  */
 
 .mr-40 {
     margin-right: 40px;
 }
 
 
-/* line 211, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 211,  */
 
 .mr-45 {
     margin-right: 45px;
 }
 
 
-/* line 214, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 214,  */
 
 .mr-50 {
     margin-right: 50px;
 }
 
 
-/* line 217, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 217,  */
 
 .mr-75 {
     margin-right: 75px;
 }
 
 
-/* line 222, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 222,  */
 
 .mt--48 {
     margin-top: -48px;
 }
 
 
-/* line 225, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 225,  */
 
 .mt-10 {
     margin-top: 10px;
 }
 
 
-/* line 228, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 228,  */
 
 .mt-15 {
     margin-top: 15px;
 }
 
 
-/* line 231, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 231,  */
 
 .mt-20 {
     margin-top: 20px;
 }
 
 
-/* line 234, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 234,  */
 
 .mt-25 {
     margin-top: 25px;
 }
 
 
-/* line 237, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 237,  */
 
 .mt-30 {
     margin-top: 30px;
 }
 
 
-/* line 240, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 240,  */
 
 .mt-35 {
     margin-top: 35px;
 }
 
 
-/* line 243, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 243,  */
 
 .mt-40 {
     margin-top: 40px;
 }
 
 
-/* line 246, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 246,  */
 
 .mt-45 {
     margin-top: 45px;
 }
 
 
-/* line 249, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 249,  */
 
 .mt-50 {
     margin-top: 50px;
 }
 
 
-/* line 252, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 252,  */
 
 .mt-80 {
     margin-top: 80px;
 }
 
 
-/* line 257, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 257,  */
 
 .pb-7 {
     padding-bottom: 7px !important;
 }
 
 
-/* line 260, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 260,  */
 
 .pb-10 {
     padding-bottom: 10px !important;
 }
 
 
-/* line 263, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 263,  */
 
 .pb-20 {
     padding-bottom: 20px !important;
 }
 
 
-/* line 266, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 266,  */
 
 .pb-30 {
     padding-bottom: 30px !important;
 }
 
 
-/* line 269, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 269,  */
 
 .pb-40 {
     padding-bottom: 40px !important;
 }
 
 
-/* line 272, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 272,  */
 
 .pb-50 {
     padding-bottom: 50px !important;
 }
 
 
-/* line 275, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 275,  */
 
 .pb-120 {
     padding-bottom: 120px !important;
 }
 
 
-/* line 280, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 280,  */
 
 .pl-10 {
     padding-left: 10px;
 }
 
 
-/* line 283, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 283,  */
 
 .pl-20 {
     padding-left: 20px;
 }
 
 
-/* line 286, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 286,  */
 
 .pl-30 {
     padding-left: 30px;
 }
 
 
-/* line 289, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 289,  */
 
 .pl-35 {
     padding-left: 35px;
 }
 
 
-/* line 292, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 292,  */
 
 .pl-40 {
     padding-left: 40px;
 }
 
 
-/* line 295, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 295,  */
 
 .pl-50 {
     padding-left: 50px;
 }
 
 
-/* line 300, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 300,  */
 
 .pv-10 {
     padding-top: 10px;
@@ -665,35 +665,35 @@ button:focus {
 }
 
 
-/* line 306, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 306,  */
 
 .pr-30 {
     padding-right: 30px;
 }
 
 
-/* line 310, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 310,  */
 
 .pt-10 {
     padding-top: 10px;
 }
 
 
-/* line 313, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 313,  */
 
 .pt-20 {
     padding-top: 20px;
 }
 
 
-/* line 316, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 316,  */
 
 .pt-30 {
     padding-top: 30px;
 }
 
 
-/* line 321, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_reset.scss */
+/* line 321,  */
 
 .p-h-20 {
     padding: 0px 16px;
@@ -744,7 +744,7 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 3, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 3,  */
 
 .white-box {
     background: #ffffff;
@@ -754,14 +754,14 @@ button:focus {
 }
 
 @media (max-width: 1300px) and (min-width: 992px) {
-    /* line 3, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 3,  */
     .white-box {
         padding: 30px 15px;
     }
 }
 
 
-/* line 11, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 11,  */
 
 .white-box.single-summery {
     padding: 21px 30px;
@@ -773,7 +773,7 @@ button:focus {
 }
 
 
-/* line 15, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 15,  */
 
 .white-box.single-summery:before,
 .white-box.single-summery:after {
@@ -791,7 +791,7 @@ button:focus {
 }
 
 @media (max-width: 1440px) and (min-width: 992px) {
-    /* line 26, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 26,  */
     .white-box.single-summery .d-flex {
         -ms-flex-direction: column !important;
         flex-direction: column !important;
@@ -799,7 +799,7 @@ button:focus {
 }
 
 
-/* line 32, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 32,  */
 
 .white-box.single-summery h3,
 .white-box.single-summery p,
@@ -813,21 +813,21 @@ button:focus {
 }
 
 @media (max-width: 1480px) and (min-width: 992px) {
-    /* line 39, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 39,  */
     .white-box.single-summery h1 {
         margin-top: 6px;
     }
 }
 
 
-/* line 44, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 44,  */
 
 .white-box.single-summery p {
     color: #828bb2;
 }
 
 
-/* line 47, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 47,  */
 
 .white-box.single-summery:hover {
     background: url(../img/summery-bg1.png) no-repeat center;
@@ -836,7 +836,7 @@ button:focus {
 }
 
 
-/* line 51, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 51,  */
 
 .white-box.single-summery:hover:before {
     background: url(../img/summery-bg2.png) no-repeat center;
@@ -844,7 +844,7 @@ button:focus {
 }
 
 
-/* line 55, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 55,  */
 
 .white-box.single-summery:hover:after {
     background: url(../img/summery-bg3.png) no-repeat center;
@@ -852,7 +852,7 @@ button:focus {
 }
 
 
-/* line 59, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 59,  */
 
 .white-box.single-summery:hover h3,
 .white-box.single-summery:hover p,
@@ -862,7 +862,7 @@ button:focus {
 }
 
 
-/* line 67, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 67,  */
 
 .white-box.radius-t-y-0 {
     border-radius: 0px 0px 10px 10px;
@@ -873,7 +873,7 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 74, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 74,  */
 
 .table thead th {
     color: #415094;
@@ -885,31 +885,31 @@ button:focus {
 }
 
 
-/* line 83, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 83,  */
 
 
-/* line 90, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 90,  */
 
 .no-search .dataTables_filter>label {
     display: none;
 }
 
 
-/* line 95, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 95,  */
 
 .no-paginate .dataTables_wrapper .dataTables_paginate {
     display: none;
 }
 
 
-/* line 100, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 100,  */
 
 .no-table-info .dataTables_wrapper .dataTables_info {
     display: none;
 }
 
 
-/* line 106, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 106,  */
 
 .school-table .dropdown .dropdown-toggle {
     background: transparent;
@@ -928,14 +928,14 @@ button:focus {
 }
 
 
-/* line 117, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 117,  */
 
 .school-table .dropdown .dropdown-toggle:focus {
     box-shadow: none;
 }
 
 
-/* line 120, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 120,  */
 
 .school-table .dropdown .dropdown-toggle:hover,
 .school-table .dropdown .dropdown-toggle:focus {
@@ -944,7 +944,7 @@ button:focus {
 }
 
 
-/* line 127, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 127,  */
 
 .school-table .dropdown .dropdown-toggle:after {
     content: "\e62a";
@@ -963,7 +963,7 @@ button:focus {
 }
 
 
-/* line 140, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 140,  */
 
 .school-table .dropdown .dropdown-menu {
     border-radius: 5px 5px 10px 10px;
@@ -972,7 +972,7 @@ button:focus {
 }
 
 
-/* line 145, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 145,  */
 
 .school-table .dropdown .dropdown-menu .dropdown-item {
     color: #828bb2;
@@ -988,14 +988,14 @@ button:focus {
 }
 
 
-/* line 153, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 153,  */
 
 .school-table .dropdown .dropdown-menu .dropdown-item:hover {
     color: #415094;
 }
 
 
-/* line 156, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 156,  */
 
 .school-table .dropdown .dropdown-menu .dropdown-item:active {
     background: transparent;
@@ -1003,7 +1003,7 @@ button:focus {
 }
 
 
-/* line 164, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 164,  */
 
 .school-table .dropdown.show .dropdown-toggle:after {
     top: 16px;
@@ -1020,28 +1020,28 @@ button:focus {
 }
 
 
-/* line 177, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 177,  */
 
 .modal .modal-dialog.large-modal {
     min-width: 1050px;
 }
 
 
-/* line 180, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 180,  */
 
 .modal .modal-dialog.full-width-modal {
     min-width: 90%;
 }
 
 
-/* line 186, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 186,  */
 
 .modal-content {
     border: 0;
 }
 
 
-/* line 188, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 188,  */
 
 .modal-content .modal-header {
     background: url(../img/modal-header-bg.png) no-repeat center;
@@ -1052,7 +1052,7 @@ button:focus {
 }
 
 
-/* line 194, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 194,  */
 
 .modal-content .modal-header .modal-title {
     font-size: 18px;
@@ -1060,7 +1060,7 @@ button:focus {
 }
 
 
-/* line 198, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 198,  */
 
 .modal-content .modal-header .close {
     color: #ffffff;
@@ -1074,35 +1074,35 @@ button:focus {
 }
 
 
-/* line 204, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 204,  */
 
 .modal-content .modal-header .close:hover {
     opacity: 0.7;
 }
 
 
-/* line 209, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 209,  */
 
 .modal-content .modal-body {
     padding: 40px 50px;
 }
 
 
-/* line 212, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 212,  */
 
 .modal-content table.dataTable {
     padding: 0px;
 }
 
 
-/* line 215, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 215,  */
 
 .modal-content .dataTables_filter>label {
     top: -60px;
 }
 
 
-/* line 220, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 220,  */
 
 .radio-label {
     display: inline-block;
@@ -1110,24 +1110,24 @@ button:focus {
 }
 
 @media (max-width: 1280px) and (min-width: 992px) {
-    /* line 224, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 224,  */
     .radio-btn-flex {
         -ms-flex-direction: column;
         flex-direction: column;
     }
-    /* line 228, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 228,  */
     .radio-btn-flex .mr-30 {
         margin-bottom: 15px;
     }
 }
 
 @media (max-width: 359px) {
-    /* line 224, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 224,  */
     .radio-btn-flex {
         -ms-flex-direction: column;
         flex-direction: column;
     }
-    /* line 235, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 235,  */
     .radio-btn-flex .mr-30 {
         margin-bottom: 15px;
     }
@@ -1137,7 +1137,7 @@ button:focus {
 /* hide input */
 
 
-/* line 241, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 241,  */
 
 .common-radio:empty {
     opacity: 0;
@@ -1152,7 +1152,7 @@ button:focus {
 /* style label */
 
 
-/* line 251, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 251,  */
 
 .common-radio:empty~label {
     position: relative;
@@ -1171,14 +1171,14 @@ button:focus {
 }
 
 
-/* line 268, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 268,  */
 
 .bootstrap-datetimepicker-widget table td {
     width: 62px;
 }
 
 
-/* line 270, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 270,  */
 
 .bootstrap-datetimepicker-widget table td.hour,
 .bootstrap-datetimepicker-widget table td.minute {
@@ -1189,7 +1189,7 @@ button:focus {
 }
 
 
-/* line 280, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 280,  */
 
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-up,
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-down {
@@ -1200,7 +1200,7 @@ button:focus {
 }
 
 
-/* line 286, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 286,  */
 
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-up:after,
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-down:after {
@@ -1220,21 +1220,21 @@ button:focus {
 }
 
 
-/* line 307, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 307,  */
 
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-up:after {
     content: "\e627";
 }
 
 
-/* line 312, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 312,  */
 
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-down:after {
     content: "\e62a";
 }
 
 
-/* line 316, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 316,  */
 
 .bootstrap-datetimepicker-widget table td span.timepicker-hour,
 .bootstrap-datetimepicker-widget table td span.timepicker-minute {
@@ -1249,14 +1249,14 @@ button:focus {
 }
 
 
-/* line 328, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 328,  */
 
 .bootstrap-datetimepicker-widget table td.separator {
     display: none;
 }
 
 
-/* line 331, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 331,  */
 
 .bootstrap-datetimepicker-widget table td .btn.btn-primary {
     color: #415094;
@@ -1267,7 +1267,7 @@ button:focus {
 }
 
 
-/* line 337, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 337,  */
 
 .bootstrap-datetimepicker-widget table td .btn.btn-primary:hover {
     background: transparent;
@@ -1275,28 +1275,28 @@ button:focus {
 }
 
 
-/* line 346, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 346,  */
 
 .datepicker {
     padding: 30px 25px;
 }
 
 
-/* line 348, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 348,  */
 
 .datepicker.dropdown-menu {
     border: 0;
 }
 
 
-/* line 351, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 351,  */
 
 .datepicker.dropdown-menu td {
     padding: 10px 12.5px;
 }
 
 
-/* line 354, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 354,  */
 
 .datepicker.dropdown-menu th,
 .datepicker.dropdown-menu td {
@@ -1304,7 +1304,7 @@ button:focus {
 }
 
 
-/* line 359, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 359,  */
 
 .datepicker .datepicker thead tr:first-child th,
 .datepicker .datepicker tfoot tr th {
@@ -1314,14 +1314,14 @@ button:focus {
 }
 
 
-/* line 365, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 365,  */
 
 .datepicker table tr td {
     border-radius: 20px;
 }
 
 
-/* line 374, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 374,  */
 
 .datepicker table tr td.day {
     -webkit-transition: all 0.4s ease 0s;
@@ -1331,21 +1331,21 @@ button:focus {
 }
 
 
-/* line 376, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 376,  */
 
 .datepicker table tr td.day:hover {
     border-radius: 20px;
 }
 
 
-/* line 385, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 385,  */
 
 .datepicker thead tr:first-child th {
     position: relative;
 }
 
 
-/* line 387, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 387,  */
 
 .datepicker thead tr:first-child th:after {
     content: "";
@@ -1360,7 +1360,7 @@ button:focus {
 }
 
 
-/* line 408, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 408,  */
 
 .common-radio:empty~label:before {
     position: absolute;
@@ -1383,7 +1383,7 @@ button:focus {
 /* toggle on */
 
 
-/* line 423, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 423,  */
 
 .common-radio:checked~label:before {
     content: "";
@@ -1402,7 +1402,7 @@ button:focus {
 }
 
 
-/* line 434, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 434,  */
 
 .common-radio:checked~label:after {
     content: "\e64c";
@@ -1425,14 +1425,14 @@ button:focus {
 }
 
 
-/* line 450, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 450,  */
 
 .dropdown-menu.top {
     display: block;
 }
 
 
-/* line 454, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 454,  */
 
 .ripple {
     width: 0;
@@ -1449,7 +1449,7 @@ button:focus {
 }
 
 
-/* line 463, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 463,  */
 
 .rippleEffect {
     -webkit-animation: rippleDrop 0.6s linear;
@@ -1503,14 +1503,14 @@ button:focus {
 }
 
 
-/* line 474, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 474,  */
 
 .invalid-feedback {
     margin-top: -24px;
 }
 
 
-/* line 476, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 476,  */
 
 .invalid-feedback strong {
     position: relative;
@@ -1519,28 +1519,28 @@ button:focus {
 }
 
 
-/* line 482, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 482,  */
 
 .invalid-feedback.invalid-select strong {
     top: 58px;
 }
 
 
-/* line 490, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 490,  */
 
 .sms-breadcrumb.white-box {
     padding: 12px 30px;
 }
 
 @media (max-width: 1300px) and (min-width: 992px) {
-    /* line 490, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+    /* line 490,  */
     .sms-breadcrumb.white-box {
         padding: 12px 15px;
     }
 }
 
 
-/* line 496, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 496,  */
 
 .sms-breadcrumb .row.justify-content-between {
     -ms-flex-align: center;
@@ -1548,7 +1548,7 @@ button:focus {
 }
 
 
-/* line 500, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 500,  */
 
 .sms-breadcrumb h1 {
     font-size: 18px;
@@ -1557,7 +1557,7 @@ button:focus {
 }
 
 
-/* line 506, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 506,  */
 
 .sms-breadcrumb .bc-pages a {
     display: inline-block;
@@ -1572,7 +1572,7 @@ button:focus {
 }
 
 
-/* line 513, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 513,  */
 
 .sms-breadcrumb .bc-pages a:after {
     content: "|";
@@ -1584,7 +1584,7 @@ button:focus {
 }
 
 
-/* line 521, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 521,  */
 
 .sms-breadcrumb .bc-pages a:last-child {
     margin-right: 0px;
@@ -1592,35 +1592,35 @@ button:focus {
 }
 
 
-/* line 524, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 524,  */
 
 .sms-breadcrumb .bc-pages a:last-child:after {
     content: none;
 }
 
 
-/* line 528, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 528,  */
 
 .sms-breadcrumb .bc-pages a:hover {
     color: #7c32ff;
 }
 
 
-/* line 536, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 536,  */
 
 .main-wrapper .fstElement {
     width: 90%;
 }
 
 
-/* line 538, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 538,  */
 
 .main-wrapper .fstElement .fstControls {
     width: auto;
 }
 
 
-/* line 541, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 541,  */
 
 .main-wrapper .fstElement .fstChoiceItem {
     padding: 4px 16px 4px 20px;
@@ -1632,14 +1632,14 @@ button:focus {
 }
 
 
-/* line 550, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 550,  */
 
 .main-wrapper .fstResults {
     max-height: 250px;
 }
 
 
-/* line 552, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 552,  */
 
 .main-wrapper .fstResults .fstResultItem {
     font-size: 14px;
@@ -1653,7 +1653,7 @@ button:focus {
 }
 
 
-/* line 558, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 558,  */
 
 .main-wrapper .fstResults .fstResultItem:hover,
 .main-wrapper .fstResults .fstResultItem.fstSelected {
@@ -1661,14 +1661,14 @@ button:focus {
 }
 
 
-/* line 562, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 562,  */
 
 .main-wrapper .fstResults .fstResultItem.fstSelected {
     border-color: #828bb2;
 }
 
 
-/* line 570, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 570,  */
 
 .custom-table th {
     font-size: 12px;
@@ -1676,7 +1676,7 @@ button:focus {
 }
 
 
-/* line 574, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 574,  */
 
 .custom-table th,
 .custom-table td {
@@ -1685,7 +1685,7 @@ button:focus {
 }
 
 
-/* line 583, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 583,  */
 
 .pagination .page-link {
     padding: 6px 0;
@@ -1703,14 +1703,14 @@ button:focus {
 }
 
 
-/* line 593, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 593,  */
 
 .pagination .page-link:hover {
     color: #ffffff;
 }
 
 
-/* line 601, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 601,  */
 
 .school-table-style {
     background: #ffffff;
@@ -1723,14 +1723,14 @@ button:focus {
 }
 
 
-/* line 612, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 612,  */
 
 .school-table-style tr:first-child td {
     border-top: 0px;
 }
 
 
-/* line 616, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 616,  */
 
 .school-table-style tr th {
     text-transform: uppercase;
@@ -1742,7 +1742,7 @@ button:focus {
 }
 
 
-/* line 624, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 624,  */
 
 .school-table-style tr td {
     padding: 20px 10px 20px 0px;
@@ -1750,77 +1750,77 @@ button:focus {
 }
 
 
-/* line 631, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 631,  */
 
 .school-table-style tfoot tr td {
     border-top: 1px solid rgba(130, 139, 178, 0.15) !important;
 }
 
 
-/* line 638, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 638,  */
 
 .single-to-do {
     margin-bottom: 15px;
 }
 
 
-/* line 640, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 640,  */
 
 .single-to-do:last-of-type {
     margin-bottom: 0;
 }
 
 
-/* line 643, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 643,  */
 
 .single-to-do p {
     margin-bottom: 0px;
 }
 
 
-/* line 646, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 646,  */
 
 .single-to-do label {
     display: block;
 }
 
 
-/* line 652, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 652,  */
 
 .common-calendar .fc .fc-button-group>* {
     display: block;
 }
 
 
-/* line 655, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 655,  */
 
 .common-calendar .fc-basic-view .fc-body .fc-row {
     height: 95px !important;
 }
 
 
-/* line 658, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 658,  */
 
 .common-calendar .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
     float: left;
 }
 
 
-/* line 665, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 665,  */
 
 .common-calendar .fc-day.fc-widget-content.fc-today {
     background: #828bb2;
 }
 
 
-/* line 668, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 668,  */
 
 .common-calendar .fc-day-top.fc-today .fc-day-number {
     color: #ffffff;
 }
 
 
-/* line 671, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 671,  */
 
 .common-calendar .fc-state-default.fc-corner-left,
 .common-calendar .fc-button.fc-state-default {
@@ -1835,7 +1835,7 @@ button:focus {
 }
 
 
-/* line 678, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 678,  */
 
 .common-calendar .fc-state-default.fc-corner-left:hover,
 .common-calendar .fc-button.fc-state-default:hover {
@@ -1844,7 +1844,7 @@ button:focus {
 }
 
 
-/* line 688, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 688,  */
 
 .morris-hover {
     position: absolute;
@@ -1852,7 +1852,7 @@ button:focus {
 }
 
 
-/* line 692, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 692,  */
 
 .morris-hover.morris-default-style {
     border-radius: 10px;
@@ -1866,7 +1866,7 @@ button:focus {
 }
 
 
-/* line 702, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 702,  */
 
 .morris-hover.morris-default-style .morris-hover-row-label {
     font-weight: bold;
@@ -1874,7 +1874,7 @@ button:focus {
 }
 
 
-/* line 706, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_component.scss */
+/* line 706,  */
 
 .morris-hover.morris-default-style .morris-hover-point {
     white-space: nowrap;
@@ -1889,7 +1889,7 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 4, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 4,  */
 
 .main-wrapper {
     display: flex;
@@ -1901,14 +1901,14 @@ button:focus {
 }
 
 
-/* line 8, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 8,  */
 
 .main-wrapper ::-webkit-scrollbar {
     width: 5px;
 }
 
 
-/* line 13, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 13,  */
 
 .main-wrapper ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
@@ -1916,7 +1916,7 @@ button:focus {
 }
 
 
-/* line 19, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 19,  */
 
 .main-wrapper ::-webkit-scrollbar-thumb {
     background: #828bb2;
@@ -1924,14 +1924,14 @@ button:focus {
 }
 
 
-/* line 25, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 25,  */
 
 .main-wrapper ::-webkit-scrollbar-thumb:hover {
     background: #828bb2;
 }
 
 
-/* line 30, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 30,  */
 
 .overlay {
     position: absolute;
@@ -1942,7 +1942,7 @@ button:focus {
 }
 
 
-/* line 38, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 38,  */
 
 .common-box-shadow,
 .school-table .dropdown .dropdown-toggle:hover,
@@ -1970,14 +1970,14 @@ button:focus {
 }
 
 
-/* line 42, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 42,  */
 
 .bb-15 {
     border-bottom: 1px solid rgba(65, 80, 148, 0.15);
 }
 
 
-/* line 46, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 46,  */
 
 .white-text,
 .bootstrap-datetimepicker-widget table td.hour:hover,
@@ -1991,7 +1991,7 @@ button:focus {
 }
 
 
-/* line 50, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 50,  */
 
 .img-100 {
     max-width: 100px;
@@ -2001,7 +2001,7 @@ button:focus {
 }
 
 
-/* line 56, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 56,  */
 
 .img-180 {
     max-width: 180px;
@@ -2010,7 +2010,7 @@ button:focus {
 }
 
 
-/* line 62, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 62,  */
 
 #main-content {
     width: 100%;
@@ -2024,7 +2024,7 @@ button:focus {
 }
 
 @media (max-width: 1370px) {
-    /* line 62, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+    /* line 62,  */
     #main-content {
         margin-left: 20%;
         padding: 30px 15px;
@@ -2032,7 +2032,7 @@ button:focus {
 }
 
 @media (max-width: 991px) {
-    /* line 62, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+    /* line 62,  */
     #main-content {
         margin-left: 0;
         margin-top: 50px;
@@ -2040,7 +2040,7 @@ button:focus {
 }
 
 @media (max-width: 575px) {
-    /* line 62, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+    /* line 62,  */
     #main-content {
         padding: 15px;
     }
@@ -2055,7 +2055,7 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 88, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 88,  */
 
 .main-title h3 {
     color: #415094;
@@ -2071,7 +2071,7 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 100, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 100,  */
 
 .gradient-bg,
 .school-table .dropdown .dropdown-toggle:hover,
@@ -2105,7 +2105,7 @@ button:focus {
 }
 
 
-/* line 104, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 104,  */
 
 .border-gradient {
     border-image: -webkit-linear-gradient(90deg, #415094 0%, #7c32ff 100%);
@@ -2115,7 +2115,7 @@ button:focus {
 }
 
 
-/* line 108, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 108,  */
 
 .gradient-bg2 {
     background: -webkit-linear-gradient(90deg, #415094 0%, #7c32ff 100%);
@@ -2125,7 +2125,7 @@ button:focus {
 }
 
 
-/* line 112, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 112,  */
 
 .gradient-color {
     background: -webkit-linear-gradient(90deg, #415094 0%, #7c32ff 100%);
@@ -2137,7 +2137,7 @@ button:focus {
 }
 
 
-/* line 118, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 118,  */
 
 .gradient-color2 {
     background: -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 100%);
@@ -2153,14 +2153,14 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 126, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 126,  */
 
 .btn-success {
     font-size: 12px;
 }
 
 
-/* line 129, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 129,  */
 
 .primary-btn {
     display: inline-block;
@@ -2186,21 +2186,21 @@ button:focus {
 }
 
 
-/* line 147, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 147,  */
 
 .primary-btn.form-control {
     background: transparent;
 }
 
 
-/* line 150, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 150,  */
 
 .primary-btn label {
     margin-bottom: 0px;
 }
 
 
-/* line 153, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 153,  */
 
 .primary-btn .common-checkbox:checked+label:before {
     color: #ffffff;
@@ -2208,7 +2208,7 @@ button:focus {
 }
 
 
-/* line 157, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 157,  */
 
 .primary-btn .common-checkbox+label:before {
     border: 1px solid #ffffff;
@@ -2216,28 +2216,28 @@ button:focus {
 }
 
 
-/* line 161, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 161,  */
 
 .primary-btn span {
     font-weight: 600;
 }
 
 
-/* line 163, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 163,  */
 
 .primary-btn span.pl {
     padding-left: 8px;
 }
 
 
-/* line 166, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 166,  */
 
 .primary-btn span.pr {
     padding-right: 8px;
 }
 
 
-/* line 173, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 173,  */
 
 .primary-btn.small {
     letter-spacing: 1px;
@@ -2247,28 +2247,28 @@ button:focus {
 }
 
 
-/* line 178, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 178,  */
 
 .primary-btn.small:hover {
     color: #415094;
 }
 
 
-/* line 182, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 182,  */
 
 .primary-btn.medium {
     line-height: 38px !important;
 }
 
 
-/* line 185, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 185,  */
 
 .primary-btn.semi-large {
     line-height: 48px !important;
 }
 
 
-/* line 188, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 188,  */
 
 .primary-btn.large {
     letter-spacing: 1px;
@@ -2279,14 +2279,14 @@ button:focus {
 }
 
 
-/* line 194, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 194,  */
 
 .primary-btn.large:hover {
     color: #415094;
 }
 
 
-/* line 198, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 198,  */
 
 .primary-btn.fix-gr-bg {
     background: -webkit-linear-gradient( 90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
@@ -2303,7 +2303,7 @@ button:focus {
 }
 
 
-/* line 207, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 207,  */
 
 .primary-btn.fix-gr-bg:hover {
     background-position: right center;
@@ -2311,21 +2311,21 @@ button:focus {
 }
 
 
-/* line 213, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 213,  */
 
 .primary-btn.white {
     background: #ffffff;
 }
 
 
-/* line 215, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 215,  */
 
 .primary-btn.white:hover {
     color: #ffffff;
 }
 
 
-/* line 220, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 220,  */
 
 .primary-btn.tr-bg {
     background: transparent;
@@ -2334,14 +2334,14 @@ button:focus {
 }
 
 
-/* line 225, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 225,  */
 
 .primary-btn.bord-rad {
     border-radius: 30px;
 }
 
 
-/* line 228, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 228,  */
 
 .primary-btn.icon-only {
     padding: 0 9px;
@@ -2356,7 +2356,7 @@ button:focus {
 ============================================================================================ */
 
 
-/* line 241, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 241,  */
 
 .input-right-icon button {
     background: transparent;
@@ -2369,7 +2369,7 @@ button:focus {
 }
 
 
-/* line 249, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 249,  */
 
 .input-right-icon button.primary-btn-small-input {
     margin-left: -95px;
@@ -2377,7 +2377,7 @@ button:focus {
 }
 
 
-/* line 255, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 255,  */
 
 .input-right-icon button i {
     position: relative;
@@ -2385,7 +2385,7 @@ button:focus {
 }
 
 
-/* line 262, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 262,  */
 
 .input-effect {
     float: left;
@@ -2394,7 +2394,7 @@ button:focus {
 }
 
 
-/* line 268, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 268,  */
 
 .primary-input {
     color: #415094;
@@ -2411,7 +2411,7 @@ button:focus {
 }
 
 
-/* line 280, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 280,  */
 
 .primary-input~.focus-border {
     position: absolute;
@@ -2427,7 +2427,7 @@ button:focus {
 }
 
 
-/* line 289, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 289,  */
 
 .primary-input~label {
     position: absolute;
@@ -2487,7 +2487,7 @@ button:focus {
 }
 
 
-/* line 308, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 308,  */
 
 .primary-input:focus {
     color: #415094 !important;
@@ -2498,14 +2498,14 @@ button:focus {
 }
 
 
-/* line 315, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 315,  */
 
 .primary-input.form-control[readonly] {
     background: transparent;
 }
 
 
-/* line 318, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 318,  */
 
 .primary-input.form-control.is-invalid {
     border-color: transparent;
@@ -2513,14 +2513,14 @@ button:focus {
 }
 
 
-/* line 330, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 330,  */
 
 textarea.primary-input {
     padding: 10px 0px 0px 0;
 }
 
 
-/* line 333, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 333,  */
 
 .form-control:focus {
     border-color: rgba(130, 139, 178, 0.3) !important;
@@ -2528,7 +2528,7 @@ textarea.primary-input {
 }
 
 
-/* line 338, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 338,  */
 
 .primary-input:focus~.focus-border,
 .has-content.primary-input~.focus-border {
@@ -2540,7 +2540,7 @@ textarea.primary-input {
 }
 
 
-/* line 344, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 344,  */
 
 .primary-input:focus~label,
 .primary-input.read-only-input~label,
@@ -2564,7 +2564,7 @@ textarea.primary-input {
 ============================================================================================ */
 
 
-/* line 360, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 360,  */
 
 .common-checkbox+label {
     display: block;
@@ -2572,14 +2572,14 @@ textarea.primary-input {
 }
 
 
-/* line 365, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 365,  */
 
 .common-checkbox {
     display: none;
 }
 
 
-/* line 369, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 369,  */
 
 .common-checkbox+label:before {
     content: "";
@@ -2604,14 +2604,14 @@ textarea.primary-input {
 }
 
 
-/* line 388, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 388,  */
 
 .common-checkbox+label:active:before {
     transform: scale(0);
 }
 
 
-/* line 392, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 392,  */
 
 .common-checkbox:checked+label:before {
     content: "\e64d";
@@ -2637,7 +2637,7 @@ textarea.primary-input {
 }
 
 
-/* line 412, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 412,  */
 
 .common-checkbox:disabled+label:before {
     transform: scale(1);
@@ -2645,7 +2645,7 @@ textarea.primary-input {
 }
 
 
-/* line 417, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 417,  */
 
 .common-checkbox:checked:disabled+label:before {
     transform: scale(1);
@@ -2658,7 +2658,7 @@ textarea.primary-input {
 ============================================================================================ */
 
 
-/* line 426, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 426,  */
 
 .niceSelect {
     border: 0px;
@@ -2675,7 +2675,7 @@ textarea.primary-input {
 }
 
 
-/* line 440, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 440,  */
 
 .nice-select {
     border: 0;
@@ -2685,7 +2685,7 @@ textarea.primary-input {
 }
 
 
-/* line 445, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 445,  */
 
 .nice-select:after {
     content: "\e62a";
@@ -2704,14 +2704,14 @@ textarea.primary-input {
 }
 
 
-/* line 457, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 457,  */
 
 .nice-select:focus {
     box-shadow: none;
 }
 
 
-/* line 461, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 461,  */
 
 .nice-select.open:after {
     -webkit-transform: rotate(180deg);
@@ -2723,7 +2723,7 @@ textarea.primary-input {
 }
 
 
-/* line 466, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 466,  */
 
 .nice-select .current {
     -webkit-transition: all 0.4s ease 0s;
@@ -2733,7 +2733,7 @@ textarea.primary-input {
 }
 
 
-/* line 469, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 469,  */
 
 .nice-select .list {
     width: 100%;
@@ -2745,7 +2745,7 @@ textarea.primary-input {
 }
 
 
-/* line 477, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 477,  */
 
 .nice-select .list li {
     font-size: 12px;
@@ -2754,49 +2754,49 @@ textarea.primary-input {
 }
 
 
-/* line 481, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 481,  */
 
 .nice-select .list li:first-child {
     color: #7c32ff;
 }
 
 
-/* line 483, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 483,  */
 
 .nice-select .list li:first-child:hover {
     color: #7c32ff;
 }
 
 
-/* line 487, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 487,  */
 
 .nice-select .list li:last-child {
     margin-bottom: 20px;
 }
 
 
-/* line 490, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 490,  */
 
 .nice-select .list li:first-child {
     color: #7c32ff;
 }
 
 
-/* line 492, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 492,  */
 
 .nice-select .list li:first-child:hover {
     color: #7c32ff;
 }
 
 
-/* line 496, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 496,  */
 
 .nice-select .list li:hover {
     color: #415094;
 }
 
 
-/* line 501, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 501,  */
 
 .nice-select.tr-bg {
     background: transparent;
@@ -2812,7 +2812,7 @@ textarea.primary-input {
 }
 
 
-/* line 509, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 509,  */
 
 .nice-select.tr-bg:after {
     color: #415094;
@@ -2820,49 +2820,49 @@ textarea.primary-input {
 }
 
 
-/* line 514, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 514,  */
 
 .nice-select.tr-bg.open:after {
     margin-top: 6px;
 }
 
 
-/* line 518, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 518,  */
 
 .nice-select.tr-bg .current {
     color: #415094;
 }
 
 
-/* line 521, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 521,  */
 
 .nice-select.tr-bg .list {
     min-width: 180px;
 }
 
 
-/* line 524, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 524,  */
 
 .nice-select.tr-bg:hover {
     border: 1px solid transparent;
 }
 
 
-/* line 527, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 527,  */
 
 .nice-select.tr-bg:hover:after {
     color: #ffffff;
 }
 
 
-/* line 530, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 530,  */
 
 .nice-select.tr-bg:hover .current {
     color: #ffffff;
 }
 
 
-/* line 535, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 535,  */
 
 .nice-select.bb {
     background: transparent;
@@ -2876,7 +2876,7 @@ textarea.primary-input {
 }
 
 
-/* line 541, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 541,  */
 
 .nice-select.bb:before {
     content: "";
@@ -2893,7 +2893,7 @@ textarea.primary-input {
 }
 
 
-/* line 551, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 551,  */
 
 .nice-select.bb .current {
     color: #828bb2;
@@ -2905,28 +2905,28 @@ textarea.primary-input {
 }
 
 
-/* line 560, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 560,  */
 
 .nice-select.bb.open:before {
     width: 100%;
 }
 
 
-/* line 568, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 568,  */
 
 .sms-accordion .card {
     margin-bottom: 8px;
 }
 
 
-/* line 572, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 572,  */
 
 .sms-accordion .card-header {
     border-bottom: 0px;
 }
 
 
-/* line 574, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 574,  */
 
 .sms-accordion .card-header .card-link {
     color: #415094;
@@ -2935,14 +2935,14 @@ textarea.primary-input {
 }
 
 
-/* line 579, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 579,  */
 
 .sms-accordion .card-header .primary-btn {
     color: #415094;
 }
 
 
-/* line 585, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 585,  */
 
 .v-h-center {
     position: absolute;
@@ -2956,14 +2956,14 @@ textarea.primary-input {
 }
 
 
-/* line 593, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 593,  */
 
 .select2-container {
     width: 100% !important;
 }
 
 
-/* line 598, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 598,  */
 
 .select2-container-multi .select2-choices {
     min-height: 38px;
@@ -2973,7 +2973,7 @@ textarea.primary-input {
 }
 
 
-/* line 603, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 603,  */
 
 .select2-container-multi .select2-choices .select2-search-choice {
     background: #cad5f3;
@@ -2984,14 +2984,14 @@ textarea.primary-input {
 }
 
 
-/* line 609, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 609,  */
 
 .select2-container-multi .select2-choices .select2-search-choice>div {
     margin-left: 15px;
 }
 
 
-/* line 612, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 612,  */
 
 .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close {
     left: 6px;
@@ -3002,14 +3002,14 @@ textarea.primary-input {
 }
 
 
-/* line 618, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 618,  */
 
 .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close:hover {
     background-position: right 0px;
 }
 
 
-/* line 625, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_predefine.scss */
+/* line 625,  */
 
 .select2-results .select2-highlighted {
     background: rgba(130, 139, 178, 0.3);
@@ -3287,7 +3287,7 @@ body.login .footer_area a {
 /*---------------------------------------------------- */
 
 
-/* line 1, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 1,  */
 
 #sidebar {
     position: fixed;
@@ -3307,7 +3307,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 1370px) {
-    /* line 1, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+    /* line 1,  */
     #sidebar {
         min-width: 20%;
         max-width: 20%;
@@ -3315,7 +3315,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 991px) {
-    /* line 1, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+    /* line 1,  */
     #sidebar {
         min-width: 50%;
         max-width: 50%;
@@ -3327,7 +3327,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 991px) {
-    /* line 25, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+    /* line 25,  */
     #sidebar.active {
         margin-left: 0px;
         z-index: 999;
@@ -3337,14 +3337,14 @@ body.login .footer_area a {
 }
 
 
-/* line 33, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 33,  */
 
 #sidebar .sidebar-header {
     padding: 26px;
 }
 
 
-/* line 35, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 35,  */
 
 #sidebar .sidebar-header img {
     cursor: pointer;
@@ -3353,14 +3353,14 @@ body.login .footer_area a {
 }
 
 
-/* line 42, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 42,  */
 
 #sidebar ul.components {
     padding: 0px;
 }
 
 
-/* line 46, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 46,  */
 
 #sidebar ul li a {
     padding: 9px 20px;
@@ -3373,21 +3373,21 @@ body.login .footer_area a {
 }
 
 @media (max-width: 1300px) and (min-width: 992px) {
-    /* line 46, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+    /* line 46,  */
     #sidebar ul li a {
         padding: 8px 12px;
     }
 }
 
 
-/* line 57, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 57,  */
 
 #sidebar ul li a span {
     margin-right: 15px;
 }
 
 
-/* line 60, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 60,  */
 
 #sidebar ul li a:hover,
 #sidebar ul li a.active {
@@ -3399,7 +3399,7 @@ body.login .footer_area a {
 }
 
 
-/* line 69, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 69,  */
 
 #sidebar ul li ul {
     background: #415094;
@@ -3407,7 +3407,7 @@ body.login .footer_area a {
 }
 
 
-/* line 73, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 73,  */
 
 #sidebar ul li ul li a {
     font-size: 11px;
@@ -3417,14 +3417,14 @@ body.login .footer_area a {
 }
 
 @media (max-width: 1300px) and (min-width: 992px) {
-    /* line 73, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+    /* line 73,  */
     #sidebar ul li ul li a {
         font-size: 10px;
     }
 }
 
 
-/* line 81, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 81,  */
 
 #sidebar ul li ul li a.active {
     color: #ffffff;
@@ -3434,14 +3434,14 @@ body.login .footer_area a {
 }
 
 
-/* line 93, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 93,  */
 
 #sidebar a[data-toggle="collapse"] {
     position: relative;
 }
 
 
-/* line 96, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_sidebar.scss */
+/* line 96,  */
 
 #sidebar .dropdown-toggle::after {
     display: block;
@@ -3459,7 +3459,7 @@ body.login .footer_area a {
 ============================================================================================ */
 
 
-/* line 5, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 5,  */
 
 .admin .navbar {
     padding: 0px;
@@ -3469,7 +3469,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 991px) {
-    /* line 5, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 5,  */
     .admin .navbar {
         position: absolute;
         top: 20px;
@@ -3479,14 +3479,14 @@ body.login .footer_area a {
 }
 
 
-/* line 16, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 16,  */
 
 .admin .navbar .container-fluid {
     padding: 0;
 }
 
 @media (max-width: 991px) {
-    /* line 19, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 19,  */
     .admin .navbar .navbar-collapse {
         margin-top: 10px;
         padding: 30px;
@@ -3495,7 +3495,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 1150px) and (min-width: 992px) {
-    /* line 28, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 28,  */
     .admin .navbar .nav-buttons .nav-item .primary-btn {
         padding: 0px 8px;
         font-size: 10px;
@@ -3504,7 +3504,7 @@ body.login .footer_area a {
 }
 
 
-/* line 38, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 38,  */
 
 .admin .navbar .nav-setting .nice-select {
     background: transparent;
@@ -3514,7 +3514,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 1150px) and (min-width: 992px) {
-    /* line 38, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 38,  */
     .admin .navbar .nav-setting .nice-select {
         padding-left: 5px;
         padding-right: 25px;
@@ -3522,14 +3522,14 @@ body.login .footer_area a {
 }
 
 
-/* line 47, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 47,  */
 
 .admin .navbar .nav-setting .nice-select:after {
     margin-top: -22px;
 }
 
 
-/* line 51, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 51,  */
 
 .admin .navbar .nav-setting .nice-select.open:after {
     margin-top: 12px;
@@ -3537,7 +3537,7 @@ body.login .footer_area a {
 }
 
 
-/* line 56, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 56,  */
 
 .admin .navbar .nav-setting .nice-select .current {
     color: #415094;
@@ -3548,21 +3548,21 @@ body.login .footer_area a {
 }
 
 
-/* line 59, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 59,  */
 
 .admin .navbar .nav-setting .nice-select .current:hover {
     color: #7c32ff;
 }
 
 
-/* line 66, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 66,  */
 
 .admin .navbar .nav-setting .nav-item:last-child .nice-select {
     border-right: 0px;
 }
 
 
-/* line 72, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 72,  */
 
 .admin .navbar .right-navbar {
     -ms-flex-align: center;
@@ -3570,7 +3570,7 @@ body.login .footer_area a {
 }
 
 @media (max-width: 991px) {
-    /* line 72, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 72,  */
     .admin .navbar .right-navbar {
         -ms-flex-align: start;
         align-items: start;
@@ -3578,14 +3578,14 @@ body.login .footer_area a {
 }
 
 
-/* line 81, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 81,  */
 
 .admin .navbar .right-navbar .notification-area .dropdown .dropdown-toggle {
     margin-left: -6px;
 }
 
 
-/* line 85, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 85,  */
 
 .admin .navbar .right-navbar .notification-area .badge {
     position: relative;
@@ -3598,7 +3598,7 @@ body.login .footer_area a {
 }
 
 
-/* line 95, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 95,  */
 
 .admin .navbar .right-navbar .dropdown:hover>.dropdown-menu {
     max-height: 200px;
@@ -3608,14 +3608,14 @@ body.login .footer_area a {
 }
 
 
-/* line 101, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 101,  */
 
 .admin .navbar .right-navbar .dropdown>.dropdown-toggle:active {
     pointer-events: none;
 }
 
 
-/* line 105, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 105,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-toggle {
     margin-left: 12px;
@@ -3623,14 +3623,14 @@ body.login .footer_area a {
 }
 
 @media (max-width: 1150px) and (min-width: 992px) {
-    /* line 105, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 105,  */
     .admin .navbar .right-navbar .dropdown .dropdown-toggle {
         margin-left: 2px;
     }
 }
 
 
-/* line 111, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 111,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-toggle img {
     max-width: 40px;
@@ -3638,7 +3638,7 @@ body.login .footer_area a {
 }
 
 
-/* line 116, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 116,  */
 
 .admin .navbar .right-navbar .dropdown p {
     margin-bottom: 0;
@@ -3647,7 +3647,7 @@ body.login .footer_area a {
 }
 
 
-/* line 122, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 122,  */
 
 .admin .navbar .right-navbar .dropdown span:before {
     color: #415094;
@@ -3658,14 +3658,14 @@ body.login .footer_area a {
 }
 
 
-/* line 127, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 127,  */
 
 .admin .navbar .right-navbar .dropdown span:hover:before {
     color: #7c32ff;
 }
 
 
-/* line 133, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 133,  */
 
 .admin .navbar .right-navbar .dropdown .flaticon-bell:before {
     font-size: 23px;
@@ -3674,7 +3674,7 @@ body.login .footer_area a {
 }
 
 
-/* line 139, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 139,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-menu {
     top: 30px;
@@ -3698,7 +3698,7 @@ body.login .footer_area a {
 }
 
 
-/* line 155, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 155,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-menu.profile-box {
     min-width: 220px;
@@ -3706,7 +3706,7 @@ body.login .footer_area a {
 }
 
 
-/* line 158, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 158,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-menu.profile-box .white-box {
     padding: 20px;
@@ -3714,7 +3714,7 @@ body.login .footer_area a {
 }
 
 
-/* line 162, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 162,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-menu.profile-box .name,
 .admin .navbar .right-navbar .dropdown .dropdown-menu.profile-box .message {
@@ -3722,14 +3722,14 @@ body.login .footer_area a {
 }
 
 
-/* line 167, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 167,  */
 
 .admin .navbar .right-navbar .dropdown .dropdown-item {
     padding: 0px 20px;
 }
 
 
-/* line 170, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 170,  */
 
 .admin .navbar .right-navbar .dropdown .single-message {
     border-bottom: 1px solid rgba(65, 80, 148, 0.1);
@@ -3737,14 +3737,14 @@ body.login .footer_area a {
 }
 
 
-/* line 173, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 173,  */
 
 .admin .navbar .right-navbar .dropdown .single-message .message-avatar {
     position: relative;
 }
 
 
-/* line 176, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 176,  */
 
 .admin .navbar .right-navbar .dropdown .single-message .active-icon {
     position: absolute;
@@ -3758,28 +3758,28 @@ body.login .footer_area a {
 }
 
 
-/* line 187, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 187,  */
 
 .admin .navbar .right-navbar .dropdown .single-message:hover .name {
     color: #7c32ff;
 }
 
 
-/* line 194, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 194,  */
 
 .admin .navbar .right-navbar .dropdown .single-notifi:hover .message {
     color: #7c32ff;
 }
 
 
-/* line 198, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 198,  */
 
 .admin .navbar .right-navbar .dropdown .single-notifi:hover span:before {
     color: #7c32ff;
 }
 
 
-/* line 204, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 204,  */
 
 .admin .navbar .right-navbar .dropdown .white-box {
     padding: 20px 0px 0px;
@@ -3787,7 +3787,7 @@ body.login .footer_area a {
 }
 
 
-/* line 208, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 208,  */
 
 .admin .navbar .right-navbar .dropdown .notification {
     font-size: 12px;
@@ -3796,14 +3796,14 @@ body.login .footer_area a {
 }
 
 
-/* line 212, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 212,  */
 
 .admin .navbar .right-navbar .dropdown .notification span {
     color: #415094;
 }
 
 
-/* line 216, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 216,  */
 
 .admin .navbar .right-navbar .dropdown .name {
     font-size: 12px;
@@ -3819,7 +3819,7 @@ body.login .footer_area a {
 }
 
 
-/* line 225, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 225,  */
 
 .admin .navbar .right-navbar .dropdown .message {
     font-size: 12px;
@@ -3833,14 +3833,14 @@ body.login .footer_area a {
 }
 
 
-/* line 232, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 232,  */
 
 .admin .navbar .right-navbar .dropdown .time {
     font-size: 12px;
 }
 
 
-/* line 235, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 235,  */
 
 .admin .navbar .right-navbar .dropdown .badge {
     color: #ffffff;
@@ -3850,7 +3850,7 @@ body.login .footer_area a {
 }
 
 
-/* line 243, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 243,  */
 
 .admin .navbar .right-navbar .dropdown .primary-btn {
     width: 100%;
@@ -3859,7 +3859,7 @@ body.login .footer_area a {
 }
 
 
-/* line 250, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 250,  */
 
 .admin .navbar .right-navbar .dropdown .profile-box ul {
     padding-top: 20px;
@@ -3868,7 +3868,7 @@ body.login .footer_area a {
 }
 
 
-/* line 255, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 255,  */
 
 .admin .navbar .right-navbar .dropdown .profile-box ul li a {
     font-size: 12px;
@@ -3878,7 +3878,7 @@ body.login .footer_area a {
 }
 
 
-/* line 260, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 260,  */
 
 .admin .navbar .right-navbar .dropdown .profile-box ul li a span {
     margin-right: 10px;
@@ -3890,28 +3890,28 @@ body.login .footer_area a {
 }
 
 
-/* line 267, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 267,  */
 
 .admin .navbar .right-navbar .dropdown .profile-box ul li:hover a {
     color: #7c32ff;
 }
 
 
-/* line 270, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 270,  */
 
 .admin .navbar .right-navbar .dropdown .profile-box ul li:hover span {
     color: #7c32ff;
 }
 
 
-/* line 281, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 281,  */
 
 .admin .navbar .setting-area .dropdown .dropdown-item {
     padding: 0;
 }
 
 
-/* line 287, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 287,  */
 
 .admin .navbar .dropdown button {
     border: 0;
@@ -3920,14 +3920,14 @@ body.login .footer_area a {
 }
 
 
-/* line 293, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 293,  */
 
 .admin .navbar .dropdown-toggle::after {
     display: none;
 }
 
 @media (max-width: 991px) {
-    /* line 297, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 297,  */
     .admin #sidebarCollapse {
         background: #000000;
         color: #ffffff;
@@ -3935,7 +3935,7 @@ body.login .footer_area a {
         z-index: 9999;
         cursor: pointer;
     }
-    /* line 304, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 304,  */
     .admin #sidebarCollapse:focus {
         box-shadow: none;
         outline: none;
@@ -3943,28 +3943,28 @@ body.login .footer_area a {
 }
 
 @media (max-width: 991px) {
-    /* line 312, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 312,  */
     .search-bar {
         margin-bottom: 20px;
     }
 }
 
 
-/* line 316, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 316,  */
 
 .search-bar li {
     min-width: 375px;
 }
 
 @media (max-width: 1499px) {
-    /* line 316, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+    /* line 316,  */
     .search-bar li {
         min-width: auto;
     }
 }
 
 
-/* line 322, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 322,  */
 
 .search-bar .ti-search {
     position: absolute;
@@ -3977,7 +3977,7 @@ body.login .footer_area a {
 }
 
 
-/* line 331, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 331,  */
 
 .search-bar input {
     padding-left: 25px;
@@ -3988,7 +3988,7 @@ body.login .footer_area a {
 }
 
 
-/* line 337, ../../xampp/htdocs/infixeduB/public/backEnd/scss/admin/_header.scss */
+/* line 337,  */
 
 .search-bar input:focus {
     border: 0;
@@ -5012,7 +5012,7 @@ body.client.color {
 /*---------------------------------------------------- */
 
 
-/* line 2, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 2,  */
 
 .client .header-area {
     position: relative;
@@ -5022,7 +5022,7 @@ body.client.color {
 }
 
 @media (max-width: 991px) {
-    /* line 2, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 2,  */
     .client .header-area {
         position: fixed;
         padding: 10px 0px;
@@ -5032,21 +5032,21 @@ body.client.color {
 }
 
 @media (max-width: 575px) {
-    /* line 2, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 2,  */
     .client .header-area {
         padding: 10px 20px;
     }
 }
 
 @media (max-width: 991px) {
-    /* line 16, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 16,  */
     .client .header-area .navbar-collapse {
         margin-top: 20px;
     }
 }
 
 
-/* line 21, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 21,  */
 
 .client .header-area .navbar {
     background: transparent;
@@ -5056,7 +5056,7 @@ body.client.color {
 }
 
 
-/* line 26, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 26,  */
 
 .client .header-area .navbar .navbar-toggler {
     color: #ffffff;
@@ -5064,7 +5064,7 @@ body.client.color {
 }
 
 
-/* line 32, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 32,  */
 
 .client .header-area .navbar .nav .nav-item .nav-link {
     font-size: 12px;
@@ -5077,32 +5077,32 @@ body.client.color {
 }
 
 
-/* line 40, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 40,  */
 
 .client .header-area .navbar .nav .nav-item .nav-link:hover {
     color: #7c32ff !important;
 }
 
 
-/* line 43, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 43,  */
 
 .client .header-area .navbar .nav .nav-item .nav-link:after {
     display: none;
 }
 
 @media (max-width: 991px) {
-    /* line 32, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 32,  */
     .client .header-area .navbar .nav .nav-item .nav-link {
         padding: 10px !important;
     }
-    /* line 48, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 48,  */
     .client .header-area .navbar .nav .nav-item .nav-link .navbar-right .float-right {
         float: left !important;
     }
 }
 
 
-/* line 54, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 54,  */
 
 .client .header-area .navbar .nav .nav-item.active .nav-link {
     color: #7c32ff !important;
@@ -5110,14 +5110,14 @@ body.client.color {
 }
 
 
-/* line 59, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 59,  */
 
 .client .header-area .navbar .nav .nav-item.submenu {
     position: relative;
 }
 
 
-/* line 61, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 61,  */
 
 .client .header-area .navbar .nav .nav-item.submenu ul {
     border: none;
@@ -5129,7 +5129,7 @@ body.client.color {
 }
 
 @media (min-width: 992px) {
-    /* line 61, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 61,  */
     .client .header-area .navbar .nav .nav-item.submenu ul {
         position: absolute;
         top: 120%;
@@ -5147,7 +5147,7 @@ body.client.color {
 }
 
 
-/* line 82, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 82,  */
 
 .client .header-area .navbar .nav .nav-item.submenu ul:before {
     content: "";
@@ -5165,7 +5165,7 @@ body.client.color {
 }
 
 
-/* line 96, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 96,  */
 
 .client .header-area .navbar .nav .nav-item.submenu ul .nav-item {
     display: block;
@@ -5177,7 +5177,7 @@ body.client.color {
 }
 
 
-/* line 103, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 103,  */
 
 .client .header-area .navbar .nav .nav-item.submenu ul .nav-item .nav-link {
     line-height: 45px;
@@ -5189,14 +5189,14 @@ body.client.color {
 }
 
 
-/* line 111, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 111,  */
 
 .client .header-area .navbar .nav .nav-item.submenu ul .nav-item:last-child {
     border-bottom: none;
 }
 
 
-/* line 115, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 115,  */
 
 .client .header-area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
     background: #415094;
@@ -5204,7 +5204,7 @@ body.client.color {
 }
 
 @media (min-width: 992px) {
-    /* line 123, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 123,  */
     .client .header-area .navbar .nav .nav-item.submenu:hover ul {
         visibility: visible;
         opacity: 1;
@@ -5213,21 +5213,21 @@ body.client.color {
 }
 
 
-/* line 129, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 129,  */
 
 .client .header-area .navbar .nav .nav-item.submenu:hover ul .nav-item {
     margin-top: 0px;
 }
 
 
-/* line 135, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 135,  */
 
 .client .header-area .navbar .nav .nav-item:last-child {
     margin-right: 0px;
 }
 
 
-/* line 141, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 141,  */
 
 .client .header-area .navbar .search-bar {
     font-size: 12px;
@@ -5237,14 +5237,14 @@ body.client.color {
 }
 
 
-/* line 146, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 146,  */
 
 .client .header-area .navbar .search-bar .ti-search {
     color: #828bb2;
 }
 
 
-/* line 149, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 149,  */
 
 .client .header-area .navbar .search-bar input {
     color: #828bb2 !important;
@@ -5279,7 +5279,7 @@ body.client.color {
 }
 
 
-/* line 154, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 154,  */
 
 .client .header-area .navbar .search-bar input:focus {
     color: #ffffff !important;
@@ -5287,7 +5287,7 @@ body.client.color {
 }
 
 
-/* line 163, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 163,  */
 
 .client .header-area.navbar_fixed .main_menu {
     position: fixed;
@@ -5305,14 +5305,14 @@ body.client.color {
 }
 
 
-/* line 179, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+/* line 179,  */
 
 .client .header-area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
     line-height: 70px;
 }
 
 @media (max-width: 991px) {
-    /* line 189, ../../xampp/htdocs/infixeduB/public/backEnd/scss/client/_header.scss */
+    /* line 189,  */
     .client .nav.navbar-nav.navbar-right.float-right {
         float: left !important;
     }

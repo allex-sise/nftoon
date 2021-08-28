@@ -66,7 +66,7 @@ class ProductUploadController extends Controller
         $r->validate([
             'title' => 'required|string|max:100',
             'description' => 'required|string',
-            'thumdnail'=>'required',
+            'thumdnail'=>'required_without:main_file|',
             'category_id' => 'required|',
             'demo_url' => 'required|url',
             'Re_item' => 'required|',
@@ -234,7 +234,7 @@ class ProductUploadController extends Controller
                     // 'feature1' => 'required|string|max:45',
                     // 'feature2' => 'string|max:45',
                     'description' => 'required|string',
-                    'thumdnail'=>'sometimes|nullable|required|',
+                    'thumdnail'=>'sometimes|nullable|required_without:main_file|',
                     'main_file' => 'sometimes|nullable|required|',
                     'file' => 'sometimes|nullable|required|',
                     'category_id' => 'required|',

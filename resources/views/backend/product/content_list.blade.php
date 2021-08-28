@@ -39,10 +39,10 @@
                                     <th>@lang('lang.id')</th>
                                     <th>@lang('lang.title')</th>
                                     <th>@lang('lang.category')</th>
-                                    <th>@lang('lang.demo') @lang('lang.url')</th>
                                     <th>@lang('lang.image')</th>
                                     <th>@lang('lang.price')</th>
                                     <th>@lang('lang.author')</th>
+                                    <th>Detinator</th>
                                     <th>Vanzari</th>
                                     <th>@lang('lang.status')</th>
                                     <th>@lang('lang.action')</th>
@@ -56,18 +56,18 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td valign="top"><a target="_blank" href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">{{Str::limit(@$item->title,20)}}</a></td>
-                                    <td valign="top">{{@$item->category_title}} / {{@$item->sub_category_title}}</td>
-                                    <td valign="top"><a href="{{@$item->demo_url}}" target="_blank" class="primary-btn small fix-gr-bg">Click here</a></td>
+                                    <td valign="top">{{@$item->category->title}}</td>
                                     <td valign="top"><img src="{{asset(@$item->icon)}}" class="content_list_wh_40" ></td>
                                     <td valign="top">{{@$data['settings']->currency_symbol}}{{@$item->Reg_total}}</td>
-                                    <td aign="top"><a target="_blank" href="{{ route('user.profile',@$item->username)}}">{{@$item->username }}</a></td>
+                                    <td valign="top"><a target="_blank" href="{{ route('user.profile',@$item->user->username)}}">{{@$item->user->username }}</a></td>
+                                    <td valign="top"><a target="_blank" href="{{ route('user.profile',@$item->og->username)}}">{{@$item->og->username }}</a></td>
                                     
                                     <td>{{ @$item->sell }}</td>
                                     <td valign="top">
-                                                @if (@$item->status == 1)
+                                                @if (@$item->active_status == 1)
                                                 @lang('lang.active')
                                                 @else   
-                                                @lang('lang.pending')
+                                                Dezactivat
                                                 @endif
                                     </td>
                                     

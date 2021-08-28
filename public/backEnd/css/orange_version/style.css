@@ -23,7 +23,7 @@ Author E-mail: info@spondonit.com
 /* Mobile Layout: 320px */
 /* Wide Mobile Layout: 480px */
 /*---------------------------------------------------- */
-/* line 1, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 1,  */
 body.admin {
   line-height: 24px;
   font-size: 13px;
@@ -34,7 +34,7 @@ body.admin {
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-  /* line 1, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+  /* line 1,  */
   body.admin {
     font-size: 11px;
     line-height: 22px;
@@ -72,13 +72,13 @@ body.admin {
   }
 }
 
-/* line 43, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 43,  */
 input:-webkit-autofill {
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
 }
 
-/* line 48, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 48,  */
 h1,
 h2,
 h3,
@@ -90,44 +90,44 @@ h6 {
   line-height: 1.5;
 }
 
-/* line 58, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 58,  */
 h1 {
   font-size: 22px;
 }
 
-/* line 61, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 61,  */
 h2 {
   font-size: 20px;
 }
 
-/* line 64, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 64,  */
 h3 {
   font-size: 18px;
 }
 
-/* line 67, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 67,  */
 h4 {
   font-size: 16px;
 }
 
-/* line 70, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 70,  */
 h5 {
   font-size: 14px;
 }
 
-/* line 73, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 73,  */
 h6 {
   font-size: 12px;
 }
 
-/* line 77, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 77,  */
 .list {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
 
-/* line 83, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 83,  */
 a {
   text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
@@ -136,13 +136,13 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 86, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 86,  */
 a:hover, a:focus {
   text-decoration: none;
   outline: none;
 }
 
-/* line 93, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 93,  */
 textarea {
   overflow: hidden;
   resize: none;
@@ -176,349 +176,349 @@ textarea::-webkit-input-placeholder {
   bottom: -5px;
 }
 
-/* line 105, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 105,  */
 button:focus {
   outline: none;
   box-shadow: none;
 }
 
-/* line 111, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 111,  */
 .transparent-color {
   background: transparent !important;
 }
 
-/* line 116, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 116,  */
 .primary-color {
   color: #415094;
 }
 
-/* line 119, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 119,  */
 .primary-color2 {
   color: #f2662f;
 }
 
-/* line 122, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 122,  */
 .black-color {
   color: #000000;
 }
 
-/* line 125, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 125,  */
 .text-color {
   color: #828bb2;
 }
 
-/* line 129, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 129,  */
 .exam-bg {
   background: rgba(130, 139, 178, 0.3);
 }
 
-/* line 134, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 134,  */
 .fw-400 {
   font-weight: 400;
 }
 
-/* line 137, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 137,  */
 .fw-500 {
   font-weight: 500;
 }
 
-/* line 140, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 140,  */
 .fw-600 {
   font-weight: 600;
 }
 
-/* line 145, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 145,  */
 .fs-12 {
   font-size: 12px;
 }
 
-/* line 150, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 150,  */
 .mb-10 {
   margin-bottom: 10px;
 }
 
-/* line 153, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 153,  */
 .mb-15 {
   margin-bottom: 15px;
 }
 
-/* line 156, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 156,  */
 .mb-20 {
   margin-bottom: 20px;
 }
 
-/* line 159, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 159,  */
 .mb-25 {
   margin-bottom: 25px;
 }
 
-/* line 162, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 162,  */
 .mb-30 {
   margin-bottom: 20px;
 }
 
-/* line 165, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 165,  */
 .mb-35 {
   margin-bottom: 35px;
 }
 
-/* line 168, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 168,  */
 .mb-40 {
   margin-bottom: 25px;
 }
 
-/* line 171, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 171,  */
 .mb-45 {
   margin-bottom: 45px;
 }
 
-/* line 174, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 174,  */
 .mb-50 {
   margin-bottom: 35px;
 }
 
-/* line 179, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 179,  */
 .ml-10 {
   margin-left: 10px;
 }
 
-/* line 182, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 182,  */
 .ml-15 {
   margin-left: 15px;
 }
 
-/* line 185, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 185,  */
 .ml-20 {
   margin-left: 20px;
 }
 
-/* line 188, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 188,  */
 .ml-25 {
   margin-left: 25px;
 }
 
-/* line 191, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 191,  */
 .ml-30 {
   margin-left: 30px;
 }
 
-/* line 194, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 194,  */
 .ml-35 {
   margin-left: 35px;
 }
 
-/* line 197, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 197,  */
 .ml-40 {
   margin-left: 40px;
 }
 
-/* line 200, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 200,  */
 .ml-45 {
   margin-left: 45px;
 }
 
-/* line 203, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 203,  */
 .ml-50 {
   margin-left: 50px;
 }
 
-/* line 208, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 208,  */
 .mr-10 {
   margin-right: 10px;
 }
 
-/* line 211, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 211,  */
 .mr-15 {
   margin-right: 15px;
 }
 
-/* line 214, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 214,  */
 .mr-20 {
   margin-right: 20px;
 }
 
-/* line 217, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 217,  */
 .mr-25 {
   margin-right: 25px;
 }
 
-/* line 220, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 220,  */
 .mr-30 {
   margin-right: 30px;
 }
 
-/* line 223, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 223,  */
 .mr-35 {
   margin-right: 35px;
 }
 
-/* line 226, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 226,  */
 .mr-40 {
   margin-right: 40px;
 }
 
-/* line 229, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 229,  */
 .mr-45 {
   margin-right: 45px;
 }
 
-/* line 232, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 232,  */
 .mr-50 {
   margin-right: 50px;
 }
 
-/* line 235, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 235,  */
 .mr-75 {
   margin-right: 75px;
 }
 
-/* line 240, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 240,  */
 .mt--48 {
   margin-top: -48px;
 }
 
-/* line 243, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 243,  */
 .mt-10 {
   margin-top: 10px;
 }
 
-/* line 246, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 246,  */
 .mt-15 {
   margin-top: 15px;
 }
 
-/* line 249, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 249,  */
 .mt-20 {
   margin-top: 20px;
 }
 
-/* line 252, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 252,  */
 .mt-25 {
   margin-top: 25px;
 }
 
-/* line 255, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 255,  */
 .mt-30 {
   margin-top: 30px;
 }
 
-/* line 258, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 258,  */
 .mt-35 {
   margin-top: 35px;
 }
 
-/* line 261, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 261,  */
 .mt-40 {
   margin-top: 40px;
 }
 
-/* line 264, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 264,  */
 .mt-45 {
   margin-top: 45px;
 }
 
-/* line 267, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 267,  */
 .mt-50 {
   margin-top: 35px;
 }
 
-/* line 270, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 270,  */
 .mt-80 {
   margin-top: 80px;
 }
 
-/* line 275, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 275,  */
 .pb-7 {
   padding-bottom: 7px !important;
 }
 
-/* line 278, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 278,  */
 .pb-10 {
   padding-bottom: 10px !important;
 }
 
-/* line 281, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 281,  */
 .pb-20 {
   padding-bottom: 20px !important;
 }
 
-/* line 284, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 284,  */
 .pb-30 {
   padding-bottom: 30px !important;
 }
 
-/* line 287, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 287,  */
 .pb-40 {
   padding-bottom: 40px !important;
 }
 
-/* line 290, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 290,  */
 .pb-50 {
   padding-bottom: 50px !important;
 }
 
-/* line 293, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 293,  */
 .pb-120 {
   padding-bottom: 120px !important;
 }
 
-/* line 298, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 298,  */
 .pl-10 {
   padding-left: 10px;
 }
 
-/* line 301, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 301,  */
 .pl-20 {
   padding-left: 20px;
 }
 
-/* line 304, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 304,  */
 .pl-30 {
   padding-left: 30px;
 }
 
-/* line 307, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 307,  */
 .pl-35 {
   padding-left: 35px;
 }
 
-/* line 310, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 310,  */
 .pl-40 {
   padding-left: 40px;
 }
 
-/* line 313, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 313,  */
 .pl-50 {
   padding-left: 50px;
 }
 
-/* line 318, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 318,  */
 .pv-10 {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-/* line 324, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 324,  */
 .pr-30 {
   padding-right: 30px;
 }
 
-/* line 328, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 328,  */
 .pt-10 {
   padding-top: 10px;
 }
 
-/* line 331, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 331,  */
 .pt-20 {
   padding-top: 20px;
 }
 
-/* line 334, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 334,  */
 .pt-30 {
   padding-top: 30px;
 }
 
-/* line 339, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_reset.scss */
+/* line 339,  */
 .p-h-20 {
   padding: 0px 16px;
 }
@@ -561,7 +561,7 @@ button:focus {
 /*---------------------------------------------------- */
 /* Start Boxes Area css
 ============================================================================================ */
-/* line 3, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 3, / */
 .white-box {
   background: #ffffff;
   padding: 40px 30px;
@@ -570,13 +570,13 @@ button:focus {
 }
 
 @media (max-width: 1300px) and (min-width: 992px) {
-  /* line 3, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 3, / */
   .white-box {
     padding: 30px 15px;
   }
 }
 
-/* line 11, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 11, / */
 .white-box.single-summery {
   padding: 21px 30px;
   position: relative;
@@ -586,7 +586,7 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 15, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 15, / */
 .white-box.single-summery:before, .white-box.single-summery:after {
   content: "";
   background: transparent;
@@ -602,14 +602,14 @@ button:focus {
 }
 
 @media (max-width: 1440px) and (min-width: 992px) {
-  /* line 26, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 26, / */
   .white-box.single-summery .d-flex {
     -ms-flex-direction: column !important;
     flex-direction: column !important;
   }
 }
 
-/* line 32, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 32, / */
 .white-box.single-summery h3,
 .white-box.single-summery p,
 .white-box.single-summery h1 {
@@ -622,23 +622,23 @@ button:focus {
 }
 
 @media (max-width: 1480px) and (min-width: 992px) {
-  /* line 39, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 39, / */
   .white-box.single-summery h1 {
     margin-top: 6px;
   }
 }
 
-/* line 44, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 44, / */
 .white-box.single-summery p {
   color: #828bb2;
 }
 
-/* line 47, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 47, / */
 .white-box.single-summery:hover {
   background-color: #f2662f;
 }
 
-/* line 49, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 49, / */
 .white-box.single-summery:hover h3,
 .white-box.single-summery:hover p,
 .white-box.single-summery:hover h1 {
@@ -646,14 +646,14 @@ button:focus {
   -webkit-text-fill-color: #ffffff;
 }
 
-/* line 57, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 57, / */
 .white-box.radius-t-y-0 {
   border-radius: 0px 0px 10px 10px;
 }
 
 /* End Boxes Area css
 ============================================================================================ */
-/* line 64, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 64, / */
 .table thead th {
   color: #415094;
   font-size: 12px;
@@ -663,27 +663,27 @@ button:focus {
   padding: 12px 12px 12px 0px;
 }
 
-/* line 73, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 73, / */
 .table tbody td {
   padding: 20px 18px 20px 0px;
 }
 
-/* line 80, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 80, / */
 .no-search .dataTables_filter > label {
   display: none;
 }
 
-/* line 85, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 85, / */
 .no-paginate .dataTables_wrapper .dataTables_paginate {
   display: none;
 }
 
-/* line 90, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 90, / */
 .no-table-info .dataTables_wrapper .dataTables_info {
   display: none;
 }
 
-/* line 96, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 96, / */
 .school-table .dropdown .dropdown-toggle {
   background: transparent;
   color: #415094;
@@ -700,18 +700,18 @@ button:focus {
   transition: all 0.15s ease-in-out;
 }
 
-/* line 107, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 107, / */
 .school-table .dropdown .dropdown-toggle:focus {
   box-shadow: none;
 }
 
-/* line 110, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 110, / */
 .school-table .dropdown .dropdown-toggle:hover, .school-table .dropdown .dropdown-toggle:focus {
   color: #ffffff;
   border: 1px solid transparent;
 }
 
-/* line 117, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 117, / */
 .school-table .dropdown .dropdown-toggle:after {
   content: "\e62a";
   font-family: "themify";
@@ -728,14 +728,14 @@ button:focus {
   transition: all 0.15s ease-in-out;
 }
 
-/* line 130, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 130, / */
 .school-table .dropdown .dropdown-menu {
   border-radius: 5px 5px 10px 10px;
   border: 0px;
   padding: 15px 0px;
 }
 
-/* line 135, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 135, / */
 .school-table .dropdown .dropdown-menu .dropdown-item {
   color: #828bb2;
   text-align: right;
@@ -749,18 +749,18 @@ button:focus {
   transition: all 0.15s ease-in-out;
 }
 
-/* line 143, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 143, / */
 .school-table .dropdown .dropdown-menu .dropdown-item:hover {
   color: #415094;
 }
 
-/* line 146, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 146, / */
 .school-table .dropdown .dropdown-menu .dropdown-item:active {
   background: transparent;
   color: #415094;
 }
 
-/* line 154, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 154, / */
 .school-table .dropdown.show .dropdown-toggle:after {
   top: 16px;
   left: 8px;
@@ -775,22 +775,22 @@ button:focus {
   transition: all 0.15s ease-in-out;
 }
 
-/* line 167, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 167, / */
 .modal .modal-dialog.large-modal {
   min-width: 1050px;
 }
 
-/* line 170, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 170, / */
 .modal .modal-dialog.full-width-modal {
   min-width: 90%;
 }
 
-/* line 176, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 176, / */
 .modal-content {
   border: 0;
 }
 
-/* line 178, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 178, / */
 .modal-content .modal-header {
   background-color: #f2662f;
   background-size: cover;
@@ -800,19 +800,19 @@ button:focus {
 }
 
 @media (max-width: 999px) {
-  /* line 178, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 178, / */
   .modal-content .modal-header {
     padding: 20px 30px;
   }
 }
 
-/* line 187, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 187, / */
 .modal-content .modal-header .modal-title {
   font-size: 18px;
   color: #ffffff;
 }
 
-/* line 191, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 191, / */
 .modal-content .modal-header .close {
   color: #ffffff;
   opacity: 1;
@@ -824,65 +824,65 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 197, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 197, / */
 .modal-content .modal-header .close:hover {
   opacity: 0.7;
 }
 
-/* line 202, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 202, / */
 .modal-content .modal-body {
   padding: 40px 50px;
 }
 
 @media (max-width: 999px) {
-  /* line 202, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 202, / */
   .modal-content .modal-body {
     padding: 0 20px 43px 20px;
   }
 }
 
-/* line 208, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 208, / */
 .modal-content table.dataTable {
   padding: 0px;
 }
 
-/* line 211, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 211, / */
 .modal-content .dataTables_filter > label {
   top: -60px;
 }
 
-/* line 216, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 216, / */
 .radio-label {
   display: inline-block;
   color: #415094;
 }
 
 @media (max-width: 1280px) and (min-width: 992px) {
-  /* line 220, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 220, / */
   .radio-btn-flex {
     -ms-flex-direction: column;
     flex-direction: column;
   }
-  /* line 224, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 224, / */
   .radio-btn-flex .mr-30 {
     margin-bottom: 15px;
   }
 }
 
 @media (max-width: 359px) {
-  /* line 220, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 220, / */
   .radio-btn-flex {
     -ms-flex-direction: column;
     flex-direction: column;
   }
-  /* line 231, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 231, / */
   .radio-btn-flex .mr-30 {
     margin-bottom: 15px;
   }
 }
 
 /* hide input */
-/* line 237, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 237, / */
 .common-radio:empty {
   opacity: 0;
   visibility: hidden;
@@ -893,7 +893,7 @@ button:focus {
 }
 
 /* style label */
-/* line 247, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 247, / */
 .common-radio:empty ~ label {
   position: relative;
   float: left;
@@ -910,12 +910,12 @@ button:focus {
   text-transform: capitalize;
 }
 
-/* line 264, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 264, / */
 .bootstrap-datetimepicker-widget table td {
   width: 62px;
 }
 
-/* line 266, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 266, / */
 .bootstrap-datetimepicker-widget table td.hour, .bootstrap-datetimepicker-widget table td.minute {
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
@@ -923,7 +923,7 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 276, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 276, / */
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-up, .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-down {
   position: relative;
   width: 30px;
@@ -931,7 +931,7 @@ button:focus {
   line-height: 28px;
 }
 
-/* line 282, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 282, / */
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-up:after, .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-down:after {
   display: inline-block;
   font-family: "themify";
@@ -948,17 +948,17 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 303, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 303, / */
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-up:after {
   content: "\e627";
 }
 
-/* line 308, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 308, / */
 .bootstrap-datetimepicker-widget table td span.glyphicon-chevron-down:after {
   content: "\e62a";
 }
 
-/* line 312, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 312, / */
 .bootstrap-datetimepicker-widget table td span.timepicker-hour, .bootstrap-datetimepicker-widget table td span.timepicker-minute {
   border: 1px solid #f2662f;
   background: transparent;
@@ -970,12 +970,12 @@ button:focus {
   font-size: 13px;
 }
 
-/* line 324, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 324, / */
 .bootstrap-datetimepicker-widget table td.separator {
   display: none;
 }
 
-/* line 327, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 327, / */
 .bootstrap-datetimepicker-widget table td .btn.btn-primary {
   color: #415094;
   font-size: 13px;
@@ -984,34 +984,34 @@ button:focus {
   padding: 29px 19px;
 }
 
-/* line 333, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 333, / */
 .bootstrap-datetimepicker-widget table td .btn.btn-primary:hover {
   background: transparent;
   color: #415094;
 }
 
-/* line 342, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 342, / */
 .datepicker {
   padding: 30px 25px;
 }
 
-/* line 344, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 344, / */
 .datepicker.dropdown-menu {
   border: 0;
 }
 
-/* line 347, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 347, / */
 .datepicker.dropdown-menu td {
   padding: 10px 12.5px;
 }
 
-/* line 350, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 350, / */
 .datepicker.dropdown-menu th,
 .datepicker.dropdown-menu td {
   color: #828bb2;
 }
 
-/* line 355, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 355, / */
 .datepicker .datepicker thead tr:first-child th,
 .datepicker .datepicker tfoot tr th {
   cursor: pointer;
@@ -1019,12 +1019,12 @@ button:focus {
   font-size: 12px;
 }
 
-/* line 361, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 361, / */
 .datepicker table tr td {
   border-radius: 20px;
 }
 
-/* line 370, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 370, / */
 .datepicker table tr td.day {
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
@@ -1032,17 +1032,17 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 372, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 372, / */
 .datepicker table tr td.day:hover {
   border-radius: 20px;
 }
 
-/* line 381, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 381, / */
 .datepicker thead tr:first-child th {
   position: relative;
 }
 
-/* line 383, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 383, / */
 .datepicker thead tr:first-child th:after {
   content: '';
   position: absolute;
@@ -1055,7 +1055,7 @@ button:focus {
   border: 1px solid #f2662f;
 }
 
-/* line 404, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 404, / */
 .common-radio:empty ~ label:before {
   position: absolute;
   display: block;
@@ -1074,7 +1074,7 @@ button:focus {
 }
 
 /* toggle on */
-/* line 419, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 419, / */
 .common-radio:checked ~ label:before {
   content: "";
   text-indent: 1px;
@@ -1091,7 +1091,7 @@ button:focus {
   border-top-color: transparent;
 }
 
-/* line 430, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 430, / */
 .common-radio:checked ~ label:after {
   content: "\e64c";
   font-family: "themify";
@@ -1112,12 +1112,12 @@ button:focus {
   font-weight: 600;
 }
 
-/* line 446, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 446, / */
 .dropdown-menu.top {
   display: block;
 }
 
-/* line 450, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 450, / */
 .ripple {
   width: 0;
   height: 0;
@@ -1132,7 +1132,7 @@ button:focus {
   opacity: 1;
 }
 
-/* line 459, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 459, / */
 .rippleEffect {
   -webkit-animation: rippleDrop 0.6s linear;
   -moz-animation: rippleDrop 0.6s linear;
@@ -1184,49 +1184,49 @@ button:focus {
   }
 }
 
-/* line 470, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 470, / */
 .invalid-feedback {
   margin-top: -24px;
 }
 
-/* line 472, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 472, / */
 .invalid-feedback strong {
   position: relative;
   top: 22px;
   font-weight: 500;
 }
 
-/* line 478, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 478, / */
 .invalid-feedback.invalid-select strong {
   top: 58px;
 }
 
-/* line 486, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 486, / */
 .sms-breadcrumb.white-box {
   padding: 12px 30px;
 }
 
 @media (max-width: 1300px) and (min-width: 992px) {
-  /* line 486, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 486, / */
   .sms-breadcrumb.white-box {
     padding: 12px 15px;
   }
 }
 
-/* line 492, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 492, / */
 .sms-breadcrumb .row.justify-content-between {
   -ms-flex-align: center;
   align-items: center;
 }
 
-/* line 496, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 496, / */
 .sms-breadcrumb h1 {
   font-size: 18px;
   margin-bottom: 0;
   color: #415094;
 }
 
-/* line 502, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 502, / */
 .sms-breadcrumb .bc-pages a {
   display: inline-block;
   color: #828bb2;
@@ -1239,7 +1239,7 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 509, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 509, / */
 .sms-breadcrumb .bc-pages a:after {
   content: "|";
   color: #828bb2;
@@ -1249,33 +1249,33 @@ button:focus {
   right: -16px;
 }
 
-/* line 517, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 517, / */
 .sms-breadcrumb .bc-pages a:last-child {
   margin-right: 0px;
   color: #415094;
 }
 
-/* line 520, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 520, / */
 .sms-breadcrumb .bc-pages a:last-child:after {
   content: none;
 }
 
-/* line 524, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 524, / */
 .sms-breadcrumb .bc-pages a:hover {
   color: #f2662f;
 }
 
-/* line 532, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 532, / */
 .main-wrapper .fstElement {
   width: 90%;
 }
 
-/* line 534, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 534, / */
 .main-wrapper .fstElement .fstControls {
   width: auto;
 }
 
-/* line 537, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 537, / */
 .main-wrapper .fstElement .fstChoiceItem {
   padding: 4px 16px 4px 20px;
   background: #828bb2;
@@ -1285,12 +1285,12 @@ button:focus {
   margin: 1px 5px 5px 0px;
 }
 
-/* line 546, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 546, / */
 .main-wrapper .fstResults {
   max-height: 250px;
 }
 
-/* line 548, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 548, / */
 .main-wrapper .fstResults .fstResultItem {
   font-size: 14px;
   padding: 5px 10px;
@@ -1302,30 +1302,30 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 554, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 554, / */
 .main-wrapper .fstResults .fstResultItem:hover, .main-wrapper .fstResults .fstResultItem.fstSelected {
   color: #828bb2;
 }
 
-/* line 558, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 558, / */
 .main-wrapper .fstResults .fstResultItem.fstSelected {
   border-color: #828bb2;
 }
 
-/* line 566, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 566, / */
 .custom-table th {
   font-size: 12px;
   text-transform: uppercase;
 }
 
-/* line 570, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 570, / */
 .custom-table th,
 .custom-table td {
   border-bottom: 1px solid rgba(130, 139, 178, 0.3);
   padding: 5px 0px;
 }
 
-/* line 579, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 579, / */
 .pagination .page-link {
   padding: 6px 0;
   width: 30px;
@@ -1341,12 +1341,12 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 589, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 589, / */
 .pagination .page-link:hover {
   color: #ffffff;
 }
 
-/* line 597, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 597, / */
 .school-table-style {
   background: #ffffff;
   padding: 40px 30px;
@@ -1358,12 +1358,12 @@ button:focus {
   border-spacing: 0;
 }
 
-/* line 608, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 608, / */
 .school-table-style tr:first-child td {
   border-top: 0px;
 }
 
-/* line 612, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 612, / */
 .school-table-style tr th {
   text-transform: uppercase;
   font-size: 12px;
@@ -1373,63 +1373,63 @@ button:focus {
   border-bottom: 1px solid rgba(130, 139, 178, 0.3);
 }
 
-/* line 620, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 620, / */
 .school-table-style tr td {
   padding: 20px 10px 20px 0px;
   border-top: 1px solid rgba(130, 139, 178, 0.15);
 }
 
-/* line 627, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 627, / */
 .school-table-style tfoot tr td {
   border-top: 1px solid rgba(130, 139, 178, 0.15) !important;
 }
 
-/* line 634, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 634, / */
 .single-to-do {
   margin-bottom: 15px;
 }
 
-/* line 636, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 636, / */
 .single-to-do:last-of-type {
   margin-bottom: 0;
 }
 
-/* line 639, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 639, / */
 .single-to-do p {
   margin-bottom: 0px;
 }
 
-/* line 642, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 642, / */
 .single-to-do label {
   display: block;
 }
 
-/* line 648, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 648, / */
 .common-calendar .fc .fc-button-group > * {
   display: block;
 }
 
-/* line 651, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 651, / */
 .common-calendar .fc-basic-view .fc-body .fc-row {
   height: 95px !important;
 }
 
-/* line 654, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 654, / */
 .common-calendar .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
   float: left;
 }
 
-/* line 661, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 661, / */
 .common-calendar .fc-day.fc-widget-content.fc-today {
   background: #828bb2;
 }
 
-/* line 664, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 664, / */
 .common-calendar .fc-day-top.fc-today .fc-day-number {
   color: #ffffff;
 }
 
-/* line 667, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 667, / */
 .common-calendar .fc-state-default.fc-corner-left,
 .common-calendar .fc-button.fc-state-default {
   color: #f2662f;
@@ -1442,20 +1442,20 @@ button:focus {
   transition: all 0.4s ease 0s;
 }
 
-/* line 674, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 674, / */
 .common-calendar .fc-state-default.fc-corner-left:hover,
 .common-calendar .fc-button.fc-state-default:hover {
   color: #ffffff;
   border: 1px solid transparent;
 }
 
-/* line 684, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 684, / */
 .morris-hover {
   position: absolute;
   z-index: 1000;
 }
 
-/* line 688, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 688, / */
 .morris-hover.morris-default-style {
   border-radius: 10px;
   padding: 6px;
@@ -1467,39 +1467,39 @@ button:focus {
   text-align: center;
 }
 
-/* line 698, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 698, / */
 .morris-hover.morris-default-style .morris-hover-row-label {
   font-weight: bold;
   margin: 0.25em 0;
 }
 
-/* line 702, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 702, / */
 .morris-hover.morris-default-style .morris-hover-point {
   white-space: nowrap;
   margin: 0.1em 0;
 }
 
 /******* infix update header *******/
-/* line 709, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 709, / */
 .logoimage {
   max-width: 150px !important;
   height: auto;
   padding: 2px;
 }
 
-/* line 714, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 714, / */
 .loginButton {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-/* line 719, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 719, / */
 .singleLoginButton {
   flex: 22% 0 0;
 }
 
-/* line 723, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 723, / */
 .loginButton .get-login-access {
   display: block;
   width: 100%;
@@ -1510,20 +1510,20 @@ button:focus {
 }
 
 @media (max-width: 576px) {
-  /* line 732, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 732, / */
   .singleLoginButton {
     flex: 49% 0 0;
   }
 }
 
 @media (max-width: 576px) {
-  /* line 737, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+  /* line 737, / */
   .singleLoginButton {
     flex: 49% 0 0;
   }
 }
 
-/* line 742, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/2_orange_version/admin/_component.scss */
+/* line 742, / */
 .dialog-notice-title {
   text-align: left !important;
   color: white !important;

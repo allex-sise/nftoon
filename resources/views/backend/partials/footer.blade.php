@@ -96,7 +96,6 @@
 </script>
 <script src="{{asset('public/backEnd/')}}/vendors/js/morris.min.js">
 </script>
-<script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
 
 <script type="text/javascript" src="{{asset('public/backEnd/')}}/vendors/js/toastr.min.js"></script>
 
@@ -120,6 +119,8 @@
 <script src="{{asset('public/backEnd/')}}/js/main.js"></script>
 <script src="{{asset('public/backEnd/')}}/js/custom.js"></script>
 <script src="{{asset('public/backEnd/')}}/js/developer.js"></script>
+
+<script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
 
 <script src="{{asset('public/backEnd/backend.js')}}"></script>
 <script src="{{asset('public/backEnd/footer.js')}}"></script>

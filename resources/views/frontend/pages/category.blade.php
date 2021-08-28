@@ -22,6 +22,9 @@
     padding-top: 20px;
     padding-bottom: 120px;
 }
+.banner-area2::before{
+    z-index: 10;
+}
     </style>
 <input type="text" id="_categor_id" hidden value="{{ $data['category']->id}}">
 <input type="text" id="_subcategor_id" hidden value="{{ @$data['subcategory']}}">

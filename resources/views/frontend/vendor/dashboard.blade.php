@@ -43,7 +43,7 @@
                                     @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['portfolio'] == url()->current() ?'active':'' }}" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">@lang('lang.portfolio')</a>
+                                            aria-controls="profile" aria-selected="false">On Sale</a>
                                     </li>
 
                                     <!-- <li class="nav-item">
@@ -88,7 +88,7 @@
                                     @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['refunds'] == url()->current() ?'active':'' }}" id="refunds-tab" data-toggle="tab" href="#refunds" role="tab"
-                                            aria-controls="contact" aria-selected="false">METAMASK</a>
+                                            aria-controls="contact" aria-selected="false">Wallet</a>
                                     </li>
                                     @endif
                                     @if (@Auth::user()->role_id == 4)
@@ -141,7 +141,7 @@
                                         <div class="profile_profile">
                                             <div class="row">
                                                 <div class="col-xl-8 col-md-6">
-                                                    <div class="big_logo gray-bg">
+                                                    <div class="big_logo ">
                                                         <div class="logo_thumb mb-0">
                                                             <img src="{{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }}" alt="">
                                                         </div>
@@ -156,95 +156,12 @@
                                                                 $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays(@$data['user']->created_at);
                                                                 $badge=App\ManageQuery::UserBadge($date); 
                                                             @endphp
-                                                        <div class="first_badge gray-bg">
+                                                        <div class="first_badge ">
                                                             <img height="auto" width="40" src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="Author level  {{ @$level->id}} : sold {{@GeneralSetting()->currency_symbol}} {{@round($data['user']->balance->amount > 50 ? $data['user']->balance->amount: 0) }}+ on {{GeneralSetting()->system_name}} " alt="">
                                                             <img height="auto" width="40" src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{@$badge->time }} years of membarship on {{GeneralSetting()->system_name}} " alt="">
                                                         </div>
                                                         
-                                                        <div class="social_profile gray-bg">
-                                                            <h5>@lang('lang.social_profiles')</h5>
-                                                            @if (@$data['socila_icons']->behance != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->behance}}"><i class="fa fa-behance"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->deviantart != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->deviantart}}"><i class="fa fa-deviantart"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->digg != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->digg}}"><i class="fa fa-digg"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->dribbble != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->dribbble}}"><i class="fa fa-dribbble"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->facebook != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->facebook}}"><i class="fa fa-facebook"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->flickr != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->flickr}}"><i class="fa fa-flickr"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->github != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->github}}"><i class="fa fa-github"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->google_plus != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->google_plus}}"><i class="fa fa-google-plus"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->lastfm != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->lastfm}}"><i class="fa fa-lastfm"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->linkedin != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->linkedin}}"><i class="fa fa-linkedin"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->reddit != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->reddit}}"><i class="fa fa-reddit"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->soundcloud != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->soundcloud}}"><i class="fa fa-soundcloud"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->thumblr != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->thumblr}}"><i class="fa fa-thumblr"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->twitter != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->twitter}}"><i class="fa fa-twitter"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->vimeo != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->vimeo}}"><i class="fa fa-vimeo"></i></a>
-                                                            @endif
-                                                            @if (@$data['socila_icons']->youtube != "")
-                                                                <a target="_blank" href="{{$data['socila_icons']->youtube}}"><i class="fa fa-youtube"></i></a>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif   
-                                     @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
-                                    <div class="tab-pane fade {{ @$data['profile'] == url()->current() ?'show active':'' }}  " id="home" role="tabpanel"
-                                        aria-labelledby="home-tab">
-                                        <div class="profile_profile">
-                                            <div class="row">
-                                                <div class="col-xl-8 col-md-6">
-                                                    <div class="big_logo gray-bg">
-                                                        <div class="logo_thumb mb-0">
-                                                            <img src="{{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }}" alt="">
-                                                        </div>
-                                                        <p>{!! @$data['user']->profile->about !!} </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-md-6">
-                                                    <div class="badge_mark">
-                                                            @php
-                                                                $level=App\ManageQuery::UserLabel($data['user']->balance->amount); 
-                                                                // DB::table('labels')->where('amount','<=',@$data['user']->balance->amount)->orderBy('id','desc')->first();
-                                                                $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays(@$data['user']->created_at);
-                                                                $badge=App\ManageQuery::UserBadge($date); 
-                                                            @endphp
-                                                        <div class="first_badge gray-bg">
-                                                            <img height="auto" width="40" src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="Author level  {{ @$level->id}} : sold {{@GeneralSetting()->currency_symbol}} {{@round($data['user']->balance->amount > 50 ? $data['user']->balance->amount: 0) }}+ on {{GeneralSetting()->system_name}} " alt="">
-                                                            <img height="auto" width="40" src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{@$badge->time }} years of membarship on {{GeneralSetting()->system_name}} " alt="">
-                                                        </div>
-                                                        
-                                                        <div class="social_profile gray-bg">
+                                                        <div class="social_profile ">
                                                             <h5>@lang('lang.social_profiles')</h5>
                                                             @if (@$data['socila_icons']->behance != "")
                                                                 <a target="_blank" href="{{$data['socila_icons']->behance}}"><i class="fa fa-behance"></i></a>
@@ -304,48 +221,44 @@
                                     @if (Auth::user()->role_id == 4)                                   
                                     <div class="tab-pane fade {{ @$data['portfolio'] == url()->current() ?'show active':'' }} " id="profile" role="tabpanel"
                                         aria-labelledby="profile-tab">
-                                        <div class="portfolio_list gray-bg">
-                                            @if (count(@$data['item']) > 0)
+                                        @if (count(@$data['item']) > 0)
                                                 
                                             @foreach (@$data['item'] as $item)
-                                            <div
-                                                class="row single_portfolio_list  d-flex align-items-center justify-content-between">
-                                                
-                                                <div class="portflio_thumb d-flex align-items-center col-lg-4">
-                                                    <img src="{{ asset($item->icon) }}" alt="" width="100">
-                                                    <div class="thumb_heading">
-                                                    <h5><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id]) }}">{{ @$item->title}}</a></h5>
-                                                        <p>@lang('lang.item_by') <a href="#">{{ @Auth::user()->username}}</a> </p>
+                                          <!-- nft item begin -->
+                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                                                <div class="nft__item">
+                                                    <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
+                                                    <div class="author_list_pp">
+                                                        <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
+                                                            <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                                                            <i class="fa fa-check"></i>
+                                                        </a>
                                                     </div>
+                                                    <div class="nft__item_wrap">
+                                                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                                                            <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="nft__item_info">
+                                                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                                                            <h4>{{ $item->title}}</h4>
+                                                        </a>
+                                                        <div class="nft__item_price">
+                                                        {{ $item->Reg_total}} lei
+                                                        </div>
+                                                        <div class="nft__item_action">
+                                                            @if ($item->active_status == 0)
+                                                        <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                        @endif
+                                                        </div>
+                                                        <!-- <div class="nft__item_like">
+                                                            <i class="fa fa-heart"></i><span>50</span>
+                                                        </div>                             -->
+                                                    </div> 
                                                 </div>
+                                            </div>                 
+                                            <!-- nft item begin -->
 
-                                                <div class="portfolio_details col-lg-4">
-                                                    <p>@lang('lang.in'): {{ @$item->category->title}} / {{ @$item->subCategory->title}} <br>
-                                                        @lang('lang.high_resolution'): {{ @$item->resolution}},<br>  @lang('lang.compatible_browsers'): {{ @$item->compatible_browsers }},<br>  @lang('lang.compatible_with'):
-                                                        {{ @$item->compatible_with }},<br> @lang('lang.Columns'): {{ @$item->columns }}</p>
-                                                </div>
-
-                                                <div class="cart_heart d-flex col-lg-2">
-                                                    @if (@Auth::user()->role_id == 5)
-                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id]) }}" class="heart heart2"><i class="ti-shopping-cart"></i></a>
-                                                    <a href="#" class="heart heart2"><i class=" ti-heart "></i></a>
-                                                    <a href="#" class="heart heart2"><i class=" ti-import"></i></a>
-                                                    @endif
-
-                                                    @if (@Auth::user()->role_id == 4)
-                                                    <a href="{{ route('author.itemEdit',$item->id)}}" class="heart"><i class=" ti-pencil-alt "></i></a>
-                                                    <a  onclick="deleItem({{$item->id}})" class="heart heart2 trash"><i class="ti-trash"></i></a>
-                                                    <a id="delete-form-{{ $item->id }}" href="{{ route('author.itemDelete',$item->id)}}" class="dm_display_none"></a>
-                                                    <a href="{{route('author.ProductDownload',$item->id)}}"  class="heart heart2"><i class=" ti-import" ></i></a>
-                                                    @endif
-                                                </div>
-
-                                                <div class="total-prise text-center col-lg-2">
-                                                    <h2>{{@$infix_general_settings->currency_symbol}}{{ @$item->Reg_total}}</h2>
-                                                    <p>@lang('lang.total') {{ $item->sell }} @lang('lang.purchases')</p>
-                                                </div>
-
-                                            </div>
                                             @endforeach
                                             <div class="Pagination">
                                                 {{ @$data['item']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
@@ -354,13 +267,12 @@
                                             <h1>@lang('lang.no_item')</h1>
                 
                                             @endif
-                                        </div>
                                     </div>
                                     @endif
                                     @if (Auth::user()->role_id == 4)
                                     <div class="tab-pane fade {{ @$data['followers'] == url()->current() ?'show active':'' }} " id="contact" role="tabpanel"
                                         aria-labelledby="contact-tab">
-                                        <div class="follower gray-bg">
+                                        <div class="follower ">
                                             @if (count(@$data['follower']))
                                                 @foreach (@$data['follower'] as $item)
                                                 @if (isset($item->balance))
@@ -492,7 +404,7 @@
                                     <!-- Followings start here  -->
                                     <div class="tab-pane fade {{ @$data['followings'] == url()->current() ?'show active':'' }} " id="Followings" role="tabpanel"
                                         aria-labelledby="Followings-tab">
-                                        <div class="follower gray-bg">
+                                        <div class="follower ">
                                             @if (count(@$data['following']))
                                                 @foreach ($data['following'] as $item)
                                                     <div
@@ -627,7 +539,7 @@
                                         aria-labelledby="Settings-tab">
                                         <div class="row">
                                             <div class="col-xl-4 col-lg-4">
-                                                <div class="my_custom_navs gray-bg">
+                                                <div class="my_custom_navs ">
                                                     <h5>@lang('lang.details') @lang('lang.personal')e </h5>
                                                     <div class="nav flex-column" id="v-pills-tab" role="tablist"
                                                         aria-orientation="vertical">
@@ -654,12 +566,6 @@
                                                             data-toggle="pill" href="#v-pills-Description"
                                                             role="tab" aria-controls="v-pills-settings"
                                                             aria-selected="false">@lang('lang.social') @lang('lang.network')</a>
-                                                        @if(@Auth::user()->role_id == 4)
-                                                        <a class="nav-link {{ str_contains(Request::fullUrl(),'api_key')?'active':'' }}" id="v-pills-Api-Key-tab"
-                                                            data-toggle="pill" href="#v-pills-Api-Key"
-                                                            role="tab" aria-controls="v-pills-settings"
-                                                            aria-selected="false">Genarate API KEY</a>
-                                                        @endif
                                                         <a class="nav-link" id="v-pills-fund-tab"
                                                             data-toggle="pill" href="#v-pills-fund"
                                                             role="tab" aria-controls="v-pills-settings"
@@ -672,7 +578,7 @@
                                                     <div class="tab-content" id="v-pills-tabContent">
                                                         <div class="tab-pane fade {{ !str_contains(Request::fullUrl(),'?')?'show active':'' }} " id="v-pills-home"
                                                             role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                            <div class="single_account_wrap gray-bg">
+                                                            <div class="single_account_wrap ">
                                                                 <h4>{{@$data['profile_setting']->heading1}}</h4>
                                                                 <p>{{@$data['profile_setting']->text1}}</p>
                                                                 {{-- personal  --}}
@@ -722,7 +628,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="check-out-btn">
-                                                                        <button type="submit" class="boxed-btn">@lang('lang.save')
+                                                                        <button type="submit" class="btn-main">@lang('lang.save')
                                                                             Modificarile</button>
                                                                     </div>
                                                                 </form>
@@ -730,7 +636,7 @@
                                                             </div>
 
                                                             {{-- password change --}}
-                                                            <div class="single_account_wrap gray-bg">
+                                                            <div class="single_account_wrap ">
                                                                 <h4>{{@$data['profile_setting']->heading2}}</h4>
                                                                 <p>{{@$data['profile_setting']->text2}}</p>
                                                                 @if (@Auth::user()->role_id == 4)
@@ -768,7 +674,7 @@
                                                                                 @endif
                                                                             </div>
                                                                             <div class="check-out-btn col-12 text-center mb-4">
-                                                                                <button type="submit" class="boxed-btn">Schimba
+                                                                                <button type="submit" class="btn-main">Schimba
                                                                                     @lang('lang.password')</button>
                                                                             </div>
                                                                         </div>
@@ -777,7 +683,7 @@
                                                                 </form>
                                                             </div>
                                                             {{-- Billing Info --}}
-                                                            <div class="single_account_wrap gray-bg">
+                                                            <div class="single_account_wrap ">
                                                                 <h4>{{@$data['profile_setting']->heading3}}</h4>
                                                                 <p>{{@$data['profile_setting']->text3}}</p>
                                                                 @if (@Auth::user()->role_id == 4)  
@@ -895,7 +801,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="check-out-btn">
-                                                                        <button type="submit" class="boxed-btn">@lang('lang.save')
+                                                                        <button type="submit" class="btn-main">@lang('lang.save')
                                                                             Modificarile</button>
                                                                     </div>
                                                                 </form>
@@ -905,7 +811,7 @@
                                                             role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                                             <form action="{{ route('user.profilePic',$data['user']->id)}}" method="POST" enctype="multipart/form-data" >
                                                                 @csrf
-                                                                <div class="profile_avater gray-bg">
+                                                                <div class="profile_avater ">
                                                                     <h4>Avatar</h4>
                                                                     <div class="avater_upoad">
                                                                         {{-- <img src="{{ @$data['user']->profile->image? asset(@$data['user']->profile->image):asset('public/frontend/img/profile/1.png') }}" width="100" alt="" id="pro_pic"> --}}
@@ -967,7 +873,7 @@
                                                                                     <strong>{{ $errors->first('backgroud_pic') }}</strong>
                                                                                 </span>
                                                                                 @endif
-                                                                                <button  type="submit" class="boxed-btn">@lang('lang.save')
+                                                                                <button  type="submit" class="btn-main">@lang('lang.save')
                                                                                    Modificarile</button>
                                                                             </div>
                                                                         </div>
@@ -992,7 +898,7 @@
                                                             @endif
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{ isset($email_setting) ? $email_setting->id : '' }}">
-                                                            <div class="email_setting gray-bg" id="">
+                                                            <div class="email_setting " id="">
                                                                 <h4> @lang('lang.email_settings') </h4>
                                                                 @if(@Auth::user()->role_id == 4)
                                                                 <div class="single_email_chose d-flex">
@@ -1133,9 +1039,9 @@
                                                                 </div>
                                                                 @endif
                                                                     @if (!empty($email_setting))
-                                                                    <input type="submit" value="@lang('lang.update') Modificarile" class="boxed-btn border-0"> 
+                                                                    <input type="submit" value="@lang('lang.update') Modificarile" class="btn-main border-0"> 
                                                                     @else
-                                                                    <input type="submit" value="@lang('lang.save') Modificarile" class="boxed-btn border-0">          
+                                                                    <input type="submit" value="@lang('lang.save') Modificarile" class="btn-main border-0">          
                                                                     @endif
                                                                 
                                                             </div>
@@ -1144,7 +1050,7 @@
                                                        
                                                         <div class="tab-pane fade {{ str_contains(Request::fullUrl(),'social_updated')?'show active':'' }}" id="v-pills-Description"
                                                             role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                            <div class="social_networks gray-bg">
+                                                            <div class="social_networks ">
                                                                 <h4>@lang('lang.social') @lang('lang.networks')</h4>
                                                                 @if (!empty($data['socila_icons']))
                                                                     <form action="{{ route('user.socialUpdate') }}" method="post">
@@ -1315,125 +1221,19 @@
                                                                                     placeholder="Youtube URL">
                                                                             </div>
                                                                         </div>
-                                                                        {{-- <a href="#" class="boxed-btn">SAVE
+                                                                        {{-- <a href="#" class="btn-main">SAVE
                                                                             CHANGES</a> --}}
-                                                                            <button type="submit" class="boxed-btn"> @lang('lang.save')
+                                                                            <button type="submit" class="btn-main"> @lang('lang.save')
                                                                             Modificarile</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
 
                                                         </div>
-                                                        {{-- API KEY --}}
-                                                        @if(@Auth::user()->role_id == 4)
-                                                        <div class="tab-pane fade {{ str_contains(Request::fullUrl(),'api_key')?'show active':'' }}" id="v-pills-Api-Key"
-                                                            role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                            <div class="social_networks gray-bg">
-                                                                @php
-                                                                    $user=App\ManageQuery::UserDetails();
-                                                                    @$api_token=@$user->api_token;
-                                                                @endphp
-                                                                <h4>@lang('lang.genarate_API_key')</h4>
-                                                                
-                                                                    <form action="{{ route('user.ApiTokenUpdate') }}" method="post">
-                                                                    @csrf
-                                                                    <div class="row justify-content-between">
-                                                                        <div class="col-xl-12 ">
-                                                                            <div class="single_social_input d-flex">
-                                                                                <input readonly type="text" id="api_token" name="api_token" value="{{ isset($user)? @$user->api_token : '' }}"
-                                                                                    placeholder="API KEY">
-                                                                                    
-                                                                            </div>
-                                                                            <span class="tooltiptext" id="myTooltip"></span>
-                                                                        </div>
-                                                                        @if ($api_token==null)
-                                                                            <div>
-                                                                                <Input type="submit" class="boxed-btn border-0" value="Genarate">
-                                                                                
-                                                                            </div> 
-                                                                    </form>  
-                                                                        @else
-
-                                                                        <button onclick="apiTextCopy('api_token','myTooltip')" type="button" class="boxed-btn" onmouseout="outFunc('myTooltip')">
-                                                                            
-                                                                            @lang('lang.copy_text')
-                                                                        </button>
-                                                                            
-                                                                        @endif
-                                                                            
-                                                                        
-                                                                            
-                                                                            
-                                                                    </div>
-                                                                    
-                                                                
-                                                            @if (!empty($api_token))
-                                                                
-                                                            
-
-                                                                <div class="row mt-20">
-                                                                    <div class="col-lg-12 d-flex">
-                                                                        <div class="col-lg-2">
-                                                                                @lang('lang.API_path'): 
-                                                                        </div>
-                                                                        <div class="col-lg-1">
-                                                                                <button onclick="apiTextCopy('api_path','api_path_message')" type="button"   onmouseout="outFunc('api_path_message')">
-                                                                            <span class="tooltiptext" id="myTooltip"></span>
-                                                                            <i class="fa fa-copy"></i>
-                                                                        </div>
-                                                                        <div class="col-lg-9">
-                                                                            <input id="api_path" readonly type="text" class="form-control" value="{{ url('api/auth-user',$api_token) }}">
-                                                                            <span id="api_path_message"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-12 d-flex mt-20">
-                                                                        <div class="col-lg-2">
-                                                                                @lang('lang.product_validation'): 
-                                                                        </div>
-                                                                        <div class="col-lg-1">
-                                                                            <button onclick="apiTextCopy('product_validation_api','product_validation_api_message')" type="button"   onmouseout="outFunc('myTooltip')">
-                                                                            <span class="tooltiptext" id="myTooltip"></span>
-                                                                            <i class="fa fa-copy"></i>
-                                                                        </button>
-                                                                        </div>
-                                                                        <div class="col-lg-9">
-                                                                            @php
-                                                                            $base_path=url('/');
-                                                                            $validation_api='/api/products/[API_TOKEN]/product-verify/[PURCHASE_CODE]';
-                                                                        @endphp
-                                                                        <td  class="dm_width_75_per">
-                                                                            <input id="product_validation_api" readonly type="text" class="form-control" value="{{ $base_path.$validation_api }}">
-                                                                            <span id="product_validation_api_message"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-12 d-flex mt-20">
-                                                                        <div class="col-lg-2">
-                                                                                @lang('lang.products'): 
-                                                                        </div>
-                                                                        <div class="col-lg-1">
-                                                                            <button onclick="apiTextCopy('products_api','products_api_message')" type="button"   onmouseout="outFunc('myTooltip')">
-                                                                            <span class="tooltiptext" id="myTooltip"></span>
-                                                                            <i class="fa fa-copy"></i>
-                                                                        </button>
-                                                                        </div>
-                                                                        <div class="col-lg-9">
-                                                                            
-                                                                        <td  class="dm_width_75_per">
-                                                                                <input id="products_api" readonly type="text" class="form-control" value="{{ url('api/auth-user-products',$api_token) }}">
-                                                                            <span id="products_api_message"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                    @endif
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        @endif
+                                                     
                                                         <div class="tab-pane fade" id="v-pills-fund"
                                                         role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="social_networks gray-bg">
+                                                    <div class="social_networks ">
                                                         
                                                         @php
                                                         $funds=App\Deposit::where('user_id','=',Auth::user()->id)->get();
@@ -1480,7 +1280,7 @@
                                     @if (@Auth::user()->role_id == 4)
                                     <div class="tab-pane fade {{ @$data['hiddenItem'] == url()->current() ?'show active':'' }} " id="Hidden" role="tabpanel"
                                         aria-labelledby="Hidden-tab">
-                                        <div class="portfolio_list gray-bg">
+                                        <div class="portfolio_list ">
                                             @if (count($data['hidden_item']) > 0)
                                             @foreach ($data['hidden_item'] as $item)
                                                 <div
@@ -1499,16 +1299,16 @@
                                                 </div>
                                                 <div class="total-prise text-center">
                                                     <p>@lang('lang.item_price')</p>
-                                                    <h2>{{@$infix_general_settings->currency_symbol}}{{ $item->Reg_total}}</h2>
+                                                    <h2>{{ $item->Reg_total}} {{@$infix_general_settings->currency_symbol}}</h2>
                                                 </div>
                                                 <div class="download_inner-btn">
                                                     @if ($item->status == 2)                                                           
-                                                        <a href="{{ route('author.itemEdit',$item->id)}}" class="boxed-btn">@lang('lang.resubmit')</a>
+                                                        <a href="{{ route('author.itemEdit',$item->id)}}" class="btn-main">@lang('lang.resubmit')</a>
                                                     @endif
                                                     @if ($item->status == 0)                                                            
-                                                        <button  class="boxed-btn">@lang('lang.pending')</button>
+                                                        <button  class="btn-main">@lang('lang.pending')</button>
                                                     @endif
-                                                <a  onclick="deleItem({{$item->id}})" class="boxed-btn-white">@lang('lang.delete')</a>
+                                                <a  onclick="deleItem({{$item->id}})" class="btn-main-white">@lang('lang.delete')</a>
                                                 <a id="delete-form-{{ $item->id }}" href="{{ route('author.itemDelete',$item->id)}}" class="dm_display_none"></a>
                                                 </div>
                                             </div>
@@ -1555,32 +1355,40 @@
                                                 @php
                                                    $obj = json_decode($item, true);
                                                 @endphp 
-                                                
-                                                    <div class="col-xl-4 col-md-4 grid-item cat1 cat1 float-left">
-                                                        <div class="single-goods">
-                                                            <div class="goods-thumb">
-                                                     
-                                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id]) }}">
-                                                                
-                                                                <img src="{{asset(@$obj['icon'])}}" alt="">
+                                                <!-- nft item begin -->
+                                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                                                        <div class="nft__item">
+                                                            <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
+                                                            <div class="author_list_pp">
+                                                                <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
+                                                                    <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                                                                    <i class="fa fa-check"></i>
                                                                 </a>
                                                             </div>
-                                                            <div class="good-info">
-                                                                <div class="good-title">
-                                                                    <h3><a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id]) }}">{{ $item->title }}</a></h3>
-                                                                    <p>@<a href="">Username</a></p>
+                                                            <div class="nft__item_wrap">
+                                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                                                                    <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="nft__item_info">
+                                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                                                                    <h4>{{ $item->title}}</h4>
+                                                                </a>
+                                                                <div class="nft__item_price">
+                                                                {{ $item->Reg_total}} lei
                                                                 </div>
-                                                            </div>
-                                                            <div class="good-info good-info2">
-                                                                <div class="good-title good-title2">
-                                                                <div class="download_2">
-                                                                <a href="{{ route('user.ItemDownloadAll',$item->id) }}" class="boxed-btn" id="dropdownMenuLink" style="background-image: none; padding: 0px;"> <i class="ti-money"></i>  Pune la vanzare  </a>
-                                                             <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class=" ti-pencil-alt "></i></a>
-                                                            </div>
+                                                                <div class="nft__item_action">
+                                                                    @if ($item->active_status == 0)
+                                                             <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                             @endif
                                                                 </div>
-                                                            </div>
+                                                                <!-- <div class="nft__item_like">
+                                                                    <i class="fa fa-heart"></i><span>50</span>
+                                                                </div>                             -->
+                                                            </div> 
                                                         </div>
-                                                    </div>
+                                                    </div>                 
+                                                    <!-- nft item begin -->
 
                                             @endforeach
                                                                                      
@@ -1607,7 +1415,7 @@
                                                     <div class="container">
                                                         <div class="row mt-5">
                                                                 <div class="col-xl-10 offset-xl-1 affiliate_item">
-                                                                    <h3>Link pentru referral <button id="aff_generate" class="boxed-btn">@lang('lang.click')</button></h3> 
+                                                                    <h3>Link pentru referral <button id="aff_generate" class="btn-main">@lang('lang.click')</button></h3> 
                                                                     <div id="hideme">
                                                                         <p> Copiaza si trimite acest link prietenilor tai pentru a deveni afiliati cu tine pe Minted.ro</p>
                                                                         <input  class="list-group-item" id="aff_link" value="{{ Auth::user()->referral_link }}"  />
@@ -1666,7 +1474,7 @@
                                         <div class="review_main_area">
                                             <div class="row">
                                                 <div class="col-xl-8">
-                                                    <div class="review_area gray-bg">
+                                                    <div class="review_area ">
                                                         @php
                                                             $review_total=count(@$data['item_review']);
                                                             $total_star=0;
@@ -1774,7 +1582,7 @@
                                                 <div class="col-xl-4">
                                                     <div class="rating_side_bar">
                                                         <div
-                                                            class="single_rating_bar d-flex justify-content-between align-items-center gray-bg">
+                                                            class="single_rating_bar d-flex justify-content-between align-items-center ">
                                                             <div class="rating_star d-flex align-items-center">
                                                                 <i class="ti-star"></i>
                                                                 <div class="rate_text">
@@ -1838,7 +1646,7 @@
                                                             @endif
                                                         </div>
                                                         <div
-                                                            class="single_rating_bar d-flex justify-content-between align-items-center gray-bg">
+                                                            class="single_rating_bar d-flex justify-content-between align-items-center ">
                                                             <div class="rating_star d-flex align-items-center">
                                                                 <i class="ti-shopping-cart-full"></i>
                                                                 <div class="rate_text">
@@ -1848,7 +1656,7 @@
                                                             <h2>{{ $data['user']->item->sum("sell") }}</h2>
                                                         </div>
                                                         <div
-                                                            class="single_rating_bar d-flex justify-content-between align-items-center gray-bg">
+                                                            class="single_rating_bar d-flex justify-content-between align-items-center ">
                                                             <div class="rating_star d-flex align-items-center">
                                                                 <i class="ti-user"></i>
                                                                 <div class="rate_text">
@@ -1870,7 +1678,18 @@
                                     <div class="tab-pane fade {{ @$data['refunds'] == url()->current() ?'show active':'' }} " id="refunds" role="tabpanel"
                                         aria-labelledby="refunds-tab">
                                         <div class="refunds_area">
-                                        
+                                            <div class="container" style="background-size: cover;">
+                                                <div class="row" style="background-size: cover;">
+                                                    <div class="col-lg-5 mb30" style="background-size: cover;">
+                                                        <a class="box-url" href="login.html">
+                                                            <span class="box-url-label">Most Popular</span>
+                                                            <img src="{{ asset('public/frontend/assets/images/wallet/1.png') }}" alt="" class="mb20">
+                                                            <h4>Metamask</h4>
+                                                            <p>Start exploring blockchain applications in seconds.  Trusted by over 1 million users worldwide.</p>
+                                                        </a>
+                                                    </div>                             
+                                                </div>
+                                            </div>
                                         <input type="text" name="firstnamesis"/>FIRSTNAME
                                         @php 
                                             $variabila = Request::input('firstnamesis');
@@ -1905,18 +1724,17 @@
                                                 </div>
                                                 <div class="total-prise text-center">
                                                     <p>@lang('lang.item_price')</p>
-                                                    <h2>{{@$infix_general_settings->currency_symbol}}{{ $item->Item->Reg_total}}</h2>
+                                                    <h2>{{ $item->Item->Reg_total}} {{@$infix_general_settings->currency_symbol}}</h2>
                                                 </div>
                                                 <div class="download_inner-btn">
-                                                <a href="{{ route('author.refundView',$item->id)}}" class="boxed-btn">@lang('lang.view') @lang('lang.details')</a>
+                                                <a href="{{ route('author.refundView',$item->id)}}" class="btn-main">@lang('lang.view') @lang('lang.details')</a>
                                                 </div>
                                             </div>
                                             @endforeach
                                             <div class="Pagination">                                                  
                                                 {{ isset($data['refund_order']) ? $data['refund_order']->onEachSide(1)->links('frontend.paginate.frontentPaginate'):'' }}                                                    
                                             </div>
-                                            @else
-                                                <h1 class="text-center">AICI LEGAM METAMASK</h1>   
+                                            @else 
                                             @endif
                                             @endif
 
@@ -1939,18 +1757,18 @@
                                                         <div class="col-xl-10 offset-xl-1">
                                                             <div class="row">
                                                                 <div class="col-xl-8 col-md-6">
-                                                                    <div class="no_account_page gray-bg">
+                                                                    <div class="no_account_page ">
                                                                         <h3>@lang('lang.next') @lang('lang.payout')</h3>
                                                                         <p>You currently have no pending payouts</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-4 col-md-6">
-                                                                    <div class="acc_setup_right gray-bg">
+                                                                    <div class="acc_setup_right ">
                                                                         <h4>
                                                                         @lang('lang.payout') @lang('lang.account')
                                                                         </h4>
                                                                     <p>@lang('lang.no') @lang('lang.account') @lang('lang.set') @lang('lang.up')</p>
-                                                                    <a class="boxed-btn" href="account_author.html">@lang('lang.set') @lang('lang.account')</a>
+                                                                    <a class="btn-main" href="account_author.html">@lang('lang.set') @lang('lang.account')</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1982,7 +1800,7 @@
                                                                 
                                                                 <div class="single_payout_item w-100">
                                                                     <div class="deposite_header text-center">
-                                                                        Bank
+                                                                        Blockchain ETH
                                                                     </div>
                                                                     <div class="deposite_button text-center">
                                                                         <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} {{env('BANK_MIN_PAYOUT')}} </p>
@@ -2022,7 +1840,7 @@
                                                                  <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} 50.00</p>
                                                                  @if ($payout_setup)
                                                                      @if (@$paypal_payout_setup->is_default==0)
-                                                                     <button class="boxed-btn" onclick="location.href='{{url('author/set-payout-default/PayPal')}}';">@lang('lang.make_default')</button>
+                                                                     <button class="btn-main" onclick="location.href='{{url('author/set-payout-default/PayPal')}}';">@lang('lang.make_default')</button>
                                                                      @else
                                                                      <p>@lang('lang.default')</p>
                                                                      @endif
@@ -2051,7 +1869,7 @@
                                                                     <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} 50.00</p>
                                                                     @if ($payout_setup)
                                                                         @if (@$razorpay_payout_setup->is_default==0)
-                                                                        <button class="boxed-btn" onclick="location.href='{{url('author/set-payout-default/Razorpay')}}';">@lang('lang.make_default')</button>
+                                                                        <button class="btn-main" onclick="location.href='{{url('author/set-payout-default/Razorpay')}}';">@lang('lang.make_default')</button>
                                                                         @else
                                                                         <p>@lang('lang.default')</p>
                                                                         @endif
@@ -2102,7 +1920,7 @@
                                                                         
                                                                     </div>
                                                                     <div class="check-out-btn mt-20">
-                                                                        <button type="submit" class="boxed-btn dpf-submit">@lang('lang.setup_account')</button>
+                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -2127,7 +1945,7 @@
                                                                                     {{ csrf_field() }}
                                                                                     
                                                                                     <div class="check-out-btn mt-20">
-                                                                                        <button type="submit" class="boxed-btn ">@lang('lang.setup_account')</button>
+                                                                                        <button type="submit" class="btn-main ">@lang('lang.setup_account')</button>
                                                                                     </div>
                                                                                     
                                                                                 </form>
@@ -2151,7 +1969,7 @@
                                                                         
                                                                     </div>
                                                                     <div class="check-out-btn mt-20">
-                                                                        <button type="submit" class="boxed-btn dpf-submit">@lang('lang.setup_account')</button>
+                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -2183,7 +2001,7 @@
                                                                         
                                                                     </div>
                                                                     <div class="check-out-btn mt-20">
-                                                                        <button type="submit" class="boxed-btn dpf-submit">@lang('lang.setup_account')</button>
+                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -2200,7 +2018,7 @@
                                                                     <a href="https://razorpay.com/">@lang('lang.more_about_razorPay')</a> </p>
                                                                 <h2 class="comn-heading">@lang('lang.add_a_new_razorPay_account')
                                                                 </h2>
-                                                                {{--    <div class="swift_boc gray-bg">
+                                                                {{--    <div class="swift_boc ">
                                                                     <p> Due to limitations placed on RazorPay payouts
                                                                         by
                                                                         financial institutions, fields must not
@@ -2242,7 +2060,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="check-out-btn mt-20">
-                                                                        <button type="submit" class="boxed-btn dpf-submit">@lang('lang.setup_account')</button>
+                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -2257,18 +2075,18 @@
                                                         <div class="col-xl-10 offset-xl-1">
                                                             <div class="row">
                                                                 <div class="col-xl-8 col-md-6">
-                                                                    <div class="no_account_page gray-bg">
+                                                                    <div class="no_account_page ">
                                                                         <h3>@lang('lang.next') @lang('lang.payout')</h3>
                                                                         <p>You currently have no pending payouts</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-4 col-md-6">
-                                                                    <div class="acc_setup_right gray-bg">
+                                                                    <div class="acc_setup_right ">
                                                                         <h4>
                                                                         @lang('lang.payout') @lang('lang.account')
                                                                         </h4>
                                                                     <p>@lang('lang.no') @lang('lang.account') @lang('lang.set') @lang('lang.up')</p>
-                                                                    <a class="boxed-btn" href="account_author.html">@lang('lang.set') @lang('lang.account')</a>
+                                                                    <a class="btn-main" href="account_author.html">@lang('lang.set') @lang('lang.account')</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -2276,14 +2094,14 @@
                                                     </div> --}}
                                         <div class="payment_wrap account_tabs_pin">
                                             <div class="row">
-                                                <div class="col-lg-7 gray-bg ">
+                                                <div class="col-lg-7  ">
                                                     <h2>@lang('lang.Next_Payout')</h2>
                                                     <p>@lang('lang.You_currently_have') {{@$infix_general_settings->currency_symbol}} {{Auth::user()->balance->amount}} @lang('lang.next_month_payout').</p>
                                                 </div>
                                                 <div class="col-lg-1">
 
                                                 </div>
-                                                <div class="col-lg-4 gray-bg">
+                                                <div class="col-lg-4 ">
                                                     <h2>@lang('lang.payout') @lang('lang.account')</h2>
                                                     @if (defaultPayout())
                                                         
@@ -2301,14 +2119,14 @@
                                                     @endif
 
                                                     <div class="check-out-btn mt-10">
-                                                        <a href="{{ route('author.payout',@Auth::user()->username)}}" id="deposit_" class="boxed-btn">@lang('lang.set') @lang('lang.account')</a>
+                                                        <a href="{{ route('author.payout',@Auth::user()->username)}}" id="deposit_" class="btn-main">@lang('lang.set') @lang('lang.account')</a>
                                                        
                                                     </div>
                                                 </div>
                                             </div>
                             
                                             <h2>@lang('lang.payout') @lang('lang.history') </h2>
-                                            <div class="earing_table gray-bg table-responsive">
+                                            <div class="earing_table  table-responsive">
                                                 <table class="table">
                                                     <thead class="table_border">
                                                         <tr>
@@ -2342,7 +2160,7 @@
                                         <div class="earnings_area ">
                                             <div class="row">
                                                 <div class="col-xl-4 col-md-4">
-                                                    <div class="single_earning gray-bg padding_25px  mb-30">
+                                                    <div class="single_earning padding_25px  mb-30">
                                                         @php
                                                             $total = 0;
                                                         @endphp
@@ -2367,13 +2185,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-md-4">
-                                                    <div class="single_earning gray-bg padding_25px  mb-30">
+                                                    <div class="single_earning  padding_25px  mb-30">
                                                         <h3>{{@$infix_general_settings->currency_symbol}}{{ @$data['monthly_earn2'] }}</h3>
                                                         <h4>@lang('lang.your_total_balance_after_associated_author_fees')</h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-md-4">
-                                                    <div class="single_earning gray-bg padding_25px  mb-30">
+                                                    <div class="single_earning  padding_25px  mb-30">
                                                         @php
                                                             $total_income = 0;
                                                         @endphp
@@ -2390,7 +2208,7 @@
                                             <div class="row">
                                                 <div class="col-xl-8">
                                                     <div class="sales_graph ">
-                                                        <div class="graph_area gray-bg padding_25px  mb-30">
+                                                        <div class="graph_area  padding_25px  mb-30">
                                                             <div class="row align-items-center">
                                                                 <div class="col-xl-3 col-md-3">
                                                                     <div class="graph_title">
@@ -2399,11 +2217,11 @@
                                                                 </div>
                                                                 <div class="col-xl-9 col-md-9">
                                                                     <div class="date_sales d-flex"> 
-                                                                        <span class="boxed-btn" id="dateEarn">{{date('M Y')}}
+                                                                        <span class="btn-main" id="dateEarn">{{date('M Y')}}
                                                                         </span>
                                                                         <input type="hidden" id="get_month_year" name="get_month_year" value="{{date('m-Y')}}">
-                                                                        <span class="boxed-btn coursor_pointer"  id="back"><</span>
-                                                                        <span class="boxed-btn coursor_pointer "  id="forwordEarn" >></span> 
+                                                                        <span class="btn-main coursor_pointer"  id="back"><</span>
+                                                                        <span class="btn-main coursor_pointer "  id="forwordEarn" >></span> 
                                                                         
                                                                     </div>
                                                                 </div>
@@ -2412,7 +2230,7 @@
                                                                 <canvas id="myChart"></canvas>
                                                             </div>
                                                         </div>
-                                                        <div class="earing_table gray-bg table-responsive">
+                                                        <div class="earing_table  table-responsive">
                                                             <table class="table">
                                                                 <thead class="table_border">
                                                                     <tr>
@@ -2428,7 +2246,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4">
-                                                    <div class="top_countries gray-bg padding_25px  mb-30">
+                                                    <div class="top_countries  padding_25px  mb-30">
                                                         <h3>@lang('lang.your') @lang('lang.top') @lang('lang.countries')</h3>
                                                         <div class="country_list">
                                                             <ul id="_country">
@@ -2449,7 +2267,7 @@
                                         <div class="satements_area">
                                             <div class="row">
                                                 <div class="col-xl-8">
-                                                    <div class="statement_details gray-bg">
+                                                    <div class="statement_details ">
                                                         <div class="statement_details_inner">
                                                             <div class="more_options d-flex">
                                                                 
@@ -2512,7 +2330,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4">
-                                                    <div class="author_setting_bar gray-bg">
+                                                    <div class="author_setting_bar ">
                                                         <h3>@lang('lang.earnings')</h3>
                                                         <p class="timing">@lang('lang.ysreotl30d')</p>
                                                         @php
@@ -2634,8 +2452,8 @@
                     <p>@lang('lang.review_publish_to_other')</p>
                 </div>
                 <div class="button_info">
-                    <a class="boxed-btn-white mfp-close"  type="button">@lang('lang.cancle')</a>
-                    <button class="boxed-btn">@lang('lang.save') @lang('lang.review')</button>
+                    <a class="btn-main-white mfp-close"  type="button">@lang('lang.cancle')</a>
+                    <button class="btn-main">@lang('lang.save') @lang('lang.review')</button>
                 </div>
                 
             </div>

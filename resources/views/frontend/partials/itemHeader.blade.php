@@ -2,7 +2,7 @@
 $img = explode(",",@$data['item']->item_image->image);
 $img2 = @$data['item']->icon;
 @endphp
-<div class="banner-area3 gray-bg">
+<div class="banner-area3">
     <div class="banner-area-inner">
         <div class="container">
             <div class="row">
@@ -14,7 +14,7 @@ $img2 = @$data['item']->icon;
                             <div class="overlay_with_btn">
                             <div class="overlay_inner">
                                
-                                <button class="boxed-btn-white"  onclick="ImgShow()">@lang('lang.screenshoot')</button>
+                                <button class="boxed-btn-white"  onclick="ImgShow()" style="border-radius: 50%; height: 50px; width: 50px; padding: 0px; color: #000!important; background: #FFF;"><i class="ti-search" ></i></button>
               
                                 <a class="popup-image hit" href="{{ asset(@$img2)}}"></a>
                              
@@ -28,7 +28,7 @@ $img2 = @$data['item']->icon;
                             Your browser does not support the video tag.
                         </video>
                         @endif
-                        <h1 style="color: #000; text-align: center; padding: 20px;">{{  @$data['item']->title }} </h1>
+                        <h1 style="color: #fff; text-align: center; padding: 20px;">{{  @$data['item']->title }} </h1>
                     </div>
                 </div>
             </div>

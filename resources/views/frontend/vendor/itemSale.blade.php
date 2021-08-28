@@ -28,23 +28,25 @@
 }
 </style>
 <input type="text" hidden  class="id" value="{{ Auth::user()->id}}">
-    <!-- banner-area start -->
-    <div class="banner-area4">
-            <div class="banner-area-inner">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-10 offset-xl-1 col-12">
-                            <div class="banner-info knowledge_title">
-                                <h2>Pune la vanzare NFT-ul - {{isset($data['edit'])? $data['edit']->title:old('title')}}</h2>
+       <!-- content begin -->
+ <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-12 text-center">
+									<h1>Pune la vanzare NFT-ul - {{isset($data['edit'])? $data['edit']->title:old('title')}}</h1>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- banner-area end -->
-       
-       
+            </section>
+            <!-- section close -->   
 
 
 
@@ -80,7 +82,7 @@
                                                 <span></span>
                                             </div>  
                                         </div>
-                                        <div class="upload_description gray-bg">
+                                        <div class="upload_description">
 
                                             <!-- <select class="wide " id="select_category" name="upload_or_link" onchange="checkIsLink(this)">
                                                 <option data-display="@lang('lang.product_upload_or_link')">@lang('lang.product_upload_or_link')</option>
@@ -133,7 +135,7 @@
                                                    
                                                 
                                             </div>
-                                            <div class="upload_description gray-bg padding-bottom">
+                                            <div class="upload_description padding-bottom">
                                                 <h3>@lang('lang.Files')</h3>
                                                 <div class="fileAdd d-none">
                                                     
@@ -183,7 +185,7 @@
                                                  
                                                
                                             </div>
-                                            <div class="upload_description gray-bg padding-bottom">
+                                            <div class="upload_description padding-bottom">
                                                     <h3>@lang('lang.categories_and_attributes')</h3>
                                                             <select class="wide"  name="sub_category_id" id="sub_category_id">
 
@@ -218,13 +220,13 @@
 
                                                 
 
-                                            <div class="upload_description gray-bg padding-bottom">
+                                            <div class="upload_description padding-bottom">
                                                 <h3>@lang('lang.Tags')</h3>
                                                     <textarea  name="tags" id="" cols="30" rows="10" 
                                                     placeholder="@lang('lang.Tags')" readonly>{{isset($data['edit'])? $data['edit']->tags:old('tags')}}</textarea>
      
                                             </div>
-                                            <div class="upload_description gray-bg padding-bottom prise-item">
+                                            <div class="upload_description padding-bottom prise-item">
                                                 <div class="upload_hding">
                                                     <h3>Pret</h3>
                                                     <!-- <p>@lang('lang.upload_heading')</p> -->
@@ -295,7 +297,7 @@
                                             <p class="text-danger text-center">@lang('lang.your_previous_update_is_pending')</p>
                                             <p  class="boxed-btn mt-20">@lang('lang.update') @lang('lang.product')</p>
                                             @else
-                                            <button  class="boxed-btn mt-20" id="itemSubmit" type="submit">@lang('lang.update') @lang('lang.product')</button>
+                                            <button  class="btn-main" id="itemSubmit" type="submit" style="width: 100%;">@lang('lang.update') @lang('lang.product')</button>
                                             @endif
                                             
                                 

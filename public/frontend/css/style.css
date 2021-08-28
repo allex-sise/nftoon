@@ -932,9 +932,9 @@ button {
 .upload_image_overlay i,
 .statement_details .more_options a:hover,
 .statement_details .more_options a.hover-btn {
-    background-image: -moz-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);
-    background-image: -webkit-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);
-    background-image: -ms-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
 }
 
 
@@ -943,9 +943,9 @@ button {
 .slicknav_btn:hover,
 .header-area .user_acc a:hover,
 .footer-area .copyright-area .social-links li a:hover {
-    background-image: -moz-linear-gradient( 90deg, #c738d8 0%, #a235ec 30%, #7c32ff 100%);
-    background-image: -webkit-linear-gradient( 90deg, #c738d8 0%, #a235ec 30%, #7c32ff 100%);
-    background-image: -ms-linear-gradient( 90deg, #c738d8 0%, #a235ec 30%, #7c32ff 100%);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
 }
 
 
@@ -955,18 +955,18 @@ button {
 .banner-area3::before,
 .banner-area4::before,
 .login_resister_area .single_resister_sildbar::before {
-    background-image: -moz-linear-gradient(90deg, #b92ddc 0%, #2a006c 100%);
-    background-image: -webkit-linear-gradient(90deg, #b92ddc 0%, #2a006c 100%);
-    background-image: -ms-linear-gradient(90deg, #b92ddc 0%, #2a006c 100%);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
 }
 
 
 /* line 23, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_extend.scss */
 
 .catagori-submenu-area .catagori-content ul li a:hover {
-    background-image: -moz-linear-gradient( 0deg, #8228fb 0%, #a52be8 70%, #c82ed5 100%);
-    background-image: -webkit-linear-gradient( 0deg, #8228fb 0%, #a52be8 70%, #c82ed5 100%);
-    background-image: -ms-linear-gradient( 0deg, #8228fb 0%, #a52be8 70%, #c82ed5 100%);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
+    background-image: var(--secondary-color);
 }
 
 
@@ -1286,10 +1286,6 @@ button {
 /* line 1, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_header.scss */
 
 .header-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     z-index: 9999;
     padding: 0 20px;
 }
@@ -1497,7 +1493,7 @@ button {
 /* line 120, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_header.scss */
 
 .header-area .profile-area>a {
-    background-color: #3d1a7d;
+    background-color: var(--secondary-color);
     color: #fff;
     padding: 21px 36px 21px 36px;
     font-weight: 700;
@@ -1677,7 +1673,7 @@ button {
 
 .header-area .profile-area .profile_dropdwon {
     position: absolute;
-    background: #fff;
+    background: #161D30;
     border-radius: 4px;
     text-align: left;
     width: 165px;
@@ -1687,7 +1683,7 @@ button {
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    top: 205%;
+    top: 160%;
     opacity: 0;
     visibility: hidden;
     -webkit-transition: 0.5s;
@@ -1723,7 +1719,7 @@ button {
     height: 0;
     border-style: solid;
     border-width: 0 12.5px 16px 12.5px;
-    border-color: transparent transparent #fff transparent;
+    border-color: transparent transparent #161D30 transparent;
     position: absolute;
     right: 0;
     top: -14px;
@@ -1761,8 +1757,8 @@ button {
 /* line 311, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_header.scss */
 
 .header-area .profile-area .profile_dropdwon .profile_hover_links ul li a {
-    color: #000;
-    font-size: 12px;
+    color: #FFF;
+    font-size: 14px;
     text-transform: capitalize;
     line-height: 24px;
     font-weight: 400;
@@ -1817,9 +1813,9 @@ button {
 /* line 354, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_header.scss */
 
 .header-area .profile-area a.user_author_pro {
-    background-color: #3d1a7d;
+    background-color: var(--secondary-color);
     color: #fff;
-    padding: 21px 36px 21px 36px;
+    padding: 5px 15px 5px 15px;
     font-weight: 700;
     font-size: 13px;
     -webkit-transition: 0.3s;
@@ -1845,7 +1841,7 @@ button {
     /* line 180, ../../Arafath/366 Infix Digital Marketplace/HTML/scss/_header.scss */
     /* line 380, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_header.scss */
     .header-area .profile-area a.user_author_pro {
-        padding: 21px 5px 21px 10px;
+        padding: 5px 15px 5px 15px;
     }
 }
 
@@ -1853,7 +1849,7 @@ button {
     /* line 180, ../../Arafath/366 Infix Digital Marketplace/HTML/scss/_header.scss */
     /* line 387, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_header.scss */
     .header-area .profile-area a.user_author_pro {
-        padding: 21px 10px 21px 10px;
+        padding: 5px 15px 5px 15px;
     }
 }
 
@@ -2054,7 +2050,7 @@ button {
 .header-area .profile-area:hover .profile_dropdwon {
     opacity: 1;
     visibility: visible;
-    top: 260%;
+    top: 150%;
 }
 
 @media (max-width: 767px) {
@@ -2269,9 +2265,9 @@ span.badge_icon {
     position: absolute;
     z-index: -2;
     /* background-image: url(../img/banner/banner-img-1.png); */
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     z-index: 3;
 }
 
@@ -2461,7 +2457,7 @@ span.badge_icon {
     top: 0;
     left: 0;
     position: absolute;
-    z-index: -2;
+    z-index: 0;
 }
 
 
@@ -2627,7 +2623,7 @@ span.badge_icon {
     top: 0;
     left: 0;
     position: absolute;
-    z-index: -2;
+    z-index: 0;
 }
 
 
@@ -2690,17 +2686,17 @@ span.badge_icon {
 /* line 285, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_banner.scss */
 
 .banner-area3 .profile_author .profile_name h5 {
-    color: #fff;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 4px;
+    margin-top: -90px;
+    margin-left: -135px;
 }
 
 
 /* line 291, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_banner.scss */
 
 .banner-area3 .profile_author .profile_name p {
-    color: #fff;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 300;
@@ -2790,7 +2786,6 @@ span.badge_icon {
     line-height: 21px;
     font-family: "Quicksand", sans-serif;
     font-weight: 300;
-    color: #fff;
 }
 
 
@@ -2799,7 +2794,6 @@ span.badge_icon {
 .banner-area3 .rating .sate-total h3 {
     font-size: 36px;
     font-weight: 700;
-    color: #fff;
 }
 
 
@@ -2829,7 +2823,7 @@ span.badge_icon {
     top: 0;
     left: 0;
     position: absolute;
-    z-index: -2;
+    z-index: 0;
 }
 
 
@@ -3862,7 +3856,6 @@ span.badge_icon {
 
 .details-tablist-area .details-tablist ul li a {
     font-size: 16px;
-    color: #fff;
     font-family: "Open Sans", sans-serif;
     padding: 23px 45px;
     display: inline-block;
@@ -3874,7 +3867,6 @@ span.badge_icon {
     /* line 26, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_theme-details.scss */
     .details-tablist-area .details-tablist ul li a {
         font-size: 13px;
-        color: #fff;
         padding: 20px 5px;
     }
 }
@@ -3884,7 +3876,6 @@ span.badge_icon {
 
 .details-tablist-area .details-tablist ul li a::before {
     content: "";
-    background: #fff;
     transform: scaleX(0);
     height: 3px;
     width: 100%;
@@ -6023,7 +6014,6 @@ span.badge_icon {
     font-weight: 500;
     font-family: "Quicksand", sans-serif;
     text-transform: capitalize;
-    color: #333333;
 }
 
 
@@ -6033,7 +6023,6 @@ span.badge_icon {
     font-size: 11px;
     font-family: "Quicksand", sans-serif;
     text-transform: uppercase;
-    color: #000000;
     font-weight: 400;
     margin-bottom: 7px;
 }
@@ -6050,9 +6039,9 @@ span.badge_icon {
 
 .checkout_area .checkout-form input {
     width: 100%;
-    background: #fafafa;
     height: 50px;
     border: 0;
+    border: 1px solid #eeeeee;
     padding-left: 25px;
     margin-bottom: 15px;
 }
@@ -6153,7 +6142,7 @@ span.badge_icon {
 /* line 79, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_checkout.scss */
 
 .your_order .products_total_list .products_total_list-heder span {
-    color: #555555;
+    color: #fff;
     font-size: 11px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
@@ -6189,7 +6178,7 @@ span.badge_icon {
 .your_order .products_total_list ul li span {
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
-    color: #888888;
+    color: #FFF;
     font-size: 12px;
 }
 
@@ -6220,7 +6209,7 @@ span.badge_icon {
     font-size: 14px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
-    color: #333333;
+    color: #fff;
 }
 
 
@@ -6230,7 +6219,7 @@ span.badge_icon {
     font-size: 24px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
-    color: #333333;
+    color: #fff;
     padding-left: 53px;
 }
 
@@ -6304,7 +6293,7 @@ span.badge_icon {
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
     font-size: 18px;
-    color: #333333;
+    color: #FFF;
     line-height: 21px;
     margin-bottom: 0;
 }
@@ -6870,7 +6859,6 @@ span.badge_icon {
 /* line 1, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_coupons.scss */
 
 .my_coupon {
-    background: #fafafa;
     padding: 40px;
 }
 
@@ -6889,7 +6877,6 @@ span.badge_icon {
     font-size: 18px;
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
-    color: #222222;
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
     margin-bottom: 24px;
@@ -6947,7 +6934,6 @@ span.badge_icon {
     -moz-align-items: center;
     -ms-align-items: center;
     align-items: center;
-    background: #ffffff;
 }
 
 
@@ -6957,7 +6943,6 @@ span.badge_icon {
     font-size: 12px;
     font-weight: 500;
     font-family: "Quicksand", sans-serif;
-    color: #000000;
     border-top: 0;
     width: 20%;
 }
@@ -8366,7 +8351,6 @@ span.badge_icon {
 .upload_area .upload_description h3 {
     font-size: 18px;
     font-weight: 500;
-    color: #222222;
     margin-bottom: 30px;
     border-bottom: 1px solid #eeeeee;
     padding-bottom: 15px;
@@ -8378,11 +8362,10 @@ span.badge_icon {
 
 .upload_area .upload_description input {
     height: 50px;
-    border: 0;
     width: 100%;
-    background: #fff;
     padding-left: 25px;
     margin-bottom: 20px;
+    border: 1px solid #eeeeee;
 }
 
 
@@ -8489,7 +8472,6 @@ span.badge_icon {
     display: block;
     font-weight: 500;
     font-family: "Quicksand", sans-serif;
-    color: #222222;
     text-transform: uppercase;
     font-size: 11px;
     text-align: left;
@@ -8509,7 +8491,6 @@ span.badge_icon {
     padding: 30px 20px;
     position: relative;
     z-index: 9;
-    background: #fff;
 }
 
 @media (max-width: 767px) {
@@ -9952,7 +9933,6 @@ span.badge_icon {
     margin-bottom: 16px;
     font-size: 14px;
     font-weight: 500;
-    color: #222222;
 }
 
 
@@ -9984,9 +9964,7 @@ span.badge_icon {
 /* line 90, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_account_setting.scss */
 
 .account-area .my_custom_navs .nav a.active {
-    background-image: -moz-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);
-    background-image: -webkit-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);
-    background-image: -ms-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);
+    background: var(--secondary-color);
     color: #fff;
     -webkit-box-shadow: 0px 10px 20px 0px rgba(108, 39, 255, 0.3);
     -moz-box-shadow: 0px 10px 20px 0px rgba(108, 39, 255, 0.3);
@@ -10016,7 +9994,6 @@ span.badge_icon {
 .account-area .my_tab_content .single_account_wrap h4 {
     font-size: 18px;
     font-weight: 500;
-    color: #222222;
     border-bottom: 1px solid #ddd;
     margin-bottom: 21px;
     padding-bottom: 15px;
@@ -10048,8 +10025,7 @@ span.badge_icon {
     height: 50px;
     width: 100%;
     padding-left: 25px;
-    background: #fff;
-    border: none;
+    border: 1px solid #eeeeee;
     margin-bottom: 20px;
 }
 
@@ -10946,7 +10922,6 @@ span.badge_icon {
 
 .user_profile .portfolio_list .single_portfolio_list .portflio_thumb .thumb_heading h5 a {
     font-weight: 500;
-    color: #000000;
     font-family: "Quicksand", sans-serif;
     font-size: 16px;
 }
@@ -10957,7 +10932,6 @@ span.badge_icon {
 .user_profile .portfolio_list .single_portfolio_list .portflio_thumb .thumb_heading p {
     margin-bottom: 0;
     font-size: 12px;
-    color: #a0a0a0;
     font-weight: 300;
     font-family: "Open Sans", sans-serif;
     padding: 0;
@@ -10968,7 +10942,6 @@ span.badge_icon {
 
 .user_profile .portfolio_list .single_portfolio_list .portflio_thumb .thumb_heading p a {
     font-size: 12px;
-    color: #000000;
     padding-bottom: 2px;
 }
 
@@ -11032,9 +11005,7 @@ span.badge_icon {
 .user_profile .portfolio_list .single_portfolio_list .cart_heart a.heart {
     width: 50px;
     height: 50px;
-    background: #fff;
     font-size: 14px;
-    color: #000000;
     line-height: 50px;
     text-align: center;
     display: inline-block;
@@ -11093,7 +11064,6 @@ span.badge_icon {
     font-size: 32px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
-    color: #333333;
 }
 
 
@@ -11101,7 +11071,6 @@ span.badge_icon {
 
 .user_profile .portfolio_list .single_portfolio_list .total-prise p {
     margin-bottom: 0;
-    color: #888888;
     font-weight: 300p;
     font-family: "Open Sans", sans-serif;
     line-height: 21px;
@@ -12050,7 +12019,6 @@ span.badge_icon {
 
 .account-area.account-area2 .account_swift_maintain .comn-heading {
     font-size: 24px;
-    color: #222222;
     font-weight: 500;
     margin-bottom: 16px;
 }
@@ -12078,7 +12046,6 @@ span.badge_icon {
 /* line 516, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_author_settings_profile.scss */
 
 .account-area.account-area2 .account_swift_maintain p a {
-    color: #000000;
     font-size: 14px;
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
@@ -12146,7 +12113,6 @@ span.badge_icon {
     font-size: 11px;
     font-family: "Quicksand", sans-serif;
     text-transform: uppercase;
-    color: #000000;
     font-weight: 400;
     margin-bottom: 7px;
 }
@@ -12155,7 +12121,7 @@ span.badge_icon {
 /* line 562, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_author_settings_profile.scss */
 
 .account-area.account-area2 .checkout-form label span {
-    color: #ff0000;
+   
 }
 
 

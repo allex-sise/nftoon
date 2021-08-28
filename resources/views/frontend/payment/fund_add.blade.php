@@ -16,27 +16,32 @@
     margin-top: 340px;
 }
 </style>
-      <!-- banner-area start -->
-    <div class="banner-area4">
-        <div class="banner-area-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1 col-12">
-                        <div class="banner-info">
-                            <h2>@lang('lang.fund_deposit')</h2>
+ <!-- content begin -->
+ <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-12 text-center">
+									<h1>@lang('lang.fund_deposit')</h1>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- banner-area end -->
+            </section>
+            <!-- section close -->       
+
     <!-- privaci_polecy_area start -->
     <div class="privaci_polecy_area section-padding checkout_area ">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 offset-xl-2 col-12">
-                        <div class="single_account_wrap white-bg">
+                        <div class="single_account_wrap">
                             @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
                                 <h4>@lang('lang.Billing') @lang('lang.Information')</h4>
                                 <p>@lang('lang.welcome_message_for_vendor').</p>
@@ -159,8 +164,8 @@
                                             @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
                                                 
                                             @else
-                                                <div class="check-out-btn ">
-                                                    <button type="submit" id="deposit_" class="boxed-btn mt-1">Adauga Fonduri</button>
+                                                <div class="check-out-btn col-xl-6 col-md-6">
+                                                    <button type="submit" id="deposit_" class="btn-main mt-1">Adauga Fonduri</button>
                                                 </div>
                                             @endif
                                     </div>
@@ -169,7 +174,7 @@
                                     <input type="hidden" name="stripeToken" id="stripeToken" value="" /> --}} 
                                     @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
                                         <div class="check-out-btn">
-                                            <button type="submit" id="deposit_" class="boxed-btn">Salveaza Informatia si Adauga Fonduri</button>
+                                            <button type="submit" id="deposit_" class="btn-main">Salveaza Informatia si Adauga Fonduri</button>
                                         </div>
                                     @endif
                                 </form>

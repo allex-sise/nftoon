@@ -1,3 +1,8 @@
+<style>
+.banner-area3::before {
+    z-index: -2;
+}
+</style>
 <div class="banner-area3">
         <div class="banner-area-inner">
             <div class="container">
@@ -9,17 +14,12 @@
                                 @php
                                     $profile=$data['user']->profile->image;
                                 @endphp
-                                <img src="{{ file_exists(@$profile) ? asset($profile) : asset('public/uploads/user/user.png') }} " width="100" alt="" style="border-radius: 50%;">
+                                <img src="{{ file_exists(@$profile) ? asset($profile) : asset('public/uploads/user/user.png') }} " width="100" alt="" style="border-radius: 50%; border: 5px solid #FFF!important;">
                                 </div>
                                 <div class="profile_name">
-                                   <h5>{{  @$data['user']->username }}</h5>
-                                    <p>{{ @$data['user']->profile->country->name,','}} <br />@lang('lang.member_since') {{DateFormat(@$data['user']->created_at)}} </p>
-                                    @if (@Auth::user()->id != @$data['user']->id)
-                                    <div class="view-follow">
-                                        <a href="#" class="boxed-btn">@lang('lang.view_portfolio')</a>
-                                        <a href="#" class="boxed-btn">@lang('lang.follow')</a>
-                                    </div>
-                                    @endif
+                                   <h1><span>@</span>{{  @$data['user']->username }}</h1><br />
+                                   <h5>{{  @$data['user']->full_name }}</h5>
+                                
                                 </div>
                             </div>
                              @if (@Auth::user()->role_id == 4)

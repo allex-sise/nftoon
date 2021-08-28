@@ -3,6 +3,7 @@
 .colspecial{
     margin: 0 auto;
     display: block;
+    width: 55%!important;
 }
 .footer-area .footer-top {
     padding-top: 50px;
@@ -31,6 +32,7 @@
     margin-bottom: 0px;
 }
  </style>
+ <a href="#" id="back-to-top"></a>
  <footer>
     @php
         $logo_conditions = ['title'=>'Logo', 'active_status'=>1];
@@ -49,13 +51,13 @@
                                 
                         
                             <div class="col-md-4">
-                                <div class="footer-widget">
+                                <div class="footer-widget" style="text-align: right;">
                                     <div class="footer-title">
                                         <h3>{{ $custom_link->title2 }}</h3>
                                     </div>
                                     <div class="footer-list">
                                         <nav>
-                                            <ul>
+                                            <ul style="padding-left: 0px; margin-right: 0px;">
                                             @if ($custom_link->link_href1!='')
                                                   <li><a href="{{ url($custom_link->link_href1) }}">{{ $custom_link->link_label1 }} </a></li>
                                                   
@@ -78,7 +80,7 @@
                                 <div class="footer-widget text-center">
                                     <div class="footer-logo"> 
                                        <a href="{{ url('/') }}">
-                                            <img src="{{ @$logopic ? asset($logopic->image) : asset('public/frontend/img/Logo.png') }}" alt="" class="mw">
+                                            <img src="{{ @$logopic ? asset($logopic->image) : asset('public/frontend/img/Logo.png') }}" alt="" class="mw" style="display: block; margin: 0 auto; margin-left: 64px;">
                                         </a>
                                     </div>
                                     <div class="copyright-area">
@@ -116,7 +118,7 @@
                           
                             <div class="col-md-4">
                                 <div class="footer-widget">
-                                    <div class="footer-title">
+                                    <div class="footer-title" style="margin-left: 30px;">
                                         <h3 class="text-right">{{ $custom_link->title3 }}</h3>
                                     </div>
                                     <div class="footer-list">
@@ -135,9 +137,7 @@
                                                         <li><a href="{{ $custom_link->link_href15 }}">{{ $custom_link->link_label15 }}</a></li>
                                                     @endif
                                                 {{-- <li><a href="{{ route('faqPage') }}">FAQ</a></li> --}}
-                                                @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)   
-                                                   <li><a href="{{ route('user.refundRequest')}}">@lang('lang.Refund')</a></li>
-                                                @endif
+                                               
                                                 @if ($custom_link->link_href10!='')
                                                 <li><a href="{{ $custom_link->link_href10 }}">{{ $custom_link->link_label10 }}</a></li>
                                       

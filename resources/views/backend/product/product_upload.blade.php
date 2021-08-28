@@ -425,37 +425,6 @@
                     margin-right: 15px;
                 }
             </style>
-            {{-- <table>
-                <tr class="d-flex">
-                    <td>
-                        <span class="lisence-name ">@lang('lang.regular_license')</span>
-                    </td>
-                    <td>
-                        
-                        <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
-                        <div class="input_field">
-                            <label for="">@lang('lang.ITEM_PRISE')</label>
-                            <input type="number" class="primary-input form-control w-50" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{ old('Re_item') }}">
-                        </div> 
-                    </td>
-                    <td>
-                        <span class="dm_middle_span">+</span>
-                            <div class="input_field">
-                                <label for="">@lang('lang.BUYER_FEE')</label>
-                                <input  type="text" class="primary-input form-control w-50" step="any"  id="Re_buyer" name="Re_buyer" hidden value="{{ @$item_fee->re_fee}}" value="{{ old('Re_buyer') }}">
-                                <input type="text" class="primary-input form-control w-50"  disabled placeholder="{{GeneralSetting()->currency_symbol}}{{ @$item_fee->re_fee}}" onkeyup="regular(this.value)">
-                            </div>
-                    </td>
-                    <td>
-                        <span class="dm_middle_span">=</span>
-                            <div class="input_field last-one">
-                                <label for="">@lang('lang.purchase_price')</label>
-                                <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{ old('Reg_total') }}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
-                                <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{ old('Reg_total') }}">
-                            </div>
-                    </td>
-                </tr>
-            </table> --}}
             <div class="table-responsive">
 
             
@@ -464,28 +433,28 @@
                             <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
                             <div class="input_field">
                                 <label for="">@lang('lang.ITEM_PRISE')</label>
-                                <input type="text" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{ old('Re_item') }}">
+                                <input type="text" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('Re_item')}}">
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
                                 <label for="">Comision Refferal</label>
-                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{ old('comisionagent') }}">
+                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionagent')}}">
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
                                 <label for="">Comision Agentie</label>
-                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{ old('comisionminted') }}">
+                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionminted')}}">
                             </div>
                             <span class="dm_middle_span">+</span>
                             <div class="input_field">
                                 <label for="">Comision Minted</label>
-                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{ old('comision25') }}">
+                                <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comision25')}}">
                             </div>
                             <span class="dm_middle_span">=</span>
                             <div class="input_field last-one">
                                 <label for="">PRET VANZARE</label>
-                                <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{ old('Reg_total') }}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
-                                <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{ old('Reg_total') }}">
+                                <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->tags:old('Reg_total')}}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
+                                <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->tags:old('Reg_total')}}">
                             </div>
                             <!-- <div class="recomander">
                                 <p>@lang('lang.recommended') <br>

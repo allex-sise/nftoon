@@ -10,52 +10,60 @@ function GetOutPutString(data) {
         console.log(e);
 
         if (e.file == 'video') {
-            $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
-                       <div class="single-goods">
-                           <div class="goods-thumb">
-                               <a href="${
-                                 url +
-                                 "/item/" +
-                                 e.title.split(" ").join("-").toLowerCase() +
-                                 "/" +
-                                 e.id
-                               }">
-                               <video width="100%" height="100%" autoplay muted>
+            $(".databox").append(` <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="nft__item">
+               <!-- <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div> -->
+                <div class="author_list_pp">
+                    <a href="${
+                      url + "/user/profile/" + e.username
+                    }">                                    
+                        <img class="lazy" src="{{ asset('public/frontend/assets/images/author/author-1.jpg') }}" alt="">
+                        <i class="fa fa-check"></i>
+                    </a>
+                </div>
+                <div class="nft__item_wrap">
+                    <a href="${
+                      url +
+                      "/item/" +
+                      e.title.split(" ").join("-").toLowerCase() +
+                      "/" +
+                      e.id
+                    }">
+                          <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted>
                                <source src="${e.main_file}" type="video/mp4">
                                
                                Your browser does not support the video tag.
                            </video>
-                               </a>
-                           </div>
-                           <div class="good-info">
-                               <div class="good-title">
-                                   <h3><a href="${
-                                     url +
-                                     "/item/" +
-                                     e.title
-                                       .split(" ")
-                                       .join("-")
-                                       .toLowerCase() +
-                                     "/" +
-                                     e.id
-                                   }">${e.title.substring(0, 30)}....</a></h3>
-                                   <p>@<a href="${
-                                     url + "/user/profile/" + e.username
-                                   }">${e.username}</a></p>
-                               </div>
-                           </div>
-                           <div class="good-info good-info2">
-                              <div class="good-title good-title2">
-                                  <h3 class="h3clss">Current Price</h3>
-                                  <h3>${e.Reg_total} ${currency_symbol}</h3>
-                              </div>
-                              <div class="good-title good-title2">
-                                <h3 class="h3clss">Expira in</h3>
-                                <h3>12</h3>
-                              </div>
-                          </div>
-                       </div>
-                   </div>
+                    </a>
+                </div>
+                <div class="nft__item_info">
+                    <a href="${
+                      url +
+                      "/item/" +
+                      e.title.split(" ").join("-").toLowerCase() +
+                      "/" +
+                      e.id
+                    }">
+                        <h4>${e.title.substring(0, 20)} ....</h4>
+                    </a>
+                    <div class="nft__item_price">
+                    ${e.Reg_total} ${currency_symbol}<span></span>
+                    </div>
+                    <div class="nft__item_action">
+                        <a href="${
+                          url +
+                          "/item/" +
+                          e.title.split(" ").join("-").toLowerCase() +
+                          "/" +
+                          e.id
+                        }">Cumpara Acum</a>
+                    </div>
+                 <!--   <div class="nft__item_like">
+                        <i class="fa fa-heart"></i><span>50</span>
+                    </div> -->                           
+                </div> 
+            </div>
+        </div>
                    <div id="myModal${
                      e.id
                    }" class="modal fade dm-item-modal" role="dialog">
@@ -211,9 +219,18 @@ function GetOutPutString(data) {
                    
                    `);
         } else {
-          $(".databox").append(` <div class="col-xl-4 col-md-6 grid-item cat1 cat1">
-          <div class="single-goods">
-              <div class="goods-thumb">
+          $(".databox").append(`<div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+          <div class="nft__item">
+             <!-- <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div> -->
+              <div class="author_list_pp">
+                  <a href="${
+                    url + "/user/profile/" + e.username
+                  }">                                    
+                      <img class="lazy" src="${e.userimage}" alt="">
+                      <i class="fa fa-check"></i>
+                  </a>
+              </div>
+              <div class="nft__item_wrap">
                   <a href="${
                     url +
                     "/item/" +
@@ -221,39 +238,37 @@ function GetOutPutString(data) {
                     "/" +
                     e.id
                   }">
-                      <img height="auto" src="${
+                      <img src="${
                         e.icon
-                      }" alt="">
+                      }" class="lazy nft__item_preview" alt="">
                   </a>
               </div>
-              <div class="good-info">
-                  <div class="good-title">
-                      <h3><a href="${
+              <div class="nft__item_info">
+                  <a href="${
+                    url +
+                    "/item/" +
+                    e.title.split(" ").join("-").toLowerCase() +
+                    "/" +
+                    e.id
+                  }">
+                      <h4>${e.title.substring(0, 20)} ....</h4>
+                  </a>
+                  <div class="nft__item_price">
+                  ${e.Reg_total} ${currency_symbol}<span></span>
+                  </div>
+                  <div class="nft__item_action">
+                      <a href="${
                         url +
                         "/item/" +
-                        e.title
-                          .split(" ")
-                          .join("-")
-                          .toLowerCase() +
+                        e.title.split(" ").join("-").toLowerCase() +
                         "/" +
                         e.id
-                      }">${e.title.substring(0, 20)} ....</a></h3>
-                      <p>By <a href="${
-                        url + "/user/profile/" + e.username
-                      }">${e.username}</a> </p>
+                      }">Cumpara Acum</a>
                   </div>
-                
-              </div>
-              <div class="good-info good-info2">
-               <div class="good-title good-title2">
-                   <h3 class="h3clss">Current Price</h3>
-                   <h3>${e.Reg_total} ${currency_symbol}</h3>
-               </div>
-               <div class="good-title good-title2">
-                 <h3 class="h3clss">Expira in</h3>
-                 <h3>12</h3>
-               </div>
-           </div>
+                <!--  <div class="nft__item_like">
+                      <i class="fa fa-heart"></i><span>50</span>
+                  </div>     -->                       
+              </div> 
           </div>
       </div>
       <div id="myModal${
@@ -537,7 +552,7 @@ $(document).ready(function() {
                 $(".bt")
                     .append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                     <div class="load-more text-center mt-10">
-                        <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                        <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Arata mai multe</button>
                     </div>
                 </div>`);
             }
@@ -679,7 +694,7 @@ $(document).ready(function() {
                     $(".bt")
                         .append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                         <div class="load-more text-center mt-10">
-                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Arata mai multe</button>
                         </div>
                     </div>`);
                 }
@@ -725,7 +740,7 @@ $(document).ready(function() {
                     $(".bt")
                         .append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                         <div class="load-more text-center mt-10">
-                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Arata mai multe</button>
                         </div>
                     </div>`);
                 }

@@ -55,7 +55,9 @@ $comment_content='';
     -webkit-box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
     -moz-box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.25)!important;
     box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
-    background: #FFF;
+    background: #2A2E44;
+    width: auto;
+    color: #FFF;
 }
 .userbg2{
    border-radius: 50px;
@@ -69,7 +71,7 @@ $comment_content='';
 .footeruserborder{
    height: 1px!important;
    width: 100%!important;
-   background: #000!important;
+   background: rgb(217, 217, 217)!important;
 }
 .theme-logo2 img {
     width: 134px!important;
@@ -82,6 +84,7 @@ $comment_content='';
 .single-info-inner .single-info-title p {
     line-height: 35px!important;
     margin-bottom: 0px!important;
+    color: #FFF!important;
 }
 .single-info-inner .single-info-content p {
     line-height: 35px!important;
@@ -141,9 +144,9 @@ $comment_content='';
     border-radius: 50px;
     padding: 9px;
     height: 55px;
-    -webkit-box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 55%)!important;
-    -moz-box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.55)!important;
-    box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 55%)!important;
+    -webkit-box-shadow: 0px 0px 1px 0px rgb(255 255 255 / 55%)!important;
+    -moz-box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 0.55)!important;
+    box-shadow: 0px 0px 1px 0px rgb(255 255 255 / 55%)!important;
     background: rgba(0,0,0,0, 0.03);
     margin-bottom: 10px;
 }
@@ -160,7 +163,7 @@ $comment_content='';
     color: #e1e1e1;
 }
 .svgclassicon{
-   margin-top: 8px;
+   margin-top: 0px;
     margin-left: 13px;
 }
 .spansvg{
@@ -168,7 +171,15 @@ $comment_content='';
     float: none!important;
     display: inline!important;
     position: relative!important;
-    top: -5px!important;
+    top: 0px!important;
+    left: 9px!important;
+}
+.spansvg2{
+   width: auto!important;
+    float: none!important;
+    display: inline!important;
+    position: relative!important;
+    top: -8px!important;
     left: 9px!important;
 }
 .coloanaspeciala{
@@ -180,10 +191,20 @@ $comment_content='';
     padding: 34px 40px;
     padding-left: 0px;
 }
+footer{
+   padding: 0px;
+}
+.text3randuri{
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
 </style>
 <!-- details-tablist-end -->
 <!-- main-details-area-start -->
-<div class="main-details-area section-padding main-details-area2">
+<div class="main-details-area section-padding main-details-area2" style="background-color: rgb(33, 39, 62);">
    <div class="container">
       <div class="row">
          <div class="col-xl-8 col-lg-8">
@@ -197,7 +218,7 @@ $comment_content='';
                               <img src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
                            </div>
                            <div class="theme-info">
-                                 <a href="{{ route('user.portfolio',@$data['item']->user->username)}}"> <h4>{{ @$data['item']->user->username}}</h4> </a>
+                                 <a href="{{ route('user.portfolio',@$data['item']->user->username)}}"><h4 style="color: #FFF; margin-top: 5px;"><span>@</span>{{ @$data['item']->user->username}}</h4> </a>
                            </div>
                         </div>
                      </div>
@@ -220,7 +241,7 @@ $comment_content='';
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <g>
 	<g>
-		<path d="M436.494,282.174l-20.377-15.098c2.325-15.684,2.343-31.45,0.051-46.996l20.326-15.061
+		<path fill="currentColor" d="M436.494,282.174l-20.377-15.098c2.325-15.684,2.343-31.45,0.051-46.996l20.326-15.061
 			c2.956-2.19,4.042-6.111,2.634-9.509l-19.635-47.401c-1.408-3.399-4.952-5.405-8.586-4.861l-25.022,3.723
 			c-9.373-12.613-20.532-23.748-33.269-33.196l3.734-25.086c0.541-3.639-1.463-7.179-4.861-8.586l-47.401-19.633
 			c-3.398-1.408-7.32-0.322-9.509,2.634l-4.908,6.623V25.119C289.67,11.268,278.402,0,264.551,0h-17.102
@@ -266,26 +287,26 @@ $comment_content='';
                      </div>
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title  single-info-column">
-                           <p><svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-13o7eu2 svgclassicon"><path d="M4.364 9.999a.89.89 0 01.895-.89l1.482.004a.891.891 0 01.891.892v5.607c.167-.05.381-.102.616-.157a.743.743 0 00.572-.723V7.776a.892.892 0 01.892-.892h1.485a.891.891 0 01.891.892v6.456s.372-.15.734-.304a.744.744 0 00.454-.685V5.547a.891.891 0 01.892-.891h1.485a.891.891 0 01.891.891v6.337c1.288-.933 2.593-2.056 3.628-3.406A1.496 1.496 0 0020.4 7.08 10.483 10.483 0 0010.632 0C4.811-.077 0 4.677 0 10.501a10.47 10.47 0 001.394 5.252 1.327 1.327 0 001.266.656c.28-.024.63-.06 1.046-.108a.742.742 0 00.659-.737V9.999M4.332 18.991a10.493 10.493 0 0016.641-9.21c-3.834 5.721-10.915 8.396-16.64 9.21" fill="#1A1A1A"></path></svg> <span class="spansvg">Vezi pe Etherscan</span></p>
+                           <p><svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-13o7eu2 svgclassicon"><path fill="currentColor" d="M4.364 9.999a.89.89 0 01.895-.89l1.482.004a.891.891 0 01.891.892v5.607c.167-.05.381-.102.616-.157a.743.743 0 00.572-.723V7.776a.892.892 0 01.892-.892h1.485a.891.891 0 01.891.892v6.456s.372-.15.734-.304a.744.744 0 00.454-.685V5.547a.891.891 0 01.892-.891h1.485a.891.891 0 01.891.891v6.337c1.288-.933 2.593-2.056 3.628-3.406A1.496 1.496 0 0020.4 7.08 10.483 10.483 0 0010.632 0C4.811-.077 0 4.677 0 10.501a10.47 10.47 0 001.394 5.252 1.327 1.327 0 001.266.656c.28-.024.63-.06 1.046-.108a.742.742 0 00.659-.737V9.999M4.332 18.991a10.493 10.493 0 0016.641-9.21c-3.834 5.721-10.915 8.396-16.64 9.21" fill="#1A1A1A"></path></svg> <span class="spansvg">Vezi pe Etherscan</span></p>
                         </div>
                         <div class="single-info-content single-info-column">
-                        <p> <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="css-13o7eu2 svgclass"><path d="M15 0H8v2h4.6L6.3 8.3l1.4 1.4L14 3.4V8h2V1c0-.6-.4-1-1-1z" fill="currentColor"></path><path d="M14 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z" fill="currentColor"></path></svg></p>
+                        <p> <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="css-13o7eu2 svgclass"><path fill="currentColor" d="M15 0H8v2h4.6L6.3 8.3l1.4 1.4L14 3.4V8h2V1c0-.6-.4-1-1-1z" fill="currentColor"></path><path d="M14 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z" fill="currentColor"></path></svg></p>
                         </div>
                      </div>
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title  single-info-column">
-                           <p><svg viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="19" class="css-13o7eu2 svgclassicon"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.396 9.535a.814.814 0 000 .93c.749 1.06 2.03 2.657 3.71 3.98C8.791 15.77 10.788 16.75 13 16.75c2.211 0 4.208-.98 5.893-2.306 1.681-1.322 2.962-2.92 3.71-3.98a.814.814 0 000-.929c-.748-1.06-2.029-2.657-3.71-3.98C17.208 4.23 15.211 3.25 13 3.25c-2.212 0-4.209.98-5.894 2.306-1.68 1.322-2.961 2.92-3.71 3.98zM5.56 3.591C7.5 2.065 10.03.75 13 .75c2.97 0 5.499 1.315 7.439 2.84 1.943 1.53 3.384 3.339 4.209 4.506l.003.005a3.315 3.315 0 010 3.798l-.003.005c-.825 1.167-2.266 2.977-4.209 4.505-1.94 1.526-4.47 2.841-7.44 2.841-2.969 0-5.499-1.315-7.439-2.84-1.942-1.53-3.384-3.339-4.208-4.506l-.004-.005a3.314 3.314 0 010-3.798l.004-.005C2.176 6.929 3.618 5.119 5.56 3.59z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M13 7.25a2.75 2.75 0 100 5.5 2.75 2.75 0 000-5.5zM7.75 10a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0z" fill="currentColor"></path></svg> <span class="spansvg">Vezi pe IPFS</span></p>
+                           <p><svg viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="19" class="css-13o7eu2 svgclassicon"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M3.396 9.535a.814.814 0 000 .93c.749 1.06 2.03 2.657 3.71 3.98C8.791 15.77 10.788 16.75 13 16.75c2.211 0 4.208-.98 5.893-2.306 1.681-1.322 2.962-2.92 3.71-3.98a.814.814 0 000-.929c-.748-1.06-2.029-2.657-3.71-3.98C17.208 4.23 15.211 3.25 13 3.25c-2.212 0-4.209.98-5.894 2.306-1.68 1.322-2.961 2.92-3.71 3.98zM5.56 3.591C7.5 2.065 10.03.75 13 .75c2.97 0 5.499 1.315 7.439 2.84 1.943 1.53 3.384 3.339 4.209 4.506l.003.005a3.315 3.315 0 010 3.798l-.003.005c-.825 1.167-2.266 2.977-4.209 4.505-1.94 1.526-4.47 2.841-7.44 2.841-2.969 0-5.499-1.315-7.439-2.84-1.942-1.53-3.384-3.339-4.208-4.506l-.004-.005a3.314 3.314 0 010-3.798l.004-.005C2.176 6.929 3.618 5.119 5.56 3.59z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M13 7.25a2.75 2.75 0 100 5.5 2.75 2.75 0 000-5.5zM7.75 10a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0z" fill="currentColor"></path></svg> <span class="spansvg">Vezi pe IPFS</span></p>
                         </div>
                         <div class="single-info-content single-info-column">
-                        <p> <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="css-13o7eu2 svgclass"><path d="M15 0H8v2h4.6L6.3 8.3l1.4 1.4L14 3.4V8h2V1c0-.6-.4-1-1-1z" fill="currentColor"></path><path d="M14 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z" fill="currentColor"></path></svg></p>
+                        <p> <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="css-13o7eu2 svgclass"><path fill="currentColor" d="M15 0H8v2h4.6L6.3 8.3l1.4 1.4L14 3.4V8h2V1c0-.6-.4-1-1-1z" fill="currentColor"></path><path d="M14 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z" fill="currentColor"></path></svg></p>
                         </div>
                      </div>
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title  single-info-column">
-                           <p><svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-13o7eu2 svgclassicon"><path d="M19.21 5.222L10.639.936a1.428 1.428 0 00-1.279 0L.789 5.222A1.431 1.431 0 000 6.5v10c0 .54.306 1.035.79 1.278l8.571 4.286a1.43 1.43 0 001.278 0l8.571-4.286A1.43 1.43 0 0020 16.5v-10a1.43 1.43 0 00-.79-1.278zM10 3.812L15.377 6.5 10 9.189 4.623 6.501 10 3.81zm-7.143 5l5.714 2.857v6.806l-5.714-2.857V8.812zm8.572 9.663v-6.806l5.714-2.857v6.806l-5.714 2.857z" fill="#000"></path></svg> <span class="spansvg"> Vezi IPFS Metadata </span></p>
+                           <p><svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-13o7eu2 svgclassicon"><path fill="currentColor" d="M19.21 5.222L10.639.936a1.428 1.428 0 00-1.279 0L.789 5.222A1.431 1.431 0 000 6.5v10c0 .54.306 1.035.79 1.278l8.571 4.286a1.43 1.43 0 001.278 0l8.571-4.286A1.43 1.43 0 0020 16.5v-10a1.43 1.43 0 00-.79-1.278zM10 3.812L15.377 6.5 10 9.189 4.623 6.501 10 3.81zm-7.143 5l5.714 2.857v6.806l-5.714-2.857V8.812zm8.572 9.663v-6.806l5.714-2.857v6.806l-5.714 2.857z" fill="#000"></path></svg> <span class="spansvg"> Vezi IPFS Metadata </span></p>
                         </div>
                         <div class="single-info-content single-info-column">
-                           <p> <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="css-13o7eu2 svgclass"><path d="M15 0H8v2h4.6L6.3 8.3l1.4 1.4L14 3.4V8h2V1c0-.6-.4-1-1-1z" fill="currentColor"></path><path d="M14 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z" fill="currentColor"></path></svg></p>
+                           <p> <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="css-13o7eu2 svgclass"><path d="M15 0H8v2h4.6L6.3 8.3l1.4 1.4L14 3.4V8h2V1c0-.6-.4-1-1-1z" fill="currentColor"></path><path fill="currentColor" d="M14 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z"></path></svg></p>
                         </div>
                      </div>
                      {{-- DYNAMIC ATTRIBUTE PRINTS  --}}
@@ -322,7 +343,7 @@ $comment_content='';
 
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title single-info-column">
-                           <p><svg class="svgclassicon" width="22" height="22" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><g><g><path d="M506.513,311.066L253.87,58.423c-2.024-2.026-4.486-3.559-7.195-4.483L140.15,17.593
+                           <p><svg class="svgclassicon" width="22" height="22" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><g><g><path fill="currentColor" d="M506.513,311.066L253.87,58.423c-2.024-2.026-4.486-3.559-7.195-4.483L140.15,17.593
 			c-6.758-2.305-14.242-0.568-19.294,4.483L84.709,58.222L31.977,5.491c-7.314-7.315-19.176-7.315-26.49,0
 			c-7.315,7.315-7.315,19.175,0,26.49l52.732,52.731l-36.14,36.141c-5.051,5.05-6.79,12.534-4.483,19.294L53.943,246.67
 			c0.924,2.71,2.458,5.172,4.483,7.197L311.071,506.51c7.314,7.315,19.175,7.315,26.49,0l168.954-168.954
@@ -374,7 +395,7 @@ $comment_content='';
                         </div>
                      </div>
                      @endif
-                     <div class="theme-side-bar gray-bg">
+                     <div class="theme-side-bar" style="background-color: #2A2E44;">
                         <div class="single-side-bar">
                            <div
                               class="side-bar-heading d-flex justify-content-between align-items-center mt-2">
@@ -395,10 +416,10 @@ $comment_content='';
                                           <div class="row">
                                           <!-- aici sunt preturile afisate -->
                                              <div class="col-lg-6"> 
-                                                <strong class="" style="font-size: 20px;"><input type="text" id="pretInEth" readonly>
+                                                <strong class="" style="font-size: 20px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
                                                    <span id="regular_license_price">ETH</span>
                                                 </strong> <br />
-                                                <strong class="" style="color: #666; font-size: 13px;">{{ @$data['item']->Reg_total}} 
+                                                <strong class="" style="color: #fff; font-size: 13px;">{{ @$data['item']->Reg_total}} 
                                                    <span id="regular_license_price">{{@$infix_general_settings->currency_symbol}}</span>
                                                 </strong>
                                              </div>
@@ -427,9 +448,9 @@ $comment_content='';
                                  <div class="add-cart">
                                     @if (@$data['item']->is_upload==1)
                                      
-                                       <button  type="submit" class="boxed-btn-white" >@lang('lang.Buy') @lang('lang.Now') </button>
+                                       <button  type="submit" class="boxed-btn-white" style="background: var(--secondary-color);" >@lang('lang.Buy') @lang('lang.Now') </button>
                                     @else
-                                    <a  href="{{@$data['item']->purchase_link}}" target="_blank" class="boxed-btn add-cart-active">@lang('lang.Buy') @lang('lang.Now')</a>
+                                    <a  href="{{@$data['item']->purchase_link}}" target="_blank" class="boxed-btn add-cart-active" style="background: var(--secondary-color);">@lang('lang.Buy') @lang('lang.Now')</a>
                                    
                                     @endif
                                  
@@ -464,9 +485,9 @@ $comment_content='';
                         </div>
                      </div>
                    
-                     <div class="theme-side-bar1 gray-bg mt-20">
+                     <div class="theme-side-bar1 mt-20" style="background-color: #2A2E44;">
                         <div class="download-comments d-flex justify-content-between align-items-center">
-                           <h3 class="d-flex align-items-center"> <i class="ti-shopping-cart"></i> @lang('lang.sales')</h3>
+                           <h3 class="d-flex align-items-center" style="color: #777777!important; margin-bottom: 0px;"> <i class="ti-shopping-cart"></i> @lang('lang.sales')</h3>
                            <span>{{ @$data['item']->sell }}</span>
                         </div>
                      </div>
@@ -474,12 +495,12 @@ $comment_content='';
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title single-info-column">
                            <p> <img style="width: 30px; border-radius: 50%;" src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
-                           <span class="spansvg">Listat de <a href="{{ route('user.portfolio',@$data['item']->og->username)}}"><span>@</span>{{ @$data['item']->og->username }} </a>
+                           <span class="spansvg2">Listat de <a href="{{ route('user.portfolio',@$data['item']->og->username)}}"><span>@</span>{{ @$data['item']->og->username }} </a>
                            <span class="span2s">{{ @$data['item']->created_at}}</span>
                            </p>
                         </div>
                         <div class="single-info-content single-info-column coloanaspeciala">
-                           <p>{{ @$data['item']->Reg_total}} lei</p>
+                           <p style="color: #FFF!important;">{{ @$data['item']->Reg_total}} lei</p>
                         </div>
                      </div>
 
@@ -487,12 +508,12 @@ $comment_content='';
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title single-info-column">
                            <p> <img style="width: 30px; border-radius: 50%;" src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
-                           <span class="spansvg">Cumparat de <a href="{{ route('user.portfolio',$his->cumparator->username)}}"><span>@</span>{{ $his->cumparator->username}} </a>
+                           <span class="spansvg2">Cumparat de <a href="{{ route('user.portfolio',$his->cumparator->username)}}"><span>@</span>{{ $his->cumparator->username}} </a>
                            <span class="span2s">{{ $his->created_at}}</span>
                            </p>
                         </div>
                         <div class="single-info-content single-info-column coloanaspeciala">
-                           <p>{{ $his->subtotal}} lei</p>
+                           <p style="color: #FFF!important;">{{ $his->subtotal}} lei</p>
                         </div>
                      </div>
                      @endforeach
@@ -524,8 +545,8 @@ $comment_content='';
                         </div>
                         <a href="{{ route('user.portfolio',@$data['item']->user->username)}}">
                         <div class="theme-info">
-                           <h1>{{ @$data['item']->user->full_name}}</h1>
-                           <h3>@ {{ @$data['item']->user->username}}</h3>
+                           <h1 style="margin-bottom: 0px; margin-top: 15px;">{{ @$data['item']->user->full_name}}</h1>
+                           <h3><span>@</span>{{ @$data['item']->user->username}}</h3>
                            </a>
                         </div>
                      </div>
@@ -541,7 +562,7 @@ $comment_content='';
                               <img height="auto" width="40" src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{ @$level->id-1}} {{@$badge->id == 1? 'Year' :'Years' }} of membarship on {{ @GeneralSetting()->system_name }} " alt="">
                            </div>
                         </div>
-                        <div class="theme-info">
+                        <div class="theme-info text3randuri">
                           
                            <h6> {!! @$data['item']->user->profile->about !!} </h6>
                         </div>
@@ -656,21 +677,6 @@ $comment_content='';
 @push('js')
 <script src="{{ asset('public/frontend/js/') }}/item_preview.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/dm_price_cal.js"></script>
-<!-- <script>
-// aici scriu cod JS
-console.log('MERGE');
-import axios;
-const criptoUrl = `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`;
-// const ronValue = axios.get(url)
-//                     .then(response => (console.log(response)))
-//                     .catch(function (error) {
-//                         //handle error here
-//                         console.log(error);
-//                     }); 
-axios.get(criptoUrl).then((response) => {
-                     console.log(response.data);
-                  });
-</script> -->
 <script>
     $(document).ready(function () {
         const pretInRon = {{ @$data['item']->Reg_total}} ;
@@ -679,7 +685,9 @@ axios.get(criptoUrl).then((response) => {
             dataType: 'json',
             url: `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`,
             success: function (data) {
-                  $("#pretInEth").attr("value", pretInRon/data.RON);
+               var price = pretInRon/data.RON;
+               var myNumberWithTwoDecimalPlaces=parseFloat(price).toFixed(4);
+                  $("#pretInEth").attr("value", myNumberWithTwoDecimalPlaces);
             },
             error: function (data) {
                 console.log('Error:', data);

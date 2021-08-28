@@ -169,6 +169,11 @@
                     {{-- @php
                         $module_link=  App\AssignModulePermission::where('module_id',7)->first();
                     @endphp --}}
+                    @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+                    <li>
+                        <a href="{{ route('admin.nftsale_list') }}">NFT-uri la Vanzare</a>
+                    </li>
+                    @endif
                     @if(Auth::user()->role_id == 1 || in_array(7, $permitted_modules))
                     <li>
                         <a href="{{ route('admin.content_pending') }}">NFT-uri in Asteptare</a>

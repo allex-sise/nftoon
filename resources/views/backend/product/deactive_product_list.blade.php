@@ -4,10 +4,10 @@
 <section class="sms-breadcrumb mb-40 white-box">
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <h1>@lang('lang.deactive') @lang('lang.Product') @lang('lang.list')</h1>
+            <h1>NFT-uri Dezactivate</h1>
             <div class="bc-pages">
                 <a href="{{url('admin/dashboard')}}">@lang('lang.dashboard')</a>
-                <a href="#" class="active">@lang('lang.deactive') @lang('lang.Product') @lang('lang.list')</a>
+                <a href="#" class="active">NFT-uri Dezactivate</a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-4 no-gutters">
                         <div class="main-title lm_mb_35 sm_mb_20">
-                            <h3 class="mb-0">@lang('lang.deactive') @lang('lang.Product') @lang('lang.list') </h3>
+                            <h3 class="mb-0">NFT-uri Dezactivate </h3>
                         </div>
                     </div>
                 </div>
@@ -31,11 +31,11 @@
                                     <th>@lang('lang.id')</th>
                                     <th>@lang('lang.title')</th>
                                     <th>@lang('lang.category')</th>
-                                    <th>@lang('lang.demo') @lang('lang.url')</th>
                                     <th>@lang('lang.image')</th>
                                     <th>@lang('lang.price')</th>
                                     <th>@lang('lang.author')</th>
-                                    <th>@lang('lang.sell')</th>
+                                    <th>Detinator</th>
+                                    <th>Nr. de vanzari</th>
                                     <th>@lang('lang.status')</th>
                                     <th>@lang('lang.action')</th>
                                 </tr>
@@ -45,12 +45,11 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td valign="top"><a target="_blank" href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">{{Str::limit(@$item->title,20)}}</a></td>
-                                    <td valign="top">{{@$item->category->title}} / {{@$item->subCategory->title}}</td>
-                                    <td valign="top"><a href="{{@$item->demo_url}}" target="_blank" class="primary-btn small fix-gr-bg">Click here</a></td>
+                                    <td valign="top">{{@$item->category->title}}</td>
                                     <td valign="top"><img src="{{asset(@$item->icon)}}" class="content_list_wh_40"></td>
-                                    <td valign="top">{{@GeneralSetting()->currency_symbol}}{{@$item->Reg_total}}</td>
-                                    <td aign="top"><a target="_blank" href="{{ route('user.profile',@$item->user->username)}}">{{@$item->user->username }}</a></td>
-                                    
+                                    <td valign="top">{{@$item->Reg_total}} {{@GeneralSetting()->currency_symbol}}</td>
+                                    <td valign="top"><a target="_blank" href="{{ route('user.profile',@$item->og->username)}}">{{@$item->og->username }}</a></td>
+                                    <td valign="top"><a target="_blank" href="{{ route('user.profile',@$item->user->username)}}">{{@$item->user->username }}</a></td>
                                     <td>{{ @$item->sell }}</td>
                                     <td valign="top">
                                                 @if (@$item->status == 1)

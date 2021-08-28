@@ -48,7 +48,7 @@ class DropsController extends Controller
         }catch (\Exception $e) {
            $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');
-            return redirect()->back(); 
+            return redirect()->back()->withInput(); 
         }
     } 
 
@@ -93,7 +93,7 @@ class DropsController extends Controller
         }catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
 
@@ -106,7 +106,7 @@ class DropsController extends Controller
         }catch (\Exception $e) {
            $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');
-            return redirect()->back(); 
+            return redirect()->back()->withInput(); 
         }
     }
 
@@ -142,10 +142,10 @@ class DropsController extends Controller
         
         if ($result) {
             Toastr::success('NFT adaugat cu success !','Success');
-            return redirect()->route('admin.adDrop');
-        } else {
-            Toastr::error('A aparut o eroare! Incearca din nou! ','Success');
             return redirect()->back();
+        } else {
+            Toastr::error('A aparut o eroare! Incearca din nou! ','Failed');
+            return redirect()->back()->withInput();
         }
 
     }
@@ -182,13 +182,33 @@ class DropsController extends Controller
                 return redirect()->route('admin.adDrop');
             } else {
                 Toastr::error('A aparut o eroare! Incearca din nou! ','Success');
-                return redirect()->back();
+                return redirect()->back()->withInput();
             }
         }catch (\Exception $e) {
            $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');
             return redirect()->back(); 
         }
+    }
+    public function deleteDropP(Request $request, $id)
+    {
+        // $tables = TableList::getTableList('category_id', $id);
+        // $tables= str_replace('Infix category question,','',$tables);
+        // dd($tables);
+        try {
+      //toDo, nu merge Call to a member function delete() on null
+                $delete_query = Drops::find($id);
+                $delete_query->delete();
+
+                    Toastr::success('Succsesfully Deleted!','Success');
+                return redirect()->back();
+        
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+        
     }
 
    public function deleteDrop(Request $request, $id)

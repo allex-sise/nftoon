@@ -2269,9 +2269,9 @@ span.badge_icon {
     position: absolute;
     z-index: -2;
     /* background-image: url(../img/banner/banner-img-1.png); */
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     z-index: 3;
 }
 

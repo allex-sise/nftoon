@@ -162,6 +162,7 @@ Route::group(['prefix' => 'paypal'],function(){
       Route::get('item/{title}/{id}', 'ItemController@singleProduct')->name('singleProduct');
       Route::get('drop/{dropname?}', 'DropController@singleDrop')->name('singleDrop');
       Route::get('drops/', 'DropController@dropsAll')->name('dropsAll');
+      Route::get('creatori/', 'DropController@creatori')->name('creatori');
       Route::get('categoryAll/', 'DropController@categoryAll')->name('categoryAll');
       Route::get('drop/', 'DropController@dropWiseItem');
 

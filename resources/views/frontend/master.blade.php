@@ -59,13 +59,8 @@
 @endif
     <!-- CSS here -->
     {{-- {{dd($language_from)}} --}}
-    @if(checkRTL($language_from) =='rtl')
-        <link rel="stylesheet" href="{{ asset('public/frontend/rtl/') }}/bootstrap.rtl.min.css">
-    @else
-        <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/bootstrap.min.css">
-    @endif
+   
     
-    <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/owl.carousel.min.css">
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/magnific-popup.css">
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/themify-icons.css">
@@ -109,6 +104,19 @@
          background: {{@$banner_coller->color3}} !important;
      } 
      </style>
+     <link id="bootstrap" href="{{ asset('public/frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link id="bootstrap-grid" href="{{ asset('public/frontend/assets/css/bootstrap-grid.min.css') }}" rel="stylesheet" type="text/css" />
+    <link id="bootstrap-reboot" href="{{ asset('public/frontend/assets/css/bootstrap-reboot.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/animate.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/owl.theme.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/owl.transitions.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/jquery.countdown.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <!-- color scheme -->
+    <link id="colors" href="{{ asset('public/frontend/assets/css/colors/scheme-03.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/coloring.css') }}" rel="stylesheet" type="text/css" />
      <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{googleAnalyticsData()->ga_site_tag_id}}"></script>
  
@@ -122,13 +130,13 @@
 </head>
 
 
-<body>
+<body id="body" class="dark-scheme">
 <input type="text" hidden  class="url" value="{{url('/') }}">
 <input type="text" hidden  class="system_url" value="{{url('/') }}">
 <input type="text" hidden  class="currencyIn" value="{{ @GeneralSetting()->currency_symbol }}">
 
    
-   @include('frontend.partials.header')
+@include('frontend.partials.header')
     <!-- header-area-end -->
 
     <!-- banner-area start -->
@@ -242,7 +250,31 @@
      <script src="{{asset('public/frontend/frontend.js')}}"></script>
      <script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
     {!! Toastr::message() !!}
-
+    
+    <script src="{{asset('public/frontend/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.isotope.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/easing.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/owl.carousel.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/validation.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/enquire.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.plugin.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.countTo.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.countdown.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.lazy.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/jquery.lazy.plugins.min.js')}}"></script>
+    <script src="{{asset('public/frontend/assets/js/designesia.js')}}"></script>
+    <script>
+$('#icon').click(function(){
+    $('#body').toggleClass('dark-scheme');
+    $('#body').toggleClass('light-scheme');
+    $('#iconita').toggleClass('fa fa-sun-o');
+    $('#iconita').toggleClass('fa fa-moon-o');
+    
+});
+    </script>
     @stack('js')
   
 

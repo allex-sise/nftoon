@@ -13,16 +13,6 @@ $carttotalstrip = floatval($b);
 @endphp
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment.css">
 <style>
-.banner-area4 .banner-area-inner .banner-info h2 {
-    font-size: 36px;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 700;
-    color: #fff;
-    line-height: 48px;
-    margin-bottom: 0;
-    text-align: left;
-    margin-top: 340px;
-}
 .btnspecial{
     background-image: none;
     background-color: #000!important;
@@ -32,20 +22,27 @@ $carttotalstrip = floatval($b);
 }
 </style>
    <!-- banner-area start -->
-   <div class="banner-area4">
-        <div class="banner-area-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1 col-12">
-                        <div class="banner-info">
-                            <h2>Detalii @lang('lang.payment')</h2>
+
+ <!-- content begin -->
+ <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-12 text-center">
+									<h1>Detalii @lang('lang.payment')</h1>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- banner-area end -->
+            </section>
+            <!-- section close -->       
+
     <!-- checkout_area start -->
     <div class="payment_area section-padding">
         <div class="container">
@@ -53,7 +50,7 @@ $carttotalstrip = floatval($b);
                 <div class="col-xl-10 offset-xl-1">
                     <div class="row">
                         <div class="col-xl-9">
-                            <div class="biling_address gray-bg">
+                            <div class="biling_address">
                                 <div class="biling-header d-flex justify-content-between align-items-center">
                                     <h4>@lang('lang.billing_details')</h4>
                                    <a href="{{ route('customer.cheackout') }}">@lang('lang.edit')</a>
@@ -308,6 +305,7 @@ $carttotalstrip = floatval($b);
         </div>
     </div>
     <!-- checkout_area end -->
+</div>
 @endsection
 @push('js')
     <script src="{{ asset('public/frontend/js/') }}/checkout.js"></script>

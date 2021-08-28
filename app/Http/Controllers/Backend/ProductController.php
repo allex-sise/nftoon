@@ -212,171 +212,7 @@ class ProductController extends Controller
 
 
      /* ********************* START SUB CATEGORY *************************  */
-     public function subCategory()
-     {
-        try{
-            $data['subCategory'] = ItemSubCategory::all();
-            $data['category'] = ItemCategory::all();
-            return view('backend.product.subCategory', compact('data'));
-        }catch (\Exception $e) {
-           $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back();
-        }
-     }
-
-     function sameCategoryWithTitleExists($category_id, $title){
-        $is_exist = ItemSubCategory::where('item_category_id', $category_id)->where('title', $title)->first();
-        if($is_exist){
-            return TRUE;
-        }else{
-            return FALSE;
-        }
-     }
-
-     function UpdateCategoryWithTitleExists($category_id, $title, $id){
-        $is_exist = ItemSubCategory::where('item_category_id', $category_id)
-        ->where('title', $title)->where('id', '!=', $id)->first();
-        if($is_exist){
-            return TRUE;
-        }else{
-            return FALSE;
-        }
-     }
- 
-     public function subCategoryStore(Request $request)
-     {
-        $validator=Validator::make($request->all(), [
-            'title' => "required|max:200",
-            'category_id' => "required",
-            'active_status' => "required",
-        ])->validate(); 
-
-        if ($this->sameCategoryWithTitleExists($request->category_id, $request->title)) {
-            Toastr::error('The title has already been taken !','Failed');
-            return redirect()->back()->withInput(); 
-        }
-
-
-        try{
-            $store = new ItemSubCategory();
-            $store->title = $request->title;
-            $store->slug = strtolower(str_replace(' ', '_',$request->title));
-            $store->description = $request->description;
-            $store->item_category_id = $request->category_id;
-            $store->active_status = $request->active_status;
-            $store->show_menu = isset($request->show_menu) ? 1 : 0;
-            $result = $store->save();
     
-            if ($result) {
-               Toastr::success('Succsesfully Sub Category Added !','Success');
-                return redirect()->back();
-            } else {
-               Toastr::error('Something went wrong ! try again ','Success');
-                return redirect()->back();
-            }
-        }catch (\Exception $e) {
-           $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back(); 
-        }
-     }
-     function editSubCategory($id){
-        
-        try{
-            $data['subCategory'] = ItemSubCategory::all();
-            $data['category'] = ItemCategory::all();
-            $data['edit'] = ItemSubCategory::find($id);
-            return view('backend.product.subCategory', compact('data'));  
-        }catch (\Exception $e) {
-           $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back(); 
-        }
-     }
-
-     public function updateSubCategory(Request $request)
-     {
-         $request->validate([
-            'title' => 'required|max:200',
-             'category_id' => "required",
-             'active_status' => "required",
-         ]);
-        
-         if ($this->UpdateCategoryWithTitleExists($request->category_id, $request->title, $request->id)) {
-            Toastr::error('The title has already been taken !','Failed');
-            return redirect()->back()->withInput(); 
-        }
-
-
-         try{
-            $store = ItemSubCategory::find($request->id);
-            $store->title = $request->title;
-            $store->slug = strtolower(str_replace(' ', '_',$request->title));
-            $store->description = $request->description;
-            $store->item_category_id = $request->category_id;
-            $store->active_status = $request->active_status;
-            $store->show_menu = isset($request->show_menu) ? 1 : 0;
-            $result = $store->save();
-    
-            if ($result) {
-                Toastr::success('Succsesfully Sub Category updated !','Success');
-                return redirect()->route('admin.subCategory');
-            } else {
-                Toastr::error('Something went wrong ! try again ','Failed');
-                return redirect()->back();
-            }
-        }catch (\Exception $e) {
-           $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back(); 
-        }
- 
-     }
-    //  function deleteSubCategory($id){
-        
-    //     try{
-    //         $data=ItemSubCategory::find($id);
-    //         $data->delete();
-    //         Toastr::success('Succsesfully Category deleted !','Success');
-    //         return redirect()->route('admin.subCategory');
-    //     }catch (\Exception $e) {
-    //        $msg=str_replace("'", " ", $e->getMessage()) ;
-    //         Toastr::error($msg, 'Failed');
-    //         return redirect()->back(); 
-    //     }
-    // }
-
-   public function deleteSubCategory(Request $request, $id)
-    {
-        try {
-            $tables = TableList::getTableList('sub_category_id', $id);
-            try {
-                if ($tables == null) {
-
-                    $delete_query=ItemSubCategory::find($id);
-                    $delete_query->delete();
-
-                    Toastr::success('Operation Successfull', 'Success');
-                    return redirect()->back();
-                } else {
-                    $msg = 'This data already used in tables, Please remove those data first';
-                    Toastr::error($msg, 'Failed');
-                    return redirect()->back();
-                }
-            } catch (\Illuminate\Database\QueryException $e) {
-
-                $msg = 'This data already used in tables, Please remove those data first';
-                Toastr::error($msg, 'Failed');
-                return redirect()->back();
-            }
-        } catch (\Exception $e) {
-             $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back();
-        }
-    }
-
 
      /* *********************  END SUB CATEGORY  *************************  */
 
@@ -386,22 +222,28 @@ class ProductController extends Controller
 
         try {
             // $data['item']=Item::where(['active_status'=>1,'status'=> 1,'free'=>0])->orderBy('id','desc')->get();
-            $data['item']=DB::table('items')
-            ->leftjoin('item_categories','item_categories.id','=','items.category_id')
-            ->leftjoin('users','users.id','=','items.user_id')
-            ->leftjoin('item_sub_categories','item_sub_categories.id','=','items.sub_category_id')
-            ->where('items.active_status',1)
-            ->where('items.status',1)
-            ->where('items.free',0)
-            ->select('items.*','item_categories.title as category_title','item_categories.slug as category_slug',
-            'users.username','item_sub_categories.title as sub_category_title','item_sub_categories.slug as sub_category_slug')
-            // ->groupBy('items.id')
-            ->orderBy('items.id','desc')
-            ->get();
+            $data['item']=Item::orderBy('id','desc')->get();
 
             // return $data;
             $data['settings'] = DB::table('infix_general_settings')->first();
             return view('backend.product.content_list', compact('data'));          
+          } catch (\Exception $e) {
+               $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+          }
+         
+     }
+
+     function nftsale_list(){
+
+        try {
+            // $data['item']=Item::where(['active_status'=>1,'status'=> 1,'free'=>0])->orderBy('id','desc')->get();
+            $data['item']=Item::where('active_status', 1)->where('status', 1)->orderBy('id','desc')->get();
+
+            // return $data;
+            $data['settings'] = DB::table('infix_general_settings')->first();
+            return view('backend.product.nftsale_list', compact('data'));          
           } catch (\Exception $e) {
                $msg=str_replace("'", " ", $e->getMessage()) ;
                 Toastr::error($msg, 'Failed');
@@ -450,7 +292,7 @@ class ProductController extends Controller
      function deactiveProduct(){
 
         try {
-            $data['item']=Item::where(['active_status'=>1,'status'=> 0])->orderBy('id','desc')->get();
+            $data['item']=Item::where(['active_status'=>0])->orderBy('id','desc')->get();
             return view('backend.product.deactive_product_list', compact('data'));          
           } catch (\Exception $e) {
                $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -730,7 +572,7 @@ public function itemUpdate(Request $r){
      function content_pending(){
 
         try {
-            $data['item']=Item::where('active_status',1)->where('status','!=', 1)->where('free',0)->orderBy('id','desc')->get();
+            $data['item']=Item::where('status','!=', 1)->orderBy('id','desc')->get();
             return view('backend.product.pending_product', compact('data'));          
           } catch (\Exception $e) {
                $msg=str_replace("'", " ", $e->getMessage()) ;

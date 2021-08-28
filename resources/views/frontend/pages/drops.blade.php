@@ -36,6 +36,18 @@
 .mg140top{
     margin-top: 140px!important;
 }
+.de_countdown {
+    position: absolute;
+    left: 40px;
+    margin-top: 10px;
+    padding: 0 0 4px 10px;
+    -webkit-border-radius: 30px;
+    z-index: 100;
+    width: 150px;
+}
+.banner-area2::before{
+    z-index: 10;
+}
     </style>
   <!-- banner-area start -->
     <div class="banner-area2" >
@@ -65,66 +77,33 @@ Minted from drops are sold directly by the creator. You can buy them here before
 
         <div class="row">
             <div class="col-xl-12">
-                <div class="features-wrap latest-goods-area" id="">
-                @foreach ($data['drop'] as $drop)
-                <div class="col-xl-10 col-md-10 grid-item cat1 cat1 float-left pull-left mg30 mg20px">
-                    <div class="single-goods">
-                        <div class="col-xl-9 float-left">
-                        <h3><a href="{{ route('singleDrop',@$drop->slug) }}">{{ $drop->name }}</a></h3> 
-
-                            <div class="goods-thumb">
+               @foreach ($data['drop'] as $drop)
+                        <div class="col-lg-5 float-left" style="margin-bottom: 45px; margin-right: 50px;">
+                            <div class="nft_pic" style="background-size: cover;">                            
                                 <a href="{{ route('singleDrop',@$drop->slug) }}">
-                                    <img height="540" src="{{asset(@$drop->dropicon)}}" alt="">
+                                    <span class="nft_pic_info">
+                                        <span class="nft_pic_title">{{ $drop->name }}</span>
+                                        <span class="nft_pic_by">{{ $drop->description }}</span>
+                                        <span class="nft_pic_title" style="font-size: 16px!important;">Drop-ul expira in:</span>
+                                        @php
+                                            $date = $drop->expdate;
+                                            $day_year = date('Y', strtotime($date));
+                                            $day_name = date('j', strtotime($date));
+                                            $day_month = date('n', strtotime($date));
+                                            $day_hour = date('H', strtotime($date));
+                                        @endphp
+                                        <div class="de_countdown" data-year="{{$day_year}}" data-month="{{$day_month}}" data-day="{{$day_name}}" data-hour="{{$day_hour}}"></div>
+                                    </span>
                                 </a>
+                                <div class="nft_pic_wrap" style="background-size: cover;">
+                                    <img style="min-height: 550px; max-height: 550px;" src="{{asset(@$drop->dropicon)}}" class="lazy img-fluid" alt="">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 float-left">
-                        <div class="good-info mg140top">
-                            <div class="good-title good-titledrop">
-                                <p> {{ $drop->description }}</p>
-                            </div>
-                        </div>
-                        <div class="good-info good-infodrop" style="padding-top:0px;">
-                            <div class="good-title good-titledrop">
-                                <h3 class="h3clss">Drop-ul expira pe:</h3>
-                                <div data-countdown="{{ $drop->expdate }}" style="font-size: 25px;"></div>
-                             
-                                <!-- <div>Registration closes in <span id="time">05:00</span> minutes!</div> -->
-                                   
-                                 
-
-                            </div>
-                        </div>
-                        <div class="good-info good-infodrop" style="padding-top:0px;">
-                            <div class="good-title good-titledrop">
-                                <a class="black-btn specialbuton" href="{{ route('singleDrop',@$drop->slug) }}"> <span class="name"> Vezi Colectia</span> <span class="prise"></span> </a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                @endforeach
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="view-features text-center mt-80">
-                   <a href="{{ route('feature_item')}}"  class="black-btn">Vezi toate Drop-urile</a>
-                </div>
+                    @endforeach
             </div>
         </div>
     </div>
 </div>
     <!-- latest-goods-end -->
 @endsection
-@push('js')
-<script src="{{ asset('public/frontend/js/') }}/filter.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-$('[data-countdown]').each(function() {
-  var $this = $(this), finalDate = $(this).data('countdown');
-  $this.countdown(finalDate, function(event) {
-    $this.html(event.strftime('%D zile %H:%M:%S'));
-  });
-});
-</script>
-@endpush

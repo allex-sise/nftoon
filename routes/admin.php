@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::post('add-drop-store-update', 'DropsController@updateDrop')->name('updateDrop')->middleware('userRolePermission:5');
         Route::post('add-drop-nftstore', 'DropsController@storeNFTdrop')->name('storeNFTdrop')->middleware('userRolePermission:5');
         Route::get('add-drop-delete/{id}', 'DropsController@deleteDrop')->name('deleteDrop')->middleware('userRolePermission:5');
+        Route::get('add-drop-deleteP/{id}', 'DropsController@deleteDropP')->name('deleteDropP')->middleware('userRolePermission:5');
         /* ********************* END DROPS ROUTES ********************* */
 
         /* ******************** START CATEGORY ROUTES ********************* */
@@ -161,7 +162,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         
         Route::get('item-delete/{id}', 'ProductController@itemDelete')->name('itemDelete')->middleware('userRolePermission:5');
         Route::get('deactive-products', 'ProductController@deactiveProduct')->name('deactive_product')->middleware('userRolePermission:5');
-
+        Route::get('nftsale_list', 'ProductController@nftsale_list')->name('nftsale_list')->middleware('userRolePermission:5');
         // free product start
         Route::get('free-product', 'ProductSettingController@free_product')->name('free_product')->middleware('userRolePermission:5');
         Route::post('free-product-active/{id}', 'ProductSettingController@free_product_active')->name('free_product_active')->middleware('userRolePermission:5');

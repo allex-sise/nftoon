@@ -32,7 +32,7 @@ if (typeof(PhpDebugBar) == 'undefined') {
                 self.hide();
             });
 
-            this.$loadmorebtn = $('<a>Load more</a>')
+            this.$loadmorebtn = $('<a>Arata mai multe</a>')
                 .appendTo(this.$actions)
                 .on('click', function() {
                     self.find(self.last_find_request, self.last_find_request.offset + self.get('items_per_page'), self.handleFind.bind(self));
@@ -45,13 +45,13 @@ if (typeof(PhpDebugBar) == 'undefined') {
                     self.find({uri: window.location.pathname}, 0, self.handleFind.bind(self));
                 });
 
-            this.$showallbtn = $('<a>Show all</a>')
+            this.$showallbtn = $('<a>Arata Tot</a>')
                 .appendTo(this.$actions)
                 .on('click', function() {
                     self.refresh();
                 });
 
-            this.$clearbtn = $('<a>Delete all</a>')
+            this.$clearbtn = $('<a>Sterge Tot</a>')
                 .appendTo(this.$actions)
                 .on('click', function() {
                     self.clear(function() {

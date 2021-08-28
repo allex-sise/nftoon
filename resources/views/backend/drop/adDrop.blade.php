@@ -265,7 +265,7 @@
 
                                                 <div class="mt-40 d-flex justify-content-between">
                                                     <button type="button" class="primary-btn tr-bg" data-dismiss="modal">@lang('lang.cancel')</button>
-                                                      <a href="{{ route('admin.deleteDrop',@$item->id)}}" class="text-light">
+                                                      <a href="{{ route('admin.deleteDropP',@$item->id)}}" class="text-light">
                                                     <button class="primary-btn fix-gr-bg" type="submit">@lang('lang.delete')</button>
                                                      </a>
                                                 </div>
@@ -296,13 +296,35 @@
     $(function () {
         $('#date').datetimepicker({
             keepOpen: true,
+            minDate: 0,
             format: 'DD/MM/YYYY HH:mm',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
         });
     })
     $(function () {
         $('#startdate').datetimepicker({
             keepOpen: true,
+            minDate: 0,
             format: 'DD/MM/YYYY HH:mm',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
         });
     })
 </script>

@@ -10,6 +10,7 @@ use App\Review;
 use App\Comment;
 use App\ItemFee;
 use App\Profile;
+use App\User;
 use App\BuyerFee;
 use App\ItemView;
 use DB;
@@ -27,16 +28,13 @@ class DropController extends Controller
     function singleDrop($drop){
         // return $subcategory;
         try{
-            $data['category'] = Drops::where('slug', $drop)->first();
+            $data['drop'] = Drops::where('slug', $drop)->first();
             //$data['key']=Session::get('key');
     
-                $item = Item::where('drop_id', $data['category']->id)->where('active_status', 1)->where('status', 1);
+                $item = Item::where('drop_id', $data['drop']->id);
                 $data['item_count'] = $item;
                 $data['item'] = $item->paginate(5);
             
-             $data= $this->sellWise($data);
-                $data= $this->starWise($data);
-                $data= $this->dateWise($data);
             return view('frontend.pages.singleDrop', compact('data'));
         }catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -44,58 +42,6 @@ class DropController extends Controller
             return redirect()->back();
         }
     }
-    function sellWise($data){
-        if (@$data['sub_cat']) {
-            $data['no'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('sell',0)->get()->count(); 
-            $data['low'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('sell','>=',1)->where('sell','<=',300)->get()->count(); 
-            $data['medium'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('sell','>=',300)->where('sell','<=',600)->get()->count(); 
-            $data['high'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('sell','>=',600)->where('sell','<=',1000)->get()->count(); 
-            $data['top'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('sell','>=',1000)->get()->count(); 
-        }
-        else {
-            $data['no'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('sell',0)->get()->count(); 
-            $data['low'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('sell','>=',1)->where('sell','<=',300)->get()->count(); 
-            $data['medium'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('sell','>',300)->where('sell','<=',600)->get()->count(); 
-            $data['high'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('sell','>',600)->where('sell','<=',1000)->get()->count(); 
-            $data['top'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('sell','>',1000)->get()->count(); 
-        }
-        return $data;
-    }
-    function starWise($data){
-        if (@$data['sub_cat']) {
-            $data['oneStar'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',1)->where('rate','<',2)->get()->count(); 
-            $data['TwoStar'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',2)->where('rate','<',3)->get()->count(); 
-            $data['ThreStar'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',3)->where('rate','<',4)->get()->count(); 
-            $data['FourStar'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',4)->where('rate','<',5)->get()->count(); 
-            $data['FivStar'] = DB::table('items')->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',5)->get()->count(); 
-        }
-        else {
-            $data['oneStar'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',1)->where('rate','<',2)->get()->count();
-            $data['TwoStar'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',2)->where('rate','<',3)->get()->count(); 
-            $data['ThreStar'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',3)->where('rate','<',4)->get()->count(); 
-            $data['FourStar'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',4)->where('rate','<',5)->get()->count();
-            $data['FivStar'] = DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->where('rate','>=',5)->get()->count();  
-        }
-        return $data;
-    }
-    function dateWise($data){
-         if (@$data['sub_cat']) {
-            $data['Any_Date']=DB::table('items')->where('category_id',@$data['category']->id)->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->count();
-            $data['LastYear']=DB::table('items')->where('category_id',@$data['category']->id)->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->whereDate('created_at', '<=', date('Y-m-d',strtotime('-1 years')))->count();
-            $data['Last_month']=DB::table('items')->where('category_id',@$data['category']->id)->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->whereBetween('created_at',[date('Y-m-d',strtotime('-1 months')),date('Y-m-d')])->count();
-            $data['Last_week']=DB::table('items')->where('category_id',@$data['category']->id)->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->whereBetween('created_at',[date('Y-m-d',strtotime('-1 weeks')),date('Y-m-d')])->count();
-            $data['Last_day']=DB::table('items')->where('category_id',@$data['category']->id)->where('sub_category_id',@$data['sub_cat']->id)->where('active_status', 1)->where('status', 1)->whereBetween('created_at',[date('Y-m-d',strtotime('-1 days')),date('Y-m-d')])->count();
-        }else {
-            $data['Any_Date']=DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->count();
-            $data['LastYear']=DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->whereDate('created_at', '<=', date('Y-m-d',strtotime('-1 years')))->count();
-            $data['Last_month']=DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->whereBetween('created_at',[date('Y-m-d',strtotime('-1 months')),date('Y-m-d')])->count();
-            $data['Last_week']=DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->whereBetween('created_at',[date('Y-m-d',strtotime('-1 weeks')),date('Y-m-d')])->count();
-            $data['Last_day']=DB::table('items')->where('category_id',@$data['category']->id)->where('active_status', 1)->where('status', 1)->whereBetween('created_at',[date('Y-m-d',strtotime('-1 days')),date('Y-m-d')])->count();
-        
-        }
-        return $data;
-    }
-    
 
     public function dropWiseItem(Request $request)
     {
@@ -340,5 +286,28 @@ class DropController extends Controller
         $data = $search->paginate(8);
         return response()->json($data, 200);
     }
+
+    function creatori(){
+      
+        try{
+            if (Schema::hasTable('users')) {
+                $testInstalled = DB::table('users')->get();
+                
+                    $data['users'] =  User::whereNotNull('email_verified_at')->where('role_id',4)->get();
+               
+
+                        
+                    return view('frontend.pages.creatori', compact('data'));
+                }
+    
+            
+        }catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+
+    }
+
 
 }

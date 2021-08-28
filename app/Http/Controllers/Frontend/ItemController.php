@@ -211,6 +211,7 @@ class ItemController extends Controller
     function AddBuy(Request $request){
         // return $request;
         try { 
+            Cart::destroy();
             $totalVal= floatval(str_replace("$","",$request->list_item_price));
                 // $item=Item::find($request->_item_id);
                 $item=Item::where('id',$request->_item_id)->where('active_status',1)->where('status',1)->first();
@@ -261,7 +262,7 @@ class ItemController extends Controller
                     ['support_charge' => $support_Fee,'license_type'=>$license_type,'support_time'=>$support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'incasarecreator'=>$incasarecreator,  'comisionminted'=>$comisionminted,'item_id'=>$request->_item_id,
                     'description'=>$item->description,'user_id'=>$item->user_id,'username'=>$item->user->username,'icon'=>$item->icon,'image'=>$item->thumbnail,'Extd_percent'=>$request->_item_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
                
-                    return redirect()->route('Cart');
+                    return redirect()->route('customer.payment');
             } catch (\Exception $e) {
                 
                 $msg=str_replace("'", " ", $e->getMessage()) ;

@@ -235,7 +235,7 @@ body {
     border-radius: 5px;
 }
 .single_deposite_item .deposite_header {
-    background: #c766e8;
+    background: var(--secondary-color);
     color: #fff;
     font-size: 20px;
     font-weight: 600;
@@ -276,13 +276,13 @@ body {
     border-radius:  0 0 5px 5px;
 }
 .single_payout_item:hover .deposite_header{
-    background: #b737e0;
+    background: var(--secondary-color);
 }
 .single_payout_item.active .deposite_header{
-    background: #b737e0;
+    background: var(--secondary-color);
 }
 .payout_tab_wrap .active .single_payout_item .deposite_header{
-    background: #b737e0;
+    background: var(--secondary-color);
 }
 .payout_tab_wrap .nav-link{
     border: 0 !important;

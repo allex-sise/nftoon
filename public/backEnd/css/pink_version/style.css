@@ -4254,7 +4254,7 @@ body.client.color {
 }
 
 /*---------------------------------------------------- */
-/* line 1, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 1,  */
 .client {
   /* Start Home Banner Area css
 	============================================================================================ */
@@ -4302,7 +4302,7 @@ body.client.color {
 	============================================================================================ */
 }
 
-/* line 4, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 4,  */
 .client .home-banner-area {
   min-height: 720px;
   display: flex;
@@ -4313,7 +4313,7 @@ body.client.color {
   z-index: 1;
 }
 
-/* line 12, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 12,  */
 .client .home-banner-area:before {
   content: "";
   background: #ff1e6d;
@@ -4331,13 +4331,13 @@ body.client.color {
 }
 
 @media (max-width: 991px) {
-  /* line 4, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 4,  */
   .client .home-banner-area {
     margin-top: 120px;
   }
 }
 
-/* line 28, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 28,  */
 .client .banner-area {
   min-height: 450px;
   display: flex;
@@ -4347,7 +4347,7 @@ body.client.color {
   z-index: 1;
 }
 
-/* line 35, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 35,  */
 .client .banner-area:before {
   content: "";
   background: #ff1e6d;
@@ -4365,13 +4365,13 @@ body.client.color {
 }
 
 @media (max-width: 991px) {
-  /* line 28, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 28,  */
   .client .banner-area {
     margin-top: 120px;
   }
 }
 
-/* line 52, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 52,  */
 .client .banner-area .banner-inner .banner-content h2 {
   font-size: 60px;
   max-width: 500px;
@@ -4380,25 +4380,25 @@ body.client.color {
 }
 
 @media (max-width: 767px) {
-  /* line 52, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 52,  */
   .client .banner-area .banner-inner .banner-content h2 {
     font-size: 40px;
   }
 }
 
-/* line 65, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 65,  */
 .client .banner-inner {
   width: 100%;
   display: flex;
 }
 
-/* line 68, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 68,  */
 .client .banner-inner .container {
   vertical-align: middle;
   align-self: center;
 }
 
-/* line 72, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 72,  */
 .client .banner-inner .banner-content {
   width: 100%;
   color: #ffffff;
@@ -4407,7 +4407,7 @@ body.client.color {
   text-align: center;
 }
 
-/* line 78, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 78,  */
 .client .banner-inner .banner-content h5 {
   color: #ffffff;
   display: inline-block;
@@ -4419,7 +4419,7 @@ body.client.color {
   letter-spacing: 1.5px;
 }
 
-/* line 88, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 88,  */
 .client .banner-inner .banner-content h2 {
   color: #ffffff;
   font-size: 100px;
@@ -4428,7 +4428,7 @@ body.client.color {
   margin-bottom: 10px;
 }
 
-/* line 95, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 95,  */
 .client .banner-inner .banner-content p {
   color: #ffffff;
   max-width: 550px;
@@ -4436,24 +4436,24 @@ body.client.color {
   margin: 0px auto 40px;
 }
 
-/* line 108, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 108,  */
 .client .news-area {
   margin-bottom: 60px;
 }
 
-/* line 111, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 111,  */
 .client .news-item {
   position: relative;
   overflow: hidden;
   margin-bottom: 40px;
 }
 
-/* line 115, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 115,  */
 .client .news-item .news-img {
   position: relative;
 }
 
-/* line 117, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 117,  */
 .client .news-item .news-img:before {
   content: "";
   background: #ff1e6d;
@@ -4468,17 +4468,17 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 127, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 127,  */
 .client .news-item .news-img img {
   opacity: .75;
 }
 
-/* line 131, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 131,  */
 .client .news-item .news-img:hover img {
   opacity: .2;
 }
 
-/* line 136, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 136,  */
 .client .news-item .news-text {
   position: absolute;
   left: 10%;
@@ -4486,7 +4486,7 @@ body.client.color {
   width: 90%;
 }
 
-/* line 141, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 141,  */
 .client .news-item .news-text h4 {
   max-height: 72px;
   overflow: hidden;
@@ -4500,7 +4500,7 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 149, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 149,  */
 .client .news-item .news-text h4 a {
   color: #ffffff;
   -webkit-transition: all 0.4s ease 0s;
@@ -4509,12 +4509,12 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 152, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 152,  */
 .client .news-item .news-text h4 a:hover {
   opacity: .8;
 }
 
-/* line 157, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 157,  */
 .client .news-item .news-text .date {
   color: #ffffff;
   font-size: 12px;
@@ -4525,112 +4525,112 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 166, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 166,  */
 .client .news-details-area h1 {
   color: #ffffff;
   font-size: 36px;
 }
 
-/* line 171, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 171,  */
 .client .news-details-area .meta .date {
   font-size: 12px;
   margin-right: 30px;
 }
 
-/* line 174, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 174,  */
 .client .news-details-area .meta .date span {
   color: #ffffff;
 }
 
-/* line 179, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 179,  */
 .client .news-details-area h3 {
   color: #ffffff;
 }
 
-/* line 182, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 182,  */
 .client .news-details-area p {
   margin-bottom: 30px;
 }
 
-/* line 184, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 184,  */
 .client .news-details-area p:last-child {
   margin-bottom: 0px;
 }
 
-/* line 188, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 188,  */
 .client .news-details-area .notice-board {
   max-height: none;
 }
 
 @media (max-width: 991px) {
-  /* line 197, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 197,  */
   .client .notice-board-area {
     margin-top: 50px;
   }
 }
 
-/* line 202, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 202,  */
 .client .notice-board {
   max-height: 340px;
   overflow-y: auto;
 }
 
 @media (max-width: 1200px) and (min-width: 992px) {
-  /* line 202, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 202,  */
   .client .notice-board {
     max-height: 270px;
   }
 }
 
-/* line 209, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 209,  */
 .client .notice-item {
   padding-bottom: 18px;
   margin-top: 18px;
   border-bottom: 2px solid #415094;
 }
 
-/* line 213, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 213,  */
 .client .notice-item:first-child {
   margin-top: 0px;
 }
 
-/* line 216, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 216,  */
 .client .notice-item .date {
   font-size: 12px;
   text-transform: uppercase;
   margin-bottom: 7px;
 }
 
-/* line 221, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 221,  */
 .client .notice-item h4 {
   color: #ffffff;
   font-size: 16px;
   margin-bottom: 0px;
 }
 
-/* line 232, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 232,  */
 .client .academics-area {
   margin-bottom: 60px;
 }
 
-/* line 235, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 235,  */
 .client .academic-item {
   margin-bottom: 40px;
 }
 
-/* line 237, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 237,  */
 .client .academic-item .academic-text {
   margin-top: 25px;
 }
 
-/* line 239, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 239,  */
 .client .academic-item .academic-text h4 {
   max-height: 48px;
   overflow: hidden;
   margin-bottom: 12px;
 }
 
-/* line 243, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 243,  */
 .client .academic-item .academic-text h4 a {
   color: #ffffff;
   -webkit-transition: all 0.4s ease 0s;
@@ -4639,46 +4639,46 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 246, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 246,  */
 .client .academic-item .academic-text h4 a:hover {
   opacity: .6;
 }
 
-/* line 251, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 251,  */
 .client .academic-item .academic-text p {
   max-height: 48px;
   overflow: hidden;
   margin-bottom: 18px;
 }
 
-/* line 263, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 263,  */
 .client .events-area {
   margin-bottom: 60px;
 }
 
-/* line 266, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 266,  */
 .client .events-item {
   margin-bottom: 40px;
 }
 
-/* line 268, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 268,  */
 .client .events-item .card {
   background: transparent;
   border-radius: 0px;
 }
 
-/* line 271, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 271,  */
 .client .events-item .card .card-img-top {
   border-radius: 0px;
 }
 
-/* line 274, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 274,  */
 .client .events-item .card .card-body {
   position: relative;
   background: #ffffff;
 }
 
-/* line 277, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 277,  */
 .client .events-item .card .card-body .date {
   position: absolute;
   top: -30px;
@@ -4697,7 +4697,7 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 292, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 292,  */
 .client .events-item .card .card-title {
   max-height: 72px;
   overflow: hidden;
@@ -4705,13 +4705,13 @@ body.client.color {
   font-size: 16px;
 }
 
-/* line 298, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 298,  */
 .client .events-item .card .card-text {
   font-size: 12px;
   text-transform: uppercase;
 }
 
-/* line 318, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 318,  */
 .client .testimonial-area {
   background: url(../../img/client/testimonial-bg.jpg) no-repeat center center;
   background-size: cover;
@@ -4719,7 +4719,7 @@ body.client.color {
   z-index: 1;
 }
 
-/* line 323, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 323,  */
 .client .testimonial-area:after {
   content: "";
   position: absolute;
@@ -4732,7 +4732,7 @@ body.client.color {
   opacity: .5;
 }
 
-/* line 335, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 335,  */
 .client .testimonial-area .owl-nav {
   position: absolute;
   left: 50%;
@@ -4746,13 +4746,13 @@ body.client.color {
   display: flex;
 }
 
-/* line 342, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 342,  */
 .client .testimonial-area .owl-nav .owl-prev,
 .client .testimonial-area .owl-nav .owl-next {
   color: #ffffff;
 }
 
-/* line 345, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 345,  */
 .client .testimonial-area .owl-nav .owl-prev img,
 .client .testimonial-area .owl-nav .owl-next img {
   -webkit-transition: all 0.4s ease 0s;
@@ -4761,7 +4761,7 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 347, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 347,  */
 .client .testimonial-area .owl-nav .owl-prev img:hover,
 .client .testimonial-area .owl-nav .owl-next img:hover {
   filter: brightness(50%);
@@ -4771,31 +4771,31 @@ body.client.color {
   -webkit-filter: brightness(50%);
 }
 
-/* line 352, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 352,  */
 .client .testimonial-area .owl-nav .owl-prev {
   margin-right: 30px;
 }
 
 @media (max-width: 991px) {
-  /* line 335, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 335,  */
   .client .testimonial-area .owl-nav {
     display: none;
   }
 }
 
-/* line 361, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 361,  */
 .client .single-testimonial {
   position: relative;
   z-index: 9;
   padding-bottom: 85px;
 }
 
-/* line 365, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 365,  */
 .client .single-testimonial .thumb {
   margin-right: 20px;
 }
 
-/* line 368, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 368,  */
 .client .single-testimonial h4 {
   color: #ffffff;
   font-size: 18px;
@@ -4806,18 +4806,18 @@ body.client.color {
   transition: all 0.4s ease 0s;
 }
 
-/* line 373, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 373,  */
 .client .single-testimonial h4:hover {
   color: #415094;
   cursor: pointer;
 }
 
-/* line 378, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 378,  */
 .client .single-testimonial p {
   color: #ffffff;
 }
 
-/* line 381, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 381,  */
 .client .single-testimonial .desc {
   max-width: 810px;
   font-style: italic;
@@ -4826,32 +4826,32 @@ body.client.color {
   color: #fff;
 }
 
-/* line 395, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 395,  */
 .client .fact-area .white-box.single-summery {
   box-shadow: none;
 }
 
-/* line 405, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 405,  */
 .client .department-area h3 {
   color: #ffffff;
   margin-bottom: 10px;
 }
 
-/* line 416, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 416,  */
 .client .info-area .info-thumb {
   overflow: hidden;
   display: inline-block;
 }
 
 @media (max-width: 800px) {
-  /* line 422, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 422,  */
   .client .info-area .info-content {
     text-align: center;
     padding: 80px 30px 80px 0;
   }
 }
 
-/* line 428, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 428,  */
 .client .info-area .info-content {
   position: relative;
   background: rgba(65, 80, 148, 0.3);
@@ -4860,102 +4860,102 @@ body.client.color {
 }
 
 @media (max-width: 991px) {
-  /* line 428, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 428,  */
   .client .info-area .info-content {
     margin-top: 30px;
   }
 }
 
 @media (max-width: 768px) {
-  /* line 428, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 428,  */
   .client .info-area .info-content {
     padding: 30px;
   }
 }
 
-/* line 439, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 439,  */
 .client .info-area .info-content h2 {
   color: #ffffff;
   margin-bottom: 20px;
 }
 
-/* line 443, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 443,  */
 .client .info-area .info-content p {
   margin-bottom: 0;
 }
 
-/* line 448, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 448,  */
 .client .info-area .info-left {
   z-index: 2;
 }
 
 @media (max-width: 800px) {
-  /* line 448, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 448,  */
   .client .info-area .info-left {
     margin-top: 0px;
     margin-bottom: 40px;
   }
 }
 
-/* line 462, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 462,  */
 .client .overview-area .nav-tabs {
   border-bottom: 1px solid rgba(130, 139, 178, 0.3);
 }
 
 @media (max-width: 991px) {
-  /* line 462, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 462,  */
   .client .overview-area .nav-tabs {
     margin-top: 0px;
   }
 }
 
-/* line 467, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 467,  */
 .client .overview-area .nav-tabs .nav-link {
   background: rgba(82, 101, 165, 0.3);
   color: #828bb2;
 }
 
-/* line 470, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 470,  */
 .client .overview-area .nav-tabs .nav-link:hover, .client .overview-area .nav-tabs .nav-link.active {
   background: #ffffff;
   color: #415094;
 }
 
-/* line 478, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 478,  */
 .client .overview-area .tab-content h3 {
   color: #ffffff;
 }
 
-/* line 481, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 481,  */
 .client .overview-area .tab-content p {
   margin-bottom: 30px;
 }
 
-/* line 483, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 483,  */
 .client .overview-area .tab-content p:last-child {
   margin-bottom: 0px;
 }
 
-/* line 496, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 496,  */
 .client .mapBox {
   height: 700px;
 }
 
 @media (max-width: 991px) {
-  /* line 499, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+  /* line 499,  */
   .client .contact_info {
     margin-top: 50px;
   }
 }
 
-/* line 503, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 503,  */
 .client .contact_info .info_item {
   position: relative;
   padding-left: 45px;
   margin-bottom: 20px;
 }
 
-/* line 507, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 507,  */
 .client .contact_info .info_item i {
   position: absolute;
   left: 0;
@@ -4966,7 +4966,7 @@ body.client.color {
   font-weight: 600;
 }
 
-/* line 516, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 516,  */
 .client .contact_info .info_item h6 {
   font-size: 16px;
   color: #ffffff;
@@ -4974,17 +4974,17 @@ body.client.color {
   margin-bottom: 0px;
 }
 
-/* line 521, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 521,  */
 .client .contact_info .info_item h6 a {
   color: #ffffff;
 }
 
-/* line 525, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 525,  */
 .client .contact_info .info_item p {
   margin-bottom: 0px;
 }
 
-/* line 536, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 536,  */
 .client.light .notice-item h4,
 .client.light .academic-item .academic-text h4 a,
 .client.light .info-area .info-content h2,
@@ -5011,17 +5011,17 @@ body.client.color {
   color: #415094;
 }
 
-/* line 550, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 550,  */
 .client.light .fact-area .white-box.single-summery, .client.color .fact-area .white-box.single-summery {
   box-shadow: 0px 10px 15px rgba(236, 208, 244, 0.3);
 }
 
-/* line 553, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 553,  */
 .client.light .info-area .info-content, .client.color .info-area .info-content {
   background: rgba(65, 80, 148, 0.05);
 }
 
-/* line 556, /Applications/MAMP/htdocs/InfixEduTheme/public/backEnd/scss/5_pink_version/client/_home.scss */
+/* line 556,  */
 .client.light .overview-area .nav-tabs .nav-link:hover,
 .client.light .overview-area .nav-tabs .nav-link.active, .client.color .overview-area .nav-tabs .nav-link:hover,
 .client.color .overview-area .nav-tabs .nav-link.active {

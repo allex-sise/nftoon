@@ -68,6 +68,12 @@
                                                    autocomplete="off" value="{{isset($data['edit'])? $data['edit']->title :old('title')}}">
 
                                             <input type="hidden" name="id" value="{{isset($data['edit'])? $data['edit']->id: ''}}">
+                                            <input type="hidden" name="up_permission" value="1">
+                                            <input type="hidden" name="file_permission" value="1">
+                                            <input type="hidden" name="recommended_price" value="1">
+                                            <input type="hidden" name="recommended_price_extended" value="1">
+                                            <input type="hidden" name="recommended_price_commercial" value="1">
+                                            <input type="hidden" name="show_menu" value="1">
                                             <label>@lang('lang.title') <span>*</span></label>
                                             <span class="focus-border"></span>
                                             @if ($errors->has('title'))
@@ -95,7 +101,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mt-25">
+                                <!-- <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
                                             <select class="niceSelect w-100 bb form-control{{ $errors->has('up_permission') ? ' is-invalid' : '' }}" name="up_permission">
@@ -111,8 +117,8 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-25">
+                                </div> -->
+                                <!-- <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
                                             <select class="niceSelect w-100 bb form-control{{ $errors->has('up_permission') ? ' is-invalid' : '' }}" name="file_permission">
@@ -128,8 +134,8 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-25">
+                                </div> -->
+                                <!-- <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
                                             <input class="primary-input form-control{{ $errors->has('recommended_price') ? ' is-invalid' : '' }}" type="text" name="recommended_price"
@@ -143,8 +149,8 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-25">
+                                </div> -->
+                                <!-- <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
                                             <input class="primary-input form-control{{ $errors->has('recommended_price_extended') ? ' is-invalid' : '' }}" type="text" name="recommended_price_extended"
@@ -158,8 +164,8 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-25">
+                                </div> -->
+                                <!-- <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="input-effect">
                                             <input class="primary-input form-control{{ $errors->has('recommended_price_commercial') ? ' is-invalid' : '' }}" type="text" name="recommended_price_commercial"
@@ -173,17 +179,17 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
-                                <div class="row mt-25">
+                                <!-- <div class="row mt-25">
                                     <div class="col-lg-12">
                                             <div class="">
                                             <input type="checkbox" id="category" class="common-checkbox" name="show_menu" value="1" {{isset($data['edit'])?(@$data['edit']->show_menu == 1? 'checked':''):''}}>
                                             <label for="category">@lang('lang.show_in_menu')</label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 @if (isset($data['edit']))
                                     
@@ -306,12 +312,7 @@
                            
                                 <tr>
                                     <th>@lang('lang.position')</th>
-                                    <th>@lang('lang.up') @lang('lang.permission')</th>
-                                    <th>@lang('lang.file') @lang('lang.permission')</th>
                                     <th>@lang('lang.title')</th>
-                                    <th>@lang('lang.RECM_regular')</th>
-                                    <th>@lang('lang.RECM_extended')</th>
-                                    <th>@lang('lang.RECM_commercial')</th>
                                     
                                     <th>@lang('lang.action')</th>
                                 </tr>
@@ -320,24 +321,7 @@
                                 @foreach($data['category'] as $item)
                                 <tr>
                                     <td valign="top">{{$item->position}}</td>
-                                    <td valign="top">
-                                                    @if (@$item->up_permission == 1)
-                                                    @lang('lang.yes')
-                                                    @else   
-                                                    @lang('lang.no')
-                                                    @endif
-                                    </td>
-                                    <td valign="top">
-                                                    @if (@$item->file_permission == 1)
-                                                    @lang('lang.yes')
-                                                    @else   
-                                                    @lang('lang.no')
-                                                    @endif
-                                    </td>
                                     <td valign="top">{{@$item->title}}</td>
-                                    <td valign="top">{{@$item->recommended_price}}</td>
-                                    <td valign="top">{{@$item->recommended_price_extended}}</td>
-                                    <td valign="top">{{@$item->recommended_price_commercial}}</td>
                                     
                                     <td valign="top">
                                         <div class="dropdown">

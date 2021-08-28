@@ -483,7 +483,7 @@ $.ajax({
             $(".bt")
                 .append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                     <div class="load-more text-center mt-10">
-                        <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                        <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Arata mai multe</button>
                     </div>
                 </div>`);
         }
@@ -1175,7 +1175,7 @@ function AllData(
                 $(".bt")
                     .append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                         <div class="load-more text-center mt-10">
-                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Arata mai multe</button>
                         </div>
                     </div>`);
             }
@@ -1256,7 +1256,7 @@ function AllDataPaginate(
                 $(".bt")
                     .append(`<div class="col-xl-12 col-lg-12" style='display: block;margin:auto;'>
                         <div class="load-more text-center mt-10">
-                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Load More</button>
+                            <button  id="loadMore" class="load-btn" > <i class="ti-reload"></i> Arata mai multe</button>
                         </div>
                     </div>`);
             }

@@ -6,7 +6,6 @@
 @section('content')
 
 <input type="text" id="_categor_id" hidden value="{{ @$data['category']->id}}">
-<input type="text" id="_subcategor_id" hidden value="{{ @$data['subcategory']}}">
 <input type="text" id="_tag" hidden value="{{ @$data['tag']}}">
 <input type="text" id="_attribute" hidden value="{{ @$data['attribute']}}">
 <input type="text" id="_key" hidden value="{{ @$data['key']}}">
@@ -18,9 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 offset-xl-2">
-                    {{-- <div class="banner-info text-center mb-30">
-                        <h2>{{ @$data['sub_cat']? @$data['sub_cat']->title :@$data['key']}}</h2>
-                    </div> --}}
+               
                     <div class="row">
                         <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1">
                             <div class="search-field">
@@ -168,94 +165,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="javascript:;">@lang('lang.rating')</a>
-                                        <div class="catagori-submenu-area">
-                                            <div class="catagori-submenu-inner">
-                                                <span href="javascript:;" class="submenu-close"> <i class="ti-close"></i> </span>
-                                                <div class="catagori-content">
-                                                    <ul>
-                                                         
-                                                         <li><a onclick="Star(1)">@lang('lang.1_star_and_higher') <span> ({{ $data['oneStar'] }})</span></a></li>
-                                                        <li><a onclick="Star(2)">@lang('lang.2_star_and_higher') <span> ({{ $data['TwoStar'] }})</span></a></li>
-                                                        <li><a onclick="Star(3)">@lang('lang.3_star_and_higher') <span> ({{ $data['ThreStar'] }})</span></a></li>
-                                                        <li><a onclick="Star(4)">@lang('lang.4_star_and_higher') <span> ({{ $data['FourStar'] }})</span></a></li>
-                                                        <li><a onclick="Star(5)">@lang('lang.5_star_and_higher') <span> ({{ $data['FivStar'] }})</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    {{-- <li><a href="javascript:;">@lang('lang.date') @lang('lang.added')</a>
-                                        <div class="catagori-submenu-area">
-                                            <div class="catagori-submenu-inner">
-                                                <span href="javascript:;" class="submenu-close"> <i class="ti-close"></i> </span>
-                                                <div class="catagori-content">
-
-                                                    <ul>
-                                                       <li><a href="{{ @$data['sub_cat']? route('tagSubItem',[@$data['category']->slug,@$data['sub_cat']->slug,'date','anydate']) : route('tagCatItem',[@$data['category']->slug,'date','anydate'])}}">@lang('lang.any') @lang('lang.date')<span> ( {{$data['Any_Date']}} )</span></a></li>
-                                                        <li><a href="{{ @$data['sub_cat']? route('tagSubItem',[@$data['category']->slug,@$data['sub_cat']->slug,'date','last_year']) : route('tagCatItem',[@$data['category']->slug,'date','last_year'])}}">@lang('lang.in_the_last') @lang('lang.year') <span> ({{ $data['LastYear'] }})</span></a></li>
-                                                        <li><a href="{{ @$data['sub_cat']? route('tagSubItem',[@$data['category']->slug,@$data['sub_cat']->slug,'date','last_month']) : route('tagCatItem',[@$data['category']->slug,'date','last_month'])}}">@lang('lang.in_the_last') @lang('lang.month')<span> ({{ $data['Last_month']}})</span></a></li>
-                                                        <li><a href="{{ @$data['sub_cat']? route('tagSubItem',[@$data['category']->slug,@$data['sub_cat']->slug,'date','last_week']) : route('tagCatItem',[@$data['category']->slug,'date','last_week'])}}">@lang('lang.in_the_last') @lang('lang.week') <span> ({{$data['Last_week']}})</span></a></li>
-                                                        <li><a href="{{ @$data['sub_cat']? route('tagSubItem',[@$data['category']->slug,@$data['sub_cat']->slug,'date','last_day']) : route('tagCatItem',[@$data['category']->slug,'date','last_day'])}}">@lang('lang.in_the_last') @lang('lang.days') <span> ({{$data['Last_day']}})</span></a></li>
-                                                    </ul> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li> --}}
-                                   
-                                    <li><a href="javascript:;">@lang('lang.software') @lang('lang.version')</a>
-                                        <div class="catagori-submenu-area">
-                                            <div class="catagori-submenu-inner">
-                                                <span href="javascript:;" class="submenu-close"> <i class="ti-close"></i> </span>
-                                                <div class="catagori-content">
-                                                    <ul>
-                                                        @foreach (@$data['item']->unique('software_version') as $item)
-                                                          @php
-                                                           if (@$data['category']) {
-                                                              $software_version=App\ItemCounter::ItemCount('category_id',@$data['category']->id,'software_version',$item->software_version);
-                                                            //  $software_version = DB::table('items')->where('category_id',@$data['category']->id)->where('software_version',@$item->software_version)->get()->count(); 
-                                                            }else {
-                                                                $da=App\ManageQuery::FindSubAttributes(@$item->software_version);
-                                                                $software_version =App\ManageQuery::ItemWithTitelVersion(@$data['key'],@$item->software_version);
-                                                            }
-                                                          @endphp 
-                                                           @if ($item) 
-                                                           <li><a href="{{ @$data['category']? route('dateItem',[@$data['category']->slug,'software_version',strtolower(str_replace(' ', '_',@$da->name))]) : route('dateItem',['software_version',strtolower(str_replace(' ', '_',@$da->name))])}}">{{ @$da->name }}<span> ({{ @$software_version  }})</span></a></li>
-                                                         @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li> 
-                                    <li><a href="javascript:;">@lang('lang.compatiability')</a>
-                                        <div class="catagori-submenu-area">
-                                            <div class="catagori-submenu-inner">
-                                                <span href="javascript:;" class="submenu-close"> <i class="ti-close"></i> </span>
-                                                <div class="catagori-content">
-                                                    <ul> 
-                                                            @foreach ($data['item']->unique('compatible_with') as $item)
-                                                              @php
-                                                               if (@$data['category']) {
-                                                                $compatible_with =App\ManageQuery::ItemCatWithCompatibleWith(@$data['category']->id,@$item->compatible_with);
-                                                                //  DB::table('items')->where('category_id',@$data['category']->id)->where('compatible_with',@$item->compatible_with)->get()->count(); 
-                                                                }else {
-                                                                    $compatible_with =App\ManageQuery::ItemCatWithCompatibleWith(@$data['category']->id,@$item->compatible_with);
-                                                                    //  DB::table('items')->where('category_id',@$data['category']->id)->where('compatible_with',@$item->compatible_with)->get()->count(); 
-                                                                    $da=App\ManageQuery::FindSubAttributes(@$item->compatible_with);
-                                                                    //  DB::table('sub_attributes')->find(@$item->compatible_with);
-                                                                    $compatible_with =App\ManageQuery::ItemWithTitelCompatible(@$data['key'],@$item->compatible_with);
-                                                                    //  DB::table('items')->where('title','LIKE', '%'.@$data['key'].'%')->where('compatible_with',@$item->compatible_with)->get()->count(); 
-                                                                }
-                                                              @endphp
-                                                                <li><a href="{{ @$data['category']? route('dateItem',[@$data['category']->slug,'compatible_with',strtolower(str_replace(' ', '_',@$da->name))]) : route('dateItem',['compatible_with',strtolower(str_replace(' ', '_',@$da->name))])}}">{{ @$da->name }}<span> ({{ @$compatible_with  }})</span></a></li>
-                                                            @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    
-                                    </li>
+                                  
                                 </ul>
                             </nav>
                         </div>

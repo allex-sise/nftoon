@@ -178,7 +178,8 @@ class HomeController extends Controller
             ->leftjoin('item_categories', 'items.category_id', '=', 'item_categories.id')
             ->leftjoin('item_sub_categories', 'items.sub_category_id', '=', 'item_sub_categories.id')
             ->leftjoin('item_fees','item_fees.category_id','=', 'items.category_id')
-            ->select('items.*', 'users.username as username', 'item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee')
+            ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
+            ->select('items.*', 'users.username as username', 'profiles.image as userimage','item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee')
             ->where('items.status', 1)
             ->where('items.active_status', 1);
         /*  ->where('bestrated','like','%'.$bestrated.'%') */
@@ -299,6 +300,7 @@ class HomeController extends Controller
             $data['follower'] = $data['user']->followers()->paginate(6);
             $data['following'] = $data['user']->followings()->paginate(6);
             $data['item'] = Item::where('user_id', $data['user']->id)->where('active_status', 1)->where('status', 1)->paginate(5);
+            $data['item2'] = Item::where('user_id', $data['user']->id)->where('active_status', 0)->where('status', 1)->paginate(5);
             $data['BuyerFee'] = BuyerFee::where('status', 1)->where('type', 1)->first();
             $data['item_review'] = Review::where('vendor_id',  $data['user']->id)->paginate(6);
             return view('frontend.pages.vendorView', compact('data'));

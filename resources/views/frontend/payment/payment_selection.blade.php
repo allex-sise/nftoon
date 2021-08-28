@@ -7,35 +7,27 @@
 <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
 <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
 @endpush
-<style>
-.banner-area4 .banner-area-inner .banner-info h2 {
-    font-size: 36px;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 700;
-    color: #fff;
-    line-height: 48px;
-    margin-bottom: 0;
-    text-align: left;
-    margin-top: 340px;
-}
-</style>
 @section('content')
-
-      <!-- banner-area start -->
-    <div class="banner-area4">
-        <div class="banner-area-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1 col-12">
-                        <div class="banner-info">
-                            <h2>@lang('lang.fund_deposit')</h2>
+ <!-- content begin -->
+ <div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+        
+    <!-- section begin -->
+    <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+            <div class="center-y relative text-center">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-md-12 text-center">
+                            <h1>@lang('lang.fund_deposit')</h1>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- banner-area end -->
+    </section>
+    <!-- section close -->       
+
     <!-- payment area start -->
     <div class="privaci_polecy_area section-padding checkout_area ">
         <div class="container">
@@ -61,7 +53,7 @@
                                         </script>
                                         <input hidden value="{{ Session::get('deposit_amount') }}"  readonly="readonly" type="text" id="amount" name="amount">
                                         <div class="mt-5 text-center mb-5">
-                                            <button href="#" class="boxed-btn" type="submit">Plateste</button>
+                                            <button href="#" class="btn-main" type="submit">Plateste</button>
                                         </div>
                                     </form>
                                 </div>
@@ -125,7 +117,7 @@
                                     </div>
                                     <div class="modal-footer d-flex justify-content-between">
                                         <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button>
-                                        <button class="boxed-btn" type="submit">@lang('lang.make') @lang('lang.payment')</button>
+                                        <button class="btn-main" type="submit">@lang('lang.make') @lang('lang.payment')</button>
                                     </div>
                                 </form>
                             </div>
