@@ -72,7 +72,7 @@
                                             <!-- nft item begin -->
                                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="nft__item">
-                                                    <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div>
+                                                    <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                                                     <div class="author_list_pp">
                                                         <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
                                                             <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
@@ -94,9 +94,9 @@
                                                         <div class="nft__item_action">
                                                             <a href="#">Place a bid</a>
                                                         </div>
-                                                        <div class="nft__item_like">
+                                                        <!-- <div class="nft__item_like">
                                                             <i class="fa fa-heart"></i><span>50</span>
-                                                        </div>                            
+                                                        </div>                             -->
                                                     </div> 
                                                 </div>
                                             </div>                 
@@ -114,7 +114,7 @@
                                                 <!-- nft item begin -->
                                                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                                     <div class="nft__item">
-                                                        <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div>
+                                                        <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                                                         <div class="author_list_pp">
                                                             <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
                                                                 <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">

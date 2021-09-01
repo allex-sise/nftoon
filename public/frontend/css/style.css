@@ -6142,7 +6142,6 @@ span.badge_icon {
 /* line 79, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_checkout.scss */
 
 .your_order .products_total_list .products_total_list-heder span {
-    color: #fff;
     font-size: 11px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
@@ -6178,7 +6177,6 @@ span.badge_icon {
 .your_order .products_total_list ul li span {
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
-    color: #FFF;
     font-size: 12px;
 }
 
@@ -6209,7 +6207,6 @@ span.badge_icon {
     font-size: 14px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
-    color: #fff;
 }
 
 
@@ -6219,7 +6216,6 @@ span.badge_icon {
     font-size: 24px;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
-    color: #fff;
     padding-left: 53px;
 }
 
@@ -6293,7 +6289,6 @@ span.badge_icon {
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
     font-size: 18px;
-    color: #FFF;
     line-height: 21px;
     margin-bottom: 0;
 }

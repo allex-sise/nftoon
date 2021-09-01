@@ -201,6 +201,9 @@ footer{
    -webkit-line-clamp: 3; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+.banner-area3::before{
+   z-index: -2!important;
+}
 </style>
 <!-- details-tablist-end -->
 <!-- main-details-area-start -->

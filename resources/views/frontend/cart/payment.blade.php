@@ -130,59 +130,14 @@ $carttotalstrip = floatval($b);
                                                 <div class="col-xl-12">
                                                     <div class="deposite_payment_wrapper customer_payment_wrapper">
                                                         
-                                                    <!--    @if( in_array('Stripe',$payment_methods))
-                                                            
-                                                            <div class="single_deposite_item">
-                                                                <div class="deposite_header text-center">{{__('Stripe')}}</div>
-                                                                <div class="deposite_button text-center"> 
-                                                                    <form action="{{ route('user.ItemPayment')}}" method="POST">
-                                                                        @csrf
-                                                                        <script
-                                                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                                                                data-key="{{ env('STRIPE_KEY') }}"
-                                                                                data-name="Stripe Payment"
-                                                                                {{-- data-image={{ asset(@$system_logo->image) }} --}}
-                                                                                data-locale="auto"
-                                                                                data-currency="usd">
-                                                                        </script>
-                                                                        <input hidden value="{{ $carttotalstrip }}"  readonly="readonly" type="text" id="amount" name="amount">
-                                                                        <div class="mt-5 text-center">
-                                                                            <button href="#" class="boxed-btn btnspecial" type="submit">Plateste</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        @endif -->
-
-                                                        {{-- {{dd(convert_for_paypal(Cart::subtotal()))}} --}}
-                                                        @if( in_array('PayPal',$payment_methods))
-                                                            <!-- single_deposite_item  -->
-                                                            <div class="single_deposite_item">
-                                                                <div class="deposite_header text-center">
-                                                                    {{__('Paypal')}}
-                                                                </div>
-                                                                <div class="deposite_button text-center">
-                                                                    
-                                                                    <form action="{{ route('paypal_payment')}}" method="POST">
-                                                                        @csrf
-                                                                        <input  value="{{convert_for_paypal(Cart::subtotal()) }}"  readonly="readonly" type="hidden" id="amount" name="amount">
-                                                                        <div class="mt-5 text-center">
-                                                                            <input type="submit" name="submit" style="border: aliceblue;"  class="boxed-btn" value="Plateste">
-                                                                            {{-- <button href="#" class="boxed-btn" type="submit" name="submit">@lang('lang.make') @lang('lang.payment')</button> --}}
-                                                                        </div>
-                                                                    </form>
-                                                                    
-    
-                                                                </div>
-                                                            </div>
-                                                        @endif
                                                         <!-- single_deposite_item  -->
                                                         <div class="single_deposite_item">
                                                             <div class="deposite_header text-center">
                                                                 Minted Credit
                                                             </div>
                                                             <div class="deposite_button text-center">
-                                                                <div class="mt-5 text-center mb-5">
+                                                                 <p class="mt-3">Plateste folosind credite Minted.</p>
+                                                                <div class="mt-1 text-center mb-1">
                                                                     <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="boxed-btn btnspecial">Plateste</a>
                                                                 </div>
                                                             </div>

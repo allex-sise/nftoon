@@ -12893,6 +12893,8 @@ a.read_more i {
     border: solid 2px #dddddd;
     z-index: 100;
     color: #0d0c22;
+    width: 150px;
+    text-align: center;
 }
 
 .dark-scheme .de_countdown{
