@@ -3,7 +3,7 @@
 .colspecial{
     margin: 0 auto;
     display: block;
-    width: 55%!important;
+    width: 70%!important;
 }
 .footer-area .footer-top {
     padding-top: 50px;
@@ -80,13 +80,13 @@
                                 <div class="footer-widget text-center">
                                     <div class="footer-logo"> 
                                        <a href="{{ url('/') }}">
-                                            <img src="{{ @$logopic ? asset($logopic->image) : asset('public/frontend/img/Logo.png') }}" alt="" class="mw" style="display: block; margin: 0 auto; margin-left: 64px;">
+                                            <img src="{{ @$logopic ? asset($logopic->image) : asset('public/frontend/img/Logo.png') }}" alt="" class="mw" style="display: block; margin: 0 auto;">
                                         </a>
                                     </div>
                                     <div class="copyright-area">
                                     <div class="social-links text-center">
                                     <nav>
-                                        <ul>
+                                        <ul style="text-align: center; padding-left: 0px;">
                                             {!! getSocialIconsDynamic() !!} 
                                         </ul> 
                                     </nav>

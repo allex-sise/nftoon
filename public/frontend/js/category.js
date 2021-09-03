@@ -11,7 +11,7 @@ function GetOutPutString(data){
                     <div class="single-goods">
                         <div class="goods-thumb">
                             <a href="${url+'/item/'+e.title.split(" ").join("-").toLowerCase()+'/'+e.id}">
-                            <video width="100%" height="100%" autoplay muted>
+                            <video width="100%" height="100%" autoplay muted controls loop>
                                <source src="${e.main_file}" type="video/mp4">
                                
                                Your browser does not support the video tag.
@@ -97,7 +97,7 @@ function GetOutPutString(data){
                                      <div class="col-xl-6 col-md-6">
                                          <div class="content_left">
                                              <a  class="profile_mini_thumb">
-                                                <video width="100%" height="100%" autoplay muted>
+                                                <video width="100%" height="100%" autoplay muted controls loop>
                                                     <source src="${e.main_file}" type="video/mp4">
                                                     
                                                     Your browser does not support the video tag.

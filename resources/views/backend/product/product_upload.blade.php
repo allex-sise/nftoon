@@ -435,17 +435,17 @@
                                 <label for="">@lang('lang.ITEM_PRISE')</label>
                                 <input type="text" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('Re_item')}}">
                             </div>
-                            <span class="dm_middle_span">+</span>
+                            <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Refferal</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionagent')}}">
                             </div>
-                            <span class="dm_middle_span">+</span>
+                            <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Agentie</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionminted')}}">
                             </div>
-                            <span class="dm_middle_span">+</span>
+                            <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Minted</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comision25')}}">
@@ -541,7 +541,7 @@ $(".video_question").click(function() {
     $("#comision25").attr("placeholder", "$" + comision25);
     $("#comision25").attr("value", comision25);
     
-    var total = parseInt(item) + comisionminted + comisionagent + comision25;
+    var total = parseInt(item) - comisionminted - comisionagent - comision25;
     $("#Reg_total").val(total);
     $("#Re_total").attr("placeholder", "$" + total);
     $("#Re_total").attr("value", total);

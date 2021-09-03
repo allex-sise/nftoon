@@ -22,7 +22,7 @@ $img2 = @$data['item']->icon;
                             </div>
                         </div>
                         @elseif( (@$data['item']->file == 'video'))
-                        <video width="100%" height="100%" autoplay muted style="margin-top: 150px;">
+                        <video width="100%" height="100%" autoplay muted controls loop style="margin-top: 150px;">
                             <source src="{{ file_exists(@$data['item']->main_file) ? asset(@$data['item']->main_file) : asset('public/uploads/product/thumbnail/thumbnail-demo.png') }}" type="video/mp4">
                             
                             Your browser does not support the video tag.

@@ -635,7 +635,6 @@ header .header-col.mid .social-icons {
     display: inline-block;
     padding: 30px 18px;
     text-decoration: none;
-    color: #fff;
     text-align: center;
     outline: none;
 }
@@ -643,7 +642,6 @@ header .header-col.mid .social-icons {
 #mainmenu a span {
     position: relative;
     width: 0%;
-    color: #ffffff;
     display: block;
     font-size: 10px;
     text-transform: uppercase;
@@ -3238,7 +3236,6 @@ footer.footer-light h5 {
     margin-top: 0;
     font-family: var(--title-font);
     font-weight: 700;
-    color: #0d0c22;
 }
 
 .dark-scheme h1,
@@ -13097,6 +13094,7 @@ a.read_more i {
     width: 120%;
     font-family: var(--title-font);
     outline: none;
+    border: 1px solid #161D31!important;
 }
 
 #quick_search.style-2{
@@ -13107,17 +13105,6 @@ a.read_more i {
     background: rgba(255, 255, 255, .05) !important;
 }
 
-header:not(.header-light) #quick_search {
-    color: #ffffff;
-}
-
-header:not(.header-light) #quick_search::-moz-input-placeholder {
-    color: #ffffff;
-}
-
-header:not(.header-light) #quick_search::-webkit-input-placeholder {
-    color: #ffffff;
-}
 
 .header-light #quick_search {
     background: rgba(var(--secondary-color-rgb), .1);

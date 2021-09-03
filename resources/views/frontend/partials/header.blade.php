@@ -42,7 +42,7 @@
                         <li><a href="{{ route('dropsAll') }}">Drops<span></span></a>
                         <li><a href="{{ route('categoryAll') }}">Toate<span></span></a></li>
                         <li><a href="{{ route('creatori') }}">Creatori<span></span></a></li>
-                        <li><button class="btn" id="icon" style="margin-top: 24px;"><i id="iconita" class="fa fa-sun-o" style="color: #FFF!important;"></i></button></li>
+                        <li><button class="btn" id="icon" style="margin-top: 24px;"><i id="iconita" class="fa fa-sun-o"></i></button></li>
                     </ul>
                     <div class="header-area">
                     @if (Auth::check())

@@ -22,9 +22,9 @@
    }
    .over_view_thumb {
     height: 700px!important;
-    background-size: cover;
-    background-position: left center;
-    background-repeat: no-repeat;
+    background-size: cover!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
 }
 </style>
 <input type="text" hidden  class="id" value="{{ Auth::user()->id}}">
@@ -165,7 +165,7 @@
                             </div>
                         </div>
                         @elseif( (@$data['edit']->file == 'video'))
-                        <video width="100%" height="100%" autoplay muted>
+                        <video width="100%" height="100%" autoplay muted controls loop>
                             <source src="{{ file_exists(@$data['edit']->main_file) ? asset(@$data['edit']->main_file) : asset('public/uploads/product/thumbnail/thumbnail-demo.png') }}" type="video/mp4">
                             
                             Your browser does not support the video tag.
@@ -257,17 +257,12 @@
             <label for="">@lang('lang.ITEM_PRISE')</label>
             <input type="text" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="">
         </div>
-        <span class="dm_middle_span">+</span>
+        <span class="dm_middle_span">-</span>
         <div class="input_field">
             <label for="">Comision Refferal</label>
-            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="">
+            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="">
         </div>
-        <span class="dm_middle_span">+</span>
-        <div class="input_field">
-            <label for="">Comision Agentie</label>
-            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="">
-        </div>
-        <span class="dm_middle_span">+</span>
+        <span class="dm_middle_span">-</span>
         <div class="input_field">
             <label for="">Comision Minted</label>
             <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="">
@@ -365,11 +360,15 @@
     
 
     var tt = parseInt(item);
-    var comisionagent = (5 / 100) * tt;
+    var comisionreferrer = (10 / 100) * tt;
+    $("#comisionreferrer").val(comisionreferrer);
+    $("#comisionreferrer").attr("placeholder", "$" + comisionreferrer);
+    $("#comisionreferrer").attr("value", comisionreferrer);
+    var comisionagent = (5 / 100) * comisionreferrer;
     $("#comisionagent").val(comisionagent);
     $("#comisionagent").attr("placeholder", "$" + comisionagent);
     $("#comisionagent").attr("value", comisionagent);
-    var comisionminted = (25 / 100) * tt;
+    var comisionminted = (25 / 100) * comisionreferrer;
     $("#comisionminted").val(comisionminted);
     $("#comisionminted").attr("placeholder", "$" + comisionminted);
     $("#comisionminted").attr("value", comisionminted);
@@ -378,7 +377,7 @@
     $("#comision25").attr("placeholder", "$" + comision25);
     $("#comision25").attr("value", comision25);
     
-    var total = parseInt(item) + comisionminted + comisionagent + comision25;
+    var total = parseInt(item) - comisionreferrer - comision25;
     $("#Reg_total").val(total);
     $("#Re_total").attr("placeholder", "$" + total);
     $("#Re_total").attr("value", total);
