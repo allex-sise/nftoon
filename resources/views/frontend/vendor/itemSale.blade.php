@@ -259,7 +259,7 @@
         </div>
         <span class="dm_middle_span">-</span>
         <div class="input_field">
-            <label for="">Comision Refferal</label>
+            <label for="">Comision Artist</label>
             <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="">
         </div>
         <span class="dm_middle_span">-</span>
@@ -272,7 +272,14 @@
             <label for="">PRET VANZARE</label>
             <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
             <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="">
-        </div>
+        </div> 
+    
+            <input  type="text" class="primary-input form-control w-50"  hidden name="C_item"  id="comisionminted"  onkeyup="regular(this.value)" value="">
+          
+            <input  type="text" class="primary-input form-control w-50"  hidden name="C_buyer"  id="comisionagent"  onkeyup="regular(this.value)" value="">
+          
+            <input type="text" class="primary-input form-control w-50"  hidden name="E_buyer"  id="comisionartistdb"  onkeyup="regular(this.value)" value="">
+        
         <!-- <div class="recomander">
             <p>@lang('lang.recommended') <br>
                     @lang('lang.purchase_price') <br>
@@ -364,11 +371,11 @@
     $("#comisionreferrer").val(comisionreferrer);
     $("#comisionreferrer").attr("placeholder", "$" + comisionreferrer);
     $("#comisionreferrer").attr("value", comisionreferrer);
-    var comisionagent = (5 / 100) * comisionreferrer;
+    var comisionagent = (0.5 / 100) * comisionreferrer;
     $("#comisionagent").val(comisionagent);
     $("#comisionagent").attr("placeholder", "$" + comisionagent);
     $("#comisionagent").attr("value", comisionagent);
-    var comisionminted = (25 / 100) * comisionreferrer;
+    var comisionminted = (2.5 / 100) * comisionreferrer;
     $("#comisionminted").val(comisionminted);
     $("#comisionminted").attr("placeholder", "$" + comisionminted);
     $("#comisionminted").attr("value", comisionminted);
@@ -381,6 +388,13 @@
     $("#Reg_total").val(total);
     $("#Re_total").attr("placeholder", "$" + total);
     $("#Re_total").attr("value", total);
+
+
+    var comisionartistdb = comisionreferrer - comisionagent - comisionminted;
+    $("#comisionartistdb").val(comisionartistdb);
+    $("#comisionartistdb").attr("placeholder", "$" + comisionartistdb);
+    $("#comisionartistdb").attr("value", comisionartistdb);
+
 
 }
 

@@ -437,7 +437,7 @@
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
-                                <label for="">Comision Refferal</label>
+                                <label for="">Comision Agent</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionagent')}}">
                             </div>
                             <span class="dm_middle_span">-</span>
@@ -447,7 +447,7 @@
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
-                                <label for="">Comision Minted</label>
+                                <label for="">Comision Website</label>
                                 <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comision25')}}">
                             </div>
                             <span class="dm_middle_span">=</span>

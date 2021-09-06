@@ -537,6 +537,7 @@ class ItemController extends Controller
         // $item->software_version = implode(",", $r->software_version);
     
         $item->Re_item = $r->Re_item;
+        $item->E_buyer = $r->E_buyer;
         $item->Re_buyer = $r->Re_buyer;
         $item->C_item = $r->C_item;
         $item->C_buyer = $r->C_buyer;

@@ -6677,7 +6677,6 @@ span.badge_icon {
 .payment_confim_area .payment_confirm_prise_wrap .payment_confirm_prise_header h4 {
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
-    color: #333333;
     font-size: 18px;
     margin-bottom: 0;
 }
@@ -6738,16 +6737,12 @@ span.badge_icon {
 .payment_confim_area .payment_confirm_prise_wrap .payment_wrap_body .single-confirmation .payment_info h5 a {
     font-size: 16px;
     font-family: "Quicksand", sans-serif;
-    color: #000000;
     margin-bottom: 0;
 }
 
 
 /* line 302, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_payment.scss */
 
-.payment_confim_area .payment_confirm_prise_wrap .payment_wrap_body .single-confirmation .payment_info h5 a:hover {
-    color: #000;
-}
 
 
 /* line 307, ../../../../../../xampp/htdocs/digital-marketplace-v1/public/frontend/scss/_payment.scss */
@@ -6835,7 +6830,6 @@ span.badge_icon {
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
-    color: #888888;
 }
 
 
@@ -6845,7 +6839,6 @@ span.badge_icon {
     font-family: "Quicksand", sans-serif;
     font-weight: 700;
     font-size: 32px;
-    color: #333333;
 }
 
 

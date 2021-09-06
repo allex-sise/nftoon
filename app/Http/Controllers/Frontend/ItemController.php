@@ -140,10 +140,11 @@ class ItemController extends Controller
              $comisionagent = $item->C_buyer;
              $comisionminted = $item->C_item;
              $incasarecreator = $item->Re_item;
+             $comisionartistdb = $item->E_buyer;
 
              
              Cart::add(['id' => bin2hex(random_bytes(4)), 'name' => $request->item_name, 'qty' => 1, 'price' => $request->item_price+$tax, 'weight' => 0, 'options' => 
-             ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
+             ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'comisionartistdb'=>$comisionartistdb,'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
              'description'=>$request->description,'user_id'=>$request->user_id,'username'=>$request->username,'icon'=>$item->icon, 'image'=>$request->image,'Extd_percent'=>$request->Extd_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
              Toastr::success('Item added to your cart','Success');
             return redirect()->back();
@@ -194,9 +195,10 @@ class ItemController extends Controller
              }
              $comisionagent = $item->C_buyer;
              $comisionminted = $item->C_item;
+             $comisionartistdb = $item->E_buyer;
              $incasarecreator = $item->Re_item;
              Cart::add(['id' => bin2hex(random_bytes(4)), 'name' => $request->item_name, 'qty' => 1, 'price' => $request->item_price+$tax, 'weight' => 0, 'options' => 
-             ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent, 'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
+             ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'comisionartistdb'=>$comisionartistdb, 'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
              'description'=>$item->description,'user_id'=>$request->user_id,'username'=>$request->username,'icon'=>$item->icon, 'image'=>$item->thumbnail,'Extd_percent'=>$request->Extd_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
              Toastr::success('Item added to your cart','Success');
             return redirect()->back();
@@ -235,6 +237,7 @@ class ItemController extends Controller
                 $buyer_fee = $item->Re_buyer;
                 $comisionagent = $item->C_buyer;
                 $comisionminted = $item->C_item;
+                $comisionartistdb = $item->E_buyer;
                 $incasarecreator = $item->Re_item;
                if (Auth::user()) {
                     $profile_data=Profile::join('taxes','taxes.country_id','=','profiles.country_id')
@@ -259,7 +262,7 @@ class ItemController extends Controller
             //         ['support_charge' => $support_Fee,'license_type'=>$license_type,'support_time'=>$support_time,'buyer_fee'=>$buyer_fee,'item_id'=>$request->_item_id,
             //         'description'=>$item->description,'user_id'=>$item->user_id,'username'=>$item->user->username,'icon'=>$item->icon,'image'=>$item->thumbnail,'Extd_percent'=>$request->_item_percent]]);
                Cart::add(['id' =>  bin2hex(random_bytes(4)), 'name' => $item->title, 'qty' => 1, 'price' => $totalVal+$tax, 'weight' => 0, 'options' => 
-                    ['support_charge' => $support_Fee,'license_type'=>$license_type,'support_time'=>$support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'incasarecreator'=>$incasarecreator,  'comisionminted'=>$comisionminted,'item_id'=>$request->_item_id,
+                    ['support_charge' => $support_Fee,'license_type'=>$license_type,'support_time'=>$support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'incasarecreator'=>$incasarecreator,'comisionartistdb'=>$comisionartistdb,  'comisionminted'=>$comisionminted,'item_id'=>$request->_item_id,
                     'description'=>$item->description,'user_id'=>$item->user_id,'username'=>$item->user->username,'icon'=>$item->icon,'image'=>$item->thumbnail,'Extd_percent'=>$request->_item_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
                
                     return redirect()->route('customer.payment');
@@ -296,7 +299,7 @@ class ItemController extends Controller
         try { 
             $data = Cart::get($rowId);            
             $item = Cart::update($rowId,['id' => bin2hex(random_bytes(4)), 'name' => $data->name, 'qty' => 1, 'price' => $request->total, 'weight' => 0, 'options' => 
-             ['support_charge' => $request->support_charge,'license_type'=>$data->options['license_type'],'support_time'=>$request->support_time,'buyer_fee'=>$data->options['buyer_fee'],'comisionagent'=>$data->options['comisionagent'],'incasarecreator'=>$data->options['incasarecreator'], 'comisionminted'=>$data->options['comisionminted'],'item_id'=>$data->options['item_id'],
+             ['support_charge' => $request->support_charge,'license_type'=>$data->options['license_type'],'support_time'=>$request->support_time,'buyer_fee'=>$data->options['buyer_fee'],'comisionagent'=>$data->options['comisionagent'],'incasarecreator'=>$data->options['incasarecreator'],'comisionartistdb'=>$data->options['comisionartistdb'], 'comisionminted'=>$data->options['comisionminted'],'item_id'=>$data->options['item_id'],
              'description'=>$data->options['description'],'user_id'=>$data->options['user_id'],'username'=>$data->options['username'],'image'=>$data->options['image'],'Extd_percent'=>$request->Extd_percent]]);
              $all_item = Cart::content();
             return response()->json(['item' => $item,'all_item' => $all_item],200);

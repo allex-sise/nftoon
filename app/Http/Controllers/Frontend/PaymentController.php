@@ -393,11 +393,12 @@ class PaymentController extends Controller
                         $minted = User::find(1);
 
                         $agent = User::find($author->referrer->id);
-                    
+                        
                     
                       
                         $author_total_income=BalanceSheet::where('author_id',$value->options['user_id'])->sum('income');
                         if (@$value->options['item_id']) {
+                            $comisionOG = User::find($value->options['ogowner']);
                             $label = Label::where('amount', '<=', $author_total_income)->orderBy('id', 'desc')->first();
                             try{
                                 $item_order = new ItemOrder();
@@ -476,6 +477,10 @@ class PaymentController extends Controller
                                 Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision Minted','Comision Minted',$value->options['comisionminted']);
                             }
                             
+                            if ($value->options['comisionartistdb'] != 0) {
+                                Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision OG','Comision OG',$value->options['comisionartistdb']);
+                            }
+
                             if (isset($value->options['coupon_price'])) {
                                 $data['statement'][]=Self::updateStatement($value->options['user_id'],$value->options['item_id'],$order->id,'e','Couopon','Coupon discount',$value->options['coupon_price']);
                             }
@@ -535,6 +540,19 @@ class PaymentController extends Controller
                                 Toastr::error($msg, 'Failed');
                             }
 
+                            try{
+                                $balnc  = $comisionOG->balance;
+                                $income = $value->options['comisionartistdb'];
+                                
+
+                                $balnc->amount = $comisionOG->balance->amount + $income;
+                                $balnc->save();
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+
+
 
                             try{
                                 Self::updateBalanceSheet($author->id,$value->options['item_id'],$order->id,$countable_price,$discount,0.00,$income);
@@ -561,6 +579,14 @@ class PaymentController extends Controller
                              //comision 2.5minted
                             try{
                                 Self::updateBalanceSheet(1,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['buyer_fee']);
+                            }catch(\Exception $e){
+                                $msg=str_replace("'", " ", $e->getMessage()) ;
+                                Toastr::error($msg, 'Failed');
+                            }
+
+                             //comision OGowner
+                             try{
+                                Self::updateBalanceSheet(1,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['comisionartistdb']);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');

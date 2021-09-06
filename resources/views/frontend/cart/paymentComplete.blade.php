@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-xl-10 offset-xl-1">
                     
-                    <div class="payment_confirm_prise_wrap gray-bg">
+                    <div class="payment_confirm_prise_wrap">
                         <div class="payment_confirm_prise_header d-flex justify-content-between align-items-center">
                             <h4>@lang('lang.your_order')</h4>
                        
