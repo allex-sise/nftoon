@@ -141,11 +141,11 @@ class ItemController extends Controller
              $comisionminted = $item->C_item;
              $incasarecreator = $item->Re_item;
              $comisionartistdb = $item->E_buyer;
-
+             $ogowner = $item->ogowner;
              
              Cart::add(['id' => bin2hex(random_bytes(4)), 'name' => $request->item_name, 'qty' => 1, 'price' => $request->item_price+$tax, 'weight' => 0, 'options' => 
              ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'comisionartistdb'=>$comisionartistdb,'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
-             'description'=>$request->description,'user_id'=>$request->user_id,'username'=>$request->username,'icon'=>$item->icon, 'image'=>$request->image,'Extd_percent'=>$request->Extd_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
+             'description'=>$request->description,'ogowner'=>$ogowner,'user_id'=>$request->user_id,'username'=>$request->username,'icon'=>$item->icon, 'image'=>$request->image,'Extd_percent'=>$request->Extd_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
              Toastr::success('Item added to your cart','Success');
             return redirect()->back();
             } catch (\Exception $e) {
@@ -197,9 +197,10 @@ class ItemController extends Controller
              $comisionminted = $item->C_item;
              $comisionartistdb = $item->E_buyer;
              $incasarecreator = $item->Re_item;
+             $ogowner = $item->ogowner;
              Cart::add(['id' => bin2hex(random_bytes(4)), 'name' => $request->item_name, 'qty' => 1, 'price' => $request->item_price+$tax, 'weight' => 0, 'options' => 
              ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'comisionartistdb'=>$comisionartistdb, 'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
-             'description'=>$item->description,'user_id'=>$request->user_id,'username'=>$request->username,'icon'=>$item->icon, 'image'=>$item->thumbnail,'Extd_percent'=>$request->Extd_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
+             'description'=>$item->description,'user_id'=>$request->user_id,'username'=>$request->username,'ogowner'=>$ogowner,'icon'=>$item->icon, 'image'=>$item->thumbnail,'Extd_percent'=>$request->Extd_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
              Toastr::success('Item added to your cart','Success');
             return redirect()->back();
             } catch (\Exception $e) {
@@ -239,6 +240,7 @@ class ItemController extends Controller
                 $comisionminted = $item->C_item;
                 $comisionartistdb = $item->E_buyer;
                 $incasarecreator = $item->Re_item;
+                $ogowner = $item->ogowner;
                if (Auth::user()) {
                     $profile_data=Profile::join('taxes','taxes.country_id','=','profiles.country_id')
                     ->where('user_id',Auth::user()->id)->first();
@@ -263,7 +265,7 @@ class ItemController extends Controller
             //         'description'=>$item->description,'user_id'=>$item->user_id,'username'=>$item->user->username,'icon'=>$item->icon,'image'=>$item->thumbnail,'Extd_percent'=>$request->_item_percent]]);
                Cart::add(['id' =>  bin2hex(random_bytes(4)), 'name' => $item->title, 'qty' => 1, 'price' => $totalVal+$tax, 'weight' => 0, 'options' => 
                     ['support_charge' => $support_Fee,'license_type'=>$license_type,'support_time'=>$support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'incasarecreator'=>$incasarecreator,'comisionartistdb'=>$comisionartistdb,  'comisionminted'=>$comisionminted,'item_id'=>$request->_item_id,
-                    'description'=>$item->description,'user_id'=>$item->user_id,'username'=>$item->user->username,'icon'=>$item->icon,'image'=>$item->thumbnail,'Extd_percent'=>$request->_item_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
+                    'description'=>$item->description,'ogowner'=>$ogowner,'user_id'=>$item->user_id,'username'=>$item->user->username,'icon'=>$item->icon,'image'=>$item->thumbnail,'Extd_percent'=>$request->_item_percent,'tax_added'=>$tax_added,'tax'=>$tax]]);
                
                     return redirect()->route('customer.payment');
             } catch (\Exception $e) {
@@ -300,7 +302,7 @@ class ItemController extends Controller
             $data = Cart::get($rowId);            
             $item = Cart::update($rowId,['id' => bin2hex(random_bytes(4)), 'name' => $data->name, 'qty' => 1, 'price' => $request->total, 'weight' => 0, 'options' => 
              ['support_charge' => $request->support_charge,'license_type'=>$data->options['license_type'],'support_time'=>$request->support_time,'buyer_fee'=>$data->options['buyer_fee'],'comisionagent'=>$data->options['comisionagent'],'incasarecreator'=>$data->options['incasarecreator'],'comisionartistdb'=>$data->options['comisionartistdb'], 'comisionminted'=>$data->options['comisionminted'],'item_id'=>$data->options['item_id'],
-             'description'=>$data->options['description'],'user_id'=>$data->options['user_id'],'username'=>$data->options['username'],'image'=>$data->options['image'],'Extd_percent'=>$request->Extd_percent]]);
+             'description'=>$data->options['description'],'ogowner'=>$data->options['ogowner'],'user_id'=>$data->options['user_id'],'username'=>$data->options['username'],'image'=>$data->options['image'],'Extd_percent'=>$request->Extd_percent]]);
              $all_item = Cart::content();
             return response()->json(['item' => $item,'all_item' => $all_item],200);
         } catch (\Exception $e) {

@@ -105,7 +105,8 @@ class HomeController extends Controller
         })
             ->leftjoin('item_categories', 'items.category_id', '=', 'item_categories.id')
             ->leftjoin('item_sub_categories', 'items.sub_category_id', '=', 'item_sub_categories.id')
-            ->select('items.*', 'users.username as username', 'item_sub_categories.title as sub_category', 'item_sub_categories.slug as sub_slug', 'item_categories.title as category', 'item_categories.slug as cat_slug')
+            ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
+            ->select('items.*', 'users.username as username','profiles.image as userimage', 'item_sub_categories.title as sub_category', 'item_sub_categories.slug as sub_slug', 'item_categories.title as category', 'item_categories.slug as cat_slug')
             // ->where('items.status', 1)->where('items.active_status', 1)
             ->where('items.title', 'like', '%' . $request->data . '%')
             ->orWhere('items.id', 'like', '%' . $request->data . '%')
@@ -181,28 +182,12 @@ class HomeController extends Controller
             ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
             ->select('items.*', 'users.username as username', 'profiles.image as userimage','item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee')
             ->where('items.status', 1)
-            ->where('items.active_status', 1);
+            ->where('items.active_status', 1)
+            ->orderBy('id', 'DESC');
         /*  ->where('bestrated','like','%'.$bestrated.'%') */
         /*  ->where('bestsell','like','%'.$bestsell.'%') */
         /*  ->where('trending','like','%'.$trending.'%')  */
-        if ($request->bestsell) {
-            $search->orderBy('sell', 'desc');
-        }
-        if ($request->bestrated) {
-            $search->orderBy('rate', 'desc');
-        }
-        if ($request->trending) {
-            $search->orderBy('views', 'desc');
-        }
-        if ($request->newest) {
-            $search->orderBy('id', 'DESC');
-        }
-        if ($low == "low") {
-            $search->orderBy('Reg_total', 'asc');
-        }
-        if ($high == "high") {
-            $search->orderBy('Reg_total', 'DESC');
-        }
+    
 
         // return $search->get();
         $data = $search->paginate(8);
@@ -1073,6 +1058,7 @@ class HomeController extends Controller
                 ->leftjoin('item_categories', 'items.category_id', '=', 'item_categories.id')
                 ->leftjoin('item_sub_categories', 'items.sub_category_id', '=', 'item_sub_categories.id')
                 ->leftjoin('item_fees','item_fees.category_id','=', 'items.category_id')
+                ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
                 ->where('items.title', 'like', '%' . $data['key'] . '%')
                 // ->where('items.status', 1)
                 // ->where('items.active_status', '=', 1)
@@ -1080,7 +1066,7 @@ class HomeController extends Controller
                 ->orWhere('items.description', 'like', '%' . $data['key'] . '%')
                 ->orWhere('item_categories.title', 'like', '%' . $data['key'] . '%')
                 ->orWhere('item_sub_categories.title', 'like', '%' . $data['key'] . '%')
-                ->select('items.*', 'users.username as username', 'item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee');
+                ->select('items.*', 'users.username as username', 'profiles.image as userimage', 'item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee');
                 
     
             $data['item'] = $search->get();
@@ -1120,7 +1106,8 @@ class HomeController extends Controller
                 ->leftjoin('item_categories', 'items.category_id', '=', 'item_categories.id')
                 ->leftjoin('item_sub_categories', 'items.sub_category_id', '=', 'item_sub_categories.id')
                 ->leftjoin('item_fees','item_fees.category_id','=', 'items.category_id')
-                ->select('items.*', 'users.username as username', 'item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee')
+                ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
+                ->select('items.*', 'users.username as username', 'profiles.image as userimage', 'item_sub_categories.title as sub_category', 'item_categories.title as category','item_fees.support_fee')
                 // ->where('items.status', 1)->where('items.active_status', 1)
                 ->where('items.title', 'like', '%' . $data['key'] . '%')
                 ->orWhere('items.description', 'like', '%' . $data['key'] . '%')
@@ -1161,7 +1148,8 @@ class HomeController extends Controller
                 ->leftjoin('item_categories', 'items.category_id', '=', 'item_categories.id')
                 ->leftjoin('item_sub_categories', 'items.sub_category_id', '=', 'item_sub_categories.id')
                  ->leftjoin('item_fees','item_fees.category_id','=', 'items.category_id')
-                ->select('items.*', 'users.username as username', 'item_sub_categories.title as sub_category', 'item_sub_categories.slug as sub_slug', 'item_categories.title as category', 'item_categories.slug as cat_slug','item_fees.support_fee')
+                 ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
+                ->select('items.*', 'users.username as username','profiles.image as userimage', 'item_sub_categories.title as sub_category', 'item_sub_categories.slug as sub_slug', 'item_categories.title as category', 'item_categories.slug as cat_slug','item_fees.support_fee')
                 // ->where('items.status', 1)->where('items.active_status', 1)
                 ->where('items.title', 'like', '%' . $request->key . '%')
                 ->orWhere('items.description', 'like', '%' . $request->key . '%')
@@ -1198,7 +1186,8 @@ class HomeController extends Controller
             ->leftjoin('item_categories', 'items.category_id', '=', 'item_categories.id')
             ->leftjoin('item_sub_categories', 'items.sub_category_id', '=', 'item_sub_categories.id')
             ->leftjoin('item_fees','item_fees.category_id','=', 'items.category_id')
-            ->select('items.*', 'users.username as username', 'item_sub_categories.title as sub_category', 'item_sub_categories.slug as sub_slug', 'item_categories.title as category', 'item_categories.slug as cat_slug','item_fees.support_fee')
+            ->leftjoin('profiles','profiles.user_id','=', 'items.user_id')
+            ->select('items.*', 'users.username as username','profiles.image as userimage', 'item_sub_categories.title as sub_category', 'item_sub_categories.slug as sub_slug', 'item_categories.title as category', 'item_categories.slug as cat_slug','item_fees.support_fee')
             // ->where('items.status', 1)->where('items.active_status', 1)
             ->where('items.title', 'like', '%' . $request . '%')
             ->orWhere('items.id', 'like', '%' . $request . '%')

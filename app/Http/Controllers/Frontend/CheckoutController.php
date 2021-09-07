@@ -103,7 +103,7 @@ class CheckoutController extends Controller
                     $tax_added=0;
                 }
                 Cart::update($rowId,['id' => bin2hex(random_bytes(4)), 'name' => $my_cart->name, 'qty' => 1, 'price' => $my_cart->price+$tax, 'weight' => 0, 'options' => 
-                ['support_charge' => $my_cart->options['support_charge'],'license_type'=>$my_cart->options['license_type'],'support_time'=>$my_cart->options['support_time'],'buyer_fee'=>$my_cart->options['buyer_fee'],'incasarecreator'=>$my_cart->options['incasarecreator'],'comisionagent'=>$my_cart->options['comisionagent'],'comisionartistdb'=>$my_cart->options['comisionartistdb'],'comisionminted'=>$my_cart->options['comisionminted'],'item_id'=>$my_cart->options['item_id'],
+                ['support_charge' => $my_cart->options['support_charge'],'license_type'=>$my_cart->options['license_type'],'support_time'=>$my_cart->options['support_time'],'buyer_fee'=>$my_cart->options['buyer_fee'],'ogowner'=>$my_cart->options['ogowner'],'incasarecreator'=>$my_cart->options['incasarecreator'],'comisionagent'=>$my_cart->options['comisionagent'],'comisionartistdb'=>$my_cart->options['comisionartistdb'],'comisionminted'=>$my_cart->options['comisionminted'],'item_id'=>$my_cart->options['item_id'],
                 'description'=>$my_cart->options['description'],'user_id'=>$my_cart->options['user_id'],'username'=>$my_cart->options['username'],'icon'=>$my_cart->options['icon'], 'image'=>$my_cart->options['image'],'Extd_percent'=>$my_cart->options['Extd_percent'],'tax_added'=>$tax_added,'tax'=>$tax]]);
                }
                

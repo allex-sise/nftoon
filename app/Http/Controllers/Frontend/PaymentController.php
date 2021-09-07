@@ -393,12 +393,12 @@ class PaymentController extends Controller
                         $minted = User::find(1);
 
                         $agent = User::find($author->referrer->id);
-                        
+                        $comisionOG = User::find($value->options['ogowner']);
                     
                       
                         $author_total_income=BalanceSheet::where('author_id',$value->options['user_id'])->sum('income');
                         if (@$value->options['item_id']) {
-                            $comisionOG = User::find($value->options['ogowner']);
+                         
                             $label = Label::where('amount', '<=', $author_total_income)->orderBy('id', 'desc')->first();
                             try{
                                 $item_order = new ItemOrder();
@@ -627,6 +627,10 @@ class PaymentController extends Controller
                 $changeauthor->active_status = 0;
                 $changeauthor->save();
             }
+    
+            $change_role = User::find(Auth::user()->id);
+            $change_role->role_id = 4;
+            $change_role->save();
            
             Cart::destroy();
             Toastr::success('Thank you for purchase');

@@ -209,8 +209,24 @@ class DropController extends Controller
 
     }
     function categoryAll(){
-        return view('frontend.pages.categoryAll');
+        try{
+            if (Schema::hasTable('users')) {
+                $testInstalled = DB::table('users')->get();
+                
+                    $data['category'] =  ItemCategory::get();
+                    $data['item'] =  Item::where('status', 1)->orderBy('id', 'DESC')->get();
+                    $data['drop'] =  Drops::where('status', 1)->get();
 
+                        
+                    return view('frontend.pages.categoryAll', compact('data'));
+                }
+    
+            
+        }catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
     }
     // Cactegoruy wise item 
     function dropsrequest(Request $request)

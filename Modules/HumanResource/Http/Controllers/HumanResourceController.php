@@ -96,6 +96,7 @@ class HumanResourceController extends Controller
             $user->full_name=$request->first_name.' '.$request->last_name;
             $user->password=Hash::make(12345678);
             $user->status=1;
+            $user->referrer_id = 1;
             $user->access_status=1;
             $user->email_verified_at = Carbon::now();
             $user->save();

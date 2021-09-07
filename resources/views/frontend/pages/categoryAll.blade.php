@@ -4,9 +4,7 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/index_modal.css">
 
 @endpush
-@php 
-    $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->first();
-@endphp 
+
 @section('content')
 <style>
 .banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
@@ -31,9 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 offset-xl-2">
-                    <!-- <div class="banner-info text-center mb-30">
-                        <h2>{{ @$data['sub_cat']? @$data['sub_cat']->title :@$data['category']->title}}</h2>
-                    </div> -->
+                
                 </div>
             </div>
         </div>
@@ -42,14 +38,14 @@
 
     <!-- latest-goods-start -->
    <!-- latest-goods-start -->
-<div class="latest-goods-area section-padding1">
+   <div class="latest-goods-area section-padding1">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-xl-6">
                 <div class="section-title mb-40">
-                    <h3>{{$homepage->product_title}}</h3>
-                    {{-- <p>{{$homepage->product_title_description}}</p> --}}
-                    <h4>{{$homepage->product_title_description}}</h4>
+                    <h3>Descopera toate NFT-urile de pe Minted</h3>
+ 
+                    <h4>ceva vrajeala detalii</h4>
                 </div>
             </div>
             <input type="hidden" id="currency_symbol" value="{{@$infix_general_settings->currency_symbol}}">
@@ -63,15 +59,58 @@
                 </div>
             </div>
         </div>
-        <div class="row grid databox " id="databox">
-        </div>
-        <div class="row bt">
-        </div>
+      <div class="row">
+      
+            @foreach (@$data['item'] as $item)
+            <!-- nft item begin -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                <div class="nft__item">
+                    <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
+                    <div class="author_list_pp">
+                        <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
+                            <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                            <i class="fa fa-check"></i>
+                        </a>
+                        
+                    </div>
+                    <div class="nft__item_wrap">
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                        @if (@$item->file == 'img')
+                            <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
+                         
+                            @elseif(@$item->file == 'video')
+                            <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                               <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                               
+                               Your browser does not support the video tag.
+                           </video>
+                           @endif
+                        </a>
+                    </div>
+                    <div class="nft__item_info">
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                            <h4>{{ $item->title}}</h4>
+                        </a>
+                        <div class="nft__item_price">
+                        {{ $item->Reg_total}} lei
+                        </div>
+                        <div class="nft__item_action">
+             
+                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}" class="heart">Cumpara Acum</a>
+                        
+                        </div>
+                        <!-- <div class="nft__item_like">
+                            <i class="fa fa-heart"></i><span>50</span>
+                        </div>                             -->
+                    </div> 
+                </div>
+            </div>                 
+            <!-- nft item begin -->
+
+            @endforeach
+        
+      </div>
     </div>
 </div>
     <!-- latest-goods-end -->
 @endsection
-@push('js')
-<script src="{{ asset('public/frontend/js/') }}/filter.js"></script>
-
-@endpush

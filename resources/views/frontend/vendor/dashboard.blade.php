@@ -892,9 +892,9 @@
                                                             // DB::table('email_notification_settings')->where('user_id',Auth::user()->id)->first();
                                                             @endphp
                                                             @if (!empty($email_setting))
-                                                                <form action="{{ route('customer.userEmailNotificationUpdate') }}" method="post" >
+                                                                <form action="{{ route('customer.userEmailNotificationUpdate')}}" method="post" >
                                                             @else
-                                                                <form action="{{ route('customer.userEmailNotificationStore') }}" method="post" >
+                                                                <form action="{{ route('customer.userEmailNotificationStore')}}" method="post" >
                                                             @endif
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{ isset($email_setting) ? $email_setting->id : '' }}">

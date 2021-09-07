@@ -8,60 +8,60 @@ console.log(url);
 function GetOutPutString(data) {
     data.forEach(function(e, index) {
         if (e.file == 'video') {
-        $(".databox").append(` <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="nft__item">
-           <!-- <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div> -->
-            <div class="author_list_pp">
-                <a href="${
-                  url + "/user/profile/" + e.username
-                }">                                    
-                    <img class="lazy" src="{{ asset('public/frontend/assets/images/author/author-1.jpg') }}" alt="">
-                    <i class="fa fa-check"></i>
-                </a>
-            </div>
-            <div class="nft__item_wrap">
-                <a href="${
-                  url +
-                  "/item/" +
-                  e.title.split(" ").join("-").toLowerCase() +
-                  "/" +
-                  e.id
-                }">
-                      <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
-                           <source src="${url}/${e.main_file}" type="video/mp4">
-                           
-                           Your browser does not support the video tag.
-                       </video>
-                </a>
-            </div>
-            <div class="nft__item_info">
-                <a href="${
-                  url +
-                  "/item/" +
-                  e.title.split(" ").join("-").toLowerCase() +
-                  "/" +
-                  e.id
-                }">
-                    <h4>${e.title.substring(0, 20)} ....</h4>
-                </a>
-                <div class="nft__item_price">
-                ${e.Reg_total} <span></span>
+            $(".databox").append(` <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="nft__item">
+               <!-- <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div> -->
+                <div class="author_list_pp">
+                    <a href="${
+                      url + "/user/profile/" + e.username
+                    }">                                    
+                        <img class="lazy" src="{{ asset('public/frontend/assets/images/author/author-1.jpg') }}" alt="">
+                        <i class="fa fa-check"></i>
+                    </a>
                 </div>
-                <div class="nft__item_action">
+                <div class="nft__item_wrap">
                     <a href="${
                       url +
                       "/item/" +
                       e.title.split(" ").join("-").toLowerCase() +
                       "/" +
                       e.id
-                    }">Cumpara Acum</a>
+                    }">
+                          <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                               <source src="${e.main_file}" type="video/mp4">
+                               
+                               Your browser does not support the video tag.
+                           </video>
+                    </a>
                 </div>
-             <!--   <div class="nft__item_like">
-                    <i class="fa fa-heart"></i><span>50</span>
-                </div> -->                           
-            </div> 
+                <div class="nft__item_info">
+                    <a href="${
+                      url +
+                      "/item/" +
+                      e.title.split(" ").join("-").toLowerCase() +
+                      "/" +
+                      e.id
+                    }">
+                        <h4>${e.title.substring(0, 20)} ....</h4>
+                    </a>
+                    <div class="nft__item_price">
+                    ${e.Reg_total} ${currency_symbol}<span></span>
+                    </div>
+                    <div class="nft__item_action">
+                        <a href="${
+                          url +
+                          "/item/" +
+                          e.title.split(" ").join("-").toLowerCase() +
+                          "/" +
+                          e.id
+                        }">Cumpara Acum</a>
+                    </div>
+                 <!--   <div class="nft__item_like">
+                        <i class="fa fa-heart"></i><span>50</span>
+                    </div> -->                           
+                </div> 
+            </div>
         </div>
-    </div>
     <div id="myModal${
       e.id
     }" class="modal fade dm-item-modal" role="dialog">
@@ -216,63 +216,58 @@ function GetOutPutString(data) {
     
     `);
        } else {
-        $(".databox").append(` 
-        <!-- nft item begin -->
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
-            <div class="nft__item">
-                <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
-                <div class="author_list_pp">
-                    <a href="${
-                        url + "/user/profile/" + e.username
-                      }">                                    
-                        <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
-                        <i class="fa fa-check"></i>
-                    </a>
-                    
-                </div>
-                <div class="nft__item_wrap">
-                    <a href="${
-                        url +
-                        "/item/" +
-                        e.title.split(" ").join("-").toLowerCase() +
-                        "/" +
-                        e.id
-                      }">
-                        <img src="${url}/${e.icon}" class="lazy nft__item_preview" alt="">
-                     
-                    </a>
-                </div>
-                <div class="nft__item_info">
-                    <a href="${
-                        url +
-                        "/item/" +
-                        e.title.split(" ").join("-").toLowerCase() +
-                        "/" +
-                        e.id
-                      }">
-                        <h4>${e.title.substring(0, 20)} ....</h4>
-                    </a>
-                    <div class="nft__item_price">
-                    ${e.Reg_total} 
-                    </div>
-                    <div class="nft__item_action">
-         
-                        <a href="${
-                            url +
-                            "/item/" +
-                            e.title.split(" ").join("-").toLowerCase() +
-                            "/" +
-                            e.id
-                          }" class="heart">Cumpara Acum</a>
-                    
-                    </div>
-                    <!-- <div class="nft__item_like">
-                        <i class="fa fa-heart"></i><span>50</span>
-                    </div>                             -->
-                </div> 
+        $(".databox").append(`<div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="nft__item">
+           <!-- <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div> -->
+            <div class="author_list_pp">
+                <a href="${
+                  url + "/user/profile/" + e.username
+                }">                                    
+                    <img class="lazy" src="${e.userimage}" alt="">
+                    <i class="fa fa-check"></i>
+                </a>
             </div>
-        </div>                 
-        <!-- nft item begin -->
+            <div class="nft__item_wrap">
+                <a href="${
+                  url +
+                  "/item/" +
+                  e.title.split(" ").join("-").toLowerCase() +
+                  "/" +
+                  e.id
+                }">
+                    <img src="${
+                      e.icon
+                    }" class="lazy nft__item_preview" alt="">
+                </a>
+            </div>
+            <div class="nft__item_info">
+                <a href="${
+                  url +
+                  "/item/" +
+                  e.title.split(" ").join("-").toLowerCase() +
+                  "/" +
+                  e.id
+                }">
+                    <h4>${e.title.substring(0, 20)} ....</h4>
+                </a>
+                <div class="nft__item_price">
+                ${e.Reg_total} ${currency_symbol}<span></span>
+                </div>
+                <div class="nft__item_action">
+                    <a href="${
+                      url +
+                      "/item/" +
+                      e.title.split(" ").join("-").toLowerCase() +
+                      "/" +
+                      e.id
+                    }">Cumpara Acum</a>
+                </div>
+              <!--  <div class="nft__item_like">
+                    <i class="fa fa-heart"></i><span>50</span>
+                </div>     -->                       
+            </div> 
+        </div>
+    </div>
     <div id="myModal${
       e.id
     }" class="modal fade dm-item-modal" role="dialog">
