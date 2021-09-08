@@ -139,7 +139,7 @@ class ItemController extends Controller
              }
              $comisionagent = $item->C_buyer;
              $comisionminted = $item->C_item;
-             $incasarecreator = $item->Re_item;
+             $incasarecreator = $item->Reg_total;
              $comisionartistdb = $item->E_buyer;
              $ogowner = $item->ogowner;
              
@@ -196,7 +196,7 @@ class ItemController extends Controller
              $comisionagent = $item->C_buyer;
              $comisionminted = $item->C_item;
              $comisionartistdb = $item->E_buyer;
-             $incasarecreator = $item->Re_item;
+             $incasarecreator = $item->Reg_total;
              $ogowner = $item->ogowner;
              Cart::add(['id' => bin2hex(random_bytes(4)), 'name' => $request->item_name, 'qty' => 1, 'price' => $request->item_price+$tax, 'weight' => 0, 'options' => 
              ['support_charge' => $request->BuyerFee,'license_type'=>$request->license_type,'support_time'=>$request->support_time,'buyer_fee'=>$buyer_fee,'comisionagent'=>$comisionagent,'comisionartistdb'=>$comisionartistdb, 'incasarecreator'=>$incasarecreator, 'comisionminted'=>$comisionminted,'item_id'=>$request->id,
@@ -239,7 +239,7 @@ class ItemController extends Controller
                 $comisionagent = $item->C_buyer;
                 $comisionminted = $item->C_item;
                 $comisionartistdb = $item->E_buyer;
-                $incasarecreator = $item->Re_item;
+                $incasarecreator = $item->Reg_total;
                 $ogowner = $item->ogowner;
                if (Auth::user()) {
                     $profile_data=Profile::join('taxes','taxes.country_id','=','profiles.country_id')

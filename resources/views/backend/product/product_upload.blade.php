@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-10">
+                            <!-- <div class="row mt-10">
                                 <div class="col-lg-12">
                                     <div class="input-effect">
                                         <input class="primary-input form-control{{ $errors->has('feature1') ? ' is-invalid' : '' }}" type="text" name="feature1"
@@ -168,19 +168,20 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="input-effect mb-20">
-                                    <label>@lang('lang.description') <span>*</span> </label>
-                                    <textarea id="summernote" class="primary-input form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" cols="0" rows="4" name="description" id="details">{{ old('description') }}</textarea>
-                                   
-                                    <span class="focus-border textarea"></span> 
-                                    @if ($errors->has('description'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('description') }}</strong>
-                                        </span>
-                                    @endif
+                            </div> -->
+                            <div class="row mt-20">
+                                <div class="col-md-12">
+                                    <div class="input-effect mb-20">
+                                        <label>@lang('lang.description') <span>*</span> </label>
+                                        <textarea class="primary-input form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" cols="0" rows="4" name="description" id="details">{{ old('description') }}</textarea>
+                                    
+                                        <span class="focus-border textarea"></span> 
+                                        @if ($errors->has('description'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('description') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mb-25">
@@ -207,17 +208,20 @@
                             </div>
                             <div class="row mt-25">
                                 <div class="col-lg-12">
-                                    <div class="row no-gutters input-right-icon">
-                                        <div class="col">
-                                        <fieldset class="question">
-                                            <input class="image_question" type="checkbox" name="videoimage" value="img" />
-                                            <span class="item-text">Imagine</span>
-
-                                            <input class="video_question" type="checkbox" name="videoimage" value="video" />
-                                            <span class="item-text">Video</span>
-                                        </fieldset>
-                                        </div>
+                                
+                                    <div class="form-check col-md-1 float-left">
+                                        <input class="form-check-input image_question" type="radio" value="img" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Imagine
+                                            </label>
                                     </div>
+                                    <div class="form-check col-md-1 float-left">
+                                        <input class="form-check-input video_question" type="radio" value="video" name="flexRadioDefault" id="flexRadioDefault2">
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Video
+                                            </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="row mt-25 imagine">
@@ -383,10 +387,10 @@
                         <div class="col-lg-12">
                             <div class="input-effect">
                                 <input class="primary-input form-control{{ $errors->has('demo_url') ? ' is-invalid' : '' }}" type="text" name="demo_url"
-                                       autocomplete="off" value="https://www.minted.ro">
+                                       autocomplete="off" value="https://www.minted.ro" hidden>
 
                                 <input type="hidden" name="id" value="{{isset($data['edit'])? $data['edit']->id: ''}}">
-                                <label>@lang('lang.demo_url') <span>*</span></label>
+                        
                                 <span class="focus-border"></span>
                                 @if ($errors->has('demo_url'))
                                     <span class="invalid-feedback" role="alert">
@@ -503,15 +507,19 @@ $(".video").hide();
 $(".image_question").click(function() {
     if($(this).is(":checked")) {
         $(".imagine").show();
+        $(".video").hide();
     } else {
         $(".imagine").hide();
+        $(".video").show();
     }
 });
 $(".video_question").click(function() {
     if($(this).is(":checked")) {
         $(".video").show();
+        $(".imagine").hide();
     } else {
         $(".video").hide();
+        $(".imagine").show();
     }
 });
 </script>

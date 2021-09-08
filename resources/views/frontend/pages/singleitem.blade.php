@@ -55,9 +55,7 @@ $comment_content='';
     -webkit-box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
     -moz-box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.25)!important;
     box-shadow: 0px 0px 1px 0px rgb(50 50 50 / 25%)!important;
-    background: #2A2E44;
     width: auto;
-    color: #FFF;
 }
 .userbg2{
    border-radius: 50px;
@@ -71,7 +69,6 @@ $comment_content='';
 .footeruserborder{
    height: 1px!important;
    width: 100%!important;
-   background: rgb(217, 217, 217)!important;
 }
 .theme-logo2 img {
     width: 134px!important;
@@ -84,7 +81,6 @@ $comment_content='';
 .single-info-inner .single-info-title p {
     line-height: 35px!important;
     margin-bottom: 0px!important;
-    color: #FFF!important;
 }
 .single-info-inner .single-info-content p {
     line-height: 35px!important;
@@ -160,7 +156,6 @@ $comment_content='';
     left: 0px;
     top: 9px;
     width: 200px;
-    color: #e1e1e1;
 }
 .svgclassicon{
    margin-top: 0px;
@@ -204,10 +199,81 @@ footer{
 .banner-area3::before{
    z-index: -2!important;
 }
+.light-scheme .fundalspc{
+   background-color: #eee;
+}
+.dark-scheme .fundalspc{
+   background-color: rgb(33, 39, 62);
+}
+.single-info-inner .single-info-title p {
+    line-height: 35px!important;
+    margin-bottom: 0px!important;
+}
+.dark-scheme .single-info-inner .single-info-title p {
+    color: #FFF!important;
+}
+.light-scheme .single-info-inner .single-info-title p {
+    color: #000!important;
+}
+
+.dark-scheme .userbg2{
+   -webkit-box-shadow: 0px 0px 1px 0px rgb(255 255 255 / 95%)!important;
+    -moz-box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 0.95)!important;
+    box-shadow: 0px 0px 1px 0px rgb(255 255 255 / 95%)!important;
+}
+.light-scheme .userbg2{
+   -webkit-box-shadow: 0px 0px 1px 0px rgb(0 0 0 / 95%)!important;
+    -moz-box-shadow: 0px 0px 1px 0px rgba(0 0 0, 0.95)!important;
+    box-shadow: 0px 0px 1px 0px rgb(0 0 0/ 95%)!important;
+}
+.light-scheme .span2s{
+    color: #000;
+}
+.dark-scheme .span2s{
+    color: #e1e1e1;
+}
+.dark-scheme .theme-side-bar13 {
+   background-color: #2A2E44;
+}
+.light-scheme .theme-side-bar13 {
+   background-color: #e2e2e2;
+}
+.dark-scheme .theme-side-bar12 {
+   background-color: #2A2E44;
+}
+.light-scheme .theme-side-bar12 {
+   background-color: #e2e2e2;
+}
+.dark-scheme .colordf {
+   color: #fff; 
+}
+.light-scheme .colordf {
+   color: #000; 
+}
+.dark-scheme .userbg{
+    background: #2A2E44;
+    color: #FFF;
+}
+.light-scheme .userbg{
+    background: #e2e2e2;
+    color: #000;
+}
+.light-scheme .h4c{
+    color: #000!important;
+}
+.dark-scheme .h4c{
+    color: #fff!important;
+}
+.dark-scheme .footeruserborder{
+   background: rgb(217, 217, 217)!important;
+}
+.light-scheme .footeruserborder{
+   background: rgb(0, 0, 0)!important;
+}
 </style>
 <!-- details-tablist-end -->
 <!-- main-details-area-start -->
-<div class="main-details-area section-padding main-details-area2" style="background-color: rgb(33, 39, 62);">
+<div class="main-details-area section-padding main-details-area2 fundalspc">
    <div class="container">
       <div class="row">
          <div class="col-xl-8 col-lg-8">
@@ -221,7 +287,7 @@ footer{
                               <img src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
                            </div>
                            <div class="theme-info">
-                                 <a href="{{ route('user.portfolio',@$data['item']->user->username)}}"><h4 style="color: #FFF; margin-top: 5px;"><span>@</span>{{ @$data['item']->user->username}}</h4> </a>
+                                 <a href="{{ route('user.portfolio',@$data['item']->user->username)}}"><h4 class="h4c" style="margin-top: 5px;"><span>@</span>{{ @$data['item']->user->username}}</h4> </a>
                            </div>
                         </div>
                      </div>
@@ -229,7 +295,7 @@ footer{
                @endif
             </div>
             <div class="row">
-               <p><span style="color: #e2e2e2;">Informatii</span></p> <br />
+               <p><span>Informatii</span></p> <br />
             </div>
             <div class="row">
                <p>{!! @$data['item']->description !!}</p>
@@ -398,13 +464,13 @@ footer{
                         </div>
                      </div>
                      @endif
-                     <div class="theme-side-bar" style="background-color: #2A2E44;">
+                     <div class="theme-side-bar theme-side-bar13">
                         <div class="single-side-bar">
                            <div
                               class="side-bar-heading d-flex justify-content-between align-items-center mt-2">
                               {{-- <h4> <span id="license_type">@lang('lang.Regular') @lang('lang.License')</span>  <i class="ti-angle-down licenseShow" ></i> </h4>
-                              <span class="Reg_total" id="Reg_total">{{@$infix_general_settings->currency_symbol}}{{ @$data['item']->Reg_total}}</span>
-                              <input type="text" class="_total" id="_total" value="{{ @$data['item']->Reg_total}}" hidden>
+                              <span class="Reg_total" id="Reg_total">{{@$infix_general_settings->currency_symbol}}{{ @$data['item']->Re_item}}</span>
+                              <input type="text" class="_total" id="_total" value="{{ @$data['item']->Re_item}}" hidden>
                               <input type="hidden" value="{{@$infix_general_settings->currency_symbol}}" id="currency_symbol"> --}}
                               <!-- <h4> Pret </h4>  -->
                            </div>
@@ -422,7 +488,7 @@ footer{
                                                 <strong class="" style="font-size: 20px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
                                                    <span id="regular_license_price">ETH</span>
                                                 </strong> <br />
-                                                <strong class="" style="color: #fff; font-size: 13px;">{{ @$data['item']->Reg_total}} 
+                                                <strong class="colordf" style="font-size: 13px;">{{ @$data['item']->Re_item}} 
                                                    <span id="regular_license_price">{{@$infix_general_settings->currency_symbol}}</span>
                                                 </strong>
                                              </div>
@@ -431,8 +497,8 @@ footer{
                                                 </strong>
                                              </div>
                                              <div class="col-lg-6">
-                                                <input type="hidden" id="normal_regular_price" value="{{ @$data['item']->Reg_total}}">
-                                                <input type="radio" hidden class="price_option" data-default_price="{{ @$data['item']->Reg_total}}" data-type="regular_license_price" data-normal="normal_regular_price" data-support_fee="{{@$data['fees']->support_fee/100*@$data['item']->Reg_total }}" checked name="list_item_price" value="{{ @$data['item']->Reg_total}}">
+                                                <input type="hidden" id="normal_regular_price" value="{{ @$data['item']->Re_item}}">
+                                                <input type="radio" hidden class="price_option" data-default_price="{{ @$data['item']->Re_item}}" data-type="regular_license_price" data-normal="normal_regular_price" data-support_fee="{{@$data['fees']->support_fee/100*@$data['item']->Re_item }}" checked name="list_item_price" value="{{ @$data['item']->Re_item}}">
                                              </div>
                                           </div>
                                        </li>
@@ -440,13 +506,13 @@ footer{
                                   
                                  </div>
                                  @php
-                                 $support_fee=floor($data['item']->Reg_total/100*$data['fees']->support_fee);
+                                 $support_fee=floor($data['item']->Re_item/100*$data['fees']->support_fee);
                                     // $support_fee=$data['fees']->support_fee;
                                  @endphp
                                  <input type="text" hidden id="buy_license_type"  name="buy_license_type" value="1">
                                  <input type="text" hidden  name="_item_id" value="{{ @$data['item']->id}}">
                                  <input type="text" hidden  name="_item_percent" value="{{ @$data['BuyerFee']->fee/100}}">
-                                 <input type="text" hidden  id="totalVal" name="totalVal" value="{{ @$data['item']->Reg_total}}">
+                                 <input type="text" hidden  id="totalVal" name="totalVal" value="{{ @$data['item']->Re_item}}">
                                  <input type="text" hidden id="extra_price"  value="0">
                                  <div class="add-cart">
                                     @if (@$data['item']->is_upload==1)
@@ -467,7 +533,7 @@ footer{
                                     <div
                                        class="lisence-heading d-flex justify-content-between align-items-center">
                                        <h5>@lang('lang.Regular') @lang('lang.License')</h5>
-                                       <span id="reguler_price">{{@$infix_general_settings->currency_symbol}}{{ @$data['item']->Reg_total}}</span>
+                                       <span id="reguler_price">{{@$infix_general_settings->currency_symbol}}{{ @$data['item']->Re_item}}</span>
                                     </div>
                                     <p>@lang('lang.regular_license_description').</p>
                                  </div>
@@ -488,7 +554,7 @@ footer{
                         </div>
                      </div>
                    
-                     <div class="theme-side-bar1 mt-20" style="background-color: #2A2E44;">
+                     <div class="theme-side-bar1 mt-20 theme-side-bar12" >
                         <div class="download-comments d-flex justify-content-between align-items-center">
                            <h3 class="d-flex align-items-center" style="color: #777777!important; margin-bottom: 0px;"> <i class="ti-shopping-cart"></i> @lang('lang.sales')</h3>
                            <span>{{ @$data['item']->sell }}</span>
@@ -503,7 +569,7 @@ footer{
                            </p>
                         </div>
                         <div class="single-info-content single-info-column coloanaspeciala">
-                           <p style="color: #FFF!important;">{{ @$data['item']->Reg_total}} lei</p>
+                           <p >{{ @$data['item']->Re_item}} lei</p>
                         </div>
                      </div>
 
@@ -516,7 +582,7 @@ footer{
                            </p>
                         </div>
                         <div class="single-info-content single-info-column coloanaspeciala">
-                           <p style="color: #FFF!important;">{{ $his->subtotal}} lei</p>
+                           <p >{{ $his->subtotal}} lei</p>
                         </div>
                      </div>
                      @endforeach
@@ -561,7 +627,7 @@ footer{
                      <div class="theme-logo">
                             
                      <div class="icons">
-                              <img height="auto" width="40"  src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="Author level  {{ @$level->id}} : sold {{@GeneralSetting()->currency_symbol}}  {{round(@$data['item']->user->balance->amount > 50 ? @$data['item']->user->balance->amount: 0) }}+ on {{ @GeneralSetting()->system_name }} " alt="">
+                              <img height="auto" width="40"  src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="" alt="">
                               <img height="auto" width="40" src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{ @$level->id-1}} {{@$badge->id == 1? 'Year' :'Years' }} of membarship on {{ @GeneralSetting()->system_name }} " alt="">
                            </div>
                         </div>
@@ -591,7 +657,7 @@ footer{
       @endforeach
       <h1>@lang('lang.Customize_your_selection')</h1>
       <input type="number" hidden id="item_id" name="id" value="{{  $data['item']->id }}">
-      <input type="text" hidden  id="item_price" name="item_price" value="{{  $data['item']->Reg_total }}">
+      <input type="text" hidden  id="item_price" name="item_price" value="{{  $data['item']->Re_item }}">
       <input type="text" hidden  name="item_name" value="{{  $data['item']->title }}">
       <input type="text" hidden  name="description" value="{{  $data['item']->description }}">
       <input type="text" hidden  name="user_id" value="{{  $data['item']->user_id }}">
@@ -599,7 +665,7 @@ footer{
       <input type="text" hidden  name="image" value="{{  $data['item']->thumbnail }}">
       <input type="text" hidden  name="icon" value="{{  $data['item']->icon }}">
       <input type="text" hidden id="BuyerFee" name="BuyerFee" value="0">
-      {{-- <input type="number" hidden id="_mod_total"  value="{{  $data['item']->Reg_total }}"> --}}
+      {{-- <input type="number" hidden id="_mod_total"  value="{{  $data['item']->Re_item }}"> --}}
       <input type="text" hidden id="Extd_total" value="{{  $data['item']->Ex_total }}">
       <input type="text" hidden id="Extd_percent" name="Extd_percent"  value="{{ $data['item']->support_fee/100 }}">
    </div>
@@ -647,7 +713,7 @@ footer{
          </div>
          <div class="col-xl-6 col-md-6">
             <div class="content_left">
-               <h3> {{@$infix_general_settings->currency_symbol}}<span class="_mod_total">{{@$data['item']->Reg_total}}</span> </h3>
+               <h3> {{@$infix_general_settings->currency_symbol}}<span class="_mod_total">{{@$data['item']->Re_item}}</span> </h3>
                <div class="content_title">
                   <p class="support_text">
                      <span>@lang('lang.License') :</span>
@@ -682,7 +748,7 @@ footer{
 <script src="{{ asset('public/frontend/js/') }}/dm_price_cal.js"></script>
 <script>
     $(document).ready(function () {
-        const pretInRon = {{ @$data['item']->Reg_total}} ;
+        const pretInRon = {{ @$data['item']->Re_item}} ;
         $.ajax({
             type: "GET",
             dataType: 'json',

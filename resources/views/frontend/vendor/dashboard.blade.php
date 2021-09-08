@@ -244,7 +244,7 @@
                                                             <h4>{{ $item->title}}</h4>
                                                         </a>
                                                         <div class="nft__item_price">
-                                                        {{ $item->Reg_total}} lei
+                                                        {{ $item->Re_item}} lei
                                                         </div>
                                                         <div class="nft__item_action">
                                                             @if ($item->active_status == 0)
@@ -1299,7 +1299,7 @@
                                                 </div>
                                                 <div class="total-prise text-center">
                                                     <p>@lang('lang.item_price')</p>
-                                                    <h2>{{ $item->Reg_total}} {{@$infix_general_settings->currency_symbol}}</h2>
+                                                    <h2>{{ $item->Re_item}} {{@$infix_general_settings->currency_symbol}}</h2>
                                                 </div>
                                                 <div class="download_inner-btn">
                                                     @if ($item->status == 2)                                                           
@@ -1375,7 +1375,7 @@
                                                                     <h4>{{ $item->title}}</h4>
                                                                 </a>
                                                                 <div class="nft__item_price">
-                                                                {{ $item->Reg_total}} lei
+                                                                {{ $item->Re_item}} lei
                                                                 </div>
                                                                 <div class="nft__item_action">
                                                                     @if ($item->active_status == 0)
@@ -1724,7 +1724,7 @@
                                                 </div>
                                                 <div class="total-prise text-center">
                                                     <p>@lang('lang.item_price')</p>
-                                                    <h2>{{ $item->Item->Reg_total}} {{@$infix_general_settings->currency_symbol}}</h2>
+                                                    <h2>{{ $item->Item->Re_item}} {{@$infix_general_settings->currency_symbol}}</h2>
                                                 </div>
                                                 <div class="download_inner-btn">
                                                 <a href="{{ route('author.refundView',$item->id)}}" class="btn-main">@lang('lang.view') @lang('lang.details')</a>

@@ -247,12 +247,16 @@ class CheckoutController extends Controller
                                 Self::updateStatement($agent,$value->options['item_id'],$order->id,'i','Comision Agent','Comision Agent',$value->options['comisionagent']);
                             }
 
+                            if ($value->options['incasarecreator'] != 0) {
+                                Self::updateStatement($author->id,$value->options['item_id'],$order->id,'i','Comision Agent','Incasare Vanzator',$value->options['incasarecreator']);
+                            }
+
                             if ($value->options['comisionminted'] != 0) {
                                 Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision Minted','Comision Minted',$value->options['comisionminted']);
                             }
 
                             if ($value->options['comisionartistdb'] != 0) {
-                                Self::updateStatement($ogowner,$value->options['item_id'],$order->id,'i','Comision OG','Comision OG',$value->options['comisionartistdb']);
+                                Self::updateStatement($ogowner->id,$value->options['item_id'],$order->id,'i','Comision OG','Comision OG',$value->options['comisionartistdb']);
                             }
 
                             if (isset($value->options['coupon_price'])) {
@@ -273,7 +277,7 @@ class CheckoutController extends Controller
                             $balnc->save();
                             //balancesheet principal bani cont creator
                             //function updateBalanceSheet(Int $authorId, Int $itemId, Int $orderId, Int $price, Int $discountPrice, Int $fee, Int $incomePrice){
-                            Self::updateBalanceSheet($author->id,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$income);
+                            Self::updateBalanceSheet($author->id,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['incasarecreator']);
 
                             //balancesheet comision2.5 minted
                             Self::updateBalanceSheet(1,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['buyer_fee']);
@@ -285,7 +289,7 @@ class CheckoutController extends Controller
                             Self::updateBalanceSheet(1,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['comisionminted']);
 
                             //balance sheet comisioog
-                            Self::updateBalanceSheet($ogowner,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['comisionartistdb']);
+                            Self::updateBalanceSheet($ogowner->id,$value->options['item_id'],$item_order->id,$value->price,$discount,0.00,$value->options['comisionartistdb']);
                         }
                         // $buy_package->
                         $data['message'] = Auth::user()->username.' bought this  <strong>'. @$item_order->Item->title. '</strong> product';

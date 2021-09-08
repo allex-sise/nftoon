@@ -27,7 +27,7 @@ function GetOutPutString(data){
                     <div class="good-info good-info2">
                        <div class="good-title good-title2">
                            <h3 class="h3clss">Current Price</h3>
-                           <h3>${e.Reg_total} ${currencySys}</h3>
+                           <h3>${e.Re_item} ${currencySys}</h3>
                        </div>
                        <div class="good-title good-title2">
                          <h3 class="h3clss">Expira in</h3>
@@ -58,7 +58,7 @@ function GetOutPutString(data){
                              <input type="text" hidden  name="item_name" value="${e.title}">
                              <input type="text" hidden  name="user_id" value="${e.user_id}">
                              <input type="text" hidden  name="username" value="${e.username}">
-                             <input type="hidden"  id="item_price${e.id}" name="item_price" value="${e.Reg_total}">
+                             <input type="hidden"  id="item_price${e.id}" name="item_price" value="${e.Re_item}">
                              <input type="text" hidden id="" name="BuyerFee" value="0">
                              <input type="text" hidden id="" name="Extd_percent" value="0">
                              
@@ -70,7 +70,7 @@ function GetOutPutString(data){
                                              <h4>Select License</h4>
                                              <div class="select_box">
                                                      <select class="wide SelectLicense form-control" onChange="calculateHomeItem(${e.id})" id="SelectLicense${e.id}" >
-                                                         <option id="reg_val" value="${e.Reg_total}" selected data-display="Regular">Regular</option>
+                                                         <option id="reg_val" value="${e.Re_item}" selected data-display="Regular">Regular</option>
                                                          <option id="Ex_val" value="${e.Ex_total}">Extended</option>
                                                          <option id="Co_val" value="${e.C_total}">Commercial</option>
                                                      </select>
@@ -116,7 +116,7 @@ function GetOutPutString(data){
                                      </div>
                                      <div class="col-xl-6 col-md-6">
                                          <div class="content_left">
-                                             <h3> ${currencySys}<span id="total_price${e.id}">${e.Reg_total}</span></h3>
+                                             <h3> ${currencySys}<span id="total_price${e.id}">${e.Re_item}</span></h3>
                                              <div class="content_title">
                                                  <p class="support_text${e.id}">
                                                          <span>License:</span>
@@ -167,7 +167,7 @@ function GetOutPutString(data){
                 <div class="good-info good-info2">
                    <div class="good-title good-title2">
                        <h3 class="h3clss">Current Price</h3>
-                       <h3>${e.Reg_total} ${currencySys}</h3>
+                       <h3>${e.Re_item} ${currencySys}</h3>
                    </div>
                    <div class="good-title good-title2">
                      <h3 class="h3clss">Expira in</h3>
@@ -198,7 +198,7 @@ function GetOutPutString(data){
                              <input type="text" hidden  name="item_name" value="${e.title}">
                              <input type="text" hidden  name="user_id" value="${e.user_id}">
                              <input type="text" hidden  name="username" value="${e.username}">
-                             <input type="hidden"  id="item_price${e.id}" name="item_price" value="${e.Reg_total}">
+                             <input type="hidden"  id="item_price${e.id}" name="item_price" value="${e.Re_item}">
                              <input type="text" hidden id="" name="BuyerFee" value="0">
                              <input type="text" hidden id="" name="Extd_percent" value="0">
                              
@@ -210,7 +210,7 @@ function GetOutPutString(data){
                                              <h4>Select License</h4>
                                              <div class="select_box">
                                                      <select class="wide SelectLicense form-control" onChange="calculateHomeItem(${e.id})" id="SelectLicense${e.id}" >
-                                                         <option id="reg_val" value="${e.Reg_total}" selected data-display="Regular">Regular</option>
+                                                         <option id="reg_val" value="${e.Re_item}" selected data-display="Regular">Regular</option>
                                                          <option id="Ex_val" value="${e.Ex_total}">Extended</option>
                                                      </select>
                                                      
@@ -251,7 +251,7 @@ function GetOutPutString(data){
                                      </div>
                                      <div class="col-xl-6 col-md-6">
                                          <div class="content_left">
-                                             <h3> ${currencySys}<span id="total_price${e.id}">${e.Reg_total}</span></h3>
+                                             <h3> ${currencySys}<span id="total_price${e.id}">${e.Re_item}</span></h3>
                                              <div class="content_title">
                                                  <p class="support_text${e.id}">
                                                          <span>License:</span>

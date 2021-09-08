@@ -8,6 +8,14 @@
 @php 
 $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->first();
 @endphp 
+<style>
+.dark-scheme .scsetion{
+    background: #21273E!important;
+}
+.light-scheme .scsetion{
+    background: #eee!important;
+}
+</style>
 <div class="features-area section-padding1" onscroll="OnScroll()">
     <div class="container">
         <div class="row align-items-center">
@@ -35,7 +43,7 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
 
 <!-- newsletter-area-end -->
 
-<section id="section-hero" class="no-bottom" aria-label="section" style="background-size: cover; min-height: 1000px; background:#21273E!important;">
+<section id="section-hero" class="no-bottom scsetion" aria-label="section" style="background-size: cover; min-height: 1000px;">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">

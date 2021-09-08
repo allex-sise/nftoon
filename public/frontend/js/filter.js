@@ -47,7 +47,7 @@ function GetOutPutString(data) {
                         <h4>${e.title.substring(0, 20)} ....</h4>
                     </a>
                     <div class="nft__item_price">
-                    ${e.Reg_total} ${currency_symbol}<span></span>
+                    ${e.Re_item} ${currency_symbol}<span></span>
                     </div>
                     <div class="nft__item_action">
                         <a href="${
@@ -102,7 +102,7 @@ function GetOutPutString(data) {
                                 }">
                                 <input type="hidden"  id="item_price${
                                   e.id
-                                }" name="item_price" value="${e.Reg_total}">
+                                }" name="item_price" value="${e.Re_item}">
                                 <input type="text" hidden id="" name="BuyerFee" value="0">
                                 <input type="text" hidden id="" name="Extd_percent" value="0">
                                 
@@ -121,7 +121,7 @@ function GetOutPutString(data) {
                                                           e.id
                                                         })" id="SelectLicense${e.id}" >
                                                             <option id="reg_val" value="${
-                                                              e.Reg_total
+                                                              e.Re_item
                                                             }" selected data-display="Regular">Regular</option>
                                                             <option id="Ex_val" value="${
                                                               e.Ex_total
@@ -180,7 +180,7 @@ function GetOutPutString(data) {
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <div class="content_left">
-                                                <h3> ${currency_symbol}<span id="total_price${e.id}">${e.Reg_total}</span></h3>
+                                                <h3> ${currency_symbol}<span id="total_price${e.id}">${e.Re_item}</span></h3>
                                                 <div class="content_title">
                                                     <p class="support_text${
                                                       e.id
@@ -254,7 +254,7 @@ function GetOutPutString(data) {
                       <h4>${e.title.substring(0, 20)} ....</h4>
                   </a>
                   <div class="nft__item_price">
-                  ${e.Reg_total} ${currency_symbol}<span></span>
+                  ${e.Re_item} ${currency_symbol}<span></span>
                   </div>
                   <div class="nft__item_action">
                       <a href="${
@@ -309,7 +309,7 @@ function GetOutPutString(data) {
                    }">
                    <input type="hidden"  id="item_price${
                      e.id
-                   }" name="item_price" value="${e.Reg_total}">
+                   }" name="item_price" value="${e.Re_item}">
                    <input type="text" hidden id="" name="BuyerFee" value="0">
                    <input type="text" hidden id="" name="Extd_percent" value="0">
                    
@@ -328,7 +328,7 @@ function GetOutPutString(data) {
                                              e.id
                                            })" id="SelectLicense${e.id}" >
                                                <option id="reg_val" value="${
-                                                 e.Reg_total
+                                                 e.Re_item
                                                }" selected data-display="Regular">Regular</option>
                                                <option id="Ex_val" value="${
                                                  e.Ex_total
@@ -382,7 +382,7 @@ function GetOutPutString(data) {
                            </div>
                            <div class="col-xl-6 col-md-6">
                                <div class="content_left">
-                                   <h3> ${currency_symbol}<span id="total_price${e.id}">${e.Reg_total}</span></h3>
+                                   <h3> ${currency_symbol}<span id="total_price${e.id}">${e.Re_item}</span></h3>
                                    <div class="content_title">
                                        <p class="support_text${
                                          e.id

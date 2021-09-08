@@ -473,12 +473,16 @@ class PaymentController extends Controller
                                 Self::updateStatement($agent->id,$value->options['item_id'],$order->id,'i','Comision Agent','Comision Agent',$value->options['comisionagent']);
                             }
 
+                            if ($value->options['incasarecreator'] != 0) {
+                                Self::updateStatement($author->id,$value->options['item_id'],$order->id,'i','Incasare Vanzator','Incasare Vanzator',$value->options['incasarecreator']);
+                            }
+
                             if ($value->options['comisionminted'] != 0) {
                                 Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision Minted','Comision Minted',$value->options['comisionminted']);
                             }
                             
                             if ($value->options['comisionartistdb'] != 0) {
-                                Self::updateStatement(1,$value->options['item_id'],$order->id,'i','Comision OG','Comision OG',$value->options['comisionartistdb']);
+                                Self::updateStatement($comisionOG->id,$value->options['item_id'],$order->id,'i','Comision OG','Comision OG',$value->options['comisionartistdb']);
                             }
 
                             if (isset($value->options['coupon_price'])) {
@@ -488,7 +492,7 @@ class PaymentController extends Controller
 
                             try{
                                 $details = Item::find($item_order->item_id);
-                                Self::updateStatement($value->options['user_id'],$value->options['item_id'],$order->id,'i','Sale',$details->title,$value->options['incasarecreator']); 
+                                Self::updateStatement($value->options['user_id'],$value->options['item_id'],$order->id,'i','Sale',$details->title,$countable_price); 
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
@@ -555,7 +559,7 @@ class PaymentController extends Controller
 
 
                             try{
-                                Self::updateBalanceSheet($author->id,$value->options['item_id'],$order->id,$countable_price,$discount,0.00,$income);
+                                Self::updateBalanceSheet($author->id,$value->options['item_id'],$order->id,$countable_price,$discount,0.00,$value->options['incasarecreator']);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');
@@ -586,7 +590,7 @@ class PaymentController extends Controller
 
                              //comision OGowner
                              try{
-                                Self::updateBalanceSheet(1,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['comisionartistdb']);
+                                Self::updateBalanceSheet($comisionOG->id,(int)$value->options['item_id'], $order->id,$countable_price,$discount,0.00,$value->options['comisionartistdb']);
                             }catch(\Exception $e){
                                 $msg=str_replace("'", " ", $e->getMessage()) ;
                                 Toastr::error($msg, 'Failed');

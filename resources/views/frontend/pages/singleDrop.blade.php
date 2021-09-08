@@ -115,7 +115,7 @@
                                     <h4>{{ @$item->title}}</h4>
                                 </a>
                                 <div class="nft__item_price">
-                                {{ @$item->Reg_total}} lei
+                                {{ @$item->Re_item}} lei
                                 </div>
                                 <div class="nft__item_action">
                                     <a href="#">Cumpara Acum</a>

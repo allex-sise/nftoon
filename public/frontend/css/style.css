@@ -3838,7 +3838,7 @@ span.badge_icon {
 
 .details-tablist-area::before {
     content: "";
-    background: #fff;
+    background: red!important;
     width: 100%;
     bottom: 0;
     left: 0;
