@@ -9,6 +9,7 @@ use App\Vendor;
 use App\Balance;
 use App\Profile;
 use App\Userlog;
+use App\Newsletter;
 use App\TableList;
 use App\BalanceSheet;
 use App\ReCaptchaSetting;
@@ -1126,4 +1127,18 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+
+    function newsletter()
+    {
+        try {
+            $newsletter = Newsletter::latest()->get();
+            
+            return view('backend.newsletter.index', compact('newsletter'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
 }

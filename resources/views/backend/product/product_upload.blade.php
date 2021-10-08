@@ -292,6 +292,40 @@
                                     <p id="main_file_title"></p>
                                 </div>
                             </div> 
+                            <div class="row mt-25">
+                                <div class="col-lg-12">
+                                
+                                    <div class="form-check col-md-1 float-left">
+                                        <input class="form-check-input nftunic_question" type="radio" value="0" name="nftunic" id="nftunic1">
+                                            <label class="form-check-label" for="nftunic1">
+                                                NFT Unic
+                                            </label>
+                                    </div>
+                                    <div class="form-check col-md-1 float-left">
+                                        <input class="form-check-input nftunic_question2" type="radio" value="1" name="nftunic" id="nftunic2">
+                                            <label class="form-check-label" for="nftunic2">
+                                                NFT Multiplu
+                                            </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row mt-25 data_exp_unic" id="data_exp_unic" style="display:block" >
+                            
+                                <div class="col-lg-12">
+                                    <div class="input-effect">
+                                        <input type="text" class="primary-input date form-control{{ $errors->has('data_exp_unic') ? ' is-invalid' : '' }}" id="date" name="data_exp_unic" >
+                                        <label>Data expirare vanzare multipla <span>*</span></label>
+                                        <span class="focus-border"></span>
+                                        @if ($errors->has('data_exp_unic'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('data_exp_unic') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <p id="">Data de expirare pentru cate nft-uri pot fi vandute (in momentul cand se atinge ora, minutul, se opreste duplicarea nft-ului</p>
+                                </div>
+                            </div> 
                             <div id="product_purchase_link" style="display: none">
                                 
                                 <div class="input-effect">
@@ -524,6 +558,23 @@ $(".video_question").click(function() {
 });
 </script>
 <script>
+$(".data_exp_unic").hide();
+$(".nftunic_question").click(function() {
+    if($(this).is(":checked")) {
+        $(".data_exp_unic").hide();
+    } else {
+        $(".data_exp_unic").show();
+    }
+});
+$(".nftunic_question2").click(function() {
+    if($(this).is(":checked")) {
+        $(".data_exp_unic").show();
+    } else {
+        $(".data_exp_unic").hide();
+    }
+});
+</script>
+<script>
     function regular(item) {
     var Re_item = $("#Re_item").val();
     var Re_buyer = $("#Re_buyer").val();
@@ -570,4 +621,26 @@ $('.decimal').keyup(function(){
 <script src="{{asset('public/backEnd/send_email.js')}}"></script>
 <script src="{{asset('public/backEnd/backend.js')}}"></script>
 <script src="{{asset('public/backEnd/js/admin_upload.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/backEnd/')}}/vendors/js/moment.min.js"></script>
+<script type="text/javascript" src="{{asset('public/backEnd/')}}/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+	"use strict";
+    $(function () {
+        $('#date').datetimepicker({
+            keepOpen: true,
+            minDate: 0,
+            format: 'DD/MM/YYYY HH:mm',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
+        });
+    })
+</script>
 @endsection

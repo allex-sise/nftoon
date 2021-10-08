@@ -521,6 +521,25 @@ public function itemUpdate(Request $r){
          }
      }
 
+     public function ProductDuplicate($id)
+     {
+         try {
+             $item = Item::findOrfail($id); 
+            //  return $item; 
+            $newItem = $item->replicate();
+            $newItem->title = $item->title.''.'#'.($item->nftunic + 1);
+            $newItem->nftunic = 0;
+            $newItem->data_exp_unic = NULL;
+            $newItem->idnft = rand(0, 999999999);
+            $newItem->save();
+         } catch (\Exception $e) {
+             $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+         }
+     }
+
+
      public function ProductDownload($id)
      {
          try {

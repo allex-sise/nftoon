@@ -1,0 +1,115 @@
+
+@media only screen and (max-width: 767px) {
+.imaginebanner{
+    margin-top: 50px!important;
+    height: 400px!important;
+    width: auto!important;
+} 
+.main-details-area2{
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+    padding-bottom: 20px;
+}
+.userbg{
+    width: auto!important;
+}
+.themesidebarcustom{
+    width: 100%!important;
+}
+.theme-side-bar1.theme-side-bar3 {
+    padding: 0px 0px!important;
+    padding-left: 0px;
+}
+
+.themesidebardreapta{
+    display: none!important;
+}
+.dark-scheme .single-info-inner .single-info-title p{
+    width: 200px;
+}
+.userbg2{
+    padding: 2px!important;
+    height: 40px!important;
+}
+.span2s{
+    font-size: 9px;
+}
+.spansvg2{
+    font-size: 13px;
+}
+.theme-side-bar2{
+    width: 100%!important;
+}
+.footer-area .copyright-area .footer-bottom .footer-link ul li {
+    display: inline;
+    margin-right: 8px;
+}
+.nft_pic{
+    height: 400px;
+}
+.nft_pic_by {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1px;
+}
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+    line-height: 30px;
+}
+h4 {
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.scsetion{
+    min-height: auto!important;
+    padding-bottom: 50px!important;
+}
+.banner-area2 {
+    height: auto!important;
+    padding-top: 50px!important;
+}
+.collgdrop{
+    margin-bottom: 45px; 
+    margin-right: 0px!important;
+}
+.banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before {
+    margin-top: 85px!important;
+    height: 400px!important;
+    background-position: center;
+}
+.rowspecial{
+    height: 450px!important;
+}
+.banner-area2 .banner-info h2 {
+    font-size: 27px!important;
+}
+h3 {
+    font-size: 13px!important;
+}
+.mg120 {
+    margin-top: 270px!important;
+    margin-bottom: 20px!important;
+}
+.prfhidden{
+    display: none!important;
+}
+.row{
+    --bs-gutter-x: 0!important;
+    --bs-gutter-y: 0!important;
+}
+.profile_avatar img{
+    width: 80px!important;
+}
+.profile_avatar i {
+    margin-top: -95px!important;
+    left: -25px!important;
+}
+#profile_banner {
+    min-height: 160px!important;
+}
+
+
+}

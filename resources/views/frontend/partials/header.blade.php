@@ -44,6 +44,11 @@
                         <li><a href="{{ route('creatori') }}">Creatori<span></span></a></li>
                         <li><button class="btn" id="icon" style="margin-top: 24px;"><i id="iconita" class="fa fa-sun-o"></i></button></li>
                     </ul>
+                    <div class="menu_side_area">
+                                <a class="btn-main btnascundedesktop" href="{{ url('customer/login') }}"> <span class="signin_text" >@lang('lang.sign_in')</span> <i class="fa fa-sign-in m-0 p-0 signin_btn" aria-hidden="true"></i></a>
+                        
+                        <span id="menu-btn"></span>
+                    </div>
                     <div class="header-area">
                     @if (Auth::check())
                         <div class="main_user-pro_wrap d-flex align-items-center justify-content-end">
@@ -131,7 +136,7 @@
                         @if (!Auth::check())
 
                         <div class="main_user-pro_wrap d-flex align-items-center justify-content-end">
-                            <div class="profile-area m-0">
+                            <div class="profile-area m-0 prfhidden">
                                 <a class="btn-main" href="{{ url('customer/login') }}"> <span class="signin_text" >@lang('lang.sign_in')</span> <i class="fa fa-sign-in m-0 p-0 signin_btn" aria-hidden="true"></i></a>
                             </div>
                         </div>

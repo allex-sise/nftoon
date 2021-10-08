@@ -1,4 +1,14 @@
 @extends('frontend.master')
+@php
+    $home_page=Modules\Pages\Entities\InfixHomePage::first();
+    if (file_exists($home_page->banner_image_drops)) {
+        $banner=$home_page->banner_image_drops;
+    } else {
+        $banner=url('public/frontend/img/banner/banner-img-1.png');
+    }
+    
+@endphp
+
 @push('css')
 
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/index_modal.css">
@@ -8,10 +18,11 @@
 @section('content')
 <style>
 .banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
-    background-image: url("{{ asset('public/frontend/imaginibanner/hmm.png') }}")!important;
-    background-size: contain;
+    background-image: url("{{$banner}}")!important;
+    background-size: cover;
     background-repeat: no-repeat;
     margin-top: 85px;
+    height: 500px;
 }
 .banner-area2{
     height: 600px;
@@ -48,6 +59,10 @@
 .banner-area2::before{
     z-index: 10;
 }
+.collgdrop{
+    margin-bottom: 45px; 
+    margin-right: 50px;
+}
     </style>
   <!-- banner-area start -->
     <div class="banner-area2" >
@@ -78,7 +93,7 @@ Minted from drops are sold directly by the creator. You can buy them here before
         <div class="row">
             <div class="col-xl-12">
                @foreach ($data['drop'] as $drop)
-                        <div class="col-lg-5 float-left" style="margin-bottom: 45px; margin-right: 50px;">
+                        <div class="col-lg-5 float-left collgdrop">
                             <div class="nft_pic" style="background-size: cover;">                            
                                 <a href="{{ route('singleDrop',@$drop->slug) }}">
                                     <span class="nft_pic_info">

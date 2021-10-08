@@ -4,14 +4,23 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/index_modal.css">
 
 @endpush
-
+@php
+    $home_page=Modules\Pages\Entities\InfixHomePage::first();
+    if (file_exists($home_page->banner_image_categories)) {
+        $banner=$home_page->banner_image_categories;
+    } else {
+        $banner=url('public/frontend/img/banner/banner-img-1.png');
+    }
+    
+@endphp
 @section('content')
 <style>
 .banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
-    background-image: url("{{ asset('public/frontend/imaginibanner/hmm.png') }}")!important;
-    background-size: contain;
+    background-image: url("{{$banner}}")!important;
+    background-size: cover;
     background-repeat: no-repeat;
     margin-top: 85px;
+    height: 550px;
 }
 .banner-area2{
     height: 700px;
@@ -49,7 +58,7 @@
                 </div>
             </div>
             <input type="hidden" id="currency_symbol" value="{{@$infix_general_settings->currency_symbol}}">
-            <div class="col-xl-6">
+            <!-- <div class="col-xl-6">
                 <div class="portfolio-menu portfolio-menu2 text-xl-right text-lg-left text-sm-center">
                     <button class="active" value="all" id="all" data-filter="*">@lang('lang.all_items')</button>
                     <button data-filter=".cat2" value="newest" id="newest">@lang('lang.Newest')</button>
@@ -57,13 +66,13 @@
                     <button data-filter=".cat5" value="high" id="high">@lang('lang.price_high_to_low')</button>
                     <button data-filter=".cat6" value="low" id="low">@lang('lang.price_low_to_high')</button>
                 </div>
-            </div>
+            </div> -->
         </div>
       <div class="row">
       
             @foreach (@$data['item'] as $item)
             <!-- nft item begin -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+            <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
                 <div class="nft__item">
                     <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                     <div class="author_list_pp">
@@ -94,11 +103,13 @@
                         <div class="nft__item_price">
                         {{ $item->Re_item}} lei
                         </div>
+                        @if ($item->active_status == 1)
                         <div class="nft__item_action">
              
                             <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}" class="heart">Cumpara Acum</a>
                         
                         </div>
+                        @endif
                         <!-- <div class="nft__item_like">
                             <i class="fa fa-heart"></i><span>50</span>
                         </div>                             -->
@@ -108,7 +119,9 @@
             <!-- nft item begin -->
 
             @endforeach
-        
+            <div class="col-md-12 text-center">
+                <a href="#" id="loadmore" class="black-btn wow fadeInUp">Arata mai multe</a>
+            </div>  
       </div>
     </div>
 </div>

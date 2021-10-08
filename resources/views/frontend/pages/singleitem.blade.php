@@ -301,7 +301,7 @@ footer{
                <p>{!! @$data['item']->description !!}</p>
             </div>
             <div class="row">
-            <div class="theme-side-bar1 theme-side-bar3 mt-20" style="width: 50%;">
+            <div class="theme-side-bar1 theme-side-bar3 mt-20 themesidebarcustom">
                <div class="theme-detils-info">
                   <div class="single-info">
                      <div class="single-info-inner userbg2">
@@ -464,6 +464,7 @@ footer{
                         </div>
                      </div>
                      @endif
+                     @if (@$data['item']->active_status == 1)
                      <div class="theme-side-bar theme-side-bar13">
                         <div class="single-side-bar">
                            <div
@@ -514,6 +515,7 @@ footer{
                                  <input type="text" hidden  name="_item_percent" value="{{ @$data['BuyerFee']->fee/100}}">
                                  <input type="text" hidden  id="totalVal" name="totalVal" value="{{ @$data['item']->Re_item}}">
                                  <input type="text" hidden id="extra_price"  value="0">
+                                
                                  <div class="add-cart">
                                     @if (@$data['item']->is_upload==1)
                                      
@@ -524,6 +526,7 @@ footer{
                                     @endif
                                  
                                  </div>
+                                
                               </div>
                            </form>
                            
@@ -553,7 +556,7 @@ footer{
                            </div>
                         </div>
                      </div>
-                   
+                   @endif
                      <div class="theme-side-bar1 mt-20 theme-side-bar12" >
                         <div class="download-comments d-flex justify-content-between align-items-center">
                            <h3 class="d-flex align-items-center" style="color: #777777!important; margin-bottom: 0px;"> <i class="ti-shopping-cart"></i> @lang('lang.sales')</h3>
@@ -621,7 +624,7 @@ footer{
                      </div>
                   </div>
                </div>
-               <div class="theme-side-bar mt-20 theme-side-bar2">
+               <div class="theme-side-bar mt-20 theme-side-bar2 themesidebardreapta">
                   <div class="profile-linking">
                      <div class="profile-name">
                      <div class="theme-logo">

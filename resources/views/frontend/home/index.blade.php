@@ -15,6 +15,13 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
 .light-scheme .scsetion{
     background: #eee!important;
 }
+.scsetion{
+    min-height: 1000px!important;
+    background-size: cover;
+}
+.mgbutton50{
+    margin-bottom: 50px;
+}
 </style>
 <div class="features-area section-padding1" onscroll="OnScroll()">
     <div class="container">
@@ -31,8 +38,11 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
             <div class="col-lg-12">
                 <div class="view-features text-center">
                     <div class="col-xl-12 col-md-12">
-                        <input name="company_name" type="text" placeholder="Adresa ta de email" value="" style="border-radius: 0px!important; padding: 13px; width: 400px;">
-                        <button type="submit" class="black-btn" style="padding: 8px 17px; border-radius: 2px; margin-left: 8px;">Abonare</button>
+                    <form action="{{ route('store_newsletter') }}" method="POST">
+                    @csrf
+                        <input name="email" type="email" placeholder="Adresa ta de email" style="border-radius: 0px!important; padding: 13px; width: 400px;">
+                        <input type="submit" class="black-btn" style="padding: 8px 17px; border-radius: 2px; margin-left: 8px;" value="Abonare">
+                    </form>
                     </div>
                 </div>
             </div>
@@ -43,47 +53,45 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
 
 <!-- newsletter-area-end -->
 
-<section id="section-hero" class="no-bottom scsetion" aria-label="section" style="background-size: cover; min-height: 1000px;">
+<section id="section-hero" class="no-bottom scsetion" aria-label="section">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">
                             <h2>DROPS</h2>
                             <div class="small-border bg-color-2"></div>
-                            <h4>{{$homepage->feature_title_description}}</h4>
+                            <h4 class="mgbutton50">{{$homepage->feature_title_description}}</h4>
                         </div>
                     </div>
                 </div>
-                <div class="d-carousel" style="background-size: cover; margin-top: 40px;">
-                    <div id="item-carousel-big" class="owl-carousel wow fadeIn owl-loaded owl-drag animated" style="background-size: cover; visibility: visible; animation-name: fadeIn;">
-           
-                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1263px, 0px, 0px); transition: all 0s ease 0s; width: 4631px;">
+                <div class="d-carousel">
+                    <div id="item-carousel-big" class="owl-carousel wow fadeIn">
                     @foreach ($data['drop'] as $drop)
-                        <div class="owl-item cloned" style="width: 396px; margin-right: 25px;">
-                            <div class="nft_pic" style="background-size: cover;">                            
-                                <a href="{{ route('singleDrop',@$drop->slug) }}">
-                                    <span class="nft_pic_info">
-                                        <span class="nft_pic_title">{{ $drop->name }}</span>
-                                        <span class="nft_pic_by">{{ $drop->description }}</span>
-                                        @php
-                                            $date = $drop->expdate;
-                                            $day_year = date('Y', strtotime($date));
-                                            $day_name = date('j', strtotime($date));
-                                            $day_month = date('n', strtotime($date));
-                                            $day_hour = date('H', strtotime($date));
-                                        @endphp
-                                        <span class="nft_pic_title" style="font-size: 15px!important; margin-top: 10px;">Expira in</span>
-                                        <div class="de_countdown" style="left: 40px; margin-top: 10px;" data-year="{{$day_year}}" data-month="{{$day_month}}" data-day="{{$day_name}}" data-hour="{{$day_hour}}"></div>
-                                    </span>
-                                </a>
-                                <div class="nft_pic_wrap" style="background-size: cover;">
-                                    <img style="min-height: 600px; max-height: 600px;" src="{{asset(@$drop->dropicon)}}" class="lazy img-fluid" alt="">
-                                </div>
+                        <div class="nft_pic" style="background-size: cover;">                            
+                            <a href="{{ route('singleDrop',@$drop->slug) }}">
+                                <span class="nft_pic_info">
+                                    <span class="nft_pic_title">{{ $drop->name }}</span>
+                                    <span class="nft_pic_by">{{ $drop->description }}</span>
+                                    @php
+                                        $date = $drop->startdate;
+                                        $day_year = date('Y', strtotime($date));
+                                        $day_name = date('j', strtotime($date));
+                                        $day_month = date('n', strtotime($date));
+                                        $day_hour = date('H', strtotime($date));
+                                    @endphp
+                                
+                                    <span class="nft_pic_title" style="font-size: 15px!important; margin-top: 10px;">Incepe in</span>
+                                    <div class="de_countdown" style="left: 40px; margin-top: 10px;" data-year="{{$day_year}}" data-month="{{$day_month}}" data-day="{{$day_name}}" data-hour="{{$day_hour}}"></div>
+                                </span>
+                            </a>
+                            <div class="nft_pic_wrap" style="background-size: cover;">
+                                <img style="min-height: 600px; max-height: 600px;" src="{{asset(@$drop->dropicon)}}" class="lazy img-fluid" alt="">
                             </div>
                         </div>
                     @endforeach
-                    </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div>
-                        <div class="d-arrow-left" style="background-size: cover; opacity: 1; display: block;"><i class="fa fa-angle-left"></i></div>
-                        <div class="d-arrow-right" style="background-size: cover; opacity: 1; display: block;"><i class="fa fa-angle-right"></i></div>
+
+                    </div>
+                        <div class="d-arrow-left"><i class="fa fa-angle-left"></i></div>
+                        <div class="d-arrow-right"><i class="fa fa-angle-right"></i></div>
                 </div>
               
             <div class="col-lg-12" style="margin-top: 120px;">
@@ -102,50 +110,85 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
    $infix_general_settings = app('infix_general_settings');
 @endphp
 
-<section class="latest-goods-area" id="section-nfts">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="text-center">
-                                <h2>{{$homepage->product_title}}</h2>
-                                <div class="small-border bg-color-2"></div>
-                                <h4>{{$homepage->product_title_description}}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" id="currency_symbol" value="{{@$infix_general_settings->currency_symbol}}">
-         
-                    <div class="row wow fadeIn">                        
-                        <!-- nft item begin -->
-                       <div class="row grid databox " id="databox">
-                       </div>
 
-                        <div class="col-md-12 text-center">
-                            <a href="#" id="loadmore" class="btn-main wow fadeInUp lead">Arata mai multe</a>
-                        </div>                                              
-                    </div>
-                </div>
-            </section>
-@if (@$free_items_count >0)
-<!-- Free item Start -->
-<div class="features-area section-padding1 pt-0" onscroll="OnScroll()">
+
+<section id="section-nfts">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-xl-6 offset-xl-3">
-                <div class="section-title text-center mb-70 mt-4">
-                <h3>@lang('lang.free_product_of_the_month')</h3>
-                    {{-- <p>{{$homepage->feature_title_description}}</p> --}}
-                    <h4>{{$homepage->feature_title_description}}</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h2>{{$homepage->product_title}}</h2>
+                    <div class="small-border bg-color-2"></div>
+                    <h4 class="mgbutton50">{{$homepage->product_title_description}}</h4>
                 </div>
             </div>
         </div>
+        <div class="row wow fadeIn">                        
+            <!-- nft item begin -->
+            @foreach (@$data['featured'] as $item)
+            <!-- nft item begin -->
+            <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                <div class="nft__item">
+                    <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
+                    <div class="author_list_pp">
+                        <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
+                            <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                            <i class="fa fa-check"></i>
+                        </a>
+                        
+                    </div>
+                    <div class="nft__item_wrap">
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                        @if (@$item->file == 'img')
+                            <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
+                        
+                            @elseif(@$item->file == 'video')
+                            <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                            <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                            
+                            Your browser does not support the video tag.
+                        </video>
+                        @endif
+                        </a>
+                    </div>
+                    <div class="nft__item_info">
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                            <h4>{{ $item->title}}</h4>
+                        </a>
+                        <div class="nft__item_price">
+                        {{ $item->Re_item}} lei
+                        </div>
+                        <div class="nft__item_action">
+            
+                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}" class="heart">Cumpara Acum</a>
+                        
+                        </div>
+                        <!-- <div class="nft__item_like">
+                            <i class="fa fa-heart"></i><span>50</span>
+                        </div>                             -->
+                    </div> 
+                </div>
+            </div>                 
+            <!-- nft item begin -->
 
+            @endforeach
+            <!-- nft item end -->
+            <div class="col-md-12 text-center">
+                <a href="#" id="loadmore" class="black-btn wow fadeInUp">Arata mai multe</a>
+            </div>  
+            
+            <div class="col-md-12 text-center" >
+                <a href="{{ route('categoryAll') }}" id="butons" class="black-btn wow fadeInUp">Vezi toate NFT-urile</a>
+            </div> 
+        </div>
     </div>
-</div>
-<!-- Free item end -->
-@endif
+</section>
+
 @endsection
 @push('js')
+<script>
+$("#butons").hide();
+
+</script>
 <script src="{{ asset('public/frontend/js/') }}/item_load.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/filter.js"></script>
 @endpush

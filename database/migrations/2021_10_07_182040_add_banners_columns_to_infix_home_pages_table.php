@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageToOrdersTable extends Migration
+class AddBannersColumnsToInfixHomePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddImageToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            //
+        Schema::table('infix_home_pages', function (Blueprint $table) {
+            $table->string('banner_image_drops')->after('banner_image')->nullable();
+            $table->string('banner_image_categories')->after('banner_image')->nullable();
         });
     }
 
@@ -25,7 +26,7 @@ class AddImageToOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('infix_home_pages', function (Blueprint $table) {
             //
         });
     }

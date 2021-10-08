@@ -25,6 +25,7 @@ Route::group(['middleware' => ['XSS']], function () {
    Route::get('/about_company', 'Frontend\HomeController@aboutCompany')->name('about_company');
    Route::get('/support-ticket', 'Frontend\HomeController@SupportTicket')->name('SupportTicket');
    Route::get('/license', 'Frontend\HomeController@License')->name('License');
+   Route::post('store_newsletter', 'Frontend\HomeController@store_newsletter')->name('store_newsletter');
 
    Route::GET('frontend/language-change', 'FrontendLanguageChange@ajaxLanguageChangeMenu');
    Route::get('frontend/locale/{locale}', 'FrontendLanguageChange@changeLocale');

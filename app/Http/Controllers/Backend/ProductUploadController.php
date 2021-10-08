@@ -11,6 +11,7 @@ use App\SessionFile;
 use App\ItemCategory;
 use App\SubAttribute;
 use File;
+use Carbon\Carbon;
 use App\ItemAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -96,7 +97,10 @@ class ProductUploadController extends Controller
             $item->description = $r->description;    
             $item->category_id = $r->category_id;
             $item->file = $r->videoimage;
-      
+            $item->nftunic = $r->nftunic;
+            $item->idnft = rand(0, 9999);
+            $item->data_exp_unic = Carbon::createFromFormat('m/d/Y H:i', $r->data_exp_unic)->format('Y-m-d H:i');
+          
             $item->tags = $r->tags;
             
 
@@ -107,6 +111,7 @@ class ProductUploadController extends Controller
             $item->Re_buyer = $r->Re_buyer;
             $item->C_item = $r->C_item;
             $item->C_buyer = $r->C_buyer;
+            $item->E_buyer = 0;
             $item->Reg_total = $r->Reg_total_price;
 
             $item->user_msg = $r->user_msg;

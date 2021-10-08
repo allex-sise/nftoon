@@ -845,7 +845,7 @@
 
                                                                     <div class="profile_page">
                                                                         <h4>@lang('lang.about')</h4>
-                                                                            <textarea class="summernote" id="editor1" cols="30" rows="10" name="about">{{isset($data['user']->profile->about) ? $data['user']->profile->about : old('about')}}</textarea>
+                                                                            <textarea  cols="30" rows="10" name="about">{{isset($data['user']->profile->about) ? $data['user']->profile->about : old('about')}}</textarea>
                                                                             @if ($errors->has('about'))
                                                                             <span class="invalid-feedback invalid-select error"
                                                                                     role="alert">

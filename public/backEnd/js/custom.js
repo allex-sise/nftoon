@@ -11,6 +11,28 @@ if (fileInput) {
     }
 }
 
+var fileInput1 = document.getElementById("photo1");
+if (fileInput1) {
+    fileInput1.addEventListener("change", showFileName);
+
+    function showFileName(event) {
+        var fileInput1 = event.srcElement;
+        var fileName = fileInput1.files[0].name;
+        document.getElementById("placeholderPhoto1").placeholder = fileName;
+    }
+}
+
+var fileInput2 = document.getElementById("photo2");
+if (fileInput2) {
+    fileInput2.addEventListener("change", showFileName);
+
+    function showFileName(event) {
+        var fileInput2 = event.srcElement;
+        var fileName = fileInput2.files[0].name;
+        document.getElementById("placeholderPhoto2").placeholder = fileName;
+    }
+}
+
 // student section info for student admission
 $(document).ready(function() {
     $("#background-color").hide();

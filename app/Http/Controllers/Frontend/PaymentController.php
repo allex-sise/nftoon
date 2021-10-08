@@ -632,6 +632,19 @@ class PaymentController extends Controller
                 $changeauthor->save();
             }
     
+            // foreach (Cart::content() as $key => $value) {
+            //     $item = Item::find($value->options['item_id']);
+            //     //  return $item; 
+            //     $newItem = $item->replicate();
+            //     $newItem->title = $item->title.''.'#'.($item->nftunic + 1);
+            //     $newItem->nftunic = 0;
+            //     $newItem->data_exp_unic = NULL;
+            //     $newItem->idnft = rand(0, 999999999);
+            //     $newItem->save();
+
+
+            // }
+
             $change_role = User::find(Auth::user()->id);
             $change_role->role_id = 4;
             $change_role->save();

@@ -212,6 +212,16 @@
             </li>
 
             @endif
+            @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+            
+            <li>
+                <a href="{{route('admin.newsletter')}}" class="">
+                    <span class="flaticon-analytics"></span>
+                    Newsletter
+                </a>
+            </li>
+
+            @endif
             {{-- @php
                 $data=  App\AssignModulePermission::where('module_id',10)->first();
             @endphp --}}
@@ -595,6 +605,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="Pages">
                         <li> <a href="{{ route('HomePage') }}">@lang('lang.home_page')</a> </li>
+                        <li> <a href="{{ route('banners') }}">Banners</a> </li>
                         <li> <a href="{{ route('ProfileSetting') }}">@lang('lang.profile_setting')</a> </li>
                         <!-- <li> <a href="{{ route('couponText') }}">@lang('lang.coupon')</a> </li>
                         <li> <a href="{{ route('LicensePage') }}">@lang('lang.License')</a> </li>

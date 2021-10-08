@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title') - Infix</title>
+    <title>@yield('title') - Minted</title>
     
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="{{url('/')}}/{{isset($fav)?$fav->image:''}}">

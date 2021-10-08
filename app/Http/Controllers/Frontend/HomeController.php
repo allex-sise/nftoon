@@ -21,6 +21,8 @@ use App\ItemCategory;
 use App\LicenseFeature;
 use App\PaymentPackage;
 use App\Drops;
+use App\Newsletter;
+use Carbon\Carbon;
 use App\ItemSubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -60,8 +62,9 @@ class HomeController extends Controller
                 
                     $data['category'] =  ItemCategory::where('active_status', 1)->where('show_menu',1)->get();
                     $data['item'] =  Item::where('active_status', 1)->where('status', 1)->take(2)->get();
-                    $data['drop'] =  Drops::where('status', 1)->latest()->take(3)->get();
-
+                     $current_date_time = Carbon::now()->toDateTimeString();
+                    $data['drop'] =  Drops::where('status', 1)->where('expdate', '>=', $current_date_time)->latest()->take(6)->get();
+                    $data['featured'] = Item::where('active_status', 1)->where('status', 1)->latest()->get();
                     $free_items_count = DB::table('users')
                          ->join('items', function($join) {
             $join->on('users.id', '=', 'items.user_id');
@@ -282,6 +285,7 @@ class HomeController extends Controller
         try {
             $data['category'] =  ItemCategory::where('active_status', 1)->take(6)->get();
             $data['country'] = SpnCountry::all();
+            $data['socila_icons'] = SocialIcon::where('user_id', $data['user']->id)->first();
             $data['follower'] = $data['user']->followers()->paginate(6);
             $data['following'] = $data['user']->followings()->paginate(6);
             $data['item'] = Item::where('user_id', $data['user']->id)->where('active_status', 1)->where('status', 1)->paginate(5);
@@ -1955,6 +1959,42 @@ class HomeController extends Controller
         $data = $search->paginate(8);
         return response()->json($data, 200);
     }
+    function store_newsletter(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $newsletterz = Newsletter::where('email', '=', $request->email)->first();
+            if ($newsletterz === null) {
+            $newsletter = new Newsletter();
+            $newsletter->email = $request->email;
+            $newsletter->save();
+
+            Toastr::success('Te-ai abonat cu succes la newsletter', 'Success');
+            DB::commit(); 
+            return redirect()->back();
+            } else {
+                Toastr::success('Acest email este deja abonat la newsletter', 'Eroare');
+                return redirect()->back(); 
+
+            }
+
+          
+
+         
+       
+            
+            
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
     // end   free item 
 
     // public function ajaxLanguageChangeMenu(Request $request)

@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth', 'verified', 'admin'], 'prefix' => 'pages'
     Route::get('home-page','PagesController@HomePage')->name('HomePage')->middleware('userRolePermission:21');
     Route::post('home-page-update','PagesController@home_page_update')->name('home-page-update')->middleware('userRolePermission:21');
 
+    Route::get('banners','PagesController@banners')->name('banners')->middleware('userRolePermission:21');
+    Route::post('banners-update','PagesController@banners_update')->name('banners-update')->middleware('userRolePermission:21');
+
     Route::get('coupon-text','PagesController@coupon_text')->name('couponText')->middleware('userRolePermission:21');
     Route::post('coupon-text-update','PagesController@coupon_text_update')->name('coupon-text-update')->middleware('userRolePermission:21');
 

@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::get('user-log', 'UserController@userLog')->name('userLog')->middleware('userRolePermission:2');
         Route::get('user-log-delete/{id}', 'UserController@userLogDelete')->name('userLogDelete')->middleware('userRolePermission:2');
         //vendor
+        Route::get('newsletter', 'UserController@newsletter')->name('newsletter')->middleware('userRolePermission:1');
         Route::get('vendor', 'UserController@vendor')->name('vendor')->middleware('userRolePermission:2');
         Route::get('vendor/{id}', 'UserController@vendor_view')->name('vendor_view')->middleware('userRolePermission:2');
         Route::get('vendor/edit/{id}', 'UserController@vendor_edit')->name('vendor_edit')->middleware('userRolePermission:2');
@@ -195,6 +196,8 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
 
         // Product download
         Route::get('product-download/{id}', 'ProductController@ProductDownload')->name('ProductDownload');
+        // Product duplicate
+        Route::get('product-duplicate/{id}', 'ProductController@ProductDuplicate')->name('ProductDuplicate');
         /* ********************* END ITEM ROUTES ********************* */
 
         /* ******************** START ITEM PREVIEW ROUTES ********************* */

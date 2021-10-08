@@ -372,6 +372,63 @@ class PagesController extends Controller
             return redirect()->back();
         }
     }
+    //banners
+
+    public function banners(){
+        
+        try {
+            $editData = InfixHomePage::first();
+            return view('pages::banners', compact('editData'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+    public function banners_update(Request $request)
+    {
+        $request->validate([
+            'banner_image_categories' => "sometimes|nullable|mimes:jpeg,png,jpg",
+            'banner_image_drops' => "sometimes|nullable|mimes:jpeg,png,jpg",
+        ]);
+
+        
+        try {
+            
+
+            $s = InfixHomePage::find($request->id);
+        
+            $image = "";
+            if ($request->file('banner_image_drops') != "") {
+                $file = $request->file('banner_image_drops');
+                $image = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('public/uploads/img/banner/', $image);
+                $image = 'public/uploads/img/banner/' . $image;
+                $s->banner_image_drops = $image;
+            }
+            $image2 = "";
+            if ($request->file('banner_image_categories') != "") {
+                $file = $request->file('banner_image_categories');
+                $image2 = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('public/uploads/img/banner/', $image2);
+                $image2 = 'public/uploads/img/banner/' . $image2;
+                $s->banner_image_categories = $image2;
+            }
+            $results = $s->save();
+            if ($results) {
+                Toastr::success('Operation Success', 'Success');
+                return redirect()->back();
+            } else {
+                Toastr::error('Something went wrong ! try again ', 'Success');
+                return redirect()->back();
+            }
+
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
 // Coupon pages
     public function coupon_text(){
         

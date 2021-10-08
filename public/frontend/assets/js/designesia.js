@@ -1457,14 +1457,15 @@
         });
 
         $('#mainmenu > li:has(ul)').addClass('menu-item-has-children');
-
-        $(".d-item").slice(0, 12).show();
-          $("#loadmore").on("click", function(e){
+        $("#butons").hide();
+        $(".d-item").slice(0, 8).show();
+            $("#loadmore").on("click", function(e){
             e.preventDefault();
             $(".d-item:hidden").slice(0, 4).slideDown();
             if($(".d-item:hidden").length == 0) {
-              //$("#loadmore").text("No Content").addClass("noContent");
-              $("#loadmore").hide();
+                //$("#loadmore").text("No Content").addClass("noContent");
+                $("#loadmore").hide();
+                $("#butons").show();
             }
             de_size();
         });

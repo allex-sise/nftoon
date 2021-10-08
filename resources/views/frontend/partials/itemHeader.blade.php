@@ -35,26 +35,3 @@ $img2 = @$data['item']->icon;
         </div>
     </div>
 </div>
-<style>
-.imaginebanner{
-    -webkit-box-shadow: 0px 0px 12px 0px rgb(50 50 50 / 75%)!important;
-    -moz-box-shadow: 0px 0px 12px 0px rgba(50, 50, 50, 0.75)!important;
-    box-shadow: 0px 0px 12px 0px rgb(50 50 50 / 75%)!important;
-    margin-top: 150px!important;
-    height: 700px!important;
-    width: auto!important;
-}
-}
-.banner-area3 h1 {
-    font-size: 30px;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 700;
-    color: #000!important;
-    line-height: 48px!important;
-    text-align: center!important;
-    padding: 20px!important;
-}
-.banner-area3 .banner-area-inner .banner-info {
-    margin-bottom: 50px!important;
-}
-</style>

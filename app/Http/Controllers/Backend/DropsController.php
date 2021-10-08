@@ -218,8 +218,12 @@ class DropsController extends Controller
         // dd($tables);
         try {
       //toDo, nu merge Call to a member function delete() on null
+                $nftdelete = Item::find($id);
+                $nftdelete->in_drop = NULL;
+                $nftdelete->save();
                 $delete_query = DropNFTs::find($id);
                 $delete_query->delete();
+                
 
                     Toastr::success('Succsesfully Deleted!','Success');
                 return redirect()->back();

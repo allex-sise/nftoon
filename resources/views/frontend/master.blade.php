@@ -34,12 +34,12 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8"/>
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{{ @app('infix_general_settings')? app('infix_general_settings')->system_name :'Infix Market' }} | {{ @app('infix_general_settings')? app('infix_general_settings')->system_title :'Infix Digital Marketplace' }}</title>
     @if (Request::url() === url('/'))
         <meta name="description" content="{{ @app('infix_seo_settings')? app('infix_seo_settings')->description :'Infix Digital Market Place' }}">
         {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        
         <meta name="keywords" content="{{ @app('infix_seo_settings')? app('infix_seo_settings')->keyword :'HTML,CSS,XML,JavaScript' }}">
         <meta name="author" content="{{ @app('infix_seo_settings')? app('infix_seo_settings')->site_author :'Spondonit' }}">
     @endif
@@ -114,6 +114,8 @@
     <link href="{{ asset('public/frontend/assets/css/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/frontend/assets/css/jquery.countdown.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/frontend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <!-- color scheme -->
     <link id="colors" href="{{ asset('public/frontend/assets/css/colors/scheme-03.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/frontend/assets/css/coloring.css') }}" rel="stylesheet" type="text/css" />
