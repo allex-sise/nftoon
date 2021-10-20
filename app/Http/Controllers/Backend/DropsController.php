@@ -218,7 +218,9 @@ class DropsController extends Controller
         // dd($tables);
         try {
       //toDo, nu merge Call to a member function delete() on null
-                $nftdelete = Item::find($id);
+      $nftul = DropNFTs::where('id', $id)->first();
+      $nftuls = $nftul->nft_id;
+                $nftdelete = Item::find($nftuls);
                 $nftdelete->in_drop = NULL;
                 $nftdelete->save();
                 $delete_query = DropNFTs::find($id);

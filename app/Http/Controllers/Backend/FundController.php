@@ -52,7 +52,7 @@ class FundController extends Controller
         } 
         try {
 
-            $from_currency= 'USD';
+            $from_currency= 'RON';
             $to_currency= GeneralSetting()->currency;
             // $amount = convertCurrency($from_currency,$to_currency,$request->fund_amount);
 
@@ -109,7 +109,7 @@ class FundController extends Controller
         try {
 
 
-            $from_currency= 'USD';
+            $from_currency= 'RON';
             $to_currency= GeneralSetting()->currency;
             $amount = convertCurrency($from_currency,$to_currency,$request->fund_amount);
 

@@ -50,7 +50,7 @@ class PaypalController extends Controller
             $payer = PayPal::Payer();
             $payer->setPaymentMethod('paypal');
             $amount = PayPal::Amount();
-            $amount->setCurrency('USD');
+            $amount->setCurrency('RON');
             $amount->setTotal((int)$total_amount);
             // $amount->setTotal(convert_to_usd($total_amount));
             $description = 'Payment for order completion';
@@ -166,7 +166,7 @@ class PaypalController extends Controller
             $paymentExecution->setPayerId($payer_id);
             $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
 
-            $from_currency= 'USD';
+            $from_currency= 'RON';
             $to_currency= GeneralSetting()->currency;
             $amount = convertCurrency($from_currency,$to_currency,Session::get('deposit_amount'));
 

@@ -61,10 +61,10 @@
                                     @endif
                                          <span class="prise">
                                             @if (Auth::user()->role_id == 4)
-                                                {{@$infix_general_settings->currency_symbol}}{{ @Auth::user()->balance->amount}}
+                                                {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
                                             @endif
                                             @if (Auth::user()->role_id == 5)
-                                                {{@$infix_general_settings->currency_symbol}}{{ @Auth::user()->balance->amount}}
+                                                {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
                                             @endif
                                         
                                         </span> </a>

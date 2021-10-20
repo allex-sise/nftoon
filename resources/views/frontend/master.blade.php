@@ -116,6 +116,7 @@
     <link href="{{ asset('public/frontend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/frontend/assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/frontend/assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/css/gdpr-cookie.css') }}">
     <!-- color scheme -->
     <link id="colors" href="{{ asset('public/frontend/assets/css/colors/scheme-03.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/frontend/assets/css/coloring.css') }}" rel="stylesheet" type="text/css" />
@@ -187,6 +188,7 @@
     <script src="{{ asset('public/frontend/js/') }}/mail-script.js"></script>
 
     <script src="{{ asset('public/frontend/js/') }}/main.js"></script>
+    
     <script>
     $(document).ready(function () {
         console.log('selected');
@@ -268,6 +270,7 @@
     <script src="{{asset('public/frontend/assets/js/jquery.lazy.min.js')}}"></script>
     <script src="{{asset('public/frontend/assets/js/jquery.lazy.plugins.min.js')}}"></script>
     <script src="{{asset('public/frontend/assets/js/designesia.js')}}"></script>
+    <script src="{{asset('public/frontend/js/gdpr-cookie.js')}}"></script>
     <script>
 $('#icon').click(function(){
     $('#body').toggleClass('dark-scheme');
@@ -276,6 +279,31 @@ $('#icon').click(function(){
     $('#iconita').toggleClass('fa fa-moon-o');
     
 });
+    </script>
+    <script>
+    $.gdprcookie.init({
+        title: "🍪 Accept cookieurile si politica de confidentialitate ?",
+        message: "Folosim cookies pentru functionarea siteului. Nu impartasim cu nici un third party. Click the <strong>accept</strong> button below to see the optional callback in action… <a href=#privacy>Example privacy link</a>",
+        delay: 600,
+        expires: 1,
+        acceptBtnLabel: "Accept Cookie-uri",
+    });
+    
+    $(document.body)
+        .on("gdpr:show", function() {
+            console.log("Cookie dialog is shown");
+        })
+        .on("gdpr:accept", function() {
+            var preferences = $.gdprcookie.preference();
+            console.log("Preferences saved:", preferences);
+        })
+        .on("gdpr:advanced", function() {
+            console.log("Advanced button was pressed");
+        });
+
+    if ($.gdprcookie.preference("marketing") === true) {
+        console.log("This should run because marketing is accepted.");
+    }
     </script>
     @stack('js')
   

@@ -487,7 +487,7 @@ public function itemUpdate(Request $r){
 
       function itemDelete($id){
         try {
-            $item =Item::find($id)->update(['active_status' => 0 ]);
+            $item =Item::find($id)->delete();
             Toastr::success('Item deleted Successfully','Success');
             return redirect()->back();
         } catch (\Exception $e) {
@@ -506,9 +506,11 @@ public function itemUpdate(Request $r){
             $data=Item::findOrFail($id);
             if ($data->status==1) {
                 $data->status = 0;
+                $data->active_status = 0;
                 $msg = 'item de-active';
             }else {
                 $data->status = 1;
+                $data->active_status = 1;
                 $msg = 'item active';
             }
             $data->save();

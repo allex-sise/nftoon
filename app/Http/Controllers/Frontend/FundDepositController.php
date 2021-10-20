@@ -145,7 +145,7 @@ class FundDepositController extends Controller
                     'description' => " - Amount: ".$input['amount'].' - '. $unique_id,
                     'source' => $request->stripeToken,                    
                     'amount' => ((int)($input['amount']) * 100), // the mount will be consider as cent so we need to multiply with 100
-                    'currency' => 'USD'
+                    'currency' => 'RON'
                 ));
                                
                 // Insert into the database
@@ -156,7 +156,7 @@ class FundDepositController extends Controller
                     'stripe_id'=>$unique_id,                     
                     'quantity'=>1
                 ]);
-                $from_currency= 'USD';
+                $from_currency= 'RON';
                 $to_currency= GeneralSetting()->currency;
                 $amount = convertCurrency($from_currency,$to_currency,$input['amount']);
 

@@ -26,7 +26,7 @@ class ProductUploadController extends Controller
     public function product_upload(){
         $attribute=Attribute::all();
         $data['category'] = ItemCategory::where('up_permission',1)->get();
-        $data['user'] = User::get();
+        $data['user'] = User::where('role_id', 4)->get();
         $data['attribute'] = Attribute::all();
         $data['sub_attribute'] = SubAttribute::latest()->get();
 
@@ -98,8 +98,10 @@ class ProductUploadController extends Controller
             $item->category_id = $r->category_id;
             $item->file = $r->videoimage;
             $item->nftunic = $r->nftunic;
-            $item->idnft = rand(0, 9999);
-            $item->data_exp_unic = Carbon::createFromFormat('m/d/Y H:i', $r->data_exp_unic)->format('Y-m-d H:i');
+            $item->idnft = rand(0, 999999999);
+            if($r->data_exp_unic){
+                $item->data_exp_unic = Carbon::createFromFormat('m/d/Y H:i', $r->data_exp_unic)->format('Y-m-d H:i');
+            }
           
             $item->tags = $r->tags;
             
@@ -126,11 +128,7 @@ class ProductUploadController extends Controller
             }
     
         
-            //start laravel file validation 
-            if($r->file('thumdnail') ==""){
-                Toastr::error('Thumbnail File missing', 'Failed');
-                return redirect()->back()->withInput();
-            }
+         
          
             //end laravel file validation 
 

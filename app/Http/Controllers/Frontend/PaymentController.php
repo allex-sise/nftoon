@@ -145,7 +145,7 @@ class PaymentController extends Controller
                     'description' => " - Amount: ".$input['amount'].' - '. $stripe_id,
                     'source' => $request->stripeToken,                    
                     'amount' => (int)($input['amount'] * 100), 
-                    'currency' => 'USD'
+                    'currency' => 'RON'
                 )); 
                 foreach (Cart::content() as $key => $value) {                            
                         ItemPayment::create([ 

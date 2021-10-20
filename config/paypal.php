@@ -22,7 +22,7 @@ return [
     ],
 
     'payment_action' => 'Sale',
-    'currency'       => env('PAYPAL_CURRENCY', 'USD'),
+    'currency'       => env('PAYPAL_CURRENCY', 'RON'),
     'billing_type'   => 'MerchantInitiatedBilling',
     'notify_url'     => '',
     'locale'         => '',

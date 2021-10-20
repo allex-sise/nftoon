@@ -210,13 +210,13 @@
                                 <div class="col-lg-12">
                                 
                                     <div class="form-check col-md-1 float-left">
-                                        <input class="form-check-input image_question" type="radio" value="img" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <input class="form-check-input image_question" type="radio" value="img" name="videoimage" id="flexRadioDefault1">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 Imagine
                                             </label>
                                     </div>
                                     <div class="form-check col-md-1 float-left">
-                                        <input class="form-check-input video_question" type="radio" value="video" name="flexRadioDefault" id="flexRadioDefault2">
+                                        <input class="form-check-input video_question" type="radio" value="video" name="videoimage" id="flexRadioDefault2">
                                             <label class="form-check-label" for="flexRadioDefault2">
                                                 Video
                                             </label>

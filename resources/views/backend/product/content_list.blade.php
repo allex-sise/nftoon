@@ -82,7 +82,7 @@
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.contentEdit',@$item->id)}}">@lang('lang.edit')</a> 
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.ProductDuplicate',@$item->id) }}">Duplicate</a> 
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#deleteClassModal{{@$item->id}}"  href="">@lang('lang.delete')</a>                                                 
-                                                @if ($item->status == 1)
+                                                @if ($item->active_status == 1)
                                                    <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href="">   Dezactiveaza  </a>
                                                 @else   
                                                    <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href=""> Activeaza</a>
@@ -126,7 +126,7 @@
 
                                             <div class="modal-body">
                                                 <div class="text-center">
-                                                        @if ($item->status == 1)
+                                                        @if ($item->active_status == 1)
                                                         <h4>@lang('lang.are_you_want_to_deactive')</h4>
                                                         @else   
                                                         <h4>@lang('lang.are_you_want_to_Approve')</h4>

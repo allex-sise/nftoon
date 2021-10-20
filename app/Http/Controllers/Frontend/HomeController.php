@@ -1536,7 +1536,7 @@ class HomeController extends Controller
                         'description' => " - Amount: " . $input['amount'] . ' - ' . $stripe_id,
                         'source' => $request->stripeToken,
                         'amount' => (int) ($input['amount'] * 100),
-                        'currency' => 'USD'
+                        'currency' => 'RON'
                     ));
                     PaymentPackage::create([
                         'user_id' => Auth::user()->id,
