@@ -8,7 +8,6 @@
 @endphp
     <!-- todo: above has minted hardcoded, upload will fail -->
 
-<script defer src="{{ mix('js/app.js') }}"></script>
 
 <section class="sms-breadcrumb mb-40 white-box">
     <div class="container-fluid">
@@ -130,4 +129,7 @@
         </div>
     </div>
 </section>
+@endsection
+@section('script')
+  <script src="{{asset('public/js/app.js')}}"></script>
 @endsection

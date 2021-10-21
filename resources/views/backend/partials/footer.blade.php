@@ -125,7 +125,6 @@
 <script src="{{asset('public/backEnd/backend.js')}}"></script>
 <script src="{{asset('public/backEnd/footer.js')}}"></script>
 
-
     @include('backend/partials/alertMessage')
     <script src="{{asset('public/js/toastr.js')}}"></script>
     {!! Toastr::message() !!}
