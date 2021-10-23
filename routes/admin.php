@@ -159,7 +159,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::post('product/feedback/{id}', 'ProductController@item_feedback')->name('item_feedback')->middleware('userRolePermission:7');
         Route::get('product-edit/{id}', 'ProductController@contentEdit')->name('contentEdit')->middleware('userRolePermission:5');
         Route::get('product-approve/{id}', 'ProductController@itemApprove')->name('itemApprove')->middleware('userRolePermission:5');
-        // Route::post('product-update', 'ProductController@itemUpdate')->name('itemUpdate')->middleware('userRolePermission:5');
+        Route::post('product-update-mint', 'ProductController@itemUpdateMint')->name('itemUpdateMint')->middleware('userRolePermission:5');
         
         Route::get('item-delete/{id}', 'ProductController@itemDelete')->name('itemDelete')->middleware('userRolePermission:5');
         Route::get('deactive-products', 'ProductController@deactiveProduct')->name('deactive_product')->middleware('userRolePermission:5');

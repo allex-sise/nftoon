@@ -102,7 +102,7 @@
                         
                            <!-- Vue -->
                             <div id="app">
-                                <metamask-intro description="{{$description}}" external-url="{{$externalUrl}}" name="{{$name}}" image="{{asset(@$data['item']->icon)}}"></metamask-intro>
+                                <metamask-intro description="{{$description}}" external-url="{{$externalUrl}}" name="{{$name}}" item-idkey="{{@$data['item']->id}}" image="{{asset(@$data['item']->icon)}}" mint-route="{{route('admin.itemUpdateMint')}}"></metamask-intro>
                                 <withdraw-results />
                             </div> 
 

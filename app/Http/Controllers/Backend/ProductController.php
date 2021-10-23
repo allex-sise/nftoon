@@ -338,6 +338,22 @@ class ProductController extends Controller
                 return redirect()->back();
         }
     }
+  // admin update product 
+  public function itemUpdateMint(Request $r){
+    DB::beginTransaction();
+    try {
+            $item=Item::find($r->itemIdkey);
+            $item->purchase_link = $r->metadata;
+            $item->idnft = $r->id;
+            $item->save();
+            Toastr::success('NFT updatat cu succes!','Success');
+            DB::commit(); 
+        } 
+        catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+    }
+}
 
     // admin update product 
 public function itemUpdate(Request $r){

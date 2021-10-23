@@ -1,5 +1,6 @@
 <template>
     <div id="demo">
+        <button @click="(saveToDB())">SaveToDB</button>
         <vue-metamask 
             @onComplete="onComplete"
         >
@@ -39,7 +40,9 @@
             description:null,
             externalUrl:null,
             name:null,
-            image:null
+            image:null,
+            mintRoute:null,
+            itemIdkey:null,
         },
         data(){
             return {
@@ -50,7 +53,8 @@
                     id: null,
                     mintResponse: null,
                     metadata: null,
-                    metadataFields: null
+                    metadataFields: null,
+                    itemIdkey: this.itemIdkey
                 },
                 tokenData:{
                     description: this.description,
@@ -215,6 +219,17 @@
                 }
                 this.file.ipfsImageHash = ipfsImageHash;
                 return true;
+            },
+            saveToDB(){
+                axios.post(this.mintRoute,this.token).then(res => {
+                    if(res.data.status === 'ok'){
+                        toastr.success(res.data.message);
+                    }else{
+                        toastr.error(res.data.message);
+                    }
+                    }).catch(error=>{
+                       toastr.error(error.response.data.errors);
+                });
             }
         }
     }
