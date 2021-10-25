@@ -13,7 +13,10 @@
         <div v-if="provider">
             <label>Wallet address:</label>{{provider.selectedAddress}}
         </div>
-        {{file.ipfsMetadataUrl}}
+
+        <div v-if="token.metadata">
+            <label>Metadata:</label>{{token.metadata}}
+        </div>
         <p/>
     </div>
 </template>
