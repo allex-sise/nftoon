@@ -12,7 +12,7 @@
 <script>
 import VueMetamask from 'vue-metamask';
 import {createAlchemyWeb3} from "@alch/alchemy-web3";
-import contract from "../../assets/Master.json"
+// import contract from "../assets/contracts/MintedNFT721.json"
 
 export default {
   components: {

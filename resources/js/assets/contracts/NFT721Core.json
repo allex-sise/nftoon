@@ -1,0 +1,239 @@
+{
+  "contractName": "NFT721Core",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"A place for common modifiers and functions used by various NFT721 mixins, if any.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/mixins/NFT721Core.sol\":\"NFT721Core\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/minted/mixins/NFT721Core.sol\":{\"keccak256\":\"0x7ebf1b248c2ff61c24b060fc9a5dee3a89b8d1994108f854358948f2479ae54f\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://84bac46180fad4c170cad35e86a5ad8c99cfceeeb605f3e73c080085e25c525d\",\"dweb:/ipfs/QmamurwfKuK1ourVJLH4rXwXR97Qq9MePTFkUiYsQcPp6X\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @notice A place for common modifiers and functions used by various NFT721 mixins, if any.\r\n * @dev This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree.\r\n */\r\nabstract contract NFT721Core {\r\n  uint256[900] private ______gap;\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\mixins\\NFT721Core.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/mixins/NFT721Core.sol",
+    "exportedSymbols": {
+      "NFT721Core": [
+        3499
+      ]
+    },
+    "id": 3500,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3493,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:21"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "NFT721Core",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3494,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:207:21",
+          "text": " @notice A place for common modifiers and functions used by various NFT721 mixins, if any.\n @dev This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree."
+        },
+        "fullyImplemented": true,
+        "id": 3499,
+        "linearizedBaseContracts": [
+          3499
+        ],
+        "name": "NFT721Core",
+        "nameLocation": "303:10:21",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3498,
+            "mutability": "mutable",
+            "name": "______gap",
+            "nameLocation": "340:9:21",
+            "nodeType": "VariableDeclaration",
+            "scope": 3499,
+            "src": "319:30:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$900_storage",
+              "typeString": "uint256[900]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3495,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "319:7:21",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 3497,
+              "length": {
+                "hexValue": "393030",
+                "id": 3496,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "327:3:21",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_900_by_1",
+                  "typeString": "int_const 900"
+                },
+                "value": "900"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "319:12:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$900_storage_ptr",
+                "typeString": "uint256[900]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 3500,
+        "src": "285:68:21",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:304:21"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/mixins/NFT721Core.sol",
+    "exportedSymbols": {
+      "NFT721Core": [
+        3499
+      ]
+    },
+    "id": 3500,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3493,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:21"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "NFT721Core",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3494,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:207:21",
+          "text": " @notice A place for common modifiers and functions used by various NFT721 mixins, if any.\n @dev This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree."
+        },
+        "fullyImplemented": true,
+        "id": 3499,
+        "linearizedBaseContracts": [
+          3499
+        ],
+        "name": "NFT721Core",
+        "nameLocation": "303:10:21",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3498,
+            "mutability": "mutable",
+            "name": "______gap",
+            "nameLocation": "340:9:21",
+            "nodeType": "VariableDeclaration",
+            "scope": 3499,
+            "src": "319:30:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$900_storage",
+              "typeString": "uint256[900]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3495,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "319:7:21",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 3497,
+              "length": {
+                "hexValue": "393030",
+                "id": 3496,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "327:3:21",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_900_by_1",
+                  "typeString": "int_const 900"
+                },
+                "value": "900"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "319:12:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$900_storage_ptr",
+                "typeString": "uint256[900]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 3500,
+        "src": "285:68:21",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:304:21"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-10-24T17:11:18.470Z",
+  "devdoc": {
+    "details": "This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree.",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "A place for common modifiers and functions used by various NFT721 mixins, if any.",
+    "version": 1
+  }
+}

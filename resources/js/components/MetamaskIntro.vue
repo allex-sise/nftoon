@@ -1,41 +1,31 @@
 <template>
     <div id="demo">
-        <button @click="(saveToDB())">SaveToDB</button>
-        <vue-metamask 
-            @onComplete="onComplete"
-        >
-        </vue-metamask>
+        <div v-if="token.id">
+            <p>TokenId: {{token.id}}</p>
+            <button @click="(updateDBWithMetadata())">STORE NFT</button>
+        </div>
+        <div v-else>
+            <button @click="(onMintNft())">MINT NFT</button>
+        </div>
+        <div>Contract:{{contractAddress}}</div>
         <p v-if="loading" :style="{color: '#ff0000'}">LOADING...</p>
 
-        <div v-if="userData">
-            <label>Wallet address:</label>{{userData.metaMaskAddress}}
+        <div v-if="provider">
+            <label>Wallet address:</label>{{provider.selectedAddress}}
         </div>
         {{file.ipfsMetadataUrl}}
         <p/>
-        <label>TokenId</label>
-        <input type="number" v-model="token.id"/>
-        <button @click="(onMintNft())">MINT NFT</button>
-        <div v-if="token.id">
-            <p>Minting tokenId: {{token.id}}</p>
-        </div>
-        <p><button @click="(onGetNftMetadata())">GET METADATA</button></p>
-        <p>{{token.metadata}}</p>
-        <p>{{token.metadataFields}}</p>
     </div>
 </template>
 
 
 <script>
-    import VueMetamask from 'vue-metamask';
-    // import {loadBlockchainData} from '../api/loadBlockchain';
+    import detectEthereumProvider from '@metamask/detect-provider';
     import {createAlchemyWeb3} from "@alch/alchemy-web3";
-    import contract from "../assets/Master.json"
+    import contract from "../assets/contracts/MintedNFT721.json"
     import axios from 'axios'
 
     export default {
-        components: {
-            VueMetamask,
-        },
         props:{
             description:null,
             externalUrl:null,
@@ -43,14 +33,15 @@
             image:null,
             mintRoute:null,
             itemIdkey:null,
+            itemTokenid:null
         },
         data(){
             return {
                 contractAddress: null,
-                userData: null,
+                provider: null,
                 decentralizedContract: null,
                 token:{
-                    id: null,
+                    id: this.itemTokenid,
                     mintResponse: null,
                     metadata: null,
                     metadataFields: null,
@@ -70,6 +61,7 @@
                 },
                 pinata_api_key:null,
                 pinata_secret_api_key:null,
+                alchemy_api_key: null,
                 loading: false,
                 
             }
@@ -78,35 +70,70 @@
             this.pinata_api_key = process.env.MIX_PUSHER_PINATA_API_KEY;
             this.pinata_secret_api_key = process.env.MIX_PUSHER_PINATA_SECRET_API_KEY;
             this.contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
+            this.alchemy_api_key = process.env.MIX_PUSHER_ALCHEMY_SECRET_API_KEY;
             await this.loadBlockchainData();
+            this.provider = await detectEthereumProvider();
+            console.log("provider: ",this.provider);
         },
         methods:{
-            onComplete(responseData){
-                this.userData = responseData;
-            },
             async loadBlockchainData(){
-                const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/X3ZvuZL6NkgWOL2Rws8iN7-GO_8qTNSC";
+                const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/"+this.alchemy_api_key;
                 const alchWeb3 = createAlchemyWeb3(API_KEY);
                 this.decentralizedContract = new alchWeb3.eth.Contract(
                     contract.abi,
                     this.contractAddress
                 );
             },
+            //onMintNft = async() =>{
             onMintNft(){
-                this.uploadAndMint();
+                if(this.itemTokenid === null || this.itemTokenid === ''){
+                    this.uploadAndMint();
+                }
+                else{
+                    console.log("NFT already minted!");
+                }
             },
             onGetNftMetadata(){
                 this.getNftMetadata();
             },
+            async updateDBWithMetadata(){
+                console.log("Store metadata to DB");
+                await this.getNftMetadata();
+                this.saveToDB();
+            },
             async uploadAndMint(){
+                await this.getNextAvailableId();
+                console.log('save file...');
                 await this.saveFile();
+                console.log('mint nft ...');
                 await this.mintNft();
             },
+            async getNextAvailableId(){
+                await this.decentralizedContract.methods.getNextTokenId().call()
+                    .then(response => 
+                    this.token.id=response);
+            },
             async mintNft(){
-                if(!this.nftHasNecessaryData()) return;
-                this.token.mintResponse = await this.decentralizedContract.methods.mint(this.userData.metaMaskAddress, this.file.ipfsMetadataUrl, this.token.id).send({
-                    from: this.userData.metaMaskAddress,
-                }).on("transactionHash")
+                if(!this.nftHasNecessaryData()) {
+                    console.log("Missing necessary data")
+                    return;
+                }
+
+                const transactionParameters = {
+                    to: this.contractAddress,
+                    from: this.provider.selectedAddress,
+                    'data': this.decentralizedContract.methods.mint(this.file.ipfsMetadataUrl).encodeABI()
+                };
+                try {
+                    this.token.mintResponse = await this.provider.request({
+                        method: 'eth_sendTransaction',
+                        params: [transactionParameters],
+                    });
+                    console.log("saving to db...")
+                    this.saveToDB();
+                } catch (error) {
+                    console.log("error:",error.message);
+                }
             },
             nftHasNecessaryData(){
                 if(this.token.id == null || 
@@ -178,20 +205,14 @@
                 if(ipfsMetadataUrl == null){
                     return false
                 }
-                this.file.ipfsMetadataUrl = 'https://dweb.link/ipfs/' + ipfsMetadataUrl
+                this.file.ipfsMetadataUrl = ipfsMetadataUrl;
                 return true;
             },
             async getFileData(){
                 let response = await fetch(this.image);
                 return await response.blob();
-
             },
             async uploadFileWithUrl(){
-                //todo: temporary:
-                // this.ipfsImageHash='QmUvS2AbXi4dchK9giDR2JtBwB8JPysjoAY1b7cnoCBRju';
-                // return true;
-
-
                 const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
                 
                 let data = new FormData();
