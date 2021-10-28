@@ -94,7 +94,7 @@
                                     @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['payout'] == url()->current() ?'active':'' }}" id="payouts_show-tab" data-toggle="tab" href="#payouts_show" role="tab"
-                                            aria-controls="contact" aria-selected="false">@lang('lang.payouts')</a>
+                                            aria-controls="contact" aria-selected="false">Retrageri</a>
                                     </li>
                                     @endif
                                     {{-- @if (@Auth::user()->role_id == 4)
@@ -1790,7 +1790,7 @@
                                             @endphp
                                             <nav>
                                                 <ul class="nav nav-tabs payout_tab_wrap" id="myTab" role="tablist">
-                                                     @if (PaymentMethodStatus('Bank')=='true')
+                                                     @if (PaymentMethodStatus('Blockchain')=='true')
                                                          
                                                         <li class="nav-item">
                                                             <a class="p-0  nav-link {{ isset($default_payout) ? $default_payout->payment_method_name == 'Bank'  ? 'active' :'' : ''}} " id="payoutsBank-tab"
@@ -1828,64 +1828,7 @@
                                                         </li>
                                                      @endif
                                                      {{-- {{dd(PaymentMethodStatus('PayPal'))}} --}}
-                                                     @if (PaymentMethodStatus('PayPal')=='true')
-                                                         
-                                                     <li class="nav-item">
-                                                         <a class="p-0  nav-link {{ isset($default_payout) ? $default_payout->payment_method_name == 'PayPal'  ? 'active' :'' : ''}}"  id="payouts2-tab" data-toggle="tab"
-                                                             href="#payouts2" role="tab" aria-controls="profile"
-                                                             aria-selected="false">
-                                                             <!-- <div class="thumb_pak text-center">
-                                                                 <img class="img-fluid"
-                                                                     src="{{ asset('public/frontend/') }}/img/account_settings/1.png" alt="">
-                                                                 <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} 50.00</p>
-                                                                 @if ($payout_setup)
-                                                                     @if (@$paypal_payout_setup->is_default==0)
-                                                                     <button class="btn-main" onclick="location.href='{{url('author/set-payout-default/PayPal')}}';">@lang('lang.make_default')</button>
-                                                                     @else
-                                                                     <p>@lang('lang.default')</p>
-                                                                     @endif
-                                                                 @endif
-                                                             </div> -->
-                                                             <div class="single_payout_item w-100">
-                                                                 <div class="deposite_header text-center">
-                                                                     PayPal
-                                                                 </div>
-                                                                 <div class="deposite_button text-center">
-                                                                     <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} {{env('PAYPAL_MIN_PAYOUT')}} </p>
-                                                                 </div>
-                                                             </div>
-                                                         </a>
-                                                     </li>
-                                                     @endif
-                                                     @if (PaymentMethodStatus('Razorpay')=='true')
-                                                         
-                                                        <li class="nav-item">
-                                                            <a class="p-0 nav-link {{ isset($default_payout) ? $default_payout->payment_method_name == 'Razorpay'  ? 'active' :'' : ''}}"  id="payouts3-tab" data-toggle="tab"
-                                                                href="#payouts3" role="tab" aria-controls="contact"
-                                                                aria-selected="false">
-                                                                <!-- <div class="thumb_pak text-center">
-                                                                    <img class="img-fluid dashboard_razorpay" 
-                                                                        src="{{ asset('public/frontend/') }}/img/account_settings/Razorpay.png" alt="">
-                                                                    <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} 50.00</p>
-                                                                    @if ($payout_setup)
-                                                                        @if (@$razorpay_payout_setup->is_default==0)
-                                                                        <button class="btn-main" onclick="location.href='{{url('author/set-payout-default/Razorpay')}}';">@lang('lang.make_default')</button>
-                                                                        @else
-                                                                        <p>@lang('lang.default')</p>
-                                                                        @endif
-                                                                    @endif
-                                                                </div> -->
-                                                                <div class="single_payout_item w-100">
-                                                                    <div class="deposite_header text-center">
-                                                                        Razorpay
-                                                                    </div>
-                                                                    <div class="deposite_button text-center">
-                                                                        <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} {{env('RAZORPAY_MIN_PAYOUT')}} </p>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                     @endif
+                                                    
                                                 </ul>
                                             </nav>
                                             
@@ -1895,7 +1838,7 @@
                                                     <div class="row">
                                                         <div class="col-xl-10">
                                                             <div class="account_swift_maintain pb-0">
-                                                                <h2 class="comn-heading">@lang('lang.your_bank_account')</h2>
+                                                                <h2 class="comn-heading">Adresa Wallet</h2>
                                                               
                                                                         <div class='form-row'>
                                                                                 <div class='col-md-12 error form-group d-none'>
@@ -1912,7 +1855,7 @@
                                                                             <div class="row">
                                                                                 <input type="text" name="name" value="Bank" hidden>
                                                                                 <div class="col-xl-12 col-md-12">
-                                                                                   <textarea name="email" id="bank_account" > {!!@$stripe_payout_setup->payout_email!!} </textarea>
+                                                                                   <input type="text" name="email" id="" />
                                                                                 </div>
                                                                         
                                                                             </div>
@@ -1977,96 +1920,8 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'PayPal'  ? ' show active' :'' : ''}}" id="payouts2" role="tabpanel"
-                                                    aria-labelledby="payouts2-tab">
-                                                    <div class="row">
-                                                        <div class="col-xl-8">
-                                                            <div class="account_swift_maintain pb-0">
-                                                                <h2 class="comn-heading">@lang('lang.your_paypal_account')</h2>
-                                                                <p class="comn-para">@lang('lang.get_paid_by_credit') <a href="https://www.paypal.com/">@lang('lang.more_about_payPal')</a> | <a href="https://www.paypal.com/us/webapps/mpp/account-selection">@lang('lang.create_an_account')</a></p>
-                                                                <form action="{{ route('author.setup_payout')}}"  method="POST" class="checkout-form">
-                                                                    @csrf
-                                                                    <div class="row">
-                                                                        <div class="col-xl-6">
-                                                                            <div class="row">
-                                                                                <input type="text" name="name" value="PayPal" hidden>
-                                                                                <div class="col-xl-12 col-md-12">
-                                                                                    <label for="name">@lang('lang.email') <span>*</span></label>
-                                                                                    <input type="text" name="email" value="{{ @$paypal_payout_setup->payout_email }}" 
-                                                                                        placeholder="@lang('lang.enter_email_address')">
-                                                                                </div>
-                                                                        
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                    <div class="check-out-btn mt-20">
-                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'Razorpay'  ? ' show active' :'' : ''}}" id="payouts3" role="tabpanel"
-                                                    aria-labelledby="payouts3-tab">
-                                                    <div class="row">
-                                                        <div class="col-xl-8">
-                                                            <div class="account_swift_maintain pb-0">
-                                                                <h2 class="comn-heading">@lang('lang.your_razorPay_account')</h2>
-                                                                <p class="comn-para">@lang('lang.razorPay_international_transfer')
-                                                                    <a href="https://razorpay.com/">@lang('lang.more_about_razorPay')</a> </p>
-                                                                <h2 class="comn-heading">@lang('lang.add_a_new_razorPay_account')
-                                                                </h2>
-                                                                {{--    <div class="swift_boc ">
-                                                                    <p> Due to limitations placed on RazorPay payouts
-                                                                        by
-                                                                        financial institutions, fields must not
-                                                                        contain the
-                                                                        following special characters:</p>
-
-                                                                    <div class="box-inner"> . , # & $ @ % / ( ) * !
-                                                                    </div>
-                                                                </div> --}}
-                                                                <form action="{{ route('author.setup_payout')}}" method="POST" class="checkout-form">
-                                                                    @csrf
-                                                                    <div class="row">
-                                                                        <div class="col-xl-6">
-                                                                            <div class="row">
-                                                                                <input type="text" name="name" value="Razorpay" hidden>
-                                                                                <div class="col-xl-12 col-md-12">
-                                                                                    <label for="name">@lang('lang.email') <span>*</span></label>
-                                                                                    <input type="text" name="email" value="{{ @$razorpay_payout_setup->payout_email }}" 
-                                                                                        placeholder="@lang('lang.enter_email_address')">
-                                                                                </div>
-                                                                                
-                                                                                
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xl-6">
-                                                                                <h2 class="validation"></h2>
-                                                                            <div class="col-xl-12 col-md-12 p-0">
-                                                                                <label for="name">@lang('lang.phone') <span>*</span></label>
-                                                                                <input type="text" placeholder="@lang('lang.phone')" class="card_name"  name="phone" value="{{isset($razorpay_payout_setup->payout_phone)? @$razorpay_payout_setup->payout_phone : old('payout_phone')}}">
-                                                                                    @if ($errors->has('phone'))
-                                                                                        <span class="invalid-feedback" role="alert">
-                                                                                            <strong>{{ $errors->first('phone') }}</strong>
-                                                                                        </span>
-                                                                                    @endif
-                                                                            </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="check-out-btn mt-20">
-                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -2095,30 +1950,30 @@
                                         <div class="payment_wrap account_tabs_pin">
                                             <div class="row">
                                                 <div class="col-lg-7  ">
-                                                    <h2>@lang('lang.Next_Payout')</h2>
-                                                    <p>@lang('lang.You_currently_have') {{@$infix_general_settings->currency_symbol}} {{Auth::user()->balance->amount}} @lang('lang.next_month_payout').</p>
+                                                    <h2>Balanta Ta</h2>
+                                                    <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} </p>
                                                 </div>
                                                 <div class="col-lg-1">
 
                                                 </div>
                                                 <div class="col-lg-4 ">
-                                                    <h2>@lang('lang.payout') @lang('lang.account')</h2>
+                                                    <h2> @lang('lang.account') @lang('lang.payout')</h2>
                                                     @if (defaultPayout())
                                                         
                                                         @if (defaultPayout()->payment_method_name=='PayPal')
-                                                            <img src="{{asset('/'.PaymentMethodSetup('PayPal')->logo)}}" width="50" alt="">
+                                                            <img src="{{asset('/'.PaymentMethodSetup('PayPal')->logo)}}" alt="">
                                                         @elseif(defaultPayout()->payment_method_name=='Stripe')
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Stripe')->logo)}}" width="50" alt="">
+                                                            <img src="{{asset('/'.PaymentMethodSetup('Stripe')->logo)}}" alt="">
                                                         @elseif(defaultPayout()->payment_method_name=='Razorpay')
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Razorpay')->logo)}}" width="50" alt="">
+                                                            <img src="{{asset('/'.PaymentMethodSetup('Razorpay')->logo)}}" alt="">
                                                         @else
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Bank')->logo)}}" width="50" alt="">
+                                                            <img src="{{asset('/'.PaymentMethodSetup('Blockchain')->logo)}}" alt="">
                                                         @endif
                                                             <br>
                                                         {!! defaultPayout()->payout_email !!}
                                                     @endif
 
-                                                    <div class="check-out-btn mt-10">
+                                                    <div class="check-out-btn mt-10" style="margin-top: 20px;">
                                                         <a href="{{ route('author.payout',@Auth::user()->username)}}" id="deposit_" class="btn-main">@lang('lang.set') @lang('lang.account')</a>
                                                        
                                                     </div>

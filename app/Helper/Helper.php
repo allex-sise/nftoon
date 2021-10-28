@@ -597,7 +597,30 @@ if (!function_exists('send_mail')) {
   }
 }
 
+function validationMessage($validation_rules){
+  $message = [];
+  foreach ($validation_rules as $attribute => $rules){
 
+      if (is_array($rules)){
+          $single_rule = $rules;
+      } else{
+          $single_rule = explode('|', $rules);
+      }
+
+      foreach ($single_rule as $rule){
+          $string = explode(':', $rule);
+          $explode_attribute = explode('.', $attribute);
+          if (count($explode_attribute) > 1){
+              $message [$attribute.'.'.$string[0]] = __('validation.'.$string[0]);
+          } else{
+              $message [$attribute.'.'.$string[0]] = __('validation.'.$attribute.'.'.$string[0]);
+          }
+
+      }
+  }
+
+  return $message;
+}
 
 // get Social Icons Dynamic
 if( ! function_exists('getSocialIconsDynamic')){

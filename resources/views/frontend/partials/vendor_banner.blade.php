@@ -16,7 +16,7 @@
                                 @endphp
                                 <img src="{{ file_exists(@$profile) ? asset($profile) : asset('public/uploads/user/user.png') }} " width="100" alt="" style="border-radius: 50%; border: 5px solid #FFF!important;">
                                 </div>
-                                <div class="profile_name">
+                                <div class="profile_name" style="margin-left: -35px;">
                                    <h1><span>@</span>{{  @$data['user']->username }}</h1><br />
                                    <h5>{{  @$data['user']->full_name }}</h5>
                                 

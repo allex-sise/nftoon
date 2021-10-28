@@ -470,6 +470,12 @@
                 $data=  App\AssignModulePermission::where('module_id',15)->first();
             @endphp --}}
             @if(Auth::user()->role_id == 1 || in_array(15, $permitted_modules))
+            <li>
+                <a href="{{ route('admin.payableUser') }}" class="">
+                    <span class="flaticon-analytics"></span>
+                    Retrageri
+                </a>
+            </li>
                 <!-- <li>
                     <a href="#payment" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="flaticon-analytics"></span>

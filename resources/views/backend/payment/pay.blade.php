@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 no-gutters">
                             <div class="main-title">
-                                <h3 class="mb-0">@lang('lang.author') @lang('lang.payment') @lang('lang.list')</h3>
+                                <h3 class="mb-0">Retrageri</h3>
                             </div>
                         </div>
                     </div>
@@ -56,9 +56,9 @@
                                     <td>{{@$value->username}}</td>
                                     <td>{{@$value->payout_email}}</td>
                                     <td>{{@$value->payout_phone}}</td>
-                                    <td>{{@GeneralSetting()->currency_symbol}}{{@$value->user->balance->amount}}</td>
+                                    <td>{{@$value->user->balance->amount}} {{@GeneralSetting()->currency_symbol}}</td>
 
-                                    <td>{{  @$value->user->CheckPaymnent(@$value->user_id) ? 'Paid' : 'Unpaid' }}</td>
+                                    <td>{{  @$value->user->CheckPaymnent(@$value->user_id) ? 'Platit' : 'Neplatit' }}</td>
                                     
                                     <td>{{ @$value->payment_method_name}}</td>
                                     <td>

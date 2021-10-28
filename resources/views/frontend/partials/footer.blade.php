@@ -2,7 +2,7 @@
  <style>
 .colspecial{
     margin: 0 auto;
-    display: block;
+    display: none;
     width: 70%!important;
 }
 .footer-area .footer-top {

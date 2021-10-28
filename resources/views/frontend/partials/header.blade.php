@@ -115,7 +115,7 @@
                                                     <!-- <li><a href="{{ route('author.content')}}">@lang('lang.upload')</a></li> -->
                                                     <li><a href="{{ route('author.earning',@Auth::user()->username)}}">@lang('lang.earnings')</a></li>
                                                     <li><a href="{{ route('author.statement',@Auth::user()->username)}}">@lang('lang.statement')</a></li>
-                                                    <li><a href="{{ route('author.payout',@Auth::user()->username)}}">@lang('lang.payouts')</a></li>
+                                                    <li><a href="{{ route('author.payout',@Auth::user()->username)}}">Retrageri</a></li>
                                                     @endif
                                                 </ul>
                                             </div>

@@ -22,6 +22,11 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
 .mgbutton50{
     margin-bottom: 50px;
 }
+.footer-area .footer-top {
+  padding-top: 50px!important;
+  padding-bottom: 25px;
+  display: block!important;
+}
 </style>
 <div class="features-area section-padding1" onscroll="OnScroll()">
     <div class="container">

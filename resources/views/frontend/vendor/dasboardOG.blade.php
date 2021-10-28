@@ -2085,7 +2085,7 @@
                                             @endphp
                                             <nav>
                                                 <ul class="nav nav-tabs payout_tab_wrap" id="myTab" role="tablist">
-                                                     @if (PaymentMethodStatus('Bank')=='true')
+                                                     @if (PaymentMethodStatus('Blockchain')=='true')
                                                          
                                                         <li class="nav-item">
                                                             <a class="p-0  nav-link {{ isset($default_payout) ? $default_payout->payment_method_name == 'Bank'  ? 'active' :'' : ''}} " id="payoutsBank-tab"
@@ -2407,7 +2407,7 @@
                                                         @elseif(defaultPayout()->payment_method_name=='Razorpay')
                                                             <img src="{{asset('/'.PaymentMethodSetup('Razorpay')->logo)}}" width="50" alt="">
                                                         @else
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Bank')->logo)}}" width="50" alt="">
+                                                            <img src="{{asset('/'.PaymentMethodSetup('Blockchain')->logo)}}" width="50" alt="">
                                                         @endif
                                                             <br>
                                                         {!! defaultPayout()->payout_email !!}

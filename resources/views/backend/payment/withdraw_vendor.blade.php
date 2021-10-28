@@ -26,7 +26,7 @@ return $name[3];
             <h1>@lang('lang.withdraws')</h1>
             <div class="bc-pages">
                 <a href="{{url('admin/dashboard')}}">@lang('lang.dashboard')</a>
-                <a href="{{route('admin.payableUser')}}">@lang('lang.vendor') @lang('lang.withdraws') @lang('lang.list')</a>
+                <a href="{{route('admin.payableUser')}}">Retrageri Creatori</a>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@ return $name[3];
          <div class="col-lg-3">
             <!-- Start Student Meta Information -->
             <div class="main-title">
-                <h3 class="mb-20">@lang('lang.vendor') @lang('lang.info')</h3>
+                <h3 class="mb-20">Informatii Creator</h3>
             </div>
             <div class="student-meta-box">
                 <div class="student-meta-top"></div>
@@ -50,7 +50,7 @@ return $name[3];
                     <div class="single-meta mt-10">
                         <div class="d-flex justify-content-between">
                             <div class="name">
-                                @lang('lang.vendor') @lang('lang.name')
+                                Nume Creator
                             </div>
                             <div class="value">
                                 @if(isset($data)){{@$data->full_name}}@endif
@@ -73,7 +73,7 @@ return $name[3];
                                 @lang('lang.balance') 
                             </div>
                             <div class="value">
-                               @if(isset($data)) {{@GeneralSetting()->currency_symbol}} {{@$data->balance->amount}}@endif
+                               @if(isset($data))  {{@$data->balance->amount}} {{@GeneralSetting()->currency_symbol}}@endif
                            </div>
                        </div>
                    </div>
@@ -124,7 +124,7 @@ return $name[3];
                                                         <div class="white-box single-summery">
                                                             <div class="d-flex justify-content-between">
                                                                 <div>
-                                                                    <h3> {{@GeneralSetting()->currency_symbol}} {{@$data->balance->amount}} </h3>
+                                                                    <h3> {{@$data->balance->amount}} {{@GeneralSetting()->currency_symbol}} </h3>
                                                                     <p class="mb-0">@lang('lang.total') @lang('lang.earning')</p>
                                                                 </div>
                                                             </div>
@@ -139,7 +139,7 @@ return $name[3];
                         </div>
                     <div role="tabpanel" class="tab-pane fade " id="studentProfile">
                         <div class="white-box">
-                            <h4 class="stu-sub-head">@lang('lang.vendor') @lang('lang.card') @lang('lang.info')</h4>
+                            <h4 class="stu-sub-head">Informatii Cont Plata </h4>
                           
 
                             <div class="single-info">
@@ -149,7 +149,7 @@ return $name[3];
                                        <input type="text" hidden value="{{ @$payout_setup->id }}" name="payment_method_id">
                                         <div class='form-row'>
                                             <div class='col-xl-12 form-group'>
-                                                <label class='control-label'>@lang('lang.card') @lang('lang.name')</label> <input value="{{ @$payout_setup->payment_method_name }}" name="card_name"
+                                                <label class='control-label'>Metoda De Plata</label> <input value="{{ @$payout_setup->payment_method_name }}" name="card_name"
                                                     class='form-control' size='4' type='text' readonly>
                                             </div>
                                         </div>
@@ -178,7 +178,7 @@ return $name[3];
                                         <div class="form-row">
 
                                             <div class='col-xl-12 form-group text-center'>
-                                                <button type="submit" class="primary-btn fix-gr-bg">@lang('lang.paid')</button>
+                                                <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
                                             </div>
                                         </div>
                                     </form>
@@ -187,7 +187,7 @@ return $name[3];
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="withdraw_history">
                         <div class="white-box">
-                            <h4>@lang('lang.withdraws') @lang('lang.history')</h4>
+                            <h4>@lang('lang.history') @lang('lang.withdraws') </h4>
                             <div class="text-right mb-20">
                                 <table id="table_id" class="display school-table" cellspacing="0" width="100%">
 
@@ -195,7 +195,7 @@ return $name[3];
                                    
                                         <tr class="withdraw_vendor_aligh_left">
                                             {{-- <th>@lang('lang.username')</th> --}}
-                                            <th>@lang('lang.card') @lang('lang.name')</th>
+                                            <th>Metoda Plata</th>
                                             <th>@lang('lang.email')</th>
                                             <th>@lang('lang.phone')</th>
                                             <th>@lang('lang.amount')</th>
