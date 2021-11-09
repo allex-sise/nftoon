@@ -137,6 +137,13 @@ $carttotalstrip = floatval($b);
                                                             </div>
                                                             <div class="deposite_button text-center">
                                                                  <p class="mt-3">Plateste folosind credite Minted.</p>
+                                                                 <p class="">Fondurile tale: @if (Auth::user()->role_id == 4)
+                                                                    {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                                                    @endif
+                                                                    @if (Auth::user()->role_id == 5)
+                                                                        {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                                                    @endif
+                                                                </p>
                                                                 <div class="mt-1 text-center mb-1">
                                                                     <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="boxed-btn btnspecial">Plateste</a>
                                                                 </div>

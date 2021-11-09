@@ -167,7 +167,7 @@
                                 <div class="footer-bottom">
                                     <div class="footer-link">
                                         <nav>
-                                            <ul>
+                                            <ul class="footermobul">
                                                 @php
                                                     $menus = FooterMenu();
                                                 @endphp

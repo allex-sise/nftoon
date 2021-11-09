@@ -29,7 +29,6 @@
         border-bottom: 1px solid #7c32ff;
     }
     .links_back{
-        background: #fafafa;
         padding: 25px 55px;
         display: inline-block;
     }
@@ -43,7 +42,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="banner-info">
-                            <h2>Mail Verify</h2>
+                            <h2>Verificare Adresa de Mail</h2>
                         </div>
                     </div>
                 </div>
@@ -56,13 +55,14 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-12">
                     <div class="verify_text text-center">
-                        <h3>Verify your Email Address</h3>
+                        <h3>Verifica-ti adresa de email</h3>
                         <div class="links_back">
-                            {{ __('Before proceeding, please check your email for a verification link.') }}
-                            {{ __('If you did not receive the email') }},
+                        Inainte de a continua, va rugam sa verificati e-mailul pentru un link de verificare. 
+                        <br />
+                        Daca nu ati primit e-mailul.
                             <form action="{{ route('verification_resend') }}" method="post" class="mt-20">
                                 @csrf
-                                <button class="boxed-btn" type="submit">{{ __('click here to request another') }}</button>
+                                <button class="boxed-btn" type="submit">Fa Click aici pentru a retrimite email de confirmare</button>
                             </form>
                         {{-- </p> --}}
                         </div>

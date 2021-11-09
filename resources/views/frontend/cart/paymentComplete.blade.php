@@ -84,10 +84,10 @@
                                                 <a class="boxed-btn" href="{{ route('user.ItemDownloadAll',@$item->order_id) }}">@lang('lang.download')</a> 
                                             @endif -->
                                             @if (Auth::user()->role_id == 4)
-                                                <a class="boxed-btn" href="{{ url('downloads/'.@Auth::user()->username) }}">Vezi la tine in profil</a> 
+                                                <a class="boxed-btn" href="{{ url('author/download/'.@Auth::user()->username) }}">Vezi la tine in profil</a> 
                                             @endif
                                             @if (Auth::user()->role_id == 5)
-                                                <a class="boxed-btn" href="{{ url('downloads/'.@Auth::user()->username) }}">Vezi la tine in profil</a> 
+                                                <a class="boxed-btn" href="{{ url('author/download/'.@Auth::user()->username) }}">Vezi la tine in profil</a> 
                                             @endif
                                              {{-- <a href="{{ @$item->Item->category->productSetting->url }}" target="_blank" class="boxed-btn-white">{{ isset($item->Item->category->productSetting) ?  $item->Item->category->productSetting->title .' '. GeneralSetting()->currency_symbol .''. $item->Item->category->productSetting->amount :''}}</a> --}}
                                             <div class="net_prise">

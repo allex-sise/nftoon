@@ -95,9 +95,9 @@
                                     </div>
                                 </div>
                                 <div class="row mt-25">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="input-effect">
-                                            <input type="text" class="primary-input date form-control{{ $errors->has('startdate') ? ' is-invalid' : '' }}" id="startdate" name="startdate" >
+                                            <input type="text" class="primary-input form-control{{ $errors->has('startdate') ? ' is-invalid' : '' }}" id="date" name="startdate" >
                                             <label>Data Inceperii </label>
                                             <span class="focus-border"></span>
                                                     @if ($errors->has('startdate'))
@@ -107,11 +107,23 @@
                                                     @endif
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 float-left">
+                                        <div class="input-effect">
+                                            <input type="text" class="primary-input" id="time" name="ora_incepere" >
+                                            <label>Ora incepere</label>
+                                            <span class="focus-border"></span>
+                                            @if ($errors->has('data_exp_unic'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('data_exp_unic') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row mt-25">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="input-effect">
-                                            <input type="text" class="primary-input date form-control{{ $errors->has('expdate') ? ' is-invalid' : '' }}" id="date" name="expdate" >
+                                            <input type="text" class="primary-input form-control{{ $errors->has('expdate') ? ' is-invalid' : '' }}" id="date2" name="expdate" >
                                             <label>Data Expirarii </label>
                                             <span class="focus-border"></span>
                                                     @if ($errors->has('expdate'))
@@ -121,7 +133,20 @@
                                                     @endif
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 float-left">
+                                        <div class="input-effect">
+                                            <input type="text" class="primary-input" id="time2" name="ora_expirare" >
+                                            <label>Ora Expirarii</label>
+                                            <span class="focus-border"></span>
+                                            @if ($errors->has('expdate'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('expdate') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
+                            
                                 <div class="row mt-25">
                                 <div class="col-lg-12">
                                     <div class="row no-gutters input-right-icon">
@@ -182,7 +207,7 @@
                                             @else
                                                 @lang('lang.save')
                                             @endif
-                                            @lang('lang.category')
+                                            Drop
 
                                         </button>
                                     </div>
@@ -254,7 +279,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">@lang('lang.delete') @lang('lang.category')</h4>
+                                                <h4 class="modal-title">@lang('lang.delete') Drop ?</h4>
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
 
@@ -286,12 +311,88 @@
 @endsection
 <script src="{{asset('public/backEnd/')}}/vendors/js/jquery-3.2.1.min.js"></script>
 
-<script src="{{asset('public/backEnd/')}}/vendors/js/jquery-ui.js">
-</script>
+<script src="{{asset('public/backEnd/')}}/vendors/js/jquery-ui.js"></script>
 
-<script type="text/javascript" src="{{asset('public/backEnd/')}}/vendors/js/moment.min.js"></script>
 <script type="text/javascript" src="{{asset('public/backEnd/')}}/js/bootstrap-datetimepicker.min.js"></script>
 <script>
+	"use strict";
+    $(function () {
+        $('#date').datepicker({
+            keepOpen: true,
+            minDate: 0,
+            format: 'dd/mm/yyyy',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
+        });
+    })
+</script>
+<script>
+	"use strict";
+    $(function () {
+        $('#time').datetimepicker({
+            keepOpen: true,
+            format: 'HH:mm',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
+        });
+    })
+</script>
+<script>
+	"use strict";
+    $(function () {
+        $('#date2').datepicker({
+            keepOpen: true,
+            minDate: 0,
+            format: 'dd/mm/yyyy',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
+        });
+    })
+</script>
+<script>
+	"use strict";
+    $(function () {
+        $('#time2').datetimepicker({
+            keepOpen: true,
+            format: 'HH:mm',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
+        });
+    })
+</script>
+<!-- <script>
 	"use strict";
     $(function () {
         $('#date').datetimepicker({
@@ -327,4 +428,4 @@
                         close: 'ti-close' }
         });
     })
-</script>
+</script> -->

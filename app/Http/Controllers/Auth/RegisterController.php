@@ -229,13 +229,13 @@ class RegisterController extends Controller
             $settings = InfixEmailSetting::first();
             $reciver_email = $user->email;
             $receiver_name =  $user->full_name;
-            $subject = 'Verification Email';
+            $subject = 'Confirmare Adresa de Email';
             $view ="mail.resend_verify_email"; 
             $compact['data'] =  $data; 
             @send_mail($reciver_email, $receiver_name, $subject , $view ,$compact);
             //End Verification Email Send
 
-            Toastr::success('please check your email for a varification link');
+            Toastr::success('Te rugam sa iti verifici e-mailul pentru link-ul de verificare');
             return redirect('login');
         } catch (\Exception $e) {
             Toastr::error('Something went wrong! please try again','Error');

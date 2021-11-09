@@ -5,7 +5,9 @@
 
 @endpush
 @section('content')
-
+@php
+$referrer = App\User::whereUsername(session()->pull('referrer'))->first();
+@endphp
 <!-- login_resister_area-start -->
     <div class="login_resister_area">
         <div class="container-fluid p-0">
@@ -43,8 +45,9 @@
                                 <form action="{{ url('customer/registration') }}" method="POST" id="cus_registration">
                                     @csrf
                                         <div class="col-xl-12">
-                                            <h3>{{ @GeneralSetting()->system_name }} @lang('lang.registration')</h3>
-                                            <p>@lang('lang.enter_login')</p>
+                                            <h3>Creare Cont Minted</h3>
+                                            <p>@lang('lang.enter_login')
+                                            <br />Ai fost invitat de catre user-ul:<span style="color: #000; text-transform: uppercase;"><b> {{ $referrer->username }} </b></span></p>
                                         </div>
                                         <div class="col-xl-12 col-md-12">
                                             <label for="full_name">@lang('lang.full') @lang('lang.name')<span>*</span></label>
@@ -92,15 +95,7 @@
                                             @enderror
                                         </div>
                                         
-                                        <input type="text"  id="recaptcha_check" value="{{ re_captcha_settings('status') }}">
-                                        @if (re_captcha_settings('status') == 1) 
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="captcha">@lang('lang.re_captcha')</label>
-                                            {!! NoCaptcha::renderJs() !!}
-                                            {!! NoCaptcha::display(['data-theme' => 'white']) !!}
-                                            <span class="text-danger">{{ @$errors->first('g-recaptcha-response') }}</span>
-                                        </div>
-                                        @endif
+                                      
                                         <div class="col-xl-12">
                                             <button type="submit" class="boxed-btn mt-35">@lang('lang.register')</button>
                                         </div>

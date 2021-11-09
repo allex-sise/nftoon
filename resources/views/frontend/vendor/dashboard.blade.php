@@ -21,6 +21,10 @@
     border-radius: 0px;
     width: 15%;
 }
+/* .banner-area3::before {
+    z-index: 99!important;
+    background-image: url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }})!important;
+} */
 </style>
       @include('frontend.partials.vendor_banner')
      <!-- details-tablist-start -->
@@ -29,6 +33,7 @@
      <div class="details-tablist-area details-tablist-area-two menu_md_bg">
             <div class="container">
                 <div class="row">
+                    
                     <div class="col-xl-10 offset-xl-1">
                         <div class="details-tablist ">
                             <nav>
@@ -225,7 +230,7 @@
                                                 
                                             @foreach (@$data['item'] as $item)
                                           <!-- nft item begin -->
-                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                                            <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
                                                 <div class="nft__item">
                                                     <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                                                     <div class="author_list_pp">
@@ -260,12 +265,7 @@
                                             <!-- nft item begin -->
 
                                             @endforeach
-                                            <div class="Pagination">
-                                                {{ @$data['item']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
-                                            </div>
-                                            @else
-                                            <h1>@lang('lang.no_item')</h1>
-                
+                                          
                                             @endif
                                     </div>
                                     @endif
@@ -556,12 +556,7 @@
                                                             data-toggle="pill" href="#v-pills-messages" role="tab"
                                                             aria-controls="v-pills-messages"
                                                             aria-selected="false">@lang('lang.setting') @lang('lang.email')</a>
-                                                        @if(@Auth::user()->role_id == 5)
-                                                        <a class="nav-link {{ str_contains(Request::fullUrl(),'card_updated')?'active':'' }}" id="v-pills-settings-tab"
-                                                            data-toggle="pill" href="#v-pills-settings" role="tab"
-                                                            aria-controls="v-pills-settings"
-                                                            aria-selected="false">@lang('lang.save') @lang('lang.card') @lang('lang.credit') </a>
-                                                            @endif
+                                                    
                                                             <a class="nav-link {{ str_contains(Request::fullUrl(),'social_updated')?'active':'' }}" id="v-pills-Description-tab"
                                                             data-toggle="pill" href="#v-pills-Description"
                                                             role="tab" aria-controls="v-pills-settings"
@@ -1336,6 +1331,7 @@
                                                 </div>
                                             @endif
                                         @if (count(@$data['order'])>0)
+                                        <div class="row">
                                         @foreach (@$data['itemspecial'] as $item)
                                        
                                             @if (Auth::user()->role_id==5)
@@ -1356,7 +1352,7 @@
                                                    $obj = json_decode($item, true);
                                                 @endphp 
                                                 <!-- nft item begin -->
-                                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                                                    <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
                                                         <div class="nft__item">
                                                             <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                                                             <div class="author_list_pp">
@@ -1391,14 +1387,12 @@
                                                     <!-- nft item begin -->
 
                                             @endforeach
-                                                                                     
-                                            
-                                            <div class="Pagination">
-                                                    {{ @$data['itemspecial']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
-                                            </div>
-                                        @else
-                                        <h1>@lang('lang.no') @lang('lang.item')</h1>
+                                            <div class="col-md-12 text-center">
+                                                <a href="#" id="loadmore" class="black-btn wow fadeInUp">Arata mai multe</a>
+                                            </div> 
+                               
                                         @endif 
+                                        </div>
                                         </div>
                                     </div>
                                     @endif
@@ -2373,6 +2367,18 @@ function myFunction() {
   /* Alert the copied text */
   alert("Copied the text: " + copyText.value);
 }
+
+$(".d-item").slice(0, 8).show();
+            $("#loadmore").on("click", function(e){
+            e.preventDefault();
+            $(".d-item:hidden").slice(0, 4).slideDown();
+            if($(".d-item:hidden").length == 0) {
+                //$("#loadmore").text("No Content").addClass("noContent");
+                $("#loadmore").hide();
+                $("#butons").show();
+            }
+            de_size();
+        });
 </script>
 
     

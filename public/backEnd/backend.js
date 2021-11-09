@@ -64,16 +64,6 @@
 
 
 
-   ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-
-    CKEDITOR.replace('#editor', { 
-      height: 500
-    });
-
     //  $('#languageChange').on('change', function () {
     //     var str = $('#languageChange').val();
     //     console.log(str);
@@ -444,11 +434,3 @@ $(document).ready(function () {
         height: 200
       });
       $('.popover').css("display","none")
-
-
-
-
-
-    CKEDITOR.replace( 'blog_description' );
-
-    

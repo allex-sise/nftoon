@@ -310,11 +310,11 @@
 
                                 </div>
                             </div>
+                       
                             <div class="row mt-25 data_exp_unic" id="data_exp_unic" style="display:block" >
-                            
-                                <div class="col-lg-12">
+                            <div class="col-lg-3">
                                     <div class="input-effect">
-                                        <input type="text" class="primary-input date form-control{{ $errors->has('data_exp_unic') ? ' is-invalid' : '' }}" id="date" name="data_exp_unic" >
+                                        <input type="text" class="primary-input" id="date" name="data_exp_unic" >
                                         <label>Data expirare vanzare multipla <span>*</span></label>
                                         <span class="focus-border"></span>
                                         @if ($errors->has('data_exp_unic'))
@@ -323,9 +323,21 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <p id="">Data de expirare pentru cate nft-uri pot fi vandute (in momentul cand se atinge ora, minutul, se opreste duplicarea nft-ului</p>
                                 </div>
-                            </div> 
+                            <div class="col-lg-9 float-left">
+                                <div class="input-effect">
+                                    <input type="text" class="primary-input" id="time" name="ora_exp_unic" >
+                                    <label>Ora expirare vanzare multipla <span>*</span></label>
+                                    <span class="focus-border"></span>
+                                    @if ($errors->has('data_exp_unic'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('data_exp_unic') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <p id="">Data si ora de expirare pentru cate nft-uri pot fi vandute (in momentul cand se atinge ora, minutul, se opreste duplicarea nft-ului</p>
+                            </div>
+                        </div> 
                             <div id="product_purchase_link" style="display: none">
                                 
                                 <div class="input-effect">
@@ -626,10 +638,29 @@ $('.decimal').keyup(function(){
 <script>
 	"use strict";
     $(function () {
-        $('#date').datetimepicker({
+        $('#date').datepicker({
             keepOpen: true,
             minDate: 0,
-            format: 'DD/MM/YYYY HH:mm',
+            format: 'dd/mm/yyyy',
+            icons:
+                    { time: 'ti-alarm-clock',
+                        date: 'ti-calendar',
+                        up: 'ti-arrow-up',
+                        down: 'ti-arrow-down',
+                        previous: 'ti-arrow-left',
+                        next: 'ti-arrow-right',
+                        today: 'ti-agenda',
+                        clear: 'ti-trash',
+                        close: 'ti-close' }
+        });
+    })
+</script>
+<script>
+	"use strict";
+    $(function () {
+        $('#time').datetimepicker({
+            keepOpen: true,
+            format: 'HH:mm',
             icons:
                     { time: 'ti-alarm-clock',
                         date: 'ti-calendar',

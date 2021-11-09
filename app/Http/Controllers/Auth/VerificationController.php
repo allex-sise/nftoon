@@ -49,10 +49,10 @@ class VerificationController extends Controller
         // return Auth::user();
         // return $request->user();
         if ($request->user()->hasVerifiedEmail()) {
-            Toastr::success('You are verified! you can login now!');
+            Toastr::success('Contul este verificat! Te poti loga acum.');
             return redirect('/');
         }else {
-            Toastr::success('please check your email for a varification link');
+            Toastr::success('Te rugam sa iti verifici e-mailul pentru link-ul de verificare');
             return view('frontend.email.veriry_mail');
         }
        /*  return $request->user()->hasVerifiedEmail()

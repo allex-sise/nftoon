@@ -10,6 +10,7 @@
     max-width: 25em;
     padding: 1rem;
     background: black;
+    z-index: 999;
 }
 .gdprcookie h1,
 .gdprcookie h2 {

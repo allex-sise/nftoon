@@ -203,7 +203,7 @@ return $name[3];
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($withdraw as $item)
+                                        @foreach($withdraw2 as $item)
                                         <tr>  
                                             {{-- <td valign="top">{{ @$item->username }}</td> --}}
                                             <td valign="top">{{ @$item->payment_method_name }}</td>

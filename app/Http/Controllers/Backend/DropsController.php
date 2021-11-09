@@ -61,8 +61,8 @@ class DropsController extends Controller
             $store->name = $request->title;
             $store->slug = strtolower(str_replace(' ', '_',$request->title));
             $store->description = $request->description;
-            $store->startdate = Carbon::createFromFormat('m/d/Y H:i', $request->startdate)->format('Y-m-d H:i');
-            $store->expdate = Carbon::createFromFormat('m/d/Y H:i', $request->expdate)->format('Y-m-d H:i');
+            $store->startdate = Carbon::createFromFormat('d/m/Y H:i', $request->startdate.$request->ora_incepere)->format('Y-m-d H:i');
+            $store->expdate = Carbon::createFromFormat('d/m/Y H:i', $request->expdate.$request->ora_expirare)->format('Y-m-d H:i');
           
             $store->status = $request->status;
              //start laravel file validation 

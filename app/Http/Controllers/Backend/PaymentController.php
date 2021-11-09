@@ -135,8 +135,9 @@ function WithdrawUser($id){
         ->where('withdraws.user_id',$id)
         ->select('users.username','withdraws.amount','withdraws.created_at','author_payout_setups.*')
         ->get();
+        $withdraw2 = Withdraw::where('user_id', $id)->get();
         // return $withdraw;
-        return view('backend.payment.withdraw_vendor',compact('data','payout_setup','withdraw'));
+        return view('backend.payment.withdraw_vendor',compact('data','payout_setup','withdraw','withdraw2'));
     } catch (\Exception $e) {
         $msg=str_replace("'", " ", $e->getMessage()) ;
         Toastr::error($msg,app('translator')->get('lang.failed_alert'));
@@ -156,10 +157,6 @@ function paymentAuthor(Request $r){
         $user  = User::find($r->user_id);
         $balnc = $user->balance;
 
-        if (@$user->CheckPaymnent($user->id)) {
-            Toastr::error(app('translator')->get('lang.Already_Paid_author'));
-            return redirect()->back();
-        }
         if ($input['amount'] <= 0) {
             Toastr::error(app('translator')->get('lang.can_not_pay_0'));
             return redirect()->back();

@@ -41,6 +41,21 @@
 .mgt50{
     margin-top: 50px;
 }
+@media only screen and (max-width: 767px) {
+.rowspecial {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    width: 100%;
+    padding-top: 250px;
+    height: 700px;
+    background: rgba(0,0,0,0.5);
+}
+.login_resister_area .single_resister_sildbar .resister_text h3 {
+    font-size: 20px!important;
+    line-height: 22px!important;
+}
+}
     </style>
 
   <!-- banner-area start -->
@@ -54,7 +69,7 @@
                             @php
                             use Carbon\Carbon;
                             @endphp
-                            @if ( $data['drop']->startdate ==  Carbon::now())
+                            @if ( $data['drop']->startdate >=  Carbon::now())
                             <div class="col-xl-10 offset-xl-2 mgt50">
                                 <div class="col-md-4 float-left">
                                     <h3 class="h3clss">Drop-ul incepe in:</h3>
@@ -98,7 +113,6 @@
                     <!-- nft item begin -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="nft__item">
-                            <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div>
                             <div class="author_list_pp">
                                 <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
                                     <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
@@ -118,7 +132,7 @@
                                 {{ @$item->Re_item}} lei
                                 </div>
                                 <div class="nft__item_action">
-                                    <a href="#">Cumpara Acum</a>
+                                    <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">Cumpara Acum</a>
                                 </div>
                                 <!-- <div class="nft__item_like">
                                     <i class="fa fa-heart"></i><span>50</span>

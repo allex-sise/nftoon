@@ -5,6 +5,23 @@
     $logo = dashboard_background($logo_conditions);
 @endphp
 <style>
+@media only screen and (max-width: 767px) {
+  .btnascundedesktop {
+    display: inline!important;
+  }
+  #menu-btn{
+      background: var(--secondary-color)!important;
+  }
+  .footer-area .copyright-area .footer-bottom .footer-link ul li a{
+      font-size: 12px!important;
+  }
+  .footermobul{
+      padding-left: 0rem!important;
+  }
+  .copy-right-text{
+      font-size: 13px!important;
+  }
+}
 </style><!-- header begin -->
 <header class="transparent scroll-dark">
     <div class="container">

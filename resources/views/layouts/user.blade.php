@@ -7,6 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') - Minted</title>
     
     <!-- <link rel="manifest" href="site.webmanifest"> -->
@@ -26,7 +27,17 @@
     <link rel="stylesheet" href="{{asset('public/frontend/css/stylecustom.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/toastr.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/common_style.css')}}">
-
+    <link href="{{ asset('public/frontend/assets/css/animate.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/owl.theme.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/owl.transitions.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/jquery.countdown.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
+    <link id="colors" href="{{ asset('public/frontend/assets/css/colors/scheme-03.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/frontend/assets/css/coloring.css') }}" rel="stylesheet" type="text/css" />
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
     @stack('css')
 </head>

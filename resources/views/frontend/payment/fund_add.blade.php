@@ -15,6 +15,9 @@
     text-align: left;
     margin-top: 340px;
 }
+.checkout_area .check-out-btn{
+    text-align: center!important;
+}
 </style>
  <!-- content begin -->
  <div class="no-bottom no-top" id="content">
@@ -152,7 +155,14 @@
                                     </div>
                                     @endif
                                     <div class="row mb-40">
-                                            <div class="col-xl-6 col-md-6">
+                                    <p class="text-center">Fondurile tale: @if (Auth::user()->role_id == 4)
+                                                                    {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                                                    @endif
+                                                                    @if (Auth::user()->role_id == 5)
+                                                                        {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                                                    @endif
+                                                                </p>
+                                            <div class="col-xl-8 col-md-8 offset-md-2">
                                                 <label for="Deposit">@lang('lang.deposit_amount') *</label>
                                                 <input type="text"  onkeyup="isNumberKeyDecimal(this);" id="_deposit"  name="amount" value="{{old('amount')}}">
                                                 @if ($errors->has('amount'))
@@ -164,7 +174,7 @@
                                             @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
                                                 
                                             @else
-                                                <div class="check-out-btn col-xl-6 col-md-6">
+                                                <div class="check-out-btn col-xl-8 col-md-8 offset-md-2">
                                                     <button type="submit" id="deposit_" class="btn-main mt-1">Adauga Fonduri</button>
                                                 </div>
                                             @endif

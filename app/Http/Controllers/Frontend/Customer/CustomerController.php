@@ -208,7 +208,7 @@ class CustomerController extends Controller
             $data['country'] = SpnCountry::all();
             if (Auth::check()) {
                 $data['user'] = User::where('id', Auth::user()->id)->first();
-                $data['referrals'] = $data['user']->referrals()->paginate(8);
+                $data['referrals'] = $data['user']->referrals()->get();
             }
 
             $data['order'] = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(6);

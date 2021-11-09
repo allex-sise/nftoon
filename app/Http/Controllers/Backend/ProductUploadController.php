@@ -100,7 +100,7 @@ class ProductUploadController extends Controller
             $item->nftunic = $r->nftunic;
             $item->idnft = rand(0, 999999999);
             if($r->data_exp_unic){
-                $item->data_exp_unic = Carbon::createFromFormat('m/d/Y H:i', $r->data_exp_unic)->format('Y-m-d H:i');
+                $item->data_exp_unic = Carbon::createFromFormat('d/m/Y H:i', $r->data_exp_unic.$r->ora_exp_unic)->format('Y-m-d H:i');
             }
           
             $item->tags = $r->tags;

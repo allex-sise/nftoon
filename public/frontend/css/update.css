@@ -243,7 +243,7 @@ body {
 .single_deposite_item .deposite_button{
     padding: 0px 0;
     border-radius: 0 0 5px 5px;
-    height: 150px;
+    height: 200px;
 }
 .single_deposite_item:hover .deposite_header{
     background-image: -webkit-linear-gradient( 0deg, #7c32ff 0%, #a235ec 70%, #c738d8 100%);

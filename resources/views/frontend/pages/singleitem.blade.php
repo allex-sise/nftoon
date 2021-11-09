@@ -270,6 +270,25 @@ footer{
 .light-scheme .footeruserborder{
    background: rgb(0, 0, 0)!important;
 }
+@media only screen and (max-width: 767px) {
+.col50{
+   width: 50%!important;
+}
+.pl-15{
+   padding-left: 15px!important;
+}
+.theme-logo2 img {
+    width: 90px!important;
+    height: auto!important;
+    border-radius: 50%!important;
+}
+.theme-side-bar2 {
+    width: 100%!important;
+}
+.h1author{
+   font-size: 27px!important;
+}
+}
 </style>
 <!-- details-tablist-end -->
 <!-- main-details-area-start -->
@@ -480,12 +499,12 @@ footer{
                               <div class="light-lisence-wrap">
                                  <div class="light-pakage-list">
                                     {{-- {!! $item_support->long_description !!} --}}
-                                    <input type="hidden" id="support_fees" value="{{$data['fees']->support_fee}}">
+                                  
                                     <ul id="license_list">
                                        <li>
                                           <div class="row">
                                           <!-- aici sunt preturile afisate -->
-                                             <div class="col-lg-6"> 
+                                             <div class="col-lg-6 col50"> 
                                                 <strong class="" style="font-size: 20px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
                                                    <span id="regular_license_price">ETH</span>
                                                 </strong> <br />
@@ -493,23 +512,20 @@ footer{
                                                    <span id="regular_license_price">{{@$infix_general_settings->currency_symbol}}</span>
                                                 </strong>
                                              </div>
-                                             <div class="col-lg-6" style="border-left: 1px solid #d9d9d9;">
+                                             <div class="col-lg-6 col50 pl-15" style="border-left: 1px solid #d9d9d9;">
                                                 <strong class="" style="color: #878888; font-size: 13px;">Acest NFT<br /> are un pret fix.
                                                 </strong>
                                              </div>
                                              <div class="col-lg-6">
                                                 <input type="hidden" id="normal_regular_price" value="{{ @$data['item']->Re_item}}">
-                                                <input type="radio" hidden class="price_option" data-default_price="{{ @$data['item']->Re_item}}" data-type="regular_license_price" data-normal="normal_regular_price" data-support_fee="{{@$data['fees']->support_fee/100*@$data['item']->Re_item }}" checked name="list_item_price" value="{{ @$data['item']->Re_item}}">
+                                                <input type="radio" hidden class="price_option" data-default_price="{{ @$data['item']->Re_item}}" data-type="regular_license_price" data-normal="normal_regular_price" checked name="list_item_price" value="{{ @$data['item']->Re_item}}">
                                              </div>
                                           </div>
                                        </li>
                                     </ul>
                                   
                                  </div>
-                                 @php
-                                 $support_fee=floor($data['item']->Re_item/100*$data['fees']->support_fee);
-                                    // $support_fee=$data['fees']->support_fee;
-                                 @endphp
+  
                                  <input type="text" hidden id="buy_license_type"  name="buy_license_type" value="1">
                                  <input type="text" hidden  name="_item_id" value="{{ @$data['item']->id}}">
                                  <input type="text" hidden  name="_item_percent" value="{{ @$data['BuyerFee']->fee/100}}">
@@ -617,7 +633,7 @@ footer{
                         </div>
                         <a href="{{ route('user.portfolio',@$data['item']->user->username)}}">
                         <div class="theme-info">
-                           <h1 style="margin-bottom: 0px; margin-top: 15px;">{{ @$data['item']->user->full_name}}</h1>
+                           <h1 class="h1author" style="margin-bottom: 0px; margin-top: 15px;">{{ @$data['item']->user->full_name}}</h1>
                            <h3><span>@</span>{{ @$data['item']->user->username}}</h3>
                            </a>
                         </div>
@@ -670,7 +686,6 @@ footer{
       <input type="text" hidden id="BuyerFee" name="BuyerFee" value="0">
       {{-- <input type="number" hidden id="_mod_total"  value="{{  $data['item']->Re_item }}"> --}}
       <input type="text" hidden id="Extd_total" value="{{  $data['item']->Ex_total }}">
-      <input type="text" hidden id="Extd_percent" name="Extd_percent"  value="{{ $data['item']->support_fee/100 }}">
    </div>
    <input type="text" hidden  id="pop_license_type" value="1" name="license_type">
    <input type="text" hidden  id="pop_support_time" value="1" name="support_time">

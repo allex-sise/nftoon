@@ -2,41 +2,55 @@
 .banner-area3::before {
     z-index: -2;
 }
+.details-tablist-area::before {
+    background: var(--secondary-color)!important;
+}
+.nav-link{
+    color: #FFF!important;
+}
+.light-scheme .nav-link {
+    color: #000!important;
+}
+.light-scheme .details-tablist-area .details-tablist ul li a.active::before{
+    background: #000!important;
+}
 </style>
-<div class="banner-area3">
-        <div class="banner-area-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1">
-                        <div class="banner-info mb-30 d-flex justify-content-between align-items-center">
-                            <div class="profile_author d-flex align-items-center">
-                                <div class="thumb">
-                                @php
-                                    $profile=$data['user']->profile->image;
-                                @endphp
-                                <img src="{{ file_exists(@$profile) ? asset($profile) : asset('public/uploads/user/user.png') }} " width="100" alt="" style="border-radius: 50%; border: 5px solid #FFF!important;">
-                                </div>
-                                <div class="profile_name" style="margin-left: -35px;">
-                                   <h1><span>@</span>{{  @$data['user']->username }}</h1><br />
-                                   <h5>{{  @$data['user']->full_name }}</h5>
-                                
-                                </div>
-                            </div>
-                             @if (@Auth::user()->role_id == 4)
-                            @php
-                                $item = App\ManageQuery::CountItemSell($data['user']->id);
-                            @endphp
-                                <div class="rating d-flex">
-                                 
-                                    <div class="sate-total">
-                                        <p>@lang('lang.total_sales')</p>
-                                        <h3>{{ @$item}}</h3>
-                                    </div>
-                                </div>
-                                @endif
-                        </div>
-                    </div>
+ <!-- section begin -->
+ <section id="profile_banner" aria-label="section" class="text-light" data-bgimage="url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }}) top">
+
+</section>
+<!-- section close -->
+<section aria-label="section" class="specialsectionmobile" style="padding-bottom: 0px;">
+                <div class="container">
+					<div class="row specialrowuserpage">
+<div class="col-md-12">
+    <div class="d_profile de-flex">
+        <div class="de-flex-col">
+            <div class="profile_avatar">
+                <img src="{{ @$data['user']->profile->image? asset(@$data['user']->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                <i class="fa fa-check"></i>
+                <div class="profile_name">
+                    <h4>
+                    {{  @$data['user']->full_name }}                                                
+                        <span class="profile_username"><span>@</span>{{  @$data['user']->username }}</span>
+                        <span id="wallet" class="profile_wallet">DdzFFzCqrhshMSxb9oW3mRo4MJrQkusV3fGFSTwaiu4wPBqMryA9DYVJCkW9n7twCffG5f5wX2sSkoDXGiZB1HPa7K7f865Kk4LqnrME</span>
+                        <button id="btn_copy" title="Copy Text">Copy</button>
+                    </h4>
                 </div>
             </div>
         </div>
+        @php
+            $item =App\ManageQuery::CountItemSell($data['user']->id); 
+        @endphp
+        <div class="profile_follow de-flex">
+            <div class="de-flex-col">
+                <div class="profile_follower">@lang('lang.total') @lang('lang.sales') {{ @$item}}</div>
+                    
+            </div>
+        </div>
+
     </div>
+</div>
+</div>
+</div>
+</section>

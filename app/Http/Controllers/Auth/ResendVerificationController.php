@@ -42,16 +42,16 @@ class ResendVerificationController extends Controller
                     $settings = InfixEmailSetting::first();
                     $reciver_email = Auth::user()->email;
                     $receiver_name =  Auth::user()->full_name;
-                    $subject = 'Verification Email';
+                    $subject = 'Email de Confirmare';
                     $view ="mail.resend_verify_email";
                     // $compact['data'] =  array('email' => $settings->from_email,'name' => Auth::user()->full_name); 
                     $compact['data'] =  $data; 
                     @send_mail($reciver_email, $receiver_name, $subject , $view ,$compact);
 
-                Toastr::success('please check your email for a varification link');
+                Toastr::success('Te rugam sa iti verifici e-mailul pentru link-ul de verificare');
                 return view('frontend.email.veriry_mail');
             }else{
-                Toastr::success('User Information not found !');
+                Toastr::success('Informatii utilizator de negasit!');
                 return redirect('login');
             }
         } catch (\Exception $th) {
