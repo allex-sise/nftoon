@@ -40,10 +40,10 @@
                     <table id="table_id" class="display school-table" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <td width="1%">ID#</td>
                                 <th width="10%">@lang('lang.user') @lang('lang.name')</th>
                                 <th width="15%">@lang('lang.email')</th>
-                                <th width="15%">@lang('lang.phone')</th>
-                                <th width="15%">@lang('lang.earnings') </th>
+                                <th width="15%">Suma Retragere </th>
                                 <th width="15%">@lang('lang.status')</th>
                                 <th width="15%">@lang('lang.payment') @lang('lang.method')</th>
                                 <th width="15%">@lang('lang.send')</th>
@@ -52,18 +52,18 @@
                         <tbody>
                             @foreach($author_list as $value)
                             {{-- @if (@$value->payment_method->status == 1)                                 --}}
-                                <tr id="{{ @$value->id}}">
-                                    <td>{{@$value->username}}</td>
-                                    <td>{{@$value->payout_email}}</td>
-                                    <td>{{@$value->payout_phone}}</td>
-                                    <td>{{@$value->user->balance->amount}} {{@GeneralSetting()->currency_symbol}}</td>
+                                    <tr id="{{ @$value->id}}">
+                                        <td>{{ @$value->id}}</td>
+                                    <td>{{@$value->user->username}}</td>
+                                    <td>{{@$value->user->email}}</td>
+                                    <td>{{@$value->amount}} {{@GeneralSetting()->currency_symbol}}</td>
 
-                                    <td>{{  @$value->user->CheckPaymnent(@$value->user_id) ? 'Platit' : 'Neplatit' }}</td>
+                                    <td>{{  @$value->paid_vendors_id == NULL ? 'Neplatit' : 'Platit' }}</td>
                                     
-                                    <td>{{ @$value->payment_method_name}}</td>
+                                    <td>{{  @$value->payment_method_id == 1 ? 'Stripe' : 'Ethereum' }}</td>
                                     <td>
-                                      @if (@$value->user->balance->amount>0)                                            
-                                        <a href="{{ route('admin.WithdrawUser',@$value->user_id) }}" class="primary-btn small fix-gr-bg">@lang('lang.send') @lang('lang.money')</a>
+                                      @if (@$value->paid_vendors_id == NULL)                                            
+                                        <a href="{{ route('admin.WithdrawUser',@$value->id) }}" class="primary-btn small fix-gr-bg">@lang('lang.send') @lang('lang.money')</a>
                                       @else 
                                         <span>@lang('lang.empty')</span>  
                                       @endif

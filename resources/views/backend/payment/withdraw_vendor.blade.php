@@ -125,7 +125,7 @@ return $name[3];
                                                             <div class="d-flex justify-content-between">
                                                                 <div>
                                                                     <h3> {{@$data->balance->amount}} {{@GeneralSetting()->currency_symbol}} </h3>
-                                                                    <p class="mb-0">@lang('lang.total') @lang('lang.earning')</p>
+                                                                    <p class="mb-0">Total Balanta Curenta</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -138,52 +138,107 @@ return $name[3];
                             </div>
                         </div>
                     <div role="tabpanel" class="tab-pane fade " id="studentProfile">
+                    @if(@$withdraws->paid_vendors_id == NULL)
+                    
+                        @if(@$withdraws->payment_method_id == 1)
                         <div class="white-box">
-                            <h4 class="stu-sub-head">Informatii Cont Plata </h4>
-                          
-
+                            <h4 class="stu-sub-head">Informatii Cont Plata Stripe</h4>
                             <div class="single-info">
-                                    <form accept-charset="UTF-8" action="{{ route('admin.paymentAuthor') }}" class="require-validation"  id="payment-form" method="post">
-                                        {{ csrf_field() }}
-                                       <input type="text" hidden value="{{ @$payout_setup->user_id }}" name="user_id">
-                                       <input type="text" hidden value="{{ @$payout_setup->id }}" name="payment_method_id">
-                                        <div class='form-row'>
-                                            <div class='col-xl-12 form-group'>
-                                                <label class='control-label'>Metoda De Plata</label> <input value="{{ @$payout_setup->payment_method_name }}" name="card_name"
-                                                    class='form-control' size='4' type='text' readonly>
-                                            </div>
+                                <form accept-charset="UTF-8" action="{{ route('admin.paymentAuthor') }}" class="require-validation"  id="payment-form" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="text" hidden value="{{ @$payout_setup->user_id }}" name="user_id">
+                                    <input type="text" hidden value="{{ @$withdraws->id }}" name="withdraw_id">
+                                    <input type="text" hidden value="{{ @$payout_setup->id }}" name="payment_method_id">
+                                    <div class='form-row'>
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'>Metoda De Plata</label> <input value="{{  @$withdraws->payment_method_id == 1 ? 'Stripe' : 'Ethereum' }}" name="card_name"
+                                                class='form-control' size='4' type='text' readonly>
                                         </div>
-                                        <div class='form-row'>
-                                            <div class='col-xl-12 form-group'>
-                                                <label class='control-label'>@lang('lang.email')</label> <input
-                                            autocomplete='off' class='form-control card-number' size='20' value="{{ @$payout_setup->payout_email }}" name="email"
+                                    </div>
+                                    <div class='form-row'>
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'>@lang('lang.email')</label> <input
+                                        autocomplete='off' class='form-control card-number' size='20' value="{{ @$payout_setup->payout_email }}" name="email"
+                                                type='text' readonly>
+                                        </div>
+                                    </div>
+                                    <!-- <div class='form-row'>
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'>@lang('lang.phone')</label> <input
+                                        autocomplete='off' class='form-control card-number' size='20' value="{{ @$data->payout_phone }}" name="phone"
+                                                type='text' readonly>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="form-row">
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'> @lang('lang.total')</label> <input
+                                                class='form-control' placeholder='YYYY' value="{{ @$withdraws->amount}}" name="amount"
                                                     type='text' readonly>
-                                            </div>
                                         </div>
-                                        <div class='form-row'>
-                                            <div class='col-xl-12 form-group'>
-                                                <label class='control-label'>@lang('lang.phone')</label> <input
-                                            autocomplete='off' class='form-control card-number' size='20' value="{{ @$payout_setup->payout_phone }}" name="phone"
-                                                    type='text' readonly>
-                                            </div>
-                                        </div>
-                                       
-                                        <div class="form-row">
-                                            <div class='col-xl-12 form-group'>
-                                                <label class='control-label'> @lang('lang.total')</label> <input
-                                                    class='form-control' placeholder='YYYY' value="{{ @$data->balance->amount}}" name="amount"
-                                                     type='text'>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
+                                    </div>
+                                    <div class="form-row">
 
-                                            <div class='col-xl-12 form-group text-center'>
-                                                <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
-                                            </div>
+                                        <div class='col-xl-12 form-group text-center'>
+                                            <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
+                        @elseif(@$withdraws->payment_method_id == 2)
+                        <div class="white-box">
+                            <h4 class="stu-sub-head">Informatii Cont Plata Ethereum</h4>
+                            <div class="single-info">
+                                <form accept-charset="UTF-8" action="{{ route('admin.paymentAuthor') }}" class="require-validation"  id="payment-form" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="text" hidden value="{{ @$payout_setup->user_id }}" name="user_id">
+                                    <input type="text" hidden value="{{ @$withdraws->id }}" name="withdraw_id">
+                                    <input type="text" hidden value="{{ @$payout_setup->id }}" name="payment_method_id">
+                                    <div class='form-row'>
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'>Metoda De Plata</label> <input value="{{  @$withdraws->payment_method_id == 1 ? 'Stripe' : 'Ethereum' }}" name="card_name"
+                                                class='form-control' size='4' type='text' readonly>
+                                        </div>
+                                    </div>
+                                    <div class='form-row'>
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'>Adresa Wallet</label> <input
+                                        autocomplete='off' class='form-control card-number' size='20' value="{{ @$payout_setup->payout_email }}" name="email"
+                                                type='text' readonly>
+                                        </div>
+                                    </div>
+                                    <!-- <div class='form-row'>
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'>@lang('lang.phone')</label> <input
+                                        autocomplete='off' class='form-control card-number' size='20' value="{{ @$payout_setup->payout_phone }}" name="phone"
+                                                type='text' readonly>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="form-row">
+                                        <div class='col-xl-12 form-group'>
+                                            <label class='control-label'> @lang('lang.total')</label> <input
+                                                class='form-control' placeholder='YYYY' value="{{ @$withdraws->amount}}" name="amount"
+                                                    type='text' readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+
+                                        <div class='col-xl-12 form-group text-center'>
+                                            <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @endif
+
+                        @else
+                        <div class="white-box">
+                            <h4 class="stu-sub-head">Plata a fost efectuata</h4>
+                        </div>
+                        @endif
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="withdraw_history">
                         <div class="white-box">
@@ -193,24 +248,22 @@ return $name[3];
 
                                     <thead>
                                    
-                                        <tr class="withdraw_vendor_aligh_left">
-                                            {{-- <th>@lang('lang.username')</th> --}}
+                                        <tr class="">
+                                            <th>@lang('lang.username')</th>
                                             <th>Metoda Plata</th>
-                                            <th>@lang('lang.email')</th>
-                                            <th>@lang('lang.phone')</th>
+                                            <th>Cont Plata</th>
                                             <th>@lang('lang.amount')</th>
-                                            <th>@lang('lang.withdraws') @lang('lang.date')</th>
+                                            <th>@lang('lang.date') Retragere</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($withdraw2 as $item)
+                                        @foreach($withdraw as $item)
                                         <tr>  
-                                            {{-- <td valign="top">{{ @$item->username }}</td> --}}
-                                            <td valign="top">{{ @$item->payment_method_name }}</td>
+                                            <td valign="top">{{ @$item->user->username }}</td>
+                                            <td valign="top">{{  @$item->payment_method_name == 'Stripe' ? 'Stripe' : 'Ethereum' }}</td>
                                             <td valign="top">{{ @$item->payout_email }}</td>
-                                            <td valign="top">{{ @$item->payout_phone }}</td>
-                                            <td valign="top">{{ @$item->amount }}</td>
-                                             <td valign="top">{{DateFormat($item->created_at)}}</td>
+                                            <td valign="top">{{ @$item->amount }} lei</td>
+                                             <td valign="top">{{$item->created_at}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

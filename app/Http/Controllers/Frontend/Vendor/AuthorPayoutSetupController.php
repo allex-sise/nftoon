@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Frontend\Vendor;
 
 use App\AuthorPayoutSetup;
+use App\Withdraw;
+use App\User;
+use App\PaidVendor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,6 +65,36 @@ class AuthorPayoutSetupController extends Controller
         }
         // return $request;
     }
+
+    public function withdrawAmount(Request $r){
+        $this->validate($r,[
+            'withdraw_amount' =>'required|',
+        ]);
+        $user  = User::find(Auth::user()->id);
+        $user_id = Auth::user()->id;
+        $balnc = $user->balance;
+        try {
+            $withdraw = new Withdraw();
+            $withdraw->user_id = $user_id;
+            $withdraw->paid_vendors_id = NULL;
+            $withdraw->amount = $r->withdraw_amount;
+            $withdraw->payment_method_id = $r->payment_method_id;
+            $withdraw->save();
+             
+            $balnc->amount = $balnc->amount - floatval($r->withdraw_amount);
+            $balnc->save();
+
+            Toastr::success('Suma a fost trimisa catre retragere!','Success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+        // return $request;
+    }
+
+
     public function defaultPayoutSetup(Request $request,$method){
 
         try {

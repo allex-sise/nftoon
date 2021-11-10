@@ -93,21 +93,21 @@
                                     @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['refunds'] == url()->current() ?'active':'' }}" id="refunds-tab" data-toggle="tab" href="#refunds" role="tab"
-                                            aria-controls="contact" aria-selected="false">Wallet</a>
+                                            aria-controls="contact" aria-selected="false">Wallet Retrageri</a>
                                     </li>
                                     @endif
                                     @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
-                                        <a class="nav-link {{ @$data['payout'] == url()->current() ?'active':'' }}" id="payouts_show-tab" data-toggle="tab" href="#payouts_show" role="tab"
+                                        <a class="nav-link {{ @$data['payout'] == url()->current() ?'active':'' }}" id="payouts-tab" data-toggle="tab" href="#payouts" role="tab"
                                             aria-controls="contact" aria-selected="false">Retrageri</a>
                                     </li>
                                     @endif
-                                    {{-- @if (@Auth::user()->role_id == 4)
+                                    <!-- {{-- @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['payout'] == url()->current() ?'active':'' }}" id="payouts-tab" data-toggle="tab" href="#payouts" role="tab"
                                             aria-controls="contact" aria-selected="false">@lang('lang.payouts') 1</a>
                                     </li>
-                                    @endif --}}
+                                    @endif --}} -->
                                     @if (@Auth::user()->role_id == 4)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['earning'] == url()->current() ?'active':'' }}" id="Followings-tab00" data-toggle="tab" href="#Followings00"
@@ -1671,103 +1671,6 @@
                                     @if (@Auth::user()->role_id == 4)
                                     <div class="tab-pane fade {{ @$data['refunds'] == url()->current() ?'show active':'' }} " id="refunds" role="tabpanel"
                                         aria-labelledby="refunds-tab">
-                                        <div class="refunds_area">
-                                            <div class="container" style="background-size: cover;">
-                                                <div class="row" style="background-size: cover;">
-                                                    <div class="col-lg-5 mb30" style="background-size: cover;">
-                                                        <a class="box-url" href="login.html">
-                                                            <span class="box-url-label">Most Popular</span>
-                                                            <img src="{{ asset('public/frontend/assets/images/wallet/1.png') }}" alt="" class="mb20">
-                                                            <h4>Metamask</h4>
-                                                            <p>Start exploring blockchain applications in seconds.  Trusted by over 1 million users worldwide.</p>
-                                                        </a>
-                                                    </div>                             
-                                                </div>
-                                            </div>
-                                        <input type="text" name="firstnamesis"/>FIRSTNAME
-                                        @php 
-                                            $variabila = Request::input('firstnamesis');
-                                        @endphp
-                                        <p id="demo">Click the button to change the text in this paragraph.</p>
-                                        <!-- DE AICI IN JOS PUI CEVA VIZIBIL, RESTUL LASA-LE CA E DE LA TAB-URI -->
-                                        <!-- <div id="app">
-                                        <metamask-intro php-variable="{{ @Auth::user()->role_id }}"></metamask-intro> -->
-                                            <!-- <metamask-intro php-variable="{{ $variabila }}"></metamask-intro> -->
-                                        <!-- </div>   -->
-                                      <p>
-                                      
-                                      AICI AI TOT CE E IN USER DATABASE, LA USER-UL ACESTA
-
-                                      {{ @Auth::user() }}
-                                      </p>  <br />
-
-                                            @if (isset($data['refund_order']))
-                                            @if ($data['refund_order']->count() > 0)
-                                            @foreach ($data['refund_order'] as $item)
-                                                <div
-                                                class="single_portfolio_list  d-flex align-items-center justify-content-between">
-                                                <div class="portflio_thumb d-flex align-items-center">
-                                                    <img src="{{ asset( @$item->Item->icon ) }}" alt="" width="100" height="100">
-                                                    <div class="thumb_heading">
-                                                    <h5><a href="{{url('/item/').'/'.$item->Item->title.'/'.$item->Item->id}}">{{ $item->Item->title }}</a></h5>
-                                                        <p>@lang('lang.item_by') <a href="{{ route('author.profile',$item->author_id)}}">{{ $item->Item->user->username}}</a> </p>
-                                                    </div>
-                                                </div>
-                                                <div class="portfolio_details">
-                                                        <p>@lang('lang.in'): {{ $item->Item->category->title}} / {{ $item->Item->subCategory->title}} <br></p>
-                                                </div>
-                                                <div class="total-prise text-center">
-                                                    <p>@lang('lang.item_price')</p>
-                                                    <h2>{{ $item->Item->Re_item}} {{@$infix_general_settings->currency_symbol}}</h2>
-                                                </div>
-                                                <div class="download_inner-btn">
-                                                <a href="{{ route('author.refundView',$item->id)}}" class="btn-main">@lang('lang.view') @lang('lang.details')</a>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                            <div class="Pagination">                                                  
-                                                {{ isset($data['refund_order']) ? $data['refund_order']->onEachSide(1)->links('frontend.paginate.frontentPaginate'):'' }}                                                    
-                                            </div>
-                                            @else 
-                                            @endif
-                                            @endif
-
-                                    <!-- AICI OPRESTI DESIGN -->
-
-
-                                        </div>
-                                    </div>
-                                    @endif
-
-
-
-<!-- AICI SE OPRESTE UNDE UMBLII TU -->
-                                    @if (@Auth::user()->role_id == 4)
-                                    <!-- payouts start -->
-                                    
-                                    <div class="tab-pane fade {{ @$data['payout'] == url()->current() ?'show active':'' }} " id="payouts" role="tabpanel"
-                                        aria-labelledby="payouts-tab">
-                                            {{--        <div class="row">
-                                                        <div class="col-xl-10 offset-xl-1">
-                                                            <div class="row">
-                                                                <div class="col-xl-8 col-md-6">
-                                                                    <div class="no_account_page ">
-                                                                        <h3>@lang('lang.next') @lang('lang.payout')</h3>
-                                                                        <p>You currently have no pending payouts</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-4 col-md-6">
-                                                                    <div class="acc_setup_right ">
-                                                                        <h4>
-                                                                        @lang('lang.payout') @lang('lang.account')
-                                                                        </h4>
-                                                                    <p>@lang('lang.no') @lang('lang.account') @lang('lang.set') @lang('lang.up')</p>
-                                                                    <a class="btn-main" href="account_author.html">@lang('lang.set') @lang('lang.account')</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
                                         <div class="payment_wrap account_tabs_pin">
                                             @php
                                                 $bank_payment = @Auth::user()->payment_methods->where('name','Bank')->first();
@@ -1849,7 +1752,7 @@
                                                                             <div class="row">
                                                                                 <input type="text" name="name" value="Bank" hidden>
                                                                                 <div class="col-xl-12 col-md-12">
-                                                                                   <input type="text" name="email" id="" />
+                                                                                   <input type="text" name="email" id="" value="{{ @$bank_payout_setup->payout_email }}"/>
                                                                                 </div>
                                                                         
                                                                             </div>
@@ -1919,34 +1822,74 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade " id="payouts_show" role="tabpanel" aria-labelledby="payouts_show-tab">
-                                            {{--        <div class="row">
-                                                        <div class="col-xl-10 offset-xl-1">
-                                                            <div class="row">
-                                                                <div class="col-xl-8 col-md-6">
-                                                                    <div class="no_account_page ">
-                                                                        <h3>@lang('lang.next') @lang('lang.payout')</h3>
-                                                                        <p>You currently have no pending payouts</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-4 col-md-6">
-                                                                    <div class="acc_setup_right ">
-                                                                        <h4>
-                                                                        @lang('lang.payout') @lang('lang.account')
-                                                                        </h4>
-                                                                    <p>@lang('lang.no') @lang('lang.account') @lang('lang.set') @lang('lang.up')</p>
-                                                                    <a class="btn-main" href="account_author.html">@lang('lang.set') @lang('lang.account')</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
+                                    @endif
+
+
+
+<!-- AICI SE OPRESTE UNDE UMBLII TU -->
+                                    @if (@Auth::user()->role_id == 4)
+                                    <!-- payouts start -->
+                                    
+                                    <div class="tab-pane fade {{ @$data['payout'] == url()->current() ?'show active':'' }} " id="payouts" role="tabpanel"
+                                        aria-labelledby="payouts-tab">
                                         <div class="payment_wrap account_tabs_pin">
                                             <div class="row">
+                                            @if (defaultPayout())
+                                                @if (defaultPayout()->payment_method_name=='Stripe')
                                                 <div class="col-lg-7  ">
                                                     <h2>Balanta Ta</h2>
                                                     <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} </p>
+                                                    <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-xl-6">
+                                                                <div class="row">
+                                                                    <input type="text" name="payment_method_id" value="1" hidden>
+                                                                    <div class="col-xl-12 col-md-12">
+                                                                        <label for="name">Suma Retragere <span>*</span></label>
+                                                                        <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" placeholder="Introduceti suma dorita pentru retragere">
+                                                                    </div>
+                                                            
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-3 ">
+                                                                <div class="check-out-btn">
+                                                                    <button type="submit" class="btn-main dpf-submit">Retrage</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </form>
                                                 </div>
+                                                @elseif(defaultPayout()->payment_method_name=='Bank')
+                                                <div class="col-lg-7  ">
+                                                    <h2>Balanta Ta ETH</h2>
+                                                    <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} </p>
+                                                    <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-xl-6">
+                                                                <div class="row">
+                                                                    <input type="text" name="payment_method_id" value="2" hidden>
+                                                                    <div class="col-xl-12 col-md-12">
+                                                                        <label for="name">Suma Retragere <span>*</span></label>
+                                                                        <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
+                                                                            placeholder="Introduceti suma dorita pentru retragere">
+                                                                    </div>
+                                                            
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-3 ">
+                                                                <div class="check-out-btn">
+                                                                    <button type="submit" class="btn-main dpf-submit">Retrage</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                </div>
+                                                @endif
+                                            @endif
                                                 <div class="col-lg-1">
 
                                                 </div>
@@ -1968,7 +1911,7 @@
                                                     @endif
 
                                                     <div class="check-out-btn mt-10" style="margin-top: 20px;">
-                                                        <a href="{{ route('author.payout',@Auth::user()->username)}}" id="deposit_" class="btn-main">@lang('lang.set') @lang('lang.account')</a>
+                                                        <a href="{{ route('author.refunds',@Auth::user()->username)}}" id="deposit_" class="btn-main">@lang('lang.set') @lang('lang.account')</a>
                                                        
                                                     </div>
                                                 </div>
@@ -1997,6 +1940,7 @@
                                               
                                             </div>
                                         </div>
+                                       
                                     </div>
                                         
                                     <!-- payouts start -->
@@ -2328,22 +2272,8 @@
 {{-- <script src="{{ asset('public/frontend/js/') }}/checkout.js"></script> --}}
 {{-- <script src="{{ asset('public/frontend/js/') }}/payment.js"></script> --}}
 <script src="{{ asset('public/frontend/js/') }}/payment_gateway.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/checkout.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/frontend_editor.js"></script>
 
-<script>
-    CKEDITOR.replace('bank_account');
-    CKEDITOR.replace('ticket_summernote');
-
-        @if($errors->any())
-            @foreach($errors->all() as $error)
-                  toastr.error('{{ $error }}','Error',{
-                      closeButton:true,
-                      progressBar:true,
-                   });
-            @endforeach
-        @endif
-    </script>
  <script>
      $(document).ready(function() {
 

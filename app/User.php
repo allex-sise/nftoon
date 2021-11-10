@@ -147,6 +147,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Review', 'vendor_id', 'id');
     }
+    public function withdraws()
+    {
+        return $this->hasMany('App\Withdraw', 'user_id', 'id');
+    }
     public function agent_ticket()
     {
         return $this->hasMany('Modules\Ticket\Entities\InfixTicket', 'user_agent');

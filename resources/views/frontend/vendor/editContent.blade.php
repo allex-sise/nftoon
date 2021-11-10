@@ -311,13 +311,13 @@
                                                                 <span>{{ @GeneralSetting()->currency_symbol}}</span>
                                                                 <div class="input_field">
                                                                     <label for="">@lang('lang.ITEM_PRISE')</label>
-                                                                    <input type="text" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}}">
+                                                                    <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}}">
                                                                 </div>
                                                                 <span>+</span>
                                                                 <div class="input_field">
                                                                     <label for="">Comison Minted</label>
-                                                                    <input type="text" id="Re_buyer" name="Re_buyer" hidden value="{{ @$data['edit']->Re_buyer}}" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
-                                                                    <input type="text"  disabled placeholder="{{ @GeneralSetting()->currency_symbol}} {{ @$data['edit']->Re_buyer}}" onkeyup="regular(this.value)">
+                                                                    <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" id="Re_buyer" name="Re_buyer" hidden value="{{ @$data['edit']->Re_buyer}}" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
+                                                                    <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  disabled placeholder="{{ @GeneralSetting()->currency_symbol}} {{ @$data['edit']->Re_buyer}}" onkeyup="regular(this.value)">
                                                                 </div>
                                                                 <span>=</span>
                                                                 {{-- <div class="input_field last-one">
@@ -327,8 +327,8 @@
                                                                 </div> --}}
                                                                 <div class="input_field last-one">
                                                                     <label for="">@lang('lang.purchase_price')</label>
-                                                                    <input type="text" name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{ @GeneralSetting()->currency_symbol}} {{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" id="Re_total" >
-                                                                    <input type="text" disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}">
+                                                                    <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{ @GeneralSetting()->currency_symbol}} {{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" id="Re_total" >
+                                                                    <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}">
                                                                 </div>
                                                         </div>
                                                         @php

@@ -117,7 +117,9 @@ function payableUser(){
     try{
         $user=User::where(['role_id' => 4,'status' => 1,'access_status' => 1])->get(); 
         
-        $author_list=AuthorPayoutSetup::join('users','users.id','=','author_payout_setups.user_id')->where('author_payout_setups.is_default',1)->get();
+        $author_list2=AuthorPayoutSetup::join('users','users.id','=','author_payout_setups.user_id')->where('author_payout_setups.is_default',1)->get();
+        $author_list=Withdraw::get();
+
         return view('backend.payment.pay',compact('user','author_list'));
     } catch (\Exception $e) {
         $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -128,16 +130,27 @@ function payableUser(){
 function WithdrawUser($id){
     try{
        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        $data=User::find($id);    
-        $payout_setup=AuthorPayoutSetup::where('is_default',1)->where('user_id',$id)->first();   
+       $withdraws = Withdraw::find($id);
+       $user_id = $withdraws->user_id;
+        $data=User::find($user_id);
+        $withdraw_id = $withdraws->id;
+        $metoda_plata = $withdraws->payment_method_id;
+        if($metoda_plata == 1){
+            $metoda = 'Stripe';
+        }
+        elseif($metoda_plata == 2){
+            $metoda = 'Bank';
+        }
+        $payout_setup=AuthorPayoutSetup::where('payment_method_name', $metoda)->where('user_id',$user_id)->first();
+        $payout_setup2=Withdraw::where('id',$withdraw_id)->get();
         $withdraw=Withdraw::join('author_payout_setups','author_payout_setups.id','=','withdraws.payment_method_id')
         ->join('users','users.id','=','withdraws.user_id')
-        ->where('withdraws.user_id',$id)
+        ->where('withdraws.user_id',$user_id)
         ->select('users.username','withdraws.amount','withdraws.created_at','author_payout_setups.*')
         ->get();
-        $withdraw2 = Withdraw::where('user_id', $id)->get();
+        $withdraw2 = Withdraw::where('user_id', $user_id)->get();
         // return $withdraw;
-        return view('backend.payment.withdraw_vendor',compact('data','payout_setup','withdraw','withdraw2'));
+        return view('backend.payment.withdraw_vendor',compact('data','withdraws','payout_setup','withdraw','withdraw2'));
     } catch (\Exception $e) {
         $msg=str_replace("'", " ", $e->getMessage()) ;
         Toastr::error($msg,app('translator')->get('lang.failed_alert'));
@@ -184,15 +197,10 @@ function paymentAuthor(Request $r){
            $paid->amount = $r->amount;
            $paid->save();
 
-           $withdraw = new Withdraw();
-           $withdraw->user_id = $r->user_id;
+           $withdraw = Withdraw::find($r->withdraw_id);
            $withdraw->paid_vendors_id = $paid->id;
-           $withdraw->amount = $r->amount;
-           $withdraw->payment_method_id = $payment_method->id;
            $withdraw->save();  
            
-            $balnc->amount = $balnc->amount - floatval($input['amount']);
-            $balnc->save();
 
              DB::commit(); 
              Toastr::success(app('translator')->get('lang.paid_successfully'));
