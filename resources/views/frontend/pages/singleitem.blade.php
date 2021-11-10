@@ -533,9 +533,20 @@ footer{
                                  <input type="text" hidden id="extra_price"  value="0">
                                 
                                  <div class="add-cart">
+                                    @php 
+                                       $drop_id = $data['item']->in_drop;
+                                       $drop = App\Drops::where('id', $drop_id)->first();
+                                       $azi = \Carbon\Carbon::now();
+                                    @endphp
                                     @if (@$data['item']->is_upload==1)
-                                     
+                                     @if (@$data['item']->in_drop == NULL)
                                        <button  type="submit" class="boxed-btn-white" style="background: var(--secondary-color);" >@lang('lang.Buy') @lang('lang.Now') </button>
+                                       @elseif ((@$data['item']->in_drop) && (@$drop->startdate >= $azi) && (@$drop->expdate >= $azi) )
+                                       <p>NFT ESTE IN DROP SI DROPUL ESTE IN DERULARE</p>
+                                       <button  type="submit" class="boxed-btn-white" style="background: var(--secondary-color);" >@lang('lang.Buy') @lang('lang.Now') </button>
+                                       @else
+                                       <p>NFT este in drop iar dropul nu a inceput inca</p>
+                                       @endif
                                     @else
                                     <a  href="{{@$data['item']->purchase_link}}" target="_blank" class="boxed-btn add-cart-active" style="background: var(--secondary-color);">@lang('lang.Buy') @lang('lang.Now')</a>
                                    

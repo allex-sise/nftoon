@@ -1839,6 +1839,11 @@
                                                 <div class="col-lg-7  ">
                                                     <h2>Balanta Ta</h2>
                                                     <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} </p>
+                                                    @php 
+                                                        $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+                                                    
+                                                    @endphp
+                                                    @if($withdraw->paid_vendors_id !== NULL)
                                                     <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
                                                         @csrf
                                                         <div class="row">
@@ -1854,17 +1859,29 @@
                                                             </div>
                                                             <div class="col-xl-3 ">
                                                                 <div class="check-out-btn">
-                                                                    <button type="submit" class="btn-main dpf-submit">Retrage</button>
+                                                                    <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         
                                                     </form>
+                                                    @else
+                                                        <p>Ai deja o cerere de retragere in executie</p>
+                                                    @endif
                                                 </div>
                                                 @elseif(defaultPayout()->payment_method_name=='Bank')
                                                 <div class="col-lg-7  ">
                                                     <h2>Balanta Ta ETH</h2>
-                                                    <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} </p>
+                                                    <p>@lang('lang.You_currently_have')  <strong class="" style="font-size: 18px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
+                                                   <span id="regular_license_price">ETH</span>
+                                                </strong> 
+                                            <br /> *Momentan apare suma in eth (daca esti la metoda prin wallet), doar ca in input va trebui sa se calculeze automat din ETH in mintedcredits (noi trebuie sa ii stergem din balanta in credite)
+                                                </p>
+                                                    @php 
+                                                        $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+                                                    
+                                                    @endphp
+                                                    @if($withdraw->paid_vendors_id !== NULL)
                                                     <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
                                                         @csrf
                                                         <div class="row">
@@ -1881,12 +1898,15 @@
                                                             </div>
                                                             <div class="col-xl-3 ">
                                                                 <div class="check-out-btn">
-                                                                    <button type="submit" class="btn-main dpf-submit">Retrage</button>
+                                                                    <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         
                                                     </form>
+                                                    @else
+                                                        <p>Ai deja o cerere de retragere in executie</p>
+                                                    @endif
                                                 </div>
                                                 @endif
                                             @endif
@@ -1924,15 +1944,17 @@
                                                         <tr>
                                                             <th colspan="">@lang('lang.amount')</th>
                                                             <th colspan="">@lang('lang.payout') @lang('lang.method')</th>
+                                                            <th colspan="">Status Plata</th>
                                                             <th colspan="">@lang('lang.date')</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($data['payout_history'] as $payout)
                                                             <tr>
-                                                                <td>{{@$infix_general_settings->currency_symbol}} {{$payout->amount}} </td>
-                                                                <td>{{ @$payout->payment_method_name }} -{{ @$payout->payout_email }} </td>
-                                                                <td>{{DateFormat($payout->created_at)}} </td>
+                                                                <td>{{$payout->amount}} {{@$infix_general_settings->currency_symbol}}</td>
+                                                                <td>{{  @$payout->payment_method_name == 'Stripe' ? 'Stripe' : 'Ehthereum' }} - {{ @$payout->payout_email }} </td>
+                                                                <td>{{  @$payout->paid_vendors_id == NULL ? 'Neplatit' : 'Platit' }}</td>
+                                                                <td>{{ $payout->created_at }} </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -2310,6 +2332,23 @@ $(".d-item").slice(0, 8).show();
             de_size();
         });
 </script>
-
+<script>
+    $(document).ready(function () {
+        const pretInRon = {{ Auth::user()->balance->amount}} ;
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`,
+            success: function (data) {
+               var price = pretInRon/data.RON;
+               var myNumberWithTwoDecimalPlaces=parseFloat(price).toFixed(4);
+                  $("#pretInEth").attr("value", myNumberWithTwoDecimalPlaces);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+});
+</script>
     
 @endpush

@@ -437,7 +437,7 @@ class VendorController extends Controller
             $data['payout_history'] = Withdraw::join('author_payout_setups','author_payout_setups.id','=','withdraws.payment_method_id')
                                     ->join('users','users.id','=','withdraws.user_id')
                                     ->where('withdraws.user_id',Auth::user()->id)
-                                    ->select('users.username','withdraws.amount','withdraws.created_at','author_payout_setups.*')
+                                    ->select('users.username','withdraws.amount','withdraws.paid_vendors_id','withdraws.created_at','author_payout_setups.*')
                                     ->get();
             $data['item_review'] = Review::where('vendor_id', Auth::user()->id)->paginate(6);
             $data['profile_setting'] = InfixProfileSetting::where('active_status',1)->first();
