@@ -36,9 +36,9 @@
 
 
 <script>
-    // import detectEthereumProvider from '@metamask/detect-provider';
-    // import {createAlchemyWeb3} from "@alch/alchemy-web3";
-    // import contract from "../assets/contracts/MintedNFT721.json"
+    import detectEthereumProvider from '@metamask/detect-provider';
+    import {createAlchemyWeb3} from "@alch/alchemy-web3";
+    import contract from "../assets/contracts/MintedNFT721.json"
     import axios from 'axios'
 
     export default {
@@ -84,8 +84,12 @@
             }
         },
         async mounted(){
-            await this.$store.dispatch("connect");
-
+            this.pinata_api_key = process.env.MIX_PUSHER_PINATA_API_KEY;
+            this.pinata_secret_api_key = process.env.MIX_PUSHER_PINATA_SECRET_API_KEY;
+            this.contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
+            this.alchemy_api_key = process.env.MIX_PUSHER_ALCHEMY_SECRET_API_KEY;
+            await this.loadBlockchainData();
+            this.provider = await detectEthereumProvider();
             if(this.nftStatus !== 0){
                 await this.getNftMetadata();
             }
@@ -98,12 +102,18 @@
                 if(this.itemTokenid && this.itemMetadata) return 2;
                 if(this.itemTokenid) return 1;
                 return 0;
-            },
-            secrets() {
-                return this.$store.getters.secrets;
-            },
+            }
         },
         methods:{
+            async loadBlockchainData(){
+                const API_KEY ="https://eth-ropsten.alchemyapi.io/v2/"+this.alchemy_api_key;
+                const alchWeb3 = createAlchemyWeb3(API_KEY);
+                this.decentralizedContract = new alchWeb3.eth.Contract(
+                    contract.abi,
+                    this.contractAddress
+                );
+            },
+            //onMintNft = async() =>{
             onMintNft(){
                 if(this.itemTokenid === null || this.itemTokenid === ''){
                     this.uploadAndMint();
@@ -127,7 +137,9 @@
                 await this.mintNft();
             },
             async getNextAvailableId(){
-                this.token.id = await this.$store.dispatch("getNextTokenId");
+                await this.decentralizedContract.methods.getNextTokenId().call()
+                    .then(response => 
+                    this.token.id=response);
             },
             async mintNft(){
                 if(!this.nftHasNecessaryData()) {
@@ -135,13 +147,21 @@
                     return;
                 }
 
-                this.token.mintResponse = await this.$store.dispatch("mintNFT", this.file.ipfsMetadataUrl);
-                console.log("saving to db...");
-                console.log("mintResponse",this.token.mintResponse);
-                //todo: ori prin mint reponse fac ceva
-                //=> la mintResponse primesc date(vezi foto) dar nu ma ajuta, mergi cu V2
-                //ori in listener tre sa salvez datele si tre sa le recitest inainte sa le bag in DB
-                this.saveToDB();
+                const transactionParameters = {
+                    to: this.contractAddress,
+                    from: this.provider.selectedAddress,
+                    'data': this.decentralizedContract.methods.mint(this.file.ipfsMetadataUrl).encodeABI()
+                };
+                try {
+                    this.token.mintResponse = await this.provider.request({
+                        method: 'eth_sendTransaction',
+                        params: [transactionParameters],
+                    });
+                    console.log("saving to db...")
+                    this.saveToDB();
+                } catch (error) {
+                    console.log("error:",error.message);
+                }
             },
             nftHasNecessaryData(){
                 if(this.token.id == null || 
@@ -158,7 +178,9 @@
                 this.token.metadata = null;
                 this.token.metadataFields = null;
 
-                this.token.metadata = await this.$store.dispatch("getMetadata", this.token.id);
+                await this.decentralizedContract.methods.tokenURI(this.token.id).call()
+                    .then(response => 
+                    this.token.metadata=response);
 
                 //https://stackoverflow.com/questions/28001722/how-to-catch-uncaught-exception-in-promise
                 if(this.token.metadata != null){
@@ -194,8 +216,8 @@
 
                 const configUploadJson = {
                     headers: {
-                        pinata_api_key: this.secrets.pinata_api_key,
-                        pinata_secret_api_key: this.secrets.pinata_secret_api_key
+                        pinata_api_key: this.pinata_api_key,
+                        pinata_secret_api_key: this.pinata_secret_api_key
                     },
                 };
 
@@ -228,8 +250,8 @@
                     maxContentLength:'Infinity',
                     headers: {
                         'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-                        pinata_api_key: this.secrets.pinata_api_key,
-                        pinata_secret_api_key: this.secrets.pinata_secret_api_key
+                        pinata_api_key: this.pinata_api_key,
+                        pinata_secret_api_key: this.pinata_secret_api_key
                     }
                 };
 
@@ -248,8 +270,6 @@
                 return true;
             },
             saveToDB(){
-                console.log("metadata: ",this.token.metadata);
-                console.log("id: ",this.token.id);
                 axios.post(this.mintRoute,this.token).then(res => {
                     if(res.data.status === 'ok'){
                         toastr.success(res.data.message);

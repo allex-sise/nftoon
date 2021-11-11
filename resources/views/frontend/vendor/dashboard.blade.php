@@ -887,9 +887,9 @@
                                                             // DB::table('email_notification_settings')->where('user_id',Auth::user()->id)->first();
                                                             @endphp
                                                             @if (!empty($email_setting))
-                                                                <form action="{{ route('customer.userEmailNotificationUpdate')}}" method="post" >
+                                                                <form action="{{ route('customer.userEmailNotificationUpdate')}}" method="post" >
                                                             @else
-                                                                <form action="{{ route('customer.userEmailNotificationStore')}}" method="post" >
+                                                                <form action="{{ route('customer.userEmailNotificationStore')}}" method="post" >
                                                             @endif
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{ isset($email_setting) ? $email_setting->id : '' }}">
@@ -1849,6 +1849,7 @@
                                                                             <div class="row">
                                                                                 <input type="text" name="name" value="Bank" hidden>
                                                                                 <div class="col-xl-12 col-md-12">
+                                                                                    //todo: aici insereaza valuarea walletului
                                                                                    <input type="text" name="email" id="" />
                                                                                 </div>
                                                                         
@@ -1863,6 +1864,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div id="app">
+                                                        <withdraw/>
+                                                    </div> 	
 
                                                 </div>
                                                 <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'Stripe'  ? 'show active' :'' : ''}} " id="payouts1" role="tabpanel"
@@ -2380,6 +2384,4 @@ $(".d-item").slice(0, 8).show();
             de_size();
         });
 </script>
-
-    
 @endpush

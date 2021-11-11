@@ -343,7 +343,7 @@ class ProductController extends Controller
     DB::beginTransaction();
     try {
             $item=Item::find($r->itemIdkey);
-            $item->purchase_link = $r->metadata;
+            $item->ipfs_url = $r->metadata;
             $item->idnft = $r->id;
             $item->save();
             Toastr::success('NFT updatat cu succes!','Success');

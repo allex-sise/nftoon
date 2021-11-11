@@ -305,6 +305,7 @@ $('#icon').click(function(){
         console.log("This should run because marketing is accepted.");
     }
     </script>
+    <script src="{{asset('public/js/app.js')}}"></script>
     @stack('js')
   
 
