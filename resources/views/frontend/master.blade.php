@@ -316,7 +316,7 @@ function closeNav() {
 </script>
 <script>
 function openNav2() {
-  document.getElementById("myNav2").style.height = "70%";
+  document.getElementById("myNav2").style.height = "60%";
 }
 
 function closeNav2() {

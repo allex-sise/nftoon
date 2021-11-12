@@ -66,11 +66,17 @@
 p{
     line-height: 22px!important;
 }
+
+@media only screen and (max-width: 767px) {
+    .featuresbag{
+        margin-top: 20px!important;
+    }
+}
     </style>
 
 
     <!-- latest-goods-start -->
-    <div class="features-area section-padding1" onscroll="OnScroll()" style="margin-top: 200px;">
+    <div class="features-area section-padding1 featuresbag" onscroll="OnScroll()" style="margin-top: 200px;">
     <div class="container">
     <div class="row">
                                 <div class="col-lg-12">

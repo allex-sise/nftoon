@@ -63,6 +63,11 @@
     margin-bottom: 45px; 
     margin-right: 50px;
 }
+@media only screen and (max-width: 767px) {
+.featuresbag{
+    margin-top: 270px;
+}
+}
     </style>
   <!-- banner-area start -->
     <div class="banner-area2" >
@@ -77,7 +82,7 @@
     <!-- banner-area end -->
 
     <!-- latest-goods-start -->
-    <div class="features-area section-padding1" onscroll="OnScroll()">
+    <div class="features-area section-padding1 featuresbag" onscroll="OnScroll()">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-12">

@@ -288,6 +288,11 @@ footer{
 .h1author{
    font-size: 27px!important;
 }
+.h3creator{
+   padding-top: 50px;
+   font-size: 27px!important;
+   margin-bottom: 3px;
+}
 }
 </style>
 <!-- details-tablist-end -->
@@ -632,7 +637,7 @@ footer{
                </div>
             </div>
             <div class="row">
-            <h3>Creator</h3>
+            <h3 class="h3creator">Creator</h3>
             <div class="footeruserborder">
             </div>
                @if (@$data['item']->user->balance->amount)                                           

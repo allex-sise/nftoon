@@ -1,6 +1,16 @@
 @extends('frontend.master')
 @push('css') 
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment_complete.css">
+<style>
+@media only screen and (max-width: 767px) {
+.banner-area4::before {
+    margin-top: 0px!important;
+}
+.payment_info{
+    margin-left: 30px;
+}
+}
+</style>
 @endpush
 @section('content')
 @php

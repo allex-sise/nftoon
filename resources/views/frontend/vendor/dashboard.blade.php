@@ -25,6 +25,57 @@
     z-index: 99!important;
     background-image: url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }})!important;
 } */
+@media only screen and (max-width: 767px) {
+.profile_avatar i {
+    margin-top: -91px!important;
+    left: -52px!important;
+}
+.details-tablist-area.details-tablist-area-two {
+    margin-top: -50px;
+}
+.nav {
+    display: flex;
+    flex-wrap: unset;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    overflow: auto;
+    white-space: nowrap;
+}
+.btn-main{
+    width: 100%;
+}
+.account-area .my_tab_content .social_networks {
+    padding: 38px 0px 40px 0px;
+}
+.butonsp{
+    width: 36%;
+    height: 44px;
+}
+.tabmargin200px{
+    margin-top: 200px;
+}
+.account_tabs_pin .nav .nav-item a.nav-link{
+    height: 120px;
+}
+.account_tabs_pin .nav .nav-item{
+    width: 46%;
+}
+.dpf-submit{
+    margin-top: 0px!important;
+}
+.imgmargin0auto{
+    display: block; 
+    margin: 0 auto;
+}
+.spantextct{
+    text-align: center;
+    display: block;
+}
+.btnw100{
+    width: 100%;
+}
+}
 </style>
       @include('frontend.partials.vendor_banner')
      <!-- details-tablist-start -->
@@ -1733,7 +1784,7 @@
                                                 </ul>
                                             </nav>
                                             
-                                            <div class="tab-content" id="myTabContent">
+                                            <div class="tab-content tabmargin200px" id="myTabContent">
                                                 <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'Bank'  ? 'show active' :'' : ''}} " id="payoutsBank" role="tabpanel"
                                                     aria-labelledby="payoutsBank-tab">
                                                     <div class="row">
@@ -1924,20 +1975,20 @@
                                                     @if (defaultPayout())
                                                         
                                                         @if (defaultPayout()->payment_method_name=='PayPal')
-                                                            <img src="{{asset('/'.PaymentMethodSetup('PayPal')->logo)}}" alt="">
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('PayPal')->logo)}}" alt="">
                                                         @elseif(defaultPayout()->payment_method_name=='Stripe')
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Stripe')->logo)}}" alt="">
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('Stripe')->logo)}}" alt="">
                                                         @elseif(defaultPayout()->payment_method_name=='Razorpay')
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Razorpay')->logo)}}" alt="">
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('Razorpay')->logo)}}" alt="">
                                                         @else
-                                                            <img src="{{asset('/'.PaymentMethodSetup('Blockchain')->logo)}}" alt="">
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('Blockchain')->logo)}}" alt="">
                                                         @endif
                                                             <br>
-                                                        {!! defaultPayout()->payout_email !!}
+                                                        <span class="spantextct">{!! defaultPayout()->payout_email !!}</span>
                                                     @endif
 
                                                     <div class="check-out-btn mt-10" style="margin-top: 20px;">
-                                                        <a href="{{ route('author.refunds',@Auth::user()->username)}}" id="deposit_" class="btn-main">@lang('lang.set') @lang('lang.account')</a>
+                                                        <a href="{{ route('author.refunds',@Auth::user()->username)}}" id="deposit_" class="btn-main btnw100">@lang('lang.set') @lang('lang.account')</a>
                                                        
                                                     </div>
                                                 </div>

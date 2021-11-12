@@ -28,7 +28,7 @@
 }
 
 .overlay a {
-  padding: 8px;
+  padding: 18px;
   text-decoration: none;
   font-size: 36px;
   color: #818181;
@@ -43,14 +43,14 @@
 .overlay .closebtn {
   position: absolute;
   top: 20px;
-  right: 45px;
+  right: 20px;
   font-size: 60px;
 }
 
 
 .overlay2 {
   height: 0%;
-  width: 63%;
+  width: 50%;
   position: fixed;
   z-index: 99999;
   top: 0;
@@ -86,7 +86,7 @@
 .overlay2 .closebtn2 {
   position: absolute;
   top: 20px;
-  right: 10px;
+  right: 0px;
   font-size: 36px;
 }
 .ascunddesktop{
@@ -125,6 +125,9 @@
   .ascunddesktop{
       display: inline!important;
   }
+  .mainmenu{
+      display: none!important;
+  }
 }
 </style><!-- header begin -->
 <!-- zone mobile -->
@@ -154,11 +157,11 @@
         </span>
     </h3>
     @if (@Auth::user()->role_id==1 || @Auth::user()->role_id==2)
-        <ul style="padding-left: 0px;">
+        <ul style="padding-left: 0px; padding-top: 7px;">
             <li> <a href="{{route('admin.dashboard')}} ">@lang('lang.dashboard')</a> </li>   
         </ul> 
     @endif
-    <ul style="padding-left: 0px;">
+    <ul style="padding-left: 0px; padding-top: 7px;">
         @if (Auth::user()->role_id == 4)
             <li><a href="{{ route('author.profile',@Auth::user()->username)}}">@lang('lang.profile')</a></li>
             <li><a href="{{ route('author.setting',@Auth::user()->username) }}">@lang('lang.settings')</a></li>
@@ -186,7 +189,7 @@
             @if (Auth::user()->role_id == 5)
             <h3 style="margin: 0px; padding-right: 26px;">@lang('lang.user_settings')</h3>
             @endif
-            <ul style="padding-left: 0px;">
+            <ul style="padding-left: 0px; padding-top: 7px;">
                 @if (Auth::user()->role_id == 5)
                 <li><a href="{{ route('customer.setting',@Auth::user()->username) }}">@lang('lang.settings')</a></li>
                 @endif
