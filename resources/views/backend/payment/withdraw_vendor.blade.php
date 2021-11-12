@@ -257,13 +257,13 @@ return $name[3];
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($withdraw as $item)
+                                        @foreach($withdraw2 as $item)
                                         <tr>  
                                             <td valign="top">{{ @$item->user->username }}</td>
-                                            <td valign="top">{{  @$item->payment_method_name == 'Stripe' ? 'Stripe' : 'Ethereum' }}</td>
-                                            <td valign="top">{{ @$item->payout_email }}</td>
+                                            <td valign="top">{{  @$item->payment_method_id == 1 ? 'Stripe' : 'Ethereum' }}</td>
+                                            <td valign="top">{{ @$item->pay_address }}</td>
                                             <td valign="top">{{ @$item->amount }} lei</td>
-                                             <td valign="top">{{$item->created_at}}</td>
+                                            <td valign="top">{{$item->created_at}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

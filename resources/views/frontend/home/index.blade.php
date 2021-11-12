@@ -27,6 +27,22 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
   padding-bottom: 25px;
   display: block!important;
 }
+.btnnewsletter{
+    padding: 8px 17px; 
+    border-radius: 2px; 
+    margin-left: 8px;
+}
+.inputnewsletter{
+    border-radius: 0px!important; 
+    padding: 13px; 
+    width: 400px;
+}
+@media only screen and (max-width: 767px) {
+.inputnewsletter{
+    width: 100%;
+    margin-bottom: 20px;
+}
+}
 </style>
 <div class="features-area section-padding1" onscroll="OnScroll()">
     <div class="container">
@@ -45,8 +61,8 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
                     <div class="col-xl-12 col-md-12">
                     <form action="{{ route('store_newsletter') }}" method="POST">
                     @csrf
-                        <input name="email" type="email" placeholder="Adresa ta de email" style="border-radius: 0px!important; padding: 13px; width: 400px;">
-                        <input type="submit" class="black-btn" style="padding: 8px 17px; border-radius: 2px; margin-left: 8px;" value="Abonare">
+                        <input name="email" type="email" class="inputnewsletter" placeholder="Adresa ta de email">
+                        <input type="submit" class="black-btn btnnewsletter" value="Abonare">
                     </form>
                     </div>
                 </div>

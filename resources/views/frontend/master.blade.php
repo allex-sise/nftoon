@@ -305,6 +305,24 @@ $('#icon').click(function(){
         console.log("This should run because marketing is accepted.");
     }
     </script>
+    <script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+<script>
+function openNav2() {
+  document.getElementById("myNav2").style.height = "70%";
+}
+
+function closeNav2() {
+  document.getElementById("myNav2").style.height = "0%";
+}
+</script>
     @stack('js')
   
 

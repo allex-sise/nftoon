@@ -1,5 +1,5 @@
 @extends('layouts.user')
-@section('title','Registration')
+@section('title','Logare in cont Minted')
 
 @php
     $logo_conditions = ['title'=>'Logo', 'active_status'=>1];
@@ -190,86 +190,86 @@
     </div>
 <!-- login_resister_area-end -->
 <section class="full-height relative no-top no-bottom vertical-center ascundedesktop" data-bgimage="url({{url('/'.@$dashboard_background->image)}}) top" data-stellar-background-ratio=".5" style="min-height: 812px; background: url({{url('/'.@$dashboard_background->image)}}) center top / cover;">
-                <div class="overlay-gradient t50" style="background-size: cover;">
-					<div class="center-y relative" style="background-size: cover;">
-						<div class="container" style="background-size: cover;">
-                        <div class="logo">
-                            <a class="logocentrat" href="{{ url('/') }}">
-                                <img src="{{ asset('public/frontend/img/logo2.png') }}" alt="" width="203" >
-                            </a>
+    <div class="overlay-gradient t50" style="background-size: cover;">
+        <div class="center-y relative" style="background-size: cover;">
+            <div class="container" style="background-size: cover;">
+            <div class="logo">
+                <a class="logocentrat" href="{{ url('/') }}">
+                    <img src="{{ asset('public/frontend/img/logo2.png') }}" alt="" width="203" >
+                </a>
+            </div>
+                <div class="row align-items-center" style="background-size: cover;">
+                    
+                    <div class="col-lg-4 offset-lg-4 wow fadeIn bg-color animated bgcolornew" data-wow-delay=".5s" style="background-size: cover; visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                        <div class="box-rounded padding40" style="background-size: cover;">
+                        <h3 class="mb10 h3mobile">Autentificare</h3>
+                        <p class="pmobile">Conecteaza-te folosind un cont existent sau creaza un cont nou <a href="{{ url('register')}}">aici<span></span></a>.</p>
+                            <form action="{{ url('login')}}" method="POST" id="cust_login" class="form-border">
+                            @csrf
+                            <div class="field-set" style="background-size: cover;">
+                                    @if(session()->has('message-success'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message-success') }}
+                                    </div>
+                                    @elseif(session()->has('message-danger'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('message-danger') }}
+                                    </div>
+                                    @endif
+                                
+                            </div>
+                            <div class="field-set" style="background-size: cover;">
+                                <input type="email" placeholder="@lang('lang.email')" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" required>
+                                @error('email')
+                                    <span class="red_alart" role="alert">
+                                        {{ @$message }}
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="field-set" style="background-size: cover;">
+                                
+                                <input type="password" placeholder="@lang('lang.enter_passowrd')" name="password" class="form-control @error('password') is-invalid @enderror" required>
+                                @error('password')
+                                    <span class="red_alart  text-red" role="alert">
+                                        <strong>{{ @$message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                                @php
+                                        $reCaptcha =  App\ManageQuery::ReCaptchaSetting();
+                                @endphp
+                                <input type="text" hidden id="recaptcha_check" value="{{ @$reCaptcha->status }}">
+                        
+                            <div class="field-set" style="background-size: cover;">
+                                <button type="submit" class="btn btn-main btn-fullwidth color-2">@lang('lang.login')</button>
+                            </div>
+                        
+                            <!-- social icons -->
+                            <div class="forgot-pass d-flex align-items-center justify-content-between">
+                                    <div class="checkit">
+                                        <span class="chebox-style-custom">
+                                            <input class="styled-checkbox" id="styled-checkbox-2"
+                                                type="checkbox" value="value2" checked>
+                                            <label for="styled-checkbox-2"></label>
+                                        </span>
+                                        <span class="keep-me-login" >
+                                            @lang('lang.keep_me_logged_in')
+                                        </span>
+                                    </div>
+                                    <div class="forgot-pass-link">
+                                        <a href="{{ route('password.request') }}" class="forgot-pass">@lang('lang.forgot') @lang('lang.password') ?</a>
+                                    </div>
+                                </div>
+                            <!-- social icons close -->
+                    </form>
                         </div>
-							<div class="row align-items-center" style="background-size: cover;">
-								
-								<div class="col-lg-4 offset-lg-4 wow fadeIn bg-color animated bgcolornew" data-wow-delay=".5s" style="background-size: cover; visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
-									<div class="box-rounded padding40" style="background-size: cover;">
-                                    <h3 class="mb10 h3mobile">Autentificare</h3>
-                                    <p class="pmobile">Conecteaza-te folosind un cont existent sau creaza un cont nou <a href="{{ url('register')}}">aici<span></span></a>.</p>
-                                        <form action="{{ url('login')}}" method="POST" id="cust_login" class="form-border">
-                                        @csrf
-                                        <div class="field-set" style="background-size: cover;">
-                                                @if(session()->has('message-success'))
-                                                <div class="alert alert-success">
-                                                  {{ session()->get('message-success') }}
-                                              </div>
-                                              @elseif(session()->has('message-danger'))
-                                              <div class="alert alert-danger">
-                                                  {{ session()->get('message-danger') }}
-                                              </div>
-                                              @endif
-                                            
-                                        </div>
-                                        <div class="field-set" style="background-size: cover;">
-                                            <input type="email" placeholder="@lang('lang.email')" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" required>
-                                            @error('email')
-                                                <span class="red_alart" role="alert">
-                                                    {{ @$message }}
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="field-set" style="background-size: cover;">
-                                            
-                                            <input type="password" placeholder="@lang('lang.enter_passowrd')" name="password" class="form-control @error('password') is-invalid @enderror" required>
-                                            @error('password')
-                                                <span class="red_alart  text-red" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        
-                                            @php
-                                                   $reCaptcha =  App\ManageQuery::ReCaptchaSetting();
-                                            @endphp
-                                         <input type="text" hidden id="recaptcha_check" value="{{ @$reCaptcha->status }}">
-                                    
-                                        <div class="field-set" style="background-size: cover;">
-                                            <button type="submit" class="btn btn-main btn-fullwidth color-2">@lang('lang.login')</button>
-                                        </div>
-                                   
-                                        <!-- social icons -->
-                                        <div class="forgot-pass d-flex align-items-center justify-content-between">
-                                                <div class="checkit">
-                                                    <span class="chebox-style-custom">
-                                                        <input class="styled-checkbox" id="styled-checkbox-2"
-                                                            type="checkbox" value="value2" checked>
-                                                        <label for="styled-checkbox-2"></label>
-                                                    </span>
-                                                    <span class="keep-me-login" >
-                                                        @lang('lang.keep_me_logged_in')
-                                                    </span>
-                                                </div>
-                                                <div class="forgot-pass-link">
-                                                    <a href="{{ route('password.request') }}" class="forgot-pass">@lang('lang.forgot') @lang('lang.password') ?</a>
-                                                </div>
-                                            </div>
-                                        <!-- social icons close -->
-                                </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 @push('js')
 <script src="{{asset('public/frontend/frontend.js')}}"></script>

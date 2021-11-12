@@ -131,7 +131,7 @@
                                                             @endif
                                                     </div>
                                                 </div>
-                                                    <textarea  name="description" id="messageArea" cols="30" rows="10" placeholder="" readonly>{{isset($data['edit'])? $data['edit']->description:old('description')}}</textarea>
+                                                    <textarea  name="description" cols="30" rows="10" placeholder="" readonly>{{isset($data['edit'])? $data['edit']->description:old('description')}}</textarea>
                                                    
                                                 
                                             </div>
@@ -255,23 +255,23 @@
         <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
         <div class="input_field">
             <label for="">@lang('lang.ITEM_PRISE')</label>
-            <input type="text" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="">
+            <input type="text" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}}">
         </div>
         <span class="dm_middle_span">-</span>
         <div class="input_field">
             <label for="">Comision Artist</label>
-            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="">
+            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->C_buyer:old('C_buyer')}}">
         </div>
         <span class="dm_middle_span">-</span>
         <div class="input_field">
             <label for="">Comision Minted</label>
-            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="">
+            <input  type="text" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
         </div>
         <span class="dm_middle_span">=</span>
         <div class="input_field last-one">
             <label for="">PRET VANZARE</label>
-            <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
-            <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="">
+            <input  type="text" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
+            <input  type="text" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}">
         </div> 
     
             <input  type="text" class="primary-input form-control w-50"  hidden name="C_item"  id="comisionminted"  onkeyup="regular(this.value)" value="">

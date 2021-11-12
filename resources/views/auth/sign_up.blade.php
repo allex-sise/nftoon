@@ -1,5 +1,5 @@
 @extends('layouts.user')
-@section('title','Registration')
+@section('title','Creare Cont Minted')
 
 @php
     $logo_conditions = ['title'=>'Logo', 'active_status'=>1];
@@ -10,8 +10,67 @@
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('public/css/') }}/auth.css">
-    <style>.login_resister_area .single_resister_sildbar::after { background: url("{{url('/'.@$dashboard_background->image)}}") no-repeat; background-size:cover;  }</style>
-@endpush 
+    <style>.login_resister_area .single_resister_sildbar::after { background: url("{{url('/'.@$dashboard_background->image)}}") no-repeat; background-size:cover;  }
+    @media only screen and (max-width: 767px) {
+.login_resister_area .single_resister_sildbar .resister_text p{
+    display: none;
+}
+.login_resister_area{
+    display: none;
+}
+.ascundedesktop{
+    display: block;
+}
+.overlay-gradient{
+    padding-top: 0px!important;
+}
+.logo{
+    margin-bottom: 100px!important;
+}
+.padding40 {
+    padding: 40px 20px;
+}
+.field-set{
+    margin-bottom: 15px;
+}
+.form-control{
+    padding: 8px;
+    margin-bottom: 20px;
+    border: none;
+    border: solid 1px #cccccc;
+    background: none;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    height: auto;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #333;
+}
+.logocentrat{
+    margin: 0 auto!important;
+    display: block!important;
+    text-align: center;
+}
+.h3mobile{
+    font-size: 22px!important;
+    color: #FFF!important;
+}
+.pmobile{
+    color: #a2a2a2!important;
+    font-size: 16px!important;
+    line-height: 26px!important;
+    word-spacing: 0px;
+    font-weight: 400px;
+    font-family: "DM Sans", Helvetica, Arial, sans-serif!important;
+}
+.bgcolornew{
+    background: rgba(51, 27, 105, 0.94)!important;
+}
+}
+</style>
+    @endpush 
 @section('content')
 <!-- login_resister_area-start -->
     <div class="login_resister_area">
@@ -121,7 +180,83 @@
         </div>
     </div>
 <!-- login_resister_area-end -->
-
+<section class="full-height relative no-top no-bottom vertical-center ascundedesktop" data-bgimage="url({{url('/'.@$dashboard_background->image)}}) top" data-stellar-background-ratio=".5" style="min-height: 812px; background: url({{url('/'.@$dashboard_background->image)}}) center top / cover;">
+    <div class="overlay-gradient t50" style="background-size: cover;">
+        <div class="center-y relative" style="background-size: cover;">
+            <div class="container" style="background-size: cover;">
+            <div class="logo">
+                <a class="logocentrat" href="{{ url('/') }}">
+                    <img src="{{ asset('public/frontend/img/logo2.png') }}" alt="" width="203" >
+                </a>
+            </div>
+                <div class="row align-items-center" style="background-size: cover;">
+                    
+                    <div class="col-lg-4 offset-lg-4 wow fadeIn bg-color animated bgcolornew" data-wow-delay=".5s" style="background-size: cover; visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                        <div class="box-rounded padding40" style="background-size: cover;">
+                        <h3 class="mb10 h3mobile">@lang('lang.registration')</h3>
+                        <p class="pmobile">Completeaza formularul pentru a creea un cont nou Minted. Daca ai deja un cont te poti loga <a href="{{ url('login')}}">aici<span></span></a>.</p>
+                        <form action="{{ route('customer_registration') }}" method="POST" id="cus_registration1">
+                                    @csrf
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" name="full_name" value="{{ old('full_name') }}" placeholder="@lang('lang.enter_full_name')" required class="form-control @error('full_name') is-invalid @enderror">
+                                            @error('full_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" placeholder="@lang('lang.enter_username')" name="username" value="{{ old('username') }}" required class="form-control @error('username') is-invalid @enderror">
+                                            @error('username')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" placeholder="@lang('lang.username_email_address')" value="{{ old('email') }}" name="email" class="form-control @error('email') is-invalid @enderror" required>
+                                            @error('email')
+                                                <span class="text-danger  text-red" role="alert">
+                                                    {{ @$message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input name="password" id="password" type="password" placeholder="@lang('lang.enter_passowrd')"  class="form-control @error('password') is-invalid @enderror" required>
+                                            @error('password')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="password" name="password_confirmation" placeholder="@lang('lang.confirm_passowrd')" class="form-control @error('password_confirmation') is-invalid @enderror" required>
+                                            @error('password_confirmation')
+                                                <span  class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>                             
+                                        <input type="hidden"  id="recaptcha_check" value="{{ re_captcha_settings('status') }}">
+                                        @if (re_captcha_settings('status') == 1) 
+                                            <div class="field-set" style="background-size: cover;">
+                                                <label for="captcha">@lang('lang.re_captcha')</label>
+                                                {!! NoCaptcha::renderJs() !!}
+                                                {!! NoCaptcha::display() !!}
+                                                <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                            </div>
+                                        @endif
+                                        <div class="field-set" style="background-size: cover;">
+                                              <button type="submit" class="btn btn-main btn-fullwidth color-2">@lang('lang.register')</button>
+                                        </div>
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 @push('js')
 @endpush

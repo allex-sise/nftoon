@@ -252,8 +252,10 @@
                                                         {{ $item->Re_item}} lei
                                                         </div>
                                                         <div class="nft__item_action">
-                                                            @if ($item->active_status == 0)
-                                                        <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                        @if ($item->active_status == 0)
+                                                            <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                        @elseif ($item->active_status == 1)
+                                                            <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-edit"></i>  Editeaza NFT-ul</a>
                                                         @endif
                                                         </div>
                                                         <!-- <div class="nft__item_like">
@@ -1375,8 +1377,10 @@
                                                                 </div>
                                                                 <div class="nft__item_action">
                                                                     @if ($item->active_status == 0)
-                                                             <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
-                                                             @endif
+                                                                        <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                                    @elseif ($item->active_status == 1)
+                                                                        <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-edit"></i>  Editeaza NFT-ul</a>
+                                                                    @endif
                                                                 </div>
                                                                 <!-- <div class="nft__item_like">
                                                                     <i class="fa fa-heart"></i><span>50</span>
@@ -1849,6 +1853,7 @@
                                                         <div class="row">
                                                             <div class="col-xl-6">
                                                                 <div class="row">
+                                                                    <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
                                                                     <input type="text" name="payment_method_id" value="1" hidden>
                                                                     <div class="col-xl-12 col-md-12">
                                                                         <label for="name">Suma Retragere <span>*</span></label>
@@ -1888,6 +1893,7 @@
                                                             <div class="col-xl-6">
                                                                 <div class="row">
                                                                     <input type="text" name="payment_method_id" value="2" hidden>
+                                                                    <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
                                                                     <div class="col-xl-12 col-md-12">
                                                                         <label for="name">Suma Retragere <span>*</span></label>
                                                                         <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
@@ -1949,10 +1955,10 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($data['payout_history'] as $payout)
+                                                        @foreach ($data['withdraws'] as $payout)
                                                             <tr>
                                                                 <td>{{$payout->amount}} {{@$infix_general_settings->currency_symbol}}</td>
-                                                                <td>{{  @$payout->payment_method_name == 'Stripe' ? 'Stripe' : 'Ehthereum' }} - {{ @$payout->payout_email }} </td>
+                                                                <td>{{  @$payout->payment_method_id == '1' ? 'Stripe' : 'Ethereum' }} - {{ @$payout->pay_address }} </td>
                                                                 <td>{{  @$payout->paid_vendors_id == NULL ? 'Neplatit' : 'Platit' }}</td>
                                                                 <td>{{ $payout->created_at }} </td>
                                                             </tr>
