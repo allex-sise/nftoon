@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { ethers } from "ethers";
 import contract from "../assets/contracts/MintedNFT721.json"
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -11,12 +12,25 @@ export default new Vuex.Store({
     error: null,
     secrets: null,
     contractAddress: null,
+    token:{
+      name:null,
+      //itemIdkey= DB the key of an item
+      itemIdkey: null,
+      //blockchain NFT id
+      itemTokenid: null,
+      itemMetadataUrl: null,
+      description: null,
+      externalUrl: null,
+    },
+    mintRoute:null,
   },
   getters: {
     account: (state) => state.account,
     error: (state) => state.error,
     secrets: (state) => state.secrets,
     contractAddress: (state) => state.contractAddress,
+    token: (state) => state.token,
+    mintRoute: (state) => state.mintRoute,
   },
   mutations: {
     setAccount(state, account) {
@@ -30,10 +44,17 @@ export default new Vuex.Store({
     },
     setContract(state, contractAddress){
       state.contractAddress = contractAddress;
+    },
+    setTokenData(state, token){
+      state.token = token;
+    },
+    setMintRoute(state, route){
+      console.log("js mintRoute",route);
+      state.mintRoute = route;
     }
   },
   actions: {
-    async loadSecrets({commit}){
+    loadSecrets({commit}){
       const secrets = {
         pinata_api_key:process.env.MIX_PUSHER_PINATA_API_KEY,
         pinata_secret_api_key:process.env.MIX_PUSHER_PINATA_SECRET_API_KEY,
@@ -42,6 +63,9 @@ export default new Vuex.Store({
       const contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
       commit("setSecrets", secrets);
       commit("setContract", contractAddress);
+    },
+    loadTokenData({commit}, tokenData){
+      commit("setTokenData", tokenData);
     },
     async connect({ commit, dispatch }, connect) {
       try {
@@ -123,17 +147,13 @@ export default new Vuex.Store({
       try {
         const connectedContract = await dispatch("getContract");
         if (!connectedContract) return;
-    //     address indexed creator,
-    // uint256 indexed tokenId,
-    // string indexed indexedTokenIPFSPath,
-    // string tokenIPFSPath
         connectedContract.on(
           "Minted",
           async (from, tokenId, indexedTokenIPFSPath, tokenIPFSPath) => {
-            const uri = await connectedContract.tokenURI(tokenId);
-            console.log("uri",uri);
-            console.log("tokenIPFSPath",tokenIPFSPath);
-            // commit("setCharacterNFT", transformCharacterData(characterNFT));
+            state.token.itemTokenid = tokenId.toNumber();
+            state.token.itemMetadataUrl = 'https://dweb.link/ipfs/' + tokenIPFSPath;
+            console.log("save to DB")
+            await dispatch("saveToDB");
           }
         );
       } catch (error) {
@@ -143,9 +163,9 @@ export default new Vuex.Store({
     async mintNFT({ commit, dispatch }, ipfsMetadataUrl) {
       try {
         const connectedContract = await dispatch("getContract");
-        // const mintTxn = await connectedContract.mint(ipfsMetadataUrl);
         const mintTxn = await connectedContract["mint(string)"](ipfsMetadataUrl);
         await mintTxn.wait();
+        console.log("finished mint nft")
         return mintTxn;
       } catch (error) {
         console.log(error);
@@ -166,11 +186,30 @@ export default new Vuex.Store({
       try {
         const connectedContract = await dispatch("getContract");
         const tokenId = await connectedContract.getNextTokenId();
+        tokenId = tokenId.toNumber();        
         return tokenId;
       } catch (error) {
         console.log(error);
         return null;
       }
-    }
+    },
+    async saveToDB({state}){
+        if(state.token !== null){
+            console.log("token",state.token);
+            console.log("state.mintRoute",state.mintRoute);
+            axios.post(state.mintRoute,state.token).then(res => {
+            if(res.data.status === 'ok'){
+                toastr.success(res.data.message);
+            }else{
+                toastr.error(res.data.message);
+            }
+            }).catch(error=>{
+                toastr.error(error.response.data.errors);
+        });
+        }
+    },
+    async setMintRoute({commit},mintRoute){
+      commit("setMintRoute", mintRoute);
+    },
   },
 });
