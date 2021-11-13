@@ -226,6 +226,7 @@ return $name[3];
                                     <div class="form-row">
 
                                         <div class='col-xl-12 form-group text-center'>
+                                        <!-- todo: scrie in DB -->
                                             <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
                                         </div>
                                     </div>

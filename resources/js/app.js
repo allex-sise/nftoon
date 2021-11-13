@@ -23,7 +23,7 @@ window.Vue = require('vue');
 Vue.component('metamask-intro', require('./components/MetamaskIntro.vue').default);
 // Vue.component('withdraw-list', require('./components/WithdrawList.vue').default);
 // Vue.component('withdraw-item', require('./components/WithdrawItem.vue').default);
-Vue.component('withdraw-results', require('./components/WithdrawResults.vue').default);
+Vue.component('withdraw', require('./components/Withdraw/Withdraw.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,6 +31,20 @@ Vue.component('withdraw-results', require('./components/WithdrawResults.vue').de
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// const app = new Vue({
+//     el: '#app',
+// });
+
+import store from './store'
 const app = new Vue({
     el: '#app',
+    store
 });
+
+
+// import App from './App.vue'
+// import store from './store'
+// const app = new Vue({
+//     store,
+//     render: h => h(App)
+//   }).$mount('#app')
