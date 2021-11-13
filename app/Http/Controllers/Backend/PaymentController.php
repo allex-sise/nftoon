@@ -195,6 +195,7 @@ function paymentAuthor(Request $r){
            $paid = new PaidVendor();
            $paid->user_id = $r->user_id;
            $paid->amount = $r->amount;
+           $paid->amountETH = $r->amountETH;
            $paid->save();
 
            $withdraw = Withdraw::find($r->withdraw_id);

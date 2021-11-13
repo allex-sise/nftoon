@@ -1956,7 +1956,7 @@
                                                 @elseif(defaultPayout()->payment_method_name=='Bank')
                                                 <div class="col-lg-7  ">
                                                     <h2>Balanta Ta ETH</h2>
-                                                    <p>@lang('lang.You_currently_have')  <strong class="" style="font-size: 18px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
+                                                    <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} care inseamna aproximatix: <strong class="" style="font-size: 18px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
                                                    <span id="regular_license_price">ETH</span>
                                                 </strong> 
                                             <br /> *Momentan apare suma in eth (daca esti la metoda prin wallet), doar ca in input va trebui sa se calculeze automat din ETH in mintedcredits (noi trebuie sa ii stergem din balanta in credite)
@@ -1975,8 +1975,10 @@
                                                                         <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
                                                                         <div class="col-xl-12 col-md-12">
                                                                             <label for="name">Suma Retragere <span>*</span></label>
-                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
+                                                                            <input type="numeric" id="input" min="0" onkeyup="if(this.value<0){this.value= this.value * -1}" name="withdraw_amount" value="" 
                                                                                 placeholder="Introduceti suma dorita pentru retragere">
+
+                                                                            <input type="numeric" min="0" id="output" name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere">
                                                                         </div>
                                                                 
                                                                     </div>
@@ -1999,8 +2001,9 @@
                                                                         <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
                                                                         <div class="col-xl-12 col-md-12">
                                                                             <label for="name">Suma Retragere <span>*</span></label>
-                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
+                                                                            <input type="numeric" min="0" id="input"  onkeyup="if(this.value<0){this.value= this.value * -1}"  name="withdraw_amount" value="" 
                                                                                 placeholder="Introduceti suma dorita pentru retragere">
+                                                                                <input type="numeric" min="0" id="output"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere">
                                                                         </div>
                                                                 
                                                                     </div>
@@ -2459,5 +2462,30 @@ $(".d-item").slice(0, 8).show();
         });
 });
 </script>
-    
+<!-- <script>
+    $(document).ready(function () {
+        const pretInETH2 = $('#input');
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: `https://min-api.cryptocompare.com/data/price?fsym=RON&tsyms=ETH`,
+            success: function (data) {
+               var price = pretInETH2/data.RON;
+               var myNumberWithTwoDecimalPlaces=parseFloat(price).toFixed(4);
+                  $("#output").attr("value", myNumberWithTwoDecimalPlaces);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+});
+</script> -->
+<script>
+document.getElementById("input").oninput = () => {
+  const input = document.getElementById('input');
+  const output = document.getElementById('output');
+
+  output.value = input.value;
+};
+</script>
 @endpush

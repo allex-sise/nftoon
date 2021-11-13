@@ -195,6 +195,7 @@ return $name[3];
                                     <input type="text" hidden value="{{ @$payout_setup->user_id }}" name="user_id">
                                     <input type="text" hidden value="{{ @$withdraws->id }}" name="withdraw_id">
                                     <input type="text" hidden value="{{ @$payout_setup->id }}" name="payment_method_id">
+                                    <input type="text" hidden value="{{ @$withdraws->amountETH }}" name="amountETH">
                                     <div class='form-row'>
                                         <div class='col-xl-12 form-group'>
                                             <label class='control-label'>Metoda De Plata</label> <input value="{{  @$withdraws->payment_method_id == 1 ? 'Stripe' : 'Ethereum' }}" name="card_name"

@@ -78,6 +78,7 @@ class AuthorPayoutSetupController extends Controller
             $withdraw->user_id = $user_id;
             $withdraw->paid_vendors_id = NULL;
             $withdraw->amount = $r->withdraw_amount;
+            $withdraw->amountETH = $r->withdraw_amount_eth;
             $withdraw->pay_address = $r->pay_address;
             $withdraw->payment_method_id = $r->payment_method_id;
             $withdraw->save();
