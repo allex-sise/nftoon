@@ -226,7 +226,9 @@ return $name[3];
                                     <div class="form-row">
 
                                         <div class='col-xl-12 form-group text-center'>
-                                        <!-- todo: scrie in DB -->
+                                        <div id="app">
+                                            <withdraw-admin requestor-wallet-address="{{ @$payout_setup->payout_email }}" requestor-ammount="{{ @$withdraws->amount}}"/>
+                                        </div> 
                                             <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
                                         </div>
                                     </div>
@@ -280,5 +282,5 @@ return $name[3];
 </section>
 @endsection
 @section('script')
-
+  <script src="{{asset('public/js/app.js')}}"></script>
 @endsection

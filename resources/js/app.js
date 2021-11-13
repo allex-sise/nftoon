@@ -19,11 +19,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('metamask-intro', require('./components/MetamaskIntro.vue').default);
-// Vue.component('withdraw-list', require('./components/WithdrawList.vue').default);
-// Vue.component('withdraw-item', require('./components/WithdrawItem.vue').default);
 Vue.component('withdraw', require('./components/Withdraw/Withdraw.vue').default);
+Vue.component('withdraw-admin', require('./components/Withdraw/WithdrawAdmin.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

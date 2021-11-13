@@ -211,5 +211,26 @@ export default new Vuex.Store({
     async setMintRoute({commit},mintRoute){
       commit("setMintRoute", mintRoute);
     },
+    async payUser({ commit, dispatch }, payload) {
+      try {
+        const { ethereum } = window;
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+
+        const tx = await signer.sendTransaction({
+          to: payload.requestorWalletAddress,
+          //todo: trimite suma primita!!!!
+          value: ethers.utils.parseEther("0.00001")
+        });
+        await tx.wait();
+
+        console.log("payment finalized: ", transferTxn)
+        return transferTxn;
+      } catch (error) {
+        console.log("catch reject", error);
+        return null;
+      }
+    },
+    //todo: add disable event listener
   },
 });

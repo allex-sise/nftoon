@@ -1807,8 +1807,11 @@
                                                                             <div class="row">
                                                                                 <input type="text" name="name" value="Bank" hidden>
                                                                                 <div class="col-xl-12 col-md-12">
+                                                                                <div id="app">
+                                                                                    <withdraw/>
+                                                                                </div> 
                                                                                 <!-- //todo: aici insereaza valoarea walletului -->
-                                                                                   <input type="text" name="email" id="" value="{{ @$bank_payout_setup->payout_email }}"/>
+                                                                                   <!-- <input type="text" name="email" id="" value="{{ @$bank_payout_setup->payout_email }}"/> -->
                                                                                 </div>
                                                                         
                                                                             </div>
@@ -1822,9 +1825,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="app">
-                                                        <withdraw/>
-                                                    </div> 	
+                                                    	
 
                                                 </div>
                                                 <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'Stripe'  ? 'show active' :'' : ''}} " id="payouts1" role="tabpanel"
@@ -1902,32 +1903,55 @@
                                                         $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
                                                     
                                                     @endphp
-                                                    @if($withdraw->paid_vendors_id !== NULL)
+                                                    @if (!@$withdraw)
                                                     <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
-                                                        @csrf
-                                                        <div class="row">
-                                                            <div class="col-xl-6">
-                                                                <div class="row">
-                                                                    <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
-                                                                    <input type="text" name="payment_method_id" value="1" hidden>
-                                                                    <div class="col-xl-12 col-md-12">
-                                                                        <label for="name">Suma Retragere <span>*</span></label>
-                                                                        <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" placeholder="Introduceti suma dorita pentru retragere">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="row">
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="text" name="payment_method_id" value="1" hidden>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                            <label for="name">Suma Retragere <span>*</span></label>
+                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" placeholder="Introduceti suma dorita pentru retragere">
+                                                                        </div>
+                                                                
                                                                     </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             
+                                                        </form>
+                                                        @elseif($withdraw->paid_vendors_id !== NULL)
+                                                        <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="row">
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="text" name="payment_method_id" value="1" hidden>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                            <label for="name">Suma Retragere <span>*</span></label>
+                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" placeholder="Introduceti suma dorita pentru retragere">
+                                                                        </div>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-3 ">
-                                                                <div class="check-out-btn">
-                                                                    <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </form>
-                                                    @else
-                                                        <p>Ai deja o cerere de retragere in executie</p>
-                                                    @endif
+                                                            
+                                                        </form>
+                                                        @else
+                                                            <p>Ai deja o cerere de retragere in executie</p>
+                                                        @endif
                                                 </div>
                                                 @elseif(defaultPayout()->payment_method_name=='Bank')
                                                 <div class="col-lg-7  ">
@@ -1941,33 +1965,57 @@
                                                         $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
                                                     
                                                     @endphp
-                                                    @if($withdraw->paid_vendors_id !== NULL)
+                                                    @if (!@$withdraw)
                                                     <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
-                                                        @csrf
-                                                        <div class="row">
-                                                            <div class="col-xl-6">
-                                                                <div class="row">
-                                                                    <input type="text" name="payment_method_id" value="2" hidden>
-                                                                    <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
-                                                                    <div class="col-xl-12 col-md-12">
-                                                                        <label for="name">Suma Retragere <span>*</span></label>
-                                                                        <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
-                                                                            placeholder="Introduceti suma dorita pentru retragere">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="row">
+                                                                        <input type="text" name="payment_method_id" value="2" hidden>
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                            <label for="name">Suma Retragere <span>*</span></label>
+                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
+                                                                                placeholder="Introduceti suma dorita pentru retragere">
+                                                                        </div>
+                                                                
                                                                     </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             
+                                                </form>
+                                                        @elseif($withdraw->paid_vendors_id !== NULL)
+                                                        <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="row">
+                                                                        <input type="text" name="payment_method_id" value="2" hidden>
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                            <label for="name">Suma Retragere <span>*</span></label>
+                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" value="" 
+                                                                                placeholder="Introduceti suma dorita pentru retragere">
+                                                                        </div>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-3 ">
-                                                                <div class="check-out-btn">
-                                                                    <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </form>
-                                                    @else
-                                                        <p>Ai deja o cerere de retragere in executie</p>
-                                                    @endif
+                                                            
+                                                        </form>
+                                                        @else
+                                                            <p>Ai deja o cerere de retragere in executie</p>
+                                                        @endif
                                                 </div>
                                                 @endif
                                             @endif
