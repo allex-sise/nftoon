@@ -221,7 +221,7 @@ export default new Vuex.Store({
     async setMintRoute({commit},mintRoute){
       commit("setMintRoute", mintRoute);
     },
-    async payUser({ commit, dispatch }, payload) {
+    async payUser({ state, dispatch }, payload) {
       try {
         const signer = state.blockchain.signer;
 

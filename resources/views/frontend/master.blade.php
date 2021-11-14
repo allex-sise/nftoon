@@ -305,7 +305,6 @@ $('#icon').click(function(){
         console.log("This should run because marketing is accepted.");
     }
     </script>
-    <script src="{{asset('public/js/app.js')}}"></script>
     <script>
 function openNav() {
   document.getElementById("myNav").style.width = "100%";

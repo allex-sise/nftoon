@@ -2488,4 +2488,5 @@ document.getElementById("input").oninput = () => {
   output.value = input.value;
 };
 </script>
+<script src="{{asset('public/js/app.js')}}"></script>
 @endpush
