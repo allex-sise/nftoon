@@ -370,6 +370,7 @@
                     postfixButtons: ['colvisRestore']
                 }
             ],
+            order: [[ 0, 'desc' ]],
             columnDefs: [{
                 visible: false
             }],

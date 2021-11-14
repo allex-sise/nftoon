@@ -45,6 +45,7 @@
                                 <th width="15%">@lang('lang.email')</th>
                                 <th width="15%">Suma Retragere </th>
                                 <th width="15%">@lang('lang.status')</th>
+                                <th width="15%">Status Blockchain</th>
                                 <th width="15%">@lang('lang.payment') @lang('lang.method')</th>
                                 <th width="15%">@lang('lang.send')</th>
                             </tr>
@@ -59,13 +60,13 @@
                                     <td>{{@$value->amount}} {{@GeneralSetting()->currency_symbol}}</td>
 
                                     <td>{{  @$value->paid_vendors_id == NULL ? 'Neplatit' : 'Platit' }}</td>
-                                    
+                                    <td>{{  @$value->blockchain_status }}</td>
                                     <td>{{  @$value->payment_method_id == 1 ? 'Stripe' : 'Ethereum' }}</td>
                                     <td>
                                       @if (@$value->paid_vendors_id == NULL)                                            
                                         <a href="{{ route('admin.WithdrawUser',@$value->id) }}" class="primary-btn small fix-gr-bg">@lang('lang.send') @lang('lang.money')</a>
                                       @else 
-                                        <span>@lang('lang.empty')</span>  
+                                        <a href="{{ route('admin.WithdrawUser',@$value->id) }}" class="primary-btn small btn-info" style="color: #FFF;">Vezi Istoric</a>  
                                       @endif
                                   </td>
                                         

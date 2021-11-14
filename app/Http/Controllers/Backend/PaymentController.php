@@ -147,6 +147,7 @@ function WithdrawUser($id){
         ->join('users','users.id','=','withdraws.user_id')
         ->where('withdraws.user_id',$user_id)
         ->select('users.username','withdraws.amount','withdraws.created_at','author_payout_setups.*')
+        ->orderBy('id', 'desc')
         ->get();
         $withdraw2 = Withdraw::where('user_id', $user_id)->get();
         // return $withdraw;
@@ -195,6 +196,7 @@ function paymentAuthor(Request $r){
            $paid = new PaidVendor();
            $paid->user_id = $r->user_id;
            $paid->amount = $r->amount;
+           $paid->withdraw_id = $r->withdraw_id;
            $paid->amountETH = $r->amountETH;
            $paid->save();
 
@@ -218,5 +220,62 @@ function paymentAuthor(Request $r){
             Toastr::error($msg,app('translator')->get('lang.failed_alert'));
             return redirect()->back();
          }  
-}
+    }
+    function adauga_transactionHash(Request $r){
+        DB::beginTransaction();
+        try {
+            $withdraw = Withdraw::find($r->withdraw_id);
+            $withdraw->transaction_hash = $r->transaction_hash;
+            $withdraw->save();  
+            DB::commit(); 
+            Toastr::success(app('translator')->get('lang.paid_successfully'));
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e);
+           $msg=str_replace("'", " ", $e->getMessage()) ;
+           Toastr::error($msg,app('translator')->get('lang.failed_alert'));
+           return redirect()->back();
+        }  
+    }
+    function adauga_blockchainStatus(Request $r){
+        DB::beginTransaction();
+        try {
+            $withdraw = Withdraw::find($r->withdraw_id);
+            $withdraw->blockchain_status = $r->blockchain_status;
+            $withdraw->save();  
+            DB::commit(); 
+            Toastr::success(app('translator')->get('lang.paid_successfully'));
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e);
+           $msg=str_replace("'", " ", $e->getMessage()) ;
+           Toastr::error($msg,app('translator')->get('lang.failed_alert'));
+           return redirect()->back();
+        }  
+    }
+
+    function anuleazaWithdraw(Request $r, $id){
+    
+        try {
+            // $withdraw = Withdraws::where('id', $id)->first();
+            // $withdraws = $withdraw->id;
+
+                      $withdrawEdit = Withdraw::find($id);
+                      $withdrawEdit->paid_vendors_id = NULL;
+                      $withdrawEdit->save();
+                      
+                      $paid_vendors_withdraw_id = $id;
+                      $delete_query = PaidVendor::where('withdraw_id', $id)->first();
+                      $delete_query->delete();
+                      
+      
+                          Toastr::success('Succsesfully Deleted!','Success');
+                      return redirect()->back();
+              
+              } catch (\Exception $e) {
+                  $msg=str_replace("'", " ", $e->getMessage()) ;
+                  Toastr::error($msg, 'Failed');
+                  return redirect()->back();
+              }
+    }
 }

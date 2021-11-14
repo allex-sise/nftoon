@@ -330,6 +330,9 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::get('payable-author', 'PaymentController@payableUser')->name('payableUser')->middleware('userRolePermission:15');
         Route::get('withdraw-author/{id}', 'PaymentController@WithdrawUser')->name('WithdrawUser')->middleware('userRolePermission:15');
         Route::post('payment-author/', 'PaymentController@paymentAuthor')->name('paymentAuthor')->middleware('userRolePermission:15');
+        Route::post('adauga-transactionhash/', 'PaymentController@adauga_transactionHash')->name('adauga_transactionHash')->middleware('userRolePermission:15');
+        Route::post('adauga-blockchainstatus/', 'PaymentController@adauga_blockchainStatus')->name('adauga_blockchainStatus')->middleware('userRolePermission:15');
+        Route::get('anuleaza-withdraw/{id}', 'PaymentController@anuleazaWithdraw')->name('anuleazaWithdraw')->middleware('userRolePermission:15');
         /** ******************* END PAYMENT ****************************  */
         ////logout
 

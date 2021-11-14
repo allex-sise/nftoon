@@ -21,6 +21,14 @@
     border-radius: 0px;
     width: 15%;
 }
+.input-group-text {
+    border-radius: 0px;
+    height: 40px;
+}
+.colmd55{
+    width: 49%!important;
+    margin-left: 4px;
+}
 /* .banner-area3::before {
     z-index: 99!important;
     background-image: url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }})!important;
@@ -1959,7 +1967,6 @@
                                                     <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} care inseamna aproximatix: <strong class="" style="font-size: 18px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
                                                    <span id="regular_license_price">ETH</span>
                                                 </strong> 
-                                            <br /> *Momentan apare suma in eth (daca esti la metoda prin wallet), doar ca in input va trebui sa se calculeze automat din ETH in mintedcredits (noi trebuie sa ii stergem din balanta in credite)
                                                 </p>
                                                     @php 
                                                         $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
@@ -1969,48 +1976,82 @@
                                                     <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
                                                             @csrf
                                                             <div class="row">
-                                                                <div class="col-xl-6">
+                                                                <div class="col-xl-9">
                                                                     <div class="row">
                                                                         <input type="text" name="payment_method_id" value="2" hidden>
                                                                         <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="numeric" min="0" id="ETH2RON"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere" hidden>
+                                                                        <label for="basic-url">Suma Retragere* (in ETH)</label>
                                                                         <div class="col-xl-12 col-md-12">
-                                                                            <label for="name">Suma Retragere <span>*</span></label>
-                                                                            <input type="numeric" id="input" min="0" onkeyup="if(this.value<0){this.value= this.value * -1}" name="withdraw_amount" value="" 
-                                                                                placeholder="Introduceti suma dorita pentru retragere">
-
-                                                                            <input type="numeric" min="0" id="output" name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere">
-                                                                        </div>
+                                                                       
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="numeric" style="width: 140px!important" class="form-control" min="0" id="input"  onkeyup="regular(this.value)" name="withdraw_amount_eth" value="" 
+                                                                                            placeholder="Introduceti suma dorita pentru retragere" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">ETH</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text" id="pretInETH2"  name="withdraw_amount" style="width: 140px!important" class="form-control" onkeyup="regular(this.value)"  placeholder="Suma in Credite Minted" aria-label="Suma in Credite Minted" aria-describedby="basic-addon3" readonly >   
+                                                                                
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">LEI</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                         </div>
                                                                 
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-3 ">
                                                                     <div class="check-out-btn">
-                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Retrage</button>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            
-                                                </form>
+                                                            </div> 
+                                                        </form>
                                                         @elseif($withdraw->paid_vendors_id !== NULL)
                                                         <form action="{{ route('author.withdraw_amount')}}"  method="POST" class="checkout-form">
                                                             @csrf
                                                             <div class="row">
-                                                                <div class="col-xl-6">
+                                                                <div class="col-xl-9">
                                                                     <div class="row">
                                                                         <input type="text" name="payment_method_id" value="2" hidden>
                                                                         <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="numeric" min="0" id="ETH2RON"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere" hidden>
+                                                                        <label for="basic-url">Suma Retragere* (in ETH)</label>
                                                                         <div class="col-xl-12 col-md-12">
-                                                                            <label for="name">Suma Retragere <span>*</span></label>
-                                                                            <input type="numeric" min="0" id="input"  onkeyup="if(this.value<0){this.value= this.value * -1}"  name="withdraw_amount" value="" 
-                                                                                placeholder="Introduceti suma dorita pentru retragere">
-                                                                                <input type="numeric" min="0" id="output"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere">
-                                                                        </div>
+                                                                       
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="numeric" style="width: 140px!important" class="form-control" min="0" id="input"  onkeyup="regular(this.value)" name="withdraw_amount_eth" value="" 
+                                                                                            placeholder="Introduceti suma dorita pentru retragere" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">ETH</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text" id="pretInETH2"  name="withdraw_amount" style="width: 140px!important" class="form-control" onkeyup="regular(this.value)"  placeholder="Suma in Credite Minted" aria-label="Suma in Credite Minted" aria-describedby="basic-addon3" readonly >   
+                                                                                
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">LEI</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                         </div>
                                                                 
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-3 ">
                                                                     <div class="check-out-btn">
-                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Retrage</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -2450,9 +2491,9 @@ $(".d-item").slice(0, 8).show();
         $.ajax({
             type: "GET",
             dataType: 'json',
-            url: `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`,
+            url: `https://min-api.cryptocompare.com/data/price?fsym=RON&tsyms=ETH`,
             success: function (data) {
-               var price = pretInRon/data.RON;
+               var price = pretInRon*data.ETH;
                var myNumberWithTwoDecimalPlaces=parseFloat(price).toFixed(4);
                   $("#pretInEth").attr("value", myNumberWithTwoDecimalPlaces);
             },
@@ -2462,31 +2503,32 @@ $(".d-item").slice(0, 8).show();
         });
 });
 </script>
-<!-- <script>
+<script>
     $(document).ready(function () {
-        const pretInETH2 = $('#input');
         $.ajax({
             type: "GET",
             dataType: 'json',
-            url: `https://min-api.cryptocompare.com/data/price?fsym=RON&tsyms=ETH`,
+            url: `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`,
             success: function (data) {
-               var price = pretInETH2/data.RON;
-               var myNumberWithTwoDecimalPlaces=parseFloat(price).toFixed(4);
-                  $("#output").attr("value", myNumberWithTwoDecimalPlaces);
+                $("#ETH2RON").attr("value", data.RON);
             },
             error: function (data) {
                 console.log('Error:', data);
             }
         });
 });
-</script> -->
-<script>
-document.getElementById("input").oninput = () => {
-  const input = document.getElementById('input');
-  const output = document.getElementById('output');
+function regular(item) {
+    if(this.value<0){this.value= this.value * -1}
+    const inputETH = $("#input").val();
+    const ETH2RON = $("#ETH2RON").val();
+    var totalPrice = ETH2RON*inputETH;
+    var myNumberWithTwoDecimalPlaces=parseFloat(totalPrice).toFixed(2);
 
-  output.value = input.value;
-};
-</script>
-<script src="{{asset('public/js/app.js')}}"></script>
+    $("#pretInETH2").val(myNumberWithTwoDecimalPlaces);
+    $("#pretInETH2").attr("placeholder", "$" + myNumberWithTwoDecimalPlaces);
+    $("#pretInETH2").attr("value", myNumberWithTwoDecimalPlaces);
+}
+</script> 
+
+
 @endpush
