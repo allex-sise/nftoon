@@ -22,6 +22,7 @@ export default new Vuex.Store({
       description: null,
       externalUrl: null,
     },
+    blockchain: null,
     mintRoute:null,
   },
   getters: {
@@ -31,6 +32,7 @@ export default new Vuex.Store({
     contractAddress: (state) => state.contractAddress,
     token: (state) => state.token,
     mintRoute: (state) => state.mintRoute,
+    blockchain: (state) => state.blockchain,
   },
   mutations: {
     setAccount(state, account) {
@@ -51,6 +53,16 @@ export default new Vuex.Store({
     setMintRoute(state, route){
       console.log("js mintRoute",route);
       state.mintRoute = route;
+    },
+    setBlockchain(state){
+      const { ethereum } = window;
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const blockchain = {
+        provider:provider,
+        signer: signer,
+      }
+      state.blockchain = blockchain;
     }
   },
   actions: {
@@ -63,6 +75,7 @@ export default new Vuex.Store({
       const contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
       commit("setSecrets", secrets);
       commit("setContract", contractAddress);
+      commit("setBlockchain");
     },
     loadTokenData({commit}, tokenData){
       commit("setTokenData", tokenData);
@@ -128,13 +141,10 @@ export default new Vuex.Store({
     },
     async getContract({ state }) {
       try {
-        const { ethereum } = window;
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(
           state.contractAddress,
           contract.abi,
-          signer
+          state.blockchain.signer
         );
         return connectedContract;
       } catch (error) {
@@ -213,22 +223,46 @@ export default new Vuex.Store({
     },
     async payUser({ commit, dispatch }, payload) {
       try {
-        const { ethereum } = window;
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
+        const signer = state.blockchain.signer;
 
-        const tx = await signer.sendTransaction({
+        const transferTxn = await signer.sendTransaction({
           to: payload.requestorWalletAddress,
-          //todo: trimite suma primita!!!!
-          value: ethers.utils.parseEther("0.00001")
+          value: ethers.utils.parseEther(payload.requestorAmmount)
         });
-        await tx.wait();
+        await transferTxn.wait();
 
-        console.log("payment finalized: ", transferTxn)
+        console.log("todo: Record tx hash in DB: ", transferTxn.hash)
+        await dispatch("isTransactionMined", transferTxn.hash);
+        await dispatch("storeTransactionInDb", transferTxn.hash);
+        
         return transferTxn;
       } catch (error) {
         console.log("catch reject", error);
+        if(error.code === 4001){
+          console.log(error.message);
+        }
         return null;
+      }
+    },
+    async storeTransactionInDb({dispatch}, txnHash){
+      //a good way to store transaction hash in DB for future need
+      console.log("todo: store hash in DB", txnHash);
+    },
+    async isTransactionMined({state},transactionHash){
+      const provider = state.blockchain.provider;
+      const txReceipt = await provider.getTransactionReceipt(transactionHash);
+      if (txReceipt && txReceipt.blockNumber) {
+          console.log("transction minted: ", txReceipt);
+          if(txReceipt.status === 0 ){
+            console.log("FAILED");
+          }
+          if(txReceipt.status === 1 ){
+            console.log("SUCCESS");
+          }
+          return txReceipt;
+      }
+      else {
+        console.log("Transaction not available on the blockchain!");
       }
     },
     //todo: add disable event listener

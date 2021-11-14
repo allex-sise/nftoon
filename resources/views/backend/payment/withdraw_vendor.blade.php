@@ -220,7 +220,7 @@ return $name[3];
                                     <div class="form-row">
                                         <div class='col-xl-12 form-group'>
                                             <label class='control-label'> @lang('lang.total')</label> <input
-                                                class='form-control' placeholder='YYYY' value="{{ @$withdraws->amount}}" name="amount"
+                                                class='form-control' placeholder='YYYY' value="{{ @$withdraws->amountETH}}" name="amount"
                                                     type='text' readonly>
                                         </div>
                                     </div>
@@ -228,9 +228,9 @@ return $name[3];
 
                                         <div class='col-xl-12 form-group text-center'>
                                         <div id="app">
-                                            <withdraw-admin requestor-wallet-address="{{ @$payout_setup->payout_email }}" requestor-ammount="{{ @$withdraws->amount}}"/>
+                                            <withdraw-admin requestor-wallet-address="{{ @$payout_setup->payout_email }}" requestor-ammount="{{ @$withdraws->amountETH}}"/>
                                         </div> 
-                                            <button type="submit" class="primary-btn fix-gr-bg">Plateste</button>
+                                            <!-- <button type="submit" class="primary-btn fix-gr-bg">Plateste</button> -->
                                         </div>
                                     </div>
                                 </form>
