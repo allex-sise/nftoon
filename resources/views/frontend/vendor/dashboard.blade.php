@@ -29,6 +29,12 @@
     width: 49%!important;
     margin-left: 4px;
 }
+.btntool{
+    padding: 0px;
+    font-size: 24px;
+    background: transparent;
+    border: 0px;
+}
 /* .banner-area3::before {
     z-index: 99!important;
     background-image: url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }})!important;
@@ -1965,7 +1971,11 @@
                                                 <div class="col-lg-7  ">
                                                     <h2>Balanta Ta ETH</h2>
                                                     <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} care inseamna aproximatix: <strong class="" style="font-size: 18px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
-                                                   <span id="regular_license_price">ETH</span>
+                                                    
+                                                    <span id="regular_license_price">ETH</span>
+                                                    <button type="button" id="exampletool" class="btn btn-secondary btntool" data-toggle="tooltip" data-placement="top" data-html="true" title="<em>Informatii</em> <u>despre</u> <b>Retragere prin ETH</b>">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                    </button>
                                                 </strong> 
                                                 </p>
                                                     @php 
@@ -2059,6 +2069,14 @@
                                                         </form>
                                                         @else
                                                             <p>Ai deja o cerere de retragere in executie</p>
+                                                            <form action="{{ route('author.anuleazaWithdraw')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                          
+                                                            
+                                                            <input type="text" name="withdraw_id" value="{{@$withdraw->id}}" hidden>
+                                                            <input type="text" name="withdraw_amountz" value="{{@$withdraw->amount}}" hidden>   
+                                                            <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Anuleaza</button>
+                                                            </form>
                                                         @endif
                                                 </div>
                                                 @endif
@@ -2529,6 +2547,11 @@ function regular(item) {
     $("#pretInETH2").attr("value", myNumberWithTwoDecimalPlaces);
 }
 </script> 
+<script>
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 
 @endpush

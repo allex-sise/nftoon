@@ -45,6 +45,8 @@ Route::group(['middleware' => ['XSS']], function () {
         
         Route::POST('setup-payout','AuthorPayoutSetupController@setupPayout')->name('setup_payout');
         Route::POST('withdraw-amount','AuthorPayoutSetupController@withdrawAmount')->name('withdraw_amount');
+        Route::post('anuleaza-withdraw/','AuthorPayoutSetupController@anuleazaWithdraw')->name('anuleazaWithdraw');
+
         Route::get('set-payout-default/{method}','AuthorPayoutSetupController@defaultPayoutSetup')->name('defaultPayoutSetup');
         //end Satatement
         Route::get('item/download/file/{id}', 'VendorController@ProductDownload')->name('ProductDownload');

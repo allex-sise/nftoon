@@ -96,6 +96,33 @@ class AuthorPayoutSetupController extends Controller
         // return $request;
     }
 
+    function anuleazaWithdraw(Request $r){
+    
+        try {
+            // $withdraw = Withdraws::where('id', $id)->first();
+            // $withdraws = $withdraw->id;
+
+                    
+            $user  = User::find(Auth::user()->id);
+            $balnc = $user->balance;
+            
+            $balnc->amount = $balnc->amount + floatval($r->withdraw_amountz);
+            $balnc->save();
+
+                      $delete_query = Withdraw::where('id', $r->withdraw_id)->first();
+                      $delete_query->delete();
+                     
+
+                          Toastr::success('Succsesfully Deleted!','Success');
+                      return redirect()->back();
+              
+              } catch (\Exception $e) {
+                  $msg=str_replace("'", " ", $e->getMessage()) ;
+                  Toastr::error($msg, 'Failed');
+                  return redirect()->back();
+              }
+    }
+
 
     public function defaultPayoutSetup(Request $request,$method){
 
