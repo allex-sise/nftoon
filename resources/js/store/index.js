@@ -224,29 +224,58 @@ export default new Vuex.Store({
     async payUser({ state, dispatch }, payload) {
       try {
         const signer = state.blockchain.signer;
-
         const transferTxn = await signer.sendTransaction({
           to: payload.requestorWalletAddress,
           value: ethers.utils.parseEther(payload.requestorAmmount)
         });
-        await transferTxn.wait();
+        payload.transaction_hash = transferTxn.hash;
+        payload.route = payload.routeTransactionHash;
+        await dispatch("storeInDb", payload);
 
-        console.log("todo: Record tx hash in DB: ", transferTxn.hash)
-        await dispatch("isTransactionMined", transferTxn.hash);
-        await dispatch("storeTransactionInDb", transferTxn.hash);
+        await transferTxn.wait();
+        let txReceipt = await dispatch("isTransactionMined", transferTxn.hash);
+
+        payload.route = payload.routeBlockchainStatus;
+        payload.blockchain_status = txReceipt.status;
+        await dispatch("storeInDb", payload);
         
         return transferTxn;
       } catch (error) {
         console.log("catch reject", error);
+
+        const onErrorPayload = {
+          route: payload.routeBlockchainStatus,
+          withdraw_id: payload.withdraw_id,
+          blockchain_status: 69
+        };
+
         if(error.code === 4001){
-          console.log(error.message);
+          onErrorPayload.blockchain_status = 2;
         }
+        else{
+          txReceipt = await dispatch("isTransactionMined", transferTxn.hash);
+          if(txReceipt){
+            onErrorPayload.blockchain_status = txReceipt.status;
+          }
+        }
+        
+        console.log("onErrorPayload", onErrorPayload);
+        await dispatch("storeInDb", onErrorPayload);
+
         return null;
       }
     },
-    async storeTransactionInDb({dispatch}, txnHash){
-      //a good way to store transaction hash in DB for future need
-      console.log("todo: store hash in DB", txnHash);
+    async storeInDb({dispatch}, payload){
+      console.log("payload: ", payload);
+      axios.post(payload.route, payload).then(res => {
+        if(res.data.status === 'ok'){
+            toastr.success(res.data.message);
+        }else{
+            toastr.error(res.data.message);
+        }
+        }).catch(error=>{
+            toastr.error(error.response.data.errors);
+      });
     },
     async isTransactionMined({state},transactionHash){
       const provider = state.blockchain.provider;

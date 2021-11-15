@@ -228,49 +228,13 @@ return $name[3];
 
                                         <div class='col-xl-12 form-group text-center'>
                                         <div id="app">
-                                            <withdraw-admin requestor-wallet-address="{{ @$payout_setup->payout_email }}" requestor-ammount="{{ @$withdraws->amountETH}}"/>
+                                            <withdraw-admin requestor-wallet-address="{{ @$payout_setup->payout_email }}" requestor-ammount="{{ @$withdraws->amountETH}}" route-transaction-hash="{{ route('admin.adauga_transactionHash') }}" withdraw-id="{{ @$withdraws->id }}" route-blockchain-status="{{ route('admin.adauga_blockchainStatus') }}"/>
                                         </div> 
                                             <!-- <button type="submit" class="primary-btn fix-gr-bg">Plateste</button> -->
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                        <div class="white-box">
-                            <form accept-charset="UTF-8" action="{{ route('admin.adauga_transactionHash') }}" class="require-validation"  id="payment-form2" method="post">
-                                        {{ csrf_field() }}
-                                        <input type="text" hidden value="{{ @$withdraws->id }}" name="withdraw_id">
-                                <div class='form-row'>
-                                    <div class='col-xl-12 form-group'>
-                                        <label class='control-label'>TransactioN Hash</label> 
-                                        <input autocomplete='off' class='form-control' value="{{ @$withdraws->transaction_hash }}" name="transaction_hash"
-                                            type='text'>
-                                    </div>
-                                </div> 
-                                <div class="form-row">
-                                    <div class='col-xl-12 form-group text-center'>
-                                        <button type="submit" class="primary-btn fix-gr-bg">Seteaza Trans Hash</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="white-box">
-                            <form accept-charset="UTF-8" action="{{ route('admin.adauga_blockchainStatus') }}" class="require-validation"  id="payment-form2" method="post">
-                                        {{ csrf_field() }}
-                                        <input type="text" hidden value="{{ @$withdraws->id }}" name="withdraw_id">
-                                <div class='form-row'>
-                                    <div class='col-xl-12 form-group'>
-                                        <label class='control-label'>Blockchain Status</label> 
-                                        <input autocomplete='off' class='form-control' value="{{ @$withdraws->blockchain_status }}" name="blockchain_status"
-                                            type='text'>
-                                    </div>
-                                </div> 
-                                <div class="form-row">
-                                    <div class='col-xl-12 form-group text-center'>
-                                        <button type="submit" class="primary-btn fix-gr-bg">Seteaza Blockchain Status</button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                         
                         @endif
