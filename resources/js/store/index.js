@@ -75,11 +75,28 @@ export default new Vuex.Store({
       const contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
       commit("setSecrets", secrets);
       commit("setContract", contractAddress);
-      commit("setBlockchain");
     },
     loadTokenData({commit}, tokenData){
       commit("setTokenData", tokenData);
     },
+    // async blockchainController({ commit, dispatch }){
+    //   //todo:! trbuie sa verific ca sunt pe blockchain de fiecare data si sa si updatez
+    //   // topate req tre sa treaca prin ceva controler ce verifica, nu doar la inceput
+    //   try{
+    //     if (!await dispatch("checkIfConnected")) {
+    //       await dispatch("requestAccess");
+    //     }
+    //     if(await dispatch("checkNetwork")) {
+    //       commit("setBlockchain");
+    //     };
+    //     return 1;
+    //   }catch (error) {
+    //     console.log(error);
+    //     commit("setError", "Metamask account request refused.");
+    //     return 0;
+    //   }
+      
+    // },
     async connect({ commit, dispatch }, connect) {
       try {
         await dispatch("loadSecrets");
@@ -92,7 +109,7 @@ export default new Vuex.Store({
           await dispatch("requestAccess");
         }
         await dispatch("checkNetwork");
-        await dispatch("fetchNFTMetadata");
+        commit("setBlockchain");
         await dispatch("setupEventListeners");
       } catch (error) {
         console.log(error);
@@ -108,8 +125,10 @@ export default new Vuex.Store({
             "setError",
             "You are not connected to the Ropsten Test Network!"
           );
+          return 0;
         }
       }
+      return 1;
     },
     async switchNetwork({ commit }) {
       try {
@@ -117,9 +136,6 @@ export default new Vuex.Store({
           method: "wallet_switchEthereumChain",
           params: [{ chainId: "0x3" }],
         });
-        //todo:! trbuie sa verific ca sunt pe blockchain de fiecare data si sa si updatez
-        // topate req tre sa treaca prin ceva controler ce verifica, nu doar la inceput
-        commit("setBlockchain");
         return 1;
       } catch (switchError) {
         return 0;
@@ -238,6 +254,7 @@ export default new Vuex.Store({
         await dispatch("storeInDb", payloadPaymentAuthor);
 
         alert('Do not close/refresh the window!');
+        commit("setBlockchain");
         const signer = state.blockchain.signer;
         const transferTxn = await signer.sendTransaction({
           to: payload.requestorWalletAddress,
@@ -262,6 +279,8 @@ export default new Vuex.Store({
         await dispatch("storeInDb", payloadBlockchainStatus);
         
         return transferTxn;
+        // }
+        // return null;
       } catch (error) {
         console.log("catch reject", error);
 

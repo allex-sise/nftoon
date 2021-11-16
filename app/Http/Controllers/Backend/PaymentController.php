@@ -160,23 +160,22 @@ function WithdrawUser($id){
 }
 function paymentAuthor(Request $r){
     $validate_rules = [
-        'card_name' => 'required',
-        'email' => 'required',
+        // 'card_name' => 'required',
+        // 'email' => 'required',
         'amount' => 'required'
     ];
     $r->validate($validate_rules, validationMessage($validate_rules));
     DB::beginTransaction();
-    $input = $r->input();
      try {
         $user  = User::find($r->user_id);
         $balnc = $user->balance;
 
-        if ($input['amount'] <= 0) {
+        if ($r->amount <= 0) {
             Toastr::error(app('translator')->get('lang.can_not_pay_0'));
             return redirect()->back();
         }
         
-         if ($balnc->amount >= $input['amount']) { 
+         if ($balnc->amount >= $r->amount) { 
 
             try {
                 $payment_method=PaymentMethod::where('user_id',$r->user_id)->first();
