@@ -1,10 +1,10 @@
 <template>
   <div id="withdraw-admin">
+    <div v-if="error">{{error}}</div>
     <div v-if="account">
         <label>Transfer din contul: {{account}}</label>
         <p>
-            <!-- todo: type submit/button -->
-            <button @click="(plataOPlomo())" id="save-form-2" type="submit">PLATESTE</button>
+            <button @click="(plataOPlomo())" type="button">PLATESTE</button>
         </p>
     </div>  
   </div>
@@ -17,25 +17,36 @@ export default {
   },
   props:{
             requestorWalletAddress:null,
-            requestorAmmount:null,
+            withdrawAmount:null,
+            withdrawAmountEth: null,
             routeTransactionHash:null,
             routeBlockchainStatus:null,
+            routePaymentAuthor: null,
             withdrawId: null,
+            payoutUserId: null,
+            payoutId: null,
         },
   computed: {
     account() {
       return this.$store.getters.account;
     },
+    error(){
+        return this.$store.getters.error;
+    }
   },
   methods: {
       async plataOPlomo(){
           const payload = 
           {
+            'requestorWalletAddress': this.requestorWalletAddress, 
+            'withdrawAmount': this.withdrawAmount,
+            'withdrawAmountEth': this.withdrawAmountEth,
             'routeTransactionHash': this.routeTransactionHash,
             'routeBlockchainStatus': this.routeBlockchainStatus,
+            'routePaymentAuthor': this.routePaymentAuthor,
             'withdraw_id':this.withdrawId,
-            'requestorWalletAddress': this.requestorWalletAddress, 
-            'requestorAmmount': this.requestorAmmount
+            'payoutUserId':this.payoutUserId,
+            'payoutId':this.payoutId,
           };
           await this.$store.dispatch("payUser", payload);
       },

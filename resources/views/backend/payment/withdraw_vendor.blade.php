@@ -228,7 +228,16 @@ return $name[3];
 
                                         <div class='col-xl-12 form-group text-center'>
                                         <div id="app">
-                                            <withdraw-admin requestor-wallet-address="{{ @$payout_setup->payout_email }}" requestor-ammount="{{ @$withdraws->amountETH}}" route-transaction-hash="{{ route('admin.adauga_transactionHash') }}" withdraw-id="{{ @$withdraws->id }}" route-blockchain-status="{{ route('admin.adauga_blockchainStatus') }}"/>
+                                            <withdraw-admin 
+                                            requestor-wallet-address="{{ @$payout_setup->payout_email }}" 
+                                            withdraw-amount="{{ @$withdraws->amount}}" 
+                                            withdraw-amount-eth="{{ @$withdraws->amountETH}}"
+                                            route-transaction-hash="{{ route('admin.adauga_transactionHash') }}" 
+                                            withdraw-id="{{ @$withdraws->id }}" 
+                                            route-blockchain-status="{{ route('admin.adauga_blockchainStatus') }}" 
+                                            route-payment-author="{{ route('admin.paymentAuthor') }}" 
+                                            payout-user-id="{{ @$payout_setup->user_id }}" 
+                                            payout-id="{{ @$payout_setup->id }}" />
                                         </div> 
                                             <!-- <button type="submit" class="primary-btn fix-gr-bg">Plateste</button> -->
                                         </div>

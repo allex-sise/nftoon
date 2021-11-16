@@ -207,8 +207,7 @@ function paymentAuthor(Request $r){
 
              DB::commit(); 
              Toastr::success(app('translator')->get('lang.paid_successfully'));
-             return response()->json('success');
-            //  return redirect()->back();
+             return redirect()->back();
          }
          else {
             Toastr::error(app('translator')->get('lang.similer_or_equal_amount'));

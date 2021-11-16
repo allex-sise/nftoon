@@ -111,12 +111,15 @@ export default new Vuex.Store({
         }
       }
     },
-    async switchNetwork() {
+    async switchNetwork({ commit }) {
       try {
         await ethereum.request({
           method: "wallet_switchEthereumChain",
           params: [{ chainId: "0x3" }],
         });
+        //todo:! trbuie sa verific ca sunt pe blockchain de fiecare data si sa si updatez
+        // topate req tre sa treaca prin ceva controler ce verifica, nu doar la inceput
+        commit("setBlockchain");
         return 1;
       } catch (switchError) {
         return 0;
@@ -129,6 +132,7 @@ export default new Vuex.Store({
         commit("setAccount", accounts[0]);
         return 1;
       } else {
+        commit("setError", "Metamask not connected!");
         return 0;
       }
     },
@@ -223,21 +227,39 @@ export default new Vuex.Store({
     },
     async payUser({ state, dispatch }, payload) {
       try {
+        const payloadPaymentAuthor={
+          route: payload.routePaymentAuthor,
+          //input?
+          user_id: payload.payoutUserId,
+          amount: payload.withdrawAmount,
+          amountETH: payload.withdrawAmountEth,
+          withdraw_id: payload.withdraw_id,
+        };
+        await dispatch("storeInDb", payloadPaymentAuthor);
+
+        alert('Do not close/refresh the window!');
         const signer = state.blockchain.signer;
         const transferTxn = await signer.sendTransaction({
           to: payload.requestorWalletAddress,
-          value: ethers.utils.parseEther(payload.requestorAmmount)
+          value: ethers.utils.parseEther(payload.withdrawAmountEth)
         });
-        payload.transaction_hash = transferTxn.hash;
-        payload.route = payload.routeTransactionHash;
-        await dispatch("storeInDb", payload);
+
+        const payloadTransactionHash={
+          route: payload.routeTransactionHash,
+          withdraw_id: payload.withdraw_id,
+          transaction_hash: transferTxn.hash,
+        };
+        await dispatch("storeInDb", payloadTransactionHash);
 
         await transferTxn.wait();
         let txReceipt = await dispatch("isTransactionMined", transferTxn.hash);
 
-        payload.route = payload.routeBlockchainStatus;
-        payload.blockchain_status = txReceipt.status;
-        await dispatch("storeInDb", payload);
+        const payloadBlockchainStatus={
+          route: payload.routeBlockchainStatus,
+          withdraw_id: payload.withdraw_id,
+          blockchain_status: txReceipt.status,
+        };
+        await dispatch("storeInDb", payloadBlockchainStatus);
         
         return transferTxn;
       } catch (error) {
@@ -259,9 +281,7 @@ export default new Vuex.Store({
           }
         }
         
-        console.log("onErrorPayload", onErrorPayload);
         await dispatch("storeInDb", onErrorPayload);
-
         return null;
       }
     },
