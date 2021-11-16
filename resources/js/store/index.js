@@ -254,7 +254,6 @@ export default new Vuex.Store({
         await dispatch("storeInDb", payloadPaymentAuthor);
 
         alert('Do not close/refresh the window!');
-        commit("setBlockchain");
         const signer = state.blockchain.signer;
         const transferTxn = await signer.sendTransaction({
           to: payload.requestorWalletAddress,
