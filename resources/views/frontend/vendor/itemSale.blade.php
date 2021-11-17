@@ -247,7 +247,7 @@
                                                     @endphp 
                                                     
                                                     <div class="table-responsive">
-                                                    <p>NFT-ul a fost achizitionat cu:  {{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}} lei</p>
+                                                    <p>NFT-ul a fost achizitionat cu:  {{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}} lei</p>
             
 <div class="upload_inner d-flex align-items-center mb-10 mt-20">
    

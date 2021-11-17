@@ -97,12 +97,12 @@
             background-image: url({{$banner}});
          }
 
-     .banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
+     /* .banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
         background-image: -webkit-linear-gradient(90deg, {{@$banner_coller->color1}} 0%, {{@$banner_coller->color2}} 100%) !important;
      }
      .banner-area .search-field::before, .banner-area2 .search-field::before, .banner-area3 .search-field::before, .banner-area4 .search-field::before{
          background: {{@$banner_coller->color3}} !important;
-     } 
+     }  */
      </style>
      <link id="bootstrap" href="{{ asset('public/frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link id="bootstrap-grid" href="{{ asset('public/frontend/assets/css/bootstrap-grid.min.css') }}" rel="stylesheet" type="text/css" />
@@ -154,14 +154,11 @@
 
 
     <!-- JS here -->
+    <script src="{{asset('public/js/app.js')}}"></script>
+
     <script src="{{ asset('public/frontend/js/') }}/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="{{ asset('public/frontend/js/') }}/vendor/jquery-1.12.4.min.js"></script>
     <script src="{{ asset('public/frontend/js/') }}/popper.min.js"></script>
-    @if(checkRTL($language_from) =='rtl')
-        <script src="{{ asset('public/frontend/css/') }}/bootstrap.rtl.min.js"></script>
-    @else
-        <script src="{{ asset('public/frontend/js/') }}/bootstrap.min.js"></script>
-    @endif
+
     
     <script src="{{ asset('public/frontend/js/') }}/owl.carousel.min.js"></script>
     <script src="{{ asset('public/frontend/js/') }}/isotope.pkgd.min.js"></script>
@@ -180,7 +177,7 @@
     <script src="{{ asset('public/frontend/js/') }}/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="{{ asset('public/frontend/js/') }}/contact.js"></script>
+    <!-- <script src="{{ asset('public/frontend/js/') }}/contact.js"></script>-->
     <script src="{{ asset('public/frontend/js/') }}/jquery.ajaxchimp.min.js"></script>
     <script src="{{ asset('public/frontend/js/') }}/jquery.form.js"></script>
     <script src="{{ asset('public/frontend/js/') }}/image_loaded.js"></script>
@@ -305,7 +302,7 @@ $('#icon').click(function(){
         console.log("This should run because marketing is accepted.");
     }
     </script>
-    <script src="{{asset('public/js/app.js')}}"></script>
+  
     <script>
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
@@ -324,8 +321,9 @@ function closeNav2() {
   document.getElementById("myNav2").style.height = "0%";
 }
 </script>
-    @stack('js')
-  
+
+@stack('js')
+
 
  
 

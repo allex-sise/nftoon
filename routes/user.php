@@ -70,7 +70,12 @@ Route::group(['middleware' => ['XSS']], function () {
   
     Route::get('setting/{username}', 'CustomerController@setting')->name('setting');
     Route::post('profile/update/{username}', 'CustomerController@personalUpdate')->name('personalUpdate');
+  
+    Route::POST('setup-payout','CustomerController@setupPayout')->name('setup_payout');
+    Route::POST('withdraw-amount','CustomerController@withdrawAmount')->name('withdraw_amount');
+    Route::post('anuleaza-withdraw/','CustomerController@anuleazaWithdraw')->name('anuleazaWithdraw');
 
+    Route::get('set-payout-default/{method}','CustomerController@defaultPayoutSetup')->name('defaultPayoutSetup');
     // password  change
     Route::post('customer-change-password', 'CustomerController@password_update');
     /* ******************** END CUSTOMER ROUTES ********************* */

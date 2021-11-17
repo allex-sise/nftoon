@@ -172,7 +172,7 @@ class FundDepositController extends Controller
                 $balnc->save();
 
                 DB::commit();    
-                Toastr::success('Fund added successful!','Success');
+                Toastr::success('Fund added successful!', 'Success');
                 return redirect()->route('user.deposit',Auth::user()->username);           
             } catch (\Exception $e) {
                 $msg=str_replace("'", " ", $e->getMessage()) ;
