@@ -51,7 +51,6 @@ export default new Vuex.Store({
       state.token = token;
     },
     setMintRoute(state, route){
-      console.log("js mintRoute",route);
       state.mintRoute = route;
     },
     setBlockchain(state){
@@ -79,24 +78,6 @@ export default new Vuex.Store({
     loadTokenData({commit}, tokenData){
       commit("setTokenData", tokenData);
     },
-    // async blockchainController({ commit, dispatch }){
-    //   //todo:! trbuie sa verific ca sunt pe blockchain de fiecare data si sa si updatez
-    //   // topate req tre sa treaca prin ceva controler ce verifica, nu doar la inceput
-    //   try{
-    //     if (!await dispatch("checkIfConnected")) {
-    //       await dispatch("requestAccess");
-    //     }
-    //     if(await dispatch("checkNetwork")) {
-    //       commit("setBlockchain");
-    //     };
-    //     return 1;
-    //   }catch (error) {
-    //     console.log(error);
-    //     commit("setError", "Metamask account request refused.");
-    //     return 0;
-    //   }
-      
-    // },
     async connect({ commit, dispatch }, connect) {
       try {
         await dispatch("loadSecrets");
@@ -142,22 +123,33 @@ export default new Vuex.Store({
       }
     },
     async checkIfConnected({ commit }) {
-      const { ethereum } = window;
+      let isConnected = ethereum.isConnected();
+      if(!isConnected){
+        commit("setError", "Account not connected!");
+      }
+
       const accounts = await ethereum.request({ method: "eth_accounts" });
       if (accounts.length !== 0) {
         commit("setAccount", accounts[0]);
         return 1;
       } else {
-        commit("setError", "Metamask not connected!");
+        commit("setError", "Ensure you're LOGGED-in to Metamasknot and CONNECTED!");
         return 0;
       }
     },
     async requestAccess({ commit }) {
-      const { ethereum } = window;
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      commit("setAccount", accounts[0]);
+      try{
+        // const { ethereum } = window;
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        commit("setAccount", accounts[0]);
+      }
+      catch (error){
+        if (err.code === 4001){
+          commit("setError", "Please connect to MetaMask!");
+        }
+      }
     },
     async getContract({ state }) {
       try {
@@ -176,16 +168,35 @@ export default new Vuex.Store({
     async setupEventListeners({ state, commit, dispatch }) {
       try {
         const connectedContract = await dispatch("getContract");
+
         if (!connectedContract) return;
+
         connectedContract.on(
           "Minted",
           async (from, tokenId, indexedTokenIPFSPath, tokenIPFSPath) => {
             state.token.itemTokenid = tokenId.toNumber();
             state.token.itemMetadataUrl = 'https://dweb.link/ipfs/' + tokenIPFSPath;
-            console.log("save to DB")
             await dispatch("saveToDB");
+            window.location.reload();
           }
         );
+
+        ethereum.on('chainChanged', () => {
+          window.location.reload();
+        });
+
+        ethereum.on('accountsChanged', async () => {
+          const accounts = await ethereum.request({ method: "eth_accounts" });
+          if (accounts.length === 0) {
+            commit("setError", "MetaMask is locked or none account connected!");
+          } else if (accounts[0] !== state.account) {
+            commit("setAccount", accounts[0]);
+          }
+        });
+
+        ethereum.on('disconnect', () => {
+          commit("setError", "Connection to Chain Disconnected");
+        });
       } catch (error) {
         console.log(error);
       }
@@ -195,7 +206,6 @@ export default new Vuex.Store({
         const connectedContract = await dispatch("getContract");
         const mintTxn = await connectedContract["mint(string)"](ipfsMetadataUrl);
         await mintTxn.wait();
-        console.log("finished mint nft")
         return mintTxn;
       } catch (error) {
         console.log(error);
@@ -225,8 +235,6 @@ export default new Vuex.Store({
     },
     async saveToDB({state}){
         if(state.token !== null){
-            console.log("token",state.token);
-            console.log("state.mintRoute",state.mintRoute);
             axios.post(state.mintRoute,state.token).then(res => {
             if(res.data.status === 'ok'){
                 toastr.success(res.data.message);
@@ -241,19 +249,19 @@ export default new Vuex.Store({
     async setMintRoute({commit},mintRoute){
       commit("setMintRoute", mintRoute);
     },
-    async payUser({ state, dispatch }, payload) {
+    async payUser({ state, dispatch, commit }, payload) {
+      commit("setError", "Do NOT CLOSE this page!");
       try {
         const payloadPaymentAuthor={
           route: payload.routePaymentAuthor,
-          //input?
           user_id: payload.payoutUserId,
           amount: payload.withdrawAmount,
           amountETH: payload.withdrawAmountEth,
           withdraw_id: payload.withdraw_id,
         };
         await dispatch("storeInDb", payloadPaymentAuthor);
-
-        alert('Do not close/refresh the window!');
+        
+        // alert('Do not close/refresh the window!');
         const signer = state.blockchain.signer;
         const transferTxn = await signer.sendTransaction({
           to: payload.requestorWalletAddress,
@@ -277,9 +285,7 @@ export default new Vuex.Store({
         };
         await dispatch("storeInDb", payloadBlockchainStatus);
         
-        return transferTxn;
-        // }
-        // return null;
+        // window.location.reload();
       } catch (error) {
         console.log("catch reject", error);
 
@@ -300,11 +306,13 @@ export default new Vuex.Store({
         }
         
         await dispatch("storeInDb", onErrorPayload);
-        return null;
       }
     },
+    async test({ commit }){
+      commit("setError", "TEST!");
+      alert('Test!');
+    },
     async storeInDb({dispatch}, payload){
-      console.log("payload: ", payload);
       axios.post(payload.route, payload).then(res => {
         if(res.data.status === 'ok'){
             toastr.success(res.data.message);
@@ -319,7 +327,6 @@ export default new Vuex.Store({
       const provider = state.blockchain.provider;
       const txReceipt = await provider.getTransactionReceipt(transactionHash);
       if (txReceipt && txReceipt.blockNumber) {
-          console.log("transction minted: ", txReceipt);
           if(txReceipt.status === 0 ){
             console.log("FAILED");
           }

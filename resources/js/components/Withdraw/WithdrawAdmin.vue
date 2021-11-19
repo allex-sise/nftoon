@@ -1,20 +1,21 @@
 <template>
   <div id="withdraw-admin">
     <div v-if="error">{{error}}</div>
-    <div v-if="account">
+    <div v-if="account && show">
         <label>Transfer din contul: {{account}}</label>
         <p>
             <button @click="(plataOPlomo())" type="button">PLATESTE</button>
         </p>
     </div>  
+    <div v-if="!account"><button @click="(connect())" type="button">Connect MetaMask</button></div>
   </div>
 </template>
 
 <script>
 export default {
-  async mounted() {
-    await this.$store.dispatch("connect");
-  },
+  // async mounted() {
+  //   await this.$store.dispatch("connect");
+  // },
   props:{
             requestorWalletAddress:null,
             withdrawAmount:null,
@@ -34,7 +35,15 @@ export default {
         return this.$store.getters.error;
     }
   },
+  data(){
+    return{
+      show:true
+    }
+  },
   methods: {
+    async connect(){
+      await this.$store.dispatch("connect");
+    },
       async plataOPlomo(){
           const payload = 
           {
@@ -48,7 +57,21 @@ export default {
             'payoutUserId':this.payoutUserId,
             'payoutId':this.payoutId,
           };
+
+          this.show = false;
+          this.windowRef = window.open("", "", "width=200,height=200,left=200,top=200");
+          let alerta = document.createElement("P"); 
+          alerta.innerText = "NU inchide aceasta pagina!";
+          let info = document.createElement("P"); 
+          info.innerText = "(pagina se va inchide automat)";
+          this.windowRef.document.body.appendChild(this.$el);
+          this.windowRef.document.body.appendChild(alerta);
+          this.windowRef.document.body.appendChild(info);
+          
           await this.$store.dispatch("payUser", payload);
+
+          this.windowRef.close();
+          window.location.reload();
       },
   }
 };
