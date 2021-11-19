@@ -27,20 +27,21 @@
 </style>
 @section('content')
 <!-- banner-area start -->
-<div class="banner-area4">
-    <div class="banner-area-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-10 offset-xl-1 col-12">
-                    <div class="banner-info">
-                        <h2>@lang('lang.Checkout')</h2>
+     <!-- section begin -->
+     <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-12 text-center">
+									<h1>Checkout</h1>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- banner-area end -->
+            </section>
+            <!-- section close -->    
 <!-- checkout_area start -->
 <div class="checkout_area section-padding">
     <div class="container">

@@ -33,7 +33,16 @@
                     <h4>
                     {{  @$data['user']->full_name }}                                                
                         <span class="profile_username"><span>@</span>{{  @$data['user']->username }}</span>
-                        <span id="wallet" class="profile_wallet">DdzFFzCqrhshMSxb9oW3mRo4MJrQkusV3fGFSTwaiu4wPBqMryA9DYVJCkW9n7twCffG5f5wX2sSkoDXGiZB1HPa7K7f865Kk4LqnrME</span>
+                        <span id="wallet" class="profile_wallet">
+                            @php 
+                            $default_payout=defaultPayout();
+                            @endphp
+                            @if (defaultPayout())
+                                @if (defaultPayout()->payment_method_name=='Bank')
+                                {!! defaultPayout()->payout_email !!}
+                                @endif
+                            @endif
+                        </span>
                         <button id="btn_copy" title="Copy Text">Copy</button>
                     </h4>
                 </div>

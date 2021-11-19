@@ -426,7 +426,7 @@ class VendorController extends Controller
             $data['following'] = $data['user']->followings()->paginate(6);
             $data['item'] = Item::where('user_id', $data['user']->id)->where('active_status', 1)->where('status', 1)->latest()->get();
             $data['hidden_item'] = Item::where('user_id', $data['user']->id)->where('status', '!=',1)->where('status', '!=',3)->where('active_status', 1)->paginate(5);
-            $data['order'] = Order::where('user_id', Auth::user()->id)->paginate(6);
+            $data['order'] = Order::where('user_id', $data['user']->id)->paginate(6);
             $data['itemspecial'] =  Item::where('user_id', $data['user']->id)->where('status', 1)->latest()->get();
             $data['monthly_income'] = ItemOrder::where('author_id', Auth::user()->id)->whereMonth('created_at', Carbon::now()->month)->get();
             $data['total_income'] = ItemOrder::
@@ -439,7 +439,7 @@ class VendorController extends Controller
                                     ->where('withdraws.user_id',Auth::user()->id)
                                     ->select('users.username','withdraws.amount','withdraws.paid_vendors_id','withdraws.payment_method_id','withdraws.created_at','author_payout_setups.*')
                                     ->get();
-            $data['withdraws'] = Withdraw::where('user_id',Auth::user()->id)->get();
+            $data['withdraws'] = Withdraw::where('user_id', $data['user']->id)->get();
             $data['item_review'] = Review::where('vendor_id', Auth::user()->id)->paginate(6);
             $data['profile_setting'] = InfixProfileSetting::where('active_status',1)->first();
 

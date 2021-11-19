@@ -192,6 +192,14 @@
                         
 
                         </div>
+            
+                        @if (@count(Cart::content()) > 0 )
+                            <div class="alert alert-success">
+                                <a href="{{ route('customer.cheackout')}}">Inapoi la checkout</a>
+                            </div>
+                            @endif
+                     
+                      
             </div>
         </div>
     </div>

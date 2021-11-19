@@ -35,6 +35,10 @@
     background: transparent;
     border: 0px;
 }
+.fade:not(.show) {
+    opacity: 0;
+    display: none;
+}
 /* .banner-area3::before {
     z-index: 99!important;
     background-image: url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }})!important;
@@ -155,13 +159,13 @@
                                             aria-controls="contact" aria-selected="false">@lang('lang.reviews')</a>
                                     </li>
                                     @endif -->
-                                    @if (@Auth::user()->role_id == 4)
+                                    @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['refunds'] == url()->current() ?'active':'' }}" id="refunds-tab" data-toggle="tab" href="#refunds" role="tab"
                                             aria-controls="contact" aria-selected="false">Wallet Retrageri</a>
                                     </li>
                                     @endif
-                                    @if (@Auth::user()->role_id == 4)
+                                    @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                                     <li class="nav-item">
                                         <a class="nav-link {{ @$data['payout'] == url()->current() ?'active':'' }}" id="payouts-tab" data-toggle="tab" href="#payouts" role="tab"
                                             aria-controls="contact" aria-selected="false">Retrageri</a>
@@ -295,7 +299,7 @@
                                                 
                                             @foreach (@$data['item'] as $item)
                                           <!-- nft item begin -->
-                                            <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
                                                 <div class="nft__item">
                                                     <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                                                     <div class="author_list_pp">
@@ -1397,8 +1401,9 @@
                                                     {{ session()->get('success') }}
                                                 </div>
                                             @endif
+                                            <div class="row">
                                         @if (count(@$data['order'])>0)
-                                        <div class="row">
+                                      
                                         @foreach (@$data['itemspecial'] as $item)
                                        
                                             @if (Auth::user()->role_id==5)
@@ -1419,7 +1424,7 @@
                                                    $obj = json_decode($item, true);
                                                 @endphp 
                                                 <!-- nft item begin -->
-                                                    <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
                                                         <div class="nft__item">
                                                             <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
                                                             <div class="author_list_pp">
@@ -1457,10 +1462,12 @@
 
                                             @endforeach
                                             <div class="col-md-12 text-center">
-                                                <a href="#" id="loadmore" class="black-btn wow fadeInUp">Arata mai multe</a>
+                                                <a href="#" id="loadmore2" class="black-btn wow fadeInUp">Arata mai multe</a>
                                             </div> 
                                
-                                        @endif 
+                                        @else
+                                        <h4>Nu ai nici un NFT in colectie</h4>
+                                        @endif
                                         </div>
                                         </div>
                                     </div>
@@ -1516,9 +1523,6 @@
                                                                             
                                                                         </table>
                                                                     
-                                                                        <div class="Pagination">
-                                                                            {{ $data['referrals']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
-                                                                        </div>
                                                                         @endif
                                                                     </div>
                                                                 </div>
@@ -1898,6 +1902,166 @@
                                     </div>
                                     @endif
 
+                                    @if (@Auth::user()->role_id == 5)
+                                    <div class="tab-pane fade {{ @$data['refunds'] == url()->current() ?'show active':'' }} " id="refunds" role="tabpanel"
+                                        aria-labelledby="refunds-tab">
+                                        <div class="payment_wrap account_tabs_pin">
+                                            @php
+                                                $bank_payment = @Auth::user()->payment_methods->where('name','Bank')->first();
+                                                $stripe_payment = @Auth::user()->payment_methods->where('name','Stripe')->first();
+                                                $paypal_payment = @Auth::user()->payment_methods->where('name','Paypal')->first();
+                                                $razor_payment = @Auth::user()->payment_methods->where('name','Razor')->first();
+                                                $default_payout=defaultPayout();
+                                                // echo $default_payout->payment_method_name;
+                                                $payout_setup=App\AuthorPayoutSetup::where('user_id',Auth::user()->id)->first();
+                                                $bank_payout_setup=App\AuthorPayoutSetup::where('user_id',Auth::user()->id)->where('payment_method_name','Bank')->first();
+                                                $stripe_payout_setup=App\AuthorPayoutSetup::where('user_id',Auth::user()->id)->where('payment_method_name','Stripe')->first();
+                                                $paypal_payout_setup=App\AuthorPayoutSetup::where('user_id',Auth::user()->id)->where('payment_method_name','PayPal')->first();
+                                                $razorpay_payout_setup=App\AuthorPayoutSetup::where('user_id',Auth::user()->id)->where('payment_method_name','Razorpay')->first();
+                                            @endphp
+                                            <nav>
+                                                <ul class="nav nav-tabs payout_tab_wrap" id="myTab" role="tablist">
+                                                     @if (PaymentMethodStatus('Blockchain')=='true')
+                                                         
+                                                        <li class="nav-item">
+                                                            <a class="p-0  nav-link {{ isset($default_payout) ? $default_payout->payment_method_name == 'Bank'  ? 'active' :'' : ''}} " id="payoutsBank-tab"
+                                                                data-toggle="tab" href="#payoutsBank" role="tab"
+                                                                aria-controls="home" aria-selected="true">
+                                                                
+                                                                
+                                                                <div class="single_payout_item w-100">
+                                                                    <div class="deposite_header text-center">
+                                                                        Blockchain ETH
+                                                                    </div>
+                                                                    <div class="deposite_button text-center">
+                                                                        <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} {{env('BANK_MIN_PAYOUT')}} </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li> 
+                                                     @endif
+                                                     @if (PaymentMethodStatus('Stripe')=='true')
+                                                         
+                                                        <li class="nav-item">
+                                                            <a class="p-0  nav-link {{ isset($default_payout) ? $default_payout->payment_method_name == 'Stripe'  ? 'active' :'' : ''}} " id="payouts1-tab"
+                                                                data-toggle="tab" href="#payouts1" role="tab"
+                                                                aria-controls="home" aria-selected="true">
+                                                            
+                                                                <div class="single_payout_item w-100">
+                                                                    <div class="deposite_header text-center">
+                                                                        Stripe
+                                                                    </div>
+                                                                    <div class="deposite_button text-center">
+                                                                        <p>@lang('lang.minimum_amount') {{@GeneralSetting()->currency_symbol}} {{env('STRIPE_MIN_PAYOUT')}} </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                     @endif
+                                                     {{-- {{dd(PaymentMethodStatus('PayPal'))}} --}}
+                                                    
+                                                </ul>
+                                            </nav>
+                                            
+                                            <div class="tab-content tabmargin200px" id="myTabContent">
+                                                <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'Bank'  ? 'show active' :'' : ''}} " id="payoutsBank" role="tabpanel"
+                                                    aria-labelledby="payoutsBank-tab">
+                                                    <div class="row">
+                                                        <div class="col-xl-10">
+                                                            <div class="account_swift_maintain pb-0">
+                                                                <h2 class="comn-heading">Adresa Wallet</h2>
+                                                              
+                                                                        <div class='form-row'>
+                                                                                <div class='col-md-12 error form-group d-none'>
+                                                                                    <div class='alert-danger alert' ></div>
+                                                                                </div>
+                                                                            </div>
+                                                                          
+                                                                
+
+                                                                <form action="{{ route('customer.setup_payout')}}"  method="POST" class="checkout-form">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-xl-12">
+                                                                            <div class="row">
+                                                                                <input type="text" name="name" value="Bank" hidden>
+                                                                                <div class="col-xl-12 col-md-12">
+                                                                                <div id="app">
+                                                                                    <withdraw/>
+                                                                                </div> 
+                                                                                <!-- //todo: aici insereaza valoarea walletului -->
+                                                                                   <!-- <input type="text" name="email" id="" value="{{ @$bank_payout_setup->payout_email }}"/> -->
+                                                                                </div>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="check-out-btn mt-20">
+                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    	
+
+                                                </div>
+                                                <div class="tab-pane fade {{ isset($default_payout) ? $default_payout->payment_method_name == 'Stripe'  ? 'show active' :'' : ''}} " id="payouts1" role="tabpanel"
+                                                    aria-labelledby="payouts1-tab">
+                                                    <div class="row">
+                                                        <div class="col-xl-10">
+                                                            <div class="account_swift_maintain pb-0">
+                                                                <h2 class="comn-heading">@lang('lang.your_stripe_account')</h2>
+                                                                <p class="comn-para">@lang('lang.get_paid_by_credit_or') <a target="_blank" href="https://stripe.com/">@lang('lang.more_about_stripe')</a> | <a target="_blank" href="https://dashboard.stripe.com/register">@lang('lang.create_an_account')</a></p>
+                                                                        <div class='form-row'>
+                                                                                <div class='col-md-12 error form-group d-none'>
+                                                                                    <div class='alert-danger alert' ></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="dm_display_none">
+                                                                                <form action="{{ route('customer.setup_payout')}}" method="POST" id="payout-setup" >
+                                                                                    {{ csrf_field() }}
+                                                                                    
+                                                                                    <div class="check-out-btn mt-20">
+                                                                                        <button type="submit" class="btn-main ">@lang('lang.setup_account')</button>
+                                                                                    </div>
+                                                                                    
+                                                                                </form>
+                                                                            </div>
+                                                                
+
+                                                                <form action="{{ route('customer.setup_payout')}}"  method="POST" class="checkout-form">
+                                                                    @csrf
+                                                                    <div class="row">
+                                                                        <div class="col-xl-6">
+                                                                            <div class="row">
+                                                                                <input type="text" name="name" value="Stripe" hidden>
+                                                                                <div class="col-xl-12 col-md-12">
+                                                                                    <label for="name">@lang('lang.email') <span>*</span></label>
+                                                                                    <input type="text" name="email" value="{{ @$stripe_payout_setup->payout_email }}" 
+                                                                                        placeholder="@lang('lang.enter_email_address')">
+                                                                                </div>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="check-out-btn mt-20">
+                                                                        <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                               
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
 
 
 <!-- AICI SE OPRESTE UNDE UMBLII TU -->
@@ -1965,6 +2129,14 @@
                                                         </form>
                                                         @else
                                                             <p>Ai deja o cerere de retragere in executie</p>
+                                                            <form action="{{ route('author.anuleazaWithdraw')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                          
+                                                            
+                                                            <input type="text" name="withdraw_id" value="{{@$withdraw->id}}" hidden>
+                                                            <input type="text" name="withdraw_amountz" value="{{@$withdraw->amount}}" hidden>   
+                                                            <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Anuleaza</button>
+                                                            </form>
                                                         @endif
                                                 </div>
                                                 @elseif(defaultPayout()->payment_method_name=='Bank')
@@ -2082,6 +2254,245 @@
                                                 @endif
                                             @endif
                                                 <div class="col-lg-1">
+                                                
+                                                </div>
+                                                <div class="col-lg-4 ">
+                                                    <h2> @lang('lang.account') @lang('lang.payout')</h2>
+                                                    @if (defaultPayout())
+                                                        
+                                                        @if (defaultPayout()->payment_method_name=='PayPal')
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('PayPal')->logo)}}" alt="">
+                                                        @elseif(defaultPayout()->payment_method_name=='Stripe')
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('Stripe')->logo)}}" alt="">
+                                                        @elseif(defaultPayout()->payment_method_name=='Razorpay')
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('Razorpay')->logo)}}" alt="">
+                                                        @else
+                                                            <img class="imgmargin0auto" src="{{asset('/'.PaymentMethodSetup('Blockchain')->logo)}}" alt="">
+                                                        @endif
+                                                            <br>
+                                                        <span class="spantextct">{!! defaultPayout()->payout_email !!}</span>
+                                                    @endif
+
+                                                    <div class="check-out-btn mt-10" style="margin-top: 20px;">
+                                                        <a href="{{ route('author.refunds',@Auth::user()->username)}}" id="deposit_" class="btn-main btnw100">@lang('lang.set') @lang('lang.account')</a>
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <h2>@lang('lang.payout') @lang('lang.history') </h2>
+                                            <div class="earing_table  table-responsive">
+                                                <table class="table">
+                                                    <thead class="table_border">
+                                                        <tr>
+                                                            <th colspan="">@lang('lang.amount')</th>
+                                                            <th colspan="">@lang('lang.payout') @lang('lang.method')</th>
+                                                            <th colspan="">Status Plata</th>
+                                                            <th colspan="">@lang('lang.date')</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                 
+                                                    </tbody>
+                                                </table>
+                                              
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                        
+                                    <!-- payouts start -->
+                                    @endif
+
+                                    @if (@Auth::user()->role_id == 5)
+                                    <!-- payouts start -->
+                                    
+                                    <div class="tab-pane fade {{ @$data['payout'] == url()->current() ?'show active':'' }} " id="payouts" role="tabpanel"
+                                        aria-labelledby="payouts-tab">
+                                        <div class="payment_wrap account_tabs_pin">
+                                            <div class="row">
+                                            @if (defaultPayout())
+                                                @if (defaultPayout()->payment_method_name=='Stripe')
+                                                <div class="col-lg-7  ">
+                                                    <h2>Balanta Ta</h2>
+                                                    <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} </p>
+                                                    @php 
+                                                        $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+                                                    
+                                                    @endphp
+                                                    @if (!@$withdraw)
+                                                    <form action="{{ route('customer.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="row">
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="text" name="payment_method_id" value="1" hidden>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                            <label for="name">Suma Retragere <span>*</span></label>
+                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" placeholder="Introduceti suma dorita pentru retragere">
+                                                                        </div>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </form>
+                                                        @elseif($withdraw->paid_vendors_id !== NULL)
+                                                        <form action="{{ route('customer.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="row">
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="text" name="payment_method_id" value="1" hidden>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                            <label for="name">Suma Retragere <span>*</span></label>
+                                                                            <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"  name="withdraw_amount" placeholder="Introduceti suma dorita pentru retragere">
+                                                                        </div>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </form>
+                                                        @else
+                                                            <p>Ai deja o cerere de retragere in executie</p>
+                                                            <form action="{{ route('customer.anuleazaWithdraw')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                          
+                                                            
+                                                            <input type="text" name="withdraw_id" value="{{@$withdraw->id}}" hidden>
+                                                            <input type="text" name="withdraw_amountz" value="{{@$withdraw->amount}}" hidden>   
+                                                            <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Anuleaza</button>
+                                                            </form>
+                                                        @endif
+                                                </div>
+                                                @elseif(defaultPayout()->payment_method_name=='Bank')
+                                                <div class="col-lg-7  ">
+                                                    <h2>Balanta Ta ETH</h2>
+                                                    <p>@lang('lang.You_currently_have')  {{Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}} care inseamna aproximatix: <strong class="" style="font-size: 18px;"><input type="text" id="pretInEth" style="color: #9fa4dd!important; border: 0px; border-radius: 0px; background: transparent; width: 70px; padding-left: 0px; font-weight: 800; padding-right: 0px;" readonly>
+                                                    
+                                                    <span id="regular_license_price">ETH</span>
+                                                    <button type="button" id="exampletool" class="btn btn-secondary btntool" data-toggle="tooltip" data-placement="top" data-html="true" title="<em>Informatii</em> <u>despre</u> <b>Retragere prin ETH</b>">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                    </button>
+                                                </strong> 
+                                                </p>
+                                                    @php 
+                                                        $withdraw = App\Withdraw::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->first();
+                                                    
+                                                    @endphp
+                                                    @if (!@$withdraw)
+                                                    <form action="{{ route('customer.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-9">
+                                                                    <div class="row">
+                                                                        <input type="text" name="payment_method_id" value="2" hidden>
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="numeric" min="0" id="ETH2RON"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere" hidden>
+                                                                        <label for="basic-url">Suma Retragere* (in ETH)</label>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                       
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="numeric" style="width: 140px!important" class="form-control" min="0" id="input"  onkeyup="regular(this.value)" name="withdraw_amount_eth" value="" 
+                                                                                            placeholder="Introduceti suma dorita pentru retragere" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">ETH</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text" id="pretInETH2"  name="withdraw_amount" style="width: 140px!important" class="form-control" onkeyup="regular(this.value)"  placeholder="Suma in Credite Minted" aria-label="Suma in Credite Minted" aria-describedby="basic-addon3" readonly >   
+                                                                                
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">LEI</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                         </div>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Retrage</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </form>
+                                                        @elseif($withdraw->paid_vendors_id !== NULL)
+                                                        <form action="{{ route('customer.withdraw_amount')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-xl-9">
+                                                                    <div class="row">
+                                                                        <input type="text" name="payment_method_id" value="2" hidden>
+                                                                        <input type="text" name="pay_address" value="{!! defaultPayout()->payout_email !!}" hidden>
+                                                                        <input type="numeric" min="0" id="ETH2RON"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere" hidden>
+                                                                        <label for="basic-url">Suma Retragere* (in ETH)</label>
+                                                                        <div class="col-xl-12 col-md-12">
+                                                                       
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="numeric" style="width: 140px!important" class="form-control" min="0" id="input"  onkeyup="regular(this.value)" name="withdraw_amount_eth" value="" 
+                                                                                            placeholder="Introduceti suma dorita pentru retragere" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">ETH</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 colmd55 float-left">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text" id="pretInETH2"  name="withdraw_amount" style="width: 140px!important" class="form-control" onkeyup="regular(this.value)"  placeholder="Suma in Credite Minted" aria-label="Suma in Credite Minted" aria-describedby="basic-addon3" readonly >   
+                                                                                
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text" id="basic-addon2">LEI</span>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                         </div>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-3 ">
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Retrage</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </form>
+                                                        @else
+                                                            <p>Ai deja o cerere de retragere in executie</p>
+                                                            <form action="{{ route('customer.anuleazaWithdraw')}}"  method="POST" class="checkout-form">
+                                                            @csrf
+                                                          
+                                                            
+                                                            <input type="text" name="withdraw_id" value="{{@$withdraw->id}}" hidden>
+                                                            <input type="text" name="withdraw_amountz" value="{{@$withdraw->amount}}" hidden>   
+                                                            <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Anuleaza</button>
+                                                            </form>
+                                                        @endif
+                                                </div>
+                                                @endif
+                                            @endif
+                                                <div class="col-lg-1">
 
                                                 </div>
                                                 <div class="col-lg-4 ">
@@ -2120,14 +2531,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($data['withdraws'] as $payout)
-                                                            <tr>
-                                                                <td>{{$payout->amount}} {{@$infix_general_settings->currency_symbol}}</td>
-                                                                <td>{{  @$payout->payment_method_id == '1' ? 'Stripe' : 'Ethereum' }} - {{ @$payout->pay_address }} </td>
-                                                                <td>{{  @$payout->paid_vendors_id == NULL ? 'Neplatit' : 'Platit' }}</td>
-                                                                <td>{{ $payout->created_at }} </td>
-                                                            </tr>
-                                                        @endforeach
+                                                 
                                                     </tbody>
                                                 </table>
                                               
@@ -2138,6 +2542,7 @@
                                         
                                     <!-- payouts start -->
                                     @endif
+
                                     @if (@Auth::user()->role_id == 4)
                                     
                                     <!-- earnings start here  -->
@@ -2490,7 +2895,8 @@ function myFunction() {
   /* Alert the copied text */
   alert("Copied the text: " + copyText.value);
 }
-
+</script>
+<script>
 $(".d-item").slice(0, 8).show();
             $("#loadmore").on("click", function(e){
             e.preventDefault();
@@ -2498,6 +2904,19 @@ $(".d-item").slice(0, 8).show();
             if($(".d-item:hidden").length == 0) {
                 //$("#loadmore").text("No Content").addClass("noContent");
                 $("#loadmore").hide();
+                $("#butons").show();
+            }
+            de_size();
+        });
+</script>
+<script>
+$(".d-item2").slice(0, 8).show();
+            $("#loadmore2").on("click", function(e){
+            e.preventDefault();
+            $(".d-item2:hidden").slice(0, 4).slideDown();
+            if($(".d-item2:hidden").length == 0) {
+                //$("#loadmore").text("No Content").addClass("noContent");
+                $("#loadmore2").hide();
                 $("#butons").show();
             }
             de_size();
