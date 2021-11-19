@@ -190,6 +190,7 @@ export default new Vuex.Store({
           if (accounts.length === 0) {
             commit("setError", "MetaMask is locked or none account connected!");
           } else if (accounts[0] !== state.account) {
+            commit("setError", "");
             commit("setAccount", accounts[0]);
           }
         });
