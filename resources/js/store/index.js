@@ -202,7 +202,7 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
-    async mintNFT({ commit, dispatch }, ipfsMetadataUrl) {
+    async mintNFT({ dispatch }, ipfsMetadataUrl) {
       try {
         const connectedContract = await dispatch("getContract");
         const mintTxn = await connectedContract["mint(string)"](ipfsMetadataUrl);
@@ -210,6 +210,34 @@ export default new Vuex.Store({
         return mintTxn;
       } catch (error) {
         console.log(error);
+        return null;
+      }
+    },
+    //pot sa folosesc contractul pentru plata dar este mai scump
+    async payUserV2({ dispatch },receiverUserAddress){
+      try {
+        const connectedContract = await dispatch("getContract");
+        const transferTxn = await connectedContract.transferToWallet(receiverUserAddress,{value: ethers.utils.parseEther('0.00001')});
+        await transferTxn.wait();
+        return transferTxn;
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+    },
+    async transferToken({ commit, dispatch },payload){
+      try {
+        const payloadTransferToken={
+          receiverUserAddress: payload.receiverUserAddress,
+          tokenId: payload.tokenId,
+        };
+
+        const connectedContract = await dispatch("getContract");
+        const transferTxn = await connectedContract.transferToken(payloadTransferToken.receiverUserAddress, payloadTransferToken.tokenId);
+        await transferTxn.wait();
+        return transferTxn;
+      } catch (error) {
+        commit("setError", error.message);
         return null;
       }
     },

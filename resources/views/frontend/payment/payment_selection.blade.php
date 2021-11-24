@@ -289,6 +289,18 @@
                         </div>
                         @endif
 
+                           <!-- single_deposite_item  -->
+                           <div class="single_deposite_item">
+                                <div class="deposite_header text-center">
+                                    @lang('lang.bank')
+                                </div>
+                                <div class="deposite_button text-center">
+                                    <div class="mt-5 text-center mb-5">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="boxed-btn">@lang('lang.make') @lang('lang.payment')</a>
+                                    </div>
+                                </div>
+                            </div>
+
                     </div>
                     <div  class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">

@@ -76,9 +76,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-
-
                                 </div>
                             </div>
                         </div>
@@ -102,8 +99,16 @@
                         
                            <!-- Vue -->
                             <div id="app">
-                                <metamask-intro description="{{$description}}" external-url="{{$externalUrl}}" name="{{$name}}" item-idkey="{{@$data['item']->id}}"  item-tokenid="{{@$data['item']->idnft}}" item-metadata-url="{{@$data['item']->ipfs_url}}" image="{{asset(@$data['item']->icon)}}" mint-route="{{route('admin.itemUpdateMint')}}"></metamask-intro>
-                                <!-- <withdraw-results /> -->
+                                <metamask-intro 
+                                description="{{$description}}" 
+                                external-url="{{$externalUrl}}" 
+                                name="{{$name}}" 
+                                item-idkey="{{@$data['item']->id}}"  
+                                item-tokenid="{{@$data['item']->idnft}}" 
+                                item-metadata-url="{{@$data['item']->ipfs_url}}" 
+                                image="{{asset(@$data['item']->icon)}}" 
+                                mint-route="{{route('admin.itemUpdateMint')}}" 
+                                receiver-address="{{$data['payout_setup2']->payout_email ?? ''}}"></metamask-intro>
                             </div> 
 
                         </div>

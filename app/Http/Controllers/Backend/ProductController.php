@@ -25,6 +25,7 @@ use App\SubAttribute;
 use App\ItemAttribute;
 use App\ProductSetting;
 use App\ItemSubCategory;
+use App\AuthorPayoutSetup;
 use App\Mail\FeedbackMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -256,6 +257,11 @@ class ProductController extends Controller
      {
          try{
             $data['item'] = Item::find($id);  
+            $user_id = $data['item']->user_id;
+            $user = User::where('id', $user_id)->first();
+            $data['payout_setup'] = AuthorPayoutSetup::join('users','users.id','=','author_payout_setups.user_id')->where('author_payout_setups.payment_method_name','Bank')->where('user_id', $user_id)->get();
+            $data['payout_setup2'] = AuthorPayoutSetup::where('payment_method_name','Bank')->where('user_id', $user_id)->first();
+
             if (is_null($data['item'])) {
                return redirect()->back();
             }
@@ -720,10 +726,5 @@ public function itemUpdate(Request $r){
             return redirect()->back();
        }
      }
-
-
-
-
-
 
 }

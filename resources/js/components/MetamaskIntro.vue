@@ -1,11 +1,16 @@
 <template>
     <div id="demo">
+        <div v-if="error">{{error}}</div>
         <div  v-if="nftStatus === 0">
             <button @click="(onMintNft())">MINT NFT</button>
         </div>
         <div>Contract:{{contractAddress}}</div>
         <p v-if="loading" :style="{color: '#ff0000'}">LOADING...</p>
         <div v-if="nftStatus === 2">
+            <div v-if="receiverAddress">
+                <p>Receiver address: {{ receiverAddress }} </p>
+                <p><button @click="(transferToken())" type="button">Transfer</button></p>
+            </div>
             <a :href="'https://ropsten.etherscan.io/token/' + contractAddress + '?a=' + itemTokenid">
                 <div class="single-info-title  single-info-column">
                     <p><svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-13o7eu2 svgclassicon">
@@ -41,7 +46,8 @@
             mintRoute:null,
             itemIdkey:null,
             itemTokenid:null,
-            itemMetadataUrl:null
+            itemMetadataUrl:null,
+            receiverAddress:null,
         },
         data(){
             return {
@@ -91,12 +97,13 @@
                 return this.$store.getters.contractAddress;
             },
             nftStatus(){
-                console.log(this.itemTokenid);
-                console.log(this.itemMetadataUrl);
                 if(this.itemTokenid && this.itemMetadataUrl) return 2;
                 if(this.itemTokenid) return 1;
                 return 0;
             },
+            error(){
+                return this.$store.getters.error;
+            }
         },
         methods:{
             onMintNft(){
@@ -107,11 +114,18 @@
                     console.log("NFT already minted!");
                 }
             },
+            async transferToken(){
+            const payload={
+                'receiverUserAddress': this.receiverAddress,
+                'tokenId': this.itemTokenid,
+            };
+            await this.$store.dispatch("transferToken",payload);
+            },
             async uploadAndMint(){
-                console.log('save file ipfs...');
+                this.loading=true;
                 await this.saveFile();
-                console.log('mint nft ...');
                 await this.mintNft();
+                this.loading=false;
             },
             async mintNft(){
                 if(!this.nftHasNecessaryData()) {
@@ -148,8 +162,6 @@
 
                 this.tokenData.image = this.createIpfsUrl(this.file.ipfsImageHash);
                 await this.pinJSONToIPFS();
-
-                this.loading=false;
             },
             createIpfsUrl(imageHash){
                 return 'https://dweb.link/ipfs/' + imageHash;
@@ -219,9 +231,9 @@
                 this.file.ipfsImageHash = ipfsImageHash;
                 return true;
             },
-            async saveToDB(){
-                await this.$store.dispatch("saveToDB");
-            },
+            // async saveToDB(){
+            //     await this.$store.dispatch("saveToDB");
+            // },
         }
     }
 </script>
