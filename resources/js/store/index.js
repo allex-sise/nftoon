@@ -65,17 +65,26 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loadSecrets({commit}){
-      const secrets = {
-        pinata_api_key:process.env.MIX_PUSHER_PINATA_API_KEY,
-        pinata_secret_api_key:process.env.MIX_PUSHER_PINATA_SECRET_API_KEY,
-        alchemy_api_key: process.env.MIX_PUSHER_ALCHEMY_SECRET_API_KEY
-      };
+    loadSecrets({commit, state}){
+      if (state.secrets === null){
+        const secrets = {
+          pinata_api_key:process.env.MIX_PUSHER_PINATA_API_KEY,
+          pinata_secret_api_key:process.env.MIX_PUSHER_PINATA_SECRET_API_KEY,
+          alchemy_api_key: process.env.MIX_PUSHER_ALCHEMY_SECRET_API_KEY
+        };
+        commit("setSecrets", secrets);
+      }
+      
+      if(state.contractAddress === null){
+        const contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
+        commit("setContract", contractAddress);
+      }
+    },
+    loadContract({commit}){
       const contractAddress = process.env.MIX_PUSHER_MASTER_CONTRACT;
-      commit("setSecrets", secrets);
       commit("setContract", contractAddress);
     },
-    loadTokenData({commit}, tokenData){
+    storeTokenData({commit}, tokenData){
       commit("setTokenData", tokenData);
     },
     async connect({ commit, dispatch }, connect) {
@@ -335,6 +344,59 @@ export default new Vuex.Store({
         }
         
         await dispatch("storeInDb", onErrorPayload);
+      }
+    },
+    async userDepositFunds({ state, dispatch, commit }, payload) {
+      // commit("setError", "Do NOT CLOSE this page!");
+      try {
+        const payloadBankDeposit={
+          route: payload.routeBlockchainDeposit,
+          bank_name: 'blockchain',
+          owner_name: payload.ownerName,
+          account_number: payload.userWallet,
+          amount: payload.withdrawAmount,
+          amountEth: payload.withdrawAmountEth,
+          status: 0,
+        };
+        await dispatch("storeInDb", payloadBankDeposit);
+        
+        // alert('Do not close/refresh the window!');
+        const signer = state.blockchain.signer;
+        const transferTxn = await signer.sendTransaction({
+          to: payload.mintedWallet,
+          value: ethers.utils.parseEther(payload.withdrawAmountEth)
+        });
+        
+        await transferTxn.wait();
+        let txReceipt = await dispatch("isTransactionMined", transferTxn.hash);
+
+        if(txReceipt.status === 1){
+          console.log("INTRAT OK");
+          const payloadBlockchainStorePayment = {
+            route: payload.routeBlockchainStorePayment,
+          }
+          await dispatch("storeInDb", payloadBlockchainStorePayment);
+        }
+      } catch (error) {
+        console.log("catch reject", error);
+
+        // const onErrorPayload = {
+        //   route: payload.routeBlockchainStatus,
+        //   withdraw_id: payload.withdraw_id,
+        //   blockchain_status: 69
+        // };
+
+        // if(error.code === 4001){
+        //   onErrorPayload.blockchain_status = 2;
+        // }
+        // else{
+        //   txReceipt = await dispatch("isTransactionMined", transferTxn.hash);
+        //   if(txReceipt){
+        //     onErrorPayload.blockchain_status = txReceipt.status;
+        //   }
+        // }
+        
+        // await dispatch("storeInDb", onErrorPayload);
       }
     },
     async storeInDb({dispatch}, payload){

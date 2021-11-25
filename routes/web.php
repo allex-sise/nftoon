@@ -215,6 +215,8 @@ Route::group(['prefix' => 'paypal'],function(){
 
 
       Route::POST('bank_payment','Customer\CustomerController@bank_payment')->name('bank_payment');
+      Route::post('blockchain-fund-deposit', 'FundDepositController@blockchainDeposit')->name('blockchainStoreFund');
+
 
    });
 

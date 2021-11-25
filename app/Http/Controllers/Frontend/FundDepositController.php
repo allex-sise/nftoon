@@ -5,6 +5,10 @@ use  Session;
 use App\User;
 use App\Deposit;
 use App\Statement;
+use App\BankDeposit;
+use App\Mail\BankDepositEmail;
+use App\Mail\FundMail;
+use App\SmNotification;
 use Stripe\Stripe;
 use App\SpnCountry;
 use Stripe\Customer;
@@ -226,5 +230,64 @@ class FundDepositController extends Controller
         } 
 
     }
-    
+
+    public function blockchainDeposit(){
+        try {
+
+            $deposit_request=BankDeposit::where('depositor_id', Auth::user()->id)->where('status', 0)->last();
+            $deposit_request->status=1;
+            $deposit_request->save();
+
+            $deposit =new Deposit();
+            $deposit->user_id= Auth::user()->id;
+            $deposit->title = 'Blockchain Deposit';
+            $deposit->details = 'Blockchain Deposit';
+            $deposit->amount = floatval($deposit_request->amount);
+            $deposit->save();
+
+            $balnc  = Balance::where('user_id',Auth::user()->id)->first();
+            $balnc->amount = $balnc->amount + floatval($deposit_request->amount);
+            $balnc->save();
+
+           
+       
+            $fund_info=Deposit::where('id',$deposit->id)->first();
+            $receiver_info=User::find(Auth::user()->id);
+            $receiver_email=$receiver_info->email;
+            
+            
+            try{
+                // Mail::to($receiver_email)->send(new BankDepositEmail($fund_info,$receiver_info));
+
+                $settings = InfixEmailSetting::first();
+                $reciver_email = $receiver_info->email;
+                $receiver_name =  $receiver_info->full_name;
+                $subject = 'Transfer prin Blockchain efectuat cu succes';
+                $view ="mail.bank_deposit_mail";
+                $compact['data'] =  array('fund_info' => $fund_info,'receiver_info' => $receiver_info); 
+                    // return $compact;
+                @send_mail($reciver_email, $receiver_name, $subject , $view ,$compact);
+            }catch(\Exception $e){
+                $msg = $e->getMessage();
+                Log::info($msg);
+                Toastr::error('Mail not send.Please check email setting', 'Failed');
+            }
+            Toastr::success('Deposit Approved', 'Success');
+            return redirect()->back();
+
+
+            DB::commit();  
+                
+        } catch (\Throwable $e) {
+            // DB::rollback();  
+           $msg=Str::limit(str_replace("'", " ", $e->getMessage()), 50) ;
+                $error=new ErrorLog();
+                $error->process_name='Product Purchase Email Send';
+                $error->error_message=$msg;
+                $error->user_id=Auth::user()->id;
+                $error->save();
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
 }

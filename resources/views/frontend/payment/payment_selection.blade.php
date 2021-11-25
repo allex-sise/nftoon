@@ -303,67 +303,76 @@
 
                     </div>
                     <div  class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Bank Payment </h5>
-                                </div>
-                                <form name="bank_payment" action=" {{ route('user.bank_payment')}} " class="single_account-form" method="POST" id=""  onsubmit="return validateForm()" >
-                                    <div class="modal-body">
-                                        @csrf
-                                        {{-- {{ isset($bank_validator) ? 'show active' :''}} --}}
-                                        <div class="row">
-                                            <div class="col-xl-6 col-md-6">
-                                                <label for="name" class="mb-2">@lang('lang.bank_name') <span>*</span></label>
-                                                <input type="text" class="bank_deposit_input"  placeholder="Bank Name" name="bank_name" value="{{@old('bank_name')}}" >
-                                                <span class="invalid-feedback" role="alert" id="bank_name"></span>
-                                            </div>
-                                            <div class="col-xl-6 col-md-6">
-                                                <label for="name" class="mb-2">@lang('lang.name_of_account_owner') <span>*</span></label>
-                                                <input type="text"  name="owner_name" class="bank_deposit_input"  placeholder="Name of account owner" value="{{@old('owner_name')}}">
-                                                <span class="invalid-feedback" role="alert" id="owner_name"></span>
-                                            </div> 
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-6 col-md-6">
-                                                <label for="name" class="mb-2">@lang('lang.account_no') <span>*</span></label>
-                                                <input type="text" class="bank_deposit_input"  placeholder="Account number" name="account_number" value="{{@old('account_number')}}" >                                             
-                                                <span class="invalid-feedback" role="alert" id="account_number"></span> 
-                                            </div>
-                                            <div class="col-xl-6 col-md-6">
-                                                <label for="name" class="mb-2">@lang('lang.amount') <span>*</span></label>
-                                                <input type="number" step="any" min="0"  name="amount" class="bank_deposit_input"  placeholder="Amount"
-                                                 value="{{ Session::get('deposit_amount') }}">
-                                                <span class="invalid-feedback" role="alert" id="amount_validation"></span>
-                                            </div>
-                                        </div>
-                                            @php
-                                                $bank_setup=explode(',',$payment_methods->where('id',4)->first()->env_terms);
-                                            @endphp
-                                            <fieldset>
-                                                <legend>Bank Account Info</legend>
-                                                    <table class="table">
-                                                        @foreach ($bank_setup as $setup)
-                                                        
-                                                            @php
-                                                                $b_setup=explode(':',$setup);
-                                                            @endphp
-                                                            <tr>
-                                                                <td><strong>{{str_replace('_',' ',@$b_setup[0])}}</strong> </td>
-                                                                <td>{{@$b_setup[1]}}</td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </table>
-                                            </fieldset>
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-between">
-                                        <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button>
-                                        <button class="btn-main" type="submit">@lang('lang.make') @lang('lang.payment')</button>
-                                    </div>
-                                </form>
-                            </div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Plata prin Ethereum </h5>
+            </div>
+            <form name="bank_payment" action=" {{ route('user.bank_payment')}} " class="single_account-form" method="POST" id=""  onsubmit="return validateForm()" >
+                <div class="modal-body">
+                    @php
+                        $bank_setup=explode(',',$payment_methods->where('id',4)->first()->env_terms);
+                    @endphp
+                    <fieldset>
+                        <legend>Bank Account Info</legend>
+                            <table class="table">
+                                @foreach ($bank_setup as $setup)
+                                
+                                    @php
+                                        $b_setup=explode(':',$setup);
+                                    @endphp
+                                    <tr>
+                                        <td><strong>{{str_replace('_',' ',@$b_setup[0])}}</strong> </td>
+                                        <td>{{@$b_setup[1]}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                    </fieldset>
+                    @csrf
+                    {{-- {{ isset($bank_validator) ? 'show active' :''}} --}}
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6">
+                            <label for="name" class="mb-2">@lang('lang.bank_name') <span>*</span></label>
+                            <input type="text" class="bank_deposit_input"  placeholder="Blockchain" name="bank_name" value="blockchain" >
+                            <span class="invalid-feedback" role="alert" id="bank_name"></span>
                         </div>
+                        <div class="col-xl-6 col-md-6">
+                            <label for="name" class="mb-2">@lang('lang.name_of_account_owner') <span>*</span></label>
+                            <input type="text"  name="owner_name" class="bank_deposit_input" value="{{ @Auth::user()->full_name }}">
+                            <span class="invalid-feedback" role="alert" id="owner_name"></span>
+                        </div> 
                     </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12">
+                            <label for="name" class="mb-2">@lang('lang.amount') <span>*</span></label>
+                            <input type="number" step="any" min="0"  name="amount" class="bank_deposit_input"  placeholder="Amount"
+                                value="{{ Session::get('deposit_amount') }}">
+                            <span class="invalid-feedback" role="alert" id="amount_validation"></span>
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <label for="name" class="mb-2">@lang('lang.account_no') <span>*</span></label>
+                            <div id="app"> <deposit 
+                            withdraw-amount="{{ Session::get('deposit_amount') }}" 
+                            owner-name="{{ @Auth::user()->full_name }}"
+                            user-id="{{ @Auth::user()->id }}"
+                            route-blockchain-deposit="{{ route('user.bank_payment')}}" 
+                            route-blockchain-store-payment="{{ route('user.blockchainStoreFund')}}" 
+                            /> </div> 
+                            <!-- <input type="text" class="bank_deposit_input"  placeholder="Account number" name="account_number" value="{{@old('account_number')}}" >                                              -->
+                            <!-- <span class="invalid-feedback" role="alert" id="account_number"></span>  -->
+                        </div>
+                       
+                    </div>
+                        
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <!-- <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button> -->
+                    <button class="btn-main" type="submit">@lang('lang.make') @lang('lang.payment')</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
                      
                 </div>
             </div>
