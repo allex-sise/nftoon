@@ -78,9 +78,9 @@
                 </a>
                 <ul class="collapse list-unstyled" id="subMenuFund">
                     @if(Auth::user()->role_id == 1 || in_array(3, $permitted_modules))
-                    <li>
+                    <!-- <li>
                       <a href="{{ route('admin.addFund') }}">@lang('lang.add_fund')</a>
-                    </li>
+                    </li> -->
                     <li>
                       <a href="{{ route('admin.showFunds') }}">Fondurile Mele</a>
                     </li>
@@ -560,7 +560,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="revenue">
                     <li> <a href="{{ route('admin.revenue') }}">Venituri Minted</a> </li>
-                    <!-- <li> <a href="{{ route('admin.authorRevenue') }}">@lang('lang.author') @lang('lang.revenue')</a> </li> -->
+                    <li> <a href="{{ route('admin.authorRevenue') }}">Venituri Creatori</a> </li>
                 </ul>
             </li>
             @endif
@@ -580,7 +580,7 @@
                     {{--    <li> <a href="{{ route('manage-adons') }}">@lang('lang.module_manage') </a> </li> --}}
                     
 
-                    {{--  <li> <a href="{{ route('email-setting') }}">@lang('lang.email_settings') </a> </li> --}}
+                     <li> <a href="{{ route('email-setting') }}">@lang('lang.email_settings') </a> </li> 
                     {{--  <li> <a href="{{ route('role-permission') }}">@lang('lang.role_permission') </a> </li> --}
                     {{--  <li> <a href="{{ route('admin.mail_template') }}">Email template </a> </li> --}}
                     {{-- <li> <a href="{{ route('payment-method-setting') }}">@lang('lang.payment_method_settings')</a> </li> --}
@@ -612,7 +612,7 @@
                     <ul class="collapse list-unstyled" id="Pages">
                         <li> <a href="{{ route('HomePage') }}">@lang('lang.home_page')</a> </li>
                         <li> <a href="{{ route('banners') }}">Banners</a> </li>
-                        <li> <a href="{{ route('ProfileSetting') }}">@lang('lang.profile_setting')</a> </li>
+                        <!-- <li> <a href="{{ route('ProfileSetting') }}">@lang('lang.profile_setting')</a> </li> -->
                         <!-- <li> <a href="{{ route('couponText') }}">@lang('lang.coupon')</a> </li>
                         <li> <a href="{{ route('LicensePage') }}">@lang('lang.License')</a> </li>
                         <li> <a href="{{ route('TicketPage') }}">@lang('lang.ticket')</a> </li> -->
@@ -621,7 +621,7 @@
                          <!-- <li> <a href="{{ route('market-apis') }}">@lang('lang.market_apis') </a> </li>
                         <li> <a href="{{ route('item-support') }}">@lang('lang.item_support')</a> </li>
                         <li> <a href="{{ route('become-author') }}">@lang('lang.become_author')</a> </li> -->
-                        <li> <a href="{{ route('about-company') }}">@lang('lang.about_company')</a> </li>
+                        <!-- <li> <a href="{{ route('about-company') }}">@lang('lang.about_company')</a> </li> -->
                         <!-- <li> <a href="{{ route('faqs') }}">@lang('lang.faq')</a> </li> -->
                     </ul>
                 </li>
