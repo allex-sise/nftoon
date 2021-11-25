@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 use  Session;
 use App\User;
 use App\Deposit;
+use App\Balance;
 use App\Statement;
 use App\BankDeposit;
 use App\Mail\BankDepositEmail;
@@ -234,7 +235,7 @@ class FundDepositController extends Controller
     public function blockchainDeposit(){
         try {
 
-            $deposit_request=BankDeposit::where('depositor_id', Auth::user()->id)->where('status', 0)->last();
+            $deposit_request=BankDeposit::where('depositor_id', Auth::user()->id)->where('status', 0)->first();
             $deposit_request->status=1;
             $deposit_request->save();
 
@@ -248,33 +249,6 @@ class FundDepositController extends Controller
             $balnc  = Balance::where('user_id',Auth::user()->id)->first();
             $balnc->amount = $balnc->amount + floatval($deposit_request->amount);
             $balnc->save();
-
-           
-       
-            $fund_info=Deposit::where('id',$deposit->id)->first();
-            $receiver_info=User::find(Auth::user()->id);
-            $receiver_email=$receiver_info->email;
-            
-            
-            try{
-                // Mail::to($receiver_email)->send(new BankDepositEmail($fund_info,$receiver_info));
-
-                $settings = InfixEmailSetting::first();
-                $reciver_email = $receiver_info->email;
-                $receiver_name =  $receiver_info->full_name;
-                $subject = 'Transfer prin Blockchain efectuat cu succes';
-                $view ="mail.bank_deposit_mail";
-                $compact['data'] =  array('fund_info' => $fund_info,'receiver_info' => $receiver_info); 
-                    // return $compact;
-                @send_mail($reciver_email, $receiver_name, $subject , $view ,$compact);
-            }catch(\Exception $e){
-                $msg = $e->getMessage();
-                Log::info($msg);
-                Toastr::error('Mail not send.Please check email setting', 'Failed');
-            }
-            Toastr::success('Deposit Approved', 'Success');
-            return redirect()->back();
-
 
             DB::commit();  
                 
