@@ -593,8 +593,8 @@ public function bank_payment(Request $request ){
         $notification->received_id = 1;
         $notification->save();
        
-       Toastr::success('Deposite added, Waiting for admin approval','Success');
-       return redirect()->back();
+    //    Toastr::success('Deposite added, Waiting for admin approval','Success');
+    //    return redirect()->back();
     } catch (\Exception $e) {
         $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');

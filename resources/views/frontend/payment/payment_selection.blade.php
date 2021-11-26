@@ -392,7 +392,7 @@
                         <div class="col-xl-12 col-md-12">
                             <label for="name" class="mb-2">@lang('lang.amount') care va fi debitata din wallet-ul tau <span>*</span></label>
                             <div class="input-group mb-3">
-                                <input type="number" style="width: 140px!important" id="pretInEth" class="bank_deposit_input form-control" min="0" step="any" name="" aria-label="Recipient's username" aria-describedby="basic-addon3" value="{{ Session::get('deposit_amount') }}" readonly>
+                                <input type="number" style="width: 140px!important" class="bank_deposit_input form-control" min="0" step="any" name="amountEth" aria-label="Recipient's username" aria-describedby="basic-addon3" value="{{ Session::get('deposit_amountETH') }}" readonly>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="basic-addon2">ETH</span>
                                     </div>
@@ -403,8 +403,10 @@
                             <label for="name" class="mb-2">@lang('lang.account_no') <span>*</span></label>
                             <div id="app"> <deposit 
                             withdraw-amount="{{ Session::get('deposit_amount') }}" 
+                            withdraw-amount-eth="{{ Session::get('deposit_amountETH') }}"
                             owner-name="{{ @Auth::user()->full_name }}"
                             user-id="{{ @Auth::user()->id }}"
+                            route-redirect="{{ route('user.deposit',@Auth::user()->username)}}"
                             route-blockchain-deposit="{{ route('user.bank_payment')}}" 
                             route-blockchain-store-payment="{{ route('user.blockchainStoreFund')}}" 
                             /> </div> 
@@ -437,23 +439,5 @@
  <script src="https://checkout.stripe.com/checkout.js"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/payment_section.js"></script>
-<script>
-    $(document).ready(function () {
-        const pretInRon = {{ Session::get('deposit_amount') }};
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: `https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=RON`,
-            success: function (data) {
-               var price = pretInRon/data.RON;
-               var myNumberWithTwoDecimalPlaces=parseFloat(price).toFixed(4);
-                  $("#pretInEth").attr("value", myNumberWithTwoDecimalPlaces);
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-        });
-});
-</script>
 
  @endpush

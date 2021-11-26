@@ -93,6 +93,7 @@ class FundDepositController extends Controller
                 $user_pro->mobile = $r->mobile;
             }
             Session::put('deposit_amount',$r->amount);
+            Session::put('deposit_amountETH',$r->amountETH);
             $user_pro->save();
             return redirect()->route('user.FundDepositPaymentSelection');     
             } catch (\Exception $e) {

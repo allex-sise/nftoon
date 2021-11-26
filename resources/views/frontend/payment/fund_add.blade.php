@@ -163,8 +163,17 @@
                                                                     @endif
                                                                 </p>
                                             <div class="col-xl-8 col-md-8 offset-md-2">
+                                            <input type="numeric" min="0" id="ETH2RON"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere" hidden>
                                                 <label for="Deposit">@lang('lang.deposit_amount') *</label>
-                                                <input type="text"  onkeyup="isNumberKeyDecimal(this);" id="_deposit"  name="amount" value="{{old('amount')}}">
+                                                <input type="text"  onkeyup="regular(this.value)" id="depositRON"  name="amount" value="{{old('amount')}}">
+                                                @if ($errors->has('amount'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('amount') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            <div class="col-xl-8 col-md-8 offset-md-2">
+                                                <input hidden readonly type="text"  onkeyup="regular(this.value)" id="depositETH"  name="amountETH" value="{{old('amountETH')}}">
                                                 @if ($errors->has('amount'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('amount') }}</strong>
@@ -211,6 +220,31 @@
  <script src="https://checkout.stripe.com/checkout.js"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>
  <script src="{{ asset('public/frontend/js/') }}/fund_add2.js"></script>
+ <script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: `https://min-api.cryptocompare.com/data/price?fsym=RON&tsyms=ETH`,
+            success: function (data) {
+                $("#ETH2RON").attr("value", data.ETH);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+});
+function regular(item) {
+    if(this.value<0){this.value= this.value * -1}
+    const inputRON = $("#depositRON").val();
+    const ETH2RON = $("#ETH2RON").val();
+    var totalPrice = inputRON*ETH2RON;
+    var myNumberWithTwoDecimalPlaces=parseFloat(totalPrice).toFixed(8);
 
+    $("#depositETH").val(myNumberWithTwoDecimalPlaces);
+    $("#depositETH").attr("placeholder", "$" + myNumberWithTwoDecimalPlaces);
+    $("#depositETH").attr("value", myNumberWithTwoDecimalPlaces);
+}
+</script> 
 
  @endpush
