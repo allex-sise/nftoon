@@ -250,8 +250,10 @@ class FundDepositController extends Controller
             $balnc->amount = $balnc->amount + floatval($deposit_request->amount);
             $balnc->save();
 
-            DB::commit();  
-                
+            DB::commit(); 
+            Toastr::success('Fund added successful!','Success'); 
+            return redirect()->route('user.deposit',Auth::user()->username);  
+            
         } catch (\Throwable $e) {
             // DB::rollback();  
            $msg=Str::limit(str_replace("'", " ", $e->getMessage()), 50) ;
