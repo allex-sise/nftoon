@@ -504,7 +504,7 @@ class ItemController extends Controller
             if (Auth::user()->role_id==4) {
             
                     $item = Item::find($r->id);
-                    $success_message="Product Updated successfully";
+                    $success_message="Produsul a fost updatat cu succes!";
                 } else {
                     $item =new ItemPreview();
                     $item->item_id = $r->id;
@@ -638,7 +638,7 @@ class ItemController extends Controller
         if (Auth::user()->role_id==4) {
             if ($settings->auto_update==1) {
                 $item =Item::find($r->id);
-                $success_message="Product Updated successfully";
+                $success_message="Produsul a fost updatat cu succes!";
             } else {
                 $item =new ItemPreview();
                 $item->item_id = $r->id;
@@ -646,7 +646,7 @@ class ItemController extends Controller
             }
         } else {
             $item =Item::find($r->id);
-            $success_message="Product Updated successfully";
+            $success_message="Produsul a fost updatat cu succes!";
         }
 
     

@@ -2,6 +2,7 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/item.css">
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/checkout.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
 @endpush
 @php
@@ -23,6 +24,10 @@
     margin-bottom: 0;
     text-align: left;
     margin-top: 340px;
+}
+
+select{
+    width: 1px!important;
 }
 </style>
 @section('content')
@@ -84,12 +89,10 @@
                                     </span>
                                 @endif
                                 </div>
-                                <div class="col-xl-6 col-md-6 city_id">
+                                <div class="col-xl-6 col-md-6">
                                     <label for="name">@lang('lang.country_name')<span>*</span></label>
-                                    <select class="wide customselect country"
-                                         name="country_id" id="country">
-                                        <option data-display="Country*">
-                                            @lang('lang.select')</option>
+                                    <select class="select2 bb" name="country_id">
+                                        <option></option>
                                         @foreach ($data['country'] as $item)                                                                                        
                                         <option value="{{ $item->id }}" {{@$data['user']->profile->country_id == $item->id ?'selected':'' }}>{{ $item->name }}</option>
                                         @endforeach
@@ -185,4 +188,13 @@
 @push('js')
 
 <script src="{{ asset('public/frontend/js/') }}/checkout.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        placeholder: "Alege Tara",
+        allowClear: true
+    });
+});
+    </script>
 @endpush

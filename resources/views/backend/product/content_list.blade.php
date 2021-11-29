@@ -58,7 +58,7 @@
                                     <td valign="top"><a target="_blank" href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">{{Str::limit(@$item->title,20)}}</a></td>
                                     <td valign="top">{{@$item->category->title}}</td>
                                     <td valign="top"><img src="{{asset(@$item->icon)}}" class="content_list_wh_40" ></td>
-                                    <td valign="top">{{@$data['settings']->currency_symbol}}{{@$item->Reg_total}}</td>
+                                    <td valign="top">{{@$item->Reg_total}} {{@$data['settings']->currency_symbol}}</td>
                                     <td valign="top"><a target="_blank" href="{{ route('user.profile',@$item->user->username)}}">{{@$item->user->username }}</a></td>
                                     <td valign="top"><a target="_blank" href="{{ route('user.profile',@$item->og->username)}}">{{@$item->og->username }}</a></td>
                                     

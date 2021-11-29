@@ -70,7 +70,7 @@ class FundController extends Controller
             $fund_info=Deposit::where('id',$deposit->id)->first();
             $receiver_info=User::find($request->user_id);
 
-            Toastr::success('Fund added Succsesfully', 'Success');
+            Toastr::success('Fonduri adaugate cu succes', 'Success');
 
             try{
                 // Mail::to($receiver_info->email)->send(new FundMail($fund_info,$receiver_info));
@@ -80,7 +80,7 @@ class FundController extends Controller
                 $settings = InfixEmailSetting::first();
                 $reciver_email = $receiver_info->email;
                 $receiver_name =  $receiver_info->full_name;
-                $subject = 'Fund Deposit';
+                $subject = 'Adaugare Fonduri';
                 $view ="mail.add_fund_mail";
                 $compact['data'] =  array('fund_info' => $fund_info,'receiver_info' => $receiver_info); 
                     // return $compact;
@@ -103,7 +103,7 @@ class FundController extends Controller
     public function addFundUpdate(Request $request){
 
         if (!is_numeric($request->input('fund_amount'))){
-            Toastr::warning('Fund amount should be numeric', 'Invalid');
+            Toastr::warning('Suma fondurilor trebuie sa fie numere', 'Invalid');
             return redirect()->back();
         }
         try {
@@ -135,7 +135,7 @@ class FundController extends Controller
                 $settings = InfixEmailSetting::first();
                 $reciver_email = $receiver_info->email;
                 $receiver_name =  $receiver_info->full_name;
-                $subject = 'Fund Deposit';
+                $subject = 'Adaugare Fonduri';
                 $view ="mail.add_fund_mail";
                 $compact['data'] =  array('fund_info' => $fund_info,'receiver_info' => $receiver_info); 
                     // return $compact;
@@ -147,7 +147,7 @@ class FundController extends Controller
                 Toastr::error('Mail not send.Please check email setting', 'Failed');
             }
           
-                Toastr::success('Fund Updated Succsesfully', 'Success');
+                Toastr::success('Fonduri adaugate cu succes', 'Succes');
                 return redirect()->back();
            
         } catch (\Throwable $e) {

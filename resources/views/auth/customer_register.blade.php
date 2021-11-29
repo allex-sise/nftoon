@@ -107,7 +107,8 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
                             <div class="login_form_content">
                                 
                                 <div class="login_form_field">
-                                <form action="{{ url('customer/registration') }}" method="POST" id="cus_registration">
+                                <form action="{{ route('customer_registration') }}" method="POST" id="cus_registration">
+                                    <input type="text" name="refer" value="{{ $referrer->id }}" hidden readonly>
                                     @csrf
                                         <div class="col-xl-12">
                                             <h3>Creare Cont Minted</h3>
@@ -115,10 +116,19 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
                                             <br />Ai fost invitat de catre user-ul:<span style="color: #000; text-transform: uppercase;"><b> {{ $referrer->username }} </b></span></p>
                                         </div>
                                         <div class="col-xl-12 col-md-12">
-                                            <label for="full_name">@lang('lang.full') @lang('lang.name')<span>*</span></label>
-                                            <input type="text" name="full_name" value="{{ old('full_name') }}" placeholder="Introduceti Numele Intreg" required class="@error('full_name') is-invalid @enderror">
-                                            @error('full_name')
-                                                <span class="text-danger  text-red" role="alert">
+                                            <label for="first_name">@lang('lang.first_name')<span>*</span></label>
+                                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="@error('first_name') is-invalid @enderror">
+                                            @error('first_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xl-12 col-md-12">
+                                            <label for="last_name">@lang('lang.last_name')<span>*</span></label>
+                                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="@error('last_name') is-invalid @enderror">
+                                            @error('last_name')
+                                                <span class="text-danger" role="alert">
                                                     <strong>{{ @$message }}</strong>
                                                 </span>
                                             @enderror
@@ -174,78 +184,7 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
         </div>
     </div>
 <!-- login_resister_area-end -->
-<section class="full-height relative no-top no-bottom vertical-center ascundedesktop" data-bgimage="url({{url('/'.@$dashboard_background->image)}}) top" data-stellar-background-ratio=".5" style="min-height: 812px; background: url({{url('/'.@$dashboard_background->image)}}) center top / cover;">
-    <div class="overlay-gradient t50" style="background-size: cover;">
-        <div class="center-y relative" style="background-size: cover;">
-            <div class="container" style="background-size: cover;">
-            <div class="logo">
-                <a class="logocentrat" href="{{ url('/') }}">
-                    <img src="{{ asset('public/frontend/img/logo2.png') }}" alt="" width="203" >
-                </a>
-            </div>
-                <div class="row align-items-center" style="background-size: cover;">
-                    
-                    <div class="col-lg-4 offset-lg-4 wow fadeIn bg-color animated bgcolornew" data-wow-delay=".5s" style="background-size: cover; visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
-                        <div class="box-rounded padding40" style="background-size: cover;">
-                        <h3 class="mb10 h3mobile">Creare Cont Minted</h3>
-                        <p class="pmobile">Completeaza formularul pentru a creea un cont nou Minted. Daca ai deja un cont te poti loga <a href="{{ url('login')}}">aici<span></span></a>.<br />
-                        Ai fost invitat de catre user-ul:<span style="color: #FFF; text-transform: uppercase;"><b> {{ $referrer->username }} </b></span>
-                        </p>
-                        <form action="{{ url('customer/registration') }}" method="POST" id="cus_registration">
-                            @csrf
-                                <div class="field-set" style="background-size: cover;">
-                                    <input type="text" name="full_name" value="{{ old('full_name') }}" placeholder="Introduceti Numele Intreg" required class="form-control @error('full_name') is-invalid @enderror">
-                                    @error('full_name')
-                                        <span class="text-danger  text-red" role="alert">
-                                            <strong>{{ @$message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="field-set" style="background-size: cover;">
-                                    <input type="text" placeholder="Introduceti Username-ul" name="username" value="{{ old('username') }}" required class="form-control @error('username') is-invalid @enderror">
-                                    @error('username')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ @$message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="field-set" style="background-size: cover;">
-                                    <input type="text" placeholder="Adresa de email" value="{{ old('email') }}" name="email" class="form-control @error('email') is-invalid @enderror" required>
-                                    @error('email')
-                                        <span class="text-danger" role="alert">
-                                            {{ @$message }}
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="field-set" style="background-size: cover;">
-                                    <input name="password" type="password" placeholder="Introduceti Parola"  class="form-control @error('password') is-invalid @enderror" required>
-                                    @error('password')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ @$message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="field-set" style="background-size: cover;">
-                                    <input type="password" name="password_confirmation" placeholder="@lang('lang.confirm') @lang('lang.password')" class="form-control @error('password_confirmation') is-invalid @enderror" required>
-                                    @error('password_confirmation')
-                                        <span  class="text-danger" role="alert">
-                                            <strong>{{ @$message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                
-                                
-                                <div class="field-set" style="background-size: cover;">
-                                    <button type="submit" class="btn btn-main btn-fullwidth color-2">@lang('lang.register')</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 @endsection
 @push('js')
 

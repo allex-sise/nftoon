@@ -24,6 +24,12 @@
 .login_resister_area{
     display: block;
 }
+.error{
+    display: block;
+}
+.login_resister_area .main-login-form input{
+    border: 1px solid;
+}
 @media only screen and (max-width: 767px) {
 .login_resister_area .single_resister_sildbar .resister_text p{
     display: none;
@@ -59,7 +65,10 @@
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
-    color: #333;
+    color: #FFF;
+}
+.form-border input[type=text], .form-border textarea, .form-underline input[type=email], .form-border input[type=password], .form-border select{
+    color: #FFF!important;
 }
 .logocentrat{
     margin: 0 auto!important;
@@ -137,7 +146,7 @@
                                               <p>@lang('lang.enter_login')</p>
                                         </div>
                                         <div class="col-xl-12 col-md-12">
-                                            <label for="name">@lang('lang.email') @lang('lang.address') <span class="required_icon">*</span></label>
+                                            <label for="name">@lang('lang.address') @lang('lang.email')<span class="required_icon">*</span></label>
                                             <input type="email" placeholder="@lang('lang.email')" name="email" value="{{ old('email') }}" class="@error('email') is-invalid @enderror" required>
                                             @error('email')
                                                 <span class="red_alart" role="alert">

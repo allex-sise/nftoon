@@ -270,6 +270,9 @@ footer{
 .light-scheme .footeruserborder{
    background: rgb(0, 0, 0)!important;
 }
+.pwidthlung{
+   width: 300px;
+}
 @media only screen and (max-width: 767px) {
 .col50{
    width: 50%!important;
@@ -546,7 +549,7 @@ footer{
                                     @if (@$data['item']->is_upload==1)
                                      @if (@$data['item']->in_drop == NULL)
                                        <button  type="submit" class="boxed-btn-white" style="background: var(--secondary-color);" >@lang('lang.Buy') @lang('lang.Now') </button>
-                                       @elseif ((@$data['item']->in_drop) && (@$drop->startdate >= $azi) && (@$drop->expdate >= $azi) )
+                                       @elseif ((@$data['item']->in_drop) && (@$drop->startdate <= $azi) && (@$drop->expdate >= $azi) )
                                        <p>NFT ESTE IN DROP SI DROPUL ESTE IN DERULARE</p>
                                        <button  type="submit" class="boxed-btn-white" style="background: var(--secondary-color);" >@lang('lang.Buy') @lang('lang.Now') </button>
                                        @else
@@ -598,13 +601,13 @@ footer{
                      <br />
                      <div class="single-info-inner userbg2">
                         <div class="single-info-title single-info-column">
-                           <p> <img style="width: 30px; border-radius: 50%;" src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
+                           <p class="pwidthlung"> <img style="width: 30px; border-radius: 50%;" src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
                            <span class="spansvg2">Listat de <a href="{{ route('user.portfolio',@$data['item']->og->username)}}"><span>@</span>{{ @$data['item']->og->username }} </a>
                            <span class="span2s">{{ @$data['item']->created_at}}</span>
                            </p>
                         </div>
                         <div class="single-info-content single-info-column coloanaspeciala">
-                           <p >{{ @$data['item']->Re_item}} lei</p>
+                           <p >{{ @$data['item']->og_price ?? ''}} lei</p>
                         </div>
                      </div>
 

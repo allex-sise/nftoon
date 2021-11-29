@@ -33,17 +33,13 @@
                     <h4>
                     {{  @$data['user']->full_name }}                                                
                         <span class="profile_username"><span>@</span>{{  @$data['user']->username }}</span>
+                            @php
+                                $walletz =  App\AuthorPayoutSetup::where('user_id', $data['user']->id)->where('payment_method_name','Bank')->first(); 
+                            @endphp 
                         <span id="wallet" class="profile_wallet">
-                            @php 
-                            $default_payout=defaultPayout();
-                            @endphp
-                            @if (defaultPayout())
-                                @if (defaultPayout()->payment_method_name=='Bank')
-                                {!! defaultPayout()->payout_email !!}
-                                @endif
-                            @endif
+                        {{ $walletz->payout_email ?? '' }}
                         </span>
-                        <button id="btn_copy" title="Copy Text">Copy</button>
+                        @if($walletz) <button id="btn_copy" title="Copy Text">Copy</button> @endif
                     </h4>
                 </div>
             </div>

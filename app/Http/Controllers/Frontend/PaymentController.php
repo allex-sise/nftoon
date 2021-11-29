@@ -650,7 +650,7 @@ class PaymentController extends Controller
             $change_role->save();
            
             Cart::destroy();
-            Toastr::success('Thank you for purchase');
+            Toastr::success('Multumim pentru achizitia facuta!');
             
 
             return redirect()->route('customer.payment_complete');

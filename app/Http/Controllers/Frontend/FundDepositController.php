@@ -40,6 +40,18 @@ class FundDepositController extends Controller
           }
     }
 
+    function FundSucces(){
+        try {
+         
+            
+            return view('frontend.payment.fund_succes');
+          } catch (\Exception $e) {
+                $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+          }
+    }
+
     public function FundDepositStore(Request $r){        
         $input = $r->input();
         $this->validate($r, [
@@ -179,7 +191,7 @@ class FundDepositController extends Controller
 
                 DB::commit();    
                 Toastr::success('Fund added successful!', 'Success');
-                return redirect()->route('user.deposit',Auth::user()->username);           
+                return redirect()->route('user.fund_succes');           
             } catch (\Exception $e) {
                 $msg=str_replace("'", " ", $e->getMessage()) ;
                 Toastr::error($msg, 'Failed');
@@ -188,50 +200,6 @@ class FundDepositController extends Controller
                 
     }
 
-    function RazorDeposit(Request $request){
-
-        $input = Input::all();
-        DB::beginTransaction();
-        try {
-            $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));      
-
-            //Fetch payment information by razorpay_payment_id
-            $payment = $api->payment->fetch($input['razorpay_payment_id']);
-
-            if(count($input)  && !empty($input['razorpay_payment_id'])) {
-                $payment_detalis = null;
-                try {
-                    $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
-                    $from_currency= 'INR';
-                    $to_currency= GeneralSetting()->currency;
-                    $total = convertCurrency($from_currency,$to_currency,$response['amount']/100);
-                   
-                    $deposit =new Deposit();
-                    $deposit->user_id= Auth::user()->id;
-                    $deposit->title = 'deposit';
-                    $deposit->details = 'Fund deposit via Razorpay';
-                    $deposit->amount = $total;
-                    $deposit->save();
-                    $balnc  = Auth::user()->balance;
-                    $balnc->amount = $balnc->amount + $total;
-                    $balnc->save();
-                    DB::commit();   
-                    Toastr::success('Fund added successful!','Success');
-                    return redirect()->route('user.deposit',Auth::user()->username); 
-                } catch (\Exception $e) {
-                    //return  $e->getMessage();
-                    Toastr::error($e->getMessage(),'Error');
-                    return redirect()->back();
-                }            
-                
-            }       
-        } catch (\Exception $e) {
-            $msg=str_replace("'", " ", $e->getMessage()) ;
-            Toastr::error($msg, 'Failed');
-            return redirect()->back();
-        } 
-
-    }
 
     public function blockchainDeposit(){
         try {
@@ -253,7 +221,7 @@ class FundDepositController extends Controller
 
             DB::commit(); 
             Toastr::success('Fund added successful!','Success'); 
-            return redirect()->route('user.deposit',Auth::user()->username);  
+            return redirect()->route('user.fund_succes');
             
         } catch (\Throwable $e) {
             // DB::rollback();  

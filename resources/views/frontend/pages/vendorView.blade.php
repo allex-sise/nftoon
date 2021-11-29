@@ -34,10 +34,13 @@
                                         <i class="fa fa-check"></i>
                                         <div class="profile_name">
                                             <h4>
-                                            {{  @$data['user']->full_name }}                                                
+                                            {{  @$data['user']->full_name }}    
+                                                @php
+                                                    $walletz =  App\AuthorPayoutSetup::where('user_id', $data['user']->id)->where('payment_method_name','Bank')->first(); 
+                                                @endphp                                            
                                                 <span class="profile_username"><span>@</span>{{  @$data['user']->username }}</span>
-                                                <span id="wallet" class="profile_wallet">DdzFFzCqrhshMSxb9oW3mRo4MJrQkusV3fGFSTwaiu4wPBqMryA9DYVJCkW9n7twCffG5f5wX2sSkoDXGiZB1HPa7K7f865Kk4LqnrME</span>
-                                                <button id="btn_copy" title="Copy Text">Copy</button>
+                                                <span id="wallet" class="profile_wallet">{{ $walletz->payout_email ?? '' }}</span>
+                                                @if($walletz)<button id="btn_copy" title="Copy Text">Copy</button>@endif
                                             </h4>
                                         </div>
                                     </div>
@@ -94,7 +97,7 @@
                                                             <h4>{{ @$item->title}}</h4>
                                                         </a>
                                                         <div class="nft__item_price">
-                                                        {{ @$item->Reg_total}} {{@$infix_general_settings->currency_symbol}}
+                                                        {{ @$item->Re_item}} {{@$infix_general_settings->currency_symbol}}
                                                         </div>
                                                         <div class="nft__item_action">
                                                             <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">Cumpara</a>
@@ -135,9 +138,7 @@
                                                             <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
                                                                 <h4>{{ @$item->title}}</h4>
                                                             </a>
-                                                            <div class="nft__item_price">
-                                                            {{ @$item->Reg_total}} {{@$infix_general_settings->currency_symbol}}
-                                                            </div>
+                                                          
                                                                                
                                                         </div> 
                                                     </div>

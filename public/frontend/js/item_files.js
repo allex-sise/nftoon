@@ -3,7 +3,7 @@
 function thembnailUpload() {
     var file = document.getElementById("thembnails_upload").files[0];
     if (file) {
-        if (file.type == "image/jpeg" || file.type == "image/png") {
+        if (file.type == "image/jpeg" || file.type == "image/png" || file.type == "image/gif") {
             var img = new Image();
 
             img.src = window.URL.createObjectURL(file);

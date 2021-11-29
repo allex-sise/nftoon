@@ -63,7 +63,8 @@ class RegisterController extends Controller
         $reCaptcha = DB::table('re_captcha_settings')->first();
         if (@$reCaptcha->status == 1) {
             return Validator::make($data, [
-            'full_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -71,7 +72,8 @@ class RegisterController extends Controller
         ]);
         } else {
             return Validator::make($data, [
-            'full_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -100,7 +102,7 @@ class RegisterController extends Controller
             $Regbonus = RegistrationBonus::where('type',2)->where('status',1)->first();
             $user=new User();
             $user->role_id =5;
-            $user->full_name=$data['full_name'];
+            $user->full_name=$data['first_name'].$data['last_name'];
             $user->username=$data['username'];
             $user->email=$data['email'];
             $user->password=Hash::make($data['password']);
@@ -109,6 +111,10 @@ class RegisterController extends Controller
 
             $profile=new Profile();
             $profile->user_id=$user->id;
+            $profile->username=$data['username'];
+            $profile->first_name=$data['first_name'];
+            $profile->last_name=$data['last_name'];
+            $profile->email=$data['email'];
             $profile->save();
 
 
@@ -170,7 +176,8 @@ class RegisterController extends Controller
         $reCaptcha = DB::table('re_captcha_settings')->first();
         if (@$reCaptcha->status == 1) {
             $this->validate($data,[
-                'full_name' => 'required|string|max:255',
+                'first_name' => 'required', 'string', 'max:255',
+                'last_name' => 'required', 'string', 'max:255',
                 'username' => 'required|string|max:255|unique:users',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
@@ -178,7 +185,8 @@ class RegisterController extends Controller
             ]);
         } else {
             $this->validate($data,[
-                'full_name' => 'required|string|max:255',
+                'first_name' => 'required', 'string', 'max:255',
+                'last_name' => 'required', 'string', 'max:255',
                 'username' => 'required|string|max:255|unique:users',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
@@ -191,16 +199,26 @@ class RegisterController extends Controller
             $Regbonus = RegistrationBonus::where('type',2)->where('status',1)->first();
             $user=new User();
             $user->role_id =5;
-            $user->full_name=$data['full_name'];
+            $user->full_name=$data['first_name'].$data['last_name'];
             $user->username=$data['username'];
             $user->email=$data['email'];
-            $user->referrer_id = 1;
+            $referrer = User::whereUsername(session()->pull('referrer'))->first();
+            if($data['refer']){
+                $user->referrer_id = $data['refer'];
+            }
+            else{
+                $user->referrer_id = 1;
+            }
             $user->password=Hash::make($data['password']);
             $user->save();
 
 
             $profile=new Profile();
             $profile->user_id=$user->id;
+            $profile->username=$data['username'];
+            $profile->first_name=$data['first_name'];
+            $profile->last_name=$data['last_name'];
+            $profile->email=$data['email'];
             $profile->save();
 
 

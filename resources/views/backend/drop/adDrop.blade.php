@@ -154,11 +154,10 @@
                                             <div class="input-effect">
                                                 <input class="primary-input {{ $errors->has('thumdnail') ? ' is-invalid' : '' }}" type="text"
                                                       id="placeholder_thembnails"
-                                                       placeholder="@lang('lang.thumbnails') "
+                                                       placeholder="Imagine"
                                                        readonly="">
                                                 <span class="focus-border"></span>
                                             </div>
-                                            <small>@lang('lang.please_input')</small>
                                         </div>
                                         <div class="col-auto">
                                             <button class="primary-btn-small-input"
@@ -175,6 +174,7 @@
                                         <strong>{{ $errors->first('thumdnail') }}</strong>
                                     </span>
                                     @endif
+                                    <!-- <img src="#" id="category-img-tag" width="200px" />   for preview purpose -->
                                     <p id="thumbneils_title"></p>
                                 </div>
                             </div>    
@@ -313,7 +313,25 @@
 
 <script src="{{asset('public/backEnd/')}}/vendors/js/jquery-ui.js"></script>
 
+<script src="{{asset('public/backEnd/js/admin_upload.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/backEnd/')}}/js/bootstrap-datetimepicker.min.js"></script>
+<!-- <script>
+function readURL(input) {
+   if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      
+      reader.onload = function (e) {
+            $('.category-img-tag').attr('src', e.target.result);
+      }
+      
+      reader.readAsDataURL(input.files[0]);
+   }
+}
+
+$("#thembnails_upload").change(function(){
+   readURL(this);
+});
+</script> -->
 <script>
 	"use strict";
     $(function () {

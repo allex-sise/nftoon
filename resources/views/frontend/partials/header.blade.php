@@ -320,7 +320,7 @@
                                                 @if (Auth::user()->role_id == 5)
                                                     <li><a href="{{ route('customer.profile',@Auth::user()->username) }}">@lang('lang.profile')</a></li>
                                                     <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">Colectia Ta</a></li>
-                                                    <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}#referrals">Referrals</a></li>
+                                                    <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}">Referrals</a></li>
                                                     <li><a href="{{ route('user.deposit',@Auth::user()->username)}}">@lang('lang.fund_deposit')</a></li>
                                                     @if (GeneralSetting()->public_vendor==1)
                                                         

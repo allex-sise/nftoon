@@ -24,20 +24,12 @@ class InstallController extends Controller{
     }
 
     public function index(){
-        
-        $this->service_repo->checkInstallation();
-        return view('hub::install.welcome');
+  
     }
 
 
     public function user(){
-        $ac = Storage::exists('.temp_app_installed') ? Storage::get('.temp_app_installed') : null;
-
-        if(!$this->service_repo->checkDatabaseConnection() || !$ac){
-            abort(404);
-        }
        
-		return view('hub::install.user');
     }
 
     public function post_user(UserRequest $request){

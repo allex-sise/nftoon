@@ -194,7 +194,7 @@ $carttotalstrip = floatval($b);
                                                                                 @lang('lang.pay') 
                                                                             </button>
                                                                         @else
-                                                                            <a class="button boxed-btn btnspecial" href="{{ route('user.deposit',@Auth::user()->username)}}">{{__('Fund Deposit')}}</a>
+                                                                            <a class="button boxed-btn btnspecial" href="{{ route('user.deposit',@Auth::user()->username)}}">ADAUGA FONDURI</a>
                                                                         @endif
                                                                     </div>
                                                                 </form>

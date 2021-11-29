@@ -11,6 +11,12 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('public/css/') }}/auth.css">
     <style>.login_resister_area .single_resister_sildbar::after { background: url("{{url('/'.@$dashboard_background->image)}}") no-repeat; background-size:cover;  }
+    .error{
+    display: block;
+}
+.login_resister_area .main-login-form input{
+    border: 1px solid;
+}
     @media only screen and (max-width: 767px) {
 .login_resister_area .single_resister_sildbar .resister_text p{
     display: none;
@@ -46,7 +52,10 @@
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
-    color: #333;
+    color: #FFF;
+}
+.form-border input[type=text], .form-border textarea, .form-underline input[type=email], .form-border input[type=password], .form-border select{
+    color: #FFF!important;
 }
 .logocentrat{
     margin: 0 auto!important;
@@ -114,9 +123,18 @@
                                                 <p>@lang('lang.enter_login')</p>
                                         </div>
                                         <div class="col-xl-12 col-md-12">
-                                            <label for="full_name">@lang('lang.full_name')<span>*</span></label>
-                                            <input type="text" name="full_name" value="{{ old('full_name') }}" placeholder="@lang('lang.enter_full_name')" required class="@error('full_name') is-invalid @enderror">
-                                            @error('full_name')
+                                            <label for="first_name">@lang('lang.first_name')<span>*</span></label>
+                                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="@error('first_name') is-invalid @enderror">
+                                            @error('first_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xl-12 col-md-12">
+                                            <label for="last_name">@lang('lang.last_name')<span>*</span></label>
+                                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="@error('last_name') is-invalid @enderror">
+                                            @error('last_name')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ @$message }}</strong>
                                                 </span>
@@ -198,8 +216,16 @@
                         <form action="{{ route('customer_registration') }}" method="POST" id="cus_registration1">
                                     @csrf
                                         <div class="field-set" style="background-size: cover;">
-                                            <input type="text" name="full_name" value="{{ old('full_name') }}" placeholder="@lang('lang.enter_full_name')" required class="form-control @error('full_name') is-invalid @enderror">
-                                            @error('full_name')
+                                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="form-control @error('first_name') is-invalid @enderror">
+                                            @error('first_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="form-control @error('last_name') is-invalid @enderror">
+                                            @error('last_name')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ @$message }}</strong>
                                                 </span>

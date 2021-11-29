@@ -301,14 +301,14 @@ class CheckoutController extends Controller
                     }
                 }
             } else {
-                Toastr::error('Please complete payment first');
+                Toastr::error('Te rugam sa finalizezi plata!');
                 return redirect()->back();
             }
             if ($paid_payment->count() > 0) {
                 $paid_payment->delete();
             } 
             DB::commit();
-            Toastr::success('Thank you for purchase');
+            Toastr::success('Multumim pentru achizitia ta!');
             return redirect()->route('customer.payment_complete');
         } catch (\Exception $e) {
             DB::rollback();

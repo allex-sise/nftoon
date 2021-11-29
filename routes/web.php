@@ -199,6 +199,7 @@ Route::group(['prefix' => 'paypal'],function(){
 
       // Start Fund deposit
       Route::get('fund-deposit/{username}', 'FundDepositController@FundDeposit')->name('deposit');
+      Route::get('fund-succes/', 'FundDepositController@FundSucces')->name('fund_succes');
       Route::post('fund-deposit-store', 'FundDepositController@FundDepositStore')->name('depositStore');
       // paypal 
       Route::post('paypal-fund-deposit', 'PaypalController@paypalDepositAdd')->name('paypalDepositAdd');

@@ -36,20 +36,21 @@
 @endpush
 @section('content')
 
-<div class="banner-area4">
-        <div class="banner-area-inner">
+     <!-- section begin -->
+    <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+        <div class="center-y relative text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="banner-info">
-                            <h2>Verificare Adresa de Mail</h2>
-                        </div>
+                    
+                    <div class="col-md-12 text-center">
+                        <h1>Verificare Adresa de Mail</h1>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
+    <!-- section close -->       
     <div class="verify_mail_area">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -57,9 +58,9 @@
                     <div class="verify_text text-center">
                         <h3>Verifica-ti adresa de email</h3>
                         <div class="links_back">
-                        Inainte de a continua, va rugam sa verificati e-mailul pentru un link de verificare. 
+                        Inainte de a continua, te rugam sa verifici e-mailul pentru un link de verificare. 
                         <br />
-                        Daca nu ati primit e-mailul.
+                        Daca nu ai primit e-mailul.
                             <form action="{{ route('verification_resend') }}" method="post" class="mt-20">
                                 @csrf
                                 <button class="boxed-btn" type="submit">Fa Click aici pentru a retrimite email de confirmare</button>

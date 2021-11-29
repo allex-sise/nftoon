@@ -582,6 +582,7 @@ public function bank_payment(Request $request ){
        $diposit->owner_name=$request->owner_name;
        $diposit->account_number=$request->account_number;
        $diposit->amount=$request->amount;
+       $diposit->amountETH=$request->amountEth;
        $diposit->depositor_id=Auth::user()->id;
        $diposit->save();
 
@@ -644,7 +645,7 @@ public function setupPayout(Request $request){
                $other_setup->save();
            }
         }
-        Toastr::success('Payout Setup Done Succsesfully!','Success');
+        Toastr::success('Setarea contului de plata a fost efectuata cu succes!','Succes');
         return redirect()->back();
     } catch (\Exception $e) {
         $msg=str_replace("'", " ", $e->getMessage()) ;

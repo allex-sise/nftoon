@@ -1549,7 +1549,7 @@ class HomeController extends Controller
                     $paid_payment->amount = $input['amount'];
                     $paid_payment->save();
                     DB::commit();
-                    Toastr::success('Thank you for payment!');
+                    Toastr::success('Multumim pentru plata efectuata!');
                     return redirect()->back();
                 }
             } else {

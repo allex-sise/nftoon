@@ -115,10 +115,11 @@ class ProductUploadController extends Controller
             $item->C_buyer = $r->C_buyer;
             $item->E_buyer = 0;
             $item->Reg_total = $r->Reg_total_price;
+            $item->og_price = $r->Re_item;
 
             $item->user_msg = $r->user_msg;
             $item->demo_url = $r->demo_url;
-            $item->active_status = 1;
+            $item->active_status = 0;
             $item->ogowner = $r->user_id;
             $item->status = 1;
             $item->is_upload = $r->upload_or_link;

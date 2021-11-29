@@ -56,7 +56,7 @@ class AuthorPayoutSetupController extends Controller
                    $other_setup->save();
                }
             }
-            Toastr::success('Payout Setup Done Succsesfully!','Success');
+            Toastr::success('Setarea contului de plata a fost efectuata cu succes!','Succes');
             return redirect()->back();
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
