@@ -21,6 +21,8 @@ export default new Vuex.Store({
       itemMetadataUrl: null,
       description: null,
       externalUrl: null,
+      nftImageUrl: null,
+      etherscan: null,
     },
     blockchain: null,
     mintRoute:null,
@@ -185,7 +187,7 @@ export default new Vuex.Store({
           async (from, tokenId, indexedTokenIPFSPath, tokenIPFSPath) => {
             state.token.itemTokenid = tokenId.toNumber();
             state.token.itemMetadataUrl = 'https://dweb.link/ipfs/' + tokenIPFSPath;
-            await dispatch("saveToDB");
+            await dispatch("saveMintToDB");
             window.location.reload();
           }
         );
@@ -211,10 +213,11 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
-    async mintNFT({ dispatch }, ipfsMetadataUrl) {
+    async mintNFT({ state,dispatch }, payload) {
+      state.token.nftImageUrl = 'https://dweb.link/ipfs/' + payload.ipfsImageHash;
       try {
         const connectedContract = await dispatch("getContract");
-        const mintTxn = await connectedContract["mint(string)"](ipfsMetadataUrl);
+        const mintTxn = await connectedContract["mint(string)"](payload.ipfsMetadataUrl);
         await mintTxn.wait();
         return mintTxn;
       } catch (error) {
@@ -271,8 +274,10 @@ export default new Vuex.Store({
         return null;
       }
     },
-    async saveToDB({state}){
+    async saveMintToDB({state}){
         if(state.token !== null){
+            state.token.etherscan = 'https://ropsten.etherscan.io/token/' + state.contractAddress + '?a=' + state.token.itemTokenid
+
             axios.post(state.mintRoute,state.token).then(res => {
             if(res.data.status === 'ok'){
                 toastr.success(res.data.message);
@@ -288,7 +293,6 @@ export default new Vuex.Store({
       commit("setMintRoute", mintRoute);
     },
     async payUser({ state, dispatch, commit }, payload) {
-      commit("setError", "Do NOT CLOSE this page!");
       try {
         const payloadPaymentAuthor={
           route: payload.routePaymentAuthor,

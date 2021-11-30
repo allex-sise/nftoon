@@ -1,12 +1,16 @@
 <template>
     <div id="demo">
         <div v-if="error">{{error}}</div>
+        <div v-if="loading">
+            <blockchain-loader />
+        </div>
+
         <div v-if="!account"><button @click="(connect())" type="button">Connect MetaMask</button></div>
-        <div  v-if="nftStatus === 0 && account">
+        <div  v-if="nftStatus === 0 && account && !loading">
             <button @click="(onMintNft())">MINT NFT</button>
         </div>
-        <div>Contract:{{contractAddress}}</div>
-        <p v-if="loading" :style="{color: '#ff0000'}">LOADING...</p>
+        <div v-if="!loading">Contract:{{contractAddress}}</div>
+        <!-- <p v-if="loading" :style="{color: '#ff0000'}">LOADING...</p> -->
             <div v-if="nftStatus === 2">
                 <div v-if="receiverAddress && account">
                     <p>Receiver address: {{ receiverAddress }} </p>
@@ -37,8 +41,13 @@
 
 <script>
     import axios from 'axios'
+    import BlockchainLoader from './BlockchainLoader.vue';
+
 
     export default {
+        components: {
+            BlockchainLoader,
+        },
         props:{
             description:null,
             externalUrl:null,
@@ -131,16 +140,22 @@
             },
             async uploadAndMint(){
                 this.loading=true;
+                this.windowRef = window.open("", "", "width=300,height=400,left=200,top=200");
+                this.windowRef.document.body.appendChild(this.$el);
+        
                 await this.saveFile();
                 await this.mintNft();
+
                 this.loading=false;
+                this.windowRef.close();
+                window.location.reload();
             },
             async mintNft(){
                 if(!this.nftHasNecessaryData()) {
                     console.log("Missing necessary data")
                     return;
                 }
-                const mintResponse = await this.$store.dispatch("mintNFT", this.file.ipfsMetadataUrl);
+                await this.$store.dispatch("mintNFT", this.file);
             },
             nftHasNecessaryData(){
                 if(this.itemTokenid == null || 
@@ -214,7 +229,7 @@
                 const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
                 
                 let data = new FormData();
-                data.append('file', await this.getFileData(), 'nft_'+this.itemTokenid);
+                data.append('file', await this.getFileData(), 'nft_'+this.itemIdkey);
 
                 let configUploadFile = {
                     maxContentLength:'Infinity',

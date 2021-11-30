@@ -23,6 +23,7 @@ Vue.component('metamask-intro', require('./components/MetamaskIntro.vue').defaul
 Vue.component('withdraw', require('./components/Withdraw/Withdraw.vue').default);
 Vue.component('withdraw-admin', require('./components/Withdraw/WithdrawAdmin.vue').default);
 Vue.component('deposit', require('./components/Deposit.vue').default);
+Vue.component('blockchain-loader', require('./components/BlockchainLoader.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35,6 +36,10 @@ Vue.component('deposit', require('./components/Deposit.vue').default);
 // });
 
 import store from './store'
+import { VueSpinners } from '@saeris/vue-spinners'
+
+Vue.use(VueSpinners)
+
 const app = new Vue({
     el: '#app',
     store

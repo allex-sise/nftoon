@@ -350,8 +350,11 @@ class ProductController extends Controller
     DB::beginTransaction();
     try {
             $item=Item::find($r->itemIdkey);
-            $item->ipfs_url = $r->itemMetadataUrl;
             $item->idnft = $r->itemTokenid;
+            $item->ipfs_url = $r->nftImageUrl;
+            $item->etherscan_url = $r->etherscan;
+            $item->metadata_url = $r->itemMetadataUrl;
+            $item->active_status = 1;
             $item->save();
             Toastr::success('NFT updatat cu succes!','Success');
             DB::commit(); 

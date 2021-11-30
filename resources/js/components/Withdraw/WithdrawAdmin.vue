@@ -1,11 +1,15 @@
 <template>
   <div id="withdraw-admin">
     <div v-if="error">{{error}}</div>
+    <div v-if="!show">
+      <blockchain-loader />
+    </div>
+    <div style="visibility: hidden"><scale-loader/></div>
+
     <div v-if="account && show">
         <label>Transfer din contul: {{account}}</label>
         <p>
             <button @click="(plataOPlomo())" type="button">PLATESTE</button>
-            <button @click="(payUserV2())" type="button">PLATESTE-V2</button>
         </p>
     </div>  
     <div v-if="!account"><button @click="(connect())" type="button">Connect MetaMask</button></div>
@@ -13,21 +17,48 @@
 </template>
 
 <script>
+import { ScaleLoader } from '@saeris/vue-spinners'
+import BlockchainLoader from '../BlockchainLoader.vue';
+
+function copyStyles(sourceDoc, targetDoc) {
+  Array.from(sourceDoc.styleSheets).forEach(styleSheet => {
+    if (styleSheet.cssRules) {
+      // for <style> elements
+      const newStyleEl = sourceDoc.createElement("style");
+
+      Array.from(styleSheet.cssRules).forEach(cssRule => {
+        // write the text of each rule into the body of the style element
+        newStyleEl.appendChild(sourceDoc.createTextNode(cssRule.cssText));
+      });
+
+      targetDoc.head.appendChild(newStyleEl);
+    } else if (styleSheet.href) {
+      // for <link> elements loading CSS from a URL
+      const newLinkEl = sourceDoc.createElement("link");
+
+      newLinkEl.rel = "stylesheet";
+      newLinkEl.href = styleSheet.href;
+      targetDoc.head.appendChild(newLinkEl);
+    }
+  });
+}
+
 export default {
-  // async mounted() {
-  //   await this.$store.dispatch("connect");
-  // },
+  components: {
+    BlockchainLoader,
+    ScaleLoader
+  },
   props:{
-            requestorWalletAddress:null,
-            withdrawAmount:null,
-            withdrawAmountEth: null,
-            routeTransactionHash:null,
-            routeBlockchainStatus:null,
-            routePaymentAuthor: null,
-            withdrawId: null,
-            payoutUserId: null,
-            payoutId: null,
-        },
+    requestorWalletAddress:null,
+    withdrawAmount:null,
+    withdrawAmountEth: null,
+    routeTransactionHash:null,
+    routeBlockchainStatus:null,
+    routePaymentAuthor: null,
+    withdrawId: null,
+    payoutUserId: null,
+    payoutId: null,
+  },
   computed: {
     account() {
       return this.$store.getters.account;
@@ -45,10 +76,9 @@ export default {
     async connect(){
       await this.$store.dispatch("connect");
     },
-    async payUserV2(){
-      await this.$store.dispatch("payUserV2", this.requestorWalletAddress);
-    },
     async plataOPlomo(){
+        this.show = false;
+
         const payload = 
         {
           'requestorWalletAddress': this.requestorWalletAddress, 
@@ -62,16 +92,10 @@ export default {
           'payoutId':this.payoutId,
         };
 
-        this.show = false;
-        this.windowRef = window.open("", "", "width=200,height=200,left=200,top=200");
-        let alerta = document.createElement("P"); 
-        alerta.innerText = "NU inchide aceasta pagina!";
-        let info = document.createElement("P"); 
-        info.innerText = "(pagina se va inchide automat)";
+        this.windowRef = window.open("", "", "width=300,height=400,left=200,top=200");
         this.windowRef.document.body.appendChild(this.$el);
-        this.windowRef.document.body.appendChild(alerta);
-        this.windowRef.document.body.appendChild(info);
-        
+        copyStyles(window.document, this.windowRef.document);
+
         await this.$store.dispatch("payUser", payload);
 
         this.windowRef.close();
