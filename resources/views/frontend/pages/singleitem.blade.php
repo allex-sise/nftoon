@@ -490,7 +490,7 @@ footer{
                            </div>
                         </div>
                      </div>
-                     @endif
+                     @endif 
                      @if (@$data['item']->active_status == 1)
                      <div class="theme-side-bar theme-side-bar13">
                         <div class="single-side-bar">
@@ -565,30 +565,6 @@ footer{
                               </div>
                            </form>
                            
-                           <div class="lisence-wrap" id="isence-wrap">
-                              <a href="javascript:void(0)"  id="regularLi" onclick="regularLicence();">
-                                 <div class="lisence-inner">
-                                    <div
-                                       class="lisence-heading d-flex justify-content-between align-items-center">
-                                       <h5>@lang('lang.Regular') @lang('lang.License')</h5>
-                                       <span id="reguler_price">{{@$infix_general_settings->currency_symbol}}{{ @$data['item']->Re_item}}</span>
-                                    </div>
-                                    <p>@lang('lang.regular_license_description').</p>
-                                 </div>
-                              </a>
-                              <div class="separator-1"></div>
-                              <a href="javascript:void(0)"  id="extendedLi" onclick="extendedLicence();">
-                                 <div class="lisence-inner">
-                                    <div
-                                       class="lisence-heading d-flex justify-content-between align-items-center">
-                                       <h5>@lang('lang.extended') @lang('lang.License')</h5>
-                                       <span id="extended_price">{{@$infix_general_settings->currency_symbol}}{{ @$data['item']->Ex_total}}</span>
-                                    </div>
-                                    <p>@lang('lang.extended_license_description').</p>
-                                 </div>
-                              </a>
-                              <a href="{{url('license')}}">  <button class="boxed-btn d-block w-100 mt-3">@lang('lang.view_license_details')</button></a>
-                           </div>
                         </div>
                      </div>
                    @endif
@@ -708,76 +684,7 @@ footer{
    </div>
    <input type="text" hidden  id="pop_license_type" value="1" name="license_type">
    <input type="text" hidden  id="pop_support_time" value="1" name="support_time">
-   <div class="row d-none">
-      <div class="col-xl-6">
-         <div class="single_select">
-            <h4>@lang('lang.Select_a_License')</h4>
-            <div class="select_box">
-               <select class="wide SelectLicense" id="SelectLicense" >
-                  <option id="reg_val" value="1" data-display="Regular">@lang('lang.Regular')</option>
-                  <option id="Ex_val" value="2">@lang('lang.Extended')</option>
-               </select>
-            </div>
-         </div>
-      </div>
-      <div class="col-xl-6">
-         <div class="single_select">
-            <h4>@lang('lang.select') @lang('lang.Support') @lang('lang.duration')</h4>
-            <div class="select_box">
-               <select class="wide Selectsupport" id="Selectsupport" >
-                  <option value="1" id="six" data-display="6 months support">6 @lang('lang.months') @lang('lang.support')</option>
-                  <option value="2" id="twelve">12 @lang('lang.months') @lang('lang.support')</option>
-               </select>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="main_content">
-      <div class="row gray-bg-2 no-gutters">
-         <div class="col-xl-6 col-md-6">
-            <div class="content_left">
-               <a  class="profile_mini_thumb">
-               <img src="{{ @$data['item']->thumbnail? asset(@$data['item']->thumbnail):'' }}" alt="">
-               </a>
-               <div class="content_title">
-                  <p>{{@$data['item']->title}}
-                     <br>
-                     <span class="user_author">by {{@$data['item']->user->username}}</span>
-                     <input type="number" id="totalCartItem" value="0" hidden>
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="col-xl-6 col-md-6">
-            <div class="content_left">
-               <h3> {{@$infix_general_settings->currency_symbol}}<span class="_mod_total">{{@$data['item']->Re_item}}</span> </h3>
-               <div class="content_title">
-                  <p class="support_text">
-                     <span>@lang('lang.License') :</span>
-                     <a href="#" id="support_text">@lang('lang.Regular')</a>
-                  </p>
-                  <p class="support_text">
-                     <span>@lang('lang.Support') :</span> 
-                     <small id="support_tym">6 @lang('lang.months') @lang('lang.support')</small>
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-xl-12">
-            <div class="currency_text">
-               <p>@lang('lang.All_prices_are')</p>
-            </div>
-         </div>
-         <div class="col-xl-12">
-            <div class="cancel_add_btn d-flex justify-content-between">
-               <a class="boxed-btn-white mfp-close"  type="button" >@lang('lang.cancel')</a>
-               <button id="AddCart" class="boxed-btn" type="submit">@lang('lang.Add_To_Cart')</button>
-            </div>
-         </div>
-      </div>
-   </div>
+   
 </form>
 @endsection
 @push('js')

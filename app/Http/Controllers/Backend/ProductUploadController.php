@@ -97,7 +97,7 @@ class ProductUploadController extends Controller
             $item->description = $r->description;    
             $item->category_id = $r->category_id;
             $item->file = $r->videoimage;
-            $item->nftunic = $r->nftunic;
+            $item->nftmultiplu = $r->nftmultiplu;
             // $item->idnft = rand(0, 999999999);
             if($r->data_exp_unic){
                 $item->data_exp_unic = Carbon::createFromFormat('d/m/Y H:i', $r->data_exp_unic.$r->ora_exp_unic)->format('Y-m-d H:i');

@@ -29,6 +29,9 @@
 select{
     width: 1px!important;
 }
+.error{
+    display: block!important;
+}
 </style>
 @section('content')
 <!-- banner-area start -->

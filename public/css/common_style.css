@@ -171,7 +171,13 @@
 
 .toast-success{
     display: block;
-    background-color: #7436bb !important;
+    background: none!important;
+    background-color: #5cbb36 !important;
+}
+.toast-error{
+    display: block;
+    background-color: #bb3636 !important;
+    
 }
  .popover-content.note-children-container {
     display: none;

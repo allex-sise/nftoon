@@ -328,6 +328,7 @@ class ProductController extends Controller
             $item_preview=ItemPreview::where('item_id',$id)->where('status',1)->first();
             // return $item_preview;
             $data['edit']=Item::find($id);
+            $data['user'] = User::where('role_id', 4)->get();
             $data['attributes']= $data['edit']->attribute;
             $data['category'] = ItemCategory::where('up_permission',1)->get();
             $data['subCategory'] = ItemSubCategory::where('active_status',1)->get();
@@ -337,7 +338,7 @@ class ProductController extends Controller
             $attribute = Attribute::all();
 
 
-            return view('frontend.vendor.editContent', compact('data','category','item_preview'));
+            return view('backend.product.productEdit', compact('data','category','item_preview'));
             } catch (\Exception $e) {
                 $msg=str_replace("'", " ", $e->getMessage()) ;
                 Toastr::error($msg, 'Failed');
@@ -383,89 +384,111 @@ public function itemUpdate(Request $r){
     }
     // End Dynamic attribute validation
 
-    $r->validate([
-        'title' => 'required|string|max:200',
-        'feature1' => 'required|string|max:100',
-        'feature2' => 'required|string|max:100',
-        'description' => 'required|string',
-        'thumdnail'=>'sometimes|nullable|required|dimensions:max_width=80,max_height=80',
-        'main_file' => 'sometimes|nullable|required|',
-        'file' => 'sometimes|nullable|required|',
-        'category_id' => 'required|',
-        'demo_url' => 'required|url',
-        'Re_item' => 'required|',
-        'Re_buyer' => 'required|',
-        'Reg_total_price' => 'required|',
-        'tags' => 'required|string',
-    ]);
-
 
     DB::beginTransaction();
     try {
 
-        $item_data=Item::find($r->id);
+        $item =Item::find($r->id);
+            $item->user_id = $r->user_id;
+            $item->title = $r->title;
+            $item->feature1 = $r->feature1;
+            $item->feature2 = $r->feature2;
+            $item->description = $r->description;    
+            $item->category_id = $r->category_id;
+            $item->file = $r->videoimage;
+            $item->nftmultiplu = $r->nftmultiplu;
+            // $item->idnft = rand(0, 999999999);
+            if($r->data_exp_unic){
+                $item->data_exp_unic = Carbon::createFromFormat('d/m/Y H:i', $r->data_exp_unic.$r->ora_exp_unic)->format('Y-m-d H:i');
+            }
+          
+            $item->tags = $r->tags;
+            
+
+            
+
+
+            $item->Re_item = $r->Re_item;
+            $item->Re_buyer = $r->Re_buyer;
+            $item->C_item = $r->C_item;
+            $item->C_buyer = $r->C_buyer;
+            $item->E_buyer = 0;
+            $item->Reg_total = $r->Reg_total_price;
+            $item->og_price = $r->Re_item;
+
+            $item->user_msg = $r->user_msg;
+            $item->demo_url = $r->demo_url;
+            $item->active_status = 0;
+            $item->ogowner = $r->user_id;
+            $item->status = 1;
+            $item->is_upload = $r->upload_or_link;
+            if ($r->upload_or_link==0) {
+                $item->purchase_link = $r->purchase_link;
+                
+            }
     
-        // $item =new ItemPreview();
-        $item=Item::find($r->id);
-        // $item->item_id = $r->id;
-        $item->title = $r->title;
-        $item->feature1 = $r->feature1;
-        $item->feature2 = $r->feature2;
-        $item->description = $r->description;    
-        $item->category_id = $r->category_id;
-       
-        $item->tags = $r->tags;
-       
-        $item->Re_item = $r->Re_item;
-        $item->Re_buyer = $r->Re_buyer;
-        $item->Reg_total = $r->Reg_total_price;
-      
-        $item->demo_url = $r->demo_url;
-        $item->active_status = 1;
-        //  return $r;
-     
-    $thumbnail =$item_data->icon;
-    if ($r->file('thumdnail') != "") {
-        $file = $r->file('thumdnail');
-        $thumbnail = 'thum-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-        $file->move('public/uploads/SessionFile/', $thumbnail);
-        $thumbnail =  'public/uploads/SessionFile/' . $thumbnail;
-    }
-    $item->icon=$thumbnail;
-    $item->save();
+        
+         
+         
+            //end laravel file validation 
 
-    $main_file1=$item_data->main_file;
-    if ($r->file('main_file') != "") {
-        $file = $r->file('main_file');
-        $main_file1 = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-        $file->move('public/uploads/product/main_file/zip/', $main_file1);
-        $main_file1 =  'public/uploads/product/main_file/zip/' . $main_file1;
-    }
+                
+            $thumbnail = "";
+            if ($r->file('thumdnail') != "") {
+                $file = $r->file('thumdnail');
+                $thumbnail = 'thum-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('public/uploads/product/thumbnail/', $thumbnail);
+                $thumbnail =  'public/uploads/product/thumbnail/' . $thumbnail;
 
-    $item->file = $main_file1;
-    $item->save();
-    $main_file2=$item_data->main_file;
-    if ($r->file('file') != "") {
-        $file = $r->file('file');
-        $main_file2 = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-        $file->move('public/uploads/product/main_file/zip/', $main_file2);
-        $main_file2 =  'public/uploads/product/main_file/zip/' . $main_file2;
-    }
-    $item->file = $main_file2;
-    $item->status = 1;
-    $item->save();
-    if ($r->theme_preview) {
-        if ($image_list) {
-            $item->thumbnail = $image_list[0];
-            $img = new ItemImage();
-            $img->item_id = $item->id;
-            $img->type='theme_preview';
-            $img->image = implode(",",$image_list);    
-            $img->save();    
-        }
-    }
-    $item->save();
+                $item->icon=$thumbnail;
+                $item->save();
+            }
 
+            if (GeneralSetting()->is_s3_host==0) {
+                    $main_file1='';
+                    if ($r->file('main_file') != "") {
+                        $file = $r->file('main_file');
+                        $main_file1 = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                        $file->move('public/uploads/product/main_file/zip/', $main_file1);
+                        $main_file1 =  'public/uploads/product/main_file/zip/' . $main_file1;
+        
+                        $item->main_file = $main_file1;
+                        $item->save();
+                    }
+            } else {
+                if (moduleStatusCheck("AmazonS3")) {
+                    $filePath = '/';
+                    if ($r->file('main_file') != "") {
+                    $path = $r->file('main_file')->store($filePath, 's3');
+                    $link = Storage::disk('s3')->url($path);
+                    $item->main_file = $link;
+                    $item->save();
+                    }
+                }
+            }
+            
+          
+    
+            if (@$image_list) {
+                $item->thumbnail = $image_list[0];
+                $img = new ItemImage();
+                $img->item_id = $item->id;
+                $img->type='theme_preview';
+                $img->image = implode(",",$image_list);    
+                $img->save();    
+            }
+            $item->save();
+
+            if(@$r->optional_att){
+                $attributes=@$r->optional_att;
+                foreach($attributes as $field_name=>$attribute){
+                    $ItemAttribute =new ItemAttribute();
+                    $ItemAttribute->item_id = $item->id;
+                    $ItemAttribute->field_name = $field_name;
+                    $ItemAttribute->values =  json_encode($attribute);
+                    $ItemAttribute->save();
+                }
+            }
 
         Toastr::success('NFT updatat cu succes!','Success');
 
@@ -476,24 +499,6 @@ public function itemUpdate(Request $r){
                 }
                 $value->delete();
             }
-            
-
-
-            
-        
-
-        if(@$r->optional_att){ 
-            $s = ItemAttribute::where('item_id',$item_data->id )->delete();
-            $attributes=@$r->optional_att;
-            foreach($attributes as $field_name=>$attribute){
-                $ItemAttribute =new ItemAttribute();
-                $ItemAttribute->item_id = $item_data->id;
-                $ItemAttribute->field_name = $field_name;
-                $ItemAttribute->values =  json_encode($attribute);
-                $ItemAttribute->save();
-            }
-        }
-
         
              DB::commit(); 
             return redirect()->back();

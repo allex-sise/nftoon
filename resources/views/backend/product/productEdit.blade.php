@@ -31,94 +31,16 @@
         </div>
         
             <div class="row">
-                <div class="col-lg-3 mb-30">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="main-title">
-                                <h3 class="mb-30">
-
-                                    Alege Creator
-                                </h3>
-                            </div>
-                                <form action="{{route('admin.selectCategory')}}" method="POST"
-                                      class="form-horizontal" enctype="multipart/form-data">
-                                 
-                                            @csrf
-
-                                            <div class="white-box">
-                                                <div class="add-visitor">
-                                                 
-                                                    <div class="row mb-25">
-                                                        <div class="col-lg-12">
-                                                            <div class="input-effect">
-                                                                <select class="niceSelect w-100 bb form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}"
-                                                                        name="user_id">
-                                                                    <option data-display="Creator *"
-                                                                            value="">Creator *
-                                                                    </option>
-                                                                    @foreach($data['user'] as $item)
-                                                                        <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('user') ==( @$item->id ? 'selected':'')}}>{{@$item->full_name}} - {{@$item->username}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <span class="focus-border"></span>
-                                                                @if ($errors->has('user_id'))
-                                                                    <span class="invalid-feedback invalid-select"
-                                                                          role="alert">
-                                                                        <strong>{{ $errors->first('user_id') }}</strong>
-                                                                    </span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mt-40">
-                                                        <div class="col-lg-12 text-center">
-                                                            <button class="primary-btn fix-gr-bg">
-                                                                <span class="ti-check"></span>
-                                                                @if(isset($data['edit']))
-                                                                    @lang('lang.update')
-                                                                @else
-                                                                    @lang('lang.save')
-                                                                @endif
-
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                        </div>
-                    </div>
-                </div>
-                @if (@Session::get('categorySlect')->id)
-                    
                 
-                <div class="col-lg-9 ">
+               
+                <div class="col-lg-12">
                     <div class="white-box">
                         <div class="add-visitor">
-                            <form action="{{url('admin/product-upload')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('admin.itemUpdate')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" value="{{@Session::get('categorySlect')->id}}" name="user_id">
                                 <input type="hidden" value="1" name="upload_or_link">
-                                <!-- <div class="row mt-20">
-                                    <div class="col-lg-12 mb-30">
-                                        <div class="input-effect">
-                                            <select class="niceSelect w-100 bb form-control{{ $errors->has('upload_or_link') ? ' is-invalid' : '' }}"
-                                                    name="upload_or_link" onchange="checkIsLink(this)">
-                                                <option value="" >@lang('lang.select')</option>
-                                                <option value="1"  selected>@lang('lang.upload')</option>
-                                                <option value="0" >@lang('lang.link')</option>
-                                            </select>
-                                            <span class="focus-border"></span>
-                                            @if ($errors->has('upload_or_link'))
-                                                <span class="invalid-feedback invalid-select"
-                                                    role="alert">
-                                                    <strong>{{ $errors->first('upload_or_link') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div> -->
+                              
                             <div class="row">
                                 <div class="col-lg-12 ">
                                     <div class="input-effect">
@@ -173,7 +95,7 @@
                                 <div class="col-md-12">
                                     <div class="input-effect mb-20">
                                         <label>@lang('lang.description') <span>*</span> </label>
-                                        <textarea class="primary-input form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" cols="0" rows="4" name="description" id="details">{{ old('description') }}</textarea>
+                                        <textarea class="primary-input form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" cols="0" rows="4" name="description" id="details">{{isset($data['edit'])? $data['edit']->description :old('description')}}</textarea>
                                     
                                         <span class="focus-border textarea"></span> 
                                         @if ($errors->has('description'))
@@ -193,7 +115,7 @@
                                                     value="">@lang('lang.category') *
                                             </option>
                                             @foreach($data['category'] as $item)
-                                                <option value={{@$item->id}}>{{@$item->title}}</option>
+                                                <option value={{@$item->id}} {{ @$item->id == $data['edit']->category->id ?'selected':old('category') ==( @$item->id ? 'selected':'')}}>{{@$item->title}}</option>
                                             @endforeach
                                         </select>
                                         <span class="focus-border"></span>
@@ -210,13 +132,13 @@
                                 <div class="col-lg-12">
                                 
                                     <div class="form-check col-md-1 float-left">
-                                        <input class="form-check-input image_question" type="radio" value="img" name="videoimage" id="flexRadioDefault1">
+                                        <input class="form-check-input image_question" type="radio" value="img" name="videoimage" id="flexRadioDefault1" {{( $data['edit']->file == 'img' ? 'checked' : '')}}>
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 Imagine
                                             </label>
                                     </div>
                                     <div class="form-check col-md-1 float-left">
-                                        <input class="form-check-input video_question" type="radio" value="video" name="videoimage" id="flexRadioDefault2">
+                                        <input class="form-check-input video_question" type="radio" value="video" name="videoimage" id="flexRadioDefault2" {{( $data['edit']->file == 'video' ? 'checked' : '')}}>
                                             <label class="form-check-label" for="flexRadioDefault2">
                                                 Video
                                             </label>
@@ -227,6 +149,10 @@
                             <div class="row mt-25 imagine">
                                 <div class="col-lg-12">
                                     <div class="row no-gutters input-right-icon">
+                                        <div class="col-md-12">
+                                            <img style="width: 200px;" src="{{ file_exists(@$data['edit']->icon) ? asset(@$data['edit']->icon) : asset('public/uploads/product/thumbnail/thumbnail-demo.png') }}"/>
+
+                                        </div>
                                         <div class="col">
                                             <div class="input-effect">
                                                 <input class="primary-input {{ $errors->has('thumdnail') ? ' is-invalid' : '' }}" type="text"
@@ -265,6 +191,15 @@
                             
                                 <div class="col-lg-12">
                                     <div class="row no-gutters input-right-icon">
+                                    <div class="col-md-12">
+                                            @if (@$data['edit']->main_file)
+                                            <video width="200px;" autoplay muted controls loop>
+                                                <source src="{{ file_exists(@$data['edit']->main_file) ? asset(@$data['edit']->main_file) : asset('public/uploads/product/thumbnail/thumbnail-demo.png') }}" type="video/mp4">
+                                                
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            @endif
+                                        </div>
                                         <div class="col">
                                             <div class="input-effect">
                                                 <input class="primary-input {{ $errors->has('main_file') ? ' is-invalid' : '' }}" type="text"
@@ -296,13 +231,13 @@
                                 <div class="col-lg-12">
                                 
                                     <div class="form-check col-md-1 float-left">
-                                        <input class="form-check-input nftunic_question" type="radio" value="0" name="nftmultiplu" id="nftunic1">
+                                        <input class="form-check-input nftunic_question" type="radio" value="0" name="nftunic" id="nftunic1" {{( @$item->nftmultiplu == 0 ? 'checked' : '')}}>
                                             <label class="form-check-label" for="nftunic1">
                                                 NFT Unic
                                             </label>
                                     </div>
                                     <div class="form-check col-md-1 float-left">
-                                        <input class="form-check-input nftunic_question2" type="radio" value="1" name="nftmultiplu" id="nftunic2">
+                                        <input class="form-check-input nftunic_question2" type="radio" value="1" name="nftunic" id="nftunic2" {{( @$item->nftmultiplu == 1 ? 'checked' : '')}}>
                                             <label class="form-check-label" for="nftunic2">
                                                 NFT Multiplu
                                             </label>
@@ -314,7 +249,10 @@
                             <div class="row mt-25 data_exp_unic" id="data_exp_unic" style="display:block" >
                             <div class="col-lg-3">
                                     <div class="input-effect">
-                                        <input type="text" class="primary-input" id="date" name="data_exp_unic" >
+                                        @php
+                                                $dataexpiraremultiplu = $data['edit']->data_exp_unic;
+                                        @endphp
+                                        <input type="text" class="primary-input" id="date" name="data_exp_unic">
                                         <label>Data expirare vanzare multipla <span>*</span></label>
                                         <span class="focus-border"></span>
                                         @if ($errors->has('data_exp_unic'))
@@ -326,7 +264,7 @@
                                 </div>
                             <div class="col-lg-9 float-left">
                                 <div class="input-effect">
-                                    <input type="text" class="primary-input" id="time" name="ora_exp_unic" >
+                                    <input type="text" class="primary-input" id="time" name="ora_exp_unic">
                                     <label>Ora expirare vanzare multipla <span>*</span></label>
                                     <span class="focus-border"></span>
                                     @if ($errors->has('data_exp_unic'))
@@ -392,27 +330,7 @@
                                         -ms-overflow-style: none;
                                     }
                                 </style>
-                    @foreach ($attribute as $key => $item) 
-                        <div class="col-lg-12 mt-30" id="">
-                            <label for="checkbox" class="mb-2">{{@$item->name}} *</label>
-                            
-                            <select multiple id="selectField{{@$item->id}}" name="optional_att[{{@$item->field_name}}][]" onclick="attributeSelect({{@$item->id}})"  class="select_Staff_width text-white multiple_attribute_select">
-                                @foreach ($item->subAttribute as $value)
-                                    @if (@Session::get('categorySlect')->id == $value->category_id)                                                                
-                                        <option  data-display="{{@$value->name}}"  value="{{@$value->id}}">{{@$value->name}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                           
-                            @if ($errors->has('staff_id'))
-                                <span class="invalid-feedback invalid-select" role="alert">
-                                    <strong>{{ $errors->first('staff_id') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        
-                    @endforeach
+                   
                     <div class="row mt-20">
                         <div class="col-lg-12 mb-30">
                             <div class="input-effect">
@@ -483,28 +401,28 @@
                             <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
                             <div class="input_field">
                                 <label for="">PRET VANZARE NFT</label>
-                                <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('Re_item')}}">
+                                <input type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}}">
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Agent</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionagent')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->comisionagent:old('comisionagent')}}">
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Agentie</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comisionminted')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->comisionminted:old('comisionminted')}}">
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Website</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->tags:old('comision25')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->comision25:old('comision25')}}">
                             </div>
                             <span class="dm_middle_span">=</span>
                             <div class="input_field last-one">
                                 <label for="">INCASARE CREATOR</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->tags:old('Reg_total')}}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->tags:old('Reg_total')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50"  name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50"  disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}">
                             </div>
                             <!-- <div class="recomander">
                                 <p>@lang('lang.recommended') <br>
@@ -539,7 +457,7 @@
 
                 </div>
                 </div>
-                @endif
+               
                 </div>
             </div>
         </div>

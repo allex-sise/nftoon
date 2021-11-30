@@ -62,6 +62,9 @@
     background: none!important;
 }
 </style>
+@php                                                        
+    $itemLastPrice = App\ItemOrder::where('user_id', @$data['edit']->user_id)->where('item_id', @$data['edit']->id)->orderBy('id', 'DESC')->first();
+@endphp
 <input type="text" hidden  class="id" value="{{ Auth::user()->id}}">
        <!-- content begin -->
        
@@ -155,7 +158,7 @@
                                     <p class="p-info">Categoria in care apare NFT-ul pe Minted.ro</p>
 
                                     <div id="item_collection" class="dropdown fullwidth mb20" style="background-size: cover;">
-                                        <select class="wide btn-selector"  name="sub_category_id" id="sub_category_id">
+                                        <select class="wide btn-selector"  name="sub_category_id" id="sub_category_id" style="width: 200px;">
 
                                             @foreach($data['category'] as $item)
                                                 <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('category') ==( @$item->id ? 'selected':'')}}>{{@$item->title}}</option>
@@ -210,27 +213,30 @@
                                                     @endphp 
                                                     
                                                     <div class="table-responsive">
-                                                    <p>NFT-ul a fost achizitionat cu:  {{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}} lei</p>
+                                                   
+                                                        
+                                                       
+                                                    <p>NFT-ul a fost achizitionat cu:  {{ $itemLastPrice->subtotal }} lei</p>
                                                                     
                                                         <div class="upload_inner d-flex align-items-center mb-10 mt-20">
                                                         
                                                                 <!-- <span class="lisence-name ">@lang('lang.regular_license')</span> -->
-                                                                <span class="dm_middle_span">{{GeneralSetting()->currency_symbol}}</span>
+                                                                <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px;">{{GeneralSetting()->currency_symbol}}</span>
                                                                 <div class="input_field">
                                                                     <label for="">@lang('lang.ITEM_PRISE')</label>
                                                                     <input type="text" class="primary-input form-control decimal" style="width: 150px;" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}}">
                                                                 </div>
-                                                                <span class="dm_middle_span">-</span>
+                                                                <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">-</span>
                                                                 <div class="input_field">
                                                                     <label for="">Comision Artist</label>
                                                                     <input  type="text" class="primary-input form-control decimal" step="any"  style="width: 150px;"  id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->C_buyer:old('C_buyer')}}">
                                                                 </div>
-                                                                <span class="dm_middle_span">-</span>
+                                                                <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">-</span>
                                                                 <div class="input_field">
                                                                     <label for="">Comision Minted</label>
                                                                     <input  type="text" class="primary-input form-control decimal" step="any"  style="width: 150px;"  id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
                                                                 </div>
-                                                                <span class="dm_middle_span">=</span>
+                                                                <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">=</span>
                                                                 <div class="input_field last-one">
                                                                     <label for="">PRET VANZARE</label>
                                                                     <input  type="text" class="primary-input form-control "   style="width: 150px;" name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
@@ -267,7 +273,7 @@
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-xs-12" style="background-size: cover;">
-                                <h5>Preview item</h5>
+                                <h5>Previzualizare NFT</h5>
                                 <div class="nft__item" style="background-size: cover;">
                                     
                                     <div class="nft__item_wrap" style="background-size: cover; height: 264px;">
@@ -294,7 +300,7 @@
                                         <span></span>
                                     </div>
                                         <div class="nft__item_price" style="background-size: cover;">
-                                            {{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}} LEI<span>/ Pret Curent</span>
+                                            {{ $itemLastPrice->subtotal }} LEI<span>/ Pret Cumparare</span>
                                         </div>                           
                                     </div> 
                                 </div>

@@ -47,10 +47,11 @@
                                 </div>
                                 @php
                                     $item =App\ManageQuery::CountItemSell($data['user']->id); 
+                                    $itemHistory = App\ItemOrder::where('author_id', $data['user']->id)->count();
                                 @endphp
                                 <div class="profile_follow de-flex">
                                     <div class="de-flex-col">
-                                        <div class="profile_follower">@lang('lang.total') @lang('lang.sales') {{ @$item}}</div>
+                                        <div class="profile_follower">@lang('lang.total') @lang('lang.sales') {{ @$itemHistory}}</div>
                                            
                                     </div>
                                 </div>

@@ -662,7 +662,12 @@ public function withdrawAmount(Request $r){
     $user  = User::find(Auth::user()->id);
     $user_id = Auth::user()->id;
     $balnc = $user->balance;
+    
     try {
+        if ($r->withdraw_amount > $balnc->amount) {
+            Toastr::error('Nu poti retrage mai mult decat ai in cont','Eroare');
+            return redirect()->back();
+        }
         $withdraw = new Withdraw();
         $withdraw->user_id = $user_id;
         $withdraw->paid_vendors_id = NULL;

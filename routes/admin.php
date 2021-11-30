@@ -13,7 +13,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
 
     Route::group(['middleware' => ['auth', 'verified', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
-        Route::post('product-update', 'Frontend\Vendor\ItemController@itemUpdate')->name('itemUpdate');
+        
 
     });
 
@@ -157,7 +157,8 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::get('product/{title}/{id}', 'ProductController@product_viewSingle')->name('product_viewSingle');
         Route::get('product-pending', 'ProductController@content_pending')->name('content_pending')->middleware('userRolePermission:7');
         Route::post('product/feedback/{id}', 'ProductController@item_feedback')->name('item_feedback')->middleware('userRolePermission:7');
-        Route::get('product-edit/{id}', 'ProductController@contentEdit')->name('contentEdit')->middleware('userRolePermission:5');
+        Route::get('product-edit/{id}', 'ProductController@contentEdit')->name('productEdit')->middleware('userRolePermission:5');
+        Route::post('product-edit', 'ProductController@itemUpdate')->name('itemUpdate');
         Route::get('product-approve/{id}', 'ProductController@itemApprove')->name('itemApprove')->middleware('userRolePermission:5');
         Route::post('product-update-mint', 'ProductController@itemUpdateMint')->name('itemUpdateMint')->middleware('userRolePermission:5');
         

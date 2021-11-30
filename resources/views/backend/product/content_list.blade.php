@@ -79,7 +79,7 @@
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="{{ route('admin.showNFT',@$item->id)}}">BLOCKCHAIN</a>
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.product_viewSingle',[str_replace(' ', '-',@$item->title),@$item->id])}}">@lang('lang.view')</a>
-                                                <a class="dropdown-item" target="_blank" href="{{ route('admin.contentEdit',@$item->id)}}">@lang('lang.edit')</a> 
+                                                <a class="dropdown-item" href="{{ route('admin.productEdit',@$item->id)}}">@lang('lang.edit')</a> 
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.ProductDuplicate',@$item->id) }}">Duplicate</a> 
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#deleteClassModal{{@$item->id}}"  href="">@lang('lang.delete')</a>                                                 
                                                 @if ($item->active_status == 1)
