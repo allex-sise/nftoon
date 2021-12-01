@@ -80,14 +80,8 @@ export default {
         };
       
       this.loading=true;
-      this.windowRef = window.open("", "", "width=300,height=400,left=200,top=200");
-      this.windowRef.document.body.appendChild(this.$el);
-
       await this.$store.dispatch("userDepositFunds", payload);
-
       this.loading=false;
-      this.windowRef.close();
-
       window.location.href = this.routeRedirect;
     }
   }
