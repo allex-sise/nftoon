@@ -10,11 +10,11 @@
 </template>
 
 <script>
-// import { ScaleLoader } from '@saeris/vue-spinners'
+import { ScaleLoader } from '@saeris/vue-spinners'
 
 export default {
-  // components:{
-  //   ScaleLoader,
-  // },
+  components:{
+    ScaleLoader,
+  },
 }
 </script>
