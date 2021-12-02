@@ -548,9 +548,13 @@ class ItemController extends Controller
         // $item->demo_url = $r->demo_url;
         $item->active_status = 1;
         $item->status = 1;
-       
+        if($r->Re_item <= 0){
+            Toastr::error('Nu poti pune la vanzare un NFT cu pretul 0','Eroare');
+            return redirect()->back();
+        }
+   
         $item->save();
-       
+    
         Toastr::success($success_message,'Success');
     
         $data =SessionFile::where('user_id',Auth::user()->id)->get();
@@ -564,7 +568,7 @@ class ItemController extends Controller
             
     
             DB::commit(); 
-            return redirect()->back();
+            return redirect()->route('author.download', Auth::user()->username);
             } catch (\Exception $e) {
                 // dd($e);
                 $msg=str_replace("'", " ", $e->getMessage()) ;

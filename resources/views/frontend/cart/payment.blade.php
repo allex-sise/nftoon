@@ -97,7 +97,7 @@ $carttotalstrip = floatval($b);
                                                                 <h5>@lang('lang.my') @lang('lang.account')</h2>
                                                                 <p class="mb-0">@lang('lang.my') @lang('lang.balance') : <b>{{@$infix_general_settings->currency_symbol}}{{ @Auth::user()->balance->amount}}</b></p>
                                                                  <small>@lang('lang.your') @lang('lang.item') @lang('lang.price') : {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }}</small><br>
-                                                                 @if ( @Auth::user()->balance->amount > $carttotalstrip )  
+                                                                 @if ( @Auth::user()->balance->amount >= $carttotalstrip )  
                                                                      <small> <font color="green">@lang('lang.you_can_buy_now') </font> <font color="black"><i class="ti-face-smile"></i></font></small>
                                                                      <div class="main_balance mt-5">
                                                                             <form action="{{ route('user.payment_main_balance') }}" method="POST">
@@ -151,7 +151,7 @@ $carttotalstrip = floatval($b);
                                                         </div>
                                                         
                                                     </div>
-                                                    <div  class="modal fade " id="MakePaymentFromCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade " id="MakePaymentFromCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -171,7 +171,7 @@ $carttotalstrip = floatval($b);
                                                                                 <input type="text"  name="amount" class="bank_deposit_input"  placeholder="Name of account owner" value="{{ $carttotalstrip }}" readonly>
                                                                             </div> 
                                                                         </div>
-                                                                        @if ( @Auth::user()->balance->amount > $carttotalstrip) 
+                                                                        @if ( @Auth::user()->balance->amount >= $carttotalstrip) 
                                                                         <div class="row">
                                                                             <div class="col-lg-12">                                                                                
                                                                                 {{-- <div class="checkit">
@@ -189,7 +189,7 @@ $carttotalstrip = floatval($b);
                                                                     <div class="modal-footer d-flex justify-content-between">
                                                                         <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button>
                                                                         
-                                                                        @if ( @Auth::user()->balance->amount > $carttotalstrip) 
+                                                                        @if ( @Auth::user()->balance->amount >= $carttotalstrip) 
                                                                             <button  class="button boxed-btn btnspecial"   type="submit">
                                                                                 @lang('lang.pay') 
                                                                             </button>

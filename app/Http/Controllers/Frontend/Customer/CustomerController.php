@@ -65,8 +65,8 @@ class CustomerController extends Controller
         try {
          
             $data['user'] = User::where('username', $username)->first();
-            @$data['affiliate'] = route('customer.referrals', $data['user']->username);
-        
+            @$data['referrals'] = route('customer.referrals', $data['user']->username);
+            $data['affiliate'] = $data['user']->referrals()->paginate(8);
             return $this->vendor($data);
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;

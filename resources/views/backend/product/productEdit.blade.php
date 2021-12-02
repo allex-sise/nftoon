@@ -340,8 +340,10 @@
                                             value="">Creator *
                                     </option>
                                     @foreach($data['user'] as $item)
-                                        <option value={{@$item->id}} {{ @$item->id == @Session::get('categorySlect')->id ?'selected':old('user') ==( @$item->id ? 'selected':'')}}>{{@$item->full_name}} - {{@$item->username}}</option>
-                                    @endforeach
+                                     
+                                        <option value={{@$item->id}} {{ @$item->id == $data['edit']->user->id ?'selected':old('user') ==( @$item->id ? 'selected':'')}}>{{@$item->full_name}} - {{@$item->username}}</option>
+
+                                        @endforeach
                                 </select>
                                 <span class="focus-border"></span>
                             </div>
@@ -378,15 +380,7 @@
                             </div>
                         </div>
                     </div>
-                    @php
-                    $category_details=App\ManageQuery::SelectedCategoryDetails(Session::get('categorySlect')->id);
-                    // DB::table('item_categories')->where('id',Session::get('categorySlect')->id)->first();
-                 //   $regular_recommended_price[]=explode("-",$category_details->recommended_price);
-
-                    $item_fee=App\ManageQuery::FreeItemOfCategory(Session::get('categorySlect')->id);
-                    // DB::table('item_fees')->where('category_id',Session::get('categorySlect')->id)->first();
                 
-            @endphp 
             <style>
                 span.dm_middle_span {
                     margin-top: 38px;
@@ -406,17 +400,17 @@
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Agent</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->comisionagent:old('comisionagent')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionagent" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->C_buyer:old('C_buyer')}}">
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Agentie</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->comisionminted:old('comisionminted')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comisionminted" name="C_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->C_item:old('C_item')}}">
                             </div>
                             <span class="dm_middle_span">-</span>
                             <div class="input_field">
                                 <label for="">Comision Website</label>
-                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->comision25:old('comision25')}}">
+                                <input  type="numeric" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="primary-input form-control w-50 decimal" step="any"   id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
                             </div>
                             <span class="dm_middle_span">=</span>
                             <div class="input_field last-one">
@@ -465,26 +459,24 @@
 </section>
 @endsection
 @section('script')
+
 <script>
-$(".imagine").hide();
-$(".video").hide();
+if($(".image_question").is(":checked")) {
+    $(".imagine").show();
+    $(".video").hide();
+} 
+else {
+    $(".imagine").hide();
+    $(".video").show();
+}; 
+
 $(".image_question").click(function() {
-    if($(this).is(":checked")) {
-        $(".imagine").show();
-        $(".video").hide();
-    } else {
-        $(".imagine").hide();
-        $(".video").show();
-    }
+    $(".imagine").show();
+    $(".video").hide();
 });
 $(".video_question").click(function() {
-    if($(this).is(":checked")) {
-        $(".video").show();
-        $(".imagine").hide();
-    } else {
-        $(".video").hide();
-        $(".imagine").show();
-    }
+    $(".imagine").hide();
+    $(".video").show();
 });
 </script>
 <script>

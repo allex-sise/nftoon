@@ -4,10 +4,10 @@
 <section class="sms-breadcrumb mb-40 white-box">
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <h1>NFT-uri la Vanzare</h1>
+            <h1>NFT-uri Ne Minted</h1>
             <div class="bc-pages">
                 <a href="{{url('admin/dashboard')}}">@lang('lang.dashboard')</a>
-                <a href="#" class="active">@lang('lang.list') NFT-uri la Vanzare</a>
+                <a href="#" class="active">@lang('lang.list') NFT-uri care nu sunt minted</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-4 no-gutters">
                         <div class="main-title sm_mb_20 lm_mb_35">
-                            <h3 class="mb-0"> @lang('lang.list') NFT-uri la Vanzare</h3>
+                            <h3 class="mb-0"> @lang('lang.list') NFT-uri Ne Minted</h3>
                         </div>
                     </div>
                 </div>
@@ -44,6 +44,7 @@
                                     <th>@lang('lang.author')</th>
                                     <th>Detinator</th>
                                     <th>Vanzari</th>
+                                    <th>Status Mint</th>
                                     <th>@lang('lang.status')</th>
                                     <th>@lang('lang.action')</th>
                                 </tr>
@@ -64,12 +65,20 @@
                                     
                                     <td>{{ @$item->sell }}</td>
                                     <td valign="top">
+                                                @if (@$item->ipfs_url == NULL)
+                                                 NU E MINTED
+                                                @else   
+                                                 ESTE MINTED
+                                                @endif
+                                    </td>
+                                    <td valign="top">
                                                 @if (@$item->active_status == 1)
                                                 @lang('lang.active')
                                                 @else   
                                                 @lang('lang.pending')
                                                 @endif
                                     </td>
+                                   
                                     
                                     <td valign="top">
                                         <div class="dropdown">

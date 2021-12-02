@@ -39,6 +39,65 @@
     opacity: 0;
     display: none;
 }
+.switch2 {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 24px;
+}
+
+.switch2 input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 5px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 /* .banner-area3::before {
     z-index: 99!important;
     background-image: url({{ @$data['user']->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/banner/banner.png') }})!important;
@@ -644,6 +703,37 @@
                                                     <div class="tab-content" id="v-pills-tabContent">
                                                         <div class="tab-pane fade {{ !str_contains(Request::fullUrl(),'?')?'show active':'' }} " id="v-pills-home"
                                                             role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                            <div class="single_account_wrap ">
+                                                                <h4>Alege preferinta afisare site</h4>
+                                                                <p>Dark scheme sau Light Scheme</p>
+                                                               
+                                                                {{-- personal  --}}
+                                                                
+                                                                <form action="{{ route('user.darkMode',  $data['user']->id) }}" class="single_account-form" method="POST" id="personal_infor">
+                                                      
+                                                                    @csrf
+                                                                    <input type="hidden" name="id" value="{{  @$data['user']->id}}">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-2 float-left">
+                                                                                <span>Dark Mode <i class="fa fa-moon-o"></i></span>
+                                                                            </div>
+                                                                            <div class="col-md-2 float-left">
+                                                                                <label class="switch2">
+                                                                                    <input type="checkbox" id="icon2" name="style_id" value="1" {{( $data['user']->style_id == '1' ? 'checked' : '')}}>
+                                                                                    <span class="slider round"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="check-out-btn">
+                                                                        <button type="submit" class="btn-main">@lang('lang.save')
+                                                                            Modificarile</button>
+                                                                    </div>
+                                                                </form>
+                                                                {{-- personal  --}}
+                                                            </div>
+
                                                             <div class="single_account_wrap ">
                                                                 <h4>{{@$data['profile_setting']->heading1}}</h4>
                                                                 <p>{{@$data['profile_setting']->text1}}</p>

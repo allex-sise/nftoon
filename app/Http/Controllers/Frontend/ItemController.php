@@ -137,6 +137,10 @@ class ItemController extends Controller
                 $tax=0.00;
                 $tax_added=0;
              }
+             if($item->nftmultiplu == 1){
+                Toastr::error('E multiplu bro','Eroare');
+                return redirect()->back();
+             }
              $comisionagent = $item->C_buyer;
              $comisionminted = $item->C_item;
              $incasarecreator = $item->Reg_total;
@@ -193,6 +197,10 @@ class ItemController extends Controller
                 $tax=0.00;
                 $tax_added=0;
              }
+             if($item->nftmultiplu == 1){
+                Toastr::error('E multiplu bro','Eroare');
+                return redirect()->back();
+             }
              $comisionagent = $item->C_buyer;
              $comisionminted = $item->C_item;
              $comisionartistdb = $item->E_buyer;
@@ -241,6 +249,18 @@ class ItemController extends Controller
                 $comisionartistdb = $item->E_buyer;
                 $incasarecreator = $item->Reg_total;
                 $ogowner = $item->ogowner;
+                // if(($item->nftmultiplu == 1) && ($item->data_exp_unic >= Carbon::now())){
+                    
+                //     $itemDuplicate = Item::findOrfail($item->id); 
+                //     //  return $item; 
+                //     $newItem = $item->replicate();
+                //     $newItem->title = $item->title.''.'#'.($item->nftunic + 1);
+                //     $newItem->nftmultiplu = 0;
+                //     $newItem->data_exp_unic = NULL;
+                //     $newItem->idnft = rand(0, 999999999);
+                //     $newItem->save();
+                    
+                //  }
                if (Auth::user()) {
                     $profile_data=Profile::join('taxes','taxes.country_id','=','profiles.country_id')
                     ->where('user_id',Auth::user()->id)->first();

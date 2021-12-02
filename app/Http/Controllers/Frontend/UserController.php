@@ -61,4 +61,27 @@ class UserController extends Controller
             }
         }
     }
+
+    function darkMode(Request $r, $id)
+    {
+       
+        try {
+            $user = User::findOrFail($id);
+            
+            $user->style_id = $r->style_id;
+
+
+            $user->save();
+       
+            Toastr::success('Succsesfully profile updated !');
+            return redirect()->back();
+            // return redirect()->route('author.setting', $id.'?profile_updated');
+            // return redirect()->route('author.setting', $id);
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
 }

@@ -216,7 +216,7 @@
                                                    
                                                         
                                                        
-                                                    <p>NFT-ul a fost achizitionat cu:  {{ $itemLastPrice->subtotal }} lei</p>
+                                                    <p>NFT-ul a fost achizitionat cu:  {{ $itemLastPrice->subtotal ?? ''}} lei</p>
                                                                     
                                                         <div class="upload_inner d-flex align-items-center mb-10 mt-20">
                                                         
@@ -224,23 +224,23 @@
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px;">{{GeneralSetting()->currency_symbol}}</span>
                                                                 <div class="input_field">
                                                                     <label for="">@lang('lang.ITEM_PRISE')</label>
-                                                                    <input type="text" class="primary-input form-control decimal" style="width: 150px;" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_item:old('Re_item')}}">
+                                                                    <input type="text" class="primary-input form-control decimal" min="1" style="width: 150px;" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="">
                                                                 </div>
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">-</span>
                                                                 <div class="input_field">
                                                                     <label for="">Comision Artist</label>
-                                                                    <input  type="text" class="primary-input form-control decimal" step="any"  style="width: 150px;"  id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->C_buyer:old('C_buyer')}}">
+                                                                    <input  type="text" class="primary-input form-control decimal" step="any"  style="width: 150px;"  id="comisionreferrer" name="C_buyer" onkeyup="regular(this.value)" value="" readonly>
                                                                 </div>
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">-</span>
                                                                 <div class="input_field">
                                                                     <label for="">Comision Minted</label>
-                                                                    <input  type="text" class="primary-input form-control decimal" step="any"  style="width: 150px;"  id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="{{isset($data['edit'])? $data['edit']->Re_buyer:old('Re_buyer')}}">
+                                                                    <input  type="text" class="primary-input form-control decimal" step="any"  style="width: 150px;"  id="comision25" name="Re_buyer" onkeyup="regular(this.value)" value="" readonly>
                                                                 </div>
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">=</span>
                                                                 <div class="input_field last-one">
                                                                     <label for="">PRET VANZARE</label>
-                                                                    <input  type="text" class="primary-input form-control "   style="width: 150px;" name="Reg_total_price" readonly  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
-                                                                    <input  type="text" class="primary-input form-control"  style="width: 150px;" disabled hidden id="Reg_total"  value="{{isset($data['edit'])? $data['edit']->Reg_total:old('Reg_total')}}">
+                                                                    <input  type="text" class="primary-input form-control "   style="width: 150px;" name="Reg_total_price" readonly  value="" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
+                                                                    <input  type="text" class="primary-input form-control"  style="width: 150px;" disabled hidden id="Reg_total"  value="">
                                                                 </div> 
                                                             
                                                                     <input  type="text" class="primary-input form-control"  style="width: 150px;" hidden name="C_item"  id="comisionminted"  onkeyup="regular(this.value)" value="">
@@ -263,9 +263,9 @@
                                     <div class="spacer-single" style="background-size: cover;"></div>
                                     @if (@$item_preview!=null)
                                     <p class="text-danger text-center">@lang('lang.your_previous_update_is_pending')</p>
-                                    <p  class="boxed-btn mt-20">@lang('lang.update') @lang('lang.product')</p>
+                                    <p  class="boxed-btn mt-20">Pune la vanzare NFT-ul</p>
                                     @else
-                                    <button  class="btn-main" id="itemSubmit" type="submit" style="width: 100%;">@lang('lang.update') @lang('lang.product')</button>
+                                    <button  class="btn-main" id="itemSubmit" type="submit" style="width: 100%;">Pune la vanzare NFT-ul</button>
                                     @endif
                                     <div class="spacer-single" style="background-size: cover;"></div>
                                 </div>
@@ -300,7 +300,7 @@
                                         <span></span>
                                     </div>
                                         <div class="nft__item_price" style="background-size: cover;">
-                                            {{ $itemLastPrice->subtotal }} LEI<span>/ Pret Cumparare</span>
+                                            {{ $itemLastPrice->subtotal ?? '' }} LEI<span>/ Pret Cumparare</span>
                                         </div>                           
                                     </div> 
                                 </div>

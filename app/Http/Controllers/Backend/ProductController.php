@@ -253,6 +253,23 @@ class ProductController extends Controller
          
      }
 
+     function nftnotmint(){
+
+        try {
+            // $data['item']=Item::where(['active_status'=>1,'status'=> 1,'free'=>0])->orderBy('id','desc')->get();
+            $data['item']=Item::orderBy('id','desc')->where('ipfs_url', NULL)->get();
+
+            // return $data;
+            $data['settings'] = DB::table('infix_general_settings')->first();
+            return view('backend.product.nftnotmint_list', compact('data'));          
+          } catch (\Exception $e) {
+               $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+          }
+         
+     }
+
      public function showNFT($id)
      {
          try{

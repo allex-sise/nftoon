@@ -10,6 +10,15 @@
         }
         
     @endphp
+    @php
+        $userdb = App\User::where('id', Auth::user()->id)->first();
+        $userbg = $userdb->style_id;
+        if($userbg == NULL){
+            $bg = 'light-scheme';
+        }elseif($userbg == 1){
+            $bg = 'dark-scheme';
+        }
+    @endphp
     <html dir="{{ $local=='ar'? 'rtl' :'ltl' }}" class="{{ $local=='ar'? 'rtl' :'ltl' }}" lang="{{ $local }}">
         @php
          App::setLocale(userActiveLanguage());
@@ -17,6 +26,9 @@
         
         @endphp
 @else
+@php
+        $bg = 'light-scheme';
+    @endphp
 @php
     if( session()->get('guest_locale')!=null){
         App::setLocale(session()->get('guest_locale'));
@@ -133,7 +145,7 @@
 </head>
 
 
-<body id="body" class="dark-scheme">
+<body id="body" class="{{$bg}}">
 <input type="text" hidden  class="url" value="{{url('/') }}">
 <input type="text" hidden  class="system_url" value="{{url('/') }}">
 <input type="text" hidden  class="currencyIn" value="{{ @GeneralSetting()->currency_symbol }}">
@@ -269,9 +281,9 @@
     <script src="{{asset('public/frontend/assets/js/designesia.js')}}"></script>
     <script src="{{asset('public/frontend/js/gdpr-cookie.js')}}"></script>
     <script>
-$('#icon').click(function(){
-    $('#body').toggleClass('dark-scheme');
+$('#icon2').click(function(){
     $('#body').toggleClass('light-scheme');
+    $('#body').toggleClass('dark-scheme');
     $('#iconita').toggleClass('fa fa-sun-o');
     $('#iconita').toggleClass('fa fa-moon-o');
     

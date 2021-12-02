@@ -2,6 +2,12 @@
 @push('css') 
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment_complete.css">
 <style>
+.payment_confirm_header{
+    width: 150px!important;
+    height: 150px!important;
+    margin-top: 40px!important;
+    margin-bottom: 40px!important;
+    }
 @media only screen and (max-width: 767px) {
 .banner-area4::before {
     margin-top: 0px!important;
@@ -16,15 +22,12 @@
 @php
    $infix_general_settings =app('infix_general_settings');
 @endphp
-           <!-- banner-area start -->
-           <div class="banner-area4">
-            <div class="banner-area-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="banner-info">
-                                <div class="payment_comfirmation_header">
-                        <div class="payment_confirm_header">
+     <!-- section begin -->
+     <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                            <div class="payment_confirm_header">
                             <div class="payment_logo">
                                 <img src="{{asset('public/uploads/img/cart/write2.png')}}" alt="">
                             </div>
@@ -32,25 +35,25 @@
                         <div class="conformation-title">
                                 <h2>@lang('lang.payment_complete')!</h2>
                                 <p>@lang('lang.an_confirmation_email_is_coming_your_way') <br>
-                                    @lang('lang.this_item_is_now_available_on_your') 
+                                    @lang('lang.this_item_is_now_available_on_your')  
                                     @if (Auth::user()->role_id == 4)
-                                    <a href="{{ route('author.download',@Auth::user()->id) }}">@lang('lang.download') @lang('lang.page')</a> 
+                                    <a href="{{ route('author.download',@Auth::user()->id) }}">Colectia ta</a> 
                                     @endif
                                     @if (Auth::user()->role_id == 5)
-                                    <a href="{{ url('downloads/'.@Auth::user()->username) }}">@lang('lang.page') @lang('lang.download') </a> 
+                                    <a href="{{ url('downloads/'.@Auth::user()->username) }}">Colectia ta </a> 
                                     {{-- <a href="{{ route('customer.profile',@Auth::user()->username) }}">Download page</a>  --}}
                                     @endif
-
-                                </p>
+                                    </p>
+                               
                         </div>
-                    </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- banner-area end -->
+            </section>
+            <!-- section close -->     
+
+
 
     <!-- payment_confirm_start    -->
     <div class="payment_confim_area section-padding">

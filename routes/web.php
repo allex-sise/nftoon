@@ -36,6 +36,7 @@ Route::group(['middleware' => ['XSS']], function () {
 
       /* ******************** START PROFILE PIC ROUTES ********************* */
       Route::post('profile-pic/{id}', 'UserController@profilePic')->name('profilePic');
+      Route::post('dark-mode/{id}', 'UserController@darkMode')->name('darkMode');
       /* ******************** END PROFILE PIC ROUTES ********************* */
 
       /* ******************** START PACKAGE BUY ROUTES ********************* */

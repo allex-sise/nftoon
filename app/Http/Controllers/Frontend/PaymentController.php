@@ -18,6 +18,8 @@ use App\PaidPayment;
 use App\BalanceSheet;
 use App\PurchaseCode;
 use App\PaymentMethod;
+use App\NftMultiple;
+use Carbon\Carbon;
 use App\ItemUpdateNotify;
 use App\PaidPackagePayment;
 use Illuminate\Http\Request;
@@ -625,13 +627,16 @@ class PaymentController extends Controller
             DB::commit();
             $clientauthor = User::findOrFail(Auth::user()->id);
             $clientauthorid = $clientauthor->id;
+            $itemDuplicator = Item::findOrfail($value->options['item_id']);
+            $itemDuplicateID = $value->options['item_id'];
             foreach (Cart::content() as $key => $value) {
+                if($itemDuplicator->nftmultiplu != 1 ){
                 $changeauthor = Item::find($value->options['item_id']);
                 $changeauthor->user_id = $clientauthorid;
                 $changeauthor->active_status = 0;
                 $changeauthor->save();
+                }
             }
-    
             // foreach (Cart::content() as $key => $value) {
             //     $item = Item::find($value->options['item_id']);
             //     //  return $item; 
@@ -648,7 +653,33 @@ class PaymentController extends Controller
             $change_role = User::find(Auth::user()->id);
             $change_role->role_id = 4;
             $change_role->save();
-           
+
+        
+            if(($itemDuplicator->nftmultiplu == 1) && ($itemDuplicator->data_exp_unic >= Carbon::now())){
+                    
+                $itemDuplicate = Item::findOrfail($itemDuplicateID); 
+                //  return $item; 
+                $newItem = $itemDuplicate->replicate();
+                $increment = Nftmultiple::where('ognft', $itemDuplicateID)->count();
+
+                $newItem->title = $itemDuplicate->title.''.'no'.($increment + 1);
+                $newItem->nftmultiplu = 0;
+                $newItem->user_id = Auth::user()->id;
+                $newItem->og_price = $itemDuplicate->og_price;
+                $newItem->active_status = 0;
+                $newItem->sell = 0;
+                $newItem->views = 0;
+                $newItem->data_exp_unic = NULL;
+                $newItem->idnft = NULL;
+                $newItem->save();
+
+                $NewNftMultiple = new Nftmultiple();
+                $NewNftMultiple->ognft = $itemDuplicateID;
+                $NewNftMultiple->nftmultiple = $newItem->id;
+                $NewNftMultiple->id_multiple = $increment+1;
+                $NewNftMultiple->save();
+             }
+
             Cart::destroy();
             Toastr::success('Multumim pentru achizitia facuta!');
             
