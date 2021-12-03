@@ -92,7 +92,9 @@
 .ascunddesktop{
     display: none!important;
 }
-
+.sign_out{
+    border-top: 1px solid #F1F1F4!important;
+}
 @media screen and (max-height: 450px) {
   .overlay a {font-size: 20px}
   .overlay .closebtn {
@@ -354,16 +356,13 @@
                                                 </ul>
                                             </div>
                                         @endif
-<<<<<<< Updated upstream
-                                        <div id="app">
+                                        <div id="app" style="padding: 10px 20px;">
                                             <toggle-theme-color 
                                             style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
                                             route="{{ route('user.darkMode',  @Auth::user()->id) }}"
                                             user-id="{{@Auth::user()->id}}">
                                         </div> 
-=======
-                                       
->>>>>>> Stashed changes
+                                        <br />
                                         <div class="sign_out">
                                                 <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();

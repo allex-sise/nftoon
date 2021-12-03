@@ -182,6 +182,7 @@ class RegisterController extends Controller
                 'first_name' => 'required', 'string', 'max:255',
                 'last_name' => 'required', 'string', 'max:255',
                 'username' => 'required|string|max:255|unique:users',
+                'phone' => ['required', 'integer', 'max:10'],
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
                 'g-recaptcha-response' => 'required|captcha',
@@ -190,6 +191,7 @@ class RegisterController extends Controller
             $this->validate($data,[
                 'first_name' => 'required', 'string', 'max:255',
                 'last_name' => 'required', 'string', 'max:255',
+                'phone' => ['required', 'integer', 'max:10'],
                 'username' => 'required|string|max:255|unique:users',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',

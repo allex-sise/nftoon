@@ -3,7 +3,7 @@
       <div class="col-md-2 float-left">
           <span>Dark Mode <i class="fa fa-moon-o"></i></span>
       </div>
-      <div class="col-md-2 float-left">
+      <div class="col-md-2 float-left" style="padding-left: 80px;">
           <label class="switch2">
               <input type="checkbox" id="icon2" name="style_id" :checked="darkMode" @click="(setThemeColor())">
               <span class="slider round"></span>

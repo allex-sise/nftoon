@@ -56,7 +56,7 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-12">
                     <div class="verify_text text-center">
-                        <h3>Verifica-ti adresa de email</h3>
+                        <h3>Confirma adresa de email</h3>
                         <div class="links_back">
                         Inainte de a continua, te rugam sa verifici e-mailul pentru un link de verificare. 
                         <br />

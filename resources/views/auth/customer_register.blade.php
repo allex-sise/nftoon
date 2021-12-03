@@ -9,7 +9,21 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('public/css/') }}/auth.css">
 <style>.login_resister_area .single_resister_sildbar::after { background: url("{{url('/'.@$dashboard_background->image)}}") no-repeat; background-size:cover;  }
+    .error{
+    display: block;
+}
+.login_resister_area .main-login-form input{
+    border: 1px solid;
+}
+.invitatde{
+    color: #000; 
+    text-transform: uppercase;
+}
     @media only screen and (max-width: 767px) {
+.invitatde{
+    color: #FFF; 
+    text-transform: uppercase;
+}
 .login_resister_area .single_resister_sildbar .resister_text p{
     display: none;
 }
@@ -23,7 +37,7 @@
     padding-top: 0px!important;
 }
 .logo{
-    margin-bottom: 100px!important;
+    margin-bottom: 20px!important;
 }
 .padding40 {
     padding: 40px 20px;
@@ -44,7 +58,10 @@
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
-    color: #333;
+    color: #FFF;
+}
+.form-border input[type=text], .form-border textarea, .form-underline input[type=email], .form-border input[type=password], .form-border select{
+    color: #FFF!important;
 }
 .logocentrat{
     margin: 0 auto!important;
@@ -103,7 +120,7 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
                             <img src="{{ asset('public/frontend/img/') }}/pattern/Pattern.png" alt="">
                         </div>
                         <a class="resiter" href="{{ url('customer/login')}}">@lang('lang.login')</a>
-                        <div class="col-xl-6 offset-xl-1">
+                        <div class="col-xl-10 offset-xl-1">
                             <div class="login_form_content">
                                 
                                 <div class="login_form_field">
@@ -115,77 +132,73 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
                                             <p>@lang('lang.enter_login')
                                             <br />Ai fost invitat de catre user-ul:<span style="color: #000; text-transform: uppercase;"><b> {{ $referrer->username }} </b></span></p>
                                         </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="first_name">@lang('lang.first_name')<span>*</span></label>
-                                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="@error('first_name') is-invalid @enderror">
-                                            @error('first_name')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row">
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="first_name">@lang('lang.first_name')<span>*</span></label>
+                                                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="@error('first_name') is-invalid @enderror">
+                                                @error('first_name')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="last_name">@lang('lang.last_name')<span>*</span></label>
+                                                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="@error('last_name') is-invalid @enderror">
+                                                @error('last_name')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="username">@lang('lang.username')<span>*</span></label>
+                                                <input type="text" placeholder="Introduceti Username-ul" name="username" value="{{ old('username') }}" required class="@error('username') is-invalid @enderror">
+                                                @error('username')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="email">@lang('lang.email') @lang('lang.address') <span>*</span></label>
+                                                <input type="text" placeholder="Adresa de email" value="{{ old('email') }}" name="email" class="@error('email') is-invalid @enderror" required>
+                                                @error('email')
+                                                    <span class="text-danger" role="alert">
+                                                        {{ @$message }}
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="last_name">@lang('lang.last_name')<span>*</span></label>
-                                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="@error('last_name') is-invalid @enderror">
-                                            @error('last_name')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="username">@lang('lang.username')<span>*</span></label>
-                                            <input type="text" placeholder="Introduceti Username-ul" name="username" value="{{ old('username') }}" required class="@error('username') is-invalid @enderror">
-                                            @error('username')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="email">@lang('lang.email') @lang('lang.address') <span>*</span></label>
-                                            <input type="text" placeholder="Adresa de email" value="{{ old('email') }}" name="email" class="@error('email') is-invalid @enderror" required>
-                                            @error('email')
-                                                <span class="text-danger" role="alert">
-                                                    {{ @$message }}
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="phone">Numarul de telefon*<span>*</span></label>
-                                            <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
-                                            @error('phone')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="phone">Numarul de telefon*<span>*</span></label>
-                                            <input type="text" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
-                                            @error('phone')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="name">@lang('lang.password')<span>*</span></label>
-                                            <input name="password" type="password" placeholder="Introduceti Parola"  class="@error('password') is-invalid @enderror" required>
-                                            @error('password')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="name">@lang('lang.confirm') @lang('lang.password')<span>*</span></label>
-                                            <input type="password" name="password_confirmation" placeholder="Confirma Parola" class="@error('password_confirmation') is-invalid @enderror" required>
-                                            @error('password_confirmation')
-                                                <span  class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row">
+                                            
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="phone">Numarul de telefon*<span>*</span></label>
+                                                <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
+                                                @error('phone')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="name">@lang('lang.password')<span>*</span></label>
+                                                <input name="password" type="password" placeholder="Introduceti Parola"  class="@error('password') is-invalid @enderror" required>
+                                                @error('password')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6 float-left">
+                                                <label for="name">@lang('lang.confirm') @lang('lang.password')<span>*</span></label>
+                                                <input type="password" name="password_confirmation" placeholder="Confirma Parola" class="@error('password_confirmation') is-invalid @enderror" required>
+                                                @error('password_confirmation')
+                                                    <span  class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                         
                                       
@@ -202,7 +215,100 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
         </div>
     </div>
 <!-- login_resister_area-end -->
-
+<section class="full-height relative no-top no-bottom vertical-center ascundedesktop" data-bgimage="url({{url('/'.@$dashboard_background->image)}}) top" data-stellar-background-ratio=".5" style="min-height: 812px; background: url({{url('/'.@$dashboard_background->image)}}) center top / cover;">
+    <div class="overlay-gradient t50" style="background-size: cover;">
+        <div class="center-y relative" style="background-size: cover;">
+            <div class="container" style="background-size: cover;">
+            <div class="logo">
+                <a class="logocentrat" href="{{ url('/') }}">
+                    <img src="{{ asset('public/frontend/img/logo2.png') }}" alt="" width="203" >
+                </a>
+            </div>
+                <div class="row align-items-center" style="background-size: cover;">
+                    
+                    <div class="col-lg-4 offset-lg-4 wow fadeIn bg-color animated bgcolornew" data-wow-delay=".5s" style="background-size: cover; visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                        <div class="box-rounded padding40" style="background-size: cover;">
+                        <h3 class="mb10 h3mobile">@lang('lang.registration')</h3>
+                        <br />Ai fost invitat de catre user-ul:<span class="invitatde"><b> {{ $referrer->username }} </b></span>
+                        <p class="pmobile">Completeaza formularul pentru a creea un cont nou Minted. Daca ai deja un cont te poti loga <a href="{{ url('login')}}">aici<span></span></a>.</p>
+                        <form action="{{ route('customer_registration') }}" method="POST" id="cus_registration1">
+                                    @csrf
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="form-control @error('first_name') is-invalid @enderror">
+                                            @error('first_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="form-control @error('last_name') is-invalid @enderror">
+                                            @error('last_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" placeholder="@lang('lang.enter_username')" name="username" value="{{ old('username') }}" required class="form-control @error('username') is-invalid @enderror">
+                                            @error('username')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="text" placeholder="@lang('lang.username_email_address')" value="{{ old('email') }}" name="email" class="form-control @error('email') is-invalid @enderror" required>
+                                            @error('email')
+                                                <span class="text-danger  text-red" role="alert">
+                                                    {{ @$message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="form-control @error('phone') is-invalid @enderror">
+                                            @error('phone')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input name="password" id="password" type="password" placeholder="@lang('lang.enter_passowrd')"  class="form-control @error('password') is-invalid @enderror" required>
+                                            @error('password')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="password" name="password_confirmation" placeholder="@lang('lang.confirm_passowrd')" class="form-control @error('password_confirmation') is-invalid @enderror" required>
+                                            @error('password_confirmation')
+                                                <span  class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>                             
+                                        <input type="hidden"  id="recaptcha_check" value="{{ re_captcha_settings('status') }}">
+                                        @if (re_captcha_settings('status') == 1) 
+                                            <div class="field-set" style="background-size: cover;">
+                                                <label for="captcha">@lang('lang.re_captcha')</label>
+                                                {!! NoCaptcha::renderJs() !!}
+                                                {!! NoCaptcha::display() !!}
+                                                <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                            </div>
+                                        @endif
+                                        <div class="field-set" style="background-size: cover;">
+                                              <button type="submit" class="btn btn-main btn-fullwidth color-2">@lang('lang.register')</button>
+                                        </div>
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 @push('js')
 

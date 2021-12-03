@@ -73,10 +73,8 @@ class UserController extends Controller
 
             $user->save();
        
-            Toastr::success('Ai setat cu succes!');
+            Toastr::success('Ai setat cu succes!', 'Succes');
             return redirect()->back();
-            // return redirect()->route('author.setting', $id.'?profile_updated');
-            // return redirect()->route('author.setting', $id);
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
             Toastr::error($msg, 'Failed');
