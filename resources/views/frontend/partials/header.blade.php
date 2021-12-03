@@ -353,6 +353,12 @@
                                                 </ul>
                                             </div>
                                         @endif
+                                        <div id="app">
+                                            <toggle-theme-color 
+                                            style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
+                                            route="{{ route('user.darkMode',  @Auth::user()->id) }}"
+                                            user-id="{{@Auth::user()->id}}">
+                                        </div> 
                                         <div class="sign_out">
                                                 <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();

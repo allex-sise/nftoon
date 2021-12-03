@@ -403,6 +403,9 @@ export default new Vuex.Store({
         // await dispatch("storeInDb", onErrorPayload);
       }
     },
+    async setThemeColor({dispatch}, payload){
+      await dispatch("storeInDb", payload);
+    },
     async storeInDb({dispatch}, payload){
       axios.post(payload.route, payload).then(res => {
         if(res.data.status === 'ok'){

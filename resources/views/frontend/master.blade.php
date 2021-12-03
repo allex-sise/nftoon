@@ -15,7 +15,7 @@
         $userbg = $userdb->style_id;
         if($userbg == NULL){
             $bg = 'light-scheme';
-        }elseif($userbg == 1){
+        }else{
             $bg = 'dark-scheme';
         }
     @endphp

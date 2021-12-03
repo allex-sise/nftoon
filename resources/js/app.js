@@ -24,6 +24,7 @@ Vue.component('withdraw', require('./components/Withdraw/Withdraw.vue').default)
 Vue.component('withdraw-admin', require('./components/Withdraw/WithdrawAdmin.vue').default);
 Vue.component('deposit', require('./components/Deposit.vue').default);
 Vue.component('blockchain-loader', require('./components/BlockchainLoader.vue').default);
+Vue.component('toggle-theme-color', require('./components/ToggleThemeColor.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
