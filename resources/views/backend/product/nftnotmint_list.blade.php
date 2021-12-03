@@ -89,7 +89,6 @@
                                                 <a class="dropdown-item" href="{{ route('admin.showNFT',@$item->id)}}">BLOCKCHAIN</a>
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.product_viewSingle',[str_replace(' ', '-',@$item->title),@$item->id])}}">@lang('lang.view')</a>
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.productEdit',@$item->id)}}">@lang('lang.edit')</a> 
-                                                <a class="dropdown-item" target="_blank" href="{{ route('admin.ProductDownload',@$item->id) }}">@lang('lang.download')</a> 
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#deleteClassModal{{@$item->id}}"  href="">@lang('lang.delete')</a>                                                 
                                                 @if ($item->status == 1)
                                                    <a class="dropdown-item" data-toggle="modal" data-target="#ApproveClassModal{{@$item->id}}"  href="">   Dezactiveaza  </a>

@@ -67,7 +67,6 @@
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.product_viewSingle',[str_replace(' ', '-',@$item->title),@$item->id])}}">@lang('lang.view')</a>
                                                 <a class="dropdown-item" target="_blank" href="{{ route('admin.productEdit',@$item->id)}}">@lang('lang.edit')</a> 
-                                                <a class="dropdown-item" target="_blank" href="{{ route('admin.ProductDownload',@$item->id) }}">@lang('lang.download')</a> 
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#deleteClassModal{{@$item->id}}"  href="">@lang('lang.delete')</a>                                                 
                                                 {{-- <a class="dropdown-item" onclick="FreeProduct(`{{ route('admin.free_product_active',$item->id) }}`)" data-toggle="modal" data-target="#FreeProduct" >@lang('lang.free')</a>                                                  --}}
                                                 @if ($item->status == 1)

@@ -184,6 +184,11 @@
                         <a href="{{ route('admin.deactive_product') }}">NFT-uri Dezactivate</a>
                     </li>
                     @endif
+                    @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+                    <li>
+                        <a href="{{ route('admin.nftnotmint_list') }}">NFT-uri Not Minted</a>
+                    </li>
+                    @endif
                     <!-- @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
                     <li>
                         <a href="{{ route('admin.free_product') }}">NFT-uri Gratuite</a>
