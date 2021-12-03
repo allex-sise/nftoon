@@ -13,7 +13,8 @@ Route::get('p',function(){
 
 Route::group(['middleware' => ['XSS']], function () {
 
-  
+   Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
+   Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
    Route::get('/', 'Frontend\HomeController@index');
    Route::get('logout', 'Frontend\HomeController@logout');
    Route::get('/package-plan', 'Frontend\HomeController@packagePlan')->name('packagePlan');
@@ -32,7 +33,7 @@ Route::group(['middleware' => ['XSS']], function () {
 
    Route::GET('/search-menu', 'SearchController@search')->name('search');
 
-   Route::group(['middleware' => ['auth', 'verified'], 'namespace' => 'Frontend', 'as' => 'user.'], function () {
+   Route::group(['middleware' => ['auth', 'verified', 'twofactor'], 'namespace' => 'Frontend', 'as' => 'user.'], function () {
 
       /* ******************** START PROFILE PIC ROUTES ********************* */
       Route::post('profile-pic/{id}', 'UserController@profilePic')->name('profilePic');
@@ -191,7 +192,7 @@ Route::group(['prefix' => 'paypal'],function(){
       /* ******************** END CATEGORY WISE ITEM ROUTES ********************* */
    });
 
-   Route::group(['middleware' => ['auth', 'verified', 'CheckDashboardMiddleware'], 'namespace' => 'Frontend', 'as' => 'user.'], function () {
+   Route::group(['middleware' => ['auth', 'verified', 'twofactor', 'CheckDashboardMiddleware'], 'namespace' => 'Frontend', 'as' => 'user.'], function () {
 
       /* ::::::::::::::::::::::::: START REFUND POLICY ROUTES :::::::::::::::::::::::::: */
       Route::get('refund-request/', 'HomeController@refundRequest')->name('refundRequest');

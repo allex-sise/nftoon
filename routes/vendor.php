@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XSS']], function () {
-        
-    Route::group(['middleware' => ['auth','verified'],'namespace' => 'Frontend','prefix'=>'author', 'as' => 'author.'], function () {
+    Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
+    Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
+    Route::group(['middleware' => ['auth','verified', 'twofactor'],'namespace' => 'Frontend','prefix'=>'author', 'as' => 'author.'], function () {
         // Start payment gateway 
         Route::post('payment-add','PaymentController@AddPayment')->name('payment_add');
         // End payment gateway 
@@ -20,7 +21,7 @@ Route::group(['middleware' => ['XSS']], function () {
 
     Route::post('ckeditor/image_upload', 'CkEditorController@featureUpload')->name('ckeditor_upload');
 
-    Route::group(['middleware' => ['auth','verified','vendorCheck'],'namespace' => 'Frontend\Vendor','prefix'=>'author', 'as' => 'author.'], function () {
+    Route::group(['middleware' => ['auth','verified','vendorCheck', 'twofactor'],'namespace' => 'Frontend\Vendor','prefix'=>'author', 'as' => 'author.'], function () {
         Route::get('followers/{id}','VendorController@followers')->name('followers');
         Route::get('followings/{id}','VendorController@followings')->name('followings');
         Route::get('profile/{id}','VendorController@profile')->name('profile');

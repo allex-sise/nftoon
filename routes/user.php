@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 
 Route::group(['middleware' => ['XSS']], function () {
-    
+  Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
+  Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
   //customer
 
   Route::get('author/profile/{username}', 'Frontend\HomeController@vendor');
@@ -25,7 +26,7 @@ Route::group(['middleware' => ['XSS']], function () {
   Route::post('customer/registration', 'Frontend\Customer\RegistrationController@register');
 
 
-  Route::group(['middleware' => ['auth', 'verified'], 'namespace' => 'Frontend\Customer', 'as' => 'user.'], function () {
+  Route::group(['middleware' => ['auth', 'verified', 'twofactor'], 'namespace' => 'Frontend\Customer', 'as' => 'user.'], function () {
 
     /*Social Media Setting */
     Route::post('profile/social-store', 'CustomerController@socialStore')->name('socialStore');
@@ -56,7 +57,7 @@ Route::group(['middleware' => ['XSS']], function () {
   });
 
 
-  Route::group(['middleware' => ['auth', 'verified', 'CheckUser'], 'namespace' => 'Frontend\Customer', 'as' => 'customer.'], function () {
+  Route::group(['middleware' => ['auth', 'verified', 'CheckUser', 'twofactor'], 'namespace' => 'Frontend\Customer', 'as' => 'customer.'], function () {
 
     // Start Save credit card
     Route::post('customer/payment-add','CustomerController@AddPayment')->name('payment_add');
@@ -83,7 +84,7 @@ Route::group(['middleware' => ['XSS']], function () {
     // Route::POST('bank_payment','CustomerController@bank_payment')->name('bank_payment');
   });
   // ticket 
-  Route::group(['middleware' => ['auth', 'verified'], 'namespace' => 'Frontend\Ticket', 'as' => 'user.'], function () {
+  Route::group(['middleware' => ['auth', 'verified', 'twofactor'], 'namespace' => 'Frontend\Ticket', 'as' => 'user.'], function () {
     route::get('ticket-view/{id}', 'UserController@ticket_view')->name('ticket_view');
     route::get('add-ticket', 'UserController@add_ticket')->name('add_ticket');
     route::post('ticket-store', 'UserController@ticket_store')->name('ticket_store');

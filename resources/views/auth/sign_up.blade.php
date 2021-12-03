@@ -159,6 +159,15 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-12 col-md-12">
+                                            <label for="phone">Numarul de telefon*<span>*</span></label>
+                                            <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
+                                            @error('phone')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xl-12 col-md-12">
                                             <label for="name">@lang('lang.password')<span>*</span></label>
                                             <input name="password" id="password" type="password" placeholder="@lang('lang.enter_passowrd')"  class="@error('password') is-invalid @enderror" required>
                                             @error('password')
@@ -244,6 +253,14 @@
                                             @error('email')
                                                 <span class="text-danger  text-red" role="alert">
                                                     {{ @$message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="field-set" style="background-size: cover;">
+                                            <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="form-control @error('phone') is-invalid @enderror">
+                                            @error('phone')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>

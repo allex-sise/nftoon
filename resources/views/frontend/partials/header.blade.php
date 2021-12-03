@@ -204,6 +204,7 @@
             </ul>
         </div>
     @endif
+   
     <div class="sign_out" style="border-top: 1px solid #eee; padding-top: 20px;">
         <a href="{{ route('logout') }}"
         onclick="event.preventDefault();
@@ -353,12 +354,16 @@
                                                 </ul>
                                             </div>
                                         @endif
+<<<<<<< Updated upstream
                                         <div id="app">
                                             <toggle-theme-color 
                                             style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
                                             route="{{ route('user.darkMode',  @Auth::user()->id) }}"
                                             user-id="{{@Auth::user()->id}}">
                                         </div> 
+=======
+                                       
+>>>>>>> Stashed changes
                                         <div class="sign_out">
                                                 <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();

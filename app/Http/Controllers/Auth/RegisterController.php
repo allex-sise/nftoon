@@ -66,6 +66,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
+            'phone' => ['required', 'integer', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'g-recaptcha-response' => 'required|captcha',
@@ -75,6 +76,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
+            'phone' => ['required', 'integer', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -114,6 +116,7 @@ class RegisterController extends Controller
             $profile->username=$data['username'];
             $profile->first_name=$data['first_name'];
             $profile->last_name=$data['last_name'];
+            $profile->mobile=$data['phone'];
             $profile->email=$data['email'];
             $profile->save();
 
@@ -218,6 +221,7 @@ class RegisterController extends Controller
             $profile->username=$data['username'];
             $profile->first_name=$data['first_name'];
             $profile->last_name=$data['last_name'];
+            $profile->mobile=$data['phone'];
             $profile->email=$data['email'];
             $profile->save();
 

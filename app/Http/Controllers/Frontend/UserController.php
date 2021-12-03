@@ -73,7 +73,7 @@ class UserController extends Controller
 
             $user->save();
        
-            Toastr::success('Succsesfully profile updated !');
+            Toastr::success('Ai setat cu succes!');
             return redirect()->back();
             // return redirect()->route('author.setting', $id.'?profile_updated');
             // return redirect()->route('author.setting', $id);

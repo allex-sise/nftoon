@@ -152,6 +152,24 @@ $referrer = App\User::whereUsername(session()->pull('referrer'))->first();
                                             @enderror
                                         </div>
                                         <div class="col-xl-12 col-md-12">
+                                            <label for="phone">Numarul de telefon*<span>*</span></label>
+                                            <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
+                                            @error('phone')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xl-12 col-md-12">
+                                            <label for="phone">Numarul de telefon*<span>*</span></label>
+                                            <input type="text" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
+                                            @error('phone')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ @$message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xl-12 col-md-12">
                                             <label for="name">@lang('lang.password')<span>*</span></label>
                                             <input name="password" type="password" placeholder="Introduceti Parola"  class="@error('password') is-invalid @enderror" required>
                                             @error('password')

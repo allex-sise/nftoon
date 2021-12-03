@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'CheckUser' => \App\Http\Middleware\CheckUserMiddleware::class,
         'XSS' => \App\Http\Middleware\XXXMiddleware::class,
         'userRolePermission' => UserRolePermission::class,
+        'twofactor' => \App\Http\Middleware\TwoFactor::class,
     ];
 
     /**
