@@ -66,7 +66,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
-            'phone' => ['required', 'integer', 'max:10'],
+            'phone' => ['required|string|size:10|regex:/[0-9]{9}/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'g-recaptcha-response' => 'required|captcha',
@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
-            'phone' => ['required', 'integer', 'max:10'],
+            'phone' => ['required|string|size:10|regex:/[0-9]{9}/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -107,6 +107,7 @@ class RegisterController extends Controller
             $user->full_name=$data['first_name'].$data['last_name'];
             $user->username=$data['username'];
             $user->email=$data['email'];
+            $user->style_id=0;
             $user->password=Hash::make($data['password']);
             $user->save();
 
@@ -182,7 +183,7 @@ class RegisterController extends Controller
                 'first_name' => 'required', 'string', 'max:255',
                 'last_name' => 'required', 'string', 'max:255',
                 'username' => 'required|string|max:255|unique:users',
-                'phone' => ['required', 'integer', 'max:10'],
+                'phone' => 'required|string|size:10|regex:/[0-9]{9}/',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
                 'g-recaptcha-response' => 'required|captcha',
@@ -191,7 +192,7 @@ class RegisterController extends Controller
             $this->validate($data,[
                 'first_name' => 'required', 'string', 'max:255',
                 'last_name' => 'required', 'string', 'max:255',
-                'phone' => ['required', 'integer', 'max:10'],
+                'phone' => 'required|string|size:10|regex:/[0-9]{9}/',
                 'username' => 'required|string|max:255|unique:users',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
@@ -206,6 +207,7 @@ class RegisterController extends Controller
             $user->role_id =5;
             $user->full_name=$data['first_name'].$data['last_name'];
             $user->username=$data['username'];
+            $user->style_id=0;
             $user->email=$data['email'];
             $referrer = User::whereUsername(session()->pull('referrer'))->first();
             if($data['refer']){

@@ -50,7 +50,7 @@
                                 <button class="btn btn-success" style="width: 200px; display: block; margin: 0 auto; margin-top: 60px;"><a style="color: #FFF;" href="{{ route('customer.cheackout')}}">Inapoi la checkout</a></button>
                        
                         @else
-                            <button class="btn btn-success" style="width: 200px; display: block; margin: 0 auto; margin-top: 60px;"><a style="color: #FFF;" href="{{ route('home')}}">Inapoi la checkout</a></button>
+                            <button class="btn btn-success" style="width: 200px; display: block; margin: 0 auto; margin-top: 60px;"><a style="color: #FFF;" href="{{ route('home')}}">Inapoi la prima pagina</a></button>
 
                         @endif
                      

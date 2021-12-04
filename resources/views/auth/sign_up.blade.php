@@ -14,6 +14,9 @@
     .error{
     display: block;
 }
+.ascundedesktop{
+    display: none;
+}
 .login_resister_area .main-login-form input{
     border: 1px solid;
 }
@@ -112,7 +115,7 @@
                             <img src="{{ asset('public/frontend/img/') }}/pattern/Pattern.png" alt="">
                         </div>
                       <a class="resiter" href="{{ url('login')}}">@lang('lang.login')</a>
-                        <div class="col-xl-6 offset-xl-1">
+                        <div class="col-xl-10 offset-xl-1">
                             <div class="login_form_content">
                                 
                                 <div class="login_form_field">
@@ -122,69 +125,73 @@
                                                 <h3>{{str_replace('_', ' ',config('app.name') ) }} @lang('lang.registration')</h3>
                                                 <p>@lang('lang.enter_login')</p>
                                         </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="first_name">@lang('lang.first_name')<span>*</span></label>
-                                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="@error('first_name') is-invalid @enderror">
-                                            @error('first_name')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row">
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="first_name">@lang('lang.first_name')<span>*</span></label>
+                                                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="@lang('lang.first_name')" required class="@error('first_name') is-invalid @enderror">
+                                                @error('first_name')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="last_name">@lang('lang.last_name')<span>*</span></label>
+                                                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="@error('last_name') is-invalid @enderror">
+                                                @error('last_name')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="username">@lang('lang.username')*<span>*</span></label>
+                                                <input type="text" placeholder="@lang('lang.enter_username')" name="username" value="{{ old('username') }}" required class="@error('username') is-invalid @enderror">
+                                                @error('username')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="email">@lang('lang.email') @lang('lang.address')  <span>*</span></label>
+                                                <input type="text" placeholder="@lang('lang.username_email_address')" value="{{ old('email') }}" name="email" class="@error('email') is-invalid @enderror" required>
+                                                @error('email')
+                                                    <span class="text-danger  text-red" role="alert">
+                                                        {{ @$message }}
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="last_name">@lang('lang.last_name')<span>*</span></label>
-                                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="@lang('lang.last_name')" required class="@error('last_name') is-invalid @enderror">
-                                            @error('last_name')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="username">@lang('lang.username')*<span>*</span></label>
-                                            <input type="text" placeholder="@lang('lang.enter_username')" name="username" value="{{ old('username') }}" required class="@error('username') is-invalid @enderror">
-                                            @error('username')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="email">@lang('lang.email') @lang('lang.address')  <span>*</span></label>
-                                            <input type="text" placeholder="@lang('lang.username_email_address')" value="{{ old('email') }}" name="email" class="@error('email') is-invalid @enderror" required>
-                                            @error('email')
-                                                <span class="text-danger  text-red" role="alert">
-                                                    {{ @$message }}
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="phone">Numarul de telefon*<span>*</span></label>
-                                            <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
-                                            @error('phone')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="name">@lang('lang.password')<span>*</span></label>
-                                            <input name="password" id="password" type="password" placeholder="@lang('lang.enter_passowrd')"  class="@error('password') is-invalid @enderror" required>
-                                            @error('password')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="name">@lang('lang.confirm') @lang('lang.password')<span>*</span></label>
-                                            <input type="password" name="password_confirmation" placeholder="@lang('lang.confirm_passowrd')" class="@error('password_confirmation') is-invalid @enderror" required>
-                                            @error('password_confirmation')
-                                                <span  class="text-danger" role="alert">
-                                                    <strong>{{ @$message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>                             
+                                        <div class="row">
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="phone">Numarul de telefon*<span>*</span></label>
+                                                <input type="numeric" placeholder="Numarul de telefon" name="phone" value="{{ old('phone') }}" required class="@error('phone') is-invalid @enderror">
+                                                @error('phone')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="name">@lang('lang.password')<span>*</span></label>
+                                                <input name="password" id="password" type="password" placeholder="@lang('lang.enter_passowrd')"  class="@error('password') is-invalid @enderror" required>
+                                                @error('password')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6 col-md-6">
+                                                <label for="name">@lang('lang.confirm') @lang('lang.password')<span>*</span></label>
+                                                <input type="password" name="password_confirmation" placeholder="@lang('lang.confirm_passowrd')" class="@error('password_confirmation') is-invalid @enderror" required>
+                                                @error('password_confirmation')
+                                                    <span  class="text-danger" role="alert">
+                                                        <strong>{{ @$message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>  
+                                        </div>                               
                                         <input type="hidden"  id="recaptcha_check" value="{{ re_captcha_settings('status') }}">
                                         @if (re_captcha_settings('status') == 1) 
                                             <div class="col-xl-12 col-md-12">

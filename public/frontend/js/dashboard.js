@@ -28,16 +28,11 @@ $(document).ready(function() {
              <th colspan="3"> ${arr[0]}</th>
             <th colspan="3" >${arr[2]}
             </th>
-            <td colspan="3" id="PriceP">${currencySys} ${arr[1]}</td>
+            <td colspan="3" id="PriceP">${arr[1]} ${currencySys}</td>
             </tr>`);
          }
       });
 
-      $("#DateP").append(`<tr class="black_bg">
-      <th colspan="3">total</th>
-      <th colspan="3">${item}</th>
-      <td colspan="3">${currencySys} ${total}</td>
-  </tr>`);
      // console.log(Prices);
   
      

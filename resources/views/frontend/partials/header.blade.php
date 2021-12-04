@@ -130,6 +130,9 @@
   .mainmenu{
       display: none!important;
   }
+  .hidemobile{
+      display: none!important;
+  }
 }
 </style><!-- header begin -->
 <!-- zone mobile -->
@@ -173,7 +176,7 @@
         @if (Auth::user()->role_id == 5)
             <li><a href="{{ route('customer.profile',@Auth::user()->username) }}">@lang('lang.profile')</a></li>
             <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">Colectia Ta</a></li>
-            <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}#referrals">Referrals</a></li>
+            <!-- <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}#referrals">Referrals</a></li> -->
             <li><a href="{{ route('user.deposit',@Auth::user()->username)}}">@lang('lang.fund_deposit')</a></li>
             @if (GeneralSetting()->public_vendor==1)
                 
@@ -256,9 +259,9 @@
                 
                     <!-- mainmenu begin -->
                     <ul id="mainmenu">
-                        <li><a href="{{ route('dropsAll') }}">Drops<span></span></a>
-                        <li><a href="{{ route('categoryAll') }}">Toate<span></span></a></li>
-                        <li><a href="{{ route('creatori') }}">Creatori<span></span></a></li>
+                        <li class="hidemobile"><a href="{{ route('dropsAll') }}">Drops<span></span></a>
+                        <li class="hidemobile"><a href="{{ route('categoryAll') }}">Toate<span></span></a></li>
+                        <li class="hidemobile"><a href="{{ route('creatori') }}">Creatori<span></span></a></li>
                     </ul>
                     <div class="menu_side_area">
                         
@@ -322,7 +325,7 @@
                                                 @if (Auth::user()->role_id == 5)
                                                     <li><a href="{{ route('customer.profile',@Auth::user()->username) }}">@lang('lang.profile')</a></li>
                                                     <li><a href="{{ route('customer.downloads',@Auth::user()->username) }}">Colectia Ta</a></li>
-                                                    <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}#referrals-tab">Referrals</a></li>
+                                                    <!-- <li><a href="{{ route('customer.referrals',@Auth::user()->username) }}#referrals-tab">Referrals</a></li> -->
                                                     <li><a href="{{ route('user.deposit',@Auth::user()->username)}}">@lang('lang.fund_deposit')</a></li>
                                                     @if (GeneralSetting()->public_vendor==1)
                                                         

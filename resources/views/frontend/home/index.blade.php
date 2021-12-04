@@ -42,6 +42,16 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
     width: 100%;
     margin-bottom: 20px;
 }
+.section-title h4 {
+    font-size: 16px;
+    color: #888888;
+    font-weight: 300;
+    line-height: 25px;
+    margin-bottom: 13px;
+}
+h3 {
+    font-size: 19px!important;
+}
 }
 </style>
 <div class="features-area section-padding1" onscroll="OnScroll()">
@@ -49,9 +59,9 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
         <div class="row align-items-center">
             <div class="col-xl-6 offset-xl-3">
                 <div class="section-title text-center mb-70">
-                <h3>Nu ratati nici un drop! 👀</h3>
+                <h3>Nu rata nici un drop! 👀</h3>
                     {{-- <p>{{$homepage->feature_title_description}}</p> --}}
-                    <h4>Abonați-vă la lista noastră ultra-exclusivă de drop și fiți primul care știe despre viitoarele drop-uri Minted.</h4>
+                    <h4>Aboneaza-te la lista noastra ultra-exclusiva de drop si fi primul care afla despre viitoarele drop-uri Minted.</h4>
                 </div>
             </div>
         </div>

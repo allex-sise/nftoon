@@ -450,7 +450,7 @@ class VendorController extends Controller
             foreach ($data['monthly_sale'] as $key => $value) {
                $refund=Refund::where('order_item_id',$value->order_id)->where('status',1)->first();
                if ($refund==null) {
-                    $amount=$value->price-$value->fee;
+                    $amount=$value->income-$value->fee;
                     $monthly_earn1+=$amount;
                }
                

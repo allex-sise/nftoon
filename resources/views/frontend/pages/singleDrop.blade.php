@@ -55,6 +55,12 @@
     font-size: 20px!important;
     line-height: 22px!important;
 }
+.mgleft50{
+    margin-left: 50px!important;
+}
+.mgleft30{
+    margin-left: 30px!important;
+}
 }
     </style>
 
@@ -71,13 +77,13 @@
                             @endphp
                             @if ( $data['drop']->startdate >=  Carbon::now())
                             <div class="col-xl-10 offset-xl-2 mgt50">
-                                <div class="col-md-4 float-left">
+                                <div class="col-md-4 float-left mgleft50">
                                     <h3 class="h3clss">Drop-ul incepe in:</h3>
                                     <div data-countdown="{{ $data['drop']->startdate }}" style="font-size: 25px; color:#FFF;"></div>
                                 </div>
                                 @endif
                                 @if ( $data['drop']->expdate >=  Carbon::now())
-                                <div class="col-md-4 float-left">
+                                <div class="col-md-4 float-left mgleft30">
                                     <h3 class="h3clss">Drop-ul se termina in:</h3>
                                     <div data-countdown="{{ $data['drop']->expdate }}" style="font-size: 25px; color:#FFF;"></div>
                                 </div>

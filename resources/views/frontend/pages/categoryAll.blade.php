@@ -32,6 +32,11 @@
 .banner-area2::before{
     z-index: 10;
 }
+@media only screen and (max-width: 767px) {
+.mgt280px{
+    margin-top: 280px;
+}
+}
     </style>
   <!-- banner-area start -->
     <div class="banner-area2" >
@@ -47,7 +52,7 @@
 
     <!-- latest-goods-start -->
    <!-- latest-goods-start -->
-   <div class="latest-goods-area section-padding1">
+   <div class="latest-goods-area section-padding1 mgt280px">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-xl-6">

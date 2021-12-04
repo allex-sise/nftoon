@@ -15,6 +15,9 @@
 .login_resister_area .main-login-form input{
     border: 1px solid;
 }
+.ascundedesktop{
+    display: none;
+}
 .invitatde{
     color: #000; 
     text-transform: uppercase;

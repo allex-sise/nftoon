@@ -396,6 +396,8 @@ input:checked + .slider:before {
 
                                             @endforeach
                                           
+                                            @else
+                                                <h4> Nu ai nici un NFT la vanzare</h4>
                                             @endif
                                     </div>
                                     @endif
@@ -2646,9 +2648,9 @@ input:checked + .slider:before {
                                                             $total = 0;
                                                         @endphp
                                                         @foreach ($data['monthly_income'] as $item) 
-                                                        @php
-                                                            $total =$total + $item->subtotal;
-                                                        @endphp                                                               
+                                                            @php
+                                                                $total =$total + $item->subtotal;
+                                                            @endphp                                                               
                                                         @endforeach
                                                         
 
@@ -2661,13 +2663,13 @@ input:checked + .slider:before {
                                                         @endphp
 
                                                         {{-- <h3>{{@$infix_general_settings->currency_symbol}}{{ $total }}</h3> --}}
-                                                        <h3>{{@$infix_general_settings->currency_symbol}}{{ @$data['monthly_earn1'] }}</h3>
-                                                        <h4>@lang('lang.sales') @lang('lang.earnings') @lang('lang.this') @lang('lang.month') ({{ date('M Y') }}), </h4>
+                                                        <h3>{{ @$data['monthly_earn1'] }} {{@$infix_general_settings->currency_symbol}}</h3>
+                                                        <h4>@lang('lang.earnings')  @lang('lang.month') aceasta <br />({{ date('M Y') }}) </h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-md-4">
                                                     <div class="single_earning  padding_25px  mb-30">
-                                                        <h3>{{@$infix_general_settings->currency_symbol}}{{ @$data['monthly_earn2'] }}</h3>
+                                                        <h3>{{ @$data['monthly_earn2'] }} {{@$infix_general_settings->currency_symbol}}</h3>
                                                         <h4>@lang('lang.your_total_balance_after_associated_author_fees')</h4>
                                                     </div>
                                                 </div>
@@ -2681,7 +2683,7 @@ input:checked + .slider:before {
                                                             $total_income =$total_income + $item->subtotal;
                                                         @endphp                                                               
                                                         @endforeach
-                                                        <h3>{{@$infix_general_settings->currency_symbol}}{{ $total_income }}</h3>
+                                                        <h3>{{ $total_income }} {{@$infix_general_settings->currency_symbol}}</h3>
                                                         <h4>@lang('lang.total_value_of_your_sales')</h4>
                                                     </div>
                                                 </div>
@@ -2728,7 +2730,7 @@ input:checked + .slider:before {
                                                 </div>
                                                 <div class="col-xl-4">
                                                     <div class="top_countries  padding_25px  mb-30">
-                                                        <h3>@lang('lang.your') @lang('lang.top') @lang('lang.countries')</h3>
+                                                        <h3> @lang('lang.top') @lang('lang.countries') @lang('lang.your')</h3>
                                                         <div class="country_list">
                                                             <ul id="_country">
                                                                 

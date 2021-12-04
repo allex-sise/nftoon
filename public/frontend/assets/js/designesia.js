@@ -882,66 +882,66 @@
      /* --------------------------------------------------
       * add arrow for mobile menu
       * --------------------------------------------------*/
-     function menu_arrow() {
-         // mainmenu create span
-         jQuery('#mainmenu li a').each(function() {
-             if ($(this).next("ul").length > 0) {
-                 $("<span></span>").insertAfter($(this));
-             }
-         });
-         // mainmenu arrow click
-         jQuery("#mainmenu > li > span").on("click", function() {
+    //  function menu_arrow() {
+    //      // mainmenu create span
+    //      jQuery('#mainmenu li a').each(function() {
+    //          if ($(this).next("ul").length > 0) {
+    //              $("<span></span>").insertAfter($(this));
+    //          }
+    //      });
+    //      // mainmenu arrow click
+    //      jQuery("#mainmenu > li > span").on("click", function() {
              
-             var iteration = $(this).data('iteration') || 1;
-             switch (iteration) {
-                 case 1:
-                     $(this).addClass("active");
-                     $(this).parent().find("ul:first").css("height", "auto");
-                     var curHeight = $(this).parent().find("ul:first").height();
-                     $(this).parent().find("ul:first").css("height", "0");
-                     $(this).parent().find("ul:first").animate({
-                         'height': curHeight
-                     }, 300, 'easeOutQuint');
-					 $('header').css("height", $('#mainmenu')[0].scrollHeight+curHeight+(parseInt($tmp_h)*2));
-                     break;
-                 case 2:
-					var curHeight = $(this).parent().find("ul:first").height();
-                     $(this).removeClass("active");
-                     $(this).parent().find("ul:first").animate({
-                         'height': "0"
-                     }, 300, 'easeOutQuint');
-					 $('header').css("height", $('#mainmenu')[0].scrollHeight-curHeight+(parseInt($tmp_h)*2));
-                     break;
-             }
-             iteration++;
-             if (iteration > 2) iteration = 1;
-             $(this).data('iteration', iteration);
-         });
-         jQuery("#mainmenu > li > ul > li > span").on("click", function() {
-             var iteration = $(this).data('iteration') || 1;
-             switch (iteration) {
-                 case 1:
-                     $(this).addClass("active");
-                     $(this).parent().find("ul:first").css("height", "auto");
-                     $(this).parent().parent().parent().find("ul:first").css("height", "auto");
-                     var curHeight = $(this).parent().find("ul:first").height();
-                     $(this).parent().find("ul:first").css("height", "0");
-                     $(this).parent().find("ul:first").animate({
-                         'height': curHeight
-                     }, 400, 'easeInOutQuint');
-                     break;
-                 case 2:
-                     $(this).removeClass("active");
-                     $(this).parent().find("ul:first").animate({
-                         'height': "0"
-                     }, 400, 'easeInOutQuint');
-                     break;
-             }
-             iteration++;
-             if (iteration > 2) iteration = 1;
-             $(this).data('iteration', iteration);
-         });
-     }
+    //          var iteration = $(this).data('iteration') || 1;
+    //          switch (iteration) {
+    //              case 1:
+    //                  $(this).addClass("active");
+    //                  $(this).parent().find("ul:first").css("height", "auto");
+    //                  var curHeight = $(this).parent().find("ul:first").height();
+    //                  $(this).parent().find("ul:first").css("height", "0");
+    //                  $(this).parent().find("ul:first").animate({
+    //                      'height': curHeight
+    //                  }, 300, 'easeOutQuint');
+	// 				 $('header').css("height", $('#mainmenu')[0].scrollHeight+curHeight+(parseInt($tmp_h)*2));
+    //                  break;
+    //              case 2:
+	// 				var curHeight = $(this).parent().find("ul:first").height();
+    //                  $(this).removeClass("active");
+    //                  $(this).parent().find("ul:first").animate({
+    //                      'height': "0"
+    //                  }, 300, 'easeOutQuint');
+	// 				 $('header').css("height", $('#mainmenu')[0].scrollHeight-curHeight+(parseInt($tmp_h)*2));
+    //                  break;
+    //          }
+    //          iteration++;
+    //          if (iteration > 2) iteration = 1;
+    //          $(this).data('iteration', iteration);
+    //      });
+    //      jQuery("#mainmenu > li > ul > li > span").on("click", function() {
+    //          var iteration = $(this).data('iteration') || 1;
+    //          switch (iteration) {
+    //              case 1:
+    //                  $(this).addClass("active");
+    //                  $(this).parent().find("ul:first").css("height", "auto");
+    //                  $(this).parent().parent().parent().find("ul:first").css("height", "auto");
+    //                  var curHeight = $(this).parent().find("ul:first").height();
+    //                  $(this).parent().find("ul:first").css("height", "0");
+    //                  $(this).parent().find("ul:first").animate({
+    //                      'height': curHeight
+    //                  }, 400, 'easeInOutQuint');
+    //                  break;
+    //              case 2:
+    //                  $(this).removeClass("active");
+    //                  $(this).parent().find("ul:first").animate({
+    //                      'height': "0"
+    //                  }, 400, 'easeInOutQuint');
+    //                  break;
+    //          }
+    //          iteration++;
+    //          if (iteration > 2) iteration = 1;
+    //          $(this).data('iteration', iteration);
+    //      });
+    //  }
      /* --------------------------------------------------
       * show gallery item sequence
       * --------------------------------------------------*/
