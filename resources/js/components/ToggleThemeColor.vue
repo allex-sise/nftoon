@@ -25,23 +25,12 @@ export default {
       darkMode: this.styleId,
     }
   },
-  // mounted(){
-  //   this.darkMode = this.styleId;
-  // },
-  // computed: {
-  //   styleTranslator() {
-  //     if(this.styleId === true){
-  //       return 1;
-  //     }
-  //     return null;
-  //   },
-  // },
   methods: {
     styleTranslator() {
       if(this.darkMode === true){
         return 1;
       }
-      return null;
+      return 0;
     },
     async setThemeColor(){
       this.darkMode = !this.darkMode
@@ -52,7 +41,6 @@ export default {
         'id': this.userId,
         'style_id': style,
       }
-      console.log(payload);
       await this.$store.dispatch("setThemeColor", payload);
     },
   }
