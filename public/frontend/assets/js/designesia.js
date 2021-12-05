@@ -1620,7 +1620,7 @@
          filter_gallery();
          masonry();
          custom_bg();
-         menu_arrow();
+        //  menu_arrow();
          load_owl();
          custom_elements();
          init(); 

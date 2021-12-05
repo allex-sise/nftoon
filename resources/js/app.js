@@ -41,10 +41,15 @@ import { VueSpinners } from '@saeris/vue-spinners'
 
 Vue.use(VueSpinners)
 
-const app = new Vue({
+new Vue({
     el: '#app',
     store
 });
+
+new Vue({
+    el: '#headerDarkMode',
+    store
+})
 
 
 // import App from './App.vue'
