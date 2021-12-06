@@ -1537,12 +1537,22 @@ input:checked + .slider:before {
                                                                 <div class="nft__item_price">
                                                                 {{ $item->Re_item}} lei
                                                                 </div>
-                                                                <div class="nft__item_action">
-                                                                    @if ($item->active_status == 0)
-                                                                        <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
-                                                                    @elseif ($item->active_status == 1)
-                                                                        <a href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-edit"></i>  Editeaza NFT-ul</a>
-                                                                    @endif
+                                                                <div class="nft__item_action">                                                            
+                                                                    <div class="dropdown" style="width: 100%;" >
+                                                                        <button class="btn btn-main dropdown-toggle" style="width: 100%;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            Actiuni
+                                                                        </button>
+                                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: transparent;">
+                                                                            <!-- <a class="dropdown-item" href="#">Action</a> -->
+                                                                            @if ($item->active_status == 0)
+                                                                                <a class="dropdown-item"  href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                                                <a class="dropdown-item"  href="{{ route('author.itemNftWallet',$item->id)}}" class="heart"><i class="ti-edit"></i>Muta NFT in Wallet-ul tau</a>
+                                                                            @elseif ($item->active_status == 1)
+                                                                                <a class="dropdown-item"  href="{{ route('author.itemScoateVanzare',$item->id)}}" class="heart"><i class="ti-edit"></i>  Scoate de la vanzare NFT-ul</a>
+                                                                                <a class="dropdown-item"  href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-edit"></i>  Editeaza NFT-ul</a>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <!-- <div class="nft__item_like">
                                                                     <i class="fa fa-heart"></i><span>50</span>

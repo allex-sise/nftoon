@@ -62,6 +62,11 @@ Route::group(['middleware' => ['XSS']], function () {
         Route::get('item-edit/{id}','ItemController@itemEdit')->name('itemEdit');
         Route::get('item-sale/{id}','ItemController@itemSale')->name('itemSale');
         Route::post('item-saleupdate','ItemController@itemSaleUpdate')->name('itemSaleUpdate');
+        Route::get('item-nft-wallet/{id}','ItemController@itemNftWallet')->name('itemNftWallet');
+        Route::post('item-nftwalletupdate','ItemController@itemNftWalletUpdate')->name('itemNftWalletUpdate');
+        Route::get('item-scoate-vanzare/{id}','ItemController@itemScoateVanzare')->name('itemScoateVanzare');
+        Route::post('item-scoateVanzareUpdate','ItemController@itemScoateVanzareUpdate')->name('itemScoateVanzareUpdate');
+        Route::post('item-nftwalletupdateReverse','ItemController@itemNftWalletReverseUpdate')->name('itemNftWalletReverseUpdate');
         Route::post('item-update','ItemController@itemUpdate')->name('itemUpdate');
         Route::get('item-delete/{id}','ItemController@itemDelete')->name('itemDelete');
         // end Product

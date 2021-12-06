@@ -270,6 +270,23 @@ class ProductController extends Controller
          
      }
 
+     function nftscos_list(){
+
+        try {
+            // $data['item']=Item::where(['active_status'=>1,'status'=> 1,'free'=>0])->orderBy('id','desc')->get();
+            $data['item']=Item::orderBy('id','desc')->where('active_status', 0)->where('nft_scos_wallet', 1)->get();
+
+            // return $data;
+            $data['settings'] = DB::table('infix_general_settings')->first();
+            return view('backend.product.nftscos_list', compact('data'));          
+          } catch (\Exception $e) {
+               $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+          }
+         
+     }
+
      public function showNFT($id)
      {
          try{

@@ -39,7 +39,7 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('verify');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
@@ -61,6 +61,9 @@ class VerificationController extends Controller
     }
 
     function verify(Request $request){
+        $userId = $request->route('id');
+        $user = User::findOrFail($userId);
+        
         if ($request->route('id') != $request->user()->getKey()) {
             throw new AuthorizationException;
         }

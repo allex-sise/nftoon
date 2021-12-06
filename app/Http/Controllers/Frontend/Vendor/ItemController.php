@@ -578,6 +578,163 @@ class ItemController extends Controller
        
       }
 
+      function itemNftWallet($id){
+        try {
+             $item_preview=ItemPreview::where('item_id',$id)->where('status',1)->first();
+            // return $item_preview;
+            $data['edit']=Item::find($id);
+            if ($data['edit']->user_id!=Auth::user()->id) {
+                Toastr::error('You are not authorized for view this page', 'Failed');
+                return redirect()->back();
+            }
+            $category = ItemCategory::where('up_permission',1)->get();
+            $attribute = Attribute::all();
+
+
+            return view('frontend.vendor.itemNftWallet', compact('data','item_preview'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
+    function itemNftWalletUpdate(Request $r){
+            
+        DB::beginTransaction();
+        try {
+    
+        $item = Item::find($r->id);
+    
+           
+         $settings = InfixGeneralSetting::first();
+         
+            if (Auth::user()->role_id==4) {
+            
+                    $item = Item::find($r->id);
+                    $success_message="NFT-ul a fost trimis catre autorizarea de mutare in wallet!";
+                } else {
+                    $item =new ItemPreview();
+                    $item->item_id = $r->id;
+                    $success_message="Thank you for your submission, allow to check 12 to 48 hours";
+                }
+            
+        $item->user_id = Auth::user()->id;
+        
+        $item->active_status = 0;
+        $item->nft_scos_wallet = 1;
+        $item->status = 1;
+        $item->save();
+    
+        Toastr::success($success_message,'Success');
+        DB::commit(); 
+            return redirect()->route('author.download', Auth::user()->username);
+            } catch (\Exception $e) {
+                // dd($e);
+                $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+            }
+       
+      }
+
+      function itemNftWalletReverseUpdate(Request $r){
+            
+        DB::beginTransaction();
+        try {
+    
+        $item = Item::find($r->id);
+    
+           
+         $settings = InfixGeneralSetting::first();
+         
+            if (Auth::user()->role_id==4) {
+            
+                    $item = Item::find($r->id);
+                    $success_message="NFT-ul tau poate fi pus la vanzare pe Minted, ai eliminat cu succes cererea de mutare in Wallet!";
+                } else {
+                    $item =new ItemPreview();
+                    $item->item_id = $r->id;
+                    $success_message="Thank you for your submission, allow to check 12 to 48 hours";
+                }
+            
+        $item->user_id = Auth::user()->id;
+        
+        $item->active_status = 0;
+        $item->nft_scos_wallet = 0;
+        $item->status = 1;
+        $item->save();
+    
+        Toastr::success($success_message,'Success');
+        DB::commit(); 
+            return redirect()->route('author.download', Auth::user()->username);
+            } catch (\Exception $e) {
+                // dd($e);
+                $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+            }
+       
+      }
+
+      function itemScoateVanzare($id){
+        try {
+             $item_preview=ItemPreview::where('item_id',$id)->where('status',1)->first();
+            // return $item_preview;
+            $data['edit']=Item::find($id);
+            if ($data['edit']->user_id!=Auth::user()->id) {
+                Toastr::error('You are not authorized for view this page', 'Failed');
+                return redirect()->back();
+            }
+            $category = ItemCategory::where('up_permission',1)->get();
+            $attribute = Attribute::all();
+
+
+            return view('frontend.vendor.itemScoateVanzare', compact('data','item_preview'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
+    function itemScoateVanzareUpdate(Request $r){
+            
+        DB::beginTransaction();
+        try {
+    
+        $item = Item::find($r->id);
+    
+           
+         $settings = InfixGeneralSetting::first();
+         
+            if (Auth::user()->role_id==4) {
+            
+                    $item = Item::find($r->id);
+                    $success_message="NFT-ul a fost scos de la vanzare de pe Minted.ro, il poti repune oricand doresti!";
+                } else {
+                    $item =new ItemPreview();
+                    $item->item_id = $r->id;
+                    $success_message="Thank you for your submission, allow to check 12 to 48 hours";
+                }
+            
+        $item->user_id = Auth::user()->id;
+        $item->active_status = 0;
+        $item->status = 1;
+        $item->save();
+    
+        Toastr::success($success_message,'Success');
+        DB::commit(); 
+        return redirect()->route('author.download', Auth::user()->username);
+        } catch (\Exception $e) {
+            // dd($e);
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+       
+      }
+
   function itemUpdate(Request $r){
             
     // return $r;

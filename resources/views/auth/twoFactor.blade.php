@@ -33,6 +33,20 @@ header{
 footer{
     display: none;
 }
+.btnverif{
+    width: 350px!important;
+}
+@media only screen and (max-width: 767px) {
+.btnverif{
+    width: 100%!important;
+}
+.col-6{
+    width: 100%!important;
+}
+h1{
+    font-size: 30px!important;
+}
+}
 </style>
 @endpush
 @section('content')
@@ -83,7 +97,7 @@ footer{
                         </div>
                         <div class="row">
                             <div class="col-6" style="display: block; margin: 0 auto;">
-                                <button type="submit" class="btn btn-success px-4" style="width: 350px;">
+                                <button type="submit" class="btn btn-success px-4 btnverif">
                                     Verfica
                                 </button>
                                 <p style="padding-top: 20px;"> sau </p>
