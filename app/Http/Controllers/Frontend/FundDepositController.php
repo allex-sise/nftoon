@@ -58,7 +58,7 @@ class FundDepositController extends Controller
             'first_name' => 'sometimes|required|string',
             'last_name' => 'sometimes|required|string',
             'company_name' => 'string',
-            'mobile' => 'sometimes|required',
+            'mobile' => 'required|string|size:10|regex:/[0-9]{9}/',
             'address' => 'sometimes|required|string',
             'country_id' => 'sometimes|required|integer',
             'state_id' => 'sometimes|string',

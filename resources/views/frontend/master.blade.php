@@ -280,7 +280,8 @@
     <script src="{{asset('public/frontend/assets/js/jquery.lazy.plugins.min.js')}}"></script>
     <script src="{{asset('public/frontend/assets/js/designesia.js')}}"></script>
     <script src="{{asset('public/frontend/js/gdpr-cookie.js')}}"></script>
-    <script>
+    <script src="{{ asset('public/frontend/js/') }}/filter.js"></script>
+   <script>
 $('#icon2').click(function(){
     $('#body').toggleClass('light-scheme');
     $('#body').toggleClass('dark-scheme');

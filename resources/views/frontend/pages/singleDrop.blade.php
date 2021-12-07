@@ -127,7 +127,16 @@
                             </div>
                             <div class="nft__item_wrap">
                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                                @if (@$item->file == 'img')
                                     <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
+                                
+                                    @elseif(@$item->file == 'video')
+                                    <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                                    <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                                @endif
                                 </a>
                             </div>
                             <div class="nft__item_info">

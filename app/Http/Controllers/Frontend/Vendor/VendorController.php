@@ -266,8 +266,9 @@ class VendorController extends Controller
         try {
          
          
-                $data['user'] = User::where('username', $username)->first();
-                @$data['affiliate'] = route('author.referrals', $data['user']->username);
+            $data['user'] = User::where('id', Auth::user()->id)->first();
+            $data['referrals'] = $data['user']->referrals()->get();
+            $data['affiliate'] = $data['user']->referrals()->paginate(8);
             return $this->vendor($data);
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -442,7 +443,9 @@ class VendorController extends Controller
             $data['withdraws'] = Withdraw::where('user_id', $data['user']->id)->get();
             $data['item_review'] = Review::where('vendor_id', Auth::user()->id)->paginate(6);
             $data['profile_setting'] = InfixProfileSetting::where('active_status',1)->first();
-
+            $data['user'] = User::where('id', Auth::user()->id)->first();
+            $data['referrals'] = $data['user']->referrals()->get();
+            $data['affiliate'] = $data['user']->referrals()->paginate(8);
             $data['monthly_sale']=BalanceSheet::where('author_id',Auth::user()->id)->whereMonth('created_at', Carbon::now()->month)->get();
             
             // return $data['total_income'];
@@ -499,7 +502,7 @@ class VendorController extends Controller
             'country_id' => 'sometimes|nullable|integer',
             // 'state_id' => 'sometimes|nullable|integer',
             // 'city_id' => 'sometimes|nullable|integer',
-            'mobile' => 'sometimes|nullable|string',
+            'mobile' => 'required|string|size:10|regex:/[0-9]{9}/',
             'zipcode' => 'sometimes|nullable|integer',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|max:80000',
 

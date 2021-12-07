@@ -8,7 +8,7 @@ console.log(url);
 function GetOutPutString(data) {
     data.forEach(function(e, index) {
         if (e.file == 'video') {
-        $(".databox").append(` <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        $(".databox").append(` <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
         <div class="nft__item">
            <!-- <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div> -->
             <div class="author_list_pp">
@@ -28,7 +28,7 @@ function GetOutPutString(data) {
                   e.id
                 }">
                       <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
-                           <source src="${url}/${e.main_file}" type="video/mp4">
+                           <source src="${e.main_file}" type="video/mp4">
                            
                            Your browser does not support the video tag.
                        </video>

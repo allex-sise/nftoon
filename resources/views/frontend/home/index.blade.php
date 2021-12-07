@@ -221,5 +221,6 @@ h3 {
 $("#butons").hide();
 
 </script>
+
 <script src="{{ asset('public/frontend/js/') }}/item_load.js"></script>
 @endpush

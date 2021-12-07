@@ -64,8 +64,8 @@ class CustomerController extends Controller
     {
         try {
          
-            $data['user'] = User::where('username', $username)->first();
-            @$data['referrals'] = route('customer.referrals', $data['user']->username);
+            $data['user'] = User::where('id', Auth::user()->id)->first();
+            $data['referrals'] = $data['user']->referrals()->get();
             $data['affiliate'] = $data['user']->referrals()->paginate(8);
             return $this->vendor($data);
         } catch (\Exception $e) {
@@ -212,6 +212,7 @@ class CustomerController extends Controller
             if (Auth::check()) {
                 $data['user'] = User::where('id', Auth::user()->id)->first();
                 $data['referrals'] = $data['user']->referrals()->get();
+                $data['affiliate'] = $data['user']->referrals()->paginate(8);
             }
 
             $data['order'] = Order::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(6);
@@ -236,7 +237,7 @@ class CustomerController extends Controller
             'country_id' => 'sometimes|nullable|integer',
             // 'state_id' => 'sometimes|nullable|integer',
             // 'city_id' => 'sometimes|nullable|integer',
-            'mobile' => 'sometimes|nullable|string',
+            'mobile' => 'required|string|size:10|regex:/[0-9]{9}/',
             'zipcode' => 'sometimes|nullable|integer',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|max:80000',
 
@@ -586,13 +587,13 @@ public function bank_payment(Request $request ){
        $diposit->depositor_id=Auth::user()->id;
        $diposit->save();
 
-        $notification=new SmNotification();
-        $notification->user_id = Auth::user()->id;
-        $notification->message = Auth::user()->username.' Request a Bank Deposit';
-        $notification->link = url('admin/deposit-request-noti',@$diposit->id);
-        $notification->ticket_id = $diposit->id;
-        $notification->received_id = 1;
-        $notification->save();
+        // $notification=new SmNotification();
+        // $notification->user_id = Auth::user()->id;
+        // $notification->message = Auth::user()->username.' Request a Bank Deposit';
+        // $notification->link = url('admin/deposit-request-noti',@$diposit->id);
+        // $notification->ticket_id = $diposit->id;
+        // $notification->received_id = 1;
+        // $notification->save();
        
     //    Toastr::success('Deposite added, Waiting for admin approval','Success');
     //    return redirect()->back();
