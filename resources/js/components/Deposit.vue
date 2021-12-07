@@ -33,7 +33,6 @@ export default {
     ownerName: null,
     withdrawAmount: null,
     withdrawAmountEth: null,
-    route: null,
     routeRedirect: null,
     routeBlockchainDeposit: null,
     routeBlockchainStorePayment: null,

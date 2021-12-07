@@ -406,7 +406,7 @@
                             withdraw-amount-eth="{{ Session::get('deposit_amountETH') }}"
                             owner-name="{{ @Auth::user()->full_name }}"
                             user-id="{{ @Auth::user()->id }}"
-                            route-redirect="{{ route('user.deposit',@Auth::user()->username)}}"
+                            route-redirect="{{ route('user.fund_succes')}}"
                             route-blockchain-deposit="{{ route('user.bank_payment')}}" 
                             route-blockchain-store-payment="{{ route('user.blockchainStoreFund')}}" 
                             /> </div> 

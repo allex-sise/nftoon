@@ -47,7 +47,7 @@ new Vue({
 });
 
 new Vue({
-    el: '#headerDarkMode',
+    el: '#appHeader',
     store
 })
 

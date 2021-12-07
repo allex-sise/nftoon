@@ -280,12 +280,12 @@ export default new Vuex.Store({
 
             axios.post(state.mintRoute,state.token).then(res => {
             if(res.data.status === 'ok'){
-                toastr.success(res.data.message);
+                // toastr.success(res.data.message);
             }else{
-                toastr.error(res.data.message);
+                // toastr.error(res.data.message);
             }
             }).catch(error=>{
-                toastr.error(error.response.data.errors);
+                // toastr.error(error.response.data.errors);
         });
         }
     },
@@ -409,12 +409,12 @@ export default new Vuex.Store({
     async storeInDb({dispatch}, payload){
       axios.post(payload.route, payload).then(res => {
         if(res.data.status === 'ok'){
-            toastr.success(res.data.message);
+            // toastr.success(res.data.message);
         }else{
-            toastr.error(res.data.message);
+            // toastr.error(res.data.message);
         }
         }).catch(error=>{
-            toastr.error(error.response.data.errors);
+            // toastr.error(error.response.data.errors);
       });
     },
     async isTransactionMined({state},transactionHash){

@@ -359,7 +359,7 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <div id="headerDarkMode" style="padding: 10px 20px;">
+                                        <div id="appHeader" style="padding: 10px 20px;">
                                             <toggle-theme-color 
                                             style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
                                             route="{{ route('user.darkMode',  @Auth::user()->id) }}"
