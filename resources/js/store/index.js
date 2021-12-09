@@ -91,6 +91,7 @@ export default new Vuex.Store({
     },
     async connect({ commit, dispatch }, connect) {
       try {
+        await dispatch("requestAccess");
         await dispatch("loadSecrets");
         const { ethereum } = window;
         if (!ethereum) {
