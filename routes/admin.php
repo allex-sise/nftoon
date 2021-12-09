@@ -161,6 +161,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::post('product-edit', 'ProductController@itemUpdate')->name('itemUpdate');
         Route::get('product-approve/{id}', 'ProductController@itemApprove')->name('itemApprove')->middleware('userRolePermission:5');
         Route::post('product-update-mint', 'ProductController@itemUpdateMint')->name('itemUpdateMint')->middleware('userRolePermission:5');
+        Route::post('nft-scos-mint', 'ProductController@muta_nft_update')->name('muta_nft_update')->middleware('userRolePermission:5');
         
         Route::get('item-delete/{id}', 'ProductController@itemDelete')->name('itemDelete')->middleware('userRolePermission:5');
         Route::get('deactive-products', 'ProductController@deactiveProduct')->name('deactive_product')->middleware('userRolePermission:5');

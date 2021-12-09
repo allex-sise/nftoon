@@ -45,16 +45,16 @@
             <div class="row">
                 <div class="col-xl-8 offset-xl-2 col-12">
                         <div class="single_account_wrap">
-                            @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
+                           
                                 <h4>@lang('lang.Billing') @lang('lang.Information')</h4>
                                 <p>@lang('lang.welcome_message_for_vendor').</p>
-                            @endif
+                          
                                 <div class="fund_add_form_div" >
                                         <span id="alert-danger" class="alert alert-danger d-none"></span>
                                     </div>
                                   <form action="{{ route('user.depositStore')}}" class="single_account-form checkout-form" method="POST" {{-- id="subscribe-form" --}} {{-- onsubmit="return submitpayment()" --}}>
                                     @csrf
-                                    @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
+                                    
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6">
                                             <label for="first_name"> @lang('lang.first_name') <span>*</span></label>
@@ -153,7 +153,7 @@
                                         </div>
 
                                     </div>
-                                    @endif
+                                   
                                     <div class="row mb-40">
                                     <p class="text-center">Fondurile tale: @if (Auth::user()->role_id == 4)
                                                                     {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
@@ -211,7 +211,7 @@
  @endsection
  @push('js')
  <script src="{{ asset('public/frontend/js/') }}/fund_add.js"></script>
- <script src="https://checkout.stripe.com/checkout.js"></script>
+ <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>
  <script src="{{ asset('public/frontend/js/') }}/fund_add2.js"></script>
  <script>

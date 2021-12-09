@@ -769,4 +769,32 @@ public function itemUpdate(Request $r){
        }
      }
 
+        // item active deactive section 
+
+        function muta_nft_update(Request $r,$id){
+            try {
+                $data = Item::findOrFail($id);
+                $data->status = 0;
+                $data->active_status = 0;
+                $data->nft_scos_wallet = 2; // 2 inseamna ca e scos tantan
+                $data->save();  
+
+                $nftscos = new  NftScoase();
+                $nftscos->status = 1;
+                $nftscos->item_id = $r->item_id;
+                $nftscos->id_nft = $r->id_nft;
+                $nftscos->wallet_receiver = $r->wallet_receiver;
+
+                $nftscos->save();
+            
+                Toastr::success($msg);
+                return redirect()->back();
+                } catch (\Exception $e) {
+                    $msg=str_replace("'", " ", $e->getMessage()) ;
+                    Toastr::error($msg, 'Failed');
+                    return redirect()->back();
+                }
+        }
+   
+
 }

@@ -248,7 +248,6 @@
     border-radius: 0px!important;
 }
 </style>
-<script src='https://js.stripe.com/v2/' type='text/javascript'></script>
 <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
 @endpush
 @section('content')
@@ -297,19 +296,7 @@
                                 <div class="form__right__form-control">
                                 <label for="cardCode" class="form__right__form-control--name"
                                     >Prin continuarea platii esti de acord cu Termenii si Conditiile</label>
-                                    <form action="{{ route('user.stripe_deposit')}}" method="POST">
-                                        @csrf
-                                        <script
-                                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                            data-key="{{ env('STRIPE_KEY') }}"
-                                            data-name="Stripe Payment"
-                                            {{-- data-image={{ asset(GeneralSetting()->logo) }} --}}
-                                            data-locale="auto"
-                                            data-currency="usd">
-                                        </script>
-                                        <input hidden value="{{ Session::get('deposit_amount') }}"  readonly="readonly" type="text" id="amount" name="amount">
-                                        <button class="btn-main" type="submit" style="height: 40px;">Plateste Acum</button>
-                                    </form>
+                                    <a href="#" data-toggle="modal" data-target="#exampleModal2" class="btn-main" style="padding: 12px 40px;">Plateste Acum</a>
                                 </div>
                             </div>
                         </div>
@@ -341,90 +328,152 @@
 
 
                     </div>
+                    <div  class="modal fade " id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+                      <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Plata prin Stripe </h5>
+                              </div>
+                                <form
+                          role="form"
+                          action="{{ route('user.stripe_deposit')}}"
+                          method="post"
+                          class="require-validation"
+                          data-cc-on-file="false"
+                          data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                          id="payment-form">
+                          @csrf
+                          <div class='form-row row'>
+                            <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Numele de pe Card</label> <input
+                                  class='form-control' size='4' type='text'>
+                            </div>
+                          </div>
+                          <div class='form-row row'>
+                            <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Numar Card</label> <input
+                                  autocomplete='off' class='form-control card-number' size='20'
+                                  type='text'>
+                            </div>
+                          </div>
+                          <div class='form-row row'>
+                            <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                <label class='control-label'>CVC / CVV</label> <input autocomplete='off'
+                                  class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                  type='text'>
+                            </div>
+                            <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                <label class='control-label'>Data Expirarii</label> <input
+                                  class='form-control card-expiry-month' placeholder='MM' size='2'
+                                  type='text'>
+                            </div>
+                            <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                <label class='control-label'>Anul Expirarii</label> <input
+                                  class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                  type='text'>
+                            </div>
+                          </div>
+                          <div class='form-row row'>
+                            <div class='col-md-12 error form-group hide'>
+                                <div class='alert-danger alert'>Te rugam sa corectezi erorile si sa continui!
+                                </div>
+                            </div>
+                          </div>
+                          <input hidden value="{{ Session::get('deposit_amount') }}"  readonly="readonly" type="text" id="amount" name="amount">
+                          <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn-main" type="submit">Plateste Acum {{ Session::get('deposit_amount') }} lei</button>
+                            </div>
+                          </div>
+                      </form>
+                          </div>
+                      </div>
+                  </div>
+
                     <div  class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Plata prin Ethereum </h5>
-            </div>
-            <form name="bank_payment" action=" {{ route('user.bank_payment')}} " class="single_account-form" method="POST" id=""  onsubmit="return validateForm()" >
-                <div class="modal-body">
-                    @php
-                        $bank_setup=explode(',',$payment_methods->where('id',4)->first()->env_terms);
-                    @endphp
-                    <!-- <fieldset>
-                        <legend>Bank Account Info</legend>
-                            <table class="table">
-                                @foreach ($bank_setup as $setup)
-                                
-                                    @php
-                                        $b_setup=explode(':',$setup);
-                                    @endphp
-                                    <tr>
-                                        <td><strong>{{str_replace('_',' ',@$b_setup[0])}}</strong> </td>
-                                        <td>{{@$b_setup[1]}}</td>
-                                    </tr>
-                                @endforeach
-                            </table>
-                    </fieldset> -->
-                    @csrf
-                    {{-- {{ isset($bank_validator) ? 'show active' :''}} --}}
-                    <div class="row">
-                
-                        <div class="col-xl-12 col-md-12">
-                            <input type="text" class="bank_deposit_input" name="bank_name" value="blockchain" hidden>
-                            <label for="name" class="mb-2">@lang('lang.name_of_account_owner') <span>*</span></label>
-                            <input type="text"  name="owner_name" class="bank_deposit_input" value="{{ @Auth::user()->full_name }}">
-                            <span class="invalid-feedback" role="alert" id="owner_name"></span>
-                        </div> 
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-12 col-md-12">
-                            <label for="name" class="mb-2">@lang('lang.amount') cu care va fi alimentat contul Minted in Credite <span>*</span></label>
-                            <div class="input-group mb-3">
-                                <input type="number" style="width: 140px!important" class="bank_deposit_input form-control" min="0" step="any" name="amount" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ Session::get('deposit_amount') }}" readonly>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="basic-addon2">LEI</span>
-                                    </div>
-                            </div>
-                            <span class="invalid-feedback" role="alert" id="amount_validation"></span>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <label for="name" class="mb-2">@lang('lang.amount') care va fi debitata din wallet-ul tau <span>*</span></label>
-                            <div class="input-group mb-3">
-                                <input type="number" style="width: 140px!important" class="bank_deposit_input form-control" min="0" step="any" name="amountEth" aria-label="Recipient's username" aria-describedby="basic-addon3" value="{{ Session::get('deposit_amountETH') }}" readonly>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="basic-addon2">ETH</span>
-                                    </div>
-                            </div>
-                            <span class="invalid-feedback" role="alert" id="amount_validation"></span>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <label for="name" class="mb-2">@lang('lang.account_no') <span>*</span></label>
-                            <div id="app"> <deposit 
-                            withdraw-amount="{{ Session::get('deposit_amount') }}" 
-                            withdraw-amount-eth="{{ Session::get('deposit_amountETH') }}"
-                            owner-name="{{ @Auth::user()->full_name }}"
-                            user-id="{{ @Auth::user()->id }}"
-                            route-redirect="{{ route('user.fund_succes')}}"
-                            route-blockchain-deposit="{{ route('user.bank_payment')}}" 
-                            route-blockchain-store-payment="{{ route('user.blockchainStoreFund')}}" 
-                            /> </div> 
-                            <!-- <input type="text" class="bank_deposit_input"  placeholder="Account number" name="account_number" value="{{@old('account_number')}}" >                                              -->
-                            <!-- <span class="invalid-feedback" role="alert" id="account_number"></span>  -->
-                        </div>
-                       
-                    </div>
-                        
-                </div>
-                <!-- <div class="modal-footer d-flex justify-content-between">
-                   <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button> 
-                    <button class="btn-main" type="submit">@lang('lang.make') @lang('lang.payment')</button>
-                </div> -->
-            </form>
-        </div>
-    </div>
-</div>
+                      <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Plata prin Ethereum </h5>
+                              </div>
+                              <form name="bank_payment" action=" {{ route('user.bank_payment')}} " class="single_account-form" method="POST" id=""  onsubmit="return validateForm()" >
+                                  <div class="modal-body">
+                                      @php
+                                          $bank_setup=explode(',',$payment_methods->where('id',4)->first()->env_terms);
+                                      @endphp
+                                      <!-- <fieldset>
+                                          <legend>Bank Account Info</legend>
+                                              <table class="table">
+                                                  @foreach ($bank_setup as $setup)
+                                                  
+                                                      @php
+                                                          $b_setup=explode(':',$setup);
+                                                      @endphp
+                                                      <tr>
+                                                          <td><strong>{{str_replace('_',' ',@$b_setup[0])}}</strong> </td>
+                                                          <td>{{@$b_setup[1]}}</td>
+                                                      </tr>
+                                                  @endforeach
+                                              </table>
+                                      </fieldset> -->
+                                      @csrf
+                                      {{-- {{ isset($bank_validator) ? 'show active' :''}} --}}
+                                      <div class="row">
+                                  
+                                          <div class="col-xl-12 col-md-12">
+                                              <input type="text" class="bank_deposit_input" name="bank_name" value="blockchain" hidden>
+                                              <label for="name" class="mb-2">@lang('lang.name_of_account_owner') <span>*</span></label>
+                                              <input type="text"  name="owner_name" class="bank_deposit_input" value="{{ @Auth::user()->full_name }}">
+                                              <span class="invalid-feedback" role="alert" id="owner_name"></span>
+                                          </div> 
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-xl-12 col-md-12">
+                                              <label for="name" class="mb-2">@lang('lang.amount') cu care va fi alimentat contul Minted in Credite <span>*</span></label>
+                                              <div class="input-group mb-3">
+                                                  <input type="number" style="width: 140px!important" class="bank_deposit_input form-control" min="0" step="any" name="amount" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ Session::get('deposit_amount') }}" readonly>
+                                                      <div class="input-group-append">
+                                                          <span class="input-group-text" id="basic-addon2">LEI</span>
+                                                      </div>
+                                              </div>
+                                              <span class="invalid-feedback" role="alert" id="amount_validation"></span>
+                                          </div>
+                                          <div class="col-xl-12 col-md-12">
+                                              <label for="name" class="mb-2">@lang('lang.amount') care va fi debitata din wallet-ul tau <span>*</span></label>
+                                              <div class="input-group mb-3">
+                                                  <input type="number" style="width: 140px!important" class="bank_deposit_input form-control" min="0" step="any" name="amountEth" aria-label="Recipient's username" aria-describedby="basic-addon3" value="{{ Session::get('deposit_amountETH') }}" readonly>
+                                                      <div class="input-group-append">
+                                                          <span class="input-group-text" id="basic-addon2">ETH</span>
+                                                      </div>
+                                              </div>
+                                              <span class="invalid-feedback" role="alert" id="amount_validation"></span>
+                                          </div>
+                                          <div class="col-xl-12 col-md-12">
+                                              <label for="name" class="mb-2">@lang('lang.account_no') <span>*</span></label>
+                                              <div id="app"> <deposit 
+                                              withdraw-amount="{{ Session::get('deposit_amount') }}" 
+                                              withdraw-amount-eth="{{ Session::get('deposit_amountETH') }}"
+                                              owner-name="{{ @Auth::user()->full_name }}"
+                                              user-id="{{ @Auth::user()->id }}"
+                                              route-redirect="{{ route('user.fund_succes')}}"
+                                              route-blockchain-deposit="{{ route('user.bank_payment')}}" 
+                                              route-blockchain-store-payment="{{ route('user.blockchainStoreFund')}}" 
+                                              /> </div> 
+                                              <!-- <input type="text" class="bank_deposit_input"  placeholder="Account number" name="account_number" value="{{@old('account_number')}}" >                                              -->
+                                              <!-- <span class="invalid-feedback" role="alert" id="account_number"></span>  -->
+                                          </div>
+                                        
+                                      </div>
+                                          
+                                  </div>
+                                  <!-- <div class="modal-footer d-flex justify-content-between">
+                                    <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button> 
+                                      <button class="btn-main" type="submit">@lang('lang.make') @lang('lang.payment')</button>
+                                  </div> -->
+                              </form>
+                          </div>
+                      </div>
+                  </div>
                      
                 </div>
             </div>
@@ -436,8 +485,57 @@
  @endsection
  @push('js')
  <script src="{{ asset('public/frontend/js/') }}/fund_add.js"></script>
- <script src="https://checkout.stripe.com/checkout.js"></script>
+ <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/payment_section.js"></script>
 
+<script type="text/javascript">
+      $(function() {
+    var $form = $(".require-validation");
+    $('form.require-validation').bind('submit', function(e) {
+        var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                'input[type=text]', 'input[type=file]',
+                'textarea'
+            ].join(', '),
+            $inputs = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid = true;
+        $errorMessage.addClass('hide');
+        $('.has-error').removeClass('has-error');
+        $inputs.each(function(i, el) {
+            var $input = $(el);
+            if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault();
+            }
+        });
+        if (!$form.data('cc-on-file')) {
+            e.preventDefault();
+            Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+            Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+            }, stripeResponseHandler);
+        }
+    });
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            $('.error')
+                .removeClass('hide')
+                .find('.alert')
+                .text(response.error.message);
+        } else {
+            /* token contains id, last4, and card type */
+            var token = response['id'];
+            $form.find('input[type=text]').empty();
+            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            $form.get(0).submit();
+        }
+    }
+});
+   </script>
  @endpush
