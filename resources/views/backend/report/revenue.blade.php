@@ -122,7 +122,9 @@
                             $total_revenue=0;
                         @endphp
                         <tbody>
+                          
                             @foreach ($revenue_list as $item)
+                          
                             @php
                                 $total_revenue+=$item['revenue'];
                             @endphp

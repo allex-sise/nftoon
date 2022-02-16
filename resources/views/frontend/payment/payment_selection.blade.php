@@ -247,6 +247,63 @@
     border: 0px solid #ced4da!important;
     border-radius: 0px!important;
 }
+.btstripe{
+  float: right;
+  width:50%;
+  margin-bottom: 10px;
+}
+.btnnulare{
+  background: #e2e2e2!important;
+  color: #000!important;
+}
+.ft2modal{
+  display: block!important;
+}
+@media only screen and (max-width: 767px) {
+  .form{
+  display: block!important;
+  height: auto!important;
+  background: transparent!important;
+  } 
+  .form__left {
+    flex-basis: unset!important;
+    text-align: center!important;
+}
+.form__right {
+    padding: 20px!important;
+    text-align: center;
+    background: #FFF;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.colmd6spec {
+    width: 100%!important;
+    margin: 10px!important;
+}
+.form__left{
+  background: #FFF;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.form__right__check--creditCard{
+  margin-right: 0px!important;
+}
+.form__right__check{
+  display: block;
+  margin: 0 auto;
+}
+.colmd6spec{
+  margin-left: 0px!important;
+}
+}
 </style>
 <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
 @endpush
@@ -334,6 +391,7 @@
                               <div class="modal-header">
                                   <h5 class="modal-title" id="exampleModalLabel">Plata prin Stripe </h5>
                               </div>
+                              <div class="container">
                                 <form
                           role="form"
                           action="{{ route('user.stripe_deposit')}}"
@@ -352,24 +410,24 @@
                           <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>Numar Card</label> <input
-                                  autocomplete='off' class='form-control card-number' size='20'
+                                  autocomplete='off' id="txtCardNumber" class='form-control card-number' size='16'
                                   type='text'>
                             </div>
                           </div>
                           <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
                                 <label class='control-label'>CVC / CVV</label> <input autocomplete='off'
-                                  class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                  class='form-control card-cvc' id="txtCVV" placeholder='ex. 311' size='3'
                                   type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>Data Expirarii</label> <input
-                                  class='form-control card-expiry-month' placeholder='MM' size='2'
+                                  class='form-control card-expiry-month' id="expNumber"  placeholder='MM' size='2'
                                   type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>Anul Expirarii</label> <input
-                                  class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                  class='form-control card-expiry-year' id="yearNumber"  placeholder='YYYY' size='4'
                                   type='text'>
                             </div>
                           </div>
@@ -380,12 +438,18 @@
                             </div>
                           </div>
                           <input hidden value="{{ Session::get('deposit_amount') }}"  readonly="readonly" type="text" id="amount" name="amount">
+                          <div class="modal-footer ft2modal">
                           <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn-main" type="submit">Plateste Acum {{ Session::get('deposit_amount') }} lei</button>
-                            </div>
+                                <button class="btn-main btstripe" type="submit">Plateste Acum {{ Session::get('deposit_amount') }} lei</button>
+                              
+                                    <button type="button" class="btn-main boxed-btn-white btnnulare" data-dismiss="modal">@lang('lang.cancel')</button> 
+                                      
+                              </div>
+                          </div>
                           </div>
                       </form>
+                      </div>
                           </div>
                       </div>
                   </div>
@@ -488,7 +552,13 @@
  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/payment_section.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+<script>
+$('#txtCardNumber').mask("9999 9999 9999 9999");
+$('#txtCVV').mask("999");
+$('#expNumber').mask("99");
+$('#yearNumber').mask("9999");
+</script>
 <script type="text/javascript">
       $(function() {
     var $form = $(".require-validation");

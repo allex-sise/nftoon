@@ -17,9 +17,9 @@
     margin-right: 10px;
 }
 .butonsp{
-    height: 50px;
+    height: 44px;
     border-radius: 0px;
-    width: 15%;
+    width: 35%;
 }
 .input-group-text {
     border-radius: 0px;
@@ -1605,12 +1605,11 @@ input:checked + .slider:before {
                                                     <div class="container">
                                                         <div class="row mt-5">
                                                                 <div class="col-xl-10 offset-xl-1 affiliate_item">
-                                                                    <h3>Link pentru referral <button id="aff_generate" class="btn-main">@lang('lang.click')</button></h3> 
-                                                                    <div id="hideme">
+                                                                  
                                                                         <p> Copiaza si trimite acest link prietenilor tai pentru a deveni afiliati cu tine pe Minted.ro</p>
                                                                         <input  class="list-group-item" id="aff_link" value="{{ Auth::user()->referral_link }}"  />
-                                                                        <button class="butonsp" onclick="myFunction()">Copy text</button>
-                                                                    </div>
+                                                                        <button class="butonsp btn-main" onclick="myFunction()">Copiaza link-ul</button>
+                                                                  
                                                                 </div>
                                                         </div>
                                                     </div>
@@ -1623,7 +1622,7 @@ input:checked + .slider:before {
                                                             <div class="col-xl-10 offset-xl-1 col-lg-12">
                                                                     <div class="my_coupon">
                                                                         <div class="my_coupens_headeing mb-30">
-                                                                            <h3>@lang('lang.all') @lang('lang.affiliate') <b>({{ count(Auth::user()->referrals)  ?? '0' }})</b></h3>
+                                                                            <h3>Toti Afiliatii <b>({{ count(Auth::user()->referrals)  ?? '0' }})</b></h3>
                                                                         </div>
                                                                         @if (@$data['referrals'])
                                                                         <table class="table">

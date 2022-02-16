@@ -2,7 +2,7 @@
  <style>
 .colspecial{
     margin: 0 auto;
-    display: none;
+    display: block;
     width: 70%!important;
 }
 .footer-area .footer-top {
@@ -30,6 +30,49 @@
 }
 .footer-area .copyright-area .footer-bottom .footer-link {
     margin-bottom: 0px;
+}
+.colspecial{
+    display: none!important;
+}
+.footer-area .footer-top{
+    display: none!important;
+}
+.footermobul{
+    margin-bottom: 0px!important;
+    padding-top: 5px!important;
+    padding-left: 0px!important;
+}
+.footer-area .copyright-area .social-links {
+    padding-top: 5px;
+}
+.footer-area .copyright-area .footer-bottom .footer-link ul li {
+    display: inline-block;
+    margin-right: 29px;
+}
+.footer-area .footer-bg{
+    height: 60px!important;
+}
+#content{
+    min-height: calc(100vh - 60px);;
+}
+@media only screen and (max-width: 767px) {
+.colspecial{
+    display: none!important;
+}
+.footer-top{
+    display: none!important;
+}
+.footer-area .footer-bg{
+    height: auto!important;
+}
+.footer-area .copyright-area .footer-bottom .footer-link ul li a {
+    font-size: 10px!important;
+}
+.footer-area .copyright-area .footer-bottom .footer-link ul li {
+    display: inline-block;
+    margin-right: 4px;
+}
+
 }
  </style>
  <a href="#" id="back-to-top"></a>
@@ -168,14 +211,9 @@
                                     <div class="footer-link">
                                         <nav>
                                             <ul class="footermobul">
-                                                @php
-                                                    $menus = FooterMenu();
-                                                @endphp
-                                                @foreach ($menus as $menu)
-                                                <li>
-                                                <a href="{{$menu->menu_url}}">{{$menu->menu_title}}</a>
-                                                </li>
-                                                @endforeach
+                                                <li><a href="{{ url('/termeni-conditii') }}">Termeni si Conditii </a></li>
+                                                <li><a href="{{  url('/politica-confidentialitate' )}}">Politica Confidentialitate</a></li>
+                                                <li><a href="{{ url('/politica-cookies') }}">Politica Cookies</a></li>
                                             </ul>
                                         </nav>
                                     </div>

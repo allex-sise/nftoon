@@ -157,8 +157,6 @@ class FundController extends Controller
         }
     }
     public function fundHistory($id){
-        
-
         try {
             $funds=Deposit::where('user_id',$id) ->get();
             $user_info=User::find($id);
@@ -171,13 +169,10 @@ class FundController extends Controller
         }
     }
     public function fundList(){
-        
-
         try {
             $funds=Deposit::leftjoin('users','users.id','=','deposits.user_id')
             ->select('deposits.*','users.full_name')
             ->get();
-
             // return $funds;
             return view('backend.fund.fund_list', compact('funds'));
         } catch (\Throwable $e) {
@@ -210,8 +205,6 @@ class FundController extends Controller
         try {
             $fund=BankDeposit::find($id);
             $fund->delete();
-
-            
             DB::commit();  
             Toastr::success('Deposit request Deleted Succsesfully', 'Success');
             return redirect()->back();

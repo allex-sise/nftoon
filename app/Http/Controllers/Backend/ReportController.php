@@ -35,6 +35,7 @@ class ReportController extends Controller
             $item_order=ItemOrder::join('items','items.id','=','item_orders.item_id')
             ->leftjoin('refunds','refunds.order_item_id','=','item_orders.id')
             ->where('refunds.status',null)
+            ->where('item_orders.download_status', null)
             ->whereBetween('item_orders.created_at', [$start_date, $end_date])
             ->select('item_orders.*','items.title')
             ->get();
@@ -93,6 +94,7 @@ class ReportController extends Controller
                 ->leftjoin('refunds','refunds.order_item_id','=','item_orders.id')
                 ->where('refunds.status',null)
                 ->where('item_orders.author_id',$request->author)
+                ->where('item_orders.download_status', null)
                 ->where('item_orders.item_id',$request->product)
                 ->whereBetween('item_orders.created_at', [$start_date, $end_date])
                 ->select('item_orders.*','items.title')

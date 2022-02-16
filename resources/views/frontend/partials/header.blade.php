@@ -109,6 +109,17 @@
     position: relative;
     right: -10px;
   }
+  .header-area .profile-area a.user_author_pro{
+      display: none!important;
+  }
+  .ascmn{
+      right: 0px!important;
+      top: -3px!important;
+      background: transparent!important;
+        color: var(--secondary-color)!important;
+        border: 1px solid!important;
+        padding: 6px 10px!important;
+  }
   #menu-btn{
       background: var(--secondary-color)!important;
   }
@@ -266,7 +277,7 @@
                     <div class="menu_side_area">
                         
                     @if (!Auth::check())
-                        <a class="btn-main btnascundedesktop" href="{{ url('customer/login') }}"> <span class="signin_text" >@lang('lang.sign_in')</span> <i class="fa fa-sign-in m-0 p-0 signin_btn" aria-hidden="true"></i></a>
+                        <a class="btn-main btnascundedesktop ascmn" style="padding: 6px 10px!important;" href="{{ url('customer/login') }}"> <span class="signin_text" >@lang('lang.sign_in')</span> <i class="fa fa-sign-in m-0 p-0 signin_btn" aria-hidden="true"></i></a>
                     @endif
                     @if (Auth::check())
                     <span style="font-size: 10px; cursor: pointer; padding: 6px; right: 5px; top: -6px; position: relative;" onclick="openNav2()" class="user_author_pro black-btn ascunddesktop"><span class="name"> {{ Str::limit(@Auth::user()->username, 3) }}</span> 
@@ -359,6 +370,7 @@
                                                 </ul>
                                             </div>
                                         @endif
+                                        @if (Auth::user()->role_id != 1)
                                         <div id="appHeader" style="padding: 10px 20px;">
                                             <toggle-theme-color 
                                             style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
@@ -366,6 +378,7 @@
                                             user-id="{{@Auth::user()->id}}"
                                             />
                                         </div> 
+                                        @endif
                                         <br />
                                         <div class="sign_out">
                                                 <a href="{{ route('logout') }}"

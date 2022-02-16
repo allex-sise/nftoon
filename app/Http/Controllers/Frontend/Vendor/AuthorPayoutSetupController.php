@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Vendor;
 use App\AuthorPayoutSetup;
 use App\Withdraw;
 use App\User;
+use App\SmNotification;
 use App\PaidVendor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -91,6 +92,29 @@ class AuthorPayoutSetupController extends Controller
             $balnc->amount = $balnc->amount - floatval($r->withdraw_amount);
             $balnc->save();
 
+            // mail sending error handel
+            try {
+                $data['message'] = Auth::user()->username.' Doreste sa retraga credite de pe Minted.';
+                $to_name = 'Admin Minted';
+                $admin = User::where('id', 1)->first();
+                $to_email = $admin->email;
+                $email_sms_title = 'Retragere Credite Minted'; 
+                MailNotification($data, $to_name, $to_email, $email_sms_title);
+            } catch (\Exception $e) {
+                $msg=str_replace("'", " ", $e->getMessage());
+                Log::info($msg);
+                Toastr::error('Unable to Send Email, Please check configuration!', 'Failed');
+            }
+
+            $notification=new SmNotification();
+            $notification->user_id = Auth::user()->id;
+            $notification->message = Auth::user()->username.' retrage credite!';
+            $notification->link = url('admin/withdraw-author',$withdraw->id);
+            $notification->ticket_id = $r->id;
+            $notification->category = 'retragere_credite';
+            $notification->received_id = 1;
+            $notification->save();
+
             Toastr::success('Suma a fost trimisa catre retragere!','Success');
             return redirect()->back();
         } catch (\Exception $e) {
@@ -135,14 +159,14 @@ class AuthorPayoutSetupController extends Controller
             $make_default=AuthorPayoutSetup::where('payment_method_name','=',$method)->where('user_id',Auth::user()->id)->first();
             $make_default->is_default=1;
             $make_default->save();
-
-        $get_others=AuthorPayoutSetup::where('payment_method_name','!=',$method)->where('user_id',Auth::user()->id)->get();
+            $get_others=AuthorPayoutSetup::where('payment_method_name','!=',$method)->where('user_id',Auth::user()->id)->get();
 
         foreach ($get_others as $key => $methods) {
             $make_normal=AuthorPayoutSetup::find($methods->id);
             $make_normal->is_default=0;
             $make_normal->save();
         }
+        
         Toastr::success($method.'  Set as default','Success');
         return redirect()->back();
     } catch (\Exception $e) {

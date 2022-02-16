@@ -20,12 +20,12 @@ Route::group(['middleware' => ['XSS']], function () {
    Route::get('/package-plan', 'Frontend\HomeController@packagePlan')->name('packagePlan');
    Route::get('/help/faq', 'Frontend\HomeController@faqPage')->name('faqPage');
    Route::get('/help/knowledge-base', 'Frontend\HomeController@knowledgeBase')->name('knowledgeBase');
-   Route::get('/privacy-policy', 'Frontend\HomeController@privacyPolicy')->name('privacyPolicy');
+   Route::get('/politica-confidentialitate', 'Frontend\HomeController@privacyPolicy')->name('privacyPolicy');
    Route::get('/{$username}', 'Frontend\HomeController@portofoliuPrincipal')->name('portofoliuPrincipal');
-   Route::get('/terms-conditions', 'Frontend\HomeController@termsConditions')->name('termsConditions');
+   Route::get('/termeni-conditii', 'Frontend\HomeController@termsConditions')->name('termsConditions');
    Route::get('/about_company', 'Frontend\HomeController@aboutCompany')->name('about_company');
    Route::get('/support-ticket', 'Frontend\HomeController@SupportTicket')->name('SupportTicket');
-   Route::get('/license', 'Frontend\HomeController@License')->name('License');
+   Route::get('/politica-cookies', 'Frontend\HomeController@License')->name('License');
    Route::post('store_newsletter', 'Frontend\HomeController@store_newsletter')->name('store_newsletter');
 
    Route::GET('frontend/language-change', 'FrontendLanguageChange@ajaxLanguageChangeMenu');

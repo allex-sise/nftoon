@@ -76,7 +76,7 @@
 .footer-area .footer-top {
   padding-top: 50px;
   padding-bottom: 25px;
-  display: none;
+  display: block;
 }
 .theme-side-bar .single-side-bar .light-lisence-wrap .light-pakage-list ul li::before {
   content: "";

@@ -25,7 +25,6 @@ $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->fir
 .footer-area .footer-top {
   padding-top: 50px!important;
   padding-bottom: 25px;
-  display: block!important;
 }
 .btnnewsletter{
     padding: 8px 17px; 

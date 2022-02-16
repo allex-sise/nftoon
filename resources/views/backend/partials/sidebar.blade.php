@@ -623,9 +623,9 @@
                         <li> <a href="{{ route('HomePage') }}">@lang('lang.home_page')</a> </li>
                         <li> <a href="{{ route('banners') }}">Banners</a> </li>
                         <!-- <li> <a href="{{ route('ProfileSetting') }}">@lang('lang.profile_setting')</a> </li> -->
-                        <!-- <li> <a href="{{ route('couponText') }}">@lang('lang.coupon')</a> </li>
-                        <li> <a href="{{ route('LicensePage') }}">@lang('lang.License')</a> </li>
-                        <li> <a href="{{ route('TicketPage') }}">@lang('lang.ticket')</a> </li> -->
+                        <!-- <li> <a href="{{ route('couponText') }}">@lang('lang.coupon')</a> </li> -->
+                        <li> <a href="{{ route('LicensePage') }}">Politica Cookies</a> </li>
+                       <!--   <li> <a href="{{ route('TicketPage') }}">@lang('lang.ticket')</a> </li> -->
                         <li> <a href="{{ route('privacy-policy') }}">@lang('lang.privacy_policy')</a> </li>
                         <li> <a href="{{ route('terms-conditions') }}">@lang('lang.terms_conditions') </a> </li>
                          <!-- <li> <a href="{{ route('market-apis') }}">@lang('lang.market_apis') </a> </li>

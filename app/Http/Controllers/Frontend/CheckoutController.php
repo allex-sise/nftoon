@@ -328,7 +328,7 @@ class CheckoutController extends Controller
 
                 $order_info=ItemOrder::where('user_id',Auth::user()->id)->orderBy('order_id','desc')->first();
                
-                $data['order'] = Order::where('user_id', Auth::user()->id)->where('id',$order_info->order_id)-> orderBy('id', 'desc')->get();
+                $data['order'] = Order::where('user_id', Auth::user()->id)->where('id',$order_info->order_id)-> orderBy('id', 'desc')->first();
                 // return $data;
                 return view('frontend.cart.paymentComplete', compact('data'));
             }else {

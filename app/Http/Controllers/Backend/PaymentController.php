@@ -202,7 +202,23 @@ function paymentAuthor(Request $r){
            $withdraw = Withdraw::find($r->withdraw_id);
            $withdraw->paid_vendors_id = $paid->id;
            $withdraw->save();  
-           
+            // mail sending error handel
+            try {
+                $userul = User::where('id', $r->user_id)->first();
+                $to_user = $userul->username;
+                $to_user_mail = $userul->email;
+                $data['message'] = $to_user.' creditele tale au fost trimise spre contul tau.';
+                $to_name = 'Admin Minted';
+                $admin = User::where('id', 1)->first();
+                $to_email = $to_user_mail;
+                $email_sms_title = 'Retragere Credite Minted cu Succes'; 
+                MailNotification($data, $to_name, $to_email, $email_sms_title);
+            } catch (\Exception $e) {
+                $msg=str_replace("'", " ", $e->getMessage());
+                Log::info($msg);
+                Toastr::error('Unable to Send Email, Please check configuration!', 'Failed');
+            }
+
 
              DB::commit(); 
              Toastr::success(app('translator')->get('lang.paid_successfully'));

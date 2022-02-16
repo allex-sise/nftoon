@@ -15,7 +15,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin'], 'prefix' => 'pages'
 
     // privacy-policy
     
-    Route::get('privacy-policy', 	'PagesController@privacyPolicy')->name('privacy-policy')->middleware('userRolePermission:21');
+    Route::get('politica-confidentialitate', 	'PagesController@privacyPolicy')->name('privacy-policy')->middleware('userRolePermission:21');
     Route::post('privacy-policy-update', 	'PagesController@privacyPolicyUpdate')->name('privacy-policy-update')->middleware('userRolePermission:21');
 
 

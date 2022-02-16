@@ -61,6 +61,39 @@
 .de_tab .de_nav li{
     background: none!important;
 }
+@media only screen and (max-width: 767px) {
+#subheader h1 {
+    font-size: 30px!important;
+}
+.de_tab.tab_methods .de_nav li span {
+    padding: 35px 5px;
+    color: rgba(0, 0, 0, .6);
+    font-family: var(--body-font);
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 12px;
+    min-width: 100%;
+}
+.de_tab .de_nav li {
+    background: none!important;
+    display: inline;
+    float: left;
+    width: 46%;
+    margin-right: 10px;
+}
+.nice-select.wide {
+    width: 315px;
+}
+.form-control{
+    width: 100%!important;
+}
+.upload_inner{
+    display: block!important;
+}
+}
 </style>
 @php                                                        
     $itemLastPrice = App\ItemOrder::where('user_id', @$data['edit']->user_id)->where('item_id', @$data['edit']->id)->orderBy('id', 'DESC')->first();
@@ -223,7 +256,7 @@
                                                                 <!-- <span class="lisence-name ">@lang('lang.regular_license')</span> -->
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px;">{{GeneralSetting()->currency_symbol}}</span>
                                                                 <div class="input_field">
-                                                                    <label for="">@lang('lang.ITEM_PRISE')</label>
+                                                                    <label for="">PRET VANZARE</label>
                                                                     <input type="text" class="primary-input form-control decimal" min="1" style="width: 150px;" step="any" id="Re_item" name="Re_item" onkeyup="regular(this.value)" value="">
                                                                 </div>
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">-</span>
@@ -238,7 +271,7 @@
                                                                 </div>
                                                                 <span class="dm_middle_span" style="padding-top: 25px; padding-right: 10px; padding-left: 10px;">=</span>
                                                                 <div class="input_field last-one">
-                                                                    <label for="">PRET VANZARE</label>
+                                                                    <label for="">INCASARE VANZATOR</label>
                                                                     <input  type="text" class="primary-input form-control "   style="width: 150px;" name="Reg_total_price" readonly  value="" placeholder="{{GeneralSetting()->currency_symbol}}" id="Re_total" >
                                                                     <input  type="text" class="primary-input form-control"  style="width: 150px;" disabled hidden id="Reg_total"  value="">
                                                                 </div> 

@@ -13,8 +13,6 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
 
     Route::group(['middleware' => ['auth', 'verified', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
-        
-
     });
 
     Route::group(['middleware' => ['auth', 'verified', 'admin'], 'namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.'], function () {

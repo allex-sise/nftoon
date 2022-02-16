@@ -197,7 +197,7 @@ if(!empty(@$setting->currency_symbol)){ @$currency = @$setting->currency_symbol;
               <h3>@lang('lang.total') @lang('lang.sale') @lang('lang.amount')</h3>
               <p class="mb-0">@lang('lang.total') @lang('lang.sale')  </p>
             </div>
-            <h1 class="gradient-color2">{{@GeneralSetting()->currency_symbol}} {{ isset($ItemEarning) ? round($ItemEarning) : 0}}</h1>
+            <h1 class="gradient-color2">{{ isset($ItemEarning) ? round($ItemEarning) : 0}} {{@GeneralSetting()->currency_symbol}}</h1>
           </div>
         </div>
       </a>

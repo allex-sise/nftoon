@@ -67,13 +67,13 @@
                        
                         </div>
 
-                        @foreach ($data['order'] as $value)
-                            @foreach ($value->itemOrder as $item)  
+                        
+                            @foreach ($data['order']->itemOrder as $item)  
                             @php
                              $obj = json_decode(@$item->item, true);
                            @endphp 
-
-                            <div class="payment_wrap_body">
+                           @if ($loop->last)
+                           <div class="payment_wrap_body">
                                 <div class="row">
                                     <div class="col-xl-6 col-md-7">
                                         <div class="single-confirmation d-flex align-items-center">
@@ -111,9 +111,10 @@
                                     </div>
                                 </div>
                             </div>
+    @endif
+                          
                             @endforeach
                             
-                        @endforeach
                     </div>
                 </div>
             </div>

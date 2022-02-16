@@ -88,6 +88,14 @@
             <!-- section close -->   
 
             <section aria-label="section" style="background-size: cover;">
+                
+                @php
+                    $walletz =  App\AuthorPayoutSetup::where('user_id', Auth::user()->id)->where('payment_method_name','Bank')->first(); 
+                @endphp 
+            <span id="wallet" class="profile_wallet">
+            {{ $walletz->payout_email ?? '' }}
+            </span>
+        
             @if(@$data['edit']->id)
             @if ( $data['edit']->nft_scos_wallet == 0)
                 @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 4)
@@ -106,7 +114,9 @@
                     <input type="text" hidden value="1" name="upload_or_link">
                 <div class="container" style="background-size: cover;">
                     <div class="row wow fadeIn animated" style="background-size: cover; visibility: visible; animation-name: fadeIn;">
-                        <div class="col-lg-7 offset-lg-1" style="background-size: cover;">
+                     
+                    <div class="col-lg-7 offset-lg-1" style="background-size: cover;">
+                    @if($walletz)  
                             <form id="form-create-item" class="form-border" method="post" action="email.php">
                                 <div class="field-set" style="background-size: cover;">
                                    
@@ -136,8 +146,34 @@
                                     <div class="spacer-single" style="background-size: cover;"></div>
                                 </div>
                             </form>
+                            @else
+                            <h4>Nu ai setat wallet-ul in care va fi mutat NFT-ul!</h4>
+                            <form action="{{ route('author.setup_payout')}}"  method="POST" class="checkout-form">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="row">
+                                            <input type="text" name="name" value="Bank" hidden>
+                                            <div class="col-xl-12 col-md-12">
+                                            <div id="app">
+                                                <withdraw/>
+                                            </div> 
+                                            <!-- //todo: aici insereaza valoarea walletului -->
+                                                <!-- <input type="text" name="email" id="" value="{{ @$bank_payout_setup->payout_email }}"/> -->
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="check-out-btn mt-20">
+                                    <button type="submit" class="btn-main dpf-submit">Seteaza Wallet</button>
+                                </div>
+                            </form>
+                        @endif
                         </div>
-
+                       
+           
                         <div class="col-lg-3 col-sm-6 col-xs-12" style="background-size: cover;">
                                 <h5>Previzualizare NFT</h5>
                                 <div class="nft__item" style="background-size: cover;">

@@ -1103,7 +1103,7 @@ class HomeController extends Controller
     
             $search = DB::table('users')
                 ->join('items', function($join) {
-                    $join->on('users.id', '=', 'items.user_id');
+                    $join->on('users.id', '=', 'items.ogowner');
                     $join->where('items.active_status', '=', 1);
                     $join->where('items.status', '=', 1);
                 })

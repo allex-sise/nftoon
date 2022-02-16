@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Vendor;
 
 use File;
 use Image;
+use App\User;
 use App\Item;
 use ZipArchive;
 use App\ItemFee;
@@ -15,6 +16,7 @@ use App\ItemCategory;
 use App\SubAttribute;
 use App\ItemAttribute;
 use DirectoryIterator;
+use App\SmNotification;
 use App\ItemSubCategory;
 use Chumper\Zipper\Zipper;
 use Illuminate\Http\Request;
@@ -453,7 +455,7 @@ class ItemController extends Controller
 
     function itemSale($id){
         try {
-             $item_preview=ItemPreview::where('item_id',$id)->where('status',1)->first();
+            $item_preview=ItemPreview::where('item_id',$id)->where('status',1)->first();
             // return $item_preview;
             $data['edit']=Item::find($id);
             $data['attributes']= $data['edit']->attribute;
@@ -468,7 +470,6 @@ class ItemController extends Controller
             $category = ItemCategory::where('up_permission',1)->get();
             $attribute = Attribute::all();
 
-
             return view('frontend.vendor.itemSale', compact('data','category','item_preview'));
         } catch (\Exception $e) {
             $msg=str_replace("'", " ", $e->getMessage()) ;
@@ -480,41 +481,23 @@ class ItemController extends Controller
     function itemSaleUpdate(Request $r){
             
         // return $r;
-           
-    
-            
-         
-            $r->validate([
-              
-                'Re_item' => 'required|',
-                'Re_buyer' => 'required|',
-                'Reg_total_price' => 'required|',
-            ]);
-    
-            
-            
+        $r->validate([ 
+            'Re_item' => 'required|',
+            'Re_buyer' => 'required|',
+            'Reg_total_price' => 'required|',
+        ]); 
         DB::beginTransaction();
         try {
-    
+        $item = Item::find($r->id);           
+        $settings = InfixGeneralSetting::first();
+        if (Auth::user()->role_id==4) {
             $item = Item::find($r->id);
-    
-           
-         $settings = InfixGeneralSetting::first();
-         
-            if (Auth::user()->role_id==4) {
-            
-                    $item = Item::find($r->id);
-                    $success_message="Produsul a fost updatat cu succes!";
-                } else {
-                    $item =new ItemPreview();
-                    $item->item_id = $r->id;
-                    $success_message="Thank you for your submission, allow to check 12 to 48 hours";
-                }
-            
-            
-    
-        
-    
+            $success_message="Produsul a fost updatat cu succes!";
+        } else {
+            $item =new ItemPreview();
+            $item->item_id = $r->id;
+            $success_message="Thank you for your submission, allow to check 12 to 48 hours";
+        }
         // $item =new ItemPreview();
         $item->user_id = Auth::user()->id;
         
@@ -605,27 +588,45 @@ class ItemController extends Controller
         try {
     
         $item = Item::find($r->id);
-    
-           
-         $settings = InfixGeneralSetting::first();
+        $settings = InfixGeneralSetting::first();
          
-            if (Auth::user()->role_id==4) {
-            
-                    $item = Item::find($r->id);
-                    $success_message="NFT-ul a fost trimis catre autorizarea de mutare in wallet!";
-                } else {
-                    $item =new ItemPreview();
-                    $item->item_id = $r->id;
-                    $success_message="Thank you for your submission, allow to check 12 to 48 hours";
-                }
-            
+        if (Auth::user()->role_id==4) {
+            $item = Item::find($r->id);
+            $success_message="NFT-ul a fost trimis catre autorizarea de mutare in wallet!";
+        } else {
+            $item =new ItemPreview();
+            $item->item_id = $r->id;
+            $success_message="Thank you for your submission, allow to check 12 to 48 hours";
+        }
         $item->user_id = Auth::user()->id;
-        
         $item->active_status = 0;
         $item->nft_scos_wallet = 1;
         $item->status = 1;
         $item->save();
-    
+
+        // mail sending error handel
+        try {
+            $data['message'] = Auth::user()->username.' Doreste sa scoata un NFT  <b>'. @$item_order->Item->title. '</b> in wallet-ul lui.';
+            $to_name = 'Admin Minted';
+            $admin = User::where('id', 1)->first();
+            $to_email = $admin->email;
+            $email_sms_title = 'Confirmare Mutare in Wallet'; 
+            MailNotification($data, $to_name, $to_email, $email_sms_title);
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage());
+            Log::info($msg);
+            Toastr::error('Unable to Send Email, Please check configuration!', 'Failed');
+        }
+
+        $notification=new SmNotification();
+        $notification->user_id = Auth::user()->id;
+        $notification->message = Auth::user()->username.' scoate NFT-ul in Wallet';
+        $notification->link = url('admin/showNFT',@$r->id);
+        $notification->ticket_id = $r->id;
+        $notification->category = 'nft_wallet_scos';
+        $notification->received_id = 1;
+        $notification->save();
+
         Toastr::success($success_message,'Success');
         DB::commit(); 
             return redirect()->route('author.download', Auth::user()->username);
@@ -1043,19 +1044,6 @@ class ItemController extends Controller
         }
    
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   function fileValidation($file){
     try {

@@ -77,11 +77,57 @@
                     </div>
                 </div>
             </div> -->
-            <div class="row grid databox" id="databox">
+            <div class="row">
+            @foreach (@$data['item'] as $item)
+            <!-- nft item begin -->
+            <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12 float-left">
+                <div class="nft__item">
+                    <!-- <div class="de_countdown" data-year="2021" data-month="9" data-day="16" data-hour="8"></div> -->
+                    <div class="author_list_pp">
+                        <a href="{{ route('user.portfolio',@$item->username)}}">                                    
+                            <img class="lazy" src="{{ $item->userimage? asset($item->userimage):asset('public/frontend/img/profile/1.png') }}" alt="">
+                            <i class="fa fa-check"></i>
+                        </a>
+                        
+                    </div>
+                    <div class="nft__item_wrap">
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                        @if (@$item->file == 'img')
+                            <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
+                         
+                            @elseif(@$item->file == 'video')
+                            <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                               <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                               
+                               Your browser does not support the video tag.
+                           </video>
+                           @endif
+                        </a>
+                    </div>
+                    <div class="nft__item_info">
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                            <h4>{{ $item->title}}</h4>
+                        </a>
+                        <div class="nft__item_price">
+                        {{ $item->Re_item}} lei
+                        </div>
+                        @if ($item->active_status == 1)
+                        <div class="nft__item_action">
+             
+                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}" class="heart">Cumpara Acum</a>
+                        
+                        </div>
+                        @endif
+                        <!-- <div class="nft__item_like">
+                            <i class="fa fa-heart"></i><span>50</span>
+                        </div>                             -->
+                    </div> 
+                </div>
+            </div>                 
+            <!-- nft item begin -->
 
-            </div>
-            <div class="row bt">
-            </div>
+            @endforeach
+            </div>       
         </div>
     </div>
     <!-- latest-goods-end -->

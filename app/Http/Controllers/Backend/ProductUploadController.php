@@ -119,7 +119,7 @@ class ProductUploadController extends Controller
 
             $item->user_msg = $r->user_msg;
             $item->demo_url = $r->demo_url;
-            $item->active_status = 0;
+            $item->active_status = 1;
             $item->ogowner = $r->user_id;
             $item->status = 1;
             $item->is_upload = $r->upload_or_link;

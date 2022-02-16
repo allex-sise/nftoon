@@ -18,6 +18,7 @@ use App\PaidPayment;
 use App\BalanceSheet;
 use App\PurchaseCode;
 use App\PaymentMethod;
+use App\ItemSubCategory;
 use App\NftMultiple;
 use Carbon\Carbon;
 use App\ItemUpdateNotify;
@@ -662,7 +663,7 @@ class PaymentController extends Controller
                 $newItem = $itemDuplicate->replicate();
                 $increment = Nftmultiple::where('ognft', $itemDuplicateID)->count();
 
-                $newItem->title = $itemDuplicate->title.''.'no'.($increment + 1);
+                $newItem->title = $itemDuplicate->title.''.' '.($increment + 1);
                 $newItem->nftmultiplu = 0;
                 $newItem->user_id = Auth::user()->id;
                 $newItem->og_price = $itemDuplicate->og_price;
@@ -678,6 +679,44 @@ class PaymentController extends Controller
                 $NewNftMultiple->nftmultiple = $newItem->id;
                 $NewNftMultiple->id_multiple = $increment+1;
                 $NewNftMultiple->save();
+                // DE AICI INCEPE TREABA CU MULTIPLU SI ORDERS, POATE SCHIMBAM
+                // $order2 = new Order();
+                // $order2->user_id = Auth::user()->id;
+                // $order2->first_name = $user->profile->first_name;
+                // $order2->last_name = $user->profile->last_name;
+                // $order2->company_name = $user->profile->company_name;
+                // $order2->address = $user->profile->address;
+                // $order2->country_id = $user->profile->country_id;
+                // $order2->state_id = $user->profile->state_id;
+                // $order2->city_id = $user->profile->city_id;
+                // $order2->zipcode = $user->profile->zipcode;
+                // $order2->total = $carttotalstrip;
+                // $order2->save();
+                // $total_tax=0.00;
+
+
+                $item_order2 = new ItemOrder();
+                $item_order2->user_id = Auth::user()->id;
+                $item_order2->order_id = $order->id;
+                $item_order2->item_id = $newItem->id;
+                $item_order2->subtotal =$countable_price;
+                $item_order2->country_id = $user->profile->country_id;
+                if (isset($value->options['coupon_price'])) {
+                    $discount = $value->options['coupon_price'];
+                } else {
+                    $discount = 0;
+                }
+                $item_order2->discount = $discount;
+                $item_order2->author_id = $value->options['user_id'];
+                $item_order2->item = json_encode($value->options);
+                
+                $item_order2->save();
+                //AICI SE TERMINA
+
+                $item_order3 = ItemOrder::find($item_order->id);
+                $item_order3->download_status = 1;
+                $item_order3->save();
+
              }
 
             Cart::destroy();

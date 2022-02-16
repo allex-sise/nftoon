@@ -50,63 +50,54 @@
                                 <p>@lang('lang.welcome_message_for_vendor').</p>
                           
                                 <div class="fund_add_form_div" >
-                                        <span id="alert-danger" class="alert alert-danger d-none"></span>
-                                    </div>
+                                    <span id="alert-danger" class="alert alert-danger d-none"></span>
+                                </div>
                                   <form action="{{ route('user.depositStore')}}" class="single_account-form checkout-form" method="POST" {{-- id="subscribe-form" --}} {{-- onsubmit="return submitpayment()" --}}>
                                     @csrf
                                     
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6">
                                             <label for="first_name"> @lang('lang.first_name') <span>*</span></label>
-                                            <input type="text" placeholder="First name" name="first_name" value="{{isset($user)? $user->profile->first_name:old('first_name')}}">
-                                            @if ($errors->has('first_name'))
+                                            <input type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="First name" name="first_name" value="{{isset($user)? $user->profile->first_name:old('first_name')}}">
+                                            @error('first_name')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('first_name') }}</strong>
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
-                                            @endif
+                                                @enderror
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <label for="last_name">@lang('lang.last_name') *</label>
-                                            <input type="text" placeholder="Last name" name="last_name" value="{{isset($user)? $user->profile->last_name:old('last_name')}}">
-                                            @if ($errors->has('last_name'))
+                                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last name" name="last_name" value="{{isset($user)? $user->profile->last_name:old('last_name')}}">
+                                            @error('last_name')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
-                                            @endif
-                                        </div>
-                                        <div class="col-xl-12 col-md-12">
-                                            <label for="compnay">@lang('lang.company') *</label>
-                                            <input type="text" placeholder="Company name" name="company_name" value="{{isset($user)? $user->profile->company_name:old('company_name')}}">
-                                            @if ($errors->has('company_name'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('company_name') }}</strong>
-                                                </span>
-                                            @endif
+                                                @enderror
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <label for="phone">@lang('lang.phone') *</label>
-                                            <input type="text" placeholder="Phone number" name="mobile" value="{{isset($user)? $user->profile->mobile:old('mobile')}}">
-                                            @if ($errors->has('mobile'))
+                                            <input type="text" class="form-control @error('mobile') is-invalid @enderror" placeholder="Phone number" name="mobile" value="{{isset($user)? $user->profile->mobile:old('mobile')}}">
+                                            @error('mobile')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('mobile') }}</strong>
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
-                                            @endif
+                                                @enderror
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <label for="email">@lang('lang.email') *</label>
                                             <input type="email" value="{{  @$user->email? @$user->email:'Email Address'}}" readonly>
                                         </div>
                                         <div class="col-xl-12 col-md-12">
-                                            <input type="text" placeholder="Address*" name="address" value="{{isset($user)? $user->profile->address:old('address')}}">
-                                            @if ($errors->has('address'))
+                                            <input type="text" placeholder="Address*" class="form-control @error('address') is-invalid @enderror" name="address" value="{{isset($user)? $user->profile->address:old('address')}}">
+                                            @error('address')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('address') }}</strong>
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
-                                            @endif
+                                            @enderror
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <label for="country">@lang('lang.country') </label>
-                                            <select class="wide customselect country"
+                                            <select class="wide customselect country @error('country') is-invalid @enderror"
                                                 name="country_id" style="display: none">
                                                 <option data-display="Country*">
                                                     Select</option>
@@ -114,21 +105,21 @@
                                                 <option value="{{ @$item->id }}" {{@$user->profile->country_id == $item->id ?'selected':'' }}>{{ @$item->name }}</option>
                                                 @endforeach
                                             </select>
-                                            @if ($errors->has('country_id'))
+                                            @error('country_id'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('country_id') }}</strong>
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
-                                            @endif
+                                                @enderror
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <label for="state">@lang('lang.state') </label>
-                                            <input type="text" placeholder="@lang('lang.state')/@lang('lang.region')" name="state_id" value="{{isset($data['user'])? $data['user']->profile->state_id:old('state_id')}}">
+                                            <input type="text" class="form-control @error('state_id') is-invalid @enderror" placeholder="@lang('lang.state')/@lang('lang.region')" name="state_id" value="{{isset($data['user'])? $data['user']->profile->state_id:old('state_id')}}">
                                    
-                                            @if ($errors->has('state_id'))
+                                            @error('state_id')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('state_id') }}</strong>
+                                                    <strong>{{ @$message }}</strong>
                                                 </span>
-                                            @endif
+                                                @enderror
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <label for="city">@lang('lang.city') </label>
@@ -214,6 +205,16 @@
  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>
  <script src="{{ asset('public/frontend/js/') }}/fund_add2.js"></script>
+ <!-- <script>
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                  toastr.error('{{ $error }}','Error',{
+                      closeButton:true,
+                      progressBar:true,
+                   });
+            @endforeach
+        @endif
+    </script> -->
  <script>
     $(document).ready(function () {
         $.ajax({
