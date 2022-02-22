@@ -1,4 +1,4 @@
-# minted
+# NFTOON
 
 # Git:
 git pull <- extrage codul de pe server  
