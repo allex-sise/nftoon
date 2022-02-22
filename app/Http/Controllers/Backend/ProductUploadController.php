@@ -10,6 +10,8 @@ use App\ItemImage;
 use App\SessionFile;
 use App\ItemCategory;
 use App\SubAttribute;
+use App\Collections;
+use App\CollectionsNFTs;
 use File;
 use Carbon\Carbon;
 use App\ItemAttribute;
@@ -27,6 +29,7 @@ class ProductUploadController extends Controller
         $attribute=Attribute::all();
         $data['category'] = ItemCategory::where('up_permission',1)->get();
         $data['user'] = User::where('role_id', 4)->get();
+        $data['collections'] = Collections::get();
         $data['attribute'] = Attribute::all();
         $data['sub_attribute'] = SubAttribute::latest()->get();
 

@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="row mt-10">
+                       <div class="row mt-10">
                                 <div class="col-lg-12">
                                     <div class="input-effect">
                                         <input class="primary-input form-control{{ $errors->has('feature1') ? ' is-invalid' : '' }}" type="text" name="feature1"
@@ -90,7 +90,7 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div> -->
+                            </div> 
                             <div class="row mt-20">
                                 <div class="col-md-12">
                                     <div class="input-effect mb-20">
@@ -247,13 +247,25 @@
                             </div>
                        
                             <div class="row mt-25 data_exp_unic" id="data_exp_unic" style="display:block" >
-                            <div class="col-lg-3">
-                                    <div class="input-effect">
-                                        @php
+                                <div class="col-lg-3">
+                                        <div class="input-effect">
+                                            @php
                                                 $dataexpiraremultiplu = $data['edit']->data_exp_unic;
-                                        @endphp
-                                        <input type="text" class="primary-input" id="date" name="data_exp_unic">
-                                        <label>Data expirare vanzare multipla <span>*</span></label>
+                                            @endphp
+                                            <input type="text" class="primary-input" id="date" name="data_exp_unic">
+                                            <label>Data expirare vanzare multipla <span>*</span></label>
+                                            <span class="focus-border"></span>
+                                            @if ($errors->has('data_exp_unic'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('data_exp_unic') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                <div class="col-lg-9 float-left">
+                                    <div class="input-effect">
+                                        <input type="text" class="primary-input" id="time" name="ora_exp_unic">
+                                        <label>Ora expirare vanzare multipla <span>*</span></label>
                                         <span class="focus-border"></span>
                                         @if ($errors->has('data_exp_unic'))
                                             <span class="invalid-feedback" role="alert">
@@ -261,27 +273,12 @@
                                             </span>
                                         @endif
                                     </div>
+                                    <p id="">Data si ora de expirare pentru cate nft-uri pot fi vandute (in momentul cand se atinge ora, minutul, se opreste duplicarea nft-ului</p>
                                 </div>
-                            <div class="col-lg-9 float-left">
-                                <div class="input-effect">
-                                    <input type="text" class="primary-input" id="time" name="ora_exp_unic">
-                                    <label>Ora expirare vanzare multipla <span>*</span></label>
-                                    <span class="focus-border"></span>
-                                    @if ($errors->has('data_exp_unic'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('data_exp_unic') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <p id="">Data si ora de expirare pentru cate nft-uri pot fi vandute (in momentul cand se atinge ora, minutul, se opreste duplicarea nft-ului</p>
-                            </div>
-                        </div> 
+                            </div> 
                             <div id="product_purchase_link" style="display: none">
-                                
                                 <div class="input-effect">
-                                    <input class="primary-input form-control{{ $errors->has('purchase_link') ? ' is-invalid' : '' }}" type="text" name="purchase_link"
-                                           autocomplete="off" value="{{isset($data['edit'])? $data['edit']->purchase_link :old('purchase_link')}}">
-    
+                                    <input class="primary-input form-control{{ $errors->has('purchase_link') ? ' is-invalid' : '' }}" type="text" name="purchase_link" autocomplete="off" value="{{isset($data['edit'])? $data['edit']->purchase_link :old('purchase_link')}}">
                                     <input type="hidden" name="id" value="{{isset($data['edit'])? $data['edit']->id: ''}}">
                                     <label>@lang('lang.purchase_link') <span>*</span></label>
                                     <span class="focus-border"></span>
@@ -291,14 +288,12 @@
                                         </span>
                                     @endif
                                 </div>
-                              
                             </div> 
                             <script>
                                 function checkIsLink(selectedObj) {
                                     var selected_value=selectedObj.value;
                                     var upload_section=document.getElementById('main_file_upload_section');
                                     var purchase_link=document.getElementById('product_purchase_link');
-                            
                                     if (selected_value==0) {
                                         upload_section.style.display = "none";
                                         purchase_link.style.display = "block";
@@ -306,11 +301,8 @@
                                         upload_section.style.display = "block";
                                         purchase_link.style.display = "none";
                                     }
-                            
                                 }
                             </script>    
-                        
-                             
                             <br>
                                 <style>
                                     .select_Staff_width{
@@ -324,7 +316,6 @@
                                     .select_Staff_width::-webkit-scrollbar {
                                         display: none;
                                     }
-
                                     /* Hide scrollbar for IE and Edge */
                                     .select_Staff_width {
                                         -ms-overflow-style: none;
@@ -334,16 +325,13 @@
                     <div class="row mt-20">
                         <div class="col-lg-12 mb-30">
                             <div class="input-effect">
-                                <select class="niceSelect w-100 bb form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}"
-                                        name="user_id">
+                                <select class="niceSelect w-100 bb form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id">
                                     <option data-display="Creator *"
                                             value="">Creator *
                                     </option>
                                     @foreach($data['user'] as $item)
-                                     
                                         <option value={{@$item->id}} {{ @$item->id == $data['edit']->user->id ?'selected':old('user') ==( @$item->id ? 'selected':'')}}>{{@$item->full_name}} - {{@$item->username}}</option>
-
-                                        @endforeach
+                                    @endforeach
                                 </select>
                                 <span class="focus-border"></span>
                             </div>

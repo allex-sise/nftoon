@@ -5,67 +5,33 @@
 
 @endpush
 @php 
-    $homepage = Modules\Pages\Entities\InfixHomePage::where('active_status', 1)->first();
+
     $headerbnr = $data['drop']->dropicon;
 @endphp 
 @section('content')
 <style>
-.banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
-    background-image: url("{{asset(@$headerbnr)}}")!important;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-top: 85px;
-    height: 700px;
-    background-position: center;
-}
-.banner-area2{
-    height: 700px;
-}
-.section-padding1 {
-    padding-top: 20px;
-    padding-bottom: 120px;
-}
-.mg120{
-    margin-top: 120px;
-    margin-bottom: 120px;
-}
-.rowspecial{
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    padding-top: 250px;
-    height: 700px;
-    background: rgba(0,0,0,0.5);
-}
-.mgt50{
-    margin-top: 50px;
-}
-@media only screen and (max-width: 767px) {
-.rowspecial {
-    position: absolute;
-    top: 35px;
-    left: 0;
-    width: 100%;
-    padding-top: 250px;
-    height: 700px;
-    background: rgba(0,0,0,0.5);
-}
-.login_resister_area .single_resister_sildbar .resister_text h3 {
-    font-size: 20px!important;
-    line-height: 22px!important;
-}
-.mgleft50{
-    margin-left: 50px!important;
-}
-.mgleft30{
-    margin-left: 30px!important;
-}
-}
-    </style>
+    .bg_image--91{
+        background-image: url("{{$headerbnr}}")!important;
 
-  <!-- banner-area start -->
-    <div class="banner-area2" >
+    }
+    .rn-collection-inner-one .collection-wrapper .collenction-small-thumbnail img {
+        display: inline-block;
+        width: 33.33%;
+        padding: 4px;
+        border-radius: 10px;
+        height: 85px;
+    }
+    .rn-collection-inner-one .collection-wrapper .collection-big-thumbnail img {
+        border-radius: 5px;
+        object-fit: cover;
+        width: 100%;
+        height: 270px;
+        transition: var(--transition);
+    }
+</style>
+    
+     <!-- banner-area start -->
+     <div class="rn-author-bg-area bg_image--91 bg_image ptb--150" >
         <div class="container">
             <div class="row rowspecial">
                 <div class="col-xl-8 offset-xl-2">
@@ -96,75 +62,94 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- banner-area end -->
-    <div class="white-box mg120">
-        <div class="container">
-            <h3 class="h3clss">{{ @$data['drop']->description}}</h3>
+
+ <!-- start page title area -->
+ <div class="rn-breadcrumb-inner ptb--30">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <h5 class="title text-center text-md-start">{{ @$data['drop']->name}}</h5>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-list">
+                    <li class="item"><a href="index.html">Acasa</a></li>
+                    <li class="separator"><i class="feather-chevron-right"></i></li>
+                    <li class="item current">{{ @$data['drop']->name}}</li>
+                </ul>
+            </div>
         </div>
     </div>
-   
-    <!-- latest-goods-start -->
+</div>
+<!-- end page title area -->
+ <!-- collection area Start -->
+ <div class="rn-collection-area rn-section-gapTop">
+      <h3 class="h3clss">{{ @$data['drop']->description}}</h3>
         <div class="container">
-            <div class="row align-items-end">
-                <div class="col-xl-12">
-                    <div class="section-title mb-40">
-                        <h3>NFT-uri din drop</h3>
-                        <!-- <h4>{{@$homepage->product_title_description}}</h4> -->
-                    </div>
-                </div>
-            </div>
-            <div class="row section-padding1">
-                @foreach ($data['item'] as $item)
-                    <!-- nft item begin -->
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="nft__item">
-                            <div class="author_list_pp">
-                                <a href="{{ route('user.portfolio',@$item->og->username)}}">                                    
-                                    <img class="lazy" src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </div>
-                            <div class="nft__item_wrap">
+            <div class="row g-5">
+
+            @foreach ($data['item'] as $item)
+                <!-- start single product -->
+                <div class="grid-metro-item cat--1 cat--3">
+                        <div class="product-style-one no-overlay">
+                            <div class="card-thumbnail">
                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
-                                @if (@$item->file == 'img')
-                                    <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
-                                
-                                    @elseif(@$item->file == 'video')
-                                    <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
-                                    <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                                    @if (@$item->file == 'img')
+                                        <img src="{{ asset(@$item->icon) }}" class="lazy nft__item_preview" alt="">
                                     
-                                    Your browser does not support the video tag.
-                                </video>
-                                @endif
+                                        @elseif(@$item->file == 'video')
+                                        <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                                        <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                                        
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    @endif
                                 </a>
                             </div>
-                            <div class="nft__item_info">
-                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
-                                    <h4>{{ @$item->title}}</h4>
-                                </a>
-                                <div class="nft__item_price">
-                                {{ @$item->Re_item}} lei
+                            <div class="product-share-wrapper">
+                                <div class="profile-share">
+                                    <a href="{{ route('user.portfolio',@$item->og->username)}}" class="avatar" data-tooltip="{{ @$item->og->username }}"><img src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
+                                    <a class="more-author-text" href="#">{{ @$item->og->username }}</a>
                                 </div>
-                                <div class="nft__item_action">
-                                    <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">Cumpara Acum</a>
+                                <div class="share-btn share-btn-activation dropdown">
+                                    <button class="icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+
+                                    <div class="share-btn-setting dropdown-menu dropdown-menu-end">
+                                        <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
+                                            Share
+                                        </button>
+                                        <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                            Report
+                                        </button>
+                                    </div>
+
                                 </div>
-                                <!-- <div class="nft__item_like">
-                                    <i class="fa fa-heart"></i><span>50</span>
-                                </div>                             -->
-                            </div> 
+                            </div>
+                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ $item->title}}</span></a>
+                            <span class="latest-bid">Highest bid 1/20</span>
+                            <div class="bid-react-area">
+                                <div class="last-bid">{{ $item->Re_item}} crd</div>
+                                <div class="react-area">
+                                    <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
+                                        <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
+                                    </svg>
+                                    <span class="number">322</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>                 
-                    <!-- nft item begin -->
+                    </div>
+                    <!-- end single product -->
                 @endforeach
-                <div class="Pagination">
-                    {{ @$data['item']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
-                </div>
 
             </div>
         </div>
-        
-    <!-- latest-goods-end -->
+    </div>
+    <!-- collection area End -->
+
 @endsection
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -1339,6 +1339,20 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
+    
+    function activitate()
+    {
+        try {
+            $data['history']= ItemOrder::orderBy('order_id','asc')->get();
+            $activitate = InfixAboutCompany::find(1);
+            return view('frontend.pages.activitate', compact('activitate', 'data'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
     function termsConditions()
     {
         try {

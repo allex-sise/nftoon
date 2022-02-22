@@ -4,55 +4,44 @@
 <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
 @endpush
 @section('content')
-<style>
-.banner-area4 .banner-area-inner .banner-info h2 {
-    font-size: 36px;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 700;
-    color: #fff;
-    line-height: 48px;
-    margin-bottom: 0;
-    text-align: left;
-    margin-top: 340px;
-}
-.checkout_area .check-out-btn{
-    text-align: center!important;
-}
-</style>
- <!-- content begin -->
- <div class="no-bottom no-top" id="content">
-            <div id="top"></div>
-            
-            <!-- section begin -->
-            <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
-                    <div class="center-y relative text-center">
-                        <div class="container">
-                            <div class="row">
-                                
-                                <div class="col-md-12 text-center">
-									<h1>@lang('lang.fund_deposit')</h1>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <!-- section close -->       
 
-    <!-- privaci_polecy_area start -->
-    <div class="privaci_polecy_area section-padding checkout_area ">
+ <!-- start page title area -->
+ <div class="rn-breadcrumb-inner ptb--30">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h5 class="title text-center text-md-start">@lang('lang.fund_deposit')</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="breadcrumb-list">
+                        <li class="item"><a href="index.html">Acasa</a></li>
+                        <li class="separator"><i class="feather-chevron-right"></i></li>
+                        <li class="item current">@lang('lang.fund_deposit')</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title area -->
+
+
+    <!-- Upload variants style start -->
+    <div class="rn-upload-variant-area varient rn-section-gap">
         <div class="container">
             <div class="row">
-                <div class="col-xl-8 offset-xl-2 col-12">
-                        <div class="single_account_wrap">
-                           
-                                <h4>@lang('lang.Billing') @lang('lang.Information')</h4>
-                                <p>@lang('lang.welcome_message_for_vendor').</p>
-                          
-                                <div class="fund_add_form_div" >
-                                    <span id="alert-danger" class="alert alert-danger d-none"></span>
-                                </div>
-                                  <form action="{{ route('user.depositStore')}}" class="single_account-form checkout-form" method="POST" {{-- id="subscribe-form" --}} {{-- onsubmit="return submitpayment()" --}}>
+                <div class="upload-variant-title-wrapper">
+                    <h3 class="title text-center">
+                    Informatii Facturare
+                    </h3>
+                    <p class="text-center">@lang('lang.welcome_message_for_vendor').</p>
+                </div>
+            </div>
+            <div class="row g-5 mt--40">
+                <div class="form-wrapper-one">
+                    <div class="fund_add_form_div" >
+                        <span id="alert-danger" class="alert alert-danger d-none"></span>
+                    </div>
+                    <form action="{{ route('user.depositStore')}}" class="single_account-form checkout-form row" method="POST" {{-- id="subscribe-form" --}} {{-- onsubmit="return submitpayment()" --}}>
                                     @csrf
                                     
                                     <div class="row">
@@ -88,7 +77,8 @@
                                             <input type="email" value="{{  @$user->email? @$user->email:'Email Address'}}" readonly>
                                         </div>
                                         <div class="col-xl-12 col-md-12">
-                                            <input type="text" placeholder="Address*" class="form-control @error('address') is-invalid @enderror" name="address" value="{{isset($user)? $user->profile->address:old('address')}}">
+                                        <label for="state">Adresa </label>
+                                            <input type="text" placeholder="Addresa*" class="form-control @error('address') is-invalid @enderror" name="address" value="{{isset($user)? $user->profile->address:old('address')}}">
                                             @error('address')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ @$message }}</strong>
@@ -146,13 +136,22 @@
                                     </div>
                                    
                                     <div class="row mb-40">
-                                    <p class="text-center">Fondurile tale: @if (Auth::user()->role_id == 4)
-                                                                    {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                          <!-- single -->
+                                          <div class="rn-pd-sm-property-wrapper">
+                                        
+                                                <div class="catagory-wrapper">
+                                                    <!-- single property -->
+                                                    <div class="pd-property-inner" style="margin: 0 auto; margin-bottom: 10px;">
+                                                        <span class="color-body type">Fondurile tale</span>
+                                                        <span class="color-white value">@if (Auth::user()->role_id == 4)
+                                                                    {{ @Auth::user()->balance->amount}} toons
                                                                     @endif
                                                                     @if (Auth::user()->role_id == 5)
-                                                                        {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
-                                                                    @endif
-                                                                </p>
+                                                                        {{ @Auth::user()->balance->amount}} toons
+                                                                    @endif</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-xl-8 col-md-8 offset-md-2">
                                             <input type="numeric" min="0" id="ETH2RON"  name="withdraw_amount_eth" value="" placeholder="Introduceti suma dorita pentru retragere" hidden>
                                                 <label for="Deposit">@lang('lang.deposit_amount') *</label>
@@ -174,8 +173,8 @@
                                             @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
                                                 
                                             @else
-                                                <div class="check-out-btn col-xl-8 col-md-8 offset-md-2">
-                                                    <button type="submit" id="deposit_" class="btn-main mt-1">Adauga Fonduri</button>
+                                                <div class="check-out-btn col-xl-8 col-md-8 offset-md-2" style="margin-top: 20px;">
+                                                    <button type="submit" id="deposit_" class="btn btn-primary btn-large w-100">Adauga Fonduri</button>
                                                 </div>
                                             @endif
                                     </div>
@@ -183,21 +182,20 @@
                                    {{--  <input type="hidden" name="amount" id="amount" value="" />
                                     <input type="hidden" name="stripeToken" id="stripeToken" value="" /> --}} 
                                     @if ($user->profile->first_name == "" || $user->profile->last_name == "" || $user->profile->company_name == "" || $user->profile->mobile == "" || $user->profile->address == "" || $user->profile->country_id == "" || $user->profile->state_id == "" || $user->profile->city_id == "" || $user->profile->zipcode == "") 
-                                        <div class="check-out-btn">
-                                            <button type="submit" id="deposit_" class="btn-main">Salveaza Informatia si Adauga Fonduri</button>
+                                        <div class="check-out-btn" style="margin-top: 20px;">
+                                            <button type="submit" id="deposit_" class="btn btn-primary btn-large w-100">Salveaza Informatia si Adauga Fonduri</button>
                                         </div>
                                     @endif
                                 </form>
-                        </div>
-                        
 
-                        </div>
-            
-                      
+                </div>
+       
+                                 
             </div>
         </div>
     </div>
-    <!-- privaci_polecy_area end -->
+    <!-- Upload variants style End -->
+
    
  @endsection
  @push('js')

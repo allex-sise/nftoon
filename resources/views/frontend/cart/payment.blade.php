@@ -22,195 +22,133 @@ $carttotalstrip = floatval($b);
 }
 </style>
    <!-- banner-area start -->
-
- <!-- content begin -->
- <div class="no-bottom no-top" id="content">
-            <div id="top"></div>
-            
-            <!-- section begin -->
-            <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
-                    <div class="center-y relative text-center">
-                        <div class="container">
-                            <div class="row">
-                                
-                                <div class="col-md-12 text-center">
-									<h1>Detalii @lang('lang.payment')</h1>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <!-- section close -->       
-
-    <!-- checkout_area start -->
-    <div class="payment_area section-padding">
+ <!-- start page title area -->
+ <div class="rn-breadcrumb-inner ptb--30">
         <div class="container">
-            <div class="row"> 
-                <div class="col-xl-10 offset-xl-1">
-                    <div class="row">
-                        <div class="col-xl-9">
-                            <div class="biling_address">
-                                <div class="biling-header d-flex justify-content-between align-items-center">
-                                    <h4>@lang('lang.billing_details')</h4>
-                                   <a href="{{ route('customer.cheackout') }}">@lang('lang.edit')</a>
-                                </div>
-                                <div class="biling_body_content">
-                                    <p>{{ @$data['user']->profile->first_name }} {{ @$data['user']->profile->last_name }}</p>
-                                    <p>{{ @$data['user']->profile->address }}</p>
-                                    <p>{{ @$data['user']->profile->city->name }} - {{ @$data['user']->profile->zipcode }} </p>
-                                    <p> {{ @$data['user']->profile->state->name }} , {{ @$data['user']->profile->country->name }} </p>
-                                </div>
-                            </div>
-                        
-                            <div class="select_payment_method">
-                                <div class="input_box_tittle">
-                                        <h4>@lang('lang.payment_method')</h4>
-                                        {{-- <div class="input-group d-block">
-                                            <div class="d-flex">
-                                                <div class="mr-30">
-                                                    <input type="radio" name="payment_type" id="_main_balance" value="main_" class="common-radio relationButton" checked >
-                                                    <label for="_main_balance">@lang('lang.main') @lang('lang.balance')</label>
-                                                </div>
-                                                <div class="ml-2 mr-30">
-                                                    <input type="radio" name="payment_type" id="_Online" value="online_" class="common-radio relationButton">
-                                                    <label for="_Online">@lang('lang.payment') @lang('lang.online')</label>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h5 class="title text-center text-md-start">Detalii @lang('lang.payment')</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="breadcrumb-list">
+                        <li class="item"><a href="index.html">Acasa</a></li>
+                        <li class="separator"><i class="feather-chevron-right"></i></li>
+                        <li class="item current">Detalii @lang('lang.payment')</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title area -->
+
+  <!-- start connect area -->
+  <div class="rn-connect-area rn-section-gapTop">
+        <div class="container">
+            <div class="row g mb--50 mb_md--30 mb_sm--30 align-items-center">
+                <div class="col-lg-6" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                    <h3 class="connect-title">@lang('lang.billing_details')</h3>
+                    <a href="{{ route('customer.cheackout') }}">@lang('lang.edit')</a>
+                </div>
+                <div class="col-lg-6" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">
+                    <p class="wallet-bootm-disc">{{ @$data['user']->profile->first_name }} {{ @$data['user']->profile->last_name }}</p>
+                    <p class="wallet-bootm-disc">{{ @$data['user']->profile->address }}</p>
+                    <p class="wallet-bootm-disc">{{ @$data['user']->profile->city->name }} - {{ @$data['user']->profile->zipcode }} </p>
+                    <p class="wallet-bootm-disc"> {{ @$data['user']->profile->state->name }} , {{ @$data['user']->profile->country->name }} </p>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-9">
+                    <div class="row g-5">
+                        <!-- start single wallet -->
+                        <div class="col-xxl-12 col-lg-12 col-md-12 col-12 col-sm-6 col-12" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                            <div class="wallet-wrapper">
+                                <div class="inner">
+                                    <div class="icon">
+                                        <i data-feather="cast"></i>
                                     </div>
-                                    {{-- <div class="payment_wrap" id="_main_balance_on">
-                                        <nav>
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="infix-tab" data-toggle="tab" href="#infix"
-                                                        role="tab" aria-controls="contact" aria-selected="false">
-                                                        <img   class="img-fluid"src="{{asset('public/uploads/img/payment/infix.png')}}" alt="">
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade show active" id="infix" role="tabpanel" aria-labelledby="infix-tab">
-                                                <div class="payment_form">
-                                                    <div class="col-lg-6 mt-40 text-center" id="main_balance_on">
-                                                                <h5>@lang('lang.my') @lang('lang.account')</h2>
-                                                                <p class="mb-0">@lang('lang.my') @lang('lang.balance') : <b>{{@$infix_general_settings->currency_symbol}}{{ @Auth::user()->balance->amount}}</b></p>
-                                                                 <small>@lang('lang.your') @lang('lang.item') @lang('lang.price') : {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }}</small><br>
-                                                                 @if ( @Auth::user()->balance->amount >= $carttotalstrip )  
-                                                                     <small> <font color="green">@lang('lang.you_can_buy_now') </font> <font color="black"><i class="ti-face-smile"></i></font></small>
-                                                                     <div class="main_balance mt-5">
-                                                                            <form action="{{ route('user.payment_main_balance') }}" method="POST">
-                                                                                @csrf
-                                                                                <div class="input-group">
-                                                                                   <input class="form-control" id="_package_price_payment" readonly type="text" name='amount' value="{{ $carttotalstrip }}" placeholder=""/>
-                                                                                </div>
-                                                                                <div class="col-lg-12 mt-4">
-                                                                                    <div class="login_button text-center">
-                                                                                        <button id="" class="button boxed-btn" type="submit">
-                                                                                            @lang('lang.pay')
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                   @else  
-                                                                 @endif
-                                                               
-                                                        </div>
-                                                </div>
-                                                    
-                                            </div>
-                                        </div>
-                                            
-                                    </div> --}}
-                                    <div class="privaci_polecy_area section-padding checkout_area ">
-                                        <div class="container">
-                                            <div class="row justify-content-center">
-                                                <div class="col-xl-12">
-                                                    <div class="deposite_payment_wrapper customer_payment_wrapper">
-                                                        
-                                                        <!-- single_deposite_item  -->
-                                                        <div class="single_deposite_item">
-                                                            <div class="deposite_header text-center">
-                                                                Minted Credit
-                                                            </div>
-                                                            <div class="deposite_button text-center">
-                                                                 <p class="mt-3">Plateste folosind credite Minted.</p>
-                                                                 <p class="">Fondurile tale: @if (Auth::user()->role_id == 4)
+                                    <div class="content">
+                                        <h4 class="title"><a href="#">NFToons</a></h4>
+                                        <p class="description">Plateste folosind credite NFToons.</p>
+                                        <p class="description">Fondurile tale: @if (Auth::user()->role_id == 4)
                                                                     {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
                                                                     @endif
                                                                     @if (Auth::user()->role_id == 5)
                                                                         {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
-                                                                    @endif
-                                                                </p>
-                                                                <div class="mt-1 text-center mb-1">
-                                                                    <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="boxed-btn btnspecial">Plateste</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <div class="modal fade " id="MakePaymentFromCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Contul meu</h5>
-                                                                </div>
-                                                                {{-- <form action="{{ route('user.payment_main_balance') }}" id="infix_payment_form1" method="POST" name="payment_main_balance"    onsubmit="return validateFormForPayment()" > --}}
-                                                                <form action="{{ route('user.payment_main_balance') }}" id="infix_payment_form1" method="POST" name="payment_main_balance" >
-                                                                    @csrf 
-                                                                    <div class="modal-body">
-                                                                        <div class="row">
-                                                                            <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">Ai in contul tau minted:</label>
-                                                                                <input type="text" class="bank_deposit_input"  placeholder="Bank Name" name="bank_name" value="{{ @Auth::user()->balance->amount}}" readonly>
-                                                                            </div>
-                                                                            <div class="col-xl-6 col-md-6">
-                                                                                <label for="name" class="mb-2">Pretul pe care trebuie sa il platesti: </label>
-                                                                                <input type="text"  name="amount" class="bank_deposit_input"  placeholder="Name of account owner" value="{{ $carttotalstrip }}" readonly>
-                                                                            </div> 
-                                                                        </div>
-                                                                        @if ( @Auth::user()->balance->amount >= $carttotalstrip) 
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12">                                                                                
-                                                                                {{-- <div class="checkit">
-                                                                                    <span class="chebox-style-custom">
-                                                                                        <input class="styled-checkbox" id="styled-checkbox-28" onchange="showPayOption('con_balance_pay')" type="checkbox" name="item_comment" value="">
-                                                                                        <label for="styled-checkbox-28"> @lang('lang.use') {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }} @lang('lang.from_my_infix_balance_for_this_purchase') </label>
-                                                                                    </span>
-                                                                                    <span class="item_comment invalid-feedback" id="item_comment"></span>
-                                                                                </div> --}}
-                                                                            </div>
-                                                                        </div>
-                                                                        @endif
- 
-                                                                    </div>
-                                                                    <div class="modal-footer d-flex justify-content-between">
-                                                                        <button type="button" class="boxed-btn-white " data-dismiss="modal">@lang('lang.cancel')</button>
-                                                                        
-                                                                        @if ( @Auth::user()->balance->amount >= $carttotalstrip) 
-                                                                            <button  class="button boxed-btn btnspecial"   type="submit">
-                                                                                @lang('lang.pay') 
-                                                                            </button>
-                                                                        @else
-                                                                            <a class="button boxed-btn btnspecial" href="{{ route('user.deposit',@Auth::user()->username)}}">ADAUGA FONDURI</a>
-                                                                        @endif
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                     
-                                                </div>
-                                            </div>
-                                        </div>
+                                                                    @endif</p>
                                     </div>
-                            {{-- stripe --}}
-                                
+                                </div>
+                                <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="over-link">Plateste</a>
+                                                              
                             </div>
                         </div>
-                        <div class="col-xl-3">
+                        <div class="rn-popup-modal placebid-modal-wrapper modal fade" id="MakePaymentFromCredit" tabindex="-1" aria-hidden="true">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Contul meu</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form action="{{ route('user.payment_main_balance') }}" id="infix_payment_form1" method="POST" name="payment_main_balance" >
+                                        @csrf 
+                                        <div class="placebid-form-box">
+                                            <h5 class="title">Ai in contul tau minted:</h5>
+                                            <div class="bid-content">
+                                                <div class="bid-content-top">
+                                                    <div class="bid-content-left">
+                                                        <input type="text" class=""  placeholder="Bank Name" name="bank_name" value="{{ @Auth::user()->balance->amount}}" readonly>
+                                                         <span>NFToons</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="bid-content-mid">
+                                                    <div class="bid-content-left">
+                                                        <span>Total de plata </span>
+                                                    </div>
+                                                    <div class="bid-content-right">
+                                                        <span><input type="text"  name="amount" class="bank_deposit_input"  placeholder="Name of account owner" value="{{ $carttotalstrip }}" readonly></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @if ( @Auth::user()->balance->amount >= $carttotalstrip) 
+                                            <div class="row">
+                                                <div class="col-lg-12">                                                                                
+                                                    {{-- <div class="checkit">
+                                                        <span class="chebox-style-custom">
+                                                            <input class="styled-checkbox" id="styled-checkbox-28" onchange="showPayOption('con_balance_pay')" type="checkbox" name="item_comment" value="">
+                                                            <label for="styled-checkbox-28"> @lang('lang.use') {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }} @lang('lang.from_my_infix_balance_for_this_purchase') </label>
+                                                        </span>
+                                                        <span class="item_comment invalid-feedback" id="item_comment"></span>
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            <div class="bit-continue-button">
+                                            @if ( @Auth::user()->balance->amount >= $carttotalstrip) 
+                                                    <button  class="btn btn-primary w-100"   type="submit">
+                                                        @lang('lang.pay') 
+                                                    </button>
+                                                @else
+                                                    <a class="btn btn-primary w-100" href="{{ route('user.deposit',@Auth::user()->username)}}">ADAUGA FONDURI</a>
+                                                @endif
+
+                                                <button type="button" class="btn btn-primary-alta mt--10" data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- start single wallet -->
+                     
+                    </div>
+                </div>
+                <div class="col-lg-3" data-sal="slide-up" data-sal-delay="150" data-sal-duration="500">
+                    <div class="connect-thumbnail">
+                        <div class="left-image">
                         <form action="{{ route('customer.payment_store') }}" method="POST">                                        
                                 @csrf
                             <div class="your_order mt-lg-2">
@@ -260,14 +198,14 @@ $carttotalstrip = floatval($b);
                             </div>
                         </form>
                         </div>
-                        
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- checkout_area end -->
-</div>
+    <!-- End connect area -->
+
 @endsection
 @push('js')
     <script src="{{ asset('public/frontend/js/') }}/checkout.js"></script>

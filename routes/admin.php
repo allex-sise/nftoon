@@ -82,6 +82,19 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::get('add-drop-deleteP/{id}', 'DropsController@deleteDropP')->name('deleteDropP')->middleware('userRolePermission:5');
         /* ********************* END DROPS ROUTES ********************* */
 
+
+        /* ******************** START COLLECTION ROUTES ********************* */
+        Route::get('add-collection', 'CollectionsController@adCollection')->name('adCollection')->middleware('userRolePermission:5');
+        Route::post('add-collection-store', 'CollectionsController@adCollectionStore')->name('adCollectionStore')->middleware('userRolePermission:5');
+        Route::get('add-collection-edit/{id}', 'CollectionsController@editCollection')->name('editCollection')->middleware('userRolePermission:5');
+        Route::get('add-collection-show/{id}', 'CollectionsController@showCollection')->name('showCollection')->middleware('userRolePermission:5');
+        Route::post('add-collection-store-update', 'CollectionsController@updateCollection')->name('updateCollection')->middleware('userRolePermission:5');
+        Route::post('add-collection-nftstore', 'CollectionsController@storeNFTcollection')->name('storeNFTcollection')->middleware('userRolePermission:5');
+        Route::get('add-collection-delete/{id}', 'CollectionsController@deleteCollection')->name('deleteCollection')->middleware('userRolePermission:5');
+        Route::get('add-collection-deleteP/{id}', 'CollectionsController@deleteCollectionP')->name('deleteCollectionP')->middleware('userRolePermission:5');
+        /* ********************* END COLLECTION ROUTES ********************* */
+
+        
         /* ******************** START CATEGORY ROUTES ********************* */
         Route::get('add-category', 'ProductController@adCategory')->name('adCategory')->middleware('userRolePermission:5');
         Route::post('add-category-store', 'ProductController@adCategoryStore')->name('adCategoryStore')->middleware('userRolePermission:5');

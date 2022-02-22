@@ -7,44 +7,8 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         $banner=url('public/frontend/img/banner/banner-img-1.png');
     }
 @endphp 
-<style>
-.v-center {
-    min-height: 72%!important;
-    min-height: 72vh!important;
-    display: flex;
-    align-items: center;
-}
-.vh-60{
-    height: 82vh!important;
-}
-.bannerIMG{
-    border-radius: 20px;
-    width: 90%;
-    -webkit-box-shadow: 0px 0px 5px 0px rgb(50 50 50 / 75%);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-    box-shadow: 0px 0px 5px 0px rgb(50 50 50 / 75%);
-}
-.h1banners{
-    color: #FFF!important;
-}
-@media only screen and (max-width: 767px) {
-.v-center {
-    min-height: 50%!important;
-    min-height: 50vh!important;
-    display: flex;
-    align-items: center;
-}
-.vh-60{
-    height: 60vh!important;
-}
-.specialPs{
-    display: none;
-}
-.h1banners{
-    font-size: 30px!important;
-}
-}
-</style>
+
+
 <!-- 
 <div class="banner-area">
         <div class="container">
@@ -60,7 +24,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
             </div>
         </div>
     </div> -->
-    <section id="section-heroz" aria-label="section" class="pt20 pb20 vh-60" data-bgimage="url({{ asset('public/frontend/assets/images/background/7.jpg' )}}) bottom">
+    <!-- <section id="section-heroz" aria-label="section" class="pt20 pb20 vh-60" data-bgimage="url({{ asset('public/frontend/assets/images/background/7.jpg' )}}) bottom">
                 <div class="v-center">
                     <div class="container">
                         <div class="row align-items-center">
@@ -82,4 +46,4 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                     </div>
                 </div>
             </section>
-       
+        -->

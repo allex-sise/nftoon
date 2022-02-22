@@ -24,6 +24,7 @@ Route::group(['middleware' => ['XSS']], function () {
    Route::get('/{$username}', 'Frontend\HomeController@portofoliuPrincipal')->name('portofoliuPrincipal');
    Route::get('/termeni-conditii', 'Frontend\HomeController@termsConditions')->name('termsConditions');
    Route::get('/about_company', 'Frontend\HomeController@aboutCompany')->name('about_company');
+   Route::get('/activitate', 'Frontend\HomeController@activitate')->name('activitate');
    Route::get('/support-ticket', 'Frontend\HomeController@SupportTicket')->name('SupportTicket');
    Route::get('/politica-cookies', 'Frontend\HomeController@License')->name('License');
    Route::post('store_newsletter', 'Frontend\HomeController@store_newsletter')->name('store_newsletter');
@@ -168,7 +169,9 @@ Route::group(['prefix' => 'paypal'],function(){
       Route::get('creatori/', 'DropController@creatori')->name('creatori');
       Route::get('categoryAll/', 'DropController@categoryAll')->name('categoryAll');
       Route::get('drop/', 'DropController@dropWiseItem');
-
+      Route::get('collection/{collectionname?}', 'CollectionController@singleCollection')->name('singleCollection');
+      Route::get('collections/', 'CollectionController@collectionsAll')->name('collectionsAll');
+      Route::get('collection/', 'CollectionController@collectionWiseItem');
       /* ********************* START CART ROUTES ********************* */
       Route::post('item/cart', 'ItemController@AddCart')->name('AddCartItem');
       Route::post('item/cart/quick', 'ItemController@QuickAddCart')->name('QuickAddCart');

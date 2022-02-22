@@ -225,6 +225,17 @@
             @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
             
             <li>
+                <a href="{{route('admin.adCollection')}}" class="">
+                    <span class="flaticon-analytics"></span>
+                    Colectii
+                </a>
+            </li>
+
+            @endif
+
+            @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+            
+            <li>
                 <a href="{{route('admin.newsletter')}}" class="">
                     <span class="flaticon-analytics"></span>
                     Newsletter
@@ -591,15 +602,15 @@
                     
 
                      <li> <a href="{{ route('email-setting') }}">@lang('lang.email_settings') </a> </li> 
-                    {{--  <li> <a href="{{ route('role-permission') }}">@lang('lang.role_permission') </a> </li> --}
-                    {{--  <li> <a href="{{ route('admin.mail_template') }}">Email template </a> </li> --}}
+                <li> <a href="{{ route('role-permission') }}">@lang('lang.role_permission') </a> </li>
+                    <li> <a href="{{ route('admin.mail_template') }}">Email template </a> </li> 
                     {{-- <li> <a href="{{ route('payment-method-setting') }}">@lang('lang.payment_method_settings')</a> </li> --}
                     {{--  <li> <a href="{{ route('language-setting') }}">@lang('lang.language_settings') </a> </li> --}}
                     <li> <a href="{{ route('seo-setting') }}">@lang('lang.SEO_settings') </a> </li>
                     
-                    {{-- <li> <a href="{{ route('footer-setting') }}">Footer Settings </a> </li> --}}
+                 <li> <a href="{{ route('footer-setting') }}">Footer Settings </a> </li>
                     {{-- <li> <a href="{{ route('purchase-key-setting') }}">Purchase Key</a> </li> --}}
-                    <!-- <li> <a href="{{ route('theme-setting') }}">@lang('lang.dashboard_themes')</a> </li> -->
+                    <li> <a href="{{ route('theme-setting') }}">@lang('lang.dashboard_themes')</a> </li>
                     {{-- <li> <a href="{{ route('backup-settings') }}">@lang('lang.backup')</a> </li> --}}
                     <li> <a href="{{ route('googleAnalytics') }}">@lang('lang.third_party_API')</a> </li>
                     {{-- <li> <a href="{{ route('aboutSystem') }}">@lang('lang.about') & @lang('lang.update')</a> </li> --}}
@@ -641,20 +652,20 @@
                 $data=  App\AssignModulePermission::where('module_id',22)->first();
             @endphp --}}
         @if(Auth::user()->role_id == 1 || in_array(22, $permitted_modules))
-            <!-- <li>
+        <li>
                 <a href="#frontSetting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <span class="flaticon-analytics"></span>
                     @lang('lang.front_settings')
                 </a>
                 <ul class="collapse list-unstyled" id="frontSetting">
-                {{-- <li> <a href="{{ route('site-image-setting') }}">@lang('lang.site_image_settings') </a> </li> --}}
-                    {{-- <li> <a href="{{ url('front-setting') }}">@lang('lang.front_settings')</a> </li> --}}
-                    {{-- <li> <a href="{{ url('license-feature') }}">@lang('lang.license') @lang('lang.Features') </a> </li> --}}
+                 <li> <a href="{{ route('site-image-setting') }}">@lang('lang.site_image_settings') </a> </li> 
+     <li> <a href="{{ url('front-setting') }}">@lang('lang.front_settings')</a> </li> --}}
+                  <li> <a href="{{ url('license-feature') }}">@lang('lang.license') @lang('lang.Features') </a> </li>
                     <li> <a href="{{ url('footer-menu') }}">@lang('lang.footer_menu')</a> </li>
                     
                     <li> <a href="{{ route('FooterCustomLink') }}">@lang('lang.footer_custom_link')</a> </li>
                 </ul>
-            </li> -->
+            </li> 
 
         @endif
 

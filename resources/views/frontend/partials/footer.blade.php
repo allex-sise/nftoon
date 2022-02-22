@@ -1,239 +1,155 @@
  <!-- footer-start -->
- <style>
-.colspecial{
-    margin: 0 auto;
-    display: block;
-    width: 70%!important;
-}
-.footer-area .footer-top {
-    padding-top: 50px;
-    padding-bottom: 25px;
-}
-.footer-area .footer-top .footer-widget .footer-logo {
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-.footer-area .copyright-area .social-links li a {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    color: aliceblue;
-    display: inline-block;
-    background: transparent;
-    text-align: center;
-    line-height: 30px;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-}
-.footer-area .copyright-area .footer-bottom .footer-link {
-    margin-bottom: 0px;
-}
-.colspecial{
-    display: none!important;
-}
-.footer-area .footer-top{
-    display: none!important;
-}
-.footermobul{
-    margin-bottom: 0px!important;
-    padding-top: 5px!important;
-    padding-left: 0px!important;
-}
-.footer-area .copyright-area .social-links {
-    padding-top: 5px;
-}
-.footer-area .copyright-area .footer-bottom .footer-link ul li {
-    display: inline-block;
-    margin-right: 29px;
-}
-.footer-area .footer-bg{
-    height: 60px!important;
-}
-#content{
-    min-height: calc(100vh - 60px);;
-}
-@media only screen and (max-width: 767px) {
-.colspecial{
-    display: none!important;
-}
-.footer-top{
-    display: none!important;
-}
-.footer-area .footer-bg{
-    height: auto!important;
-}
-.footer-area .copyright-area .footer-bottom .footer-link ul li a {
-    font-size: 10px!important;
-}
-.footer-area .copyright-area .footer-bottom .footer-link ul li {
-    display: inline-block;
-    margin-right: 4px;
-}
 
-}
- </style>
- <a href="#" id="back-to-top"></a>
- <footer>
     @php
         $logo_conditions = ['title'=>'Logo', 'active_status'=>1];
         $logopic = dashboard_background($logo_conditions);
     @endphp
-    <div class="footer-area footer-bg">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 colspecial">
-                        <div class="row">
-                        @php
-                                $custom_link=InfixFooterMenu();
-                            @endphp
-                            @if ($custom_link!='')
+    <!-- Start Footer Area -->
+    <div class="rn-footer-one rn-section-gap bg-color--1 mt--100 mt_md--80 mt_sm--80">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="widget-content-wrapper">
+                            <div class="footer-left">
+                                <div class="logo-thumbnail logo-custom-css">
+                                    <a class="logo-light" href="{{url('/')}}"><img src="{{ asset('public/frontend/img/nftoonlogo.png') }}" alt="nft-logo"></a>
+                                    <a class="logo-dark" href="{{url('/')}}"><img src="{{ asset('public/frontend/img/nftoonlogo.png') }}" alt="nft-logo"></a>
+                                </div>
+                                <p class="rn-footer-describe">
+                                    Created with the collaboration of over 60 of the world's best Nuron Artists.
+                                </p>
+                            </div>
+                            <div class="widget-bottom mt--40 pt--40">
+                                <h6 class="title">Get The Latest Nuron Updates </h6>
                                 
-                        
-                            <div class="col-md-4">
-                                <div class="footer-widget" style="text-align: right;">
-                                    <div class="footer-title">
-                                        <h3>{{ $custom_link->title2 }}</h3>
-                                    </div>
-                                    <div class="footer-list">
-                                        <nav>
-                                            <ul style="padding-left: 0px; margin-right: 0px;">
-                                            @if ($custom_link->link_href1!='')
-                                                  <li><a href="{{ url($custom_link->link_href1) }}">{{ $custom_link->link_label1 }} </a></li>
-                                                  
-                                                @endif
-                                                    @if ($custom_link->link_href2!='')
-                                                    <li><a href="{{ $custom_link->link_href2}}">{{ $custom_link->link_label2}}</a></li>
-                                                
-                                                @endif
-                                                @if ($custom_link->link_href6!='')
-                                                <li><a href="{{ url($custom_link->link_href6) }}">{{ $custom_link->link_label6 }}</a></li>
-                                      
-                                                @endif
-                                              
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="footer-widget text-center">
-                                    <div class="footer-logo"> 
-                                       <a href="{{ url('/') }}">
-                                            <img src="{{ @$logopic ? asset($logopic->image) : asset('public/frontend/img/Logo.png') }}" alt="" class="mw" style="display: block; margin: 0 auto;">
-                                        </a>
-                                    </div>
-                                    <div class="copyright-area">
-                                    <div class="social-links text-center">
-                                    <nav>
-                                        <ul style="text-align: center; padding-left: 0px;">
-                                            {!! getSocialIconsDynamic() !!} 
-                                        </ul> 
-                                    </nav>
-                                </div>
-                                </div>
-                                    <!-- <div class="community-area">
-                                            @php
-                                            $getData=App\ManageQuery::FooterSellCount();
-                                                @$ItemEarning=$getData['ItemEarning'];
-                                            @endphp
-                                        <div class="total-community">
-                                            @php
-                                                $system_settings=app('infix_general_settings');
-                                            @endphp
-                                            <h3> {{ @$system_settings->currency_symbol}} {{ isset($ItemEarning) ? round($ItemEarning) : 0}}</h3>
-                                            <p>@lang('lang.total_community_earnings')</p>
+                                <form action="{{ route('store_newsletter') }}" method="POST">
+                                @csrf
+                                    <div class="input-group">
+                                        <input name="email" type="email" class="form-control bg-color--2" placeholder="Adresa ta de email">
+                                        <div class="input-group-append">
+                                        <input type="submit" class="btn btn-primary-alta btn-outline-secondary" value="Abonare">
                                         </div>
-                                        <div class="total-community second">
-                                            @php
-                                                @$ItemSale=$getData['ItemSale'];
-
-                                            @endphp
-                                            <h3>{{ @$ItemSale }}</h3>
-                                            <p>@lang('lang.total_items_sold')</p>
-                                        </div>
-                                    </div>  -->
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="newsletter-dsc">
+                                    <p>Email is safe. We don't spam.</p>
                                 </div>
                             </div>
-                          
-                            <div class="col-md-4">
-                                <div class="footer-widget">
-                                    <div class="footer-title" style="margin-left: 30px;">
-                                        <h3 class="text-right">{{ $custom_link->title3 }}</h3>
-                                    </div>
-                                    <div class="footer-list">
-                                        <nav>
-                                            <ul class="text-right">
-                                             @if ($custom_link->link_href3!='')
-                                                    <li><a href="{{ $custom_link->link_href3}}">{{ $custom_link->link_label3}}</a></li>
-                                               @endif
-                                                    @if ($custom_link->link_href7!='')
-                                                        <li><a href="{{ $custom_link->link_href7 }}">{{ $custom_link->link_label7 }}</a></li>
-                                                    @endif
-                                                    @if ($custom_link->link_href11!='')
-                                                        <li><a href="{{ $custom_link->link_href11 }}">{{ $custom_link->link_label11 }}</a></li>
-                                                    @endif
-                                                    @if ($custom_link->link_href15!='')
-                                                        <li><a href="{{ $custom_link->link_href15 }}">{{ $custom_link->link_label15 }}</a></li>
-                                                    @endif
-                                                {{-- <li><a href="{{ route('faqPage') }}">FAQ</a></li> --}}
-                                               
-                                                @if ($custom_link->link_href10!='')
-                                                <li><a href="{{ $custom_link->link_href10 }}">{{ $custom_link->link_label10 }}</a></li>
-                                      
-                                                @endif
-                                                @if ($custom_link->link_href14!='')
-                                                <li><a href="{{ $custom_link->link_href14 }}">{{ $custom_link->link_label14 }}</a></li>
-                                           
-                                               @endif
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
                         </div>
+                  
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_mobile--40">
+                    <div class="footer-widget widget-quicklink">
+                        <h6 class="widget-title">Despre</h6>
+                        <ul class="footer-list-one">
+                            <li class="single-list"><a href="#">Protocol Explore</a></li>
+                            <li class="single-list"><a href="#">System Token</a></li>
+                            <li class="single-list"><a href="#">Otimize Time</a></li>
+                            <li class="single-list"><a href="#">Visual Checking</a></li>
+                            <li class="single-list"><a href="#">Fadeup System</a></li>
+                            <li class="single-list"><a href="#">Activity Log</a></li>
+                            <li class="single-list"><a href="#">System Auto Since</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="copyright-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1">
-                        <div class="line-border mb-20"></div>
-                        <div class="row ">
-                            <div class="col-xl-7 col-md-12 col-lg-7">
-                                <div class="footer-bottom">
-                                    <div class="footer-link">
-                                        <nav>
-                                            <ul class="footermobul">
-                                                <li><a href="{{ url('/termeni-conditii') }}">Termeni si Conditii </a></li>
-                                                <li><a href="{{  url('/politica-confidentialitate' )}}">Politica Confidentialitate</a></li>
-                                                <li><a href="{{ url('/politica-cookies') }}">Politica Cookies</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                
-                                   
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
+                    <div class="footer-widget widget-information">
+                        <h6 class="widget-title">Informatii</h6>
+                        <ul class="footer-list-one">
+                            <li class="single-list"><a href="#">Market Explore</a></li>
+                            <li class="single-list"><a href="#">Ready Token</a></li>
+                            <li class="single-list"><a href="#">Main Option</a></li>
+                            <li class="single-list"><a href="#">Product Checking</a></li>
+                            <li class="single-list"><a href="blog.html">Blog Grid</a></li>
+                            <li class="single-list"><a href="about.html">About Us</a></li>
+                            <li class="single-list"><a href="#">Fix Bug </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
+                    <div class="footer-widget">
+                        <h6 class="widget-title">Recent Sold Out</h6>
+                        <ul class="footer-recent-post">
+                            <li class="recent-post">
+                                <div class="thumbnail">
+                                    <a href="product-details.html">
+                                        <img src="assets/images/portfolio/portfolio-01.jpg" alt="Product Images">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-xl-5 col-md-12 col-lg-5">
-                                <div class="social-links mb-0">
-                                @php
-                                         $footer_link=InfixFooterSetting();
-                                    @endphp
-                                    <p class="copy-right-text mb-0" style="margin-top: -13px;">{{ @$footer_link->copyright_text }}. </p>
+                                <div class="content">
+                                    <h6 class="title"><a href="product-details.html">#21 The Wonder</a></h6>
+                                    <p>Highest bid 1/20</p>
+                                    <span class="price">0.244wETH</span>
                                 </div>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="recent-post">
+                                <div class="thumbnail">
+                                    <a href="product-details.html">
+                                        <img src="assets/images/portfolio/portfolio-02.jpg" alt="Product Images">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="product-details.html">Diamond Dog</a></h6>
+                                    <p>Highest bid 1/20</p>
+                                    <span class="price">0.022wETH</span>
+                                </div>
+                            </li>
+                            <li class="recent-post">
+                                <div class="thumbnail">
+                                    <a href="product-details.html">
+                                        <img src="assets/images/portfolio/portfolio-03.jpg" alt="Product Images">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="product-details.html">Morgan11</a></h6>
+                                    <p>Highest bid 1/20</p>
+                                    <span class="price">0.892wETH</span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</footer>
+    <!-- End Footer Area -->
+    <!-- Start Footer Area -->
+    <div class="copy-right-one ptb--20 bg-color--1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="copyright-left">
+                        <span>© Nuron, Inc. All rights reserved.</span>
+                        <ul class="privacy">
+                            <li><a href="terms-condition.html">Terms</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="copyright-right">
+                        <ul class="social-copyright">
+                            <li><a href="#"><i data-feather="facebook"></i></a></li>
+                            <li><a href="#"><i data-feather="twitter"></i></a></li>
+                            <li><a href="#"><i data-feather="instagram"></i></a></li>
+                            <li><a href="#"><i data-feather="linkedin"></i></a></li>
+                            <li><a href="#"><i data-feather="mail"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Area -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+    <!-- Start Top To Bottom Area  -->
+    <div class="rn-progress-parent">
+        <svg class="rn-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- End Top To Bottom Area  -->
 <!-- footer-end -->

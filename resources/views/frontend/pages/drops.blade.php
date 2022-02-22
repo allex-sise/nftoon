@@ -17,113 +17,115 @@
 
 @section('content')
 <style>
-.banner-area::before, .banner-area2::before, .banner-area3::before, .banner-area4::before{
+.bg_image--91{
     background-image: url("{{$banner}}")!important;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-top: 85px;
-    height: 500px;
+
 }
-.banner-area2{
-    height: 600px;
+.rn-collection-inner-one .collection-wrapper .collenction-small-thumbnail img {
+    display: inline-block;
+    width: 33.33%;
+    padding: 4px;
+    border-radius: 10px;
+    height: 85px;
 }
-.section-padding1 {
-    padding-top: 20px;
-    padding-bottom: 120px;
-}
-.latest-goods-area .single-goods .goods-thumb {
-    overflow: hidden;
-    height: 540px!important;
-    border-radius: 7px!important;
-    border-bottom-left-radius: 0px!important;
-    border-bottom-right-radius: 0px!important;
-}
-.latest-goods-area .single-goods .goods-thumb img {
-    max-height: 540px!important;
-}
-.mg30{
-    margin: 30px!important;
-}
-.mg140top{
-    margin-top: 140px!important;
-}
-.de_countdown {
-    position: absolute;
-    left: 40px;
-    margin-top: 10px;
-    padding: 0 0 4px 10px;
-    -webkit-border-radius: 30px;
-    z-index: 100;
-    width: 150px;
-}
-.banner-area2::before{
-    z-index: 10;
-}
-.collgdrop{
-    margin-bottom: 45px; 
-    margin-right: 50px;
-}
-@media only screen and (max-width: 767px) {
-.featuresbag{
-    margin-top: 270px;
-}
+.rn-collection-inner-one .collection-wrapper .collection-big-thumbnail img {
+    border-radius: 5px;
+    object-fit: cover;
+    width: 100%;
+    height: 270px;
+    transition: var(--transition);
 }
     </style>
-  <!-- banner-area start -->
-    <div class="banner-area2" >
+
+    <div class="rn-author-bg-area bg_image--91 bg_image ptb--150">
         <div class="container">
             <div class="row">
-                <div class="col-xl-8 offset-xl-2">
-                 
-                </div>
             </div>
         </div>
     </div>
-    <!-- banner-area end -->
-
-    <!-- latest-goods-start -->
-    <div class="features-area section-padding1 featuresbag" onscroll="OnScroll()">
+ <!-- start page title area -->
+ <div class="rn-breadcrumb-inner ptb--30">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-12">
-                <div class="section-title text-left mb-70">
-                <h3>DROPS</h3>
-                    <h4>
-Minted from drops are sold directly by the creator. You can buy them here before they sell out - or purchase them from other users on the secondary marketplace.</h4>
-                </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <h5 class="title text-center text-md-start">DROPS</h5>
             </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-12">
-               @foreach ($data['drop'] as $drop)
-                        <div class="col-lg-5 float-left collgdrop">
-                            <div class="nft_pic" style="background-size: cover;">                            
-                                <a href="{{ route('singleDrop',@$drop->slug) }}">
-                                    <span class="nft_pic_info">
-                                        <span class="nft_pic_title">{{ $drop->name }}</span>
-                                        <span class="nft_pic_by">{{ $drop->description }}</span>
-                                        <span class="nft_pic_title" style="font-size: 16px!important;">Drop-ul expira in:</span>
-                                        @php
-                                            $date = $drop->expdate;
-                                            $day_year = date('Y', strtotime($date));
-                                            $day_name = date('j', strtotime($date));
-                                            $day_month = date('n', strtotime($date));
-                                            $day_hour = date('H', strtotime($date));
-                                        @endphp
-                                        <div class="de_countdown" data-year="{{$day_year}}" data-month="{{$day_month}}" data-day="{{$day_name}}" data-hour="{{$day_hour}}"></div>
-                                    </span>
-                                </a>
-                                <div class="nft_pic_wrap" style="background-size: cover;">
-                                    <img style="min-height: 550px; max-height: 550px;" src="{{asset(@$drop->dropicon)}}" class="lazy img-fluid" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-list">
+                    <li class="item"><a href="index.html">Acasa</a></li>
+                    <li class="separator"><i class="feather-chevron-right"></i></li>
+                    <li class="item current">DROPS</li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
-    <!-- latest-goods-end -->
+<!-- end page title area -->
+ <!-- collection area Start -->
+ <div class="rn-collection-area rn-section-gapTop">
+        <div class="container">
+            <div class="row g-5">
+            @foreach ($data['drop'] as $drop)
+
+                <!-- start single collention -->
+                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-lg-4 col-xl-4 col-md-4 col-sm-6 col-12">
+                    <a href="{{ route('singleDrop',@$drop->slug) }}" class="rn-collection-inner-one">
+                        <div class="collection-wrapper">
+                            <div class="collection-big-thumbnail">
+                                <img src="{{asset(@$drop->dropicon)}}">
+                            </div>
+                            <div class="collenction-small-thumbnail">
+                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
+                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
+                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
+                            </div>
+                            <div class="collection-profile">
+                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
+                            </div>
+                            <div class="collection-deg">
+                                
+                                <h6 class="title">{{ $drop->name }}</h6>
+                                <p>{{ $drop->description }}</p>
+                           
+                            </div>
+                            <div class="collection-deg">
+                                @php
+                                    $date = $drop->expdate;
+                                    $day_year = date('Y-m-d', strtotime($date));
+                                    $day_name = date('j', strtotime($date));
+                                    $day_month = date('n', strtotime($date));
+                                    $day_hour = date('H', strtotime($date));
+                                @endphp
+                                <div class="countdown" data-date="{{$day_year}}">
+                                            <div class="countdown-container days">
+                                                <span class="countdown-value">87</span>
+                                                <span class="countdown-heading">D's</span>
+                                            </div>
+                                            <div class="countdown-container hours">
+                                                <span class="countdown-value">23</span>
+                                                <span class="countdown-heading">H's</span>
+                                            </div>
+                                            <div class="countdown-container minutes">
+                                                <span class="countdown-value">38</span>
+                                                <span class="countdown-heading">Min's</span>
+                                            </div>
+                                            <div class="countdown-container seconds">
+                                                <span class="countdown-value">27</span>
+                                                <span class="countdown-heading">Sec</span>
+                                            </div>
+                                        </div>
+                                    <span class="items">27 Items</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- End single collention -->
+                @endforeach
+                
+            </div>
+        </div>
+    </div>
+    <!-- collection area End -->
+
+    
 @endsection
