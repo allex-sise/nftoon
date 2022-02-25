@@ -96,7 +96,7 @@ class LoginController extends Controller
          $client = new Client;
         $request = $client->request('POST', 'https://app.smso.ro/api/v1/send', [
                 'headers' => [
-                    'X-Authorization' => 'Wyu1WaV1LJwx6URrGDTE7AXcspcWJ50Sic7bdgwE',
+                    'X-Authorization' => '',
                 ],
             'form_params' => [
                 'to' => '+4'.$user->profile->mobile,

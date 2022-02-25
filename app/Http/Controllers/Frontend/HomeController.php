@@ -18,6 +18,8 @@ use App\SpnCountry;
 use App\PackageType;
 use App\PaidPayment;
 use App\ItemCategory;
+use App\Collections;
+use App\CollectionsNFTs;
 use App\LicenseFeature;
 use App\PaymentPackage;
 use App\Drops;
@@ -59,10 +61,10 @@ class HomeController extends Controller
         try{
             if (Schema::hasTable('users')) {
                 $testInstalled = DB::table('users')->get();
-                
+                    $data['collection'] =  Collections::get();
                     $data['category'] =  ItemCategory::where('active_status', 1)->where('show_menu',1)->get();
                     $data['item'] =  Item::where('active_status', 1)->where('status', 1)->take(2)->get();
-                     $current_date_time = Carbon::now()->toDateTimeString();
+                    $current_date_time = Carbon::now()->toDateTimeString();
                     $data['drop'] =  Drops::where('status', 1)->where('expdate', '>=', $current_date_time)->latest()->take(6)->get();
                     $data['featured'] = Item::where('active_status', 1)->where('status', 1)->latest()->get();
                     $free_items_count = DB::table('users')

@@ -103,9 +103,10 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                                     $day_month = date('n', strtotime($date));
                                     $day_hour = date('H', strtotime($date));
                                 @endphp
+                              
                                 
-                          
                                 <div class="countdown" data-date="{{$day_year}}">
+                                
                                         <div class="countdown-container days">
                                             <span class="countdown-value">87</span>
                                             <span class="countdown-heading">D's</span>
@@ -188,8 +189,8 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                                 </div>
                                 <div class="product-share-wrapper">
                                     <div class="profile-share">
-                                        <a href="{{ route('user.portfolio',@$item->og->username)}}" class="avatar" data-tooltip="{{ @$item->og->username }}"><img src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="Nft_Profile"></a>
-                                        <a class="more-author-text" href="#">20+ Place Bit.</a>
+                                        <a href="{{ route('user.portfolio',@$item->og->username)}}" class="avatar" data-tooltip="{{ @$item->og->username }}"><img src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
+                                        <a class="more-author-text" href="{{ route('user.portfolio',@$item->og->username)}}">{{ @$item->og->username }}</a>
                                     </div>
                                     <div class="share-btn share-btn-activation dropdown">
                                         <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
@@ -211,14 +212,12 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
 
                                 </div>
                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ $item->title}}</span></a>
-                                <span class="latest-bid">Highest bid 1/20</span>
+                               
                                 <div class="bid-react-area">
-                                    <div class="last-bid">{{ $item->Re_item}} crd</div>
+                                    <div class="last-bid">{{ $item->Re_item}} toons</div>
                                     <div class="react-area">
-                                        <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                            <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                        </svg>
-                                        <span class="number">322</span>
+                                        <i data-feather="activity"></i>
+                                        <span class="number">{{ $item->sell}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +241,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         <div class="container">
             <div class="row">
                 <div class="col-12 mb--50">
-                    <h3 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Create and sell your NFTs</h3>
+                    <h3 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Cumpara si Vinde NFT-uri</h3>
                 </div>
             </div>
             <div class="row g-5">
@@ -253,7 +252,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             <div class="icon">
                                 <img src="{{ asset('public/frontend/newassets') }}/assets/images/icons/shape-7.png" alt="Shape">
                             </div>
-                            <div class="subtitle">Step-01</div>
+                            <div class="subtitle">Pasul-01</div>
                             <div class="content">
                                 <h4 class="title"><a href="#">Set up your wallet</a></h4>
                                 <p class="description">Powerful features and inclusions, which makes Nuron standout,
@@ -272,7 +271,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             <div class="icon">
                                 <img src="{{ asset('public/frontend/newassets') }}/assets/images/icons/shape-1.png" alt="Shape">
                             </div>
-                            <div class="subtitle">Step-02</div>
+                            <div class="subtitle">Pasul-02</div>
                             <div class="content">
                                 <h4 class="title"><a href="#">Create your collection</a></h4>
                                 <p class="description">A great collection of beautiful website templates for your need.
@@ -291,7 +290,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             <div class="icon">
                                 <img src="{{ asset('public/frontend/newassets') }}/assets/images/icons/shape-5.png" alt="Shape">
                             </div>
-                            <div class="subtitle">Step-03</div>
+                            <div class="subtitle">Pasul-03</div>
                             <div class="content">
                                 <h4 class="title"><a href="#">Add your NFT's</a></h4>
                                 <p class="description">We've made the template fully responsive, so it looks great on
@@ -310,7 +309,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             <div class="icon">
                                 <img src="{{ asset('public/frontend/newassets') }}/assets/images/icons/shape-6.png" alt="Shape">
                             </div>
-                            <div class="subtitle">Step-04</div>
+                            <div class="subtitle">Pasul-04</div>
                             <div class="content">
                                 <h4 class="title"><a href="#">Sell Your NFT's</a></h4>
                                 <p class="description">I throw myself down among the tall grass by the stream as I
@@ -331,11 +330,11 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         <div class="container">
             <div class="row mb--50 align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Newest Items</h3>
+                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Cele mai recente</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
                     <div class="view-more-btn text-start text-sm-end" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                        <a class="btn-transparent" href="#">VIEW ALL<i data-feather="arrow-right"></i></a>
+                        <a class="btn-transparent" href="{{ route('categoryAll') }}">VEZI TOATE<i data-feather="arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -382,14 +381,12 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             </div>
                         </div>
                         <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ $item->title}}</span></a>
-                        <span class="latest-bid">Highest bid 1/20</span>
+                        
                         <div class="bid-react-area">
-                            <div class="last-bid">{{ $item->Re_item}} crd</div>
+                            <div class="last-bid">{{ $item->Re_item}} toons</div>
                             <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">322</span>
+                                <i data-feather="activity"></i>
+                                <span class="number">>{{ $item->sell}}</span>
                             </div>
                         </div>
                     </div>
@@ -400,18 +397,138 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         </div>
     </div>
     <!-- New items End -->
+    <!-- collection area Start -->
+    <div class="rn-collection-area rn-section-gapTop">
+        <div class="container">
+            <div class="row mb--50 align-items-center">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Top Colectii</h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
+                    <div class="view-more-btn text-start text-sm-end" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <a class="btn-transparent" href="{{ route('collectionsAll') }}">VEZI TOATE<i data-feather="arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+            @foreach ($data['collection'] as $collection)
+
+                <!-- start single collention -->
+                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-lg-4 col-xl-4 col-md-4 col-sm-6 col-12">
+                    <a href="{{ route('singleCollection',@$collection->slug) }}" class="rn-collection-inner-one">
+                        <div class="collection-wrapper">
+                            <div class="collection-big-thumbnail">
+                                <img src="{{asset(@$collection->dropicon)}}">
+                            </div>
+                            <div class="collenction-small-thumbnail">
+                                <img src="{{asset(@$collection->dropicon)}}" alt="Nft_Profile">
+                                <img src="{{asset(@$collection->dropicon)}}" alt="Nft_Profile">
+                                <img src="{{asset(@$collection->dropicon)}}" alt="Nft_Profile">
+                            </div>
+                            <div class="collection-profile">
+                                <img src="{{ @$collection->creator->profile->image? asset(@$collection->creator->profile->image):asset('public/frontend/img/profile/1.png') }}">
+                            </div>
+                            <div class="collection-deg">
+                                
+                                <h6 class="title">{{ $collection->name }}</h6>
+                        
+                                @php                                                        
+                                    $countNFTs = App\CollectionsNFTs::where('collection_id', $collection->id)->count();
+                                @endphp
+                                <span class="items">{{ $countNFTs }} NFTs</span>
+                            
+                        
+                            </div>
+                            <div class="collection-deg">
+                            <p>{{ $collection->description }}</p>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- End single collention -->
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- collection area End -->
+    
+    <!-- Start product area -->
+    <div class="rn-product-area rn-section-gapTop">
+        <div class="container">
+            <div class="row mb--50 align-items-center">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Explore Product</h3>
+                </div>
+            </div>
+
+            <div class="row g-5">
+            @foreach (@$data['featured'] as $item)
+                <!-- start single product -->
+                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-4 col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="product-style-one no-overlay">
+                        <div class="card-thumbnail">
+                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
+                                @if (@$item->file == 'img')
+                                    <img src="{{ asset(@$item->icon) }}" class="" alt="">
+                                
+                                    @elseif(@$item->file == 'video')
+                                    <video width="100%" height="100%" class="" autoplay muted controls loop>
+                                    <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                                @endif
+                            </a>
+                        </div>
+                        <div class="product-share-wrapper">
+                            <div class="profile-share">
+                                <a href="{{ route('user.portfolio',@$item->og->username)}}" class="avatar" data-tooltip="{{ @$item->og->username }}"><img src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
+                                <a class="more-author-text" href="{{ route('user.portfolio',@$item->og->username)}}">{{ @$item->og->username }}</a>
+                            </div>
+                            <div class="share-btn share-btn-activation dropdown">
+                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
+                                    </svg>
+                                </button>
+
+                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
+                                    <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
+                                        Share
+                                    </button>
+                                    <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                        Report
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ $item->title}}</span></a>
+                        
+                        <div class="bid-react-area">
+                            <div class="last-bid">{{ $item->Re_item}} toons</div>
+                            <div class="react-area">
+                                <i data-feather="activity"></i>
+                                <span class="number">{{ $item->sell}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end single product -->
+            @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- end product area -->
     <!-- top top-seller start -->
     <div class="rn-top-top-seller-area nice-selector-transparent rn-section-gapTop">
         <div class="container">
             <div class="row  mb--30">
                 <div class="col-12 justify-sm-center d-flex">
                     <h3 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Top Seller in</h3>
-                    <select>
-                        <option data-display="1 day"> 1 day</option>
-                        <option value="1">7 Day's</option>
-                        <option value="2">15 Day's</option>
-                        <option value="4">30 Day's</option>
-                    </select>
+                   
                 </div>
             </div>
             <div class="row justify-sm-center g-5 top-seller-list-wrapper">
@@ -618,256 +735,6 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         </div>
     </div>
     <!-- top top-seller end -->
-    <!-- Start product area -->
-    <div class="rn-product-area rn-section-gapTop">
-        <div class="container">
-            <div class="row mb--50 align-items-center">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Explore Product</h3>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
-                    <div class="view-more-btn text-start text-sm-end" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                        <button class="discover-filter-button discover-filter-activation btn btn-primary">Filter<i class="feather-filter"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="default-exp-wrapper default-exp-expand">
-                <div class="inner">
-                    <div class="filter-select-option">
-                        <label class="filter-leble">LIKES</label>
-                        <select>
-                            <option data-display="Most liked">Most liked</option>
-                            <option value="1">Least liked</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-select-option">
-                        <label class="filter-leble">Category</label>
-                        <select>
-                            <option data-display="Category">Category</option>
-                            <option value="1">Art</option>
-                            <option value="1">Photograph</option>
-                            <option value="2">Metaverses</option>
-                            <option value="4">Potato</option>
-                            <option value="4">Photos</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-select-option">
-                        <label class="filter-leble">Collections</label>
-                        <select>
-                            <option data-display="Collections">Collections</option>
-                            <option value="1">BoredApeYachtClub</option>
-                            <option value="2">MutantApeYachtClub</option>
-                            <option value="4">Art Blocks Factory</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-select-option">
-                        <label class="filter-leble">Sale type</label>
-                        <select>
-                            <option data-display="Sale type">Sale type</option>
-                            <option value="1">Fixed price</option>
-                            <option value="2">Timed auction</option>
-                            <option value="4">Not for sale</option>
-                            <option value="4">Open for offers</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-select-option">
-                        <label class="filter-leble">Price Range</label>
-                        <div class="price_filter s-filter clear">
-                            <form action="#" method="GET">
-                                <div id="slider-range"></div>
-                                <div class="slider__range--output">
-                                    <div class="price__output--wrap">
-                                        <div class="price--output">
-                                            <span>Price :</span><input type="text" id="amount" readonly>
-                                        </div>
-                                        <div class="price--filter">
-                                            <a class="btn btn-primary btn-small" href="#">Filter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-5">
-            @foreach (@$data['featured'] as $item)
-                <!-- start single product -->
-                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-4 col-lg-3 col-md-4 col-sm-6 col-12">
-                    <div class="product-style-one no-overlay">
-                        <div class="card-thumbnail">
-                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
-                                @if (@$item->file == 'img')
-                                    <img src="{{ asset(@$item->icon) }}" class="" alt="">
-                                
-                                    @elseif(@$item->file == 'video')
-                                    <video width="100%" height="100%" class="" autoplay muted controls loop>
-                                    <source src="{{ asset(@$item->main_file) }}" type="video/mp4">
-                                    
-                                    Your browser does not support the video tag.
-                                </video>
-                                @endif
-                            </a>
-                        </div>
-                        <div class="product-share-wrapper">
-                            <div class="profile-share">
-                                <a href="{{ route('user.portfolio',@$item->og->username)}}" class="avatar" data-tooltip="{{ @$item->og->username }}"><img src="{{ $item->og->profile->image? asset($item->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="Nft_Profile"></a>
-                                <a class="more-author-text" href="#">{{ @$item->og->username }}</a>
-                            </div>
-                            <div class="share-btn share-btn-activation dropdown">
-                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
-                                    </svg>
-                                </button>
-
-                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                    <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                        Share
-                                    </button>
-                                    <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                        Report
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ $item->title}}</span></a>
-                        <span class="latest-bid">Highest bid 1/20</span>
-                        <div class="bid-react-area">
-                            <div class="last-bid">{{ $item->Re_item}} crd</div>
-                            <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">322</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single product -->
-            @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- end product area -->
-    <!-- collection area Start -->
-    <div class="rn-collection-area rn-section-gapTop">
-        <div class="container">
-            <div class="row mb--50 align-items-center">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Top Collection</h3>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
-                    <div class="view-more-btn text-start text-sm-end" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                        <a class="btn-transparent" href="#">VIEW ALL<i data-feather="arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-5">
-                <!-- start single collention -->
-                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12">
-                    <a href="product-details.html" class="rn-collection-inner-one">
-                        <div class="collection-wrapper">
-                            <div class="collection-big-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-lg-01.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collenction-small-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-01.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-02.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-03.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/client/client-15.png" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-deg">
-                                <h6 class="title">Cubic Trad</h6>
-                                <span class="items">27 Items</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End single collention -->
-                <!-- start single collention -->
-                <div data-sal="slide-up" data-sal-delay="200" data-sal-duration="800" class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12">
-                    <a href="product-details.html" class="rn-collection-inner-one">
-                        <div class="collection-wrapper">
-                            <div class="collection-big-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-lg-02.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collenction-small-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-04.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-05.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-06.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/client/client-12.png" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-deg">
-                                <h6 class="title">Diamond Dog</h6>
-                                <span class="items">20 Items</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End single collention -->
-                <!-- start single collention -->
-                <div data-sal="slide-up" data-sal-delay="250" data-sal-duration="800" class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12">
-                    <a href="product-details.html" class="rn-collection-inner-one">
-                        <div class="collection-wrapper">
-                            <div class="collection-big-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-lg-03.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collenction-small-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-07.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-08.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-09.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/client/client-13.png" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-deg">
-                                <h6 class="title">Morgan11</h6>
-                                <span class="items">15 Items</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End single collention -->
-                <!-- start single collention -->
-                <div data-sal="slide-up" data-sal-delay="350" data-sal-duration="800" class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12">
-                    <a href="product-details.html" class="rn-collection-inner-one">
-                        <div class="collection-wrapper">
-                            <div class="collection-big-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-lg-05.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collenction-small-thumbnail">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-10.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-11.jpg" alt="Nft_Profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/collection/collection-sm-12.jpg" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-profile">
-                                <img src="{{ asset('public/frontend/newassets') }}/assets/images/client/client-14.png" alt="Nft_Profile">
-                            </div>
-                            <div class="collection-deg">
-                                <h6 class="title">Orthogon#720</h6>
-                                <span class="items">10 Items</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End single collention -->
-            </div>
-        </div>
-    </div>
-    <!-- collection area End -->
     <!-- Modal -->
     <div class="rn-popup-modal share-modal-wrapper modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>

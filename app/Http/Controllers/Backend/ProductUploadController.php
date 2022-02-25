@@ -29,7 +29,7 @@ class ProductUploadController extends Controller
         $attribute=Attribute::all();
         $data['category'] = ItemCategory::where('up_permission',1)->get();
         $data['user'] = User::where('role_id', 4)->get();
-        $data['collections'] = Collections::get();
+        $data['collection'] = Collections::get();
         $data['attribute'] = Attribute::all();
         $data['sub_attribute'] = SubAttribute::latest()->get();
 
@@ -111,7 +111,7 @@ class ProductUploadController extends Controller
 
             
 
-
+            $item->in_collection = $r->collection_id;
             $item->Re_item = $r->Re_item;
             $item->Re_buyer = $r->Re_buyer;
             $item->C_item = $r->C_item;
@@ -193,6 +193,13 @@ class ProductUploadController extends Controller
                     $ItemAttribute->save();
                 }
             }
+
+            $storecollectionNFT = new CollectionsNFTs();
+            $storecollectionNFT->nft_id = $item->id;
+            $storecollectionNFT->collection_id = $r->collection_id;
+            
+            $storecollectionNFT->save();
+ 
 
 
             Toastr::success('Product Uploaded Successfully','Success');  

@@ -11,7 +11,7 @@
 @section('content')
 <style>
     .bg_image--91{
-        background-image: url("{{$headerbnr}}")!important;
+        background-image: url("{{asset($headerbnr)}}")!important;
 
     }
     .rn-collection-inner-one .collection-wrapper .collenction-small-thumbnail img {
@@ -28,6 +28,7 @@
         height: 270px;
         transition: var(--transition);
     }
+    
 </style>
     
      <!-- banner-area start -->
@@ -84,10 +85,10 @@
 <!-- end page title area -->
  <!-- collection area Start -->
  <div class="rn-collection-area rn-section-gapTop">
-      <h3 class="h3clss">{{ @$data['drop']->description}}</h3>
+      
         <div class="container">
             <div class="row g-5">
-
+            <h3 class="h3clss">{{ @$data['drop']->description}}</h3>
             @foreach ($data['item'] as $item)
                 <!-- start single product -->
                 <div class="grid-metro-item cat--1 cat--3">

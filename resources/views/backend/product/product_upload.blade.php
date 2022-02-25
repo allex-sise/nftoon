@@ -206,6 +206,32 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-25">
+                                <div class="col-lg-12">
+                                    <div class="input-effect">
+                                        <select class="niceSelect w-100 bb form-control{{ $errors->has('collection_id') ? ' is-invalid' : '' }}"
+                                                name="collection_id">
+                                            <option data-display="Colectie *"
+                                                    value="">Colectie *
+                                            </option>
+                                            
+                                            @php 
+                                                $collections = App\Collections::where('creator_id', Session::get('categorySlect')->id)->get();
+                                            @endphp
+                                            @foreach($collections as $item)
+                                                <option value={{@$item->id}}>{{@$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="focus-border"></span>
+                                        @if ($errors->has('collection_id'))
+                                            <span class="invalid-feedback invalid-select"
+                                                    role="alert">
+                                                <strong>{{ $errors->first('collection_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row mt-25">
                                 <div class="col-lg-12">
                                 

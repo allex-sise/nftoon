@@ -29,6 +29,8 @@ class ItemController extends Controller
             // return $data['comment'];
             $data['review'] = Review::where('item_id',$id)->orderBy('id','desc')->get();
             $data['item'] = Item::find($id);
+            $feature2 = Item::find($id);
+            $morenfts = Item::where('ogowner', $feature2->ogowner)->where('id', '!=', $feature2->id)->get();
             $data['history']= ItemOrder::where('item_id',$id)->orderBy('order_id','asc')->get();
             $data['attributes'] = $data['item']->attribute;
             $item_support=DB::table('item_supports')->first();
@@ -79,7 +81,7 @@ class ItemController extends Controller
             // return $data['fees'];
             $data['BuyerFee'] = BuyerFee::where('status',1)->where('type',1)->first();
 
-            return view('frontend.pages.singleitem', compact('data','totalRate','rate5','rate4','rate3','rate2','rate1','item_support','level','badge','comment'));
+            return view('frontend.pages.singleitem', compact('data','feature2','morenfts','totalRate','rate5','rate4','rate3','rate2','rate1','item_support','level','badge','comment'));
             // if ($data['item']->C_total!=null) {
             //     return view('frontend.pages.singleitem', compact('data','totalRate','rate5','rate4','rate3','rate2','rate1','item_support','level','badge','comment'));
       

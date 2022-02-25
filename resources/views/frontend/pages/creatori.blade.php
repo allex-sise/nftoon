@@ -11,6 +11,9 @@
     height: 80px;
     width: 80px;
 }
+.top-seller-inner-one.explore .top-seller-wrapper .thumbnail a img {
+    height: 100%;
+}
 </style>
 @section('content')
 
@@ -20,7 +23,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                     <h2 class="title mb--0">CREATORI</h2>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
+                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
                     <div class="shortby-default text-start text-sm-end">
                         <label class="filter-leble">SORTEAZA DUPA:</label>
                         <select>
@@ -30,7 +33,7 @@
                             <option value="3">Varified</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row g-5 mt--30 creator-list-wrapper">
             @foreach ($data['users'] as $user)
@@ -46,10 +49,11 @@
                                     <h6 class="name"><span>@</span>{{$user->username}}</h6>
                                 </a>
                                 <span class="count-number">
-                                    {!! @$user->profile->about !!}
+                                    {{ Str::limit(@$user->profile->about, 22) }}
                                 </span>
                                 <span class="count-number">
-                                    $2500,000
+                                
+                                    {{$user->balance->amount}} toons
                                 </span>
                             </div>
                         </div>
@@ -61,15 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12" data-sal="slide-up" data-sal-delay="950" data-sal-duration="800">
-                    <nav class="pagination-wrapper" aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+                    
                 </div>
             </div>
         </div>

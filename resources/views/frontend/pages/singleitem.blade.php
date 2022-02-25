@@ -40,6 +40,7 @@ $comment_content='';
 $img = explode(",",@$data['item']->item_image->image);
 $img2 = @$data['item']->icon;
 @endphp
+
 <!-- start page title area -->
 <div class="rn-breadcrumb-inner ptb--30">
         <div class="container">
@@ -67,7 +68,11 @@ $img2 = @$data['item']->icon;
 
                 <div class="col-lg-7 col-md-12 col-sm-12">
                     <div class="product-tab-wrapper rbt-sticky-top-adjust">
-                        <div class="pd-tab-inner">
+                    
+                   
+                       <div class="pd-tab-inner" @if ( $data['item']->nftmultiplu == 0) style="display: flex!important;" @else style="display: block!important;" @endif>
+               
+                           @if ( $data['item']->nftmultiplu == 0)
                             <div class="nav rn-pd-nav rn-pd-rt-content nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
                                     <span class="rn-pd-sm-thumbnail">
@@ -85,13 +90,14 @@ $img2 = @$data['item']->icon;
                                     </span>
                                 </button>
                             </div>
-
+                           @endif
                             <div class="tab-content rn-pd-content" id="v-pills-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="rn-pd-thumbnail">
                                         <img src="{{ asset(@$img2)}}" alt="Nft_Profile">
                                     </div>
                                 </div>
+                                @if ( $data['item']->nftmultiplu == 0)
                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                     <div class="rn-pd-thumbnail">
                                         <img src="assets/images/portfolio/lg/portfolio-02.jpg" alt="Nft_Profile">
@@ -102,6 +108,7 @@ $img2 = @$data['item']->icon;
                                         <img src="assets/images/portfolio/lg/portfolio-03.jpg" alt="Nft_Profile">
                                     </div>
                                 </div>
+                                @endif
                             </div>
 
                         </div>
@@ -115,8 +122,8 @@ $img2 = @$data['item']->icon;
                             <h4 class="title">{{  @$data['item']->title }}</h4>
                             <div class="pd-react-area">
                                 <div class="heart-count">
-                                    <i data-feather="heart"></i>
-                                    <span>33</span>
+                                    <i data-feather="activity"></i>
+                                    <span>{{ @$data['item']->sell }}</span>
                                 </div>
                                 <div class="count">
                                     <div class="share-btn share-btn-activation dropdown">
@@ -145,7 +152,7 @@ $img2 = @$data['item']->icon;
                            <div class="property-wrapper">
                                  <!-- single property -->
                                  <div class="pd-property-inner">
-                                    <span class="color-body type">TYPE</span>
+                                    <span class="color-body type">Raritatea</span>
                                     <span class="color-white value"> {{ @$data['item']->feature1}}</span>
                                  </div>
                            </div>
@@ -153,8 +160,7 @@ $img2 = @$data['item']->icon;
                         <div class="catagory-collection">
                         @if (@$data['item']->ogowner)  
                             <div class="catagory">
-                                <span>Catagory <span class="color-body">
-                                        10% royalties</span></span>
+                                <span>Creator</span>
                                 <div class="top-seller-inner-one">
                                     <div class="top-seller-wrapper">
                                         <div class="thumbnail">
@@ -169,7 +175,7 @@ $img2 = @$data['item']->icon;
                                 </div>
                             </div>
                             <div class="collection">
-                                <span>Collections</span>
+                                <span>Colectie</span>
                                 <div class="top-seller-inner-one">
                                     <div class="top-seller-wrapper">
                                         <div class="thumbnail">
@@ -203,15 +209,15 @@ $img2 = @$data['item']->icon;
                                                 <!-- <p class="disc">Lorem ipsum dolor, sit amet consectetur adipisicing
                                                     elit. Doloribus debitis nemo deserunt.</p> -->
                                                 <h6 class="name-title">
-                                                    Owner
+                                                    Detinator
                                                 </h6>
                                                 <div class="top-seller-wrapper">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/client/client-1.png" alt="Nft_Profile"></a>
+                                                        <a href="{{ route('user.portfolio',@$data['item']->user->username)}}"><img src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
                                                     </div>
                                                     <div class="top-seller-content">
-                                                        <a href="#">
-                                                            <h6 class="name">Brodband</h6>
+                                                        <a href="{{ route('user.portfolio',@$data['item']->user->username)}}">
+                                                            <h6 class="name">{!! @$data['item']->user->username !!}</h6>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -220,57 +226,22 @@ $img2 = @$data['item']->icon;
                                             <div class="rn-pd-sm-property-wrapper">
                                                <p>{!! @$data['item']->description !!}</p>
                                                 <h6 class="pd-property-title">
-                                                    Property
+                                                    Proprietati
                                                 </h6>
                                                 <div class="property-wrapper">
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">HYPE TYPE</span>
-                                                        <span class="color-white value">CALM AF (STILL)</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">BASTARDNESS</span>
-                                                        <span class="color-white value">C00LIO BASTARD</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">TYPE</span>
-                                                        <span class="color-white value">APE</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">ASTARDNESS</span>
-                                                        <span class="color-white value">BASTARD</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">BAD HABIT(S)</span>
-                                                        <span class="color-white value">PIPE</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">BID</span>
-                                                        <span class="color-white value">BPEYti</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">ASTRAGENAKAR</span>
-                                                        <span class="color-white value">BASTARD</span>
-                                                    </div>
-                                                    <!-- single property End -->
-                                                    <!-- single property -->
-                                                    <div class="pd-property-inner">
-                                                        <span class="color-body type">CITY</span>
-                                                        <span class="color-white value">TOKYO</span>
-                                                    </div>
-                                                    <!-- single property End -->
+                                                @php
+                                                   $json=json_decode($feature2->feature2);
+                                                @endphp
+                                              
+                                                @foreach ( $json as $key => $value)
+                                                
+                                                 <!-- single property -->
+                                                 <div class="pd-property-inner">
+                                                   <span class="color-body type" style="text-transform: uppercase;">{{ $key }}</span>
+                                                   <span class="color-white value" style="text-transform: uppercase;">{{ $value }}</span>
+                                                </div>
+                                                <!-- single property End -->
+                                                @endforeach
                                                 </div>
                                             </div>
                                             <!-- single -->
@@ -296,7 +267,6 @@ $img2 = @$data['item']->icon;
                                     </div>
                                     <!-- single creator -->
                                     @endforeach
-                                   
                                     </div>
                                     <div class="tab-pane fade" id="nav-creator" role="tabpanel" aria-labelledby="nav-creator-tab">
                                         <!-- single -->
@@ -436,234 +406,62 @@ $img2 = @$data['item']->icon;
                 </div>
             </div>
             <div class="row g-5">
+               @foreach ($morenfts as $more)
                 <!-- start single product -->
                 <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="product-style-one no-overlay">
+                  <div class="product-style-one no-overlay">
                         <div class="card-thumbnail">
-                            <a href="product-details.html"><img src="assets/images/portfolio/portfolio-01.jpg" alt="NFT_portfolio"></a>
+                           <a href="{{ route('singleProduct',[str_replace(' ', '-',@$more->title),@$more->id])}}">
+                                 @if (@$more->file == 'img')
+                                    <img src="{{ asset(@$more->icon) }}" class="lazy nft__item_preview" alt="">
+                                 
+                                    @elseif(@$more->file == 'video')
+                                    <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                                    <source src="{{ asset(@$more->main_file) }}" type="video/mp4">
+                                    
+                                    Your browser does not support the video tag.
+                                 </video>
+                                 @endif
+                           </a>
                         </div>
                         <div class="product-share-wrapper">
-                            <div class="profile-share">
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-1.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Jone Due"><img src="assets/images/client/client-2.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Nisat Tara"><img src="assets/images/client/client-3.png" alt="Nft_Profile"></a>
-                                <a class="more-author-text" href="#">9+ Place Bit.</a>
-                            </div>
-                            <div class="share-btn share-btn-activation dropdown">
-                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
+                           <div class="profile-share">
+                                 <a href="{{ route('user.portfolio',@$more->og->username)}}" class="avatar" data-tooltip="{{ @$more->og->username }}"><img src="{{ $more->og->profile->image? asset($more->og->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
+                                 <a class="more-author-text" href="#">{{ @$more->og->username }}</a>
+                           </div>
+                           <div class="share-btn share-btn-activation dropdown">
+                                 <button class="icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
+                                       <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
                                     </svg>
-                                </button>
+                                 </button>
 
-                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
+                                 <div class="share-btn-setting dropdown-menu dropdown-menu-end">
                                     <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                        Share
+                                       Share
                                     </button>
                                     <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                        Report
+                                       Report
                                     </button>
-                                </div>
+                                 </div>
 
-                            </div>
+                           </div>
                         </div>
-                        <a href="product-details.html"><span class="product-name">Preatent</span></a>
+                        <a href="{{ route('singleProduct',[str_replace(' ', '-',@$more->title),@$more->id])}}"><span class="product-name">{{ $more->title}}</span></a>
                         <span class="latest-bid">Highest bid 1/20</span>
                         <div class="bid-react-area">
-                            <div class="last-bid">0.244wETH</div>
-                            <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
+                           <div class="last-bid">{{ $more->Re_item}} crd</div>
+                           <div class="react-area">
+                                 <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
                                     <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">322</span>
-                            </div>
+                                 </svg>
+                                 <span class="number">322</span>
+                           </div>
                         </div>
-                    </div>
+                     </div>
                 </div>
                 <!-- end single product -->
-
-                <!-- start single product -->
-                <div data-sal="slide-up" data-sal-delay="200" data-sal-duration="800" class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="product-style-one no-overlay">
-                        <div class="card-thumbnail">
-                            <a href="product-details.html"><img src="assets/images/portfolio/portfolio-02.jpg" alt="NFT_portfolio"></a>
-                        </div>
-                        <div class="product-share-wrapper">
-                            <div class="profile-share">
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-4.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Nira Ara"><img src="assets/images/client/client-5.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Fatima Afrafy"><img src="assets/images/client/client-6.png" alt="Nft_Profile"></a>
-                                <a class="more-author-text" href="#">10+ Place Bit.</a>
-                            </div>
-                            <div class="share-btn share-btn-activation dropdown">
-                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
-                                    </svg>
-                                </button>
-
-                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                    <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                        Share
-                                    </button>
-                                    <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                        Report
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                        <a href="product-details.html"><span class="product-name">Diamond Dog</span></a>
-                        <span class="latest-bid">Highest bid 5/11</span>
-                        <div class="bid-react-area">
-                            <div class="last-bid">0.892wETH</div>
-                            <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">420</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single product -->
-
-                <!-- start single product -->
-                <div data-sal="slide-up" data-sal-delay="250" data-sal-duration="800" class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="product-style-one no-overlay">
-                        <div class="card-thumbnail">
-                            <a href="product-details.html"><img src="assets/images/portfolio/portfolio-03.jpg" alt="NFT_portfolio"></a>
-                        </div>
-                        <div class="product-share-wrapper">
-                            <div class="profile-share">
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-1.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Janin Ara"><img src="assets/images/client/client-8.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Atif Islam"><img src="assets/images/client/client-9.png" alt="Nft_Profile"></a>
-                                <a class="more-author-text" href="#">10+ Place Bit.</a>
-                            </div>
-                            <div class="share-btn share-btn-activation dropdown">
-                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
-                                    </svg>
-                                </button>
-
-                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                    <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                        Share
-                                    </button>
-                                    <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                        Report
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                        <a href="product-details.html"><span class="product-name">OrBid6</span></a>
-                        <span class="latest-bid">Highest bid 2/31</span>
-                        <div class="bid-react-area">
-                            <div class="last-bid">0.2128wETH</div>
-                            <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">12</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single product -->
-
-                <!-- start single product -->
-                <div data-sal="slide-up" data-sal-delay="300" data-sal-duration="800" class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="product-style-one no-overlay">
-                        <div class="card-thumbnail">
-                            <a href="product-details.html"><img src="assets/images/portfolio/portfolio-04.jpg" alt="NFT_portfolio"></a>
-                        </div>
-                        <div class="product-share-wrapper">
-                            <div class="profile-share">
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-1.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-3.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-5.png" alt="Nft_Profile"></a>
-                                <a class="more-author-text" href="#">8+ Place Bit.</a>
-                            </div>
-                            <div class="share-btn share-btn-activation dropdown">
-                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
-                                    </svg>
-                                </button>
-
-                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                    <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                        Share
-                                    </button>
-                                    <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                        Report
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                        <a href="product-details.html"><span class="product-name">Morgan11</span></a>
-                        <span class="latest-bid">Highest bid 3/16</span>
-                        <div class="bid-react-area">
-                            <div class="last-bid">0.265wETH</div>
-                            <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">20</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single product -->
-                <!-- start single product -->
-                <div data-sal="slide-up" data-sal-delay="350" data-sal-duration="800" class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="product-style-one no-overlay">
-                        <div class="card-thumbnail">
-                            <a href="product-details.html"><img src="assets/images/portfolio/portfolio-05.jpg" alt="NFT_portfolio"></a>
-                        </div>
-                        <div class="product-share-wrapper">
-                            <div class="profile-share">
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-2.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-7.png" alt="Nft_Profile"></a>
-                                <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-9.png" alt="Nft_Profile"></a>
-                                <a class="more-author-text" href="#">15+ Place Bit.</a>
-                            </div>
-                            <div class="share-btn share-btn-activation dropdown">
-                                <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
-                                    </svg>
-                                </button>
-
-                                <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                    <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                        Share
-                                    </button>
-                                    <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                        Report
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                        <a href="product-details.html"><span class="product-name">mAtal8</span></a>
-                        <span class="latest-bid">Highest bid 6/50</span>
-                        <div class="bid-react-area">
-                            <div class="last-bid">0.244wETH</div>
-                            <div class="react-area">
-                                <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                </svg>
-                                <span class="number">205</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end single product -->
+                @endforeach
             </div>
         </div>
     </div>
@@ -679,7 +477,7 @@ $img2 = @$data['item']->icon;
       </div>
       @endif
       @endforeach
-      <h1>@lang('lang.Customize_your_selection')</h1>
+
       <input type="number" hidden id="item_id" name="id" value="{{  $data['item']->id }}">
       <input type="text" hidden  id="item_price" name="item_price" value="{{  $data['item']->Re_item }}">
       <input type="text" hidden  name="item_name" value="{{  $data['item']->title }}">
@@ -699,7 +497,6 @@ $img2 = @$data['item']->icon;
 
 @endsection
 @push('js')
-<script src="{{ asset('public/frontend/js/') }}/item_preview.js"></script>
 <script src="{{ asset('public/frontend/js/') }}/dm_price_cal.js"></script>
 <script>
     $(document).ready(function () {

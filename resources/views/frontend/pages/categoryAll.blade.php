@@ -19,6 +19,17 @@
     background-image: url("{{$banner}}")!important;
 
 }
+.product-style-one .card-thumbnail {
+    position: relative;
+    height: 250px;
+}
+.product-style-one .card-thumbnail a img {
+    border-radius: 5px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
     </style>
 
     <div class="rn-author-bg-area bg_image--91 bg_image ptb--150">
@@ -112,14 +123,12 @@
                                 </div>
                             </div>
                             <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ $item->title}}</span></a>
-                            <span class="latest-bid">Highest bid 1/20</span>
+                           
                             <div class="bid-react-area">
-                                <div class="last-bid">{{ $item->Re_item}} crd</div>
+                                <div class="last-bid">{{ $item->Re_item}} toons</div>
                                 <div class="react-area">
-                                    <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                        <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                    </svg>
-                                    <span class="number">322</span>
+                                    <i data-feather="activity"></i>
+                                    <span class="number">{{ $item->sell}}</span>
                                 </div>
                             </div>
                         </div>

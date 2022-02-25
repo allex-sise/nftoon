@@ -4,6 +4,15 @@
         $logo_conditions = ['title'=>'Logo', 'active_status'=>1];
         $logopic = dashboard_background($logo_conditions);
     @endphp
+    <style>
+.footer-recent-post li.recent-post .thumbnail a img {
+    max-height: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+}
+    </style>
     <!-- Start Footer Area -->
     <div class="rn-footer-one rn-section-gap bg-color--1 mt--100 mt_md--80 mt_sm--80">
         <div class="container">
@@ -70,44 +79,40 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
                     <div class="footer-widget">
-                        <h6 class="widget-title">Recent Sold Out</h6>
+                        <h6 class="widget-title">Cele mai recente vanzari</h6>
                         <ul class="footer-recent-post">
+
+                        @php 
+                            $recentsales =  App\ItemOrder::take(3)->latest()->get();
+                        @endphp
+                        @foreach ( $recentsales as $rc )
+       
+                      
                             <li class="recent-post">
                                 <div class="thumbnail">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/portfolio/portfolio-01.jpg" alt="Product Images">
+                                
+                                    <a href="{{ route('singleProduct',[str_replace(' ', '-',$rc->Item->title),$rc->Item->id])}}">
+                                        @if ($rc->Item->file == 'img')
+                                            <img src="{{ asset($rc->Item->icon) }}" class="" alt="">
+                                        
+                                            @elseif($rc->Item->file == 'video')
+                                            <video width="100%" height="100%" class="" autoplay muted controls loop>
+                                            <source src="{{ asset($rc->Item->main_file) }}" type="video/mp4">
+                                            
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        @endif
+
                                     </a>
+                                 
                                 </div>
                                 <div class="content">
-                                    <h6 class="title"><a href="product-details.html">#21 The Wonder</a></h6>
-                                    <p>Highest bid 1/20</p>
-                                    <span class="price">0.244wETH</span>
+                                    <h6 class="title"><a href="{{ route('singleProduct',[str_replace(' ', '-',$rc->Item->title),$rc->Item->id])}}">{{ $rc->Item->title }}</a></h6>
+                                    <p>{{ $rc->cumparator->username }}</p>
+                                    <span class="price">{{ $rc->subtotal }} toons</span>
                                 </div>
                             </li>
-                            <li class="recent-post">
-                                <div class="thumbnail">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/portfolio/portfolio-02.jpg" alt="Product Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h6 class="title"><a href="product-details.html">Diamond Dog</a></h6>
-                                    <p>Highest bid 1/20</p>
-                                    <span class="price">0.022wETH</span>
-                                </div>
-                            </li>
-                            <li class="recent-post">
-                                <div class="thumbnail">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/portfolio/portfolio-03.jpg" alt="Product Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h6 class="title"><a href="product-details.html">Morgan11</a></h6>
-                                    <p>Highest bid 1/20</p>
-                                    <span class="price">0.892wETH</span>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -121,10 +126,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="copyright-left">
-                        <span>© Nuron, Inc. All rights reserved.</span>
+                        <span>© NFToon, Inc. Toate drepturile rezervate.</span>
                         <ul class="privacy">
-                            <li><a href="terms-condition.html">Terms</a></li>
-                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-condition.html">Termeni si Conditii</a></li>
+                            <li><a href="privacy-policy.html">Politica Confidentialitate</a></li>
                         </ul>
                     </div>
                 </div>
