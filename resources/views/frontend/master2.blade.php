@@ -135,14 +135,22 @@
 
    @include('frontend.partials.footer')
 
- <!-- JS here -->
- <script src="{{asset('public/js/app.js')}}"></script>
- <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery.nice-select.min.js"></script>
+
+    <!-- JS here -->
+    <script src="{{asset('public/js/app.js')}}"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery.js"></script>
+    <script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery-ui.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/modernizer.min.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/feather.min.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/slick.min.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/bootstrap.min.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/sal.min.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/waypoint.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/wow.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/particles.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery.style.swicher.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/count-down.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/counter-up.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/isotop.js"></script>
@@ -150,68 +158,63 @@
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/backtoTop.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/scrolltrigger.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery.custom-file-input.js"></script>
- <script src="{{ asset('public/frontend/newassets/') }}/assets/js/main.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/vendor/modernizr-3.5.0.min.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/popper.min.js"></script>
-
-
-<script src="{{ asset('public/frontend/js/') }}/ajax-form.js"></script>
-
-<script src="{{ asset('public/frontend/js/') }}/plugins.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/chart.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/gijgo.min.js"></script>
-
-<!--contact js-->
-<!-- <script src="{{ asset('public/frontend/js/') }}/contact.js"></script>-->
-<script src="{{ asset('public/frontend/js/') }}/jquery.ajaxchimp.min.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/jquery.form.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/image_loaded.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/jquery.validate.min.js"></script>
-<script src="{{ asset('public/frontend/js/') }}/mail-script.js"></script>
 
 
 
-<script src="{{ asset('public/js/')}}/additional.js"></script>
-<script src="{{ asset('public/js/')}}/validate.js"></script>
-<script src="{{asset('public/js/toastr.js')}}"></script>
-<script src="{{asset('public/js/sweet-alert.js')}}"></script>
- <script src="{{asset('public/frontend/frontend.js')}}"></script>
- <script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
-{!! Toastr::message() !!}
+    <!--contact js-->
+    <!-- <script src="{{ asset('public/frontend/js/') }}/contact.js"></script>-->
+    <script src="{{ asset('public/frontend/js/') }}/jquery.ajaxchimp.min.js"></script>
+    <script src="{{ asset('public/frontend/js/') }}/jquery.form.js"></script>
+    <script src="{{ asset('public/frontend/js/') }}/image_loaded.js"></script>
+    <script src="{{ asset('public/frontend/js/') }}/jquery.validate.min.js"></script>
+    <script src="{{ asset('public/frontend/js/') }}/mail-script.js"></script>
 
-<script src="{{asset('public/frontend/assets/js/easing.js')}}"></script>
-<script src="{{asset('public/frontend/assets/js/validation.js')}}"></script>
-<script src="{{asset('public/frontend/assets/js/enquire.min.js')}}"></script>
-<script src="{{asset('public/frontend/assets/js/jquery.plugin.js')}}"></script>
-<script src="{{asset('public/frontend/assets/js/jquery.lazy.min.js')}}"></script>
-<script src="{{asset('public/frontend/assets/js/jquery.lazy.plugins.min.js')}}"></script>
-<script src="{{asset('public/frontend/js/gdpr-cookie.js')}}"></script>
-
-<script>
-$.gdprcookie.init({
-    title: "🍪 Accept cookieurile si politica de confidentialitate ?",
-    message: "Folosim cookies pentru functionarea siteului. Nu impartasim cu nici un third party. Click the <strong>accept</strong> button below to see the optional callback in action… <a href=#privacy>Example privacy link</a>",
-    delay: 600,
-    expires: 1,
-    acceptBtnLabel: "Accept Cookie-uri",
+    <script src="{{ asset('public/frontend/js/') }}/main.js"></script>
+    
+  
+   <!-- main JS -->
+   
+   <script src="{{ asset('public/js/')}}/additional.js"></script>
+    <script src="{{ asset('public/js/')}}/validate.js"></script>
+    <script src="{{asset('public/js/toastr.js')}}"></script>
+    <script src="{{asset('public/js/sweet-alert.js')}}"></script>
+    {!! Toastr::message() !!}
+    <script src="{{asset('public/frontend/js/gdpr-cookie.js')}}"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/main.js"></script>
+   <script>
+$('#icon2').click(function(){
+    $('#body').toggleClass('light-scheme');
+    $('#body').toggleClass('dark-scheme');
+    $('#iconita').toggleClass('fa fa-sun-o');
+    $('#iconita').toggleClass('fa fa-moon-o');
+    
 });
-
-$(document.body)
-    .on("gdpr:show", function() {
-        console.log("Cookie dialog is shown");
-    })
-    .on("gdpr:accept", function() {
-        var preferences = $.gdprcookie.preference();
-        console.log("Preferences saved:", preferences);
-    })
-    .on("gdpr:advanced", function() {
-        console.log("Advanced button was pressed");
+    </script>
+    <script>
+    $.gdprcookie.init({
+        title: "🍪 Accept cookieurile si politica de confidentialitate ?",
+        message: "Folosim cookies pentru functionarea siteului. Nu impartasim cu nici un third party. Click the <strong>accept</strong> button below to see the optional callback in action… <a href=#privacy>Example privacy link</a>",
+        delay: 600,
+        expires: 1,
+        acceptBtnLabel: "Accept Cookie-uri",
     });
+    
+    $(document.body)
+        .on("gdpr:show", function() {
+            console.log("Cookie dialog is shown");
+        })
+        .on("gdpr:accept", function() {
+            var preferences = $.gdprcookie.preference();
+            console.log("Preferences saved:", preferences);
+        })
+        .on("gdpr:advanced", function() {
+            console.log("Advanced button was pressed");
+        });
 
-if ($.gdprcookie.preference("marketing") === true) {
-    console.log("This should run because marketing is accepted.");
-}
-</script>
+    if ($.gdprcookie.preference("marketing") === true) {
+        console.log("This should run because marketing is accepted.");
+    }
+    </script>
 
 @stack('js')
 

@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/dashboard.css">
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment_selection.css">
+
 <style>
 
 #circle {
@@ -448,6 +449,7 @@
    
  @endsection
  @push('js')
+ 
  <script src="{{ asset('public/frontend/js/') }}/fund_add.js"></script>
  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
  <script src="{{ asset('/')}}public/frontend/js/v_4.4_jquery.form.js"></script>

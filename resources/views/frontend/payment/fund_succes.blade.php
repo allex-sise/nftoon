@@ -16,25 +16,26 @@
     text-align: center!important;
 }
 </style>
- <!-- content begin -->
- <div class="no-bottom no-top" id="content">
-            <div id="top"></div>
-            
-            <!-- section begin -->
-            <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
-                    <div class="center-y relative text-center">
-                        <div class="container">
-                            <div class="row">
-                                
-                                <div class="col-md-12 text-center">
-									<h1>@lang('lang.fund_deposit')</h1>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <!-- section close -->       
+
+ <!-- start page title area -->
+ <div class="rn-breadcrumb-inner ptb--30">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h5 class="title text-center text-md-start">@lang('lang.fund_deposit')</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="breadcrumb-list">
+                        <li class="item"><a href="index.html">Acasa</a></li>
+                        <li class="separator"><i class="feather-chevron-right"></i></li>
+                        <li class="item current">@lang('lang.fund_deposit')</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title area -->
+
 
     <!-- privaci_polecy_area start -->
     <div class="privaci_polecy_area section-padding checkout_area ">

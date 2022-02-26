@@ -28,7 +28,7 @@
             imJs.rncounterUp();
             imJs.salActive();
             imJs.searchClick();
-            imJs.filterClickButton();
+            // imJs.filterClickButton();
         },
         
 
@@ -531,7 +531,7 @@
         },
 
         masonryActivation: function name(params) {
-            $(window).load(function () {
+            $(window).on('load',function () {
                 $('.masonary-wrapper-activation').imagesLoaded(function () {
                     // filter items on button click
                     $('.isotop-filter').on('click', 'button', function () {
@@ -600,24 +600,24 @@
             }
         },
 
-        filterClickButton: function () {
-            $('.discover-filter-activation').on('click', function () {
-                $(this).toggleClass('open');
-                $('.default-exp-expand').slideToggle('400');
-            })
+        // filterClickButton: function () {
+        //     $('.discover-filter-activation').on('click', function () {
+        //         $(this).toggleClass('open');
+        //         $('.default-exp-expand').slideToggle('400');
+        //     })
 
-            $('#slider-range').slider({
-                range: true,
-                min: 10,
-                max: 500,
-                values: [100, 300],
-                slide: function (event, ui) {
-                    $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
-                }
-            });
-            $('#amount').val('$' + $('#slider-range').slider('values', 0) +
-                " - $" + $('#slider-range').slider('values', 1));
-        },
+        //     $('#slider-range').slider({
+        //         range: true,
+        //         min: 10,
+        //         max: 500,
+        //         values: [100, 300],
+        //         slide: function (event, ui) {
+        //             $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
+        //         }
+        //     });
+        //     $('#amount').val('$' + $('#slider-range').slider('values', 0) +
+        //         " - $" + $('#slider-range').slider('values', 1));
+        // },
     }
     imJs.m();
 })(jQuery, window)

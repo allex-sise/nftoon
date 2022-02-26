@@ -175,8 +175,8 @@
         <div class="inner">
             <div class="header-top">
                 <div class="logo logo-custom-css">
-                    <a class="logo-light" href="index.html"><img src="assets/images/logo/logo-white.png" alt="nft-logo"></a>
-                    <a class="logo-dark" href="index.html"><img src="assets/images/logo/logo-dark.png" alt="nft-logo"></a>
+                    <a class="logo-light" href="{{ url('/')}}"><img src="{{ asset('public/frontend/img/nftoonlogo.png') }}" alt="nft-logo"></a>
+                    <a class="logo-dark" href="{{ url('/')}}"><img src="{{ asset('public/frontend/img/nftoonlogo.png') }}" alt="nft-logo"></a>
                 </div>
                 <div class="close-menu">
                     <button class="close-button">
