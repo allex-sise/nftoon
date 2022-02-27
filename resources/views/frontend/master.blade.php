@@ -116,7 +116,7 @@
 </head>
 
 
-<body id="body" class="template-color-1 active-dark-mode">
+<body id="body" class="template-color-1">
 <input type="text" hidden  class="url" value="{{url('/') }}">
 <input type="text" hidden  class="system_url" value="{{url('/') }}">
 <input type="text" hidden  class="currencyIn" value="{{ @GeneralSetting()->currency_symbol }}">
@@ -137,9 +137,12 @@
 
  <!-- JS here -->
  <script src="{{asset('public/js/app.js')}}"></script>
+ 
  <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery.nice-select.min.js"></script>
+ <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/jquery-ui.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/feather.min.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/slick.min.js"></script>
+    <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/bootstrap.min.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/sal.min.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/wow.js"></script>
     <script src="{{ asset('public/frontend/newassets/') }}/assets/js/vendor/particles.js"></script>
@@ -212,7 +215,15 @@ if ($.gdprcookie.preference("marketing") === true) {
     console.log("This should run because marketing is accepted.");
 }
 </script>
-
+<script>
+$('#icon2').click(function(){
+    $('#body').toggleClass('active-light-mode');
+    $('#body').toggleClass('active-dark-mode');
+    $('#iconita').toggleClass('fa fa-sun-o');
+    $('#iconita').toggleClass('fa fa-moon-o');
+    
+});
+    </script>
 @stack('js')
 
 

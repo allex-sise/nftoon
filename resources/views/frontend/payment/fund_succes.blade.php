@@ -41,7 +41,7 @@
     <div class="privaci_polecy_area section-padding checkout_area ">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12 col-12">
+                <div class="col-xl-12 col-12" style="margin-top: 100px;">
                        <h4 class="text-center">Fondurile tale au fost adaugate cu succes!</h4>
                 
                 </div>

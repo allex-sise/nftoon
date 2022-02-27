@@ -16,7 +16,7 @@
 @endphp
 <style>
 .bg_image--92{
-    background-image: url("{{ asset('public/frontend/newassets') }}/assets/images/slider/banner-06.png")!important;
+    background-image: url("{{$banner}}")!important;
 }
 .form-wrapper-one input, .form-wrapper-one textarea {
     background: var(--background-color-4);
@@ -36,6 +36,20 @@
     color: #495057;
     background-color: transparent;
     border-color: transparent;
+}
+.product-style-one .card-thumbnail {
+    position: relative;
+    height: 250px;
+}
+.product-style-one .card-thumbnail a img {
+    border-radius: 5px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+.mg-b-25{
+    margin-bottom: 25px;
 }
 </style>
 <div class="rn-author-bg-area bg_image--92 bg_image ptb--150">
@@ -80,8 +94,6 @@
                                    
                                 </div>
                                 <div class="author-button-area">
-                                    <span class="btn at-follw follow-button"><i data-feather="user-plus"></i>
-                                        Follow</span>
                                     <span class="btn at-follw share-button" data-bs-toggle="modal" data-bs-target="#shareModal"><i data-feather="share-2"></i></span>
 
 
@@ -234,10 +246,11 @@
             @endif
             @if (Auth::user()->role_id == 4)
                 <div class="tab-pane row g-5 d-flex fade show {{ @$data['portfolio'] == url()->current() ?'show active':'' }}" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-portfolio-tab">
+               <div class="row">
                 @if (count(@$data['item']) > 0)            
                     @foreach (@$data['item'] as $item)
                     <!-- start single product -->
-                    <div class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="col-5 col-lg-4 col-md-6 col-sm-6 col-12 mg-b-25 float-left">
                             <div class="product-style-one no-overlay with-placeBid">
                                 <div class="card-thumbnail">
                                     <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
@@ -269,14 +282,12 @@
                                     </div>
                                 </div>
                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ @$item->title}}</span></a>
-                                <span class="latest-bid">Highest bid 6/20</span>
+                                
                                 <div class="bid-react-area">
-                                    <div class="last-bid">{{ @$item->Re_item}} {{@$infix_general_settings->currency_symbol}}</div>
+                                    <div class="last-bid">{{ @$item->Re_item}} toons</div>
                                     <div class="react-area">
-                                        <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                            <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                        </svg>
-                                        <span class="number">322</span>
+                                        <i data-feather="activity"></i>
+                                        <span class="number">{{ $item->sell}}</span>
                                     </div>
                                 </div> 
                             </div>
@@ -286,101 +297,54 @@
                     @else
                         <h4> Nu ai nici un NFT la vanzare</h4>
                     @endif
-               
+                    </div>
                 </div>
             @endif
             @if (Auth::user()->role_id == 4)
                 <div class="tab-pane row g-5 d-flex fade {{ @$data['followers'] == url()->current() ?'show active':'' }}" id="nav-followers" role="tabpanel" aria-labelledby="nav-followers-tab">
-                    <div class="follower ">
+                    <div class="row g-5 mt--30 creator-list-wrapper">
                         @if (count(@$data['follower']))
                             @foreach (@$data['follower'] as $item)
                             @if (isset($item->balance))
-                            <div
-                                class="single_followers d-flex justify-content-between align-items-center ">
-                                <div class="followers d-flex align-items-center">
-                                    <img src="{{ @$item->profile->logo_pic? asset(@$data['user']->profile->logo_pic):asset('public/frontend/img/profile/1.png') }}" alt="" width="80" height="auto">
-                                    <div class="thumb_heading">
-                                        <h5><a href="{{ route('user.profile',@$item->username)}}">{{$item->username}}</a></h5>
-                                        <p>@lang('lang.member_since'): {{DateFormat($item->created_at)}}</p>
-                                    </div> 
-                                </div>
-                                @php
-                                    // $level=DB::table('labels')->where('amount','<=',@$item->balance->amount)->orderBy('id','desc')->first();
-                                    // $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays($item->created_at);
-                                    // $badge=DB::table('badges')->where('day','<=',@$date)->orderBy('id','desc')->first();
-
-                                        $level=App\ManageQuery::UserLabel($item->balance->amount); 
-                                        // DB::table('labels')->where('amount','<=',@$item->balance->amount)->orderBy('id','desc')->first();
-                                        $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays(@$item->created_at);
-                                        $badge=App\ManageQuery::UserBadge($date); 
-                                @endphp
-                            <div class="bandge">
-                                <img height="auto" width="40" src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="Author level  {{ @$level->id}} : sold {{@GeneralSetting()->currency_symbol}} {{round(@$item->balance->amount > 50 ? @$item->balance->amount: 0) }}+ on {{@GeneralSetting()->system_name}} " alt="">
-                                <img height="auto" width="40" src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{ @$level->id-1}} {{@$badge->id == 1? 'Year' :'Years' }} of membarship on {{@GeneralSetting()->system_name}} " alt="">
-                        
-                            </div>
-                                <div class="total-prise text-center">
-                                    <h2> {{ $item->item->sum('sell') }}</h2>
-                                    <p>@lang('lang.sales')</p>
-                                </div>
-                            </div>  
+                                <!-- start single top-seller -->
+                                <div class="creator-single col-lg-4 col-md-6 col-sm-6" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                                        <div class="top-seller-inner-one explore">
+                                            <div class="top-seller-wrapper">
+                                                <div class="thumbnail varified">
+                                                    <a href="{{ route('user.profile',@$item->username)}}"><img src="{{ @$item->profile->logo_pic? asset(@$item->profile->logo_pic):asset('public/frontend/img/profile/1.png') }}"></a>
+                                                </div>
+                                                <div class="top-seller-content">
+                                                    <a href="{{ route('user.portfolio',$item->username)}}">
+                                                        <h6 class="name"><span>@</span>{{$item->username}}</h6>
+                                                    </a>
+                                                    <span class="count-number">
+                                                        {{ Str::limit(@$item->profile->about, 22) }}
+                                                    </span>
+                                                    <span class="count-number">
+                                                        {{$item->balance->amount}} toons
+                                                    </span>
+                                                    <span class="count-number">
+                                                    Vanzari
+                                                    {{ $item->item->sum('sell') }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <a class="over-link" href="{{ route('user.portfolio',$item->username)}}"></a>
+                                        </div>
+                                    </div>
+                                <!-- End single top-seller --> 
                             @endif
                             @endforeach
                             <div class="Pagination">
                                 {{ @$data['follower']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
                             </div>
                             @else
-                            <h1>@lang('lang.no') @lang('lang.followers')</h1>
+                            <h1>Nu ai nici un urmaritor</h1>
                         @endif
                         
                     </div>
                 </div>
-                <div class="tab-pane row g-5 d-flex fade" id="nav-liked" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <div class="follower ">
-                        @if (count(@$data['following']))
-                            @foreach ($data['following'] as $item)
-                                <div
-                                    class="single_followers d-flex justify-content-between align-items-center ">
-                                    <div class="followers d-flex align-items-center">
-                                            <img src="{{ @$item->profile->logo_pic? asset(@$item->profile->logo_pic):asset('public/frontend/img/profile/1.png') }}" alt="">
-                                        <div class="thumb_heading">
-                                            <h5><a href="{{ route('user.profile',@$item->username)}}">{{$item->username}}</a></h5>
-                                            <p>Member Since: {{ DateFormat(@$item->created_at)  }}</p>
-                                        </div>
-                                    </div>
-
-                                    @php
-                                        // $level=DB::table('labels')->where('amount','<=',$item->balance->amount)->orderBy('id','desc')->first();
-                                        // $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays($item->created_at);
-                                        // $badge=DB::table('badges')->where('day','<=',$date)->orderBy('id','desc')->first();
-
-                                            $level=App\ManageQuery::UserLabel($item->balance->amount); 
-                                        // DB::table('labels')->where('amount','<=',@$item->balance->amount)->orderBy('id','desc')->first();
-                                        $date=Carbon\Carbon::parse(Carbon\Carbon::now())->diffInDays(@$item->created_at);
-                                        $badge=App\ManageQuery::UserBadge($date); 
-                                    @endphp
-                                    <div class="bandge">
-                                        <img src="{{asset(@$level->icon)}}" data-toggle="tooltip" data-placement="bottom" title="Author level  {{ @$level->id}} : sold {{@GeneralSetting()->currency_symbol}} {{round(@$item->balance->amount > 50 ? @$item->balance->amount: 0) }}+ on {{@GeneralSetting()->system_name}} " alt="">
-                                        <img src="{{asset(@$badge->icon)}}" data-toggle="tooltip" data-placement="bottom" title="{{ @$level->id-1}} {{@$badge->id == 1? 'Year' :'Years' }} of membarship on {{@GeneralSetting()->system_name}} " alt="">
-                                
-                                    </div>
-                                    
-                                    <div class="total-prise text-center">
-                                        <h2> {{ $item->item->sum('sell') }}</h2>
-                                        <p>@lang('lang.sales')</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                            
-                            <div class="Pagination">
-                                {{ @$data['following']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
-                            </div>
-                            @else 
-                            <h1>@lang('lang.no') @lang('lang.Following')</h1>   
-                        @endif
-                        
-                    </div>
-                </div>
+                
                 @endif
                 @if (@Auth::user()->role_id == 4 || @Auth::user()->role_id == 5)
                     <div class="tab-pane row g-5 d-flex fade  {{ @$data['setting'] == url()->current() ?'show active':'' }}" id="nav-setting" role="tabpanel" aria-labelledby="nav-setting-tab">
@@ -1156,7 +1120,7 @@
                                     $obj = json_decode($item, true);
                                 @endphp 
                                 <!-- start single product -->
-                                    <div class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="col-5 col-lg-4 col-md-6 col-sm-6 col-12 mg-b-25">
                                         <div class="product-style-one no-overlay with-placeBid">
                                             <div class="card-thumbnail">
                                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
@@ -1188,14 +1152,11 @@
                                                 </div>
                                             </div>
                                             <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}"><span class="product-name">{{ @$item->title}}</span></a>
-                                            <span class="latest-bid">Highest bid 6/20</span>
+                                            
                                             <div class="bid-react-area">
-                                                <div class="last-bid">{{ @$item->Re_item}} {{@$infix_general_settings->currency_symbol}}</div>
                                                 <div class="react-area">
-                                                    <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                                        <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                                    </svg>
-                                                    <span class="number">322</span>
+                                                    <i data-feather="activity"></i>
+                                                    <span class="number">{{ $item->sell}}</span>
                                                 </div>
                                             </div> 
                                         </div>
@@ -2290,8 +2251,46 @@
                 @endif
 
                 <div class="tab-pane row g-5 d-flex fade {{ @$data['followings'] == url()->current() ?'show active':'' }}" id="nav-followings" role="tabpanel" aria-labelledby="nav-followings-tab">
-                    
+                    <div class="row g-5 mt--30 creator-list-wrapper">
+                        @if (count(@$data['following']))
+                            @foreach ($data['following'] as $item)
+                            <!-- start single top-seller -->
+                                <div class="creator-single col-lg-4 col-md-6 col-sm-6" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                                    <div class="top-seller-inner-one explore">
+                                        <div class="top-seller-wrapper">
+                                            <div class="thumbnail varified">
+                                                <a href="{{ route('user.profile',@$item->username)}}"><img src="{{ @$item->profile->logo_pic? asset(@$item->profile->logo_pic):asset('public/frontend/img/profile/1.png') }}"></a>
+                                            </div>
+                                            <div class="top-seller-content">
+                                                <a href="{{ route('user.portfolio',$item->username)}}">
+                                                    <h6 class="name"><span>@</span>{{$item->username}}</h6>
+                                                </a>
+                                                <span class="count-number">
+                                                    {{ Str::limit(@$item->profile->about, 22) }}
+                                                </span>
+                                                <span class="count-number">
+                                                    {{$item->balance->amount}} toons
+                                                </span>
+                                                <span class="count-number">
+                                                Vanzari
+                                                {{ $item->item->sum('sell') }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a class="over-link" href="{{ route('user.portfolio',$item->username)}}"></a>
+                                    </div>
+                                </div>
+                            <!-- End single top-seller -->
+                            @endforeach
+                            <div class="Pagination">
+                                {{ @$data['following']->onEachSide(1)->links('frontend.paginate.frontentPaginate') }}
+                            </div>
+                            @else 
+                            <h1>Nu urmaresti pe nimeni in acest moment!</h1>   
+                        @endif
+                        
                     </div>
+                </div>
             </div>
         </div>
     </div>

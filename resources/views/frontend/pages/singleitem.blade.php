@@ -69,49 +69,53 @@ $img2 = @$data['item']->icon;
                 <div class="col-lg-7 col-md-12 col-sm-12">
                     <div class="product-tab-wrapper rbt-sticky-top-adjust">
                     
-                   
-                       <div class="pd-tab-inner" @if ( $data['item']->nftmultiplu == 0) style="display: flex!important;" @else style="display: block!important;" @endif>
-               
-                           @if ( $data['item']->nftmultiplu == 0)
-                            <div class="nav rn-pd-nav rn-pd-rt-content nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                    <span class="rn-pd-sm-thumbnail">
-                                        <img src="{{ asset(@$img2)}}" alt="Nft_Profile">
-                                    </span>
-                                </button>
-                                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                                    <span class="rn-pd-sm-thumbnail">
-                                        <img src="assets/images/portfolio/sm/portfolio-02.jpg" alt="Nft_Profile">
-                                    </span>
-                                </button>
-                                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                                    <span class="rn-pd-sm-thumbnail">
-                                        <img src="assets/images/portfolio/sm/portfolio-03.jpg" alt="Nft_Profile">
-                                    </span>
-                                </button>
-                            </div>
-                           @endif
+                   @if ($data['item']->nftmultiplu == 0)
+                       <div class="pd-tab-inner" @if ( $data['item']->nftmultiplu == 1) style="display: flex!important;" @else style="display: block!important;" @endif>
                             <div class="tab-content rn-pd-content" id="v-pills-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <div class="rn-pd-thumbnail">
-                                        <img src="{{ asset(@$img2)}}" alt="Nft_Profile">
-                                    </div>
-                                </div>
-                                @if ( $data['item']->nftmultiplu == 0)
-                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <div class="rn-pd-thumbnail">
-                                        <img src="assets/images/portfolio/lg/portfolio-02.jpg" alt="Nft_Profile">
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                    <div class="rn-pd-thumbnail">
-                                        <img src="assets/images/portfolio/lg/portfolio-03.jpg" alt="Nft_Profile">
-                                    </div>
-                                </div>
-                                @endif
+                                    @if ($data['item']->file == 'img')
+                                        <div class="rn-pd-thumbnail">
+                                            <img src="{{ asset(@$img2)}}" alt="Nft_Profile">
+                                        </div>
+                                    @elseif($data['item']->file == 'video')
+                                        <div class="rn-pd-thumbnail">
+                                            <video width="100%" height="100%" class="lazy nft__item_preview" autoplay muted controls loop>
+                                            <source src="{{ asset($data['item']->main_file) }}" type="video/mp4">
+                                            
+                                            Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    @endif
+                                 </div>
                             </div>
-
                         </div>
+                @elseif ( $data['item']->nftmultiplu == 1)
+                    @php
+                        $jsonimagini=json_decode($feature2->icon);
+                    @endphp
+                    <div class="pd-tab-inner" @if ( $data['item']->nftmultiplu == 1) style="display: flex!important;" @else style="display: block!important;" @endif>
+                        <div class="nav rn-pd-nav rn-pd-rt-content nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            @foreach ( $jsonimagini as $key2 => $value2)
+                            <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="v-pills-{{$key2}}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{$key2}}" type="button" role="tab" aria-controls="v-pills-{{$key2}}" aria-selected="true">
+                                <span class="rn-pd-sm-thumbnail">
+                                    <img src="{{ asset(@$value2)}}" alt="Nft_Profile">
+                                </span>
+                            </button>
+                            @endforeach
+                        </div>
+                        <div class="tab-content rn-pd-content" id="v-pills-tabContent">
+                            @foreach ( $jsonimagini as $key2 => $value2)
+                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="v-pills-{{$key2}}" role="tabpanel" aria-labelledby="v-pills-{{$key2}}-tab">
+                                <div class="rn-pd-thumbnail">
+                                    <img src="{{ asset(@$value2)}}" alt="Nft_Profile">
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>    
+                @endif
+                
+
                     </div>
                 </div>
                 <!-- product image area end -->
@@ -147,18 +151,19 @@ $img2 = @$data['item']->icon;
                             </div>
                         </div>
                         <span class="bid">Pret Curent <span class="price">{{ @$data['item']->Re_item}} crd</span></span>
-         
-                        <div class="rn-pd-sm-property-wrapper">
-                           <div class="property-wrapper">
-                                 <!-- single property -->
-                                 <div class="pd-property-inner">
-                                    <span class="color-body type">Raritatea</span>
-                                    <span class="color-white value"> {{ @$data['item']->feature1}}</span>
-                                 </div>
-                           </div>
-                        </div>
-                        <div class="catagory-collection">
+                        @if ( $data['item']->feature1)
+                            <div class="rn-pd-sm-property-wrapper">
+                                <div class="property-wrapper">
+                                        <!-- single property -->
+                                        <div class="pd-property-inner">
+                                            <span class="color-body type">Raritatea</span>
+                                            <span class="color-white value"> {{ @$data['item']->feature1}}</span>
+                                        </div>
+                                </div>
+                            </div>
+                        @endif
                         @if (@$data['item']->ogowner)  
+                        <div class="catagory-collection">
                             <div class="catagory">
                                 <span>Creator</span>
                                 <div class="top-seller-inner-one">
@@ -223,50 +228,49 @@ $img2 = @$data['item']->icon;
                                                 </div>
                                             </div>
                                             <!-- single -->
+                                                @php
+                                                    $json=json_decode($feature2->feature2);
+                                                @endphp
+                                            @if ($json)
                                             <div class="rn-pd-sm-property-wrapper">
                                                <p>{!! @$data['item']->description !!}</p>
                                                 <h6 class="pd-property-title">
                                                     Proprietati
                                                 </h6>
                                                 <div class="property-wrapper">
-                                                @php
-                                                   $json=json_decode($feature2->feature2);
-                                                @endphp
-                                              
-                                                @foreach ( $json as $key => $value)
-                                                
-                                                 <!-- single property -->
-                                                 <div class="pd-property-inner">
-                                                   <span class="color-body type" style="text-transform: uppercase;">{{ $key }}</span>
-                                                   <span class="color-white value" style="text-transform: uppercase;">{{ $value }}</span>
-                                                </div>
-                                                <!-- single property End -->
-                                                @endforeach
+                                                    @foreach ( $json as $key => $value)
+                                                    <!-- single property -->
+                                                    <div class="pd-property-inner">
+                                                        <span class="color-body type" style="text-transform: uppercase;">{{ $key }}</span>
+                                                        <span class="color-white value" style="text-transform: uppercase;">{{ $value }}</span>
+                                                    </div>
+                                                    <!-- single property End -->
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <!-- single -->
-                                            
+                                            @endif
                                         </div>
                                         <!-- single -->
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    @foreach ($data['history'] as $his)
-                                     <!-- single creator -->
-                                     <div class="top-seller-inner-one mt--20">
-                                       <div class="top-seller-wrapper">
-                                          <div class="thumbnail">
-                                                <a href="#"><img src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
-                                          </div>
-                                          <div class="top-seller-content">
-                                                <span>{{ $his->subtotal}} crd cumparat de<a href="#">{{ $his->cumparator->username}}</a></span>
-                                                <span class="count-number">
-                                                   {{ $his->created_at}}
-                                                </span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <!-- single creator -->
-                                    @endforeach
+                                        @foreach ($data['history'] as $his)
+                                        <!-- single creator -->
+                                        <div class="top-seller-inner-one mt--20">
+                                            <div class="top-seller-wrapper">
+                                                <div class="thumbnail">
+                                                        <a href="#"><img src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
+                                                </div>
+                                                <div class="top-seller-content">
+                                                        <span>{{ $his->subtotal}} crd cumparat de<a href="#">{{ $his->cumparator->username}}</a></span>
+                                                        <span class="count-number">
+                                                        {{ $his->created_at}}
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single creator -->
+                                        @endforeach
                                     </div>
                                     <div class="tab-pane fade" id="nav-creator" role="tabpanel" aria-labelledby="nav-creator-tab">
                                         <!-- single -->

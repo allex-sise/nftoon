@@ -18,7 +18,7 @@
 @endphp
 <style>
 .bg_image--92{
-    background-image: url("{{ asset('public/frontend/newassets') }}/assets/images/slider/banner-06.png")!important;
+    background-image: url("{{$banner}}")!important;
 }
 </style>
 <div class="rn-author-bg-area bg_image--92 bg_image ptb--150">
@@ -55,8 +55,17 @@
                                     </div>
                                 </div>
                                 <div class="author-button-area">
-                                    <span class="btn at-follw follow-button"><i data-feather="user-plus"></i>
-                                        Follow</span>
+                                    @if (@$data['user']->id != Auth::id())
+                                        @if (@Auth::check())
+                                            @if (CheckFollow(Auth::user()->id,$data['user']->id))
+                                                <a href="#" class="btn at-follw follow-button" id="UnfollowUser">@lang('lang.unfollow')</a>
+                                            @else
+                                                <a href="#" class="btn at-follw follow-button" id="FollowUser"><i data-feather="user-plus"></i> @lang('lang.follow')</a>
+                                            @endif
+                                        @else
+                                        <a href="{{ url('customer/login') }}" class="btn at-follw follow-button"><i data-feather="user-plus"></i> @lang('lang.follow')</a>
+                                        @endif
+                                    @endif
                                     <span class="btn at-follw share-button" data-bs-toggle="modal" data-bs-target="#shareModal"><i data-feather="share-2"></i></span>
 
 
