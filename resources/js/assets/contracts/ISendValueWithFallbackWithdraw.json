@@ -1,0 +1,212 @@
+{
+  "contractName": "ISendValueWithFallbackWithdraw",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"withdraw()\":{\"notice\":\"Allows a user to manually withdraw funds which originally failed to transfer.\"}},\"notice\":\"Attempt to send ETH and if the transfer fails or runs out of gas, store the balance for future withdrawal instead.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/interfaces/ISendValueWithFallbackWithdraw.sol\":\"ISendValueWithFallbackWithdraw\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/minted/interfaces/ISendValueWithFallbackWithdraw.sol\":{\"keccak256\":\"0xb93ea5993400b9f1d27c714d1c8d5b983b0b1fca99621eda2afcc6778db600e5\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://bc9a4ea5c51703a8e7459c29d7636c847bc82d10ddf9ef894e83f5852b079ac7\",\"dweb:/ipfs/QmZHQeGSxG12hAEVzaP5SemBD5i8ioNgVR3AesW2zCSUMb\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @notice Attempt to send ETH and if the transfer fails or runs out of gas, store the balance\r\n * for future withdrawal instead.\r\n */\r\ninterface ISendValueWithFallbackWithdraw {\r\n  /**\r\n   * @notice Allows a user to manually withdraw funds which originally failed to transfer.\r\n   */\r\n  function withdraw() external;\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\interfaces\\ISendValueWithFallbackWithdraw.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/interfaces/ISendValueWithFallbackWithdraw.sol",
+    "exportedSymbols": {
+      "ISendValueWithFallbackWithdraw": [
+        3362
+      ]
+    },
+    "id": 3363,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3356,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:24"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISendValueWithFallbackWithdraw",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3357,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:139:24",
+          "text": " @notice Attempt to send ETH and if the transfer fails or runs out of gas, store the balance\n for future withdrawal instead."
+        },
+        "fullyImplemented": false,
+        "id": 3362,
+        "linearizedBaseContracts": [
+          3362
+        ],
+        "name": "ISendValueWithFallbackWithdraw",
+        "nameLocation": "227:30:24",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3358,
+              "nodeType": "StructuredDocumentation",
+              "src": "263:102:24",
+              "text": " @notice Allows a user to manually withdraw funds which originally failed to transfer."
+            },
+            "functionSelector": "3ccfd60b",
+            "id": 3361,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "378:8:24",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3359,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "386:2:24"
+            },
+            "returnParameters": {
+              "id": 3360,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "397:0:24"
+            },
+            "scope": 3362,
+            "src": "369:29:24",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3363,
+        "src": "217:184:24",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:352:24"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/interfaces/ISendValueWithFallbackWithdraw.sol",
+    "exportedSymbols": {
+      "ISendValueWithFallbackWithdraw": [
+        3362
+      ]
+    },
+    "id": 3363,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3356,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:24"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISendValueWithFallbackWithdraw",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 3357,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:139:24",
+          "text": " @notice Attempt to send ETH and if the transfer fails or runs out of gas, store the balance\n for future withdrawal instead."
+        },
+        "fullyImplemented": false,
+        "id": 3362,
+        "linearizedBaseContracts": [
+          3362
+        ],
+        "name": "ISendValueWithFallbackWithdraw",
+        "nameLocation": "227:30:24",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3358,
+              "nodeType": "StructuredDocumentation",
+              "src": "263:102:24",
+              "text": " @notice Allows a user to manually withdraw funds which originally failed to transfer."
+            },
+            "functionSelector": "3ccfd60b",
+            "id": 3361,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "378:8:24",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3359,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "386:2:24"
+            },
+            "returnParameters": {
+              "id": 3360,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "397:0:24"
+            },
+            "scope": 3362,
+            "src": "369:29:24",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3363,
+        "src": "217:184:24",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:352:24"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.899Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "withdraw()": {
+        "notice": "Allows a user to manually withdraw funds which originally failed to transfer."
+      }
+    },
+    "notice": "Attempt to send ETH and if the transfer fails or runs out of gas, store the balance for future withdrawal instead.",
+    "version": 1
+  }
+}

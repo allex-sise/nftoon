@@ -1,0 +1,1214 @@
+{
+  "contractName": "AdminTreasuryRole",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminInitiated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminRevoked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "grantAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isAdmin",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"name\":\"AdminGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"name\":\"AdminInitiated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"name\":\"AdminRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isAdmin\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getRoleAdmin(bytes32)\":{\"details\":\"Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.\"},\"grantRole(bytes32,address)\":{\"details\":\"Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.\"},\"hasRole(bytes32,address)\":{\"details\":\"Returns `true` if `account` has been granted `role`.\"},\"renounceRole(bytes32,address)\":{\"details\":\"Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.\"},\"revokeRole(bytes32,address)\":{\"details\":\"Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.\"},\"supportsInterface(bytes4)\":{\"details\":\"See {IERC165-supportsInterface}.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Wraps the default admin role from OpenZeppelin's AccessControl for easy integration.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/mixins/roles/AdminTreasuryRole.sol\":\"AdminTreasuryRole\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol\":{\"keccak256\":\"0x29d96f28c0dfcd25ddffef02e56438bde20e1135df9745d7eeb196f08665da6d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e67c1874bc55f3ee5172d3afc4c0147988f1631765265d5b8cf0049b765fabc1\",\"dweb:/ipfs/QmeoguEaHHaSRQy6oCwNkzhn2wxyjtpqD4FxjiCPiU2zEW\"]},\"@openzeppelin/contracts-upgradeable/access/IAccessControlUpgradeable.sol\":{\"keccak256\":\"0xb138a22255a0c28ffa169cd269120bbfa27711cefe14b531462b22560cf374fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5ab0cfbd365e95b4655e4e68ad5220e5ecd61753a8fef9c382a0e63085fec019\",\"dweb:/ipfs/QmVz7Pn84K9waKKg15zXpgHBxD6qqAVoTcKUQE3nzoTBPU\"]},\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fe9fa1beb63e4a09637701f783982ba80380d630d600c9cafe26b68bf58be1b2\",\"dweb:/ipfs/QmRA3GXhTWys88joD9x8xYhdjzvGwmDGLMMzGw3LxbSEge\"]},\"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol\":{\"keccak256\":\"0x062b5a0f7cc6b0528fa350033759f3a15ba42afb57423d7c593753860f2c82e0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3c8b4ec819fc9648ef5ae6b8edc474b2a631389fa73add4c4545e1918abe034\",\"dweb:/ipfs/Qmc8GzvTtCxR3mg3QuLRzycSMfsSjjZPyPALmLBjMxSGv6\"]},\"@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol\":{\"keccak256\":\"0xc7af08df3d3e818ce36f95aa879c13245772fed21b553e6033292ea4edc2a9f3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://639c22bcf1ba4c783016c3eed1d9b546444feecb917a67201d66b6762df0b8a2\",\"dweb:/ipfs/QmebyzSijf6BPXaXLHcJPZnPpLk48UW1esmUTEoGd4hHkv\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol\":{\"keccak256\":\"0x17c9c5d2d6b56527215ee7b3da6dde66b6f23f1b3d5c66cc436e753ef349a97a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dd7c775bc6000f44c048796b5e013dbb3ec7592986bc289868b19ff9439ee31d\",\"dweb:/ipfs/QmSuBfTT9z9sEpmEcGihEc5DJGsXery8QyyuNfvub875ej\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol\":{\"keccak256\":\"0x1c4860acd323e34a67b3e97faab9aaa55fe8e92b1dcf08b5f47f3468d58ce75c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3c2746f8ebb4bfb6b8e8a768296c7f85f11b36f4873daabb91933c3602f00590\",\"dweb:/ipfs/QmdumDez8WEdk9FDuP7Jp5pDSJiQeFtFSJw3B5CEHJL4KU\"]},\"project:/contracts/minted/mixins/roles/AdminRole.sol\":{\"keccak256\":\"0x44fd64adeb5240c6df26e5e8ef3ef7cf0b3074a68059a3bbb01617549de129e8\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://059fcc0567b49aa89066390fdbe339c6f5b341d1aeaf27305bdff4d5f48c361d\",\"dweb:/ipfs/QmZPifH4rncuzj2ZuF9xPiTkES8XTaMs4GTB5HQfYV1ppk\"]},\"project:/contracts/minted/mixins/roles/AdminTreasuryRole.sol\":{\"keccak256\":\"0xa5f5f7eed34711f3ba07faf17327bd972164c8ec92321e053944e7364baa5ce1\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://a3aa175f6adc9dbdbf071b8dfbd78c26c89acfcf04441fa74f4be6e7a71e25b3\",\"dweb:/ipfs/QmQwDPjQXoKr2DbWwYRXyQK7oiNNvob8NQTpxEobJ6ArLH\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\nimport \"@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol\";\r\nimport \"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\";\r\nimport \"./AdminRole.sol\";\r\n\r\n/**\r\n * @notice Wraps the default admin role from OpenZeppelin's AccessControl for easy integration.\r\n */\r\nabstract contract AdminTreasuryRole is AdminRole {\r\n\r\n    function _initializeAdminRole(address admin) internal override initializer {\r\n        AccessControlUpgradeable.__AccessControl_init();\r\n        // Grant the role to a specified account\r\n        _setupRole(DEFAULT_ADMIN_ROLE, admin);\r\n        emit AdminInitiated(admin);\r\n    }\r\n\r\n  uint256[1000] private __gap;\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\mixins\\roles\\AdminTreasuryRole.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/mixins/roles/AdminTreasuryRole.sol",
+    "exportedSymbols": {
+      "AccessControlUpgradeable": [
+        334
+      ],
+      "AdminRole": [
+        5755
+      ],
+      "AdminTreasuryRole": [
+        5791
+      ],
+      "ContextUpgradeable": [
+        1807
+      ],
+      "ERC165Upgradeable": [
+        2423
+      ],
+      "IAccessControlUpgradeable": [
+        407
+      ],
+      "IERC165Upgradeable": [
+        2435
+      ],
+      "Initializable": [
+        453
+      ],
+      "StringsUpgradeable": [
+        2010
+      ]
+    },
+    "id": 5792,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5757,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:42"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
+        "id": 5758,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5792,
+        "sourceUnit": 335,
+        "src": "76:81:42",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "id": 5759,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5792,
+        "sourceUnit": 454,
+        "src": "159:75:42",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/minted/mixins/roles/AdminRole.sol",
+        "file": "./AdminRole.sol",
+        "id": 5760,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5792,
+        "sourceUnit": 5756,
+        "src": "236:25:42",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 5762,
+              "name": "AdminRole",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 5755,
+              "src": "411:9:42"
+            },
+            "id": 5763,
+            "nodeType": "InheritanceSpecifier",
+            "src": "411:9:42"
+          }
+        ],
+        "canonicalName": "AdminTreasuryRole",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 5761,
+          "nodeType": "StructuredDocumentation",
+          "src": "265:105:42",
+          "text": " @notice Wraps the default admin role from OpenZeppelin's AccessControl for easy integration."
+        },
+        "fullyImplemented": true,
+        "id": 5791,
+        "linearizedBaseContracts": [
+          5791,
+          5755,
+          334,
+          2423,
+          2435,
+          407,
+          1807,
+          453
+        ],
+        "name": "AdminTreasuryRole",
+        "nameLocation": "390:17:42",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "baseFunctions": [
+              5695
+            ],
+            "body": {
+              "id": 5785,
+              "nodeType": "Block",
+              "src": "505:201:42",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 5771,
+                        "name": "AccessControlUpgradeable",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 334,
+                        "src": "516:24:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_AccessControlUpgradeable_$334_$",
+                          "typeString": "type(contract AccessControlUpgradeable)"
+                        }
+                      },
+                      "id": 5773,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "__AccessControl_init",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 30,
+                      "src": "516:45:42",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 5774,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "516:47:42",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5775,
+                  "nodeType": "ExpressionStatement",
+                  "src": "516:47:42"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 5777,
+                        "name": "DEFAULT_ADMIN_ROLE",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 51,
+                        "src": "635:18:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "id": 5778,
+                        "name": "admin",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5765,
+                        "src": "655:5:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5776,
+                      "name": "_setupRole",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 240,
+                      "src": "624:10:42",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
+                        "typeString": "function (bytes32,address)"
+                      }
+                    },
+                    "id": 5779,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "624:37:42",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5780,
+                  "nodeType": "ExpressionStatement",
+                  "src": "624:37:42"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "id": 5782,
+                        "name": "admin",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5765,
+                        "src": "692:5:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5781,
+                      "name": "AdminInitiated",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5665,
+                      "src": "677:14:42",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 5783,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "677:21:42",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5784,
+                  "nodeType": "EmitStatement",
+                  "src": "672:26:42"
+                }
+              ]
+            },
+            "id": 5786,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 5769,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 5768,
+                  "name": "initializer",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 452,
+                  "src": "493:11:42"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "493:11:42"
+              }
+            ],
+            "name": "_initializeAdminRole",
+            "nameLocation": "439:20:42",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 5767,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "484:8:42"
+            },
+            "parameters": {
+              "id": 5766,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5765,
+                  "mutability": "mutable",
+                  "name": "admin",
+                  "nameLocation": "468:5:42",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5786,
+                  "src": "460:13:42",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5764,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "460:7:42",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "459:15:42"
+            },
+            "returnParameters": {
+              "id": 5770,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "505:0:42"
+            },
+            "scope": 5791,
+            "src": "430:276:42",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 5790,
+            "mutability": "mutable",
+            "name": "__gap",
+            "nameLocation": "734:5:42",
+            "nodeType": "VariableDeclaration",
+            "scope": 5791,
+            "src": "712:27:42",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$1000_storage",
+              "typeString": "uint256[1000]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 5787,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "712:7:42",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 5789,
+              "length": {
+                "hexValue": "31303030",
+                "id": 5788,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "720:4:42",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_1000_by_1",
+                  "typeString": "int_const 1000"
+                },
+                "value": "1000"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "712:13:42",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$1000_storage_ptr",
+                "typeString": "uint256[1000]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 5792,
+        "src": "372:371:42",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:694:42"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/mixins/roles/AdminTreasuryRole.sol",
+    "exportedSymbols": {
+      "AccessControlUpgradeable": [
+        334
+      ],
+      "AdminRole": [
+        5755
+      ],
+      "AdminTreasuryRole": [
+        5791
+      ],
+      "ContextUpgradeable": [
+        1807
+      ],
+      "ERC165Upgradeable": [
+        2423
+      ],
+      "IAccessControlUpgradeable": [
+        407
+      ],
+      "IERC165Upgradeable": [
+        2435
+      ],
+      "Initializable": [
+        453
+      ],
+      "StringsUpgradeable": [
+        2010
+      ]
+    },
+    "id": 5792,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5757,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:42"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
+        "id": 5758,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5792,
+        "sourceUnit": 335,
+        "src": "76:81:42",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "id": 5759,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5792,
+        "sourceUnit": 454,
+        "src": "159:75:42",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/minted/mixins/roles/AdminRole.sol",
+        "file": "./AdminRole.sol",
+        "id": 5760,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5792,
+        "sourceUnit": 5756,
+        "src": "236:25:42",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 5762,
+              "name": "AdminRole",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 5755,
+              "src": "411:9:42"
+            },
+            "id": 5763,
+            "nodeType": "InheritanceSpecifier",
+            "src": "411:9:42"
+          }
+        ],
+        "canonicalName": "AdminTreasuryRole",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 5761,
+          "nodeType": "StructuredDocumentation",
+          "src": "265:105:42",
+          "text": " @notice Wraps the default admin role from OpenZeppelin's AccessControl for easy integration."
+        },
+        "fullyImplemented": true,
+        "id": 5791,
+        "linearizedBaseContracts": [
+          5791,
+          5755,
+          334,
+          2423,
+          2435,
+          407,
+          1807,
+          453
+        ],
+        "name": "AdminTreasuryRole",
+        "nameLocation": "390:17:42",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "baseFunctions": [
+              5695
+            ],
+            "body": {
+              "id": 5785,
+              "nodeType": "Block",
+              "src": "505:201:42",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 5771,
+                        "name": "AccessControlUpgradeable",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 334,
+                        "src": "516:24:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_AccessControlUpgradeable_$334_$",
+                          "typeString": "type(contract AccessControlUpgradeable)"
+                        }
+                      },
+                      "id": 5773,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "__AccessControl_init",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 30,
+                      "src": "516:45:42",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 5774,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "516:47:42",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5775,
+                  "nodeType": "ExpressionStatement",
+                  "src": "516:47:42"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 5777,
+                        "name": "DEFAULT_ADMIN_ROLE",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 51,
+                        "src": "635:18:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "id": 5778,
+                        "name": "admin",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5765,
+                        "src": "655:5:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5776,
+                      "name": "_setupRole",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 240,
+                      "src": "624:10:42",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
+                        "typeString": "function (bytes32,address)"
+                      }
+                    },
+                    "id": 5779,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "624:37:42",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5780,
+                  "nodeType": "ExpressionStatement",
+                  "src": "624:37:42"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "id": 5782,
+                        "name": "admin",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5765,
+                        "src": "692:5:42",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5781,
+                      "name": "AdminInitiated",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5665,
+                      "src": "677:14:42",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 5783,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "677:21:42",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5784,
+                  "nodeType": "EmitStatement",
+                  "src": "672:26:42"
+                }
+              ]
+            },
+            "id": 5786,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 5769,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 5768,
+                  "name": "initializer",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 452,
+                  "src": "493:11:42"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "493:11:42"
+              }
+            ],
+            "name": "_initializeAdminRole",
+            "nameLocation": "439:20:42",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 5767,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "484:8:42"
+            },
+            "parameters": {
+              "id": 5766,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5765,
+                  "mutability": "mutable",
+                  "name": "admin",
+                  "nameLocation": "468:5:42",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5786,
+                  "src": "460:13:42",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5764,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "460:7:42",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "459:15:42"
+            },
+            "returnParameters": {
+              "id": 5770,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "505:0:42"
+            },
+            "scope": 5791,
+            "src": "430:276:42",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 5790,
+            "mutability": "mutable",
+            "name": "__gap",
+            "nameLocation": "734:5:42",
+            "nodeType": "VariableDeclaration",
+            "scope": 5791,
+            "src": "712:27:42",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$1000_storage",
+              "typeString": "uint256[1000]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 5787,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "712:7:42",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 5789,
+              "length": {
+                "hexValue": "31303030",
+                "id": 5788,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "720:4:42",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_1000_by_1",
+                  "typeString": "int_const 1000"
+                },
+                "value": "1000"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "712:13:42",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$1000_storage_ptr",
+                "typeString": "uint256[1000]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 5792,
+        "src": "372:371:42",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:694:42"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:11.021Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "getRoleAdmin(bytes32)": {
+        "details": "Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}."
+      },
+      "grantRole(bytes32,address)": {
+        "details": "Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role."
+      },
+      "hasRole(bytes32,address)": {
+        "details": "Returns `true` if `account` has been granted `role`."
+      },
+      "renounceRole(bytes32,address)": {
+        "details": "Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`."
+      },
+      "revokeRole(bytes32,address)": {
+        "details": "Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role."
+      },
+      "supportsInterface(bytes4)": {
+        "details": "See {IERC165-supportsInterface}."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Wraps the default admin role from OpenZeppelin's AccessControl for easy integration.",
+    "version": 1
+  }
+}

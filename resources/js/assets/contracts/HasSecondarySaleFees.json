@@ -1,0 +1,790 @@
+{
+  "contractName": "HasSecondarySaleFees",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getFeeRecipients",
+      "outputs": [
+        {
+          "internalType": "address payable[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getFeeBps",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getFeeBps\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getFeeRecipients\",\"outputs\":[{\"internalType\":\"address payable[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3\",\"kind\":\"dev\",\"methods\":{\"getFeeRecipients(uint256)\":{\"details\":\"Called once after the initial deployment to register the interface with ERC165.\"},\"supportsInterface(bytes4)\":{\"details\":\"See {IERC165-supportsInterface}.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"An interface for communicating fees to 3rd party marketplaces.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/mixins/HasSecondarySaleFees.sol\":\"HasSecondarySaleFees\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fe9fa1beb63e4a09637701f783982ba80380d630d600c9cafe26b68bf58be1b2\",\"dweb:/ipfs/QmRA3GXhTWys88joD9x8xYhdjzvGwmDGLMMzGw3LxbSEge\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol\":{\"keccak256\":\"0x17c9c5d2d6b56527215ee7b3da6dde66b6f23f1b3d5c66cc436e753ef349a97a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dd7c775bc6000f44c048796b5e013dbb3ec7592986bc289868b19ff9439ee31d\",\"dweb:/ipfs/QmSuBfTT9z9sEpmEcGihEc5DJGsXery8QyyuNfvub875ej\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol\":{\"keccak256\":\"0x1c4860acd323e34a67b3e97faab9aaa55fe8e92b1dcf08b5f47f3468d58ce75c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3c2746f8ebb4bfb6b8e8a768296c7f85f11b36f4873daabb91933c3602f00590\",\"dweb:/ipfs/QmdumDez8WEdk9FDuP7Jp5pDSJiQeFtFSJw3B5CEHJL4KU\"]},\"project:/contracts/minted/mixins/HasSecondarySaleFees.sol\":{\"keccak256\":\"0x89a5447651006e8b425c2238ccec8dd273629f7e5c069d8121a13d3e7ea9e30b\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://e9884740a658dbe178e2495e3318915723c429d5c38776ce75b19f3602beb83f\",\"dweb:/ipfs/QmfSCHqj5pbzsDfiv8BdUYKkjXQyrWcZUSsHsXUYkajphV\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\nimport \"@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol\";\r\nimport \"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\";\r\n\r\n/**\r\n * @notice An interface for communicating fees to 3rd party marketplaces.\r\n * @dev Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3\r\n */\r\nabstract contract HasSecondarySaleFees is Initializable, ERC165Upgradeable {\r\n  /*\r\n   * bytes4(keccak256('getFeeBps(uint256)')) == 0x0ebd4c7f\r\n   * bytes4(keccak256('getFeeRecipients(uint256)')) == 0xb9c4d9fb\r\n   *\r\n   * => 0x0ebd4c7f ^ 0xb9c4d9fb == 0xb7799584\r\n   */\r\n  bytes4 private constant _INTERFACE_ID_FEES = 0xb7799584;\r\n\r\n  /**\r\n   * @dev Called once after the initial deployment to register the interface with ERC165.\r\n   */\r\n//   function _initializeHasSecondarySaleFees() internal initializer {\r\n//     // _registerInterface(_INTERFACE_ID_FEES);\r\n//   }\r\n\r\n  function getFeeRecipients(uint256 id) public view virtual returns (address payable[] memory);\r\n\r\n  function getFeeBps(uint256 id) public view virtual returns (uint256[] memory);\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\mixins\\HasSecondarySaleFees.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/mixins/HasSecondarySaleFees.sol",
+    "exportedSymbols": {
+      "ERC165Upgradeable": [
+        2423
+      ],
+      "HasSecondarySaleFees": [
+        3814
+      ],
+      "IERC165Upgradeable": [
+        2435
+      ],
+      "Initializable": [
+        453
+      ]
+    },
+    "id": 3815,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3786,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:29"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+        "id": 3787,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3815,
+        "sourceUnit": 2424,
+        "src": "76:87:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "id": 3788,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3815,
+        "sourceUnit": 454,
+        "src": "165:75:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3790,
+              "name": "Initializable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 453,
+              "src": "466:13:29"
+            },
+            "id": 3791,
+            "nodeType": "InheritanceSpecifier",
+            "src": "466:13:29"
+          },
+          {
+            "baseName": {
+              "id": 3792,
+              "name": "ERC165Upgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2423,
+              "src": "481:17:29"
+            },
+            "id": 3793,
+            "nodeType": "InheritanceSpecifier",
+            "src": "481:17:29"
+          }
+        ],
+        "canonicalName": "HasSecondarySaleFees",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3789,
+          "nodeType": "StructuredDocumentation",
+          "src": "244:178:29",
+          "text": " @notice An interface for communicating fees to 3rd party marketplaces.\n @dev Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3"
+        },
+        "fullyImplemented": false,
+        "id": 3814,
+        "linearizedBaseContracts": [
+          3814,
+          2423,
+          2435,
+          453
+        ],
+        "name": "HasSecondarySaleFees",
+        "nameLocation": "442:20:29",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 3796,
+            "mutability": "constant",
+            "name": "_INTERFACE_ID_FEES",
+            "nameLocation": "721:18:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 3814,
+            "src": "697:55:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            },
+            "typeName": {
+              "id": 3794,
+              "name": "bytes4",
+              "nodeType": "ElementaryTypeName",
+              "src": "697:6:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "value": {
+              "hexValue": "30786237373939353834",
+              "id": 3795,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "742:10:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_3078198660_by_1",
+                "typeString": "int_const 3078198660"
+              },
+              "value": "0xb7799584"
+            },
+            "visibility": "private"
+          },
+          {
+            "documentation": {
+              "id": 3797,
+              "nodeType": "StructuredDocumentation",
+              "src": "759:101:29",
+              "text": " @dev Called once after the initial deployment to register the interface with ERC165."
+            },
+            "functionSelector": "b9c4d9fb",
+            "id": 3805,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeRecipients",
+            "nameLocation": "1006:16:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3800,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3799,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1031:2:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3805,
+                  "src": "1023:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3798,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1023:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1022:12:29"
+            },
+            "returnParameters": {
+              "id": 3804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3803,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3805,
+                  "src": "1064:24:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_payable_$dyn_memory_ptr",
+                    "typeString": "address payable[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 3801,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1064:15:29",
+                      "stateMutability": "payable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "id": 3802,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1064:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_payable_$dyn_storage_ptr",
+                      "typeString": "address payable[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:26:29"
+            },
+            "scope": 3814,
+            "src": "997:93:29",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "0ebd4c7f",
+            "id": 3813,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeBps",
+            "nameLocation": "1105:9:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3807,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1123:2:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3813,
+                  "src": "1115:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3806,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1115:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1114:12:29"
+            },
+            "returnParameters": {
+              "id": 3812,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3811,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3813,
+                  "src": "1156:16:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 3809,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1156:7:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 3810,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1156:9:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1155:18:29"
+            },
+            "scope": 3814,
+            "src": "1096:78:29",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3815,
+        "src": "424:753:29",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:1128:29"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/mixins/HasSecondarySaleFees.sol",
+    "exportedSymbols": {
+      "ERC165Upgradeable": [
+        2423
+      ],
+      "HasSecondarySaleFees": [
+        3814
+      ],
+      "IERC165Upgradeable": [
+        2435
+      ],
+      "Initializable": [
+        453
+      ]
+    },
+    "id": 3815,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3786,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:29"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+        "id": 3787,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3815,
+        "sourceUnit": 2424,
+        "src": "76:87:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "id": 3788,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3815,
+        "sourceUnit": 454,
+        "src": "165:75:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3790,
+              "name": "Initializable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 453,
+              "src": "466:13:29"
+            },
+            "id": 3791,
+            "nodeType": "InheritanceSpecifier",
+            "src": "466:13:29"
+          },
+          {
+            "baseName": {
+              "id": 3792,
+              "name": "ERC165Upgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2423,
+              "src": "481:17:29"
+            },
+            "id": 3793,
+            "nodeType": "InheritanceSpecifier",
+            "src": "481:17:29"
+          }
+        ],
+        "canonicalName": "HasSecondarySaleFees",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3789,
+          "nodeType": "StructuredDocumentation",
+          "src": "244:178:29",
+          "text": " @notice An interface for communicating fees to 3rd party marketplaces.\n @dev Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3"
+        },
+        "fullyImplemented": false,
+        "id": 3814,
+        "linearizedBaseContracts": [
+          3814,
+          2423,
+          2435,
+          453
+        ],
+        "name": "HasSecondarySaleFees",
+        "nameLocation": "442:20:29",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 3796,
+            "mutability": "constant",
+            "name": "_INTERFACE_ID_FEES",
+            "nameLocation": "721:18:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 3814,
+            "src": "697:55:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            },
+            "typeName": {
+              "id": 3794,
+              "name": "bytes4",
+              "nodeType": "ElementaryTypeName",
+              "src": "697:6:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "value": {
+              "hexValue": "30786237373939353834",
+              "id": 3795,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "742:10:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_3078198660_by_1",
+                "typeString": "int_const 3078198660"
+              },
+              "value": "0xb7799584"
+            },
+            "visibility": "private"
+          },
+          {
+            "documentation": {
+              "id": 3797,
+              "nodeType": "StructuredDocumentation",
+              "src": "759:101:29",
+              "text": " @dev Called once after the initial deployment to register the interface with ERC165."
+            },
+            "functionSelector": "b9c4d9fb",
+            "id": 3805,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeRecipients",
+            "nameLocation": "1006:16:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3800,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3799,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1031:2:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3805,
+                  "src": "1023:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3798,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1023:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1022:12:29"
+            },
+            "returnParameters": {
+              "id": 3804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3803,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3805,
+                  "src": "1064:24:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_payable_$dyn_memory_ptr",
+                    "typeString": "address payable[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 3801,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1064:15:29",
+                      "stateMutability": "payable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "id": 3802,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1064:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_payable_$dyn_storage_ptr",
+                      "typeString": "address payable[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:26:29"
+            },
+            "scope": 3814,
+            "src": "997:93:29",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "0ebd4c7f",
+            "id": 3813,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeBps",
+            "nameLocation": "1105:9:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3807,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1123:2:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3813,
+                  "src": "1115:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3806,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1115:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1114:12:29"
+            },
+            "returnParameters": {
+              "id": 3812,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3811,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3813,
+                  "src": "1156:16:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 3809,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1156:7:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 3810,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1156:9:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1155:18:29"
+            },
+            "scope": 3814,
+            "src": "1096:78:29",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3815,
+        "src": "424:753:29",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:1128:29"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.921Z",
+  "devdoc": {
+    "details": "Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3",
+    "kind": "dev",
+    "methods": {
+      "getFeeRecipients(uint256)": {
+        "details": "Called once after the initial deployment to register the interface with ERC165."
+      },
+      "supportsInterface(bytes4)": {
+        "details": "See {IERC165-supportsInterface}."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "An interface for communicating fees to 3rd party marketplaces.",
+    "version": 1
+  }
+}

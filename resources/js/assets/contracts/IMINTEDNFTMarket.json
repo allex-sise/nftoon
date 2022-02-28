@@ -1,0 +1,363 @@
+{
+  "contractName": "IMINTEDNFTMarket",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getFeeConfig",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "primaryMintedFeeBasisPoints",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "secondaryMintedFeeBasisPoints",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "secondaryCreatorFeeBasisPoints",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getFeeConfig\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"primaryMintedFeeBasisPoints\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"secondaryMintedFeeBasisPoints\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"secondaryCreatorFeeBasisPoints\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/interfaces/IMINTEDNFTMarket.sol\":\"IMINTEDNFTMarket\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/minted/interfaces/IMINTEDNFTMarket.sol\":{\"keccak256\":\"0x2dbd4a00f290550a321d170095eeb4cf171410de055d1cd09d0d4531e81e9502\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://90311f3abb1f91bb7400fb59e79208321c7bb4a104e4cdb22daf76174b3425ad\",\"dweb:/ipfs/QmYG3Vtf8JVnRFNJkjq2JdHRgTG4gBt9LaBopxGe89o8Xx\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n// solhint-disable\r\n\r\npragma solidity ^0.8.0;\r\n\r\ninterface IMINTEDNFTMarket {\r\n  function getFeeConfig()\r\n    external\r\n    view\r\n    returns (\r\n      uint256 primaryMintedFeeBasisPoints,\r\n      uint256 secondaryMintedFeeBasisPoints,\r\n      uint256 secondaryCreatorFeeBasisPoints\r\n    );\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\interfaces\\IMINTEDNFTMarket.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFTMarket.sol",
+    "exportedSymbols": {
+      "IMINTEDNFTMarket": [
+        3354
+      ]
+    },
+    "id": 3355,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3344,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "69:23:23"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMINTEDNFTMarket",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3354,
+        "linearizedBaseContracts": [
+          3354
+        ],
+        "name": "IMINTEDNFTMarket",
+        "nameLocation": "106:16:23",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "5fbbc0d2",
+            "id": 3353,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeConfig",
+            "nameLocation": "137:12:23",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3345,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "149:2:23"
+            },
+            "returnParameters": {
+              "id": 3352,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3347,
+                  "mutability": "mutable",
+                  "name": "primaryMintedFeeBasisPoints",
+                  "nameLocation": "206:27:23",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "198:35:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3346,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3349,
+                  "mutability": "mutable",
+                  "name": "secondaryMintedFeeBasisPoints",
+                  "nameLocation": "250:29:23",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "242:37:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3348,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "242:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3351,
+                  "mutability": "mutable",
+                  "name": "secondaryCreatorFeeBasisPoints",
+                  "nameLocation": "296:30:23",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "288:38:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3350,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "189:144:23"
+            },
+            "scope": 3354,
+            "src": "128:206:23",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3355,
+        "src": "96:241:23",
+        "usedErrors": []
+      }
+    ],
+    "src": "69:268:23"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFTMarket.sol",
+    "exportedSymbols": {
+      "IMINTEDNFTMarket": [
+        3354
+      ]
+    },
+    "id": 3355,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3344,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "69:23:23"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMINTEDNFTMarket",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3354,
+        "linearizedBaseContracts": [
+          3354
+        ],
+        "name": "IMINTEDNFTMarket",
+        "nameLocation": "106:16:23",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "5fbbc0d2",
+            "id": 3353,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeConfig",
+            "nameLocation": "137:12:23",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3345,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "149:2:23"
+            },
+            "returnParameters": {
+              "id": 3352,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3347,
+                  "mutability": "mutable",
+                  "name": "primaryMintedFeeBasisPoints",
+                  "nameLocation": "206:27:23",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "198:35:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3346,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3349,
+                  "mutability": "mutable",
+                  "name": "secondaryMintedFeeBasisPoints",
+                  "nameLocation": "250:29:23",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "242:37:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3348,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "242:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3351,
+                  "mutability": "mutable",
+                  "name": "secondaryCreatorFeeBasisPoints",
+                  "nameLocation": "296:30:23",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "288:38:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3350,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "189:144:23"
+            },
+            "scope": 3354,
+            "src": "128:206:23",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3355,
+        "src": "96:241:23",
+        "usedErrors": []
+      }
+    ],
+    "src": "69:268:23"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.889Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

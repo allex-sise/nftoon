@@ -1,0 +1,1088 @@
+{
+  "contractName": "MintedTreasuryNode",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getMintedTreasury",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getMintedTreasury\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getMintedTreasury()\":{\"notice\":\"Returns the address of the Minted treasury.\"}},\"notice\":\"A mixin that stores a reference to the Minted treasury contract.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/mixins/MintedTreasuryNode.sol\":\"MintedTreasuryNode\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fe9fa1beb63e4a09637701f783982ba80380d630d600c9cafe26b68bf58be1b2\",\"dweb:/ipfs/QmRA3GXhTWys88joD9x8xYhdjzvGwmDGLMMzGw3LxbSEge\"]},\"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"keccak256\":\"0x946f08c0a132c5877d458d7af7956da60607f20a5c03dd75760708c848aae6b7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b80d20ed113ad0be486d489e1cc2f0f4006b7893e579c2156e8c434d8eec382\",\"dweb:/ipfs/QmdB8QGghkRGcSkp4xAWCvohGgYXFU9ncMx82XSqDMiZJf\"]},\"project:/contracts/minted/mixins/MintedTreasuryNode.sol\":{\"keccak256\":\"0x76a9e2eeede76c7f3aaf9b4407881448d87879e8436b9d101aecdeabed7d26a5\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://9fb320a4f035615a79a0a3b6009791912c2488360d733a5b2a0756533ca037a6\",\"dweb:/ipfs/QmNo3Fz3ZrXUUiLWgsC7ytixEsDfkQXhv2KDECZJsg2nJd\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\nimport \"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\";\r\nimport \"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\";\r\n\r\n/**\r\n * @notice A mixin that stores a reference to the Minted treasury contract.\r\n */\r\nabstract contract MintedTreasuryNode is Initializable {\r\n  using AddressUpgradeable for address payable;\r\n\r\n  address payable private treasury;\r\n\r\n  /**\r\n   * @dev Called once after the initial deployment to set the Minted treasury address.\r\n   */\r\n  function _initializeMintedTreasuryNode(address payable _treasury) internal initializer {\r\n    require(_treasury.isContract(), \"MintedTreasuryNode: Address is not a contract\");\r\n    treasury = _treasury;\r\n  }\r\n\r\n  /**\r\n   * @notice Returns the address of the Minted treasury.\r\n   */\r\n  function getMintedTreasury() public view returns (address payable) {\r\n    return treasury;\r\n  }\r\n\r\n  // `______gap` is added to each mixin to allow adding new data slots or additional mixins in an upgrade-safe way.\r\n  uint256[2000] private __gap;\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\mixins\\MintedTreasuryNode.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/mixins/MintedTreasuryNode.sol",
+    "exportedSymbols": {
+      "AddressUpgradeable": [
+        1763
+      ],
+      "Initializable": [
+        453
+      ],
+      "MintedTreasuryNode": [
+        3860
+      ]
+    },
+    "id": 3861,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3816,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:30"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "id": 3817,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3861,
+        "sourceUnit": 454,
+        "src": "76:75:30",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+        "id": 3818,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3861,
+        "sourceUnit": 1764,
+        "src": "153:74:30",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3820,
+              "name": "Initializable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 453,
+              "src": "358:13:30"
+            },
+            "id": 3821,
+            "nodeType": "InheritanceSpecifier",
+            "src": "358:13:30"
+          }
+        ],
+        "canonicalName": "MintedTreasuryNode",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3819,
+          "nodeType": "StructuredDocumentation",
+          "src": "231:85:30",
+          "text": " @notice A mixin that stores a reference to the Minted treasury contract."
+        },
+        "fullyImplemented": true,
+        "id": 3860,
+        "linearizedBaseContracts": [
+          3860,
+          453
+        ],
+        "name": "MintedTreasuryNode",
+        "nameLocation": "336:18:30",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 3824,
+            "libraryName": {
+              "id": 3822,
+              "name": "AddressUpgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1763,
+              "src": "383:18:30"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "377:45:30",
+            "typeName": {
+              "id": 3823,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "406:15:30",
+              "stateMutability": "payable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 3826,
+            "mutability": "mutable",
+            "name": "treasury",
+            "nameLocation": "452:8:30",
+            "nodeType": "VariableDeclaration",
+            "scope": 3860,
+            "src": "428:32:30",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address_payable",
+              "typeString": "address payable"
+            },
+            "typeName": {
+              "id": 3825,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "428:15:30",
+              "stateMutability": "payable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 3845,
+              "nodeType": "Block",
+              "src": "656:120:30",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "expression": {
+                            "id": 3835,
+                            "name": "_treasury",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3829,
+                            "src": "671:9:30",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "id": 3836,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "isContract",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1538,
+                          "src": "671:20:30",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$bound_to$_t_address_$",
+                            "typeString": "function (address) view returns (bool)"
+                          }
+                        },
+                        "id": 3837,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "671:22:30",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4d696e74656454726561737572794e6f64653a2041646472657373206973206e6f74206120636f6e7472616374",
+                        "id": 3838,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "695:47:30",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_8d6689b9bc9cb168bcb7ba5acf38617f233af70d37914f1374c71613dff0ed2c",
+                          "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
+                        },
+                        "value": "MintedTreasuryNode: Address is not a contract"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_8d6689b9bc9cb168bcb7ba5acf38617f233af70d37914f1374c71613dff0ed2c",
+                          "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
+                        }
+                      ],
+                      "id": 3834,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "663:7:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 3839,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "663:80:30",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3840,
+                  "nodeType": "ExpressionStatement",
+                  "src": "663:80:30"
+                },
+                {
+                  "expression": {
+                    "id": 3843,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 3841,
+                      "name": "treasury",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3826,
+                      "src": "750:8:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 3842,
+                      "name": "_treasury",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3829,
+                      "src": "761:9:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "750:20:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "id": 3844,
+                  "nodeType": "ExpressionStatement",
+                  "src": "750:20:30"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3827,
+              "nodeType": "StructuredDocumentation",
+              "src": "467:98:30",
+              "text": " @dev Called once after the initial deployment to set the Minted treasury address."
+            },
+            "id": 3846,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 3832,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 3831,
+                  "name": "initializer",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 452,
+                  "src": "644:11:30"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "644:11:30"
+              }
+            ],
+            "name": "_initializeMintedTreasuryNode",
+            "nameLocation": "578:29:30",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3830,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3829,
+                  "mutability": "mutable",
+                  "name": "_treasury",
+                  "nameLocation": "624:9:30",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3846,
+                  "src": "608:25:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 3828,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "608:15:30",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "607:27:30"
+            },
+            "returnParameters": {
+              "id": 3833,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "656:0:30"
+            },
+            "scope": 3860,
+            "src": "569:207:30",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3854,
+              "nodeType": "Block",
+              "src": "921:28:30",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 3852,
+                    "name": "treasury",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 3826,
+                    "src": "935:8:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "functionReturnParameters": 3851,
+                  "id": 3853,
+                  "nodeType": "Return",
+                  "src": "928:15:30"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3847,
+              "nodeType": "StructuredDocumentation",
+              "src": "782:68:30",
+              "text": " @notice Returns the address of the Minted treasury."
+            },
+            "functionSelector": "753af00e",
+            "id": 3855,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMintedTreasury",
+            "nameLocation": "863:17:30",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3848,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "880:2:30"
+            },
+            "returnParameters": {
+              "id": 3851,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3850,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3855,
+                  "src": "904:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 3849,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "904:15:30",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "903:17:30"
+            },
+            "scope": 3860,
+            "src": "854:95:30",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 3859,
+            "mutability": "mutable",
+            "name": "__gap",
+            "nameLocation": "1094:5:30",
+            "nodeType": "VariableDeclaration",
+            "scope": 3860,
+            "src": "1072:27:30",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$2000_storage",
+              "typeString": "uint256[2000]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3856,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "1072:7:30",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 3858,
+              "length": {
+                "hexValue": "32303030",
+                "id": 3857,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "1080:4:30",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_2000_by_1",
+                  "typeString": "int_const 2000"
+                },
+                "value": "2000"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "1072:13:30",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$2000_storage_ptr",
+                "typeString": "uint256[2000]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 3861,
+        "src": "318:785:30",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:1054:30"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/mixins/MintedTreasuryNode.sol",
+    "exportedSymbols": {
+      "AddressUpgradeable": [
+        1763
+      ],
+      "Initializable": [
+        453
+      ],
+      "MintedTreasuryNode": [
+        3860
+      ]
+    },
+    "id": 3861,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3816,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:30"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "id": 3817,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3861,
+        "sourceUnit": 454,
+        "src": "76:75:30",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+        "id": 3818,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3861,
+        "sourceUnit": 1764,
+        "src": "153:74:30",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3820,
+              "name": "Initializable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 453,
+              "src": "358:13:30"
+            },
+            "id": 3821,
+            "nodeType": "InheritanceSpecifier",
+            "src": "358:13:30"
+          }
+        ],
+        "canonicalName": "MintedTreasuryNode",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3819,
+          "nodeType": "StructuredDocumentation",
+          "src": "231:85:30",
+          "text": " @notice A mixin that stores a reference to the Minted treasury contract."
+        },
+        "fullyImplemented": true,
+        "id": 3860,
+        "linearizedBaseContracts": [
+          3860,
+          453
+        ],
+        "name": "MintedTreasuryNode",
+        "nameLocation": "336:18:30",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 3824,
+            "libraryName": {
+              "id": 3822,
+              "name": "AddressUpgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1763,
+              "src": "383:18:30"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "377:45:30",
+            "typeName": {
+              "id": 3823,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "406:15:30",
+              "stateMutability": "payable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 3826,
+            "mutability": "mutable",
+            "name": "treasury",
+            "nameLocation": "452:8:30",
+            "nodeType": "VariableDeclaration",
+            "scope": 3860,
+            "src": "428:32:30",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address_payable",
+              "typeString": "address payable"
+            },
+            "typeName": {
+              "id": 3825,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "428:15:30",
+              "stateMutability": "payable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 3845,
+              "nodeType": "Block",
+              "src": "656:120:30",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "expression": {
+                            "id": 3835,
+                            "name": "_treasury",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3829,
+                            "src": "671:9:30",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "id": 3836,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "isContract",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1538,
+                          "src": "671:20:30",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$bound_to$_t_address_$",
+                            "typeString": "function (address) view returns (bool)"
+                          }
+                        },
+                        "id": 3837,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "671:22:30",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4d696e74656454726561737572794e6f64653a2041646472657373206973206e6f74206120636f6e7472616374",
+                        "id": 3838,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "695:47:30",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_8d6689b9bc9cb168bcb7ba5acf38617f233af70d37914f1374c71613dff0ed2c",
+                          "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
+                        },
+                        "value": "MintedTreasuryNode: Address is not a contract"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_8d6689b9bc9cb168bcb7ba5acf38617f233af70d37914f1374c71613dff0ed2c",
+                          "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
+                        }
+                      ],
+                      "id": 3834,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "663:7:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 3839,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "663:80:30",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3840,
+                  "nodeType": "ExpressionStatement",
+                  "src": "663:80:30"
+                },
+                {
+                  "expression": {
+                    "id": 3843,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 3841,
+                      "name": "treasury",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3826,
+                      "src": "750:8:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 3842,
+                      "name": "_treasury",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3829,
+                      "src": "761:9:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "750:20:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "id": 3844,
+                  "nodeType": "ExpressionStatement",
+                  "src": "750:20:30"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3827,
+              "nodeType": "StructuredDocumentation",
+              "src": "467:98:30",
+              "text": " @dev Called once after the initial deployment to set the Minted treasury address."
+            },
+            "id": 3846,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 3832,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 3831,
+                  "name": "initializer",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 452,
+                  "src": "644:11:30"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "644:11:30"
+              }
+            ],
+            "name": "_initializeMintedTreasuryNode",
+            "nameLocation": "578:29:30",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3830,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3829,
+                  "mutability": "mutable",
+                  "name": "_treasury",
+                  "nameLocation": "624:9:30",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3846,
+                  "src": "608:25:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 3828,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "608:15:30",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "607:27:30"
+            },
+            "returnParameters": {
+              "id": 3833,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "656:0:30"
+            },
+            "scope": 3860,
+            "src": "569:207:30",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3854,
+              "nodeType": "Block",
+              "src": "921:28:30",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 3852,
+                    "name": "treasury",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 3826,
+                    "src": "935:8:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "functionReturnParameters": 3851,
+                  "id": 3853,
+                  "nodeType": "Return",
+                  "src": "928:15:30"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3847,
+              "nodeType": "StructuredDocumentation",
+              "src": "782:68:30",
+              "text": " @notice Returns the address of the Minted treasury."
+            },
+            "functionSelector": "753af00e",
+            "id": 3855,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMintedTreasury",
+            "nameLocation": "863:17:30",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3848,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "880:2:30"
+            },
+            "returnParameters": {
+              "id": 3851,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3850,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3855,
+                  "src": "904:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 3849,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "904:15:30",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "903:17:30"
+            },
+            "scope": 3860,
+            "src": "854:95:30",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 3859,
+            "mutability": "mutable",
+            "name": "__gap",
+            "nameLocation": "1094:5:30",
+            "nodeType": "VariableDeclaration",
+            "scope": 3860,
+            "src": "1072:27:30",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$2000_storage",
+              "typeString": "uint256[2000]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3856,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "1072:7:30",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 3858,
+              "length": {
+                "hexValue": "32303030",
+                "id": 3857,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "1080:4:30",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_2000_by_1",
+                  "typeString": "int_const 2000"
+                },
+                "value": "2000"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "1072:13:30",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$2000_storage_ptr",
+                "typeString": "uint256[2000]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 3861,
+        "src": "318:785:30",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:1054:30"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.927Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "getMintedTreasury()": {
+        "notice": "Returns the address of the Minted treasury."
+      }
+    },
+    "notice": "A mixin that stores a reference to the Minted treasury contract.",
+    "version": 1
+  }
+}

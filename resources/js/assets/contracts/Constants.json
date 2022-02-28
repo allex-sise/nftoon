@@ -1,0 +1,220 @@
+{
+  "contractName": "Constants",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Constant values shared across mixins.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/mixins/Constants.sol\":\"Constants\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/minted/mixins/Constants.sol\":{\"keccak256\":\"0x26730f76005a9fde34986172a58d89337f4fa3bd3a1983c136a2ae0b9ad380aa\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://d27bbefc91d769e3c4abf28508ff05e00cb567b0f161dbb78a5f5c73d703e6f8\",\"dweb:/ipfs/QmQJ7vgHELx2aDsCaQbimA4RGuffjyocSdWKQThTaUAvgY\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @dev Constant values shared across mixins.\r\n */\r\nabstract contract Constants {\r\n  uint256 internal constant BASIS_POINTS = 10000;\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\mixins\\Constants.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/mixins/Constants.sol",
+    "exportedSymbols": {
+      "Constants": [
+        3784
+      ]
+    },
+    "id": 3785,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3779,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:28"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "Constants",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3780,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:55:28",
+          "text": " @dev Constant values shared across mixins."
+        },
+        "fullyImplemented": true,
+        "id": 3784,
+        "linearizedBaseContracts": [
+          3784
+        ],
+        "name": "Constants",
+        "nameLocation": "151:9:28",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 3783,
+            "mutability": "constant",
+            "name": "BASIS_POINTS",
+            "nameLocation": "192:12:28",
+            "nodeType": "VariableDeclaration",
+            "scope": 3784,
+            "src": "166:46:28",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3781,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "166:7:28",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "3130303030",
+              "id": 3782,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "207:5:28",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_10000_by_1",
+                "typeString": "int_const 10000"
+              },
+              "value": "10000"
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 3785,
+        "src": "133:83:28",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:167:28"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/mixins/Constants.sol",
+    "exportedSymbols": {
+      "Constants": [
+        3784
+      ]
+    },
+    "id": 3785,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3779,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:28"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "Constants",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3780,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:55:28",
+          "text": " @dev Constant values shared across mixins."
+        },
+        "fullyImplemented": true,
+        "id": 3784,
+        "linearizedBaseContracts": [
+          3784
+        ],
+        "name": "Constants",
+        "nameLocation": "151:9:28",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 3783,
+            "mutability": "constant",
+            "name": "BASIS_POINTS",
+            "nameLocation": "192:12:28",
+            "nodeType": "VariableDeclaration",
+            "scope": 3784,
+            "src": "166:46:28",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3781,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "166:7:28",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "3130303030",
+              "id": 3782,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "207:5:28",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_10000_by_1",
+                "typeString": "int_const 10000"
+              },
+              "value": "10000"
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 3785,
+        "src": "133:83:28",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:167:28"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.919Z",
+  "devdoc": {
+    "details": "Constant values shared across mixins.",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

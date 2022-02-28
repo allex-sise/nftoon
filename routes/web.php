@@ -172,6 +172,7 @@ Route::group(['prefix' => 'paypal'],function(){
       Route::get('collection/{collectionname?}', 'CollectionController@singleCollection')->name('singleCollection');
       Route::get('collections/', 'CollectionController@collectionsAll')->name('collectionsAll');
       Route::get('collection/', 'CollectionController@collectionWiseItem');
+      Route::post('item/saveStuff/', 'ItemController@saveStuffDB')->name('saveStuffDB');
       /* ********************* START CART ROUTES ********************* */
       Route::post('item/cart', 'ItemController@AddCart')->name('AddCartItem');
       Route::post('item/cart/quick', 'ItemController@QuickAddCart')->name('QuickAddCart');

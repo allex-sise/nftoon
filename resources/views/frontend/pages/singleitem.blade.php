@@ -253,6 +253,11 @@ $img2 = @$data['item']->icon;
                                         </div>
                                         <!-- single -->
                                     </div>
+
+                                    <div id="app">
+                                        <mint-nft mint-route="{{route('saveStuffDB')}}" item-id="{{ @$data['item']->id }}" />
+                                    </div>
+
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                         @foreach ($data['history'] as $his)
                                         <!-- single creator -->
@@ -499,6 +504,9 @@ $img2 = @$data['item']->icon;
    
 </form>
 
+@endsection
+@section('script')
+  <script src="{{asset('public/js/app.js')}}"></script>
 @endsection
 @push('js')
 <script src="{{ asset('public/frontend/js/') }}/dm_price_cal.js"></script>

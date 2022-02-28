@@ -346,4 +346,24 @@ class ItemController extends Controller
         } 
     }
 
+    function saveStuffDB(Request $r){
+        DB::beginTransaction();
+        try {
+    
+
+        $item = Item::where('id',$r->idd)->first();
+
+        $item->purchase_link = $r->transactionHash;
+        $item->save();
+
+        DB::commit(); 
+        return redirect()->back();
+        } catch (\Exception $e) {
+            // dd($e);
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+
+    }
 }

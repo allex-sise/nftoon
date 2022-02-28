@@ -1,0 +1,309 @@
+{
+  "contractName": "IMINTEDNFT721",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenCreator",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenCreator\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/interfaces/IMINTEDNFT721.sol\":\"IMINTEDNFT721\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/minted/interfaces/IMINTEDNFT721.sol\":{\"keccak256\":\"0xffce0349cc3169242ea6a7b2353f87d503a975628d37dae867f830638455ec3b\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://c7f3610f192819287d0174361c30d9c9f3beb24c4d104f32d7739c3ba3bb99e6\",\"dweb:/ipfs/QmPpH4e9cRtiGuKBbBJYoUr86X2qHk6Q5gwkRAKnCE5nFy\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n// solhint-disable\r\n\r\npragma solidity ^0.8.0;\r\n\r\ninterface IMINTEDNFT721 {\r\n  function tokenCreator(uint256 tokenId) external view returns (address payable);\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\interfaces\\IMINTEDNFT721.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFT721.sol",
+    "exportedSymbols": {
+      "IMINTEDNFT721": [
+        3342
+      ]
+    },
+    "id": 3343,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3334,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "69:23:22"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMINTEDNFT721",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3342,
+        "linearizedBaseContracts": [
+          3342
+        ],
+        "name": "IMINTEDNFT721",
+        "nameLocation": "106:13:22",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "40c1a064",
+            "id": 3341,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenCreator",
+            "nameLocation": "134:12:22",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3337,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3336,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "155:7:22",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3341,
+                  "src": "147:15:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3335,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:17:22"
+            },
+            "returnParameters": {
+              "id": 3340,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3339,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3341,
+                  "src": "187:15:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 3338,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "187:15:22",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "186:17:22"
+            },
+            "scope": 3342,
+            "src": "125:79:22",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3343,
+        "src": "96:111:22",
+        "usedErrors": []
+      }
+    ],
+    "src": "69:138:22"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFT721.sol",
+    "exportedSymbols": {
+      "IMINTEDNFT721": [
+        3342
+      ]
+    },
+    "id": 3343,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3334,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "69:23:22"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMINTEDNFT721",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3342,
+        "linearizedBaseContracts": [
+          3342
+        ],
+        "name": "IMINTEDNFT721",
+        "nameLocation": "106:13:22",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "40c1a064",
+            "id": 3341,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenCreator",
+            "nameLocation": "134:12:22",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3337,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3336,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "155:7:22",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3341,
+                  "src": "147:15:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3335,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:17:22"
+            },
+            "returnParameters": {
+              "id": 3340,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3339,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3341,
+                  "src": "187:15:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 3338,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "187:15:22",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "186:17:22"
+            },
+            "scope": 3342,
+            "src": "125:79:22",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3343,
+        "src": "96:111:22",
+        "usedErrors": []
+      }
+    ],
+    "src": "69:138:22"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.888Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

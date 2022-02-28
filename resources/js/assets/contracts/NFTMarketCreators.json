@@ -1,0 +1,1087 @@
+{
+  "contractName": "NFTMarketCreators",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"In the future this may store creators directly in order to support NFTs created on a different platform.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"A mixin for associating creators to NFTs.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/minted/mixins/NFTMarketCreators.sol\":\"NFTMarketCreators\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fe9fa1beb63e4a09637701f783982ba80380d630d600c9cafe26b68bf58be1b2\",\"dweb:/ipfs/QmRA3GXhTWys88joD9x8xYhdjzvGwmDGLMMzGw3LxbSEge\"]},\"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol\":{\"keccak256\":\"0x89fa60d14355f7ae06af11e28fce2bb90c5c6186645d681a30e1b36234a4c210\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6f05bc422cea1903d9ba10eece86d8bce72c2f1a225f174101b992b978534c2d\",\"dweb:/ipfs/QmQzi5ZMexyRRfkyur7G2uHUmaQg4VfvCkUuxbSdqsXTSv\"]},\"project:/contracts/minted/interfaces/IMINTEDNFT721.sol\":{\"keccak256\":\"0xffce0349cc3169242ea6a7b2353f87d503a975628d37dae867f830638455ec3b\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://c7f3610f192819287d0174361c30d9c9f3beb24c4d104f32d7739c3ba3bb99e6\",\"dweb:/ipfs/QmPpH4e9cRtiGuKBbBJYoUr86X2qHk6Q5gwkRAKnCE5nFy\"]},\"project:/contracts/minted/mixins/NFTMarketCreators.sol\":{\"keccak256\":\"0x9691c5ea49932827d945b3c1e66448bffbac702c65bb103be74cce28c450dd77\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://1839f92f91e4bc25a5c585076d77b5753231237043cdccdaaf48f48b2d7baffc\",\"dweb:/ipfs/QmT9DRok6subTjrJEfh9RzkGX5os7HVPmrgdts2h5ufGBJ\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT OR Apache-2.0\r\n\r\npragma solidity ^0.8.0;\r\n\r\nimport \"../interfaces/IMINTEDNFT721.sol\";\r\n\r\nimport \"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol\";\r\n\r\n/**\r\n * @notice A mixin for associating creators to NFTs.\r\n * @dev In the future this may store creators directly in order to support NFTs created on a different platform.\r\n */\r\nabstract contract NFTMarketCreators is\r\n  ReentrancyGuardUpgradeable // Adding this unused mixin to help with linearization\r\n{\r\n  /**\r\n   * @dev If the creator is not available then 0x0 is returned. Downstream this indicates that the creator\r\n   * fee should be sent to the current seller instead.\r\n   * This may apply when selling NFTs that were not minted on Minted.\r\n   */\r\n  function getCreator(address nftContract, uint256 tokenId) internal view returns (address payable) {\r\n    try IMINTEDNFT721(nftContract).tokenCreator(tokenId) returns (address payable creator) {\r\n      return creator;\r\n    } catch {\r\n      return payable(0);\r\n    }\r\n  }\r\n\r\n  // 500 slots were added via the new SendValueWithFallbackWithdraw mixin\r\n  uint256[500] private ______gap;\r\n}",
+  "sourcePath": "C:\\alex\\nft\\openZeppelin\\mintedBasic\\contracts\\minted\\mixins\\NFTMarketCreators.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/minted/mixins/NFTMarketCreators.sol",
+    "exportedSymbols": {
+      "IMINTEDNFT721": [
+        3342
+      ],
+      "Initializable": [
+        453
+      ],
+      "NFTMarketCreators": [
+        5150
+      ],
+      "ReentrancyGuardUpgradeable": [
+        511
+      ]
+    },
+    "id": 5151,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5108,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:37"
+      },
+      {
+        "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFT721.sol",
+        "file": "../interfaces/IMINTEDNFT721.sol",
+        "id": 5109,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5151,
+        "sourceUnit": 3343,
+        "src": "76:41:37",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol",
+        "id": 5110,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5151,
+        "sourceUnit": 512,
+        "src": "121:85:37",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 5112,
+              "name": "ReentrancyGuardUpgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 511,
+              "src": "430:26:37"
+            },
+            "id": 5113,
+            "nodeType": "InheritanceSpecifier",
+            "src": "430:26:37"
+          }
+        ],
+        "canonicalName": "NFTMarketCreators",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 5111,
+          "nodeType": "StructuredDocumentation",
+          "src": "210:176:37",
+          "text": " @notice A mixin for associating creators to NFTs.\n @dev In the future this may store creators directly in order to support NFTs created on a different platform."
+        },
+        "fullyImplemented": true,
+        "id": 5150,
+        "linearizedBaseContracts": [
+          5150,
+          511,
+          453
+        ],
+        "name": "NFTMarketCreators",
+        "nameLocation": "406:17:37",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 5144,
+              "nodeType": "Block",
+              "src": "865:171:37",
+              "statements": [
+                {
+                  "clauses": [
+                    {
+                      "block": {
+                        "id": 5134,
+                        "nodeType": "Block",
+                        "src": "959:31:37",
+                        "statements": [
+                          {
+                            "expression": {
+                              "id": 5132,
+                              "name": "creator",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5130,
+                              "src": "975:7:37",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "functionReturnParameters": 5122,
+                            "id": 5133,
+                            "nodeType": "Return",
+                            "src": "968:14:37"
+                          }
+                        ]
+                      },
+                      "errorName": "",
+                      "id": 5135,
+                      "nodeType": "TryCatchClause",
+                      "parameters": {
+                        "id": 5131,
+                        "nodeType": "ParameterList",
+                        "parameters": [
+                          {
+                            "constant": false,
+                            "id": 5130,
+                            "mutability": "mutable",
+                            "name": "creator",
+                            "nameLocation": "950:7:37",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 5135,
+                            "src": "934:23:37",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            },
+                            "typeName": {
+                              "id": 5129,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "934:15:37",
+                              "stateMutability": "payable",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "visibility": "internal"
+                          }
+                        ],
+                        "src": "933:25:37"
+                      },
+                      "src": "925:65:37"
+                    },
+                    {
+                      "block": {
+                        "id": 5141,
+                        "nodeType": "Block",
+                        "src": "997:34:37",
+                        "statements": [
+                          {
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "hexValue": "30",
+                                  "id": 5138,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1021:1:37",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  },
+                                  "value": "0"
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  }
+                                ],
+                                "id": 5137,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1013:8:37",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_payable_$",
+                                  "typeString": "type(address payable)"
+                                },
+                                "typeName": {
+                                  "id": 5136,
+                                  "name": "address",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "1013:8:37",
+                                  "stateMutability": "payable",
+                                  "typeDescriptions": {}
+                                }
+                              },
+                              "id": 5139,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1013:10:37",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "functionReturnParameters": 5122,
+                            "id": 5140,
+                            "nodeType": "Return",
+                            "src": "1006:17:37"
+                          }
+                        ]
+                      },
+                      "errorName": "",
+                      "id": 5142,
+                      "nodeType": "TryCatchClause",
+                      "src": "991:40:37"
+                    }
+                  ],
+                  "externalCall": {
+                    "arguments": [
+                      {
+                        "id": 5127,
+                        "name": "tokenId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5118,
+                        "src": "916:7:37",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 5124,
+                            "name": "nftContract",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5116,
+                            "src": "890:11:37",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 5123,
+                          "name": "IMINTEDNFT721",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3342,
+                          "src": "876:13:37",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IMINTEDNFT721_$3342_$",
+                            "typeString": "type(contract IMINTEDNFT721)"
+                          }
+                        },
+                        "id": 5125,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "876:26:37",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IMINTEDNFT721_$3342",
+                          "typeString": "contract IMINTEDNFT721"
+                        }
+                      },
+                      "id": 5126,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "tokenCreator",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3341,
+                      "src": "876:39:37",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_payable_$",
+                        "typeString": "function (uint256) view external returns (address payable)"
+                      }
+                    },
+                    "id": 5128,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "876:48:37",
+                    "tryCall": true,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "id": 5143,
+                  "nodeType": "TryStatement",
+                  "src": "872:159:37"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5114,
+              "nodeType": "StructuredDocumentation",
+              "src": "518:245:37",
+              "text": " @dev If the creator is not available then 0x0 is returned. Downstream this indicates that the creator\n fee should be sent to the current seller instead.\n This may apply when selling NFTs that were not minted on Minted."
+            },
+            "id": 5145,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCreator",
+            "nameLocation": "776:10:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5119,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5116,
+                  "mutability": "mutable",
+                  "name": "nftContract",
+                  "nameLocation": "795:11:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5145,
+                  "src": "787:19:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5115,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "787:7:37",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5118,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "816:7:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5145,
+                  "src": "808:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5117,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "808:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "786:38:37"
+            },
+            "returnParameters": {
+              "id": 5122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5121,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5145,
+                  "src": "848:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 5120,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "848:15:37",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "847:17:37"
+            },
+            "scope": 5150,
+            "src": "767:269:37",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 5149,
+            "mutability": "mutable",
+            "name": "______gap",
+            "nameLocation": "1138:9:37",
+            "nodeType": "VariableDeclaration",
+            "scope": 5150,
+            "src": "1117:30:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$500_storage",
+              "typeString": "uint256[500]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 5146,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "1117:7:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 5148,
+              "length": {
+                "hexValue": "353030",
+                "id": 5147,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "1125:3:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_500_by_1",
+                  "typeString": "int_const 500"
+                },
+                "value": "500"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "1117:12:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$500_storage_ptr",
+                "typeString": "uint256[500]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 5151,
+        "src": "388:763:37",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:1102:37"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/minted/mixins/NFTMarketCreators.sol",
+    "exportedSymbols": {
+      "IMINTEDNFT721": [
+        3342
+      ],
+      "Initializable": [
+        453
+      ],
+      "NFTMarketCreators": [
+        5150
+      ],
+      "ReentrancyGuardUpgradeable": [
+        511
+      ]
+    },
+    "id": 5151,
+    "license": "MIT OR Apache-2.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5108,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "49:23:37"
+      },
+      {
+        "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFT721.sol",
+        "file": "../interfaces/IMINTEDNFT721.sol",
+        "id": 5109,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5151,
+        "sourceUnit": 3343,
+        "src": "76:41:37",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol",
+        "id": 5110,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 5151,
+        "sourceUnit": 512,
+        "src": "121:85:37",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 5112,
+              "name": "ReentrancyGuardUpgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 511,
+              "src": "430:26:37"
+            },
+            "id": 5113,
+            "nodeType": "InheritanceSpecifier",
+            "src": "430:26:37"
+          }
+        ],
+        "canonicalName": "NFTMarketCreators",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 5111,
+          "nodeType": "StructuredDocumentation",
+          "src": "210:176:37",
+          "text": " @notice A mixin for associating creators to NFTs.\n @dev In the future this may store creators directly in order to support NFTs created on a different platform."
+        },
+        "fullyImplemented": true,
+        "id": 5150,
+        "linearizedBaseContracts": [
+          5150,
+          511,
+          453
+        ],
+        "name": "NFTMarketCreators",
+        "nameLocation": "406:17:37",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 5144,
+              "nodeType": "Block",
+              "src": "865:171:37",
+              "statements": [
+                {
+                  "clauses": [
+                    {
+                      "block": {
+                        "id": 5134,
+                        "nodeType": "Block",
+                        "src": "959:31:37",
+                        "statements": [
+                          {
+                            "expression": {
+                              "id": 5132,
+                              "name": "creator",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5130,
+                              "src": "975:7:37",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "functionReturnParameters": 5122,
+                            "id": 5133,
+                            "nodeType": "Return",
+                            "src": "968:14:37"
+                          }
+                        ]
+                      },
+                      "errorName": "",
+                      "id": 5135,
+                      "nodeType": "TryCatchClause",
+                      "parameters": {
+                        "id": 5131,
+                        "nodeType": "ParameterList",
+                        "parameters": [
+                          {
+                            "constant": false,
+                            "id": 5130,
+                            "mutability": "mutable",
+                            "name": "creator",
+                            "nameLocation": "950:7:37",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 5135,
+                            "src": "934:23:37",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            },
+                            "typeName": {
+                              "id": 5129,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "934:15:37",
+                              "stateMutability": "payable",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "visibility": "internal"
+                          }
+                        ],
+                        "src": "933:25:37"
+                      },
+                      "src": "925:65:37"
+                    },
+                    {
+                      "block": {
+                        "id": 5141,
+                        "nodeType": "Block",
+                        "src": "997:34:37",
+                        "statements": [
+                          {
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "hexValue": "30",
+                                  "id": 5138,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1021:1:37",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  },
+                                  "value": "0"
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  }
+                                ],
+                                "id": 5137,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1013:8:37",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_payable_$",
+                                  "typeString": "type(address payable)"
+                                },
+                                "typeName": {
+                                  "id": 5136,
+                                  "name": "address",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "1013:8:37",
+                                  "stateMutability": "payable",
+                                  "typeDescriptions": {}
+                                }
+                              },
+                              "id": 5139,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1013:10:37",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "functionReturnParameters": 5122,
+                            "id": 5140,
+                            "nodeType": "Return",
+                            "src": "1006:17:37"
+                          }
+                        ]
+                      },
+                      "errorName": "",
+                      "id": 5142,
+                      "nodeType": "TryCatchClause",
+                      "src": "991:40:37"
+                    }
+                  ],
+                  "externalCall": {
+                    "arguments": [
+                      {
+                        "id": 5127,
+                        "name": "tokenId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5118,
+                        "src": "916:7:37",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 5124,
+                            "name": "nftContract",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5116,
+                            "src": "890:11:37",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 5123,
+                          "name": "IMINTEDNFT721",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3342,
+                          "src": "876:13:37",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IMINTEDNFT721_$3342_$",
+                            "typeString": "type(contract IMINTEDNFT721)"
+                          }
+                        },
+                        "id": 5125,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "876:26:37",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IMINTEDNFT721_$3342",
+                          "typeString": "contract IMINTEDNFT721"
+                        }
+                      },
+                      "id": 5126,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "tokenCreator",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3341,
+                      "src": "876:39:37",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_payable_$",
+                        "typeString": "function (uint256) view external returns (address payable)"
+                      }
+                    },
+                    "id": 5128,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "876:48:37",
+                    "tryCall": true,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "id": 5143,
+                  "nodeType": "TryStatement",
+                  "src": "872:159:37"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5114,
+              "nodeType": "StructuredDocumentation",
+              "src": "518:245:37",
+              "text": " @dev If the creator is not available then 0x0 is returned. Downstream this indicates that the creator\n fee should be sent to the current seller instead.\n This may apply when selling NFTs that were not minted on Minted."
+            },
+            "id": 5145,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCreator",
+            "nameLocation": "776:10:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5119,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5116,
+                  "mutability": "mutable",
+                  "name": "nftContract",
+                  "nameLocation": "795:11:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5145,
+                  "src": "787:19:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5115,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "787:7:37",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5118,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "816:7:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5145,
+                  "src": "808:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5117,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "808:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "786:38:37"
+            },
+            "returnParameters": {
+              "id": 5122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5121,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5145,
+                  "src": "848:15:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 5120,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "848:15:37",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "847:17:37"
+            },
+            "scope": 5150,
+            "src": "767:269:37",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 5149,
+            "mutability": "mutable",
+            "name": "______gap",
+            "nameLocation": "1138:9:37",
+            "nodeType": "VariableDeclaration",
+            "scope": 5150,
+            "src": "1117:30:37",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_uint256_$500_storage",
+              "typeString": "uint256[500]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 5146,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "1117:7:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "id": 5148,
+              "length": {
+                "hexValue": "353030",
+                "id": 5147,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "1125:3:37",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_500_by_1",
+                  "typeString": "int_const 500"
+                },
+                "value": "500"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "1117:12:37",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_uint256_$500_storage_ptr",
+                "typeString": "uint256[500]"
+              }
+            },
+            "visibility": "private"
+          }
+        ],
+        "scope": 5151,
+        "src": "388:763:37",
+        "usedErrors": []
+      }
+    ],
+    "src": "49:1102:37"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T13:51:10.976Z",
+  "devdoc": {
+    "details": "In the future this may store creators directly in order to support NFTs created on a different platform.",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "A mixin for associating creators to NFTs.",
+    "version": 1
+  }
+}

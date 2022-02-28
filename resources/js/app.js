@@ -25,6 +25,7 @@ Vue.component('withdraw-admin', require('./components/Withdraw/WithdrawAdmin.vue
 Vue.component('deposit', require('./components/Deposit.vue').default);
 Vue.component('blockchain-loader', require('./components/BlockchainLoader.vue').default);
 Vue.component('toggle-theme-color', require('./components/ToggleThemeColor.vue').default);
+Vue.component('mint-nft', require('./components/MintNft.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
