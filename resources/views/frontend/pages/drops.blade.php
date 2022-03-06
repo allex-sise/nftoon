@@ -35,6 +35,19 @@
     height: 270px;
     transition: var(--transition);
 }
+.videocollection{
+    display: inline-block;
+    width: 33.33%;
+    padding: 4px;
+    border-radius: 10px;
+}
+.rn-collection-inner-one .collection-wrapper .collenction-small-thumbnail img {
+    display: inline-block;
+    width: 33.33%;
+    padding: 4px;
+    border-radius: 10px;
+    height: auto;
+}
     </style>
 
     <div class="rn-author-bg-area bg_image--91 bg_image ptb--150">
@@ -74,10 +87,21 @@
                             <div class="collection-big-thumbnail">
                                 <img src="{{asset(@$drop->dropicon)}}">
                             </div>
+                            @php                                                        
+                                $imageNFTs = App\DropNFTs::where('drop_id', $drop->id)->take(3)->get();
+                            @endphp
                             <div class="collenction-small-thumbnail">
-                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
-                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
-                                <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
+                                @foreach ($imageNFTs as $image)
+                                    @if ($image->Item->file == 'img')
+                                        <img src="{{ asset($image->Item->icon) }}" class="" alt="">
+                                        @elseif($image->Item->file == 'video')
+                                        <video width="100%" height="100%" class="videocollection" autoplay muted controls loop>
+                                        <source src="{{ asset($image->Item->main_file) }}" type="video/mp4">
+                                        
+                                        Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                @endforeach
                             </div>
                             <div class="collection-profile">
                                 <img src="{{asset(@$drop->dropicon)}}" alt="Nft_Profile">
@@ -114,7 +138,11 @@
                                                 <span class="countdown-heading">Sec</span>
                                             </div>
                                         </div>
-                                    <span class="items">27 Items</span>
+                                @php                                                        
+                                    $countNFTs = App\DropNFTs::where('drop_id', $drop->id)->count();
+                                @endphp
+                                <span class="items">{{ $countNFTs }} NFTs</span>
+
                             </div>
                         </div>
                     </a>

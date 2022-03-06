@@ -35,6 +35,19 @@
     height: 270px;
     transition: var(--transition);
 }
+.videocollection{
+    display: inline-block;
+    width: 33.33%;
+    padding: 4px;
+    border-radius: 10px;
+}
+.rn-collection-inner-one .collection-wrapper .collenction-small-thumbnail img {
+    display: inline-block;
+    width: 33.33%;
+    padding: 4px;
+    border-radius: 10px;
+    height: auto;
+}
     </style>
 
  <!-- start page title area -->
@@ -68,11 +81,23 @@
                             <div class="collection-big-thumbnail">
                                 <img src="{{asset(@$collection->dropicon)}}">
                             </div>
+                            @php                                                        
+                                $imageNFTs = App\CollectionsNFTs::where('collection_id', $collection->id)->take(3)->get();
+                            @endphp
                             <div class="collenction-small-thumbnail">
-                                <img src="{{asset(@$collection->dropicon)}}" alt="Nft_Profile">
-                                <img src="{{asset(@$collection->dropicon)}}" alt="Nft_Profile">
-                                <img src="{{asset(@$collection->dropicon)}}" alt="Nft_Profile">
+                                @foreach ($imageNFTs as $image)
+                                    @if ($image->Item->file == 'img')
+                                        <img src="{{ asset($image->Item->icon) }}" class="" alt="">
+                                        @elseif($image->Item->file == 'video')
+                                        <video width="100%" height="100%" class="videocollection" autoplay muted controls loop>
+                                        <source src="{{ asset($image->Item->main_file) }}" type="video/mp4">
+                                        
+                                        Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                @endforeach
                             </div>
+                            
                             <div class="collection-profile">
                                 <img src="{{ @$collection->creator->profile->image? asset(@$collection->creator->profile->image):asset('public/frontend/img/profile/1.png') }}">
                             </div>

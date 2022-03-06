@@ -20,5 +20,4 @@ class CollectionsNFTs extends Model
         return $this->hasOne('App\User','id','creator_id');
     }
 
-
 }

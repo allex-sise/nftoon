@@ -114,7 +114,7 @@ export default new Vuex.Store({
 
             console.log('MINT', payloadContract);
             //todo: salveaza in DB tx hash
-            const mintTxn = await connectedContract["mint(string)"]('QmTUX9mwjT3oHC4P3zEoHdSt1tNJrxTRib2i1nNnraxFmR/10.json');
+            const mintTxn = await connectedContract["mint(string)"]('QmTUX9mwjT3oHC4P3zEoHdSt1tNJrxTRib2i1nNnraxFmR/12.json');
             
             console.log('mintTxn', mintTxn);
             // await mintTxn.wait();

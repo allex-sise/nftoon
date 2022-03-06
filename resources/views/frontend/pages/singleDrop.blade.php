@@ -1,9 +1,5 @@
 @extends('frontend.master')
-@push('css')
 
-    <link rel="stylesheet" href="{{ asset('public/frontend/css/') }}/index_modal.css">
-
-@endpush
 @php 
 
     $headerbnr = $data['drop']->dropicon;
@@ -38,22 +34,78 @@
                 <div class="col-xl-8 offset-xl-2">
                      <div class="banner-info text-center mb-30">
                         <h2>{{ @$data['drop']->name}}</h2>
-                        
+                        <h5 class="title text-center">{{ @$data['drop']->description}}</h5>
                             @php
                             use Carbon\Carbon;
                             @endphp
                             @if ( $data['drop']->startdate >=  Carbon::now())
+                            @php
+                                    $date = $data['drop']->startdate;
+                                    
+                                    $day_year = date('Y-m-d', strtotime($date));
+                                    $day_name = date('j', strtotime($date));
+                                    $day_month = date('n', strtotime($date));
+                                    $day_hour = date('H', strtotime($date));
+                                @endphp
+                              
+                            
+
                             <div class="col-xl-10 offset-xl-2 mgt50">
-                                <div class="col-md-4 float-left mgleft50">
-                                    <h3 class="h3clss">Drop-ul incepe in:</h3>
-                                    <div data-countdown="{{ $data['drop']->startdate }}" style="font-size: 25px; color:#FFF;"></div>
-                                </div>
+                                    <div class="col-md-5" style="float: left!important;">
+                                        <h3 class="h3clss">Drop-ul incepe in:</h3>
+                                        <div class="countdown" data-date="{{$day_year}}">
+                                        
+                                            <div class="countdown-container days">
+                                                <span class="countdown-value">87</span>
+                                                <span class="countdown-heading">D's</span>
+                                            </div>
+                                            <div class="countdown-container hours">
+                                                <span class="countdown-value">23</span>
+                                                <span class="countdown-heading">H's</span>
+                                            </div>
+                                            <div class="countdown-container minutes">
+                                                <span class="countdown-value">38</span>
+                                                <span class="countdown-heading">Min's</span>
+                                            </div>
+                                            <div class="countdown-container seconds">
+                                                <span class="countdown-value">27</span>
+                                                <span class="countdown-heading">Sec</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
                                 @if ( $data['drop']->expdate >=  Carbon::now())
-                                <div class="col-md-4 float-left mgleft30">
-                                    <h3 class="h3clss">Drop-ul se termina in:</h3>
-                                    <div data-countdown="{{ $data['drop']->expdate }}" style="font-size: 25px; color:#FFF;"></div>
-                                </div>
+                                @php
+                                    $date2 = $data['drop']->expdate;
+                                    
+                                    $day_year = date('Y-m-d', strtotime($date2));
+                                    $day_name = date('j', strtotime($date2));
+                                    $day_month = date('n', strtotime($date2));
+                                    $day_hour = date('H', strtotime($date2));
+                                @endphp
+                                <div class="col-md-5" style="float: left!important;">
+                                        <h3 class="h3clss">Drop-ul se termina in:</h3>
+                                        <div class="countdown" data-date="{{$day_year}}">
+                                        
+                                            <div class="countdown-container days">
+                                                <span class="countdown-value">87</span>
+                                                <span class="countdown-heading">D's</span>
+                                            </div>
+                                            <div class="countdown-container hours">
+                                                <span class="countdown-value">23</span>
+                                                <span class="countdown-heading">H's</span>
+                                            </div>
+                                            <div class="countdown-container minutes">
+                                                <span class="countdown-value">38</span>
+                                                <span class="countdown-heading">Min's</span>
+                                            </div>
+                                            <div class="countdown-container seconds">
+                                                <span class="countdown-value">27</span>
+                                                <span class="countdown-heading">Sec</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
                             </div>
                             @else
                             <h3 class="h3clss">Drop-ul sa incheiat</h3>
@@ -88,7 +140,6 @@
       
         <div class="container">
             <div class="row g-5">
-            <h3 class="h3clss">{{ @$data['drop']->description}}</h3>
             @foreach ($data['item'] as $item)
                 <!-- start single product -->
                 <div class="grid-metro-item cat--1 cat--3">
@@ -153,13 +204,5 @@
 
 @endsection
 @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-$('[data-countdown]').each(function() {
-  var $this = $(this), finalDate = $(this).data('countdown');
-  $this.countdown(finalDate, function(event) {
-    $this.html(event.strftime('%D zile <br /> %H:%M:%S'));
-  });
-});
-</script>
+
 @endpush
