@@ -103,19 +103,19 @@ $img2 = @$data['item']->icon;
                     @endphp
                     <div class="pd-tab-inner" @if ( $data['item']->nftmultiplu == 1) style="display: flex!important;" @else style="display: block!important;" @endif>
                         <div class="nav rn-pd-nav rn-pd-rt-content nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            @foreach ( $jsonimagini as $key2 => $value2)
+                        @foreach ($img as $key2 => $poza)
                             <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="v-pills-{{$key2}}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{$key2}}" type="button" role="tab" aria-controls="v-pills-{{$key2}}" aria-selected="true">
                                 <span class="rn-pd-sm-thumbnail">
-                                    <img src="{{ asset(@$value2)}}" alt="Nft_Profile">
+                                    <img src="{{ asset(@$poza)}}" alt="Nft_Profile">
                                 </span>
                             </button>
                             @endforeach
                         </div>
                         <div class="tab-content rn-pd-content" id="v-pills-tabContent">
-                            @foreach ( $jsonimagini as $key2 => $value2)
+                        @foreach ($img as $key2 => $poza)
                             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="v-pills-{{$key2}}" role="tabpanel" aria-labelledby="v-pills-{{$key2}}-tab">
                                 <div class="rn-pd-thumbnail">
-                                    <img src="{{ asset(@$value2)}}" alt="Nft_Profile">
+                                    <img src="{{ asset(@$poza)}}" alt="Nft_Profile">
                                 </div>
                             </div>
                             @endforeach

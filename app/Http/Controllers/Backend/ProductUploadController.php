@@ -133,6 +133,80 @@ class ProductUploadController extends Controller
     
         
          
+
+            $zip = new \ZipArchive();
+            $file = $r->file('theme_preview');
+            $zip->open($file->path());
+
+            $filesInside = [];
+            for ($i = 0; $i < $zip->count(); $i++) {            
+                $file_name=$zip->getNameIndex($i);
+                $exten= substr($file_name, strpos($file_name, ".") + 1);
+                if ($exten=='jpg' ||$exten=='jpeg' ||$exten=='png') {
+                    array_push($filesInside, $zip->getNameIndex($i));
+                }
+            }
+        
+
+       
+            $theme_preview = "";
+            if ($r->file('theme_preview') != "") {
+                $file = $r->file('theme_preview');
+                $theme_preview = 'theme_p-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('public/uploads/SessionFile/', $theme_preview);
+                $theme_preview =  'public/uploads/SessionFile/' . $theme_preview;
+
+                $session_file=new SessionFile();
+                $session_file->user_id=Auth::user()->id;
+                $session_file->file_name=$theme_preview;
+                $session_file->save();
+            } 
+            $theme_preview =$theme_preview;
+            $dest= 'public/uploads/product/themePreview';
+
+            
+            if ($r->theme_preview && file_exists($theme_preview)) {
+            
+                $product_id=Item::max('id')+1;
+                $product_image_path = 'public/uploads/product/themePreview/'.$product_id.'/';                            
+                $Image =  time().'-';                         
+                if (!file_exists($product_image_path)){
+                    mkdir($product_image_path, 0777, true);
+                }
+
+                $zip_extract = new ZipArchive;
+                $res = $zip_extract->open($theme_preview);
+                if ($res === TRUE) {
+                    $zip_extract->extractTo($product_image_path);
+                    $zip_extract->close();
+                } else {
+                    return false;
+                }
+
+                // return $theme_preview;
+                // return $r;
+
+
+                $filesInFolder = \File::files($product_image_path);  
+                $image_list=[]; 
+                for ($i = 0; $i < $zip->count(); $i++) {
+                
+                    $file_name=$zip->getNameIndex($i);
+                    $file_exten=explode('.',$file_name);
+                    if (@$file_exten[1]=='jpeg' || @$file_exten[1]=='png'|| @$file_exten[1]=='jpg' ) {
+                        $image_list[]=$product_image_path.$file_name ;
+                    }
+                }
+
+                $preview_image_list= implode(',',$image_list);
+                $item->screen_shot = $preview_image_list;
+                $item->theme_preview = $preview_image_list;
+                $item->save();
+        
+                
+            }else{
+                return false;
+            }
          
             //end laravel file validation 
 

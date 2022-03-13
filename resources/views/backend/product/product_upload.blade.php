@@ -268,7 +268,7 @@
                                                     type="button">
                                                 <label class="primary-btn small fix-gr-bg"
                                                        for="thembnails_upload">@lang('lang.browse') pentru imagine</label>
-                                                <input type="file" class="d-none" onchange="thembnailUpload()" id="thembnails_upload" name="thumdnail">
+                                                <input type="file" class="d-none" onchange="thembnailUpload()" id="thembnails_upload" name="thumdnail" multiple>
                                             </button>
                                             
                                         </div>
@@ -336,7 +336,41 @@
 
                                 </div>
                             </div>
-                       
+                            <div class="row mt-25">
+                                <div class="col-lg-12">
+                                    <div class="row no-gutters input-right-icon">
+                                        <div class="col">
+                                            <div class="input-effect">
+                                                <input class="primary-input {{ $errors->has('theme_preview') ? ' is-invalid' : '' }}" type="text"
+                                                      id="placeholderPhoto"
+                                                       placeholder="@lang('lang.theme_preview') "
+                                                       readonly="">
+                                                <span class="focus-border"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="primary-btn-small-input"
+                                                    type="button">
+                                                <label class="primary-btn small fix-gr-bg"
+                                                       for="preview_upload">@lang('lang.browse')</label>
+                                                <input type="file" class="d-none" name="theme_preview"
+                                                onchange="previewUpload()" id="preview_upload">
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    @if ($errors->has('theme_preview'))
+                                        <span class="invalid-feedback dm_display_block" role="alert" >
+                                            <strong>{{ $errors->first('theme_preview') }}</strong>
+                                        </span>
+                                    @endif
+                                    <p id="preview_file"></p>
+                                </div>
+                            </div>  
+                            <p>@lang('lang.theme_preview_message')
+                                <br>
+                                <strong>[@lang('lang.mark_all_images')]</strong> 
+                            </p> 
                             <div class="row mt-25 data_exp_unic" id="data_exp_unic" style="display:block" >
                             <div class="col-lg-3">
                                     <div class="input-effect">
