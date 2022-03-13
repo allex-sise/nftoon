@@ -388,6 +388,7 @@ class ProductController extends Controller
             $item->ipfs_url = $r->nftImageUrl;
             $item->etherscan_url = $r->etherscan;
             $item->metadata_url = $r->itemMetadataUrl;
+            $item->purchase_link = $r->transactionHash;
             $item->active_status = 1;
             $item->save();
             Toastr::success('NFT updatat cu succes!','Success');

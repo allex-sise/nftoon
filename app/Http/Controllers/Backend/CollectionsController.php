@@ -64,6 +64,7 @@ class CollectionsController extends Controller
             $store->slug = strtolower(str_replace(' ', '_',$request->title));
             $store->description = $request->description;
             $store->contract = $request->contract;
+            $store->ipfs_path = $request->ipfs_path;
             $store->creator_id = $request->creator_id;
 
              //start laravel file validation 
@@ -182,6 +183,8 @@ class CollectionsController extends Controller
                 $store->slug = strtolower(str_replace(' ', '_',$request->title));
                 $store->description = $request->description;
                 $store->creator_id = $request->creator_id;
+                $store->contract = $request->contract;
+                $store->ipfs_path = $request->ipfs_path;
                 $thumbnail =$store->dropicon;
                 if ($request->file('thumdnail') != "") {
                     $file = $request->file('thumdnail');
@@ -189,6 +192,22 @@ class CollectionsController extends Controller
                     $file->move('public/uploads/SessionFile/', $thumbnail);
                     $thumbnail =  'public/uploads/SessionFile/' . $thumbnail;
                 }
+                 //start laravel file validation 
+            if($request->file('placehlimage') ==""){
+                Toastr::error('Lipseste placeholder-ul', 'Failed');
+                return redirect()->back()->withInput();
+            }
+            $placehlimage = "";
+            if ($request->file('placehlimage') != "") {
+                $file = $request->file('placehlimage');
+                $placehlimage = 'thum-'. md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('public/uploads/product/thumbnail/', $placehlimage);
+                $placehlimage =  'public/uploads/product/thumbnail/' . $placehlimage;
+
+                $store->placeholder=$placehlimage;
+                $store->save();
+            }
+
                 $store->dropicon=$thumbnail;
                 $store->save();
 

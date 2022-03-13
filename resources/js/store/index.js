@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { ethers } from "ethers";
 import contract from "../assets/contracts/MintedNFT721.json"
+import contractRegele from "../assets/contracts/NftoonRegeleV3.json"
 import axios from 'axios'
 
 Vue.use(Vuex);
@@ -272,26 +273,27 @@ export default new Vuex.Store({
     },
     async toonMintNftMultiple({dispatch}, payload){
         try {
+            console.log('payload:',payload);
             const mnemonic = process.env.MIX_PUSHER_MNEMONIC;
             const wallet = await dispatch("getSignerUsingMnemonic", mnemonic);
 
             const payloadContract = {
               signer: wallet,
-              contractAddress: process.env.MIX_PUSHER_ALCHEMY_CONTRACT,
-              contractAbi: contract.abi,
+              contractAddress: payload.contractAddress,
+              contractAbi: contractRegele.abi,
             }
             const connectedContract = await dispatch("createContract", payloadContract);
 
             console.log('MINT', payloadContract);
             //todo: salveaza in DB tx hash
-            const mintTxn = await connectedContract["mint(string)"]('QmTUX9mwjT3oHC4P3zEoHdSt1tNJrxTRib2i1nNnraxFmR/12.json');
+            const mintTxn = await connectedContract["mint(string)"](payload.ipfsPath);
             
             console.log('mintTxn', mintTxn);
             // await mintTxn.wait();
 
             const payloadTxHash = {
                 route: payload.route,
-                idd: payload.idd,
+                itemIdkey: payload.itemIdkey,
                 transactionHash: mintTxn.hash
             }
             await dispatch("storeInDb", payloadTxHash);
@@ -473,35 +475,6 @@ export default new Vuex.Store({
         console.log("Transaction not available on the blockchain!");
       }
     },
-    async toonMintNftMultiple({dispatch}, payload){
-      try {
-          const mnemonic = process.env.MIX_PUSHER_MNEMONIC;
-          const wallet = await dispatch("getSignerUsingMnemonic", mnemonic);
-
-          const payloadContract = {
-            signer: wallet,
-            contractAddress: process.env.MIX_PUSHER_ALCHEMY_CONTRACT,
-            contractAbi: contract.abi,
-          }
-          const connectedContract = await dispatch("createContract", payloadContract);
-
-          console.log('MINT', payloadContract);
-          const mintTxn = await connectedContract["mint(string)"]('QmTUX9mwjT3oHC4P3zEoHdSt1tNJrxTRib2i1nNnraxFmR/14.json');
-          
-          console.log('mintTxn', mintTxn);
-          await mintTxn.wait();
-
-          const payloadTxHash = {
-              route: payload.route,
-              idd: payload.idd,
-              transactionHash: mintTxn.hash
-          }
-          await dispatch("storeInDb", payloadTxHash);
-      } catch (error) {
-          console.log(error);
-          return null;
-      }
-  },
   getSignerUsingMetamask(){
     const { ethereum } = window;
     const provider = new ethers.providers.Web3Provider(ethereum);

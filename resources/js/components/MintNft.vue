@@ -2,7 +2,7 @@
   <div id="mintnft">
       <!-- <div v-if="account">{{account}}</div> -->
       <div>
-          <button @click="(mint())" type="button">MINT NFT</button>
+          <button @click="(mint())" type="button">MINT NFT MULTIPLU</button>
       </div>
        
   </div>
@@ -18,15 +18,23 @@ export default {
 //       return this.$store.getters.account;
 //     },
 //   },
+
+//itemIdkey <- nft id
+//itemNumberkey <- nft cloned number (incremental)
   props:{
     mintRoute:null,
-    itemId:null,
+    itemIdkey:null,
+    itemNumberkey:null,
+    contractAddress:null,
+    ipfsPath: null,
   },
   methods:{
     async mint(){
       const payload = {
         route : this.mintRoute,
-        idd : this.itemId
+        itemIdkey : this.itemIdkey,
+        contractAddress : this.contractAddress,
+        ipfsPath : this.ipfsPath + '/' + this.itemNumberkey + '.json',
       };
       //init for setting up event listeners, maybe other way?
       // await this.$store.dispatch("init");

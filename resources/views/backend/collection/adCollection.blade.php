@@ -134,6 +134,24 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="input-effect">
+                                            <input class="primary-input form-control{{ $errors->has('ipfs_path') ? ' is-invalid' : '' }}" type="text" name="ipfs_path"
+                                                   autocomplete="off" value="{{isset($data['edit'])? $data['edit']->ipfs_path :old('ipfs_path')}}">
+
+                                            <input type="hidden" name="id" value="{{isset($data['edit'])? $data['edit']->id: ''}}">
+                                            <label>Ipfs Path <span>*</span></label>
+                                            <span class="focus-border"></span>
+                                            @if ($errors->has('ipfs_path'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('ipfs_path') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row mt-25">
                                     <div class="col-lg-12">
                                         <div class="row no-gutters input-right-icon">

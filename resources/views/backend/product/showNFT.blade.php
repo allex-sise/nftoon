@@ -96,7 +96,14 @@
                 <div class="row" style="padding: 15px;">
                     <div class="col-lg-12 no-gutters bg-white" style="padding: 0px 15px 15px 15px;">
                         <div class="main-title sm_mb_20 lm_mb_35">
-                        
+@php 
+$collection = App\Collections::where('id', $data['item']->in_collection)->first();
+$contract_address = $collection->contract;
+$ipfs_path = $collection->ipfs_path;
+
+$nftmultiple = App\Nftmultiple::where('nftmultiple', $data['item']->id)->first();
+$id_nftmultiple = $nftmultiple->id_multiple;
+@endphp
                            <!-- Vue -->
                             <div id="app">
                                 <metamask-intro 
@@ -109,6 +116,13 @@
                                 image="{{asset(@$data['item']->icon)}}" 
                                 mint-route="{{route('admin.itemUpdateMint')}}" 
                                 receiver-address="{{$data['payout_setup2']->payout_email ?? ''}}"></metamask-intro>
+                                <mint-nft 
+                                mint-route="{{route('admin.itemUpdateMint')}}"
+                                contract-address="{{$contract_address}}"
+                                item-idkey="{{@$data['item']->id}}"  
+                                item-numberkey="{{$id_nftmultiple}}"
+                                ipfs-path="{{$ipfs_path}}"
+                                ></mint-nft>
                             </div> 
 
                         </div>

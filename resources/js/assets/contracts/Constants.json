@@ -15,15 +15,15 @@
     "absolutePath": "project:/contracts/minted/mixins/Constants.sol",
     "exportedSymbols": {
       "Constants": [
-        3784
+        4908
       ]
     },
-    "id": 3785,
+    "id": 4909,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3779,
+        "id": 4903,
         "literals": [
           "solidity",
           "^",
@@ -31,7 +31,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:28"
+        "src": "49:23:32"
       },
       {
         "abstract": true,
@@ -40,29 +40,29 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 3780,
+          "id": 4904,
           "nodeType": "StructuredDocumentation",
-          "src": "76:55:28",
+          "src": "76:55:32",
           "text": " @dev Constant values shared across mixins."
         },
         "fullyImplemented": true,
-        "id": 3784,
+        "id": 4908,
         "linearizedBaseContracts": [
-          3784
+          4908
         ],
         "name": "Constants",
-        "nameLocation": "151:9:28",
+        "nameLocation": "151:9:32",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 3783,
+            "id": 4907,
             "mutability": "constant",
             "name": "BASIS_POINTS",
-            "nameLocation": "192:12:28",
+            "nameLocation": "192:12:32",
             "nodeType": "VariableDeclaration",
-            "scope": 3784,
-            "src": "166:46:28",
+            "scope": 4908,
+            "src": "166:46:32",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -70,10 +70,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3781,
+              "id": 4905,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "166:7:28",
+              "src": "166:7:32",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -81,14 +81,14 @@
             },
             "value": {
               "hexValue": "3130303030",
-              "id": 3782,
+              "id": 4906,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "207:5:28",
+              "src": "207:5:32",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10000_by_1",
                 "typeString": "int_const 10000"
@@ -98,26 +98,26 @@
             "visibility": "internal"
           }
         ],
-        "scope": 3785,
-        "src": "133:83:28",
+        "scope": 4909,
+        "src": "133:83:32",
         "usedErrors": []
       }
     ],
-    "src": "49:167:28"
+    "src": "49:167:32"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/minted/mixins/Constants.sol",
     "exportedSymbols": {
       "Constants": [
-        3784
+        4908
       ]
     },
-    "id": 3785,
+    "id": 4909,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3779,
+        "id": 4903,
         "literals": [
           "solidity",
           "^",
@@ -125,7 +125,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:28"
+        "src": "49:23:32"
       },
       {
         "abstract": true,
@@ -134,29 +134,29 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 3780,
+          "id": 4904,
           "nodeType": "StructuredDocumentation",
-          "src": "76:55:28",
+          "src": "76:55:32",
           "text": " @dev Constant values shared across mixins."
         },
         "fullyImplemented": true,
-        "id": 3784,
+        "id": 4908,
         "linearizedBaseContracts": [
-          3784
+          4908
         ],
         "name": "Constants",
-        "nameLocation": "151:9:28",
+        "nameLocation": "151:9:32",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 3783,
+            "id": 4907,
             "mutability": "constant",
             "name": "BASIS_POINTS",
-            "nameLocation": "192:12:28",
+            "nameLocation": "192:12:32",
             "nodeType": "VariableDeclaration",
-            "scope": 3784,
-            "src": "166:46:28",
+            "scope": 4908,
+            "src": "166:46:32",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -164,10 +164,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3781,
+              "id": 4905,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "166:7:28",
+              "src": "166:7:32",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -175,14 +175,14 @@
             },
             "value": {
               "hexValue": "3130303030",
-              "id": 3782,
+              "id": 4906,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "207:5:28",
+              "src": "207:5:32",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10000_by_1",
                 "typeString": "int_const 10000"
@@ -192,12 +192,12 @@
             "visibility": "internal"
           }
         ],
-        "scope": 3785,
-        "src": "133:83:28",
+        "scope": 4909,
+        "src": "133:83:32",
         "usedErrors": []
       }
     ],
-    "src": "49:167:28"
+    "src": "49:167:32"
   },
   "compiler": {
     "name": "solc",
@@ -205,7 +205,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-23T13:51:10.919Z",
+  "updatedAt": "2022-03-13T18:25:04.678Z",
   "devdoc": {
     "details": "Constant values shared across mixins.",
     "kind": "dev",
