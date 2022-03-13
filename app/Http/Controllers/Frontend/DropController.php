@@ -31,7 +31,7 @@ class DropController extends Controller
             $data['drop'] = Drops::where('slug', $drop)->first();
             //$data['key']=Session::get('key');
     
-                $item = Item::where('in_drop', $data['drop']->id);
+                $item = Item::where('in_drop', $data['drop']->id)->where('status', 1);
                 $data['item_count'] = $item;
                 $data['item'] = $item->paginate(5);
             

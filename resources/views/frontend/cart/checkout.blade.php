@@ -32,121 +32,141 @@ select{
 .error{
     display: block!important;
 }
+.mg-t-50{
+    margin-top: 50px!important;
+}
+.check-out-btn{
+    margin-top: 20px;
+}
+.products_list_bottom{
+    font-size: 24px!important;
+    font-weight: bold!important;
+    margin-top: 50px!important;
+}
+.float-right{
+    float: right!important;
+}
 </style>
 @section('content')
 <!-- banner-area start -->
-     <!-- section begin -->
-     <section id="subheader" class="text-light" data-bgimage="url({{ asset('public/frontend/assets/images/background/subheader.jpg' )}}) top">
-                    <div class="center-y relative text-center">
-                        <div class="container">
-                            <div class="row">
-                                
-                                <div class="col-md-12 text-center">
-									<h1>Checkout</h1>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <!-- section close -->    
+
+             <!-- start page title area -->
+ <div class="rn-breadcrumb-inner ptb--30">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h5 class="title text-center text-md-start">Checkout</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="breadcrumb-list">
+                        <li class="item"><a href="{{url('/')}}">Acasa</a></li>
+                        <li class="separator"><i class="feather-chevron-right"></i></li>
+                        <li class="item current">Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title area -->
+
 <!-- checkout_area start -->
 <div class="checkout_area section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-xl-10 offset-xl-1">
+            <div class="col-xl-12 mg-t-50">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
-                     <form action="{{route('customer.store')}}" class="checkout-form" id="checkout_store" method="POST">
-                        @csrf
-                            <h4>@lang('lang.billing_details')</h4>
-                            <div class="row">
-                                <div class="col-xl-6 col-md-6">
-                                    <label for="name">@lang('lang.first_name') <span>*</span></label>
-                                    <input name="first_name" type="text" placeholder="Enter First name" value="{{isset($data['user'])? $data['user']->profile->first_name:old('first_name')}}">
-                                    @if ($errors->has('first_name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('first_name') }}</strong>
-                                    </span>
-                                @endif
-                                </div>
-                                <div class="col-xl-6 col-md-6">
-                                    <label for="name">@lang('lang.last_name')<span>*</span></label>
-                                    <input name="last_name" type="text" placeholder="Enter Last name" value="{{isset($data['user'])? $data['user']->profile->last_name:old('last_name')}}">
-                                    @if ($errors->has('last_name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('last_name') }}</strong>
-                                    </span>
-                                @endif
-                                </div>
-                                <div class="col-xl-12 col-md-12">
-                                    <label for="name">@lang('lang.company_name')</label>
-                                    <input name="company_name" type="text" placeholder="Enter company name" value="{{isset($data['user'])? $data['user']->profile->company_name:old('company_name')}}">
-                                </div>
-                                <div class="col-xl-12 col-md-12">
-                                    <label for="name">@lang('lang.address')<span>*</span></label>
-                                    <input name="address" type="text" placeholder="Enter address" value="{{isset($data['user'])? $data['user']->profile->address:old('address')}}"> 
-                                    @if ($errors->has('address'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                                </div>
-                                <div class="col-xl-6 col-md-6">
-                                    <label for="name">@lang('lang.country_name')<span>*</span></label>
-                                    <select class="select2 bb" name="country_id">
-                                        <option></option>
-                                        @foreach ($data['country'] as $item)                                                                                        
-                                        <option value="{{ $item->id }}" {{@$data['user']->profile->country_id == $item->id ?'selected':'' }}>{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('country_id'))
+                    <div class="form-wrapper-one">
+                        <form action="{{route('customer.store')}}" class="" id="checkout_store" method="POST">
+                            @csrf
+                                <h4>@lang('lang.billing_details')</h4>
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="name">@lang('lang.first_name') <span>*</span></label>
+                                        <input name="first_name" type="text" placeholder="Enter First name" value="{{isset($data['user'])? $data['user']->profile->first_name:old('first_name')}}">
+                                        @if ($errors->has('first_name'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('country_id') }}</strong>
+                                            <strong>{{ $errors->first('first_name') }}</strong>
                                         </span>
                                     @endif
-                                </div>
-                                <div class="col-xl-6 col-md-6">
-                                    <label for="name">@lang('lang.state')/@lang('lang.region') <span></span></label>
-                                  
-                                    <input type="text" placeholder="@lang('lang.state')/@lang('lang.region')" name="state_id" value="{{isset($data['user'])? $data['user']->profile->state_id:old('state_id')}}">
-                                         
-                                    @if ($errors->has('state_id'))
+                                    </div>
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="name">@lang('lang.last_name')<span>*</span></label>
+                                        <input name="last_name" type="text" placeholder="Enter Last name" value="{{isset($data['user'])? $data['user']->profile->last_name:old('last_name')}}">
+                                        @if ($errors->has('last_name'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('state_id') }}</strong>
+                                            <strong>{{ $errors->first('last_name') }}</strong>
                                         </span>
                                     @endif
-                                </div>
-
-                                <div class="col-xl-6 col-md-6 city">
-                                       
-                                    <label for="name">@lang('lang.city')</label>
-                                            <input type="text" placeholder="@lang('lang.city')" name="city_id" value="{{isset($data['user'])? $data['user']->profile->city_id:old('city_id')}}">
-                                         
-                                    @if ($errors->has('city_id'))
+                                    </div>
+                                    <div class="col-xl-12 col-md-12">
+                                        <label for="name">@lang('lang.address')<span>*</span></label>
+                                        <input name="address" type="text" placeholder="Enter address" value="{{isset($data['user'])? $data['user']->profile->address:old('address')}}"> 
+                                        @if ($errors->has('address'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('city_id') }}</strong>
+                                            <strong>{{ $errors->first('address') }}</strong>
                                         </span>
                                     @endif
-                                </div>
-                              
-                                <div class="col-xl-6 col-md-6">
-                                    <label for="name">@lang('lang.zip_postal_code')<span></span></label>
-                                    <input type="text" placeholder="@lang('lang.zip_postal_code')" name="zipcode" value="{{isset($data['user'])? $data['user']->profile->zipcode:old('zipcode')}}">
-                                        @if ($errors->has('zipcode'))
+                                    </div>
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="name">@lang('lang.country_name')<span>*</span></label>
+                                        <select class="bb" name="country_id">
+                                            <option value="Romania">Romania</option>
+                                            @foreach ($data['country'] as $item)                                                                                        
+                                            <option value="{{ $item->id }}" {{@$data['user']->profile->country_id == $item->id ?'selected':'' }}>{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('country_id'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('zipcode') }}</strong>
+                                                <strong>{{ $errors->first('country_id') }}</strong>
                                             </span>
                                         @endif
+                                    </div>
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="name">@lang('lang.state')/@lang('lang.region') <span></span></label>
+                                    
+                                        <input type="text" placeholder="@lang('lang.state')/@lang('lang.region')" name="state_id" value="{{isset($data['user'])? $data['user']->profile->state_id:old('state_id')}}">
+                                            
+                                        @if ($errors->has('state_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('state_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-xl-6 col-md-6 city">
+                                        
+                                        <label for="name">@lang('lang.city')</label>
+                                                <input type="text" placeholder="@lang('lang.city')" name="city_id" value="{{isset($data['user'])? $data['user']->profile->city_id:old('city_id')}}">
+                                            
+                                        @if ($errors->has('city_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('city_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="name">@lang('lang.zip_postal_code')<span></span></label>
+                                        <input type="text" placeholder="@lang('lang.zip_postal_code')" name="zipcode" value="{{isset($data['user'])? $data['user']->profile->zipcode:old('zipcode')}}">
+                                            @if ($errors->has('zipcode'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('zipcode') }}</strong>
+                                                </span>
+                                            @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="check-out-btn">
-                                <button type="submit" class="boxed-btn">@lang('lang.procced_to_payment')</button>
-                            </div>
-                        </form>
+                                <div class="check-out-btn">
+                                    <button type="submit" class="btn btn-primary btn-large w-100">@lang('lang.procced_to_payment')</button>
+                                </div>
+                            </form>
+                    </div>
+
+                    
+                     
                     </div>
                     <div class="col-xl-4 col-lg-4">
-                        <div class="your_order">
+                        <div class="your_order form-wrapper-one">
                             <div class="order_header">
                                 <h4>Ordinul Tau</h4>
                                 
@@ -168,7 +188,7 @@ select{
                                          @endphp
                                             <li>
                                                 <span>{{ @$item->name }}</span>
-                                                <span>{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
+                                                <span class="float-right">{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
                                             </li>
                                         @endforeach
                                     @endif

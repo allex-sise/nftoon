@@ -1,37 +1,40 @@
 @extends('frontend.master')
 @push('css')
+
+@endpush
+@section('content')
 <style>
 #partitioned {
-  padding-left: 17px;
-  letter-spacing: 39px;
-  border: 0;
-  background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
-  background-position: bottom;
-  background-size: 50px 1px;
-  background-repeat: repeat-x;
-  background-position-x: 35px;
-  width: 305px;
-  min-width: 305px;
+  padding-left: 17px!important;
+  letter-spacing: 39px!important;
+  border: 0!important;
+  background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%)!important;
+  background-position: bottom!important;
+  background-size: 50px 1px!important;
+  background-repeat: repeat-x!important;
+  background-position-x: 35px!important;
+  width: 305px!important;
+  min-width: 305px!important;
 }
 
 #divInner{
-  left: 0;
-  position: sticky;
+  left: 0!important;
+  position: sticky!important;
 }
 
 #divOuter{
-  width: 290px; 
-  margin: 0 auto;
-  display: block;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  overflow: hidden;
+  width: 290px!important; 
+  margin: 0 auto!important;
+  display: block!important;
+  margin-top: 50px!important;
+  margin-bottom: 50px!important;
+  overflow: hidden!important;
 }
 header{
-    display: none;
+    display: none!important;
 }
 footer{
-    display: none;
+    display: none!important;
 }
 .btnverif{
     width: 350px!important;
@@ -48,9 +51,6 @@ h1{
 }
 }
 </style>
-@endpush
-@section('content')
-
     <!-- start page title area -->
     <div class="rn-breadcrumb-inner ptb--30">
         <div class="container">
@@ -73,7 +73,7 @@ h1{
   <div class="rn-connect-area rn-section-gapTop">
         <div class="container">
             <div class="row g mb--50 mb_md--30 mb_sm--30 align-items-center">
-                <div class="col-lg-6" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                <div class="col-lg-6 offset-3" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
                     <h3 class="connect-title" style="text-align: center;">Verificare Two Factor</h3>
                     <p class="connect-td" style="text-align: center;">Ai primit un sms cu codul pentru verificarea in doi pasi.
                             Daca nu ai primit sms-ul apasa <a href="{{ route('verify.resend') }}">aici</a>.</p>

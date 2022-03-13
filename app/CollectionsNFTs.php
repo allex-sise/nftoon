@@ -13,7 +13,7 @@ class CollectionsNFTs extends Model
     }
 
     public function Collection(){
-    	return $this->belongsTo('App\Drops', 'collection_id', 'id');
+    	return $this->belongsTo('App\Collections', 'collection_id', 'id');
     }
 
     public function creator(){

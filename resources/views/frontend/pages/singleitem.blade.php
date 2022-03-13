@@ -40,7 +40,15 @@ $comment_content='';
 $img = explode(",",@$data['item']->item_image->image);
 $img2 = @$data['item']->icon;
 @endphp
-
+<style>
+.top-seller-inner-one .top-seller-wrapper .thumbnail a img {
+    overflow: hidden;
+    transition: 0.3s;
+    border-radius: 50%!important;
+    height: 45px!important;
+    width: 50px!important;
+}
+</style>
 <!-- start page title area -->
 <div class="rn-breadcrumb-inner ptb--30">
         <div class="container">
@@ -150,7 +158,7 @@ $img2 = @$data['item']->icon;
                                 </div>
                             </div>
                         </div>
-                        <span class="bid">Pret Curent <span class="price">{{ @$data['item']->Re_item}} crd</span></span>
+                        <span class="bid">Pret Curent <span class="price">{{ @$data['item']->Re_item}} toons</span></span>
                         @if ( $data['item']->feature1)
                             <div class="rn-pd-sm-property-wrapper">
                                 <div class="property-wrapper">
@@ -184,11 +192,11 @@ $img2 = @$data['item']->icon;
                                 <div class="top-seller-inner-one">
                                     <div class="top-seller-wrapper">
                                         <div class="thumbnail">
-                                            <a href="{{ route('user.portfolio',@$data['item']->og->username)}}"><img src="{{ @$data['item']->og->profile->image? asset(@$data['item']->og->profile->image):asset('public/frontend/img/profile/1.png') }}" alt="Nft_Profile"></a>
+                                            <a href="{{ route('singleCollection',@$data['collections']->Collection->slug) }}"><img src="{{asset(@$data['collections']->Collection->dropicon)}}" alt="Nft_Profile"></a>
                                         </div>
                                         <div class="top-seller-content">
-                                            <a href="{{ route('user.portfolio',@$data['item']->og->username)}}">
-                                                <h6 class="name">{{ @$data['item']->og->username}}</h6>
+                                            <a href="{{ route('singleCollection',@$data['collections']->Collection->slug) }}">
+                                                <h6 class="name">{{ @$data['collections']->Collection->name}}</h6>
                                             </a>
                                         </div>
                                     </div>
@@ -457,15 +465,13 @@ $img2 = @$data['item']->icon;
                            </div>
                         </div>
                         <a href="{{ route('singleProduct',[str_replace(' ', '-',@$more->title),@$more->id])}}"><span class="product-name">{{ $more->title}}</span></a>
-                        <span class="latest-bid">Highest bid 1/20</span>
+                    
                         <div class="bid-react-area">
-                           <div class="last-bid">{{ $more->Re_item}} crd</div>
-                           <div class="react-area">
-                                 <svg viewBox="0 0 17 16" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN kBvkOu">
-                                    <path d="M8.2112 14L12.1056 9.69231L14.1853 7.39185C15.2497 6.21455 15.3683 4.46116 14.4723 3.15121V3.15121C13.3207 1.46757 10.9637 1.15351 9.41139 2.47685L8.2112 3.5L6.95566 2.42966C5.40738 1.10976 3.06841 1.3603 1.83482 2.97819V2.97819C0.777858 4.36443 0.885104 6.31329 2.08779 7.57518L8.2112 14Z" stroke="currentColor" stroke-width="2"></path>
-                                 </svg>
-                                 <span class="number">322</span>
-                           </div>
+                           <div class="last-bid">{{ $more->Re_item}} toons</div>
+                            <div class="react-area">
+                                <i data-feather="activity"></i>
+                                <span class="number">{{ $more->sell}}</span>
+                            </div>
                         </div>
                      </div>
                 </div>

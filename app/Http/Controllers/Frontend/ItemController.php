@@ -9,6 +9,8 @@ use App\ItemFee;
 use App\Profile;
 use App\BuyerFee;
 use App\ItemView;
+use App\Collections;
+use App\CollectionsNFTs;
 use DB;
 use App\ItemOrder;
 use Carbon\Carbon;
@@ -33,6 +35,7 @@ class ItemController extends Controller
             $morenfts = Item::where('ogowner', $feature2->ogowner)->where('id', '!=', $feature2->id)->get();
             $data['history']= ItemOrder::where('item_id',$id)->orderBy('order_id','asc')->get();
             $data['attributes'] = $data['item']->attribute;
+            $data['collections'] = CollectionsNFTs::where('nft_id', $id)->first();
             $item_support=DB::table('item_supports')->first();
             $totalRate =DB::table('reviews')->where('item_id', $data['item']->id)->get();
             $rate5 =DB::table('reviews')->where('item_id', @$data['item']->id)->whereBetween('rating',[4.5,5])->get();

@@ -116,6 +116,56 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="input-effect">
+                                            <input class="primary-input form-control{{ $errors->has('contract') ? ' is-invalid' : '' }}" type="text" name="contract"
+                                                   autocomplete="off" value="{{isset($data['edit'])? $data['edit']->contract :old('contract')}}">
+
+                                            <input type="hidden" name="id" value="{{isset($data['edit'])? $data['edit']->id: ''}}">
+                                            <label>Contract <span>*</span></label>
+                                            <span class="focus-border"></span>
+                                            @if ($errors->has('contract'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('contract') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-25">
+                                    <div class="col-lg-12">
+                                        <div class="row no-gutters input-right-icon">
+                                            <div class="col">
+                                                <div class="input-effect">
+                                                    <input class="primary-input {{ $errors->has('placehlimage') ? ' is-invalid' : '' }}" type="text"
+                                                        id="placehlimage2"
+                                                        placeholder="Placeholder"
+                                                        readonly="">
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button class="primary-btn-small-input"
+                                                        type="button">
+                                                    <label class="primary-btn small fix-gr-bg"
+                                                        for="placehlimage_upload">@lang('lang.browse')</label>
+                                                    <input type="file" class="d-none" onchange="placehlimage()" id="placehlimage_upload" name="placehlimage">
+                                                </button>
+                                                
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('placehlimage'))
+                                        <span class="invalid-feedback dm_display_block" role="alert" >
+                                            <strong>{{ $errors->first('placehlimage') }}</strong>
+                                        </span>
+                                        @endif
+                                        <!-- <img src="#" id="category-img-tag" width="200px" />   for preview purpose -->
+                                        <p id="placehlimage_title"></p>
+                                    </div>
+                                </div>  
+
 
                                 <div class="row mt-25">
                                     <div class="col-lg-12">

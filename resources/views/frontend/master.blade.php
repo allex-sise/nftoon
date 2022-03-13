@@ -100,7 +100,7 @@
 
 <link rel="stylesheet" href="{{ asset('public/frontend/newassets') }}/assets/css/vendor/styleall.css">
 <link rel="stylesheet" href="{{ asset('public/frontend/newassets') }}/assets/css/style.css">
-
+<link rel="stylesheet" href="{{ asset('public/frontend/css/gdpr-cookie.css') }}">
 
 
      <!-- Global site tag (gtag.js) - Google Analytics -->

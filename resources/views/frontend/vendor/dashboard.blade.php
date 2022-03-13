@@ -1525,7 +1525,7 @@
                                                                 {{ csrf_field() }}
                                                                 
                                                                 <div class="check-out-btn mt-20">
-                                                                    <button type="submit" class="btn-main ">@lang('lang.setup_account')</button>
+                                                                    <button type="submit" class="btn btn-primary btn-large w-100 ">@lang('lang.setup_account')</button>
                                                                 </div>
                                                                 
                                                             </form>
@@ -1549,7 +1549,7 @@
                                                     
                                                 </div>
                                                 <div class="check-out-btn mt-20">
-                                                    <button type="submit" class="btn-main dpf-submit">@lang('lang.setup_account')</button>
+                                                    <button type="submit" class="btn btn-primary btn-large w-100">@lang('lang.setup_account')</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -1593,7 +1593,7 @@
                                                 </div>
                                                 <div class="col-xl-3 ">
                                                     <div class="check-out-btn">
-                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                        <button type="submit" class="btn btn-primary w-100" style="margin-top: 18px;">Retrage</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1616,7 +1616,7 @@
                                                 </div>
                                                 <div class="col-xl-3 ">
                                                     <div class="check-out-btn">
-                                                        <button type="submit" class="btn-main dpf-submit" style="margin-top: 36px;">Retrage</button>
+                                                        <button type="submit" class="btn btn-primary w-100" style="margin-top: 18px;">Retrage</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1630,7 +1630,7 @@
                                             
                                             <input type="text" name="withdraw_id" value="{{@$withdraw->id}}" hidden>
                                             <input type="text" name="withdraw_amountz" value="{{@$withdraw->amount}}" hidden>   
-                                            <button type="submit" class="btn-main dpf-submit" style="margin-top: 32px;">Anuleaza</button>
+                                            <button type="submit" class="btn btn-primary w-100" style="margin-top: 18px;">Anuleaza</button>
                                             </form>
                                         @endif
                                 </div>

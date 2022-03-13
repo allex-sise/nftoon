@@ -62,7 +62,7 @@
                     <div class="grid-metro-item cat-3 cat--4">
                         <div class="product-style-one no-overlay">
                             <div class="card-thumbnail">
-                                <a href="{{ route('singleProduct',[str_replace(' ', '-',$item->Item->title),$item->Item->id]) }}"><img src="{{asset(@$obj['icon'])}}"></a>
+                                <a href="{{ route('singleProduct',[str_replace(' ', '-',$item->Item->title),$item->Item->id]) }}"><img src="{{asset(@$item->Item->icon)}}"></a>
                             </div>
                             <div class="product-share-wrapper">
                                 <div class="profile-share">

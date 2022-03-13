@@ -58,7 +58,7 @@
 /* Default  */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 :root {
-  --color-primary: #00a3ff;
+  --color-primary: #5BDFE3;
   --color-primary-alta: #212e48;
   --color-gray: #f6f6f6;
   --color-gray-2: #f5f8fa;
@@ -67,7 +67,7 @@
   --background-color-2: #13131d;
   --background-color-3: #151521;
   --background-color-4: #242435;
-  --gradient-one: linear-gradient(to right bottom, #2899d8, #00a3ff);
+  --gradient-one: linear-gradient(to right bottom, #2899d8, #5BDFE3);
   --color-heading: #ffffff;
   --color-body: #acacac;
   --color-dark:rgb(29, 29, 29);
@@ -9389,7 +9389,7 @@ span.rn-badge-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #00a3ff24;
+  border-bottom: 1px solid #5BDFE3;
   padding: 15px 0; }
   .rn-notification-wrapper.creators .top-seller-inner-one:hover .thumbnail img {
     border: 3px solid var(--color-primary); }
@@ -12271,7 +12271,7 @@ button .small-image {
     bottom: 0;
     left: 0;
     border-radius: 15px;
-    background-image: linear-gradient(100deg, #13131d, #0398ed);
+    background-image: linear-gradient(100deg, #13131d, #5bdfe3);
     background-repeat: repeat-x;
     -webkit-transition: all .5s;
     transition: all .5s;
@@ -15185,7 +15185,7 @@ tbody.ranking tr td {
   background: #ffffff; }
 
 .active-light-mode .product-style-one::before {
-  background-image: linear-gradient(100deg, #fff, #0398ed); }
+  background-image: linear-gradient(100deg, #fff, #5bdfe3); }
 
 .active-light-mode .logo-custom-css .logo-dark {
   display: block; }

@@ -16,6 +16,8 @@ use App\SpnCountry;
 use App\ItemPayment;
 use App\PaidPayment;
 use App\BalanceSheet;
+use App\Collections;
+use App\CollectionsNFTs;
 use App\PurchaseCode;
 use App\PaymentMethod;
 use App\ItemSubCategory;
@@ -669,15 +671,23 @@ class PaymentController extends Controller
                 $newItem->og_price = $itemDuplicate->og_price;
                 $newItem->active_status = 0;
                 $newItem->sell = 0;
+                $newItem->status = 0;
                 $newItem->views = 0;
                 $newItem->data_exp_unic = NULL;
                 $newItem->idnft = NULL;
+                $collectionNFT = Collections::where('id', $itemDuplicator->in_collection)->first();
+                $placeholder = $collectionNFT->placeholder;
+                $newItem->icon = $placeholder;
+ 
+
                 $newItem->save();
 
                 $NewNftMultiple = new Nftmultiple();
                 $NewNftMultiple->ognft = $itemDuplicateID;
                 $NewNftMultiple->nftmultiple = $newItem->id;
                 $NewNftMultiple->id_multiple = $increment+1;
+
+
                 $NewNftMultiple->save();
                 // DE AICI INCEPE TREABA CU MULTIPLU SI ORDERS, POATE SCHIMBAM
                 // $order2 = new Order();

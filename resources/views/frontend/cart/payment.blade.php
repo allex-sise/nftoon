@@ -13,36 +13,50 @@ $carttotalstrip = floatval($b);
 @endphp
 <link rel="stylesheet" href="{{ asset('public/frontend/') }}/payment.css">
 <style>
-.btnspecial{
-    background-image: none;
-    background-color: #000!important;
-}   
-.single_deposite_item:hover .deposite_header {
-    background-image: none;
-}
+    .btnspecial{
+        background-image: none;
+        background-color: #000!important;
+    }   
+    .single_deposite_item:hover .deposite_header {
+        background-image: none;
+    }
+    .rn-connect-area{
+        margin-top: 50px!important;
+    }
+    .float-right{
+        float: right!important;
+    }
+    .products_list_bottom{
+        font-size: 24px!important;
+        font-weight: bold!important;
+    }
+    .dscbold{
+        font-size: 24px!important;
+        font-weight: bold!important;
+    }
 </style>
-   <!-- banner-area start -->
+<!-- banner-area start -->
  <!-- start page title area -->
  <div class="rn-breadcrumb-inner ptb--30">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <h5 class="title text-center text-md-start">Detalii @lang('lang.payment')</h5>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <ul class="breadcrumb-list">
-                        <li class="item"><a href="index.html">Acasa</a></li>
-                        <li class="separator"><i class="feather-chevron-right"></i></li>
-                        <li class="item current">Detalii @lang('lang.payment')</li>
-                    </ul>
-                </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <h5 class="title text-center text-md-start">Detalii @lang('lang.payment')</h5>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-list">
+                    <li class="item"><a href="index.html">Acasa</a></li>
+                    <li class="separator"><i class="feather-chevron-right"></i></li>
+                    <li class="item current">Detalii @lang('lang.payment')</li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- end page title area -->
+</div>
+<!-- end page title area -->
 
   <!-- start connect area -->
-  <div class="rn-connect-area rn-section-gapTop">
+  <div class="rn-connect-area">
         <div class="container">
             <div class="row g mb--50 mb_md--30 mb_sm--30 align-items-center">
                 <div class="col-lg-6" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
@@ -69,7 +83,7 @@ $carttotalstrip = floatval($b);
                                     <div class="content">
                                         <h4 class="title"><a href="#">NFToons</a></h4>
                                         <p class="description">Plateste folosind credite NFToons.</p>
-                                        <p class="description">Fondurile tale: @if (Auth::user()->role_id == 4)
+                                        <p class="description dscbold">Fondurile tale: @if (Auth::user()->role_id == 4)
                                                                     {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
                                                                     @endif
                                                                     @if (Auth::user()->role_id == 5)
@@ -77,7 +91,7 @@ $carttotalstrip = floatval($b);
                                                                     @endif</p>
                                     </div>
                                 </div>
-                                <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="over-link">Plateste</a>
+                                <a href="#" data-toggle="modal" data-target="#MakePaymentFromCredit" class="over-link"></a>
                                                               
                             </div>
                         </div>
@@ -171,7 +185,7 @@ $carttotalstrip = floatval($b);
                                                 @endphp
                                                 <li>
                                                     <span>{{ @$item->name }}</span>
-                                                    <span>{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
+                                                    <span class="float-right">{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
                                                              
                                                 </li>
                                             @endforeach
