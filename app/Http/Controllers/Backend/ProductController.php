@@ -796,6 +796,41 @@ public function itemUpdate(Request $r){
                     return redirect()->back();
                 }
         }
+
+
+        function showNFTs(Request $request){
+            try{
+                if ($request->ids) {
+                   $requests = $request->ids;
+                }
+                 return view('backend.product.showNFTs',compact('requests'));
+             }catch (\Exception $e) {
+                $msg=str_replace("'", " ", $e->getMessage()) ;
+                 Toastr::error($msg, 'Failed');
+                 return redirect()->back(); 
+             }
+        }
+
+        function blockchainNFTs(Request $request){
+            try{
+                if ($request->ids) {
+                    foreach ($request->ids as $id) {
+                        $post=Item::find($id);
+                        $post->purchase_link = 'testnou';
+                        $post->save();   
+                    }
+                }
+          
+                Toastr::success($msg);
+                return response()->json('Success');
+                } catch (\Exception $e) {
+                    $msg=str_replace("'", " ", $e->getMessage()) ;
+                    Toastr::error($msg, 'Failed');
+                    return redirect()->back();
+                }
+        }
+
+
    
 
 }

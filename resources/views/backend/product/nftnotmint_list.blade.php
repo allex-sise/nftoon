@@ -32,10 +32,34 @@
                 </div>
             </div>
             <div class="row">
-                    <div class="col-lg-12">                        
-                        <table id="table_id" class="display school-table" cellspacing="0" width="100%">
+            <div class="collapse-default">
+                      <div class="card">
+                          <div id="headingCollapse1" class="card-header collapsed" data-toggle="collapse" role="button" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                              <span class="lead collapse-title"> Filtreaza </span>
+                          </div>
+                          <div id="collapse1" role="tabpanel" aria-labelledby="headingCollapse1" class="collapse" style="">
+                              <div class="card-body">
+                                <div class="cart-filter mb-20 ">
+
+                                 
+                                    </div>
+                              </div>
+                          </div>
+                      </div>
+                    
+                  </div>
+                    <div class="col-lg-12">   
+                    <form id="basicform" method="post" action="{{ route('admin.showNFTs') }}">
+					@csrf                     
+                        <table class="table" cellspacing="0" width="100%">
                             <thead>                           
                                 <tr>
+                                    <th class="am-select">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input checkAll" id="checkAll">
+                                            <label class="custom-control-label" for="checkAll"></label>
+                                        </div>
+                                    </th>
                                     <th>@lang('lang.id')</th>
                                     <th>@lang('lang.title')</th>
                                     <th>@lang('lang.category')</th>
@@ -55,6 +79,12 @@
                                     $product_id=$item->id;
                                 @endphp
                                 <tr>
+                                    <th>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $item->id }}" value="{{ $item->id }}">
+                                            <label class="custom-control-label" for="customCheck{{ $item->id }}"></label>
+                                        </div>
+                                    </th>
                                     <td>{{ $key+1 }}</td>
                                     <td valign="top"><a target="_blank" href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">{{Str::limit(@$item->title,20)}}</a></td>
                                     <td valign="top">{{@$item->category->title}}</td>
@@ -100,120 +130,23 @@
                                         </div>
                                     </td>
                                 </tr>
-                                  <div class="modal fade admin-query" id="deleteClassModal{{@$item->id}}" >
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">@lang('lang.delete') @lang('lang.product')</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <div class="text-center">
-                                                    <h4>@lang('lang.are_you_sure_to_delete')</h4>
-                                                </div>
-
-                                                <div class="mt-40 d-flex justify-content-between">
-                                                    <button type="button" class="primary-btn tr-bg" data-dismiss="modal">@lang('lang.cancel')</button>
-                                                    <a href="{{ route('admin.itemDelete',@$item->id) }}" class="text-light">
-                                                    <button class="primary-btn fix-gr-bg" type="submit">@lang('lang.delete')</button>
-                                                     </a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                  <div class="modal fade admin-query" id="ApproveClassModal{{@$item->id}}" >
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">@lang('lang.product')</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <div class="text-center">
-                                                        @if ($item->status == 1)
-                                                        <h4>@lang('lang.are_you_want_to_deactive')</h4>
-                                                        @else   
-                                                        <h4>@lang('lang.are_you_want_to_Approve')</h4>
-                                                        @endif
-                                                </div>
-
-                                                <div class="mt-40 d-flex justify-content-between">
-                                                    <button type="button" class="primary-btn tr-bg" data-dismiss="modal">@lang('lang.cancel')</button>
-                                                    <a href="{{ route('admin.Item_approve',$item->id) }}" class="text-light">
-                                                            @if (@$item->status == 1)
-                                                            <button class="primary-btn fix-gr-bg" type="submit">@lang('lang.deactive')</button>
-                                                            @else   
-                                                            <button class="primary-btn fix-gr-bg" type="submit">@lang('lang.approve')</button>
-                                                            @endif
-                                                     </a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade admin-query" id="FreeProduct{{@$item->id}}" >
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">@lang('lang.product_free')</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('admin.free_product_active',@$item->id)}}" method="POST" id="">
-                    @csrf
-                    <div class="row">
-                        <div class="col-lg-12">
-                                <label>@lang('lang.date')   <span class="text-red">*</span></label>
-                                @php
-                                    $d= date('m');
-                                @endphp
-                            <div class="input-effect">
-                                    <select class="niceSelect w-100 bb form-control" name="date" required>
-                                        <option value="01" {{@$d == "01"? 'selected':''}}>January</option> 
-                                        <option value="02" {{@$d == "02"? 'selected':''}}>February</option> 
-                                        <option value="03" {{@$d == "03"? 'selected':''}}>March</option> 
-                                        <option value="04" {{@$d == "04"? 'selected':''}}>April</option> 
-                                        <option value="05" {{@$d == "05"? 'selected':''}}>May</option> 
-                                        <option value="06" {{@$d == "06"? 'selected':''}}>June</option> 
-                                        <option value="07" {{@$d == "07"? 'selected':''}}>July</option> 
-                                        <option value="08" {{@$d == "08"? 'selected':''}}>August</option> 
-                                        <option value="09" {{@$d == "09"? 'selected':''}}>September</option> 
-                                        <option value="10" {{@$d == "10"? 'selected':''}}>October</option> 
-                                        <option value="11" {{@$d == "11"? 'selected':''}}>November</option> 
-                                        <option value="12" {{@$d == "12"? 'selected':''}}>December</option>    
-                                    </select>
-                                        <span class="focus-border"></span>
-                                        <span class="invalid-feedback " role="alert">
-                                            <strong></strong>
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-
-                <div class="mt-40 d-flex justify-content-between">
-                    <button type="button" class="primary-btn tr-bg" data-dismiss="modal">@lang('lang.cancel')</button>
-                    <button class="primary-btn fix-gr-bg" type="submit">@lang('lang.submit')</button>
-                </div>
-            </form>
-            </div>
-
-        </div>
-    </div>
-</div>
+                                 
                                 @endforeach
                             </tbody>
                         </table>
+                        <button class="btn btn-primary" type="submit">Trimite catre alt view</button>
+
+</form>
                     </div>
             </div>
     </div>
 </section>
-
-
+<script src="{{ asset('/')}}public/frontend/js/jquery-3.3.1.js"></script>
+<script>
+	$(".checkAll").on('click',function(){
+		$('input:checkbox').not(this).prop('checked', this.checked);
+	});
+</script>
 @endsection
 
 

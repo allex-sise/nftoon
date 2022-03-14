@@ -160,6 +160,9 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         /* ******************** START ITEM ROUTES ********************* */
         Route::get('product', 'ProductController@content')->name('content')->middleware('userRolePermission:5');
         Route::get('showNFT/{id}', 'ProductController@showNFT')->name('showNFT')->middleware('userRolePermission:5');
+        Route::post('showNFTs', 'ProductController@showNFTs')->name('showNFTs')->middleware('userRolePermission:5');
+        Route::post('blockchainNFTs', 'ProductController@blockchainNFTs')->name('blockchainNFTs')->middleware('userRolePermission:5');
+
         Route::get('product-upload', 'ProductUploadController@product_upload')->name('product_upload');
         Route::post('product-upload', 'ProductUploadController@product_upload_store')->name('product_upload_store');
         // Route::post('product-update', 'ProductUploadController@product_upload_update')->name('product_upload_update');
