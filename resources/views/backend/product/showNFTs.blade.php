@@ -66,6 +66,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+@php 
+$itemsTuple=array();
+@endphp
                             @foreach ( $requests as $ra)
         @php 
             $items = App\Item::where('id', $ra)->get();
@@ -73,7 +76,10 @@
       
                             @foreach ( $items as $item)
                                 @php
+                                    $collection = App\Collections::where('id', $item->in_collection)->first();
+                                    $contract_address = $collection->contract;
                                     $product_id=$item->id;
+                                    array_push($itemsTuple,"{'id':'{$product_id}', 'contract':'{$contract_address}' }");
                                 @endphp
                                 <tr>
                                     <th>
@@ -139,13 +145,13 @@
                 <div class="row" style="padding: 15px;">
                     <div class="col-lg-12 no-gutters bg-white" style="padding: 0px 15px 15px 15px;">
                         <div class="main-title sm_mb_20 lm_mb_35">
-                        @foreach ( $requests as $ra)
-        @php 
-            $items = App\Item::where('id', $ra)->get();
-        @endphp
-      
-                            @foreach ( $items as $item)
-                            @php 
+<!-- @foreach ( $requests as $ra)
+@php 
+$items = App\Item::where('id', $ra)->get();
+@endphp
+
+@foreach ( $items as $item)
+@php 
 $collection = App\Collections::where('id', $item->in_collection)->first();
 $contract_address = $collection->contract;
 $ipfs_path = $collection->ipfs_path;
@@ -153,30 +159,24 @@ $ipfs_path = $collection->ipfs_path;
 $nftmultiple = App\Nftmultiple::where('nftmultiple', $item->id)->first();
 $id_nftmultiple = $nftmultiple->id_multiple;
 @endphp
+{{ $id_nftmultiple }}
+{{ $ipfs_path }}
+{{ $items }}
+@endforeach
+ @endforeach -->
+ @php
+ $jsonitemsTuple = json_encode($itemsTuple); 
+ @endphp
 
-                           <!-- Vue -->
+                            <!-- Vue -->
                             <div id="app">
-                                <metamask-intro 
-                                description="{{$item->description}}" 
-                      
-                                name="{{$item->name}}" 
-                                item-idkey="{{$item->id}}"  
-                                item-tokenid="{{$item->idnft}}" 
-                                item-metadata-url="{{$item->ipfs_url}}" 
-                                image="{{asset($item->icon)}}" 
-                                mint-route="{{route('admin.itemUpdateMint')}}" 
-                                receiver-address="{{$data['payout_setup2']->payout_email ?? ''}}"></metamask-intro>
                                 <mint-nft 
                                 mint-route="{{route('admin.itemUpdateMint')}}"
-                                contract-address="{{$contract_address}}"
-                                item-idkey="{{$item->id}}"  
-                                item-numberkey="{{$id_nftmultiple}}"
-                                ipfs-path="{{$ipfs_path}}"
+                                items="{{$jsonitemsTuple}}"
                                 ></mint-nft>
                             </div> 
 
-                            @endforeach
-                            @endforeach
+                            
 
 
                         </div>

@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import { ethers } from "ethers";
 import contract from "../assets/contracts/MintedNFT721.json"
 import contractRegele from "../assets/contracts/NftoonRegeleV3.json"
+import contractRegeleV2 from "../assets/contracts/NftoonRegeleV4.json"
 import axios from 'axios'
 
 Vue.use(Vuex);
@@ -280,13 +281,13 @@ export default new Vuex.Store({
             const payloadContract = {
               signer: wallet,
               contractAddress: payload.contractAddress,
-              contractAbi: contractRegele.abi,
+              contractAbi: contractRegeleV2.abi,
             }
             const connectedContract = await dispatch("createContract", payloadContract);
 
             console.log('MINT', payloadContract);
             //todo: salveaza in DB tx hash
-            const mintTxn = await connectedContract["mint(string)"](payload.ipfsPath);
+            const mintTxn = await connectedContract["mint()"]();
             
             console.log('mintTxn', mintTxn);
             // await mintTxn.wait();

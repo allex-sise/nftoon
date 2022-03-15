@@ -39,15 +39,15 @@
     "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFTMarket.sol",
     "exportedSymbols": {
       "IMINTEDNFTMarket": [
-        4478
+        4756
       ]
     },
-    "id": 4479,
+    "id": 4757,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4468,
+        "id": 4746,
         "literals": [
           "solidity",
           "^",
@@ -55,7 +55,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "69:23:27"
+        "src": "69:23:28"
       },
       {
         "abstract": false,
@@ -64,42 +64,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 4478,
+        "id": 4756,
         "linearizedBaseContracts": [
-          4478
+          4756
         ],
         "name": "IMINTEDNFTMarket",
-        "nameLocation": "106:16:27",
+        "nameLocation": "106:16:28",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "5fbbc0d2",
-            "id": 4477,
+            "id": 4755,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeeConfig",
-            "nameLocation": "137:12:27",
+            "nameLocation": "137:12:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4469,
+              "id": 4747,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "149:2:27"
+              "src": "149:2:28"
             },
             "returnParameters": {
-              "id": 4476,
+              "id": 4754,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4471,
+                  "id": 4749,
                   "mutability": "mutable",
                   "name": "primaryMintedFeeBasisPoints",
-                  "nameLocation": "206:27:27",
+                  "nameLocation": "206:27:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4477,
-                  "src": "198:35:27",
+                  "scope": 4755,
+                  "src": "198:35:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -107,10 +107,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4470,
+                    "id": 4748,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "198:7:27",
+                    "src": "198:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -120,13 +120,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 4473,
+                  "id": 4751,
                   "mutability": "mutable",
                   "name": "secondaryMintedFeeBasisPoints",
-                  "nameLocation": "250:29:27",
+                  "nameLocation": "250:29:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4477,
-                  "src": "242:37:27",
+                  "scope": 4755,
+                  "src": "242:37:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -134,10 +134,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4472,
+                    "id": 4750,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "242:7:27",
+                    "src": "242:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -147,13 +147,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 4475,
+                  "id": 4753,
                   "mutability": "mutable",
                   "name": "secondaryCreatorFeeBasisPoints",
-                  "nameLocation": "296:30:27",
+                  "nameLocation": "296:30:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4477,
-                  "src": "288:38:27",
+                  "scope": 4755,
+                  "src": "288:38:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -161,10 +161,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4474,
+                    "id": 4752,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "288:7:27",
+                    "src": "288:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -173,35 +173,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "189:144:27"
+              "src": "189:144:28"
             },
-            "scope": 4478,
-            "src": "128:206:27",
+            "scope": 4756,
+            "src": "128:206:28",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 4479,
-        "src": "96:241:27",
+        "scope": 4757,
+        "src": "96:241:28",
         "usedErrors": []
       }
     ],
-    "src": "69:268:27"
+    "src": "69:268:28"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/minted/interfaces/IMINTEDNFTMarket.sol",
     "exportedSymbols": {
       "IMINTEDNFTMarket": [
-        4478
+        4756
       ]
     },
-    "id": 4479,
+    "id": 4757,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4468,
+        "id": 4746,
         "literals": [
           "solidity",
           "^",
@@ -209,7 +209,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "69:23:27"
+        "src": "69:23:28"
       },
       {
         "abstract": false,
@@ -218,42 +218,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 4478,
+        "id": 4756,
         "linearizedBaseContracts": [
-          4478
+          4756
         ],
         "name": "IMINTEDNFTMarket",
-        "nameLocation": "106:16:27",
+        "nameLocation": "106:16:28",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "5fbbc0d2",
-            "id": 4477,
+            "id": 4755,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeeConfig",
-            "nameLocation": "137:12:27",
+            "nameLocation": "137:12:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4469,
+              "id": 4747,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "149:2:27"
+              "src": "149:2:28"
             },
             "returnParameters": {
-              "id": 4476,
+              "id": 4754,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4471,
+                  "id": 4749,
                   "mutability": "mutable",
                   "name": "primaryMintedFeeBasisPoints",
-                  "nameLocation": "206:27:27",
+                  "nameLocation": "206:27:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4477,
-                  "src": "198:35:27",
+                  "scope": 4755,
+                  "src": "198:35:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -261,10 +261,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4470,
+                    "id": 4748,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "198:7:27",
+                    "src": "198:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -274,13 +274,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 4473,
+                  "id": 4751,
                   "mutability": "mutable",
                   "name": "secondaryMintedFeeBasisPoints",
-                  "nameLocation": "250:29:27",
+                  "nameLocation": "250:29:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4477,
-                  "src": "242:37:27",
+                  "scope": 4755,
+                  "src": "242:37:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -288,10 +288,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4472,
+                    "id": 4750,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "242:7:27",
+                    "src": "242:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -301,13 +301,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 4475,
+                  "id": 4753,
                   "mutability": "mutable",
                   "name": "secondaryCreatorFeeBasisPoints",
-                  "nameLocation": "296:30:27",
+                  "nameLocation": "296:30:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4477,
-                  "src": "288:38:27",
+                  "scope": 4755,
+                  "src": "288:38:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -315,10 +315,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4474,
+                    "id": 4752,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "288:7:27",
+                    "src": "288:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -327,21 +327,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "189:144:27"
+              "src": "189:144:28"
             },
-            "scope": 4478,
-            "src": "128:206:27",
+            "scope": 4756,
+            "src": "128:206:28",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 4479,
-        "src": "96:241:27",
+        "scope": 4757,
+        "src": "96:241:28",
         "usedErrors": []
       }
     ],
-    "src": "69:268:27"
+    "src": "69:268:28"
   },
   "compiler": {
     "name": "solc",
@@ -349,7 +349,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-13T18:25:04.638Z",
+  "updatedAt": "2022-03-15T19:40:04.818Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

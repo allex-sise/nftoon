@@ -76,7 +76,7 @@
         2423
       ],
       "HasSecondarySaleFees": [
-        4938
+        5216
       ],
       "IERC165Upgradeable": [
         2435
@@ -85,12 +85,12 @@
         453
       ]
     },
-    "id": 4939,
+    "id": 5217,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4910,
+        "id": 5188,
         "literals": [
           "solidity",
           "^",
@@ -98,29 +98,29 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:33"
+        "src": "49:23:34"
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
-        "id": 4911,
+        "id": 5189,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4939,
+        "scope": 5217,
         "sourceUnit": 2424,
-        "src": "76:87:33",
+        "src": "76:87:34",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
         "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "id": 4912,
+        "id": 5190,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4939,
+        "scope": 5217,
         "sourceUnit": 454,
-        "src": "165:75:33",
+        "src": "165:75:34",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -129,59 +129,59 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 4914,
+              "id": 5192,
               "name": "Initializable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 453,
-              "src": "466:13:33"
+              "src": "466:13:34"
             },
-            "id": 4915,
+            "id": 5193,
             "nodeType": "InheritanceSpecifier",
-            "src": "466:13:33"
+            "src": "466:13:34"
           },
           {
             "baseName": {
-              "id": 4916,
+              "id": 5194,
               "name": "ERC165Upgradeable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 2423,
-              "src": "481:17:33"
+              "src": "481:17:34"
             },
-            "id": 4917,
+            "id": 5195,
             "nodeType": "InheritanceSpecifier",
-            "src": "481:17:33"
+            "src": "481:17:34"
           }
         ],
         "canonicalName": "HasSecondarySaleFees",
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 4913,
+          "id": 5191,
           "nodeType": "StructuredDocumentation",
-          "src": "244:178:33",
+          "src": "244:178:34",
           "text": " @notice An interface for communicating fees to 3rd party marketplaces.\n @dev Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3"
         },
         "fullyImplemented": false,
-        "id": 4938,
+        "id": 5216,
         "linearizedBaseContracts": [
-          4938,
+          5216,
           2423,
           2435,
           453
         ],
         "name": "HasSecondarySaleFees",
-        "nameLocation": "442:20:33",
+        "nameLocation": "442:20:34",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 4920,
+            "id": 5198,
             "mutability": "constant",
             "name": "_INTERFACE_ID_FEES",
-            "nameLocation": "721:18:33",
+            "nameLocation": "721:18:34",
             "nodeType": "VariableDeclaration",
-            "scope": 4938,
-            "src": "697:55:33",
+            "scope": 5216,
+            "src": "697:55:34",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -189,10 +189,10 @@
               "typeString": "bytes4"
             },
             "typeName": {
-              "id": 4918,
+              "id": 5196,
               "name": "bytes4",
               "nodeType": "ElementaryTypeName",
-              "src": "697:6:33",
+              "src": "697:6:34",
               "typeDescriptions": {
                 "typeIdentifier": "t_bytes4",
                 "typeString": "bytes4"
@@ -200,14 +200,14 @@
             },
             "value": {
               "hexValue": "30786237373939353834",
-              "id": 4919,
+              "id": 5197,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "742:10:33",
+              "src": "742:10:34",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_3078198660_by_1",
                 "typeString": "int_const 3078198660"
@@ -218,32 +218,32 @@
           },
           {
             "documentation": {
-              "id": 4921,
+              "id": 5199,
               "nodeType": "StructuredDocumentation",
-              "src": "759:101:33",
+              "src": "759:101:34",
               "text": " @dev Called once after the initial deployment to register the interface with ERC165."
             },
             "functionSelector": "b9c4d9fb",
-            "id": 4929,
+            "id": 5207,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeeRecipients",
-            "nameLocation": "1006:16:33",
+            "nameLocation": "1006:16:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4924,
+              "id": 5202,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4923,
+                  "id": 5201,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1031:2:33",
+                  "nameLocation": "1031:2:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4929,
-                  "src": "1023:10:33",
+                  "scope": 5207,
+                  "src": "1023:10:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -251,10 +251,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4922,
+                    "id": 5200,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1023:7:33",
+                    "src": "1023:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -263,21 +263,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1022:12:33"
+              "src": "1022:12:34"
             },
             "returnParameters": {
-              "id": 4928,
+              "id": 5206,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4927,
+                  "id": 5205,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4929,
-                  "src": "1064:24:33",
+                  "scope": 5207,
+                  "src": "1064:24:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -286,19 +286,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 4925,
+                      "id": 5203,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "1064:15:33",
+                      "src": "1064:15:34",
                       "stateMutability": "payable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "id": 4926,
+                    "id": 5204,
                     "nodeType": "ArrayTypeName",
-                    "src": "1064:17:33",
+                    "src": "1064:17:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_payable_$dyn_storage_ptr",
                       "typeString": "address payable[]"
@@ -307,36 +307,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1063:26:33"
+              "src": "1063:26:34"
             },
-            "scope": 4938,
-            "src": "997:93:33",
+            "scope": 5216,
+            "src": "997:93:34",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "public"
           },
           {
             "functionSelector": "0ebd4c7f",
-            "id": 4937,
+            "id": 5215,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeeBps",
-            "nameLocation": "1105:9:33",
+            "nameLocation": "1105:9:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4932,
+              "id": 5210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4931,
+                  "id": 5209,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1123:2:33",
+                  "nameLocation": "1123:2:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4937,
-                  "src": "1115:10:33",
+                  "scope": 5215,
+                  "src": "1115:10:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -344,10 +344,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4930,
+                    "id": 5208,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1115:7:33",
+                    "src": "1115:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -356,21 +356,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1114:12:33"
+              "src": "1114:12:34"
             },
             "returnParameters": {
-              "id": 4936,
+              "id": 5214,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4935,
+                  "id": 5213,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4937,
-                  "src": "1156:16:33",
+                  "scope": 5215,
+                  "src": "1156:16:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -379,18 +379,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 4933,
+                      "id": 5211,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
-                      "src": "1156:7:33",
+                      "src": "1156:7:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "id": 4934,
+                    "id": 5212,
                     "nodeType": "ArrayTypeName",
-                    "src": "1156:9:33",
+                    "src": "1156:9:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                       "typeString": "uint256[]"
@@ -399,21 +399,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1155:18:33"
+              "src": "1155:18:34"
             },
-            "scope": 4938,
-            "src": "1096:78:33",
+            "scope": 5216,
+            "src": "1096:78:34",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "public"
           }
         ],
-        "scope": 4939,
-        "src": "424:753:33",
+        "scope": 5217,
+        "src": "424:753:34",
         "usedErrors": []
       }
     ],
-    "src": "49:1128:33"
+    "src": "49:1128:34"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/minted/mixins/HasSecondarySaleFees.sol",
@@ -422,7 +422,7 @@
         2423
       ],
       "HasSecondarySaleFees": [
-        4938
+        5216
       ],
       "IERC165Upgradeable": [
         2435
@@ -431,12 +431,12 @@
         453
       ]
     },
-    "id": 4939,
+    "id": 5217,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4910,
+        "id": 5188,
         "literals": [
           "solidity",
           "^",
@@ -444,29 +444,29 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:33"
+        "src": "49:23:34"
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
-        "id": 4911,
+        "id": 5189,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4939,
+        "scope": 5217,
         "sourceUnit": 2424,
-        "src": "76:87:33",
+        "src": "76:87:34",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
         "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "id": 4912,
+        "id": 5190,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4939,
+        "scope": 5217,
         "sourceUnit": 454,
-        "src": "165:75:33",
+        "src": "165:75:34",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -475,59 +475,59 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 4914,
+              "id": 5192,
               "name": "Initializable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 453,
-              "src": "466:13:33"
+              "src": "466:13:34"
             },
-            "id": 4915,
+            "id": 5193,
             "nodeType": "InheritanceSpecifier",
-            "src": "466:13:33"
+            "src": "466:13:34"
           },
           {
             "baseName": {
-              "id": 4916,
+              "id": 5194,
               "name": "ERC165Upgradeable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 2423,
-              "src": "481:17:33"
+              "src": "481:17:34"
             },
-            "id": 4917,
+            "id": 5195,
             "nodeType": "InheritanceSpecifier",
-            "src": "481:17:33"
+            "src": "481:17:34"
           }
         ],
         "canonicalName": "HasSecondarySaleFees",
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 4913,
+          "id": 5191,
           "nodeType": "StructuredDocumentation",
-          "src": "244:178:33",
+          "src": "244:178:34",
           "text": " @notice An interface for communicating fees to 3rd party marketplaces.\n @dev Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3"
         },
         "fullyImplemented": false,
-        "id": 4938,
+        "id": 5216,
         "linearizedBaseContracts": [
-          4938,
+          5216,
           2423,
           2435,
           453
         ],
         "name": "HasSecondarySaleFees",
-        "nameLocation": "442:20:33",
+        "nameLocation": "442:20:34",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 4920,
+            "id": 5198,
             "mutability": "constant",
             "name": "_INTERFACE_ID_FEES",
-            "nameLocation": "721:18:33",
+            "nameLocation": "721:18:34",
             "nodeType": "VariableDeclaration",
-            "scope": 4938,
-            "src": "697:55:33",
+            "scope": 5216,
+            "src": "697:55:34",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -535,10 +535,10 @@
               "typeString": "bytes4"
             },
             "typeName": {
-              "id": 4918,
+              "id": 5196,
               "name": "bytes4",
               "nodeType": "ElementaryTypeName",
-              "src": "697:6:33",
+              "src": "697:6:34",
               "typeDescriptions": {
                 "typeIdentifier": "t_bytes4",
                 "typeString": "bytes4"
@@ -546,14 +546,14 @@
             },
             "value": {
               "hexValue": "30786237373939353834",
-              "id": 4919,
+              "id": 5197,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "742:10:33",
+              "src": "742:10:34",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_3078198660_by_1",
                 "typeString": "int_const 3078198660"
@@ -564,32 +564,32 @@
           },
           {
             "documentation": {
-              "id": 4921,
+              "id": 5199,
               "nodeType": "StructuredDocumentation",
-              "src": "759:101:33",
+              "src": "759:101:34",
               "text": " @dev Called once after the initial deployment to register the interface with ERC165."
             },
             "functionSelector": "b9c4d9fb",
-            "id": 4929,
+            "id": 5207,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeeRecipients",
-            "nameLocation": "1006:16:33",
+            "nameLocation": "1006:16:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4924,
+              "id": 5202,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4923,
+                  "id": 5201,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1031:2:33",
+                  "nameLocation": "1031:2:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4929,
-                  "src": "1023:10:33",
+                  "scope": 5207,
+                  "src": "1023:10:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -597,10 +597,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4922,
+                    "id": 5200,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1023:7:33",
+                    "src": "1023:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -609,21 +609,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1022:12:33"
+              "src": "1022:12:34"
             },
             "returnParameters": {
-              "id": 4928,
+              "id": 5206,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4927,
+                  "id": 5205,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4929,
-                  "src": "1064:24:33",
+                  "scope": 5207,
+                  "src": "1064:24:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -632,19 +632,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 4925,
+                      "id": 5203,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "1064:15:33",
+                      "src": "1064:15:34",
                       "stateMutability": "payable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "id": 4926,
+                    "id": 5204,
                     "nodeType": "ArrayTypeName",
-                    "src": "1064:17:33",
+                    "src": "1064:17:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_payable_$dyn_storage_ptr",
                       "typeString": "address payable[]"
@@ -653,36 +653,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1063:26:33"
+              "src": "1063:26:34"
             },
-            "scope": 4938,
-            "src": "997:93:33",
+            "scope": 5216,
+            "src": "997:93:34",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "public"
           },
           {
             "functionSelector": "0ebd4c7f",
-            "id": 4937,
+            "id": 5215,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeeBps",
-            "nameLocation": "1105:9:33",
+            "nameLocation": "1105:9:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4932,
+              "id": 5210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4931,
+                  "id": 5209,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1123:2:33",
+                  "nameLocation": "1123:2:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4937,
-                  "src": "1115:10:33",
+                  "scope": 5215,
+                  "src": "1115:10:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -690,10 +690,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4930,
+                    "id": 5208,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1115:7:33",
+                    "src": "1115:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -702,21 +702,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1114:12:33"
+              "src": "1114:12:34"
             },
             "returnParameters": {
-              "id": 4936,
+              "id": 5214,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4935,
+                  "id": 5213,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4937,
-                  "src": "1156:16:33",
+                  "scope": 5215,
+                  "src": "1156:16:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -725,18 +725,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 4933,
+                      "id": 5211,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
-                      "src": "1156:7:33",
+                      "src": "1156:7:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "id": 4934,
+                    "id": 5212,
                     "nodeType": "ArrayTypeName",
-                    "src": "1156:9:33",
+                    "src": "1156:9:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                       "typeString": "uint256[]"
@@ -745,21 +745,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1155:18:33"
+              "src": "1155:18:34"
             },
-            "scope": 4938,
-            "src": "1096:78:33",
+            "scope": 5216,
+            "src": "1096:78:34",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "public"
           }
         ],
-        "scope": 4939,
-        "src": "424:753:33",
+        "scope": 5217,
+        "src": "424:753:34",
         "usedErrors": []
       }
     ],
-    "src": "49:1128:33"
+    "src": "49:1128:34"
   },
   "compiler": {
     "name": "solc",
@@ -767,7 +767,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-13T18:25:04.682Z",
+  "updatedAt": "2022-03-15T19:40:04.845Z",
   "devdoc": {
     "details": "Originally implemented in mainnet contract 0x44d6e8933f8271abcf253c72f9ed7e0e4c0323b3",
     "kind": "dev",

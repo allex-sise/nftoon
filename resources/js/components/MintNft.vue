@@ -3,6 +3,7 @@
       <!-- <div v-if="account">{{account}}</div> -->
       <div>
           <button @click="(mint())" type="button">MINT NFT MULTIPLU</button>
+          <button @click="(consoleShow())" type="button">consoleShow</button>
       </div>
        
   </div>
@@ -10,35 +11,34 @@
 
 <script>
 export default {
-//   async mounted() {
-//     await this.$store.dispatch("connect");
-//   },
-//   computed: {
-//     account() {
-//       return this.$store.getters.account;
-//     },
-//   },
-
-//itemIdkey <- nft id
-//itemNumberkey <- nft cloned number (incremental)
   props:{
     mintRoute:null,
-    itemIdkey:null,
-    itemNumberkey:null,
-    contractAddress:null,
-    ipfsPath: null,
+    items:null,
   },
   methods:{
+    consoleShow(){
+      const nfts = this.transformToJson(this.items);
+      nfts.forEach(nft => {
+        console.log(nft.contract)
+      });
+    },
+    transformToJson(text){
+      var itemsConverted = text.replaceAll("\"", "");
+      itemsConverted = itemsConverted.replaceAll("'", "\"");
+      return JSON.parse(itemsConverted);
+    },
     async mint(){
-      const payload = {
-        route : this.mintRoute,
-        itemIdkey : this.itemIdkey,
-        contractAddress : this.contractAddress,
-        ipfsPath : this.ipfsPath + '/' + this.itemNumberkey + '.json',
-      };
+      const nfts = this.transformToJson(this.items);
+      for (const nft of nfts) {
+        const payload = {
+          route : this.mintRoute,
+          itemIdkey : nft.id,
+          contractAddress : nft.contract,
+        };
+        await this.$store.dispatch("toonMintNftMultiple", payload);
+      }
       //init for setting up event listeners, maybe other way?
       // await this.$store.dispatch("init");
-      await this.$store.dispatch("toonMintNftMultiple", payload);
     },
   },
 };
