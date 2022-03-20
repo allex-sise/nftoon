@@ -68,13 +68,11 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="button-group isotop-filter filters-button-group d-flex justify-content-start justify-content-lg-end mt_md--30 mt_sm--30">
-                        <button data-filter="*" class="is-checked"><span class="filter-text">All Items</span></button>
-                        <button data-filter=".cat--1"><span class="filter-text">Art</span></button>
-                        <button data-filter=".cat--2"><span class="filter-text">Music</span></button>
-                        <button data-filter=".cat--3"><span class="filter-text">Vedio</span></button>
-                        <button data-filter=".cat--4"><span class="filter-text">Collectionable</span></button>
-                        <button data-filter=".cat--5"><span class="filter-text">Highest</span></button>
-                        <button data-filter=".cat--6"><span class="filter-text">Lowest</span></button>
+                        <button data-filter="*" class="is-checked"><span class="filter-text">Toate NFT-urile</span></button>
+                        @foreach ($data['category'] as $cate)
+                        <button data-filter=".{{ $cate->id }}"><span class="filter-text">{{ $cate->title }}</span></button>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -83,7 +81,7 @@
                     <div class="resizer"></div>
                     @foreach (@$data['item'] as $item)
                     <!-- start single product -->
-                    <div class="grid-metro-item cat--1 cat--3">
+                    <div class="grid-metro-item {{ @$item->category_id }}">
                         <div class="product-style-one no-overlay">
                             <div class="card-thumbnail">
                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">

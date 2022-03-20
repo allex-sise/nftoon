@@ -151,6 +151,16 @@
                             </button>
                         </div>
                     </div>
+                   
+                    <div id="appHeader" style="padding: 10px 20px;">
+                        <toggle-theme-color 
+                        style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
+                        route="{{ route('user.darkMode',  @Auth::user()->id) }}"
+                        user-id="{{@Auth::user()->id}}"
+                        />
+                    </div> 
+                   
+<!--                     
                     <div id="my_switcher" class="setting-option my_switcher">
                         <ul>
                             <li>
@@ -164,7 +174,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
          
                 </div>
             </div>

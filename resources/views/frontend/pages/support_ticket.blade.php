@@ -9,42 +9,44 @@ function showPicName($data){
     return $name[3];
 }
 @endphp
-  <!-- banner-area start -->
-  <div class="banner-area4">
-    <div class="banner-area-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="banner-info">
-                        <h2>@lang('lang.support_ticket')</h2>
-                    </div>
-                </div>
+<!-- start page title area -->
+<div class="rn-breadcrumb-inner ptb--30">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <h5 class="title text-center text-md-start">@lang('lang.support_ticket')</h5>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-list">
+                    <li class="item"><a href="{{ url('/')}}">Acasa</a></li>
+                    <li class="separator"><i class="feather-chevron-right"></i></li>
+                    <li class="item current">@lang('lang.support_ticket')</li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
-<!-- banner-area end -->
-
-<div class="tiket_area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-10 offset-xl-1">
-                <div class="row">
-                    <div class="col-xl-4">
+<!-- end page title area -->
+ <!-- support center -->
+ <div class="rn-support-area rn-section-gapTop">
+        <div class="container">
+            <div class="row g-6">
+                <div class="col-lg-4">
+                    <div class="rn-support-read">
                         <div class="tiket-nav gray-bg">
                             <div class="nav flex-column" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
                                 @if (@$viewTicket)
-                                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
+                                    <a class="nav-link active btn btn-primary-alta" style="margin-bottom: 20px;" id="v-pills-home-tab" data-toggle="pill"
                                     href="#v-pills-home" role="tab" aria-controls="v-pills-home"
                                     aria-selected="true">@lang('lang.support_ticket')</a>
                                     <a href="{{ route('SupportTicket') }}" class="nav-link">@lang('lang.tickets')</a>
                                     @else
-                                    <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill"
+                                    <a class="nav-link active btn btn-primary-alta" style="margin-bottom: 20px;" id="v-pills-profile-tab" data-toggle="pill"
                                     href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
                                     aria-selected="false">@lang('lang.tickets')</a>
 
-                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill"
+                                <a class="nav-link btn btn-primary-alta" style="margin-bottom: 20px;" id="v-pills-messages-tab" data-toggle="pill"
                                     href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
                                     aria-selected="false">@lang('lang.open_new_ticket')</a>
                                 @endif
@@ -53,9 +55,10 @@ function showPicName($data){
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-8">
-                        <div class="tiket-content">
-                            <div class="tab-content" id="v-pills-tabContent">
+                </div>
+                <div class="col-lg-8">
+                    <div class="support-accordion">
+                    <div class="tab-content" id="v-pills-tabContent">
                                 @if (@$viewTicket)
                                 <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel"
                                     aria-labelledby="v-pills-home-tab">
@@ -279,10 +282,9 @@ function showPicName($data){
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                     aria-labelledby="v-pills-messages-tab">
-                                    <div class="ticket_form_info gray-bg">
-
-                                    <form action="{{ route('user.ticket_store') }}" class="ticket_form_info-form" method="POST" enctype="multipart/form-data">
-                                            @csrf
+                                    <div class="form-wrapper-one">
+                        <form action="{{ route('user.ticket_store') }}" class="ticket_form_info-form row" method="POST" enctype="multipart/form-data">
+                        @csrf
                                             <h4>@lang('lang.open_a_new_tickets')</h4>
                                             <div class="row">
                                                 <div class="col-xl-6 col-md-6"> 
@@ -324,39 +326,26 @@ function showPicName($data){
                                                     <label for="name">@lang('lang.message')<span>*</span></label>
                                                     <textarea id="editor1" name="description"></textarea>
                                                 </div>
-                                                <div class="col-xl-12">
-                                                    <div class="upload-image">
-                                                        <label for="#">@lang('lang.upload_an_image')</label>
-                                                        <div class="upload_image_input">
-                                                            <input type="file" name="image" placeholder="No file selected" onchange="AttachFile4(this)">
-                                                            <div class="upload_image_overlay">
-                                                                <span class="brouse-here">@lang('lang.browse')</span>
-                                                                <span id="attach_file4">@lang('lang.No_file_selected')</span>
-                                                                <i class="ti-plus"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            </div>
+                                            <div class="col-xl-12 col-md-12">
+                                                <div class="check-out-btn" style="margin-top: 10px;">
+                                                    <button type="submit" class="btn btn-primary btn-large w-100">@lang('lang.open_ticket')</button>
                                                 </div>
-                                                <p class="extention">@lang('lang.supported_extensions')</p>
+                                            </div>
 
-                                            </div>
-                                            <div class="check-out-btn">
-                                                <button type="submit" class="boxed-btn">@lang('lang.open_ticket')</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                            </form>
+                                        </div>
 
                                 </div>
                                 @endif
                                 
                             </div>
-                        </div>
+                            
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 @push('js')
 <script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>

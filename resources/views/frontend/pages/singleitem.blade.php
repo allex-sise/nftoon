@@ -241,7 +241,7 @@ $img2 = @$data['item']->icon;
                                                 @endphp
                                             @if ($json)
                                             <div class="rn-pd-sm-property-wrapper">
-                                               <p>{!! @$data['item']->description !!}</p>
+                                               <p>{{ @$data['item']->description }}</p>
                                                 <h6 class="pd-property-title">
                                                     Proprietati
                                                 </h6>
@@ -262,10 +262,6 @@ $img2 = @$data['item']->icon;
                                         <!-- single -->
                                     </div>
 
-                                    <div id="app">
-                                        <mint-nft mint-route="{{route('saveStuffDB')}}" item-id="{{ @$data['item']->id }}" />
-                                    </div>
-
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                         @foreach ($data['history'] as $his)
                                         <!-- single creator -->
@@ -275,7 +271,7 @@ $img2 = @$data['item']->icon;
                                                         <a href="#"><img src="{{ @$data['item']->user->profile->image? asset(@$data['item']->user->profile->image):asset('public/frontend/img/profile/1.png') }}"></a>
                                                 </div>
                                                 <div class="top-seller-content">
-                                                        <span>{{ $his->subtotal}} crd cumparat de<a href="#">{{ $his->cumparator->username}}</a></span>
+                                                        <span>{{ $his->subtotal}} toons cumparat de<a href="#">{{ $his->cumparator->username}}</a></span>
                                                         <span class="count-number">
                                                         {{ $his->created_at}}
                                                         </span>
@@ -356,10 +352,10 @@ $img2 = @$data['item']->icon;
                                         </div>
                                     </div>
 
-                                             <div class="col-lg-6">
-                                                <input type="hidden" id="normal_regular_price" value="{{ @$data['item']->Re_item}}">
-                                                <input type="radio" hidden class="price_option" data-default_price="{{ @$data['item']->Re_item}}" data-type="regular_license_price" data-normal="normal_regular_price" checked name="list_item_price" value="{{ @$data['item']->Re_item}}">
-                                             </div>
+                                    <div class="col-lg-6">
+                                        <input type="hidden" id="normal_regular_price" value="{{ @$data['item']->Re_item}}">
+                                        <input type="radio" hidden class="price_option" data-default_price="{{ @$data['item']->Re_item}}" data-type="regular_license_price" data-normal="normal_regular_price" checked name="list_item_price" value="{{ @$data['item']->Re_item}}">
+                                    </div>
                                     
                                   
                                  </div>
@@ -425,7 +421,7 @@ $img2 = @$data['item']->icon;
             <div class="row g-5">
                @foreach ($morenfts as $more)
                 <!-- start single product -->
-                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
+                <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800" class="col-lg-3 col-md-4 col-sm-6 col-12">
                   <div class="product-style-one no-overlay">
                         <div class="card-thumbnail">
                            <a href="{{ route('singleProduct',[str_replace(' ', '-',@$more->title),@$more->id])}}">

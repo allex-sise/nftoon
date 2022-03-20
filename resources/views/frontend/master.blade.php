@@ -14,9 +14,9 @@
         $userdb = App\User::where('id', Auth::user()->id)->first();
         $userbg = $userdb->style_id;
         if($userbg == NULL){
-            $bg = 'light-scheme';
+            $bg = 'active-light-mode';
         }else{
-            $bg = 'dark-scheme';
+            $bg = 'active-dark-mode';
         }
     @endphp
     <html dir="{{ $local=='ar'? 'rtl' :'ltl' }}" class="{{ $local=='ar'? 'rtl' :'ltl' }}" lang="{{ $local }}">
@@ -27,7 +27,7 @@
         @endphp
 @else
 @php
-        $bg = 'light-scheme';
+        $bg = 'active-dark-mode';
     @endphp
 @php
     if( session()->get('guest_locale')!=null){
@@ -116,7 +116,7 @@
 </head>
 
 
-<body id="body" class="template-color-1">
+<body id="body" class="template-color-1 {{$bg}}">
 <input type="text" hidden  class="url" value="{{url('/') }}">
 <input type="text" hidden  class="system_url" value="{{url('/') }}">
 <input type="text" hidden  class="currencyIn" value="{{ @GeneralSetting()->currency_symbol }}">

@@ -23,8 +23,11 @@ Route::group(['middleware' => ['XSS']], function () {
    Route::get('/politica-confidentialitate', 'Frontend\HomeController@privacyPolicy')->name('privacyPolicy');
    Route::get('/{$username}', 'Frontend\HomeController@portofoliuPrincipal')->name('portofoliuPrincipal');
    Route::get('/termeni-conditii', 'Frontend\HomeController@termsConditions')->name('termsConditions');
-   Route::get('/about_company', 'Frontend\HomeController@aboutCompany')->name('about_company');
+   Route::get('/despre', 'Frontend\HomeController@aboutCompany')->name('despre');
    Route::get('/activitate', 'Frontend\HomeController@activitate')->name('activitate');
+   Route::get('/ranking', 'Frontend\HomeController@ranking')->name('ranking');
+   Route::get('/polygon', 'Frontend\HomeController@polygon')->name('polygon');
+   Route::get('/contact', 'Frontend\HomeController@contact')->name('contact');
    Route::get('/support-ticket', 'Frontend\HomeController@SupportTicket')->name('SupportTicket');
    Route::get('/politica-cookies', 'Frontend\HomeController@License')->name('License');
    Route::post('store_newsletter', 'Frontend\HomeController@store_newsletter')->name('store_newsletter');

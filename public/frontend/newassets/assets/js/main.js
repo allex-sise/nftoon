@@ -575,14 +575,6 @@
             }
         },
 
-
-        rncounterUp: function () {
-            $('.counter-odomitter-active').counterUp({
-                delay: 10,
-                time: 2000
-            });
-        },
-
         salActive: function () {
             sal({
                 threshold: 0.1,

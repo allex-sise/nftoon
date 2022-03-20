@@ -1,6 +1,11 @@
 @extends('frontend.master')
 @push('css')
+<style>
+.single-activity-wrapper .thumbnail a img {
+    width: 130px!important;
+}
 
+</style>
 @endpush
 @section('content')
  <!-- start page title area -->
@@ -28,26 +33,27 @@
             </div>
             <div class="row g-6 activity-direction">
                 <div class="col-lg-8 mb_dec--15">
+                @foreach ($data['history'] as $his)
                     <!-- single activity -->
                     <div class="single-activity-wrapper">
                         <div class="inner">
                             <div class="read-content">
                                 <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-01.jpg" alt="Nft_Profile"></a>
+                                    <a href="product-details.html"><img src="{{ asset($his->Item->icon) }}" style="width: 130px;" alt="Nft_Profile"></a>
                                 </div>
                                 <div class="content">
                                     <a href="product-details.html">
-                                        <h6 class="title">Diamond Dog</h6>
+                                        <h6 class="title">{{ $his->Item->title }}</h6>
                                     </a>
                                     <p>10 editions listed by Bits for <span>2.50 ETH</span> each</p>
                                     <div class="time-maintane">
                                         <div class="time data">
                                             <i data-feather="clock"></i>
-                                            <span>2:30 PM on 19th June, 2021</span>
+                                            <span>{{ $his->created_at}}</span>
                                         </div>
                                         <div class="user-area data">
                                             <i data-feather="user"></i>
-                                            <a href="#">John Lee</a>
+                                            <a href="#">{{ $his->cumparator->username }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -58,217 +64,7 @@
                         </div>
                     </div>
                     <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-02.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">New Diamond Dog</h6>
-                                    </a>
-                                    <p>10 editions listed by Bits for <span>2.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>12:30 PM on 19th June, 2021</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">Mark Jone</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="user-plus"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-03.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">Shopping Car</h6>
-                                    </a>
-                                    <p>Last editions listed by Bits for <span>3.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>1:30 PM on 19th June, 2021</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">Mark Lee</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="heart"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-04.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">Nuron Scare</h6>
-                                    </a>
-                                    <p>listed by Bits for <span>6.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>9:30 PM on 19th jan, 2001</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">Moshiur Joo</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="user-minus"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-05.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">Sufining saffer</h6>
-                                    </a>
-                                    <p>New editions listed by Bits for <span>9.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>2:30 PM on 19th June, 2021</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">John Lee</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="thumbs-up"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-06.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">Diamond Dog</h6>
-                                    </a>
-                                    <p>10 editions listed by Bits for <span>2.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>2:30 PM on 19th June, 2021</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">John Lee</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-01.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">Cat Food</h6>
-                                    </a>
-                                    <p>New Discover listed by Bits for <span>2.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>2:30 PM on 19th June, 2021</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">John Lee</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="heart"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-                    <!-- single activity -->
-                    <div class="single-activity-wrapper">
-                        <div class="inner">
-                            <div class="read-content">
-                                <div class="thumbnail">
-                                    <a href="product-details.html"><img src="assets/images/activity/activity-02.jpg" alt="Nft_Profile"></a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-details.html">
-                                        <h6 class="title">Sun Afford</h6>
-                                    </a>
-                                    <p>10 editions listed by Bits for <span>2.50 ETH</span> each</p>
-                                    <div class="time-maintane">
-                                        <div class="time data">
-                                            <i data-feather="clock"></i>
-                                            <span>2:30 PM on 19th June, 2021</span>
-                                        </div>
-                                        <div class="user-area data">
-                                            <i data-feather="user"></i>
-                                            <a href="#">John Lee</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="icone-area">
-                                <i data-feather="shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single activity -->
-
+                @endforeach
                 </div>
                 <div class="col-lg-4">
                     <div class="filter-wrapper">

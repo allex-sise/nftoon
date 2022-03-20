@@ -32,7 +32,7 @@ class ItemController extends Controller
             $data['review'] = Review::where('item_id',$id)->orderBy('id','desc')->get();
             $data['item'] = Item::find($id);
             $feature2 = Item::find($id);
-            $morenfts = Item::where('ogowner', $feature2->ogowner)->where('id', '!=', $feature2->id)->get();
+            $morenfts = Item::where('ogowner', $feature2->ogowner)->where('id', '!=', $feature2->id)->limit(8)->get();
             $data['history']= ItemOrder::where('item_id',$id)->orderBy('order_id','asc')->get();
             $data['attributes'] = $data['item']->attribute;
             $data['collections'] = CollectionsNFTs::where('nft_id', $id)->first();

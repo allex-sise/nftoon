@@ -1355,6 +1355,43 @@ class HomeController extends Controller
         }
     }
 
+    function polygon()
+    {
+        try {
+            $polygon = InfixAboutCompany::find(1);
+            return view('frontend.pages.polygon', compact('polygon'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
+    function contact()
+    {
+        try {
+            $contact = InfixAboutCompany::find(1);
+            return view('frontend.pages.contact', compact('contact'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+    
+    function ranking()
+    {
+        try {
+            $data['history']= ItemOrder::orderBy('order_id','asc')->get();
+            $ranking = InfixAboutCompany::find(1);
+            return view('frontend.pages.ranking', compact('ranking', 'data'));
+        } catch (\Exception $e) {
+            $msg=str_replace("'", " ", $e->getMessage()) ;
+            Toastr::error($msg, 'Failed');
+            return redirect()->back();
+        }
+    }
+
     function termsConditions()
     {
         try {

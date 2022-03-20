@@ -25,11 +25,12 @@
                                     <a class="logo-dark" href="{{url('/')}}"><img src="{{ asset('public/frontend/img/nftoonlogo.png') }}" alt="nft-logo"></a>
                                 </div>
                                 <p class="rn-footer-describe">
-                                    Created with the collaboration of over 60 of the world's best Nuron Artists.
+                                    NFToon a fost creat pentru a usura cumpararea si vanzarea de NFT-uri, la costuri reduse, de catre artisti locali si internationali. 
+                                    <!-- Folosim Polygon network pentru a face din NFToon un marketplace cu 99% mai eco-friendly decat orice alt marketplace de NFT-uri. -->
                                 </p>
                             </div>
-                            <div class="widget-bottom mt--40 pt--40">
-                                <h6 class="title">Get The Latest Nuron Updates </h6>
+                            <div class="widget-bottom pt--40">
+                                <h6 class="title">Aboneaza-te la Newsletter pentru a fi primul care afla despre cele mai noi colectii si noutati! </h6>
                                 
                                 <form action="{{ route('store_newsletter') }}" method="POST">
                                 @csrf
@@ -51,13 +52,12 @@
                     <div class="footer-widget widget-quicklink">
                         <h6 class="widget-title">Despre</h6>
                         <ul class="footer-list-one">
-                            <li class="single-list"><a href="#">Protocol Explore</a></li>
-                            <li class="single-list"><a href="#">System Token</a></li>
-                            <li class="single-list"><a href="#">Otimize Time</a></li>
-                            <li class="single-list"><a href="#">Visual Checking</a></li>
-                            <li class="single-list"><a href="#">Fadeup System</a></li>
-                            <li class="single-list"><a href="#">Activity Log</a></li>
-                            <li class="single-list"><a href="#">System Auto Since</a></li>
+                            <li class="single-list"><a href="{{ url ('/despre') }}">Despre Noi</a></li>
+                            <li class="single-list"><a href="{{ url ('/polygon') }}">Polygon System</a></li>
+                            <li class="single-list"><a href="{{ url ('/support-ticket') }}">Suport</a></li>
+                            <li class="single-list"><a href="{{ url ('/activitate') }}">Activitate</a></li>
+                            <li class="single-list"><a href="{{ url ('/ranking') }}">Ranking</a></li>
+                            <li class="single-list"><a href="{{ url ('/contact') }}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -66,13 +66,12 @@
                     <div class="footer-widget widget-information">
                         <h6 class="widget-title">Informatii</h6>
                         <ul class="footer-list-one">
-                            <li class="single-list"><a href="#">Market Explore</a></li>
-                            <li class="single-list"><a href="#">Ready Token</a></li>
-                            <li class="single-list"><a href="#">Main Option</a></li>
-                            <li class="single-list"><a href="#">Product Checking</a></li>
-                            <li class="single-list"><a href="blog.html">Blog Grid</a></li>
-                            <li class="single-list"><a href="about.html">About Us</a></li>
-                            <li class="single-list"><a href="#">Fix Bug </a></li>
+                            <li class="single-list"><a href="{{ url('/termeni-conditii') }}">Termeni si Conditii</a></li>
+                            <li class="single-list"><a href="{{  url('/politica-confidentialitate' )}}">Politica Confidentialitate</a></li>
+                            <li class="single-list"><a href="{{ url('/politica-cookies') }}">Politica Cookies</a></li>
+                            <li class="single-list"><a href="{{ url ('/contact') }}">Contact</a></li>
+                            <li class="single-list"><a href="{{ url ('/help/faq') }}">Intrebari Frecvente</a></li>
+                            <li class="single-list"><a href="{{ url ('/help/knowledge-base') }}">Knowledge Base</a></li>
                         </ul>
                     </div>
                 </div>

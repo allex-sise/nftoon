@@ -59,12 +59,11 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         <div class="container">
             <div class="row row-reverce-sm align-items-center">
                 <div class="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
-                    <h2 class="title" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">Discover Digital Art, Collect and Sell Your Specific NFTs.</h2>
-                    <p class="slide-disc" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">Partner with one of the world’s largest retailers to showcase your brand and
-                        products.</p>
+                    <h2 class="title" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">Descoperiți arta digitală, colectați și vindeți-vă NFT-urile.</h2>
+                    <p class="slide-disc" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">Prima platforma Eco-Friendly din Romania! Costurile de mint sunt aproape de zero!</p>
                     <div class="button-group">
-                        <a class="btn btn-large btn-primary" href="#" data-sal-delay="400" data-sal="slide-up" data-sal-duration="800">Get Started</a>
-                        <a class="btn btn-large btn-primary-alta" href="create.html" data-sal-delay="500" data-sal="slide-up" data-sal-duration="800">Create</a>
+                        <a class="btn btn-large btn-primary" href="#" data-sal-delay="400" data-sal="slide-up" data-sal-duration="800">Colectii</a>
+                        <a class="btn btn-large btn-primary-alta" href="create.html" data-sal-delay="500" data-sal="slide-up" data-sal-duration="800">Vinde Arta Ta Digitala</a>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12 offset-lg-1">
@@ -147,7 +146,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
             <div class="row mb--50">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h3 class="title mb--0 live-bidding-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Live Bidding</h3>
+                        <h3 class="title mb--0 live-bidding-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Cele mai recente</h3>
                     </div>
                 </div>
             </div>
@@ -260,9 +259,8 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             </div>
                             <div class="subtitle">Pasul-01</div>
                             <div class="content">
-                                <h4 class="title"><a href="#">Set up your wallet</a></h4>
-                                <p class="description">Powerful features and inclusions, which makes Nuron standout,
-                                    easily customizable and scalable.</p>
+                                <h4 class="title"><a href="#">Creaza un cont</a></h4>
+                                <p class="description">Creaza-ti un cont acum in cel mai rapid mod, si te poti apuca de cumparat NFT-uri de la artisti locali si internationali</p>
                                 <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                             </div>
                         </div>
@@ -279,9 +277,8 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             </div>
                             <div class="subtitle">Pasul-02</div>
                             <div class="content">
-                                <h4 class="title"><a href="#">Create your collection</a></h4>
-                                <p class="description">A great collection of beautiful website templates for your need.
-                                    Choose the best suitable template.</p>
+                                <h4 class="title"><a href="#">Adauga Fonduri</a></h4>
+                                <p class="description">Nu ai nevoie de nici un wallet pe blockchain! Poti adauga fonduri pe Nftoon foarte rapid si in siguranta folosind cardul bancar!</p>
                                 <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                             </div>
                         </div>
@@ -298,9 +295,8 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             </div>
                             <div class="subtitle">Pasul-03</div>
                             <div class="content">
-                                <h4 class="title"><a href="#">Add your NFT's</a></h4>
-                                <p class="description">We've made the template fully responsive, so it looks great on
-                                    all devices: desktop, tablets and.</p>
+                                <h4 class="title"><a href="#">Alege NFT-urile dorite</a></h4>
+                                <p class="description">Alege din multitudinea de NFT-uri prezente pe platforma NFToon, cumpara folosind toons, foarte rapid si usor si mai ales fara costuri suplimentare!</p>
                                 <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                             </div>
                         </div>
@@ -317,9 +313,8 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
                             </div>
                             <div class="subtitle">Pasul-04</div>
                             <div class="content">
-                                <h4 class="title"><a href="#">Sell Your NFT's</a></h4>
-                                <p class="description">I throw myself down among the tall grass by the stream as I
-                                    lie close to the earth NFT's.</p>
+                                <h4 class="title"><a href="#">Vinde NFT-urile</a></h4>
+                                <p class="description">Poti revinde oricand orice NFT achizitionat pe NFToons, doar intri la Colectia Ta si poti seta pretul de vanzare si sa incepi sa profiti de oportunitatea de a genera venituri imediat!</p>
                                 <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                             </div>
                         </div>
@@ -336,7 +331,7 @@ $home_page=Modules\Pages\Entities\InfixHomePage::first();
         <div class="container">
             <div class="row mb--50 align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Cele mai recente</h3>
+                    <h3 class="title mb--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Cele mai cautate</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--15">
                     <div class="view-more-btn text-start text-sm-end" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
