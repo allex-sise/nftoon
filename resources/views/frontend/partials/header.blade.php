@@ -151,7 +151,7 @@
                             </button>
                         </div>
                     </div>
-                   
+                    @if ((Auth::check()) && (Auth::user()->role_id != 1))
                     <div id="appHeader" style="padding: 10px 20px;">
                         <toggle-theme-color 
                         style-id="{{( @Auth::user()->style_id == '1' ? true : false)}}"
@@ -159,7 +159,7 @@
                         user-id="{{@Auth::user()->id}}"
                         />
                     </div> 
-                   
+                   @endif
 <!--                     
                     <div id="my_switcher" class="setting-option my_switcher">
                         <ul>
