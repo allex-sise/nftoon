@@ -79,7 +79,8 @@ $itemsTuple=array();
                                     $collection = App\Collections::where('id', $item->in_collection)->first();
                                     $contract_address = $collection->contract;
                                     $product_id=$item->id;
-                                    array_push($itemsTuple,"{'id':'{$product_id}', 'contract':'{$contract_address}' }");
+                                    $txHash=$item->purchase_link;
+                                    array_push($itemsTuple,"{'id':'{$product_id}', 'contract':'{$contract_address}', 'txHash':'{$txHash}' }");
                                 @endphp
                                 <tr>
                                     <th>

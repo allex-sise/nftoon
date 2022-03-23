@@ -4,6 +4,7 @@
       <div>
           <button @click="(mint())" type="button">MINT NFT MULTIPLU</button>
           <button @click="(consoleShow())" type="button">consoleShow</button>
+          <button @click="(getMetadata())" type="button">getMetadata</button>
       </div>
        
   </div>
@@ -26,6 +27,22 @@ export default {
       var itemsConverted = text.replaceAll("\"", "");
       itemsConverted = itemsConverted.replaceAll("'", "\"");
       return JSON.parse(itemsConverted);
+    },
+    async getMetadata(){
+      const nfts = this.transformToJson(this.items);
+      for (const nft of nfts) {
+        let tokenId = await this.$store.dispatch("getTokenIdFromTxHash", nft.txHash);
+        console.log('TokenId:',tokenId);
+
+        const payload = {
+          tokenId : tokenId,
+          contractAddress : nft.contract,
+        };
+        console.log('payload:',payload);
+
+        let metadata = await this.$store.dispatch("getMetadata", payload);
+        console.log('metadata:',metadata)
+      }
     },
     async mint(){
       const nfts = this.transformToJson(this.items);
