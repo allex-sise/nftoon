@@ -101,6 +101,10 @@ class ProductUploadController extends Controller
             $item->category_id = $r->category_id;
             $item->file = $r->videoimage;
             $item->nftmultiplu = $r->nftmultiplu;
+            if($r->nftmultiplu){
+                $item->nftmultiplumax = $r->nftmultiplumax;    
+            }
+           
             // $item->idnft = rand(0, 999999999);
             if($r->data_exp_unic){
                 $item->data_exp_unic = Carbon::createFromFormat('d/m/Y H:i', $r->data_exp_unic.$r->ora_exp_unic)->format('Y-m-d H:i');
@@ -133,7 +137,7 @@ class ProductUploadController extends Controller
     
         
          
-
+            if ($r->nftmultiplu){
             $zip = new \ZipArchive();
             $file = $r->file('theme_preview');
             $zip->open($file->path());
@@ -148,7 +152,7 @@ class ProductUploadController extends Controller
             }
         
 
-       
+           
             $theme_preview = "";
             if ($r->file('theme_preview') != "") {
                 $file = $r->file('theme_preview');
@@ -206,6 +210,8 @@ class ProductUploadController extends Controller
                 
             }else{
                 return false;
+            }
+
             }
          
             //end laravel file validation 

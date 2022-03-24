@@ -84,10 +84,10 @@ $carttotalstrip = floatval($b);
                                         <h4 class="title"><a href="#">NFToons</a></h4>
                                         <p class="description">Plateste folosind credite NFToons.</p>
                                         <p class="description dscbold">Fondurile tale: @if (Auth::user()->role_id == 4)
-                                                                    {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                                                    {{ @Auth::user()->balance->amount}} toons
                                                                     @endif
                                                                     @if (Auth::user()->role_id == 5)
-                                                                        {{ @Auth::user()->balance->amount}} {{@$infix_general_settings->currency_symbol}}
+                                                                        {{ @Auth::user()->balance->amount}} toons
                                                                     @endif</p>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@ $carttotalstrip = floatval($b);
                                     <form action="{{ route('user.payment_main_balance') }}" id="infix_payment_form1" method="POST" name="payment_main_balance" >
                                         @csrf 
                                         <div class="placebid-form-box">
-                                            <h5 class="title">Ai in contul tau minted:</h5>
+                                            <h5 class="title">Toons disponibili in contul tau:</h5>
                                             <div class="bid-content">
                                                 <div class="bid-content-top">
                                                     <div class="bid-content-left">
@@ -130,7 +130,7 @@ $carttotalstrip = floatval($b);
                                                     {{-- <div class="checkit">
                                                         <span class="chebox-style-custom">
                                                             <input class="styled-checkbox" id="styled-checkbox-28" onchange="showPayOption('con_balance_pay')" type="checkbox" name="item_comment" value="">
-                                                            <label for="styled-checkbox-28"> @lang('lang.use') {{@$infix_general_settings->currency_symbol}} {{ $carttotalstrip }} @lang('lang.from_my_infix_balance_for_this_purchase') </label>
+                                                            <label for="styled-checkbox-28"> @lang('lang.use') toons {{ $carttotalstrip }} @lang('lang.from_my_infix_balance_for_this_purchase') </label>
                                                         </span>
                                                         <span class="item_comment invalid-feedback" id="item_comment"></span>
                                                     </div> --}}
@@ -185,7 +185,7 @@ $carttotalstrip = floatval($b);
                                                 @endphp
                                                 <li>
                                                     <span>{{ @$item->name }}</span>
-                                                    <span class="float-right">{{ @$item->price  }} {{@$infix_general_settings->currency_symbol}}</span>
+                                                    <span class="float-right">{{ @$item->price  }} toons</span>
                                                              
                                                 </li>
                                             @endforeach
@@ -195,7 +195,7 @@ $carttotalstrip = floatval($b);
                                 <div class="products_list_bottom">
                                     <span>@lang('lang.total')</span>
                                     <span class="prise_tag">
-                                             {{ $carttotalstrip }} {{@$infix_general_settings->currency_symbol}}
+                                             {{ $carttotalstrip }} toons
                                     </span>
                                 
                                 </div>

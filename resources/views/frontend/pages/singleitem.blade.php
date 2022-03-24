@@ -219,8 +219,7 @@ $img2 = @$data['item']->icon;
                                         <!-- single -->
                                         <div class="rn-pd-bd-wrapper mt--20">
                                             <div class="top-seller-inner-one">
-                                                <!-- <p class="disc">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                                    elit. Doloribus debitis nemo deserunt.</p> -->
+                                                <p>{{ @$data['item']->description }}</p>
                                                 <h6 class="name-title">
                                                     Detinator
                                                 </h6>
@@ -241,7 +240,7 @@ $img2 = @$data['item']->icon;
                                                 @endphp
                                             @if ($json)
                                             <div class="rn-pd-sm-property-wrapper">
-                                               <p>{{ @$data['item']->description }}</p>
+                                               
                                                 <h6 class="pd-property-title">
                                                     Proprietati
                                                 </h6>
@@ -285,8 +284,7 @@ $img2 = @$data['item']->icon;
                                         <!-- single -->
                                         <div class="rn-pd-bd-wrapper mt--20">
                                             <div class="top-seller-inner-one">
-                                                <!-- <p class="disc">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                                    elit. Doloribus debitis nemo deserunt.</p> -->
+                                             
                                                 <h6 class="name-title">
                                                     Creator
                                                 </h6>

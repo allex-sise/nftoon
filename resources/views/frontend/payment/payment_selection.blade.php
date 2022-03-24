@@ -260,6 +260,7 @@
 .ft2modal{
   display: block!important;
 }
+
 @media only screen and (max-width: 767px) {
   .form{
   display: block!important;

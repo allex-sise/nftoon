@@ -397,6 +397,19 @@
                                 </div>
                                 <p id="">Data si ora de expirare pentru cate nft-uri pot fi vandute (in momentul cand se atinge ora, minutul, se opreste duplicarea nft-ului</p>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="input-effect mb-20">
+                                    <label>Nr maxim de nft-uri multiple <span>*</span> </label>
+                                    <input class="primary-input form-control {{ $errors->has('nftmultiplumax') ? ' is-invalid' : '' }}" cols="0" rows="4" name="nftmultiplumax" id="nftmultiplumax">{{ old('nftmultiplumax') }}>
+                                
+                                    <span class="focus-border"></span> 
+                                    @if ($errors->has('nftmultiplumax'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('nftmultiplumax') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div> 
                             <div id="product_purchase_link" style="display: none">
                                 
