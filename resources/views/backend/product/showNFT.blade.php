@@ -2,6 +2,8 @@
 @section('mainContent')
 @php
     $description = $data['item']->description;
+    $collection = App\Collections::where('id', $data['item']->in_collection)->first();
+    $contract_address = $collection->contract;
     $externalUrl = $data['item']->demo_url;
     $name = $data['item']->title;
     $image =  $_SERVER['HTTP_HOST'].'/minted/'.$data['item']->icon;
@@ -102,7 +104,6 @@ $contract_address = $collection->contract;
 $ipfs_path = $collection->ipfs_path;
 
 $nftmultiple = App\Nftmultiple::where('nftmultiple', $data['item']->id)->first();
-$id_nftmultiple = $nftmultiple->id_multiple;
 @endphp
                            <!-- Vue -->
                             <div id="app">
@@ -115,14 +116,8 @@ $id_nftmultiple = $nftmultiple->id_multiple;
                                 item-metadata-url="{{@$data['item']->ipfs_url}}" 
                                 image="{{asset(@$data['item']->icon)}}" 
                                 mint-route="{{route('admin.itemUpdateMint')}}" 
-                                receiver-address="{{$data['payout_setup2']->payout_email ?? ''}}"></metamask-intro>
-                                <mint-nft 
-                                mint-route="{{route('admin.itemUpdateMint')}}"
-                                contract-address="{{$contract_address}}"
-                                item-idkey="{{@$data['item']->id}}"  
-                                item-numberkey="{{$id_nftmultiple}}"
-                                ipfs-path="{{$ipfs_path}}"
-                                ></mint-nft>
+                                receiver-address="{{$data['payout_setup2']->payout_email ?? ''}}"
+                                contract="{{$contract_address}}"></metamask-intro>
                             </div> 
 
                         </div>

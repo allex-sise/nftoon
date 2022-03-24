@@ -11,11 +11,13 @@ export default new Vuex.Store({
     signer: null,
     account: null,
     error: null,
+    secrets: null,
   },
   getters: {
     signer: (state) => state.signer,
     account: (state) => state.account,
     error: (state) => state.error,
+    secrets: (state) => state.secrets,
   },
   mutations: {
     setSigner(state, signer) {
@@ -27,8 +29,21 @@ export default new Vuex.Store({
     setError(state, error) {
       state.error = error;
     },
+    setSecrets(state, secrets){
+      state.secrets = secrets;
+    },
   },
   actions: {
+    loadSecrets({commit, state}){
+      if (state.secrets === null){
+        const secrets = {
+          pinata_api_key:process.env.MIX_PUSHER_PINATA_API_KEY,
+          pinata_secret_api_key:process.env.MIX_PUSHER_PINATA_SECRET_API_KEY,
+          alchemy_api_key: process.env.MIX_PUSHER_ALCHEMY_SECRET_API_KEY,
+        };
+        commit("setSecrets", secrets);
+      }
+    },
     async connect({ commit, dispatch }) {
       try {
         const { ethereum } = window;
@@ -51,6 +66,49 @@ export default new Vuex.Store({
         commit("setError", "Account request refused.");
       }
     },
+    async setupEventListeners({ state, commit, dispatch }, payload) {
+      try {
+        const connectedContract = payload.connectedContract;
+
+        if (!connectedContract) return;
+
+        connectedContract.on(
+          "Minted",
+          async (from, tokenId, indexedTokenIPFSPath, tokenIPFSPath) => {
+            const payload = {
+              route : payload.route,
+              itemIdkey : payload.itemIdkey,
+              contractAddress : payload.contractAddress,
+              itemMetadataUrl : 'https://dweb.link/ipfs/' + tokenIPFSPath,
+              nftImageUrl : payload.nftImageUrl,
+              itemTokenid : tokenId.toNumber(),
+              etherscan : 'https://mumbai.polygonscan.com/token/' + payload.contractAddress + '?a=' + tokenId.toNumber(),
+            };
+            await dispatch("storeInDb",payload);
+            //todo:re-enable window.location.reload();
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    // async disableEventListeners({ state, commit, dispatch }, payload) {
+    //   let walletSigner = state.signer;
+    //   if(walletSigner == null){
+    //     walletSigner = await dispatch("getSignerUsingMetamask");
+    //   }
+      
+    //   const constractAbi = getContractAbiById(payload.contractAddress);
+
+    //   const payloadContract = {
+    //     signer: walletSigner,
+    //     contractAddress: payload.contractAddress,
+    //     contractAbi: constractAbi,
+    //   }
+    //   const connectedContract = await dispatch("createContract", payloadContract);
+
+    //   connectedContract.off("Minted");
+    // },
     async storeAccount({ commit }) {
       const accounts = await ethereum.request({ method: "eth_accounts" });
       if (accounts.length !== 0) {
@@ -101,7 +159,50 @@ export default new Vuex.Store({
           return null;
       }
     },
+    async mint({state, dispatch}, payload){
+      try {
+          console.log('payload:',payload);
+          let walletSigner = state.signer;
+          if(walletSigner == null){
+            walletSigner = await dispatch("getSignerUsingMetamask");
+          }
+          
+          const constractAbi = getContractAbiById(payload.contractAddress);
 
+          const payloadContract = {
+            signer: walletSigner,
+            contractAddress: payload.contractAddress,
+            contractAbi: constractAbi,
+          }
+          const connectedContract = await dispatch("createContract", payloadContract);
+
+          console.log('MINT', payloadContract);
+          //todo: salveaza in DB tx hash
+          const mintTxn = await connectedContract["mint(string)"](payload.ipfsMetadataUrl);
+          
+          console.log('mintTxn', mintTxn);
+          // await mintTxn.wait();
+
+          const payloadTxHash = {
+              route: payload.route,
+              itemIdkey: payload.itemIdkey,
+              transactionHash: mintTxn.hash
+          }
+          await dispatch("storeInDb", payloadTxHash);
+
+          const payloadListener = {
+            route : payload.route,
+            itemIdkey : payload.itemIdkey,
+            contractAddress : payload.contractAddress,
+            nftImageUrl : payload.nftImageUrl,
+            connectedContract : connectedContract,
+          };
+          await dispatch("setupEventListeners",payloadListener);
+        } catch (error) {
+        console.log(error);
+        return null;
+      }
+    },
     async toonMintNftMultiple({state, dispatch}, payload){
         try {
             console.log('payload:',payload);

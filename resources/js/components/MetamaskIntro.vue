@@ -9,14 +9,14 @@
         <div  v-if="nftStatus === 0 && account && !loading">
             <button @click="(onMintNft())">MINT NFT</button>
         </div>
-        <div v-if="!loading">Contract:{{contractAddress}}</div>
+        <div v-if="!loading">Contract:{{contract}}</div>
         <!-- <p v-if="loading" :style="{color: '#ff0000'}">LOADING...</p> -->
             <div v-if="nftStatus === 2">
                 <div v-if="receiverAddress && account">
                     <p>Receiver address: {{ receiverAddress }} </p>
                     <p><button @click="(transferToken())" type="button">Transfer</button></p>
                 </div>
-                <a :href="'https://mumbai.polygonscan.com/token/' + contractAddress + '?a=' + itemTokenid">
+                <a :href="'https://mumbai.polygonscan.com/token/' + contract + '?a=' + itemTokenid">
                     <div class="single-info-title  single-info-column">
                         <p><svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-13o7eu2 svgclassicon">
                         <path d="M4.364 9.999a.89.89 0 01.895-.89l1.482.004a.891.891 0 01.891.892v5.607c.167-.05.381-.102.616-.157a.743.743 0 00.572-.723V7.776a.892.892 0 01.892-.892h1.485a.891.891 0 01.891.892v6.456s.372-.15.734-.304a.744.744 0 00.454-.685V5.547a.891.891 0 01.892-.891h1.485a.891.891 0 01.891.891v6.337c1.288-.933 2.593-2.056 3.628-3.406A1.496 1.496 0 0020.4 7.08 10.483 10.483 0 0010.632 0C4.811-.077 0 4.677 0 10.501a10.47 10.47 0 001.394 5.252 1.327 1.327 0 001.266.656c.28-.024.63-.06 1.046-.108a.742.742 0 00.659-.737V9.999M4.332 18.991a10.493 10.493 0 0016.641-9.21c-3.834 5.721-10.915 8.396-16.64 9.21" fill="#1A1A1A">
@@ -58,6 +58,7 @@
             itemTokenid:null,
             itemMetadataUrl:null,
             receiverAddress:null,
+            contract:null
         },
         data(){
             return {
@@ -78,7 +79,7 @@
             }
         },
         async mounted(){
-            await this.$store.dispatch("loadContract");
+            await this.$store.dispatch("loadSecrets");
             if(this.nftStatus === 2){
                 this.getNftImageFromMetadata();
             }
@@ -90,9 +91,9 @@
             secrets() {
                 return this.$store.getters.secrets;
             },
-            contractAddress(){
-                return this.$store.getters.contractAddress;
-            },
+            // contractAddress(){
+            //     return this.$store.getters.contractAddress;
+            // },
             nftStatus(){
                 if(this.itemTokenid && this.itemMetadataUrl) return 2;
                 if(this.itemTokenid) return 1;
@@ -120,8 +121,8 @@
                 }
                 console.log("token", token);
 
-                await this.$store.dispatch("storeTokenData",token);
-                await this.$store.dispatch("setMintRoute",this.mintRoute);
+                // await this.$store.dispatch("storeTokenData",token);
+                // await this.$store.dispatch("setMintRoute",this.mintRoute);
             },
             onMintNft(){
                 if(this.itemTokenid === null || this.itemTokenid === ''){
@@ -148,14 +149,21 @@
 
                 this.loading=false;
                 this.windowRef.close();
-                window.location.reload();
+                // window.location.reload();
             },
             async mintNft(){
                 if(!this.nftHasNecessaryData()) {
                     console.log("Missing necessary data")
                     return;
                 }
-                await this.$store.dispatch("mintNFT", this.file);
+                const payload = {
+                    route : this.mintRoute,
+                    itemIdkey : this.itemIdkey,
+                    contractAddress : this.contract,
+                    ipfsMetadataUrl : 'https://dweb.link/ipfs/' + this.file.ipfsMetadataUrl,
+                    nftImageUrl : 'https://dweb.link/ipfs/' + this.file.ipfsImageHash,
+                };
+                await this.$store.dispatch("mint", payload);
             },
             nftHasNecessaryData(){
                 if(this.itemTokenid == null || 
