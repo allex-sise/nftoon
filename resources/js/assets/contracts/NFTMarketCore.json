@@ -21,15 +21,15 @@
         1491
       ],
       "NFTMarketCore": [
-        6553
+        6980
       ]
     },
-    "id": 6554,
+    "id": 6981,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6528,
+        "id": 6955,
         "literals": [
           "solidity",
           "^",
@@ -37,17 +37,17 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:41"
+        "src": "49:23:43"
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
-        "id": 6529,
+        "id": 6956,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 6554,
+        "scope": 6981,
         "sourceUnit": 1492,
-        "src": "76:81:41",
+        "src": "76:81:43",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -58,36 +58,36 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 6530,
+          "id": 6957,
           "nodeType": "StructuredDocumentation",
-          "src": "161:210:41",
+          "src": "161:210:43",
           "text": " @notice A place for common modifiers and functions used by various NFTMarket mixins, if any.\n @dev This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree."
         },
         "fullyImplemented": true,
-        "id": 6553,
+        "id": 6980,
         "linearizedBaseContracts": [
-          6553
+          6980
         ],
         "name": "NFTMarketCore",
-        "nameLocation": "391:13:41",
+        "nameLocation": "391:13:43",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 6547,
+              "id": 6974,
               "nodeType": "Block",
-              "src": "740:68:41",
+              "src": "740:68:43",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 6544,
+                        "id": 6971,
                         "name": "tokenId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6535,
-                        "src": "794:7:41",
+                        "referencedDeclaration": 6962,
+                        "src": "794:7:43",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -104,12 +104,12 @@
                       "expression": {
                         "arguments": [
                           {
-                            "id": 6541,
+                            "id": 6968,
                             "name": "nftContract",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 6533,
-                            "src": "773:11:41",
+                            "referencedDeclaration": 6960,
+                            "src": "773:11:43",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -123,18 +123,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 6540,
+                          "id": 6967,
                           "name": "IERC721Upgradeable",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 1491,
-                          "src": "754:18:41",
+                          "src": "754:18:43",
                           "typeDescriptions": {
                             "typeIdentifier": "t_type$_t_contract$_IERC721Upgradeable_$1491_$",
                             "typeString": "type(contract IERC721Upgradeable)"
                           }
                         },
-                        "id": 6542,
+                        "id": 6969,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -142,14 +142,14 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "754:31:41",
+                        "src": "754:31:43",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_IERC721Upgradeable_$1491",
                           "typeString": "contract IERC721Upgradeable"
                         }
                       },
-                      "id": 6543,
+                      "id": 6970,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -157,13 +157,13 @@
                       "memberName": "ownerOf",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 1424,
-                      "src": "754:39:41",
+                      "src": "754:39:43",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
                         "typeString": "function (uint256) view external returns (address)"
                       }
                     },
-                    "id": 6545,
+                    "id": 6972,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -171,46 +171,46 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "754:48:41",
+                    "src": "754:48:43",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "functionReturnParameters": 6539,
-                  "id": 6546,
+                  "functionReturnParameters": 6966,
+                  "id": 6973,
                   "nodeType": "Return",
-                  "src": "747:55:41"
+                  "src": "747:55:43"
                 }
               ]
             },
             "documentation": {
-              "id": 6531,
+              "id": 6958,
               "nodeType": "StructuredDocumentation",
-              "src": "410:225:41",
+              "src": "410:225:43",
               "text": " @dev If the auction did not have an escrowed seller to return, this falls back to return the current owner.\n This allows functions to calculate the correct fees before the NFT has been listed in auction."
             },
-            "id": 6548,
+            "id": 6975,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_getSellerFor",
-            "nameLocation": "648:13:41",
+            "nameLocation": "648:13:43",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6536,
+              "id": 6963,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6533,
+                  "id": 6960,
                   "mutability": "mutable",
                   "name": "nftContract",
-                  "nameLocation": "670:11:41",
+                  "nameLocation": "670:11:43",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
-                  "src": "662:19:41",
+                  "scope": 6975,
+                  "src": "662:19:43",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -218,10 +218,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6532,
+                    "id": 6959,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "662:7:41",
+                    "src": "662:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -232,13 +232,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 6535,
+                  "id": 6962,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "691:7:41",
+                  "nameLocation": "691:7:43",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
-                  "src": "683:15:41",
+                  "scope": 6975,
+                  "src": "683:15:43",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -246,10 +246,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6534,
+                    "id": 6961,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "683:7:41",
+                    "src": "683:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -258,21 +258,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "661:38:41"
+              "src": "661:38:43"
             },
             "returnParameters": {
-              "id": 6539,
+              "id": 6966,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6538,
+                  "id": 6965,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
-                  "src": "731:7:41",
+                  "scope": 6975,
+                  "src": "731:7:43",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -280,10 +280,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6537,
+                    "id": 6964,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "731:7:41",
+                    "src": "731:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -293,23 +293,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "730:9:41"
+              "src": "730:9:43"
             },
-            "scope": 6553,
-            "src": "639:169:41",
+            "scope": 6980,
+            "src": "639:169:43",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "internal"
           },
           {
             "constant": false,
-            "id": 6552,
+            "id": 6979,
             "mutability": "mutable",
             "name": "______gap",
-            "nameLocation": "901:9:41",
+            "nameLocation": "901:9:43",
             "nodeType": "VariableDeclaration",
-            "scope": 6553,
-            "src": "880:30:41",
+            "scope": 6980,
+            "src": "880:30:43",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -318,26 +318,26 @@
             },
             "typeName": {
               "baseType": {
-                "id": 6549,
+                "id": 6976,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "880:7:41",
+                "src": "880:7:43",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
-              "id": 6551,
+              "id": 6978,
               "length": {
                 "hexValue": "393530",
-                "id": 6550,
+                "id": 6977,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "888:3:41",
+                "src": "888:3:43",
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_950_by_1",
                   "typeString": "int_const 950"
@@ -345,7 +345,7 @@
                 "value": "950"
               },
               "nodeType": "ArrayTypeName",
-              "src": "880:12:41",
+              "src": "880:12:43",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_uint256_$950_storage_ptr",
                 "typeString": "uint256[950]"
@@ -354,12 +354,12 @@
             "visibility": "private"
           }
         ],
-        "scope": 6554,
-        "src": "373:541:41",
+        "scope": 6981,
+        "src": "373:541:43",
         "usedErrors": []
       }
     ],
-    "src": "49:865:41"
+    "src": "49:865:43"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/minted/mixins/NFTMarketCore.sol",
@@ -371,15 +371,15 @@
         1491
       ],
       "NFTMarketCore": [
-        6553
+        6980
       ]
     },
-    "id": 6554,
+    "id": 6981,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6528,
+        "id": 6955,
         "literals": [
           "solidity",
           "^",
@@ -387,17 +387,17 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:41"
+        "src": "49:23:43"
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
-        "id": 6529,
+        "id": 6956,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 6554,
+        "scope": 6981,
         "sourceUnit": 1492,
-        "src": "76:81:41",
+        "src": "76:81:43",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -408,36 +408,36 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 6530,
+          "id": 6957,
           "nodeType": "StructuredDocumentation",
-          "src": "161:210:41",
+          "src": "161:210:43",
           "text": " @notice A place for common modifiers and functions used by various NFTMarket mixins, if any.\n @dev This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree."
         },
         "fullyImplemented": true,
-        "id": 6553,
+        "id": 6980,
         "linearizedBaseContracts": [
-          6553
+          6980
         ],
         "name": "NFTMarketCore",
-        "nameLocation": "391:13:41",
+        "nameLocation": "391:13:43",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 6547,
+              "id": 6974,
               "nodeType": "Block",
-              "src": "740:68:41",
+              "src": "740:68:43",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 6544,
+                        "id": 6971,
                         "name": "tokenId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6535,
-                        "src": "794:7:41",
+                        "referencedDeclaration": 6962,
+                        "src": "794:7:43",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -454,12 +454,12 @@
                       "expression": {
                         "arguments": [
                           {
-                            "id": 6541,
+                            "id": 6968,
                             "name": "nftContract",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 6533,
-                            "src": "773:11:41",
+                            "referencedDeclaration": 6960,
+                            "src": "773:11:43",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -473,18 +473,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 6540,
+                          "id": 6967,
                           "name": "IERC721Upgradeable",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 1491,
-                          "src": "754:18:41",
+                          "src": "754:18:43",
                           "typeDescriptions": {
                             "typeIdentifier": "t_type$_t_contract$_IERC721Upgradeable_$1491_$",
                             "typeString": "type(contract IERC721Upgradeable)"
                           }
                         },
-                        "id": 6542,
+                        "id": 6969,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -492,14 +492,14 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "754:31:41",
+                        "src": "754:31:43",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_IERC721Upgradeable_$1491",
                           "typeString": "contract IERC721Upgradeable"
                         }
                       },
-                      "id": 6543,
+                      "id": 6970,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -507,13 +507,13 @@
                       "memberName": "ownerOf",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 1424,
-                      "src": "754:39:41",
+                      "src": "754:39:43",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
                         "typeString": "function (uint256) view external returns (address)"
                       }
                     },
-                    "id": 6545,
+                    "id": 6972,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -521,46 +521,46 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "754:48:41",
+                    "src": "754:48:43",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "functionReturnParameters": 6539,
-                  "id": 6546,
+                  "functionReturnParameters": 6966,
+                  "id": 6973,
                   "nodeType": "Return",
-                  "src": "747:55:41"
+                  "src": "747:55:43"
                 }
               ]
             },
             "documentation": {
-              "id": 6531,
+              "id": 6958,
               "nodeType": "StructuredDocumentation",
-              "src": "410:225:41",
+              "src": "410:225:43",
               "text": " @dev If the auction did not have an escrowed seller to return, this falls back to return the current owner.\n This allows functions to calculate the correct fees before the NFT has been listed in auction."
             },
-            "id": 6548,
+            "id": 6975,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_getSellerFor",
-            "nameLocation": "648:13:41",
+            "nameLocation": "648:13:43",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6536,
+              "id": 6963,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6533,
+                  "id": 6960,
                   "mutability": "mutable",
                   "name": "nftContract",
-                  "nameLocation": "670:11:41",
+                  "nameLocation": "670:11:43",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
-                  "src": "662:19:41",
+                  "scope": 6975,
+                  "src": "662:19:43",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -568,10 +568,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6532,
+                    "id": 6959,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "662:7:41",
+                    "src": "662:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -582,13 +582,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 6535,
+                  "id": 6962,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "691:7:41",
+                  "nameLocation": "691:7:43",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
-                  "src": "683:15:41",
+                  "scope": 6975,
+                  "src": "683:15:43",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -596,10 +596,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6534,
+                    "id": 6961,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "683:7:41",
+                    "src": "683:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -608,21 +608,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "661:38:41"
+              "src": "661:38:43"
             },
             "returnParameters": {
-              "id": 6539,
+              "id": 6966,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6538,
+                  "id": 6965,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
-                  "src": "731:7:41",
+                  "scope": 6975,
+                  "src": "731:7:43",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -630,10 +630,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6537,
+                    "id": 6964,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "731:7:41",
+                    "src": "731:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -643,23 +643,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "730:9:41"
+              "src": "730:9:43"
             },
-            "scope": 6553,
-            "src": "639:169:41",
+            "scope": 6980,
+            "src": "639:169:43",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "internal"
           },
           {
             "constant": false,
-            "id": 6552,
+            "id": 6979,
             "mutability": "mutable",
             "name": "______gap",
-            "nameLocation": "901:9:41",
+            "nameLocation": "901:9:43",
             "nodeType": "VariableDeclaration",
-            "scope": 6553,
-            "src": "880:30:41",
+            "scope": 6980,
+            "src": "880:30:43",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -668,26 +668,26 @@
             },
             "typeName": {
               "baseType": {
-                "id": 6549,
+                "id": 6976,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "880:7:41",
+                "src": "880:7:43",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
-              "id": 6551,
+              "id": 6978,
               "length": {
                 "hexValue": "393530",
-                "id": 6550,
+                "id": 6977,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "888:3:41",
+                "src": "888:3:43",
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_950_by_1",
                   "typeString": "int_const 950"
@@ -695,7 +695,7 @@
                 "value": "950"
               },
               "nodeType": "ArrayTypeName",
-              "src": "880:12:41",
+              "src": "880:12:43",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_uint256_$950_storage_ptr",
                 "typeString": "uint256[950]"
@@ -704,12 +704,12 @@
             "visibility": "private"
           }
         ],
-        "scope": 6554,
-        "src": "373:541:41",
+        "scope": 6981,
+        "src": "373:541:43",
         "usedErrors": []
       }
     ],
-    "src": "49:865:41"
+    "src": "49:865:43"
   },
   "compiler": {
     "name": "solc",
@@ -717,7 +717,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-15T19:40:04.904Z",
+  "updatedAt": "2022-03-24T15:32:37.471Z",
   "devdoc": {
     "details": "This also leaves a gap which can be used to add a new mixin to the top of the inheritance tree.",
     "kind": "dev",

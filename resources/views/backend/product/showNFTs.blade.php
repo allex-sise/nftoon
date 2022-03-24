@@ -79,8 +79,13 @@ $itemsTuple=array();
                                     $collection = App\Collections::where('id', $item->in_collection)->first();
                                     $contract_address = $collection->contract;
                                     $product_id=$item->id;
-                                    $txHash=$item->purchase_link;
-                                    array_push($itemsTuple,"{'id':'{$product_id}', 'contract':'{$contract_address}', 'txHash':'{$txHash}' }");
+                                    $txHash=$item->txnhash;
+                                    $file = $item->file;
+                                    $isImage = 1;
+                                    if( $file != 'img'){
+                                        $isImage = 0;
+                                    }
+                                    array_push($itemsTuple,"{'id':'{$product_id}', 'contract':'{$contract_address}', 'txHash':'{$txHash}', 'isImage':'{$isImage}' }");
                                 @endphp
                                 <tr>
                                     <th>

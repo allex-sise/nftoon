@@ -1,7 +1,9 @@
-import contractRegeleV2 from "../assets/contracts/NftoonRegeleV4.json"
+import contractRegele from "../assets/contracts/NftoonRegeleV5.json"
+import contractMain from "../assets/contracts/NftoonMain.json"
 
 let dict = {
-    '0xF47a09adF4cB94Dc35a829ba7D9a33E360cf6A13':contractRegeleV2.abi
+    '0xCdcF4cbA4A23B1D4eD67dE961149243a9E9d0668':contractRegele.abi,
+    '0x741F8c281cB2C9240Ec79C455047063394951d7d':contractMain.abi
 };
 // var addPair = function (myKey, myValue) {
 //     dict[myKey] = myValue;

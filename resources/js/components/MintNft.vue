@@ -7,6 +7,7 @@
           <button @click="(getMetadata())" type="button">getMetadata</button>
           <!-- Sign allows to mint multiple contracts with one signature -->
           <button @click="(sign())" type="button">SIGN</button>
+          <button @click="(consoleShow())" type="button">consoleShow</button>
       </div>
        
   </div>
@@ -27,6 +28,12 @@ export default {
     },
   },
   methods:{
+    consoleShow(){
+      const nfts = this.transformToJson(this.items);
+      nfts.forEach(nft => {
+        console.log(nft.isImage)
+      });
+    },
     transformToJson(text){
       var itemsConverted = text.replaceAll("\"", "");
       itemsConverted = itemsConverted.replaceAll("'", "\"");
@@ -42,10 +49,21 @@ export default {
           tokenId : tokenId,
           contractAddress : nft.contract,
         };
-        console.log('payload:',payload);
+        // console.log('payload:',payload);
 
         let metadata = await this.$store.dispatch("getMetadata", payload);
-        console.log('metadata:',metadata)
+        // nft are isImage
+        //store in DB tokenId
+        //metadata_url
+        //salveaza "icon" dc e poza(file: img/video); "main_file" dc e video
+          //prima data nu trebuie ca avem deja placeholder
+        // ipfs_url
+        // etherscan_url
+        //status = 1
+
+
+
+        // console.log('metadata:',metadata)
       }
     },
     async sign(){
@@ -63,7 +81,7 @@ export default {
         await this.$store.dispatch("toonMintNftMultiple", payload);
       }
       //todo: window.location.reload();
-      
+
       //init for setting up event listeners, maybe other way?
       // await this.$store.dispatch("init");
     },

@@ -257,11 +257,28 @@ class ProductController extends Controller
 
         try {
             // $data['item']=Item::where(['active_status'=>1,'status'=> 1,'free'=>0])->orderBy('id','desc')->get();
-            $data['item']=Item::orderBy('id','desc')->where('ipfs_url', NULL)->get();
+            $data['item']=Item::orderBy('id','desc')->where('txnhash', NULL)->where('nftmultiplu', 0)->get();
 
             // return $data;
             $data['settings'] = DB::table('infix_general_settings')->first();
             return view('backend.product.nftnotmint_list', compact('data'));          
+          } catch (\Exception $e) {
+               $msg=str_replace("'", " ", $e->getMessage()) ;
+                Toastr::error($msg, 'Failed');
+                return redirect()->back();
+          }
+         
+     }
+
+     function nftnotStored(){
+
+        try {
+            // $data['item']=Item::where(['active_status'=>1,'status'=> 1,'free'=>0])->orderBy('id','desc')->get();
+            $data['item']=Item::orderBy('id','desc')->where('ipfs_url', NULL)->whereNotNull('txnhash')->where('nftmultiplu', 0)->get();
+
+            // return $data;
+            $data['settings'] = DB::table('infix_general_settings')->first();
+            return view('backend.product.nftnotStored_list', compact('data'));          
           } catch (\Exception $e) {
                $msg=str_replace("'", " ", $e->getMessage()) ;
                 Toastr::error($msg, 'Failed');
@@ -388,7 +405,7 @@ class ProductController extends Controller
             $item->ipfs_url = $r->nftImageUrl;
             $item->etherscan_url = $r->etherscan;
             $item->metadata_url = $r->itemMetadataUrl;
-            $item->purchase_link = $r->transactionHash;
+            $item->txnhash = $r->transactionHash;
             $item->active_status = 1;
             $item->save();
             Toastr::success('NFT updatat cu succes!','Success');
@@ -460,14 +477,6 @@ public function itemUpdate(Request $r){
             $item->ogowner = $r->user_id;
             $item->status = 1;
             $item->is_upload = $r->upload_or_link;
-            if ($r->upload_or_link==0) {
-                $item->purchase_link = $r->purchase_link;
-                
-            }
-    
-        
-         
-         
             //end laravel file validation 
 
                 
@@ -811,24 +820,24 @@ public function itemUpdate(Request $r){
              }
         }
 
-        function blockchainNFTs(Request $request){
-            try{
-                if ($request->ids) {
-                    foreach ($request->ids as $id) {
-                        $post=Item::find($id);
-                        $post->purchase_link = 'testnou';
-                        $post->save();   
-                    }
-                }
+        // function blockchainNFTs(Request $request){
+        //     try{
+        //         if ($request->ids) {
+        //             foreach ($request->ids as $id) {
+        //                 $post=Item::find($id);
+        //                 $post->txnhash = 'testnou';
+        //                 $post->save();   
+        //             }
+        //         }
           
-                Toastr::success($msg);
-                return response()->json('Success');
-                } catch (\Exception $e) {
-                    $msg=str_replace("'", " ", $e->getMessage()) ;
-                    Toastr::error($msg, 'Failed');
-                    return redirect()->back();
-                }
-        }
+        //         Toastr::success($msg);
+        //         return response()->json('Success');
+        //         } catch (\Exception $e) {
+        //             $msg=str_replace("'", " ", $e->getMessage()) ;
+        //             Toastr::error($msg, 'Failed');
+        //             return redirect()->back();
+        //         }
+        // }
 
 
    

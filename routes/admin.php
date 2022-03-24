@@ -181,6 +181,7 @@ Route::group(['middleware' => ['auth', 'verified', 'admin']], function () {
         Route::get('deactive-products', 'ProductController@deactiveProduct')->name('deactive_product')->middleware('userRolePermission:5');
         Route::get('nftsale_list', 'ProductController@nftsale_list')->name('nftsale_list')->middleware('userRolePermission:5');
         Route::get('nftnotmint_list', 'ProductController@nftnotmint')->name('nftnotmint_list')->middleware('userRolePermission:5');
+        Route::get('nftnotStored_list', 'ProductController@nftnotStored')->name('nftnotStored_list')->middleware('userRolePermission:5');
         Route::get('nftscos_list', 'ProductController@nftscos_list')->name('nftscos_list')->middleware('userRolePermission:5');
         // free product start
         Route::get('free-product', 'ProductSettingController@free_product')->name('free_product')->middleware('userRolePermission:5');

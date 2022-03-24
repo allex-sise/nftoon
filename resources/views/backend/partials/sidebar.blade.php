@@ -191,6 +191,11 @@
                     @endif
                     @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
                     <li>
+                        <a href="{{ route('admin.nftnotStored_list') }}">NFT-uri Not Stored</a>
+                    </li>
+                    @endif
+                    @if(Auth::user()->role_id == 1 || in_array(5, $permitted_modules))
+                    <li>
                         <a href="{{ route('admin.nftscos_list') }}">NFT-uri Scoase</a>
                     </li>
                     @endif

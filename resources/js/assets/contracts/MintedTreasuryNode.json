@@ -35,15 +35,15 @@
         453
       ],
       "MintedTreasuryNode": [
-        5262
+        5689
       ]
     },
-    "id": 5263,
+    "id": 5690,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5218,
+        "id": 5645,
         "literals": [
           "solidity",
           "^",
@@ -51,29 +51,29 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:35"
+        "src": "49:23:37"
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
         "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "id": 5219,
+        "id": 5646,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5263,
+        "scope": 5690,
         "sourceUnit": 454,
-        "src": "76:75:35",
+        "src": "76:75:37",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
-        "id": 5220,
+        "id": 5647,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5263,
+        "scope": 5690,
         "sourceUnit": 1764,
-        "src": "153:74:35",
+        "src": "153:74:37",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -82,52 +82,52 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5222,
+              "id": 5649,
               "name": "Initializable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 453,
-              "src": "358:13:35"
+              "src": "358:13:37"
             },
-            "id": 5223,
+            "id": 5650,
             "nodeType": "InheritanceSpecifier",
-            "src": "358:13:35"
+            "src": "358:13:37"
           }
         ],
         "canonicalName": "MintedTreasuryNode",
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 5221,
+          "id": 5648,
           "nodeType": "StructuredDocumentation",
-          "src": "231:85:35",
+          "src": "231:85:37",
           "text": " @notice A mixin that stores a reference to the Minted treasury contract."
         },
         "fullyImplemented": true,
-        "id": 5262,
+        "id": 5689,
         "linearizedBaseContracts": [
-          5262,
+          5689,
           453
         ],
         "name": "MintedTreasuryNode",
-        "nameLocation": "336:18:35",
+        "nameLocation": "336:18:37",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 5226,
+            "id": 5653,
             "libraryName": {
-              "id": 5224,
+              "id": 5651,
               "name": "AddressUpgradeable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1763,
-              "src": "383:18:35"
+              "src": "383:18:37"
             },
             "nodeType": "UsingForDirective",
-            "src": "377:45:35",
+            "src": "377:45:37",
             "typeName": {
-              "id": 5225,
+              "id": 5652,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "406:15:35",
+              "src": "406:15:37",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -137,13 +137,13 @@
           },
           {
             "constant": false,
-            "id": 5228,
+            "id": 5655,
             "mutability": "mutable",
             "name": "treasury",
-            "nameLocation": "452:8:35",
+            "nameLocation": "452:8:37",
             "nodeType": "VariableDeclaration",
-            "scope": 5262,
-            "src": "428:32:35",
+            "scope": 5689,
+            "src": "428:32:37",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -151,10 +151,10 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 5227,
+              "id": 5654,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "428:15:35",
+              "src": "428:15:37",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -165,9 +165,9 @@
           },
           {
             "body": {
-              "id": 5247,
+              "id": 5674,
               "nodeType": "Block",
-              "src": "656:120:35",
+              "src": "656:120:37",
               "statements": [
                 {
                   "expression": {
@@ -177,18 +177,18 @@
                         "expression": {
                           "argumentTypes": [],
                           "expression": {
-                            "id": 5237,
+                            "id": 5664,
                             "name": "_treasury",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 5231,
-                            "src": "671:9:35",
+                            "referencedDeclaration": 5658,
+                            "src": "671:9:37",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address_payable",
                               "typeString": "address payable"
                             }
                           },
-                          "id": 5238,
+                          "id": 5665,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -196,13 +196,13 @@
                           "memberName": "isContract",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 1538,
-                          "src": "671:20:35",
+                          "src": "671:20:37",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$bound_to$_t_address_$",
                             "typeString": "function (address) view returns (bool)"
                           }
                         },
-                        "id": 5239,
+                        "id": 5666,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -210,7 +210,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "671:22:35",
+                        "src": "671:22:37",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
@@ -219,14 +219,14 @@
                       },
                       {
                         "hexValue": "4d696e74656454726561737572794e6f64653a2041646472657373206973206e6f74206120636f6e7472616374",
-                        "id": 5240,
+                        "id": 5667,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "695:47:35",
+                        "src": "695:47:37",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_8d6689b9bc9cb168bcb7ba5acf38617f233af70d37914f1374c71613dff0ed2c",
                           "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
@@ -245,7 +245,7 @@
                           "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
                         }
                       ],
-                      "id": 5236,
+                      "id": 5663,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -253,13 +253,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "663:7:35",
+                      "src": "663:7:37",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 5241,
+                    "id": 5668,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -267,31 +267,31 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "663:80:35",
+                    "src": "663:80:37",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5242,
+                  "id": 5669,
                   "nodeType": "ExpressionStatement",
-                  "src": "663:80:35"
+                  "src": "663:80:37"
                 },
                 {
                   "expression": {
-                    "id": 5245,
+                    "id": 5672,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 5243,
+                      "id": 5670,
                       "name": "treasury",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5228,
-                      "src": "750:8:35",
+                      "referencedDeclaration": 5655,
+                      "src": "750:8:37",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
@@ -300,69 +300,69 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 5244,
+                      "id": 5671,
                       "name": "_treasury",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5231,
-                      "src": "761:9:35",
+                      "referencedDeclaration": 5658,
+                      "src": "761:9:37",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "src": "750:20:35",
+                    "src": "750:20:37",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "id": 5246,
+                  "id": 5673,
                   "nodeType": "ExpressionStatement",
-                  "src": "750:20:35"
+                  "src": "750:20:37"
                 }
               ]
             },
             "documentation": {
-              "id": 5229,
+              "id": 5656,
               "nodeType": "StructuredDocumentation",
-              "src": "467:98:35",
+              "src": "467:98:37",
               "text": " @dev Called once after the initial deployment to set the Minted treasury address."
             },
-            "id": 5248,
+            "id": 5675,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 5234,
+                "id": 5661,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 5233,
+                  "id": 5660,
                   "name": "initializer",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 452,
-                  "src": "644:11:35"
+                  "src": "644:11:37"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "644:11:35"
+                "src": "644:11:37"
               }
             ],
             "name": "_initializeMintedTreasuryNode",
-            "nameLocation": "578:29:35",
+            "nameLocation": "578:29:37",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5232,
+              "id": 5659,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5231,
+                  "id": 5658,
                   "mutability": "mutable",
                   "name": "_treasury",
-                  "nameLocation": "624:9:35",
+                  "nameLocation": "624:9:37",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5248,
-                  "src": "608:25:35",
+                  "scope": 5675,
+                  "src": "608:25:37",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -370,10 +370,10 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 5230,
+                    "id": 5657,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "608:15:35",
+                    "src": "608:15:37",
                     "stateMutability": "payable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -383,79 +383,79 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "607:27:35"
+              "src": "607:27:37"
             },
             "returnParameters": {
-              "id": 5235,
+              "id": 5662,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "656:0:35"
+              "src": "656:0:37"
             },
-            "scope": 5262,
-            "src": "569:207:35",
+            "scope": 5689,
+            "src": "569:207:37",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 5256,
+              "id": 5683,
               "nodeType": "Block",
-              "src": "921:28:35",
+              "src": "921:28:37",
               "statements": [
                 {
                   "expression": {
-                    "id": 5254,
+                    "id": 5681,
                     "name": "treasury",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5228,
-                    "src": "935:8:35",
+                    "referencedDeclaration": 5655,
+                    "src": "935:8:37",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "functionReturnParameters": 5253,
-                  "id": 5255,
+                  "functionReturnParameters": 5680,
+                  "id": 5682,
                   "nodeType": "Return",
-                  "src": "928:15:35"
+                  "src": "928:15:37"
                 }
               ]
             },
             "documentation": {
-              "id": 5249,
+              "id": 5676,
               "nodeType": "StructuredDocumentation",
-              "src": "782:68:35",
+              "src": "782:68:37",
               "text": " @notice Returns the address of the Minted treasury."
             },
             "functionSelector": "753af00e",
-            "id": 5257,
+            "id": 5684,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getMintedTreasury",
-            "nameLocation": "863:17:35",
+            "nameLocation": "863:17:37",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5250,
+              "id": 5677,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "880:2:35"
+              "src": "880:2:37"
             },
             "returnParameters": {
-              "id": 5253,
+              "id": 5680,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5252,
+                  "id": 5679,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5257,
-                  "src": "904:15:35",
+                  "scope": 5684,
+                  "src": "904:15:37",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -463,10 +463,10 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 5251,
+                    "id": 5678,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "904:15:35",
+                    "src": "904:15:37",
                     "stateMutability": "payable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -476,23 +476,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "903:17:35"
+              "src": "903:17:37"
             },
-            "scope": 5262,
-            "src": "854:95:35",
+            "scope": 5689,
+            "src": "854:95:37",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 5261,
+            "id": 5688,
             "mutability": "mutable",
             "name": "__gap",
-            "nameLocation": "1094:5:35",
+            "nameLocation": "1094:5:37",
             "nodeType": "VariableDeclaration",
-            "scope": 5262,
-            "src": "1072:27:35",
+            "scope": 5689,
+            "src": "1072:27:37",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -501,26 +501,26 @@
             },
             "typeName": {
               "baseType": {
-                "id": 5258,
+                "id": 5685,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "1072:7:35",
+                "src": "1072:7:37",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
-              "id": 5260,
+              "id": 5687,
               "length": {
                 "hexValue": "32303030",
-                "id": 5259,
+                "id": 5686,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "1080:4:35",
+                "src": "1080:4:37",
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_2000_by_1",
                   "typeString": "int_const 2000"
@@ -528,7 +528,7 @@
                 "value": "2000"
               },
               "nodeType": "ArrayTypeName",
-              "src": "1072:13:35",
+              "src": "1072:13:37",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_uint256_$2000_storage_ptr",
                 "typeString": "uint256[2000]"
@@ -537,12 +537,12 @@
             "visibility": "private"
           }
         ],
-        "scope": 5263,
-        "src": "318:785:35",
+        "scope": 5690,
+        "src": "318:785:37",
         "usedErrors": []
       }
     ],
-    "src": "49:1054:35"
+    "src": "49:1054:37"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/minted/mixins/MintedTreasuryNode.sol",
@@ -554,15 +554,15 @@
         453
       ],
       "MintedTreasuryNode": [
-        5262
+        5689
       ]
     },
-    "id": 5263,
+    "id": 5690,
     "license": "MIT OR Apache-2.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5218,
+        "id": 5645,
         "literals": [
           "solidity",
           "^",
@@ -570,29 +570,29 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "49:23:35"
+        "src": "49:23:37"
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
         "file": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "id": 5219,
+        "id": 5646,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5263,
+        "scope": 5690,
         "sourceUnit": 454,
-        "src": "76:75:35",
+        "src": "76:75:37",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
-        "id": 5220,
+        "id": 5647,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5263,
+        "scope": 5690,
         "sourceUnit": 1764,
-        "src": "153:74:35",
+        "src": "153:74:37",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -601,52 +601,52 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5222,
+              "id": 5649,
               "name": "Initializable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 453,
-              "src": "358:13:35"
+              "src": "358:13:37"
             },
-            "id": 5223,
+            "id": 5650,
             "nodeType": "InheritanceSpecifier",
-            "src": "358:13:35"
+            "src": "358:13:37"
           }
         ],
         "canonicalName": "MintedTreasuryNode",
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 5221,
+          "id": 5648,
           "nodeType": "StructuredDocumentation",
-          "src": "231:85:35",
+          "src": "231:85:37",
           "text": " @notice A mixin that stores a reference to the Minted treasury contract."
         },
         "fullyImplemented": true,
-        "id": 5262,
+        "id": 5689,
         "linearizedBaseContracts": [
-          5262,
+          5689,
           453
         ],
         "name": "MintedTreasuryNode",
-        "nameLocation": "336:18:35",
+        "nameLocation": "336:18:37",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 5226,
+            "id": 5653,
             "libraryName": {
-              "id": 5224,
+              "id": 5651,
               "name": "AddressUpgradeable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1763,
-              "src": "383:18:35"
+              "src": "383:18:37"
             },
             "nodeType": "UsingForDirective",
-            "src": "377:45:35",
+            "src": "377:45:37",
             "typeName": {
-              "id": 5225,
+              "id": 5652,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "406:15:35",
+              "src": "406:15:37",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -656,13 +656,13 @@
           },
           {
             "constant": false,
-            "id": 5228,
+            "id": 5655,
             "mutability": "mutable",
             "name": "treasury",
-            "nameLocation": "452:8:35",
+            "nameLocation": "452:8:37",
             "nodeType": "VariableDeclaration",
-            "scope": 5262,
-            "src": "428:32:35",
+            "scope": 5689,
+            "src": "428:32:37",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -670,10 +670,10 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 5227,
+              "id": 5654,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "428:15:35",
+              "src": "428:15:37",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -684,9 +684,9 @@
           },
           {
             "body": {
-              "id": 5247,
+              "id": 5674,
               "nodeType": "Block",
-              "src": "656:120:35",
+              "src": "656:120:37",
               "statements": [
                 {
                   "expression": {
@@ -696,18 +696,18 @@
                         "expression": {
                           "argumentTypes": [],
                           "expression": {
-                            "id": 5237,
+                            "id": 5664,
                             "name": "_treasury",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 5231,
-                            "src": "671:9:35",
+                            "referencedDeclaration": 5658,
+                            "src": "671:9:37",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address_payable",
                               "typeString": "address payable"
                             }
                           },
-                          "id": 5238,
+                          "id": 5665,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -715,13 +715,13 @@
                           "memberName": "isContract",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 1538,
-                          "src": "671:20:35",
+                          "src": "671:20:37",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$bound_to$_t_address_$",
                             "typeString": "function (address) view returns (bool)"
                           }
                         },
-                        "id": 5239,
+                        "id": 5666,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -729,7 +729,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "671:22:35",
+                        "src": "671:22:37",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
@@ -738,14 +738,14 @@
                       },
                       {
                         "hexValue": "4d696e74656454726561737572794e6f64653a2041646472657373206973206e6f74206120636f6e7472616374",
-                        "id": 5240,
+                        "id": 5667,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "695:47:35",
+                        "src": "695:47:37",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_8d6689b9bc9cb168bcb7ba5acf38617f233af70d37914f1374c71613dff0ed2c",
                           "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
@@ -764,7 +764,7 @@
                           "typeString": "literal_string \"MintedTreasuryNode: Address is not a contract\""
                         }
                       ],
-                      "id": 5236,
+                      "id": 5663,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -772,13 +772,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "663:7:35",
+                      "src": "663:7:37",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 5241,
+                    "id": 5668,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -786,31 +786,31 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "663:80:35",
+                    "src": "663:80:37",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5242,
+                  "id": 5669,
                   "nodeType": "ExpressionStatement",
-                  "src": "663:80:35"
+                  "src": "663:80:37"
                 },
                 {
                   "expression": {
-                    "id": 5245,
+                    "id": 5672,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 5243,
+                      "id": 5670,
                       "name": "treasury",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5228,
-                      "src": "750:8:35",
+                      "referencedDeclaration": 5655,
+                      "src": "750:8:37",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
@@ -819,69 +819,69 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 5244,
+                      "id": 5671,
                       "name": "_treasury",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5231,
-                      "src": "761:9:35",
+                      "referencedDeclaration": 5658,
+                      "src": "761:9:37",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "src": "750:20:35",
+                    "src": "750:20:37",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "id": 5246,
+                  "id": 5673,
                   "nodeType": "ExpressionStatement",
-                  "src": "750:20:35"
+                  "src": "750:20:37"
                 }
               ]
             },
             "documentation": {
-              "id": 5229,
+              "id": 5656,
               "nodeType": "StructuredDocumentation",
-              "src": "467:98:35",
+              "src": "467:98:37",
               "text": " @dev Called once after the initial deployment to set the Minted treasury address."
             },
-            "id": 5248,
+            "id": 5675,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 5234,
+                "id": 5661,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 5233,
+                  "id": 5660,
                   "name": "initializer",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 452,
-                  "src": "644:11:35"
+                  "src": "644:11:37"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "644:11:35"
+                "src": "644:11:37"
               }
             ],
             "name": "_initializeMintedTreasuryNode",
-            "nameLocation": "578:29:35",
+            "nameLocation": "578:29:37",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5232,
+              "id": 5659,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5231,
+                  "id": 5658,
                   "mutability": "mutable",
                   "name": "_treasury",
-                  "nameLocation": "624:9:35",
+                  "nameLocation": "624:9:37",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5248,
-                  "src": "608:25:35",
+                  "scope": 5675,
+                  "src": "608:25:37",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -889,10 +889,10 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 5230,
+                    "id": 5657,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "608:15:35",
+                    "src": "608:15:37",
                     "stateMutability": "payable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -902,79 +902,79 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "607:27:35"
+              "src": "607:27:37"
             },
             "returnParameters": {
-              "id": 5235,
+              "id": 5662,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "656:0:35"
+              "src": "656:0:37"
             },
-            "scope": 5262,
-            "src": "569:207:35",
+            "scope": 5689,
+            "src": "569:207:37",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 5256,
+              "id": 5683,
               "nodeType": "Block",
-              "src": "921:28:35",
+              "src": "921:28:37",
               "statements": [
                 {
                   "expression": {
-                    "id": 5254,
+                    "id": 5681,
                     "name": "treasury",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5228,
-                    "src": "935:8:35",
+                    "referencedDeclaration": 5655,
+                    "src": "935:8:37",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "functionReturnParameters": 5253,
-                  "id": 5255,
+                  "functionReturnParameters": 5680,
+                  "id": 5682,
                   "nodeType": "Return",
-                  "src": "928:15:35"
+                  "src": "928:15:37"
                 }
               ]
             },
             "documentation": {
-              "id": 5249,
+              "id": 5676,
               "nodeType": "StructuredDocumentation",
-              "src": "782:68:35",
+              "src": "782:68:37",
               "text": " @notice Returns the address of the Minted treasury."
             },
             "functionSelector": "753af00e",
-            "id": 5257,
+            "id": 5684,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getMintedTreasury",
-            "nameLocation": "863:17:35",
+            "nameLocation": "863:17:37",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5250,
+              "id": 5677,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "880:2:35"
+              "src": "880:2:37"
             },
             "returnParameters": {
-              "id": 5253,
+              "id": 5680,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5252,
+                  "id": 5679,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5257,
-                  "src": "904:15:35",
+                  "scope": 5684,
+                  "src": "904:15:37",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -982,10 +982,10 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 5251,
+                    "id": 5678,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "904:15:35",
+                    "src": "904:15:37",
                     "stateMutability": "payable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -995,23 +995,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "903:17:35"
+              "src": "903:17:37"
             },
-            "scope": 5262,
-            "src": "854:95:35",
+            "scope": 5689,
+            "src": "854:95:37",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 5261,
+            "id": 5688,
             "mutability": "mutable",
             "name": "__gap",
-            "nameLocation": "1094:5:35",
+            "nameLocation": "1094:5:37",
             "nodeType": "VariableDeclaration",
-            "scope": 5262,
-            "src": "1072:27:35",
+            "scope": 5689,
+            "src": "1072:27:37",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1020,26 +1020,26 @@
             },
             "typeName": {
               "baseType": {
-                "id": 5258,
+                "id": 5685,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "1072:7:35",
+                "src": "1072:7:37",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
-              "id": 5260,
+              "id": 5687,
               "length": {
                 "hexValue": "32303030",
-                "id": 5259,
+                "id": 5686,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "1080:4:35",
+                "src": "1080:4:37",
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_2000_by_1",
                   "typeString": "int_const 2000"
@@ -1047,7 +1047,7 @@
                 "value": "2000"
               },
               "nodeType": "ArrayTypeName",
-              "src": "1072:13:35",
+              "src": "1072:13:37",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_uint256_$2000_storage_ptr",
                 "typeString": "uint256[2000]"
@@ -1056,12 +1056,12 @@
             "visibility": "private"
           }
         ],
-        "scope": 5263,
-        "src": "318:785:35",
+        "scope": 5690,
+        "src": "318:785:37",
         "usedErrors": []
       }
     ],
-    "src": "49:1054:35"
+    "src": "49:1054:37"
   },
   "compiler": {
     "name": "solc",
@@ -1069,7 +1069,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-15T19:40:04.848Z",
+  "updatedAt": "2022-03-24T15:32:37.416Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
