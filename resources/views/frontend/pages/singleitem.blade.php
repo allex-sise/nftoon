@@ -383,18 +383,26 @@ $img2 = @$data['item']->icon;
                                        $drop = App\Drops::where('id', $drop_id)->first();
                                        $azi = \Carbon\Carbon::now();
                                     @endphp
-                                    @if (@$data['item']->is_upload==1)
-                                     @if (@$data['item']->in_drop == NULL)
-                                       <button  type="submit" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now') </button>
-                                       @elseif ((@$data['item']->in_drop) && (@$drop->startdate <= $azi) && (@$drop->expdate >= $azi) )
-                                       <p>NFT ESTE IN DROP SI DROPUL ESTE IN DERULARE</p>
-                                       <button  type="submit" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now') </button>
-                                       @else
-                                       <p>NFT este in drop iar dropul nu a inceput inca</p>
-                                       @endif
-                                    @else
-                                    <a href="{{@$data['item']->purchase_link}}" target="_blank" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now')</a>
+                                    @if (@$data['item']->user_id != Auth::user()->id)
+                                        @if (@$data['item']->nftmultiplumax == @$data['item']->sell)
+                                            @if (@$data['item']->is_upload == 1)
+                                                @if (@$data['item']->in_drop == NULL)
+                                                <button  type="submit" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now') </button>
+                                                @elseif ((@$data['item']->in_drop) && (@$drop->startdate <= $azi) && (@$drop->expdate >= $azi) )
+                                                <p>NFT ESTE IN DROP SI DROPUL ESTE IN DERULARE</p>
+                                                <button  type="submit" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now') </button>
+                                                @else
+                                                <p>NFT este in drop iar dropul nu a inceput inca</p>
+                                                @endif
+                                                @else
+                                                <a href="{{@$data['item']->purchase_link}}" target="_blank" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now')</a>
                                    
+                                            @endif
+                                        @else
+                                        <p>S-au terminat</p>
+                                        @endif
+                                    @else
+                                        <p>Nu poti cumpara nft-ul tau</p>
                                     @endif
                             </div>
                             @endif

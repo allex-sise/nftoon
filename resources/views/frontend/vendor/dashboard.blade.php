@@ -1126,7 +1126,6 @@
                                                 <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}">
                                                     <img src="{{ asset(@$item->icon) }}">
                                                 </a>
-                                                <a href="{{ route('singleProduct',[str_replace(' ', '-',@$item->title),@$item->id])}}" class="btn btn-primary">Place Bid</a>
                                             </div>
                                             <div class="product-share-wrapper">
                                                 <div class="profile-share">
@@ -1141,12 +1140,15 @@
                                                     </button>
                 
                                                     <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                                        <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                                            Share
-                                                        </button>
-                                                        <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                                            Report
-                                                        </button>
+                                                        @if ($item->status == 1)
+                                                            @if ($item->active_status == 0)
+                                                                <a class="btn-setting-text share-text"  href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-money"></i>  Pune la vanzare</a>
+                                                                <a class="btn-setting-text report-text"  href="{{ route('author.itemNftWallet',$item->id)}}" class="heart"><i class="ti-edit"></i>Muta NFT in Wallet-ul tau</a>
+                                                            @elseif ($item->active_status == 1)
+                                                                <a class="btn-setting-text share-text"  href="{{ route('author.itemScoateVanzare',$item->id)}}" class="heart"><i class="ti-edit"></i>  Scoate de la vanzare NFT-ul</a>
+                                                                <a class="btn-setting-text report-text"  href="{{ route('author.itemSale',$item->id)}}" class="heart"><i class="ti-edit"></i>  Editeaza NFT-ul</a>
+                                                            @endif
+                                                        @endif
                                                     </div>
                 
                                                 </div>
