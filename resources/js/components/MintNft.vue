@@ -1,10 +1,12 @@
 <template>
   <div id="mintnft">
-      <!-- <div v-if="account">{{account}}</div> -->
+      <div v-if="account">Account: {{account}}</div>
+      <div v-if="error">{{error}}</div>
       <div>
           <button @click="(mint())" type="button">MINT NFT MULTIPLU</button>
-          <button @click="(consoleShow())" type="button">consoleShow</button>
           <button @click="(getMetadata())" type="button">getMetadata</button>
+          <!-- Sign allows to mint multiple contracts with one signature -->
+          <button @click="(sign())" type="button">SIGN</button>
       </div>
        
   </div>
@@ -16,13 +18,15 @@ export default {
     mintRoute:null,
     items:null,
   },
-  methods:{
-    consoleShow(){
-      const nfts = this.transformToJson(this.items);
-      nfts.forEach(nft => {
-        console.log(nft.contract)
-      });
+  computed:{
+    error(){
+      return this.$store.getters.error;
     },
+    account() {
+      return this.$store.getters.account;
+    },
+  },
+  methods:{
     transformToJson(text){
       var itemsConverted = text.replaceAll("\"", "");
       itemsConverted = itemsConverted.replaceAll("'", "\"");
@@ -44,6 +48,10 @@ export default {
         console.log('metadata:',metadata)
       }
     },
+    async sign(){
+      await this.$store.dispatch("connect");
+      await this.$store.dispatch("getMetamaskSignature");
+    },
     async mint(){
       const nfts = this.transformToJson(this.items);
       for (const nft of nfts) {
@@ -54,6 +62,8 @@ export default {
         };
         await this.$store.dispatch("toonMintNftMultiple", payload);
       }
+      //todo: window.location.reload();
+      
       //init for setting up event listeners, maybe other way?
       // await this.$store.dispatch("init");
     },
