@@ -68,6 +68,7 @@ export default new Vuex.Store({
     },
     async setupEventListeners({ state, commit, dispatch }, payload) {
       try {
+        console.log('Event listener',payload);
         const connectedContract = payload.connectedContract;
 
         if (!connectedContract) return;
@@ -75,16 +76,16 @@ export default new Vuex.Store({
         connectedContract.on(
           "Minted",
           async (from, tokenId, indexedTokenIPFSPath, tokenIPFSPath) => {
-            const payload = {
+            const payloadMint = {
               route : payload.route,
               itemIdkey : payload.itemIdkey,
               contractAddress : payload.contractAddress,
-              itemMetadataUrl : 'https://dweb.link/ipfs/' + tokenIPFSPath,
+              itemMetadataUrl : tokenIPFSPath,
               nftImageUrl : payload.nftImageUrl,
               itemTokenid : tokenId.toNumber(),
               etherscan : 'https://mumbai.polygonscan.com/token/' + payload.contractAddress + '?a=' + tokenId.toNumber(),
             };
-            await dispatch("storeInDb",payload);
+            await dispatch("storeInDb",payloadMint);
             //todo:re-enable window.location.reload();
           }
         );

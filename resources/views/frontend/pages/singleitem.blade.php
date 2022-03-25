@@ -383,8 +383,7 @@ $img2 = @$data['item']->icon;
                                        $drop = App\Drops::where('id', $drop_id)->first();
                                        $azi = \Carbon\Carbon::now();
                                     @endphp
-                                    @if (@$data['item']->user_id != Auth::user()->id)
-                                        @if (@$data['item']->nftmultiplumax == @$data['item']->sell)
+                                        @if (@$data['item']->sell < @$data['item']->nftmultiplemax)
                                             @if (@$data['item']->is_upload == 1)
                                                 @if (@$data['item']->in_drop == NULL)
                                                 <button  type="submit" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now') </button>
@@ -394,16 +393,12 @@ $img2 = @$data['item']->icon;
                                                 @else
                                                 <p>NFT este in drop iar dropul nu a inceput inca</p>
                                                 @endif
-                                                @else
-                                                <a href="{{@$data['item']->purchase_link}}" target="_blank" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now')</a>
-                                   
+                                            @else
+                                            <a href="{{@$data['item']->purchase_link}}" target="_blank" class="btn btn-primary-alta mt--30">@lang('lang.Buy') @lang('lang.Now')</a>
                                             @endif
                                         @else
                                         <p>S-au terminat</p>
                                         @endif
-                                    @else
-                                        <p>Nu poti cumpara nft-ul tau</p>
-                                    @endif
                             </div>
                             @endif
                         </form>
